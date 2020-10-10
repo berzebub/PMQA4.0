@@ -1,1 +1,76 @@
 /* app global css */
+
+@font-face {
+  font-family: ROBOTO-R;
+  src: url("../../public/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: ROBOTO-M;
+  src: url("../../public/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: ROBOTO-B;
+  src: url("../../public/fonts/Roboto-Bold.ttf");
+}
+
+body {
+  font-family: ROBOTO-R;
+}
+
+.brx {
+  border: 1px solid#f00;
+}
+
+.font-roboto-r {
+  font-family: ROBOTO-R;
+}
+
+.font-roboto-m {
+  font-family: ROBOTO-M;
+}
+
+.font-roboto-b {
+  font-family: ROBOTO-B;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-22 {
+  font-size: 22px;
+}
+
+.font-24 {
+  font-size: 24px;
+}
+
+.bg1 {
+  background-color: #e84c93;
+}
+
+.bg2 {
+  background-color: #c4c4c4;
+}
+
+.color1 {
+  color: #e84c93;
+}
+
+.color2 {
+  color: #c4c4c4;
+}
