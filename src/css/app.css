@@ -23,6 +23,11 @@ body {
   border: 1px solid#f00;
 }
 
+.container-content {
+  width: 1200px;
+  margin: auto;
+}
+
 .font-roboto-r {
   font-family: ROBOTO-R;
 }
@@ -67,10 +72,18 @@ body {
   background-color: #c4c4c4;
 }
 
+.bg3 {
+  background-color: #e0e0e0;
+}
+
 .color1 {
   color: #e84c93;
 }
 
 .color2 {
   color: #c4c4c4;
+}
+
+.color3 {
+  color: #e0e0e0;
 }
