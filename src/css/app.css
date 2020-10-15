@@ -1,22 +1,22 @@
 /* app global css */
 
 @font-face {
-  font-family: ROBOTO-R;
-  src: url("../../public/fonts/Roboto-Regular.ttf");
+  font-family: PROMPT-R;
+  src: url("../../public/fonts/Prompt-Regular.ttf");
 }
 
 @font-face {
-  font-family: ROBOTO-M;
-  src: url("../../public/fonts/Roboto-Medium.ttf");
+  font-family: PROMPT-M;
+  src: url("../../public/fonts/Prompt-Medium.ttf");
 }
 
 @font-face {
-  font-family: ROBOTO-B;
-  src: url("../../public/fonts/Roboto-Bold.ttf");
+  font-family: PROMPT-B;
+  src: url("../../public/fonts/Prompt-Bold.ttf");
 }
 
 body {
-  font-family: ROBOTO-R;
+  font-family: PROMPT-R;
 }
 
 .brx {
@@ -25,19 +25,25 @@ body {
 
 .container-content {
   width: 1200px;
+  min-height: calc(100vh - 250px);
+  max-height: fit-content;
   margin: auto;
 }
 
-.font-roboto-r {
-  font-family: ROBOTO-R;
+.container-footer {
+  height: 50px;
 }
 
-.font-roboto-m {
-  font-family: ROBOTO-M;
+.font-prompt-r {
+  font-family: PROMPT-R;
 }
 
-.font-roboto-b {
-  font-family: ROBOTO-B;
+.font-prompt-m {
+  font-family: PROMPT-M;
+}
+
+.font-prompt-b {
+  font-family: PROMPT-B;
 }
 
 .font-14 {

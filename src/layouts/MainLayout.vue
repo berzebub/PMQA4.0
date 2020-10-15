@@ -2,14 +2,14 @@
   <q-layout view="lHh Lpr lFf">
     <q-header class="z-max">
       <div class="relative-position">
-        <div class="row bg1 container-bg relative-position">
+        <div class="row bg1 container-header relative-position">
           <div class="col q-pr-lg self-center" align="right">
-            <span class="text-white" style="font-size: 18px;">
+            <span class="text-white font-24">
               วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562
             </span>
           </div>
         </div>
-        <div class="row bg2 container-bg relative-position">
+        <div class="row bg2 container-header relative-position">
           <div class="col-1" style="width: 280px;"></div>
           <div class="col self-center font-24 text-black" align="center">
             <span>กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน</span>
@@ -20,32 +20,20 @@
             style="width: 200px;"
           >
             <q-btn
-              style="width: 150px;"
+              style="width: 163px;"
               dense
-              class="text-black bg-white font-14 z-top"
+              outline=""
+              padding="0"
+              class="text-black bg-white font-24 z-top"
               label="ออกจากระบบ"
             ></q-btn>
           </div>
         </div>
-        <div class="absolute-top" style="left: 20px;">
-          <q-img
-            class=""
-            src="../../public/images/logo.png"
-            width="250px"
-          ></q-img>
+        <div class="absolute-bottom" style="left: 20px; bottom: -10px;">
+          <q-img src="../../public/images/logo.png" width="350px"></q-img>
         </div>
       </div>
     </q-header>
-
-    <q-footer class="z-max">
-      <div class="bg1 row container-bg" align="right">
-        <div class="col self-center q-pr-lg">
-          <span class="font-18">
-            สงวนลิขสิทธิ์ 2563 : กรมควบคุมโรค
-          </span>
-        </div>
-      </div>
-    </q-footer>
 
     <q-page-container>
       <router-view />
@@ -65,8 +53,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container-bg {
-  height: 50px;
+.container-header {
+  height: 70px;
 }
 
 .container-login {

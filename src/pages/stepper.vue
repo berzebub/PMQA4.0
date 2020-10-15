@@ -28,7 +28,17 @@
             >
               <q-icon
                 name="fas fa-flag"
-                :class="active == 1 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 1
+                    ? 'text-white'
+                    : statusForm1 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm1 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm1 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -47,7 +57,17 @@
             >
               <q-icon
                 name="fas fa-street-view"
-                :class="active == 2 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 2
+                    ? 'text-white'
+                    : statusForm2 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm2 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm2 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -66,7 +86,17 @@
             >
               <q-icon
                 name="fas fa-map-signs"
-                :class="active == 3 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 3
+                    ? 'text-white'
+                    : statusForm3 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm3 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm3 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -85,7 +115,17 @@
             >
               <q-icon
                 name="fas fa-users"
-                :class="active == 4 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 4
+                    ? 'text-white'
+                    : statusForm4 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm4 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm4 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -104,7 +144,17 @@
             >
               <q-icon
                 name="fas fa-chart-line"
-                :class="active == 5 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 5
+                    ? 'text-white'
+                    : statusForm5 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm5 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm5 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -123,7 +173,17 @@
             >
               <q-icon
                 name="fas fa-users-cog"
-                :class="active == 6 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 6
+                    ? 'text-white'
+                    : statusForm6 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm6 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm6 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -142,7 +202,17 @@
             >
               <q-icon
                 name="fas fa-project-diagram"
-                :class="active == 7 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 7
+                    ? 'text-white'
+                    : statusForm7 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm7 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm7 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -161,7 +231,17 @@
             >
               <q-icon
                 name="fas fa-trophy"
-                :class="active == 8 ? 'text-white' : 'text-grey-1'"
+                :class="
+                  active == 8
+                    ? 'text-white'
+                    : statusForm8 == 'none'
+                    ? 'text-grey-1'
+                    : statusForm8 == 'doing'
+                    ? 'text-amber-9'
+                    : statusForm8 == 'success'
+                    ? 'text-teal'
+                    : ''
+                "
               ></q-icon>
             </q-btn>
           </div>
@@ -174,45 +254,96 @@
 
     <!-- Input Details -->
     <div class="q-pa-md container-content">
-      <q-tab-panels
-        v-model="active"
-        animated
-        transition-prev="jump-up"
-        transition-next="jump-down"
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
       >
-        <q-tab-panel :name="1">
-          <step-one></step-one>
-        </q-tab-panel>
+        <div v-show="active == 1">
+          <step-one @statusForm="(val) => (statusForm1 = val)"></step-one>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="2">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div v-show="active == 2">
           <step-two></step-two>
-        </q-tab-panel>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="3">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div v-show="active == 3">
           <step-three></step-three>
-        </q-tab-panel>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="4">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div v-show="active == 4">
           <step-four></step-four>
-        </q-tab-panel>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="5">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div v-show="active == 5">
           <step-five></step-five>
-        </q-tab-panel>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="6">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div
+          v-show="active == 6"
+          transition-show="jump-down"
+          transition-hide="jump-up"
+        >
           <step-six></step-six>
-        </q-tab-panel>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="7">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div
+          v-show="active == 7"
+          transition-show="jump-down"
+          transition-hide="jump-up"
+        >
           <step-seven></step-seven>
-        </q-tab-panel>
+        </div>
+      </transition>
 
-        <q-tab-panel :name="8">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div v-show="active == 8">
           <step-eight></step-eight>
-        </q-tab-panel>
-      </q-tab-panels>
+        </div>
+      </transition>
     </div>
+
+    <step-footer></step-footer>
   </q-page>
 </template>
 
@@ -225,6 +356,7 @@ import stepFive from "../components/step5";
 import stepSix from "../components/step6";
 import stepSeven from "../components/step7";
 import stepEight from "../components/step8";
+import stepFooter from "../components/footer";
 export default {
   components: {
     stepOne,
@@ -235,10 +367,19 @@ export default {
     stepSix,
     stepSeven,
     stepEight,
+    stepFooter,
   },
   data() {
     return {
       active: 1,
+      statusForm1: "none",
+      statusForm2: "none",
+      statusForm3: "none",
+      statusForm4: "none",
+      statusForm5: "none",
+      statusForm6: "none",
+      statusForm7: "none",
+      statusForm8: "none",
     };
   },
 };
