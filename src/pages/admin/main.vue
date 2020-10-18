@@ -139,13 +139,7 @@
           </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-lg">
-          <q-btn
-            style="width:150px"
-            @click="clearUserDataForm()"
-            v-close-popup
-            outline
-            label="ยกเลิก"
-          ></q-btn>
+          <q-btn style="width:150px" @click="clearTempForm()" v-close-popup outline label="ยกเลิก"></q-btn>
           <q-btn
             @click="confirmEditUserData()"
             style="width:150px"
@@ -156,39 +150,36 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-model="isShowEditAssessorDialog">
+    <q-dialog v-model="isShowAssessorDataDialog">
       <q-card style="width:430px">
-        <div class="font-24 q-pt-sm q-pl-lg">แก้ไขผู้ประเมิน</div>
+        <div class="font-24 q-pt-sm q-pl-lg">
+          <span v-if="assessorDialogMode == 'add'">เพิ่มผู้ประเมิน</span>
+          <span v-else>แก้ไขผู้ประเมิน</span>
+        </div>
         <q-card-section>
           <div class="row items-center" style="width:91%;margin:auto">
             <div class="col-3">ชื่อ-นามสกุล</div>
             <div class="col-8">
-              <q-input dense outlined v-model="activeAssessorDataTemp.name"></q-input>
+              <q-input dense outlined v-model="assessorData.name"></q-input>
             </div>
             <div class="col-3 q-py-sm">ชื่อผู้ใช้งาน</div>
             <div class="col-8 q-py-sm">
-              <q-input dense outlined v-model="activeAssessorDataTemp.username"></q-input>
+              <q-input dense outlined v-model="assessorData.username"></q-input>
             </div>
             <div class="col-3 q-pb-sm">รหัสผ่าน</div>
             <div class="col-8 q-pb-sm">
-              <q-input dense outlined v-model="activeAssessorDataTemp.password"></q-input>
+              <q-input dense outlined v-model="assessorData.password"></q-input>
             </div>
             <div class="col-3">เบอร์โทร</div>
             <div class="col-8">
-              <q-input dense outlined v-model="activeAssessorDataTemp.tel"></q-input>
+              <q-input dense outlined v-model="assessorData.tel"></q-input>
             </div>
           </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-lg">
+          <q-btn style="width:150px" @click="clearTempForm()" v-close-popup outline label="ยกเลิก"></q-btn>
           <q-btn
-            style="width:150px"
-            @click="clearUserDataForm()"
-            v-close-popup
-            outline
-            label="ยกเลิก"
-          ></q-btn>
-          <q-btn
-            @click="confirmEditAssessorData()"
+            @click="confirmAddEditAssessor()"
             style="width:150px"
             color="secondary"
             label="บันทึก"
@@ -208,10 +199,15 @@ export default {
       userList: "",
       assessorList: "",
       isShowEditUserDialog: false,
-      isShowEditAssessorDialog: false,
-      isShowAddAssessorDialog: false,
+      isShowAssessorDataDialog: false,
+      assessorDialogMode: "add",
       activeUserDataTemp: "",
-      activeAssessorDataTemp: "",
+      assessorData: {
+        name: "",
+        username: "",
+        password: "",
+        tel: "",
+      },
 
       //   DIALOG EDIT ADMIN PASSWORD
       //   oldPassword: "",
@@ -220,8 +216,36 @@ export default {
     };
   },
   methods: {
+    confirmAddEditAssessor() {
+      if (this.assessorDialogMode == "add") {
+        this.confirmAddAssessor();
+      } else {
+        this.confirmEditAssessorData();
+      }
+    },
+    async confirmAddAssessor() {
+      const url = this.apiPath + "addAssessor.php";
+      let data = await Axios.post(url, this.assessorData);
+
+      if (data.data == 0) {
+        //   username is already taken
+        this.notify("ชื่อผู้ใช้งานนี้ได้ถูกใช้ไปแล้ว", "red");
+      } else {
+        this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
+        this.isShowAssessorDataDialog = false;
+        this.clearTempForm();
+        this.loadAssessor();
+      }
+    },
     addAssessor() {
-      this.isShowAddAssessorDialog = true;
+      this.assessorDialogMode = "add";
+      this.assessorData = {
+        name: "",
+        username: "",
+        password: "",
+        tel: "",
+      };
+      this.isShowAssessorDataDialog = true;
     },
     async loadUser() {
       const url = this.apiPath + "getUser.php";
@@ -239,6 +263,54 @@ export default {
       this.isShowEditUserDialog = true;
       this.activeUserDataTemp = { ...item };
     },
+
+    async confirmEditUserData() {
+      this.loadingShow();
+      //   let checkValidatePassword = this.validatePassword();
+      //   if (checkValidatePassword) {
+      let postData = this.activeUserDataTemp;
+      const url = this.apiPath + "updateUser.php";
+      await Axios.post(url, postData);
+      this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
+      this.clearTempForm();
+      this.isShowEditUserDialog = false;
+      this.loadingHide();
+      this.loadUser();
+      //   }
+    },
+    clearTempForm() {
+      this.oldPassword = "";
+      this.newPassword = "";
+      this.activeUserDataTemp = "";
+      this.assessorData = {
+        name: "",
+        username: "",
+        password: "",
+        tel: "",
+      };
+    },
+    editAssessor(item) {
+      this.assessorDialogMode = "edit";
+      this.isShowAssessorDataDialog = true;
+      this.assessorData = { ...item };
+    },
+    async confirmEditAssessorData() {
+      const url = this.apiPath + "updateAssessor.php";
+      let data = await Axios.post(url, this.assessorData);
+      if (data.data == 0) {
+        this.notify("ชื่อผู้ใช้งานนี้ได้ถูกใช้ไปแล้ว", "red");
+      } else {
+        this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
+        this.clearTempForm();
+        this.isShowAssessorDataDialog = false;
+        this.loadAssessor();
+      }
+    },
+    loadInitialData() {
+      this.loadUser();
+      this.loadAssessor();
+    },
+
     // validatePassword() {
     //   if (
     //     this.oldPassword != this.activeUserDataTemp.password ||
@@ -266,46 +338,6 @@ export default {
     //     return true;
     //   }
     // },
-    async confirmEditUserData() {
-      this.loadingShow();
-      //   let checkValidatePassword = this.validatePassword();
-      //   if (checkValidatePassword) {
-      let postData = this.activeUserDataTemp;
-      const url = this.apiPath + "updateUser.php";
-      await Axios.post(url, postData);
-      this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
-      this.clearUserDataForm();
-      this.isShowEditUserDialog = false;
-      this.loadingHide();
-      this.loadUser();
-      //   }
-    },
-    clearUserDataForm() {
-      this.oldPassword = "";
-      this.newPassword = "";
-      this.activeUserDataTemp = "";
-      this.activeAssessorDataTemp = "";
-    },
-    editAssessor(item) {
-      this.isShowEditAssessorDialog = true;
-      this.activeAssessorDataTemp = { ...item };
-    },
-    async confirmEditAssessorData() {
-      const url = this.apiPath + "updateAssessor.php";
-      let data = await Axios.post(url, this.activeAssessorDataTemp);
-      if (data.data == 0) {
-        this.notify("ชื่อผู้ใช้งานนี้ได้ถูกใช้ไปแล้ว", "red");
-      } else {
-        this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
-        this.clearUserDataForm();
-        this.isShowEditAssessorDialog = false;
-        this.loadAssessor();
-      }
-    },
-    loadInitialData() {
-      this.loadUser();
-      this.loadAssessor();
-    },
   },
   created() {
     this.loadInitialData();
