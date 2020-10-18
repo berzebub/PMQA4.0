@@ -3,18 +3,12 @@
     <div class="relative-position">
       <div class="row bg1 container-bg">
         <div class="col q-pr-lg self-center" align="right">
-          <span class="text-white" style="font-size: 18px;">
-            วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562
-          </span>
+          <span class="text-white" style="font-size: 18px;">วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562</span>
         </div>
       </div>
       <div class="bg2 container-bg"></div>
       <div class="absolute-top" style="left: 20px;">
-        <q-img
-          class=""
-          src="../../public/images/logo.png"
-          width="250px"
-        ></q-img>
+        <q-img class src="../../public/images/logo.png" width="250px"></q-img>
       </div>
     </div>
 
@@ -24,31 +18,21 @@
     >
       <div class="self-center">
         <div style="width: 430px;" class="container-login q-py-lg">
-          <div
-            align="center"
-            class="bg2 relative-position"
-            style="height: 58px;"
-          >
+          <div align="center" class="bg2 relative-position" style="height: 58px;">
             <span
               style="font-size: 80px; width: 100%;"
               class="absolute-center font-roboto-b"
-              >PMQA 4.0</span
-            >
+            >PMQA 4.0</span>
           </div>
           <div class="q-py-lg q-px-xl" align="center">
             <span style="font-size: 20px;">
               การประเมินสถานะของหน่วยงานภาครัฐ
-              <br />
-              ในการเป็นระบบราชการ 4.0
+              <br />ในการเป็นระบบราชการ 4.0
             </span>
           </div>
           <div class="q-pb-sm q-px-lg">
             <div>
-              <q-input
-                outlined=""
-                placeholder="รหัสผู้ใช้งาน"
-                v-model="username"
-              >
+              <q-input outlined placeholder="รหัสผู้ใช้งาน" v-model="username">
                 <template v-slot:prepend>
                   <q-icon name="fas fa-user" size="30px" />
                 </template>
@@ -56,7 +40,7 @@
             </div>
             <div class="q-mt-sm">
               <q-input
-                outlined=""
+                outlined
                 placeholder="รหัสผ่าน"
                 :type="isShowPassword ? '' : 'password'"
                 v-model="password"
@@ -84,7 +68,7 @@
             </div>
             <div class="q-mt-sm">
               <q-select
-                outlined=""
+                outlined
                 label="ผู้ใช้ในแต่ละหน่วยงาน"
                 v-model="department"
                 :options="departmentOptions"
@@ -100,7 +84,7 @@
               style="width: 150px;"
               class="bg-teal text-white"
               label="เข้าสู่ระบบ"
-              @click="$router.push('/main')"
+              @click="login()"
             ></q-btn>
           </div>
         </div>
@@ -112,16 +96,59 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
       username: "",
       password: "",
-      department: "",
-      departmentOptions: [],
+      department: "ผู้ดูแลระบบ",
+      departmentOptions: ["ผู้ใช้แต่ละหน่วยงาน", "ผู้ประเมิน", "ผู้ดูแลระบบ"],
 
       isShowPassword: false,
     };
+  },
+  methods: {
+    checkLogin() {
+      return new Promise(async (a, b) => {
+        let postData = {
+          username: this.username,
+          password: this.password,
+          type: this.department,
+        };
+        const url = "http://localhost/pmqa4.0_api/login.php";
+        let checkAdminLogin = await Axios.post(url, postData);
+        let result = checkAdminLogin.data == 1 ? true : false;
+        a(result);
+      });
+    },
+    async login() {
+      this.$q.loading.show({
+        delay: 400,
+      });
+      let isPass = await this.checkLogin();
+      this.$q.loading.hide();
+      if (isPass) {
+        // LOGIN SUCCESS
+        this.checkRouteAccess();
+      } else {
+        // LOGIN FAILED
+        this.$q.notify({
+          message: "ไม่พบรหัสผู้ใช้งาน กรุณาตรวจสอบใหม่อีกครั้ง",
+          color: "red",
+          position: "bottom",
+        });
+      }
+    },
+    checkRouteAccess() {
+      if (this.department == "ผู้ใช้แต่ละหน่วยงาน") {
+        this.$router.push("/main");
+      } else if (this.department == "ผู้ประเมิน") {
+      } else {
+        // ADMIN
+        this.$router.push("/admin/main");
+      }
+    },
   },
 };
 </script>

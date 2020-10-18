@@ -4,9 +4,7 @@
       <div class="relative-position">
         <div class="row bg1 container-header relative-position">
           <div class="col q-pr-lg self-center" align="right">
-            <span class="text-white font-24">
-              วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562
-            </span>
+            <span class="text-white font-24">วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562</span>
           </div>
         </div>
         <div class="row bg2 container-header relative-position">
@@ -14,15 +12,11 @@
           <div class="col self-center font-24 text-black" align="center">
             <span>กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน</span>
           </div>
-          <div
-            class="col-1 self-center q-px-md"
-            align="right"
-            style="width: 200px;"
-          >
+          <div class="col-1 self-center q-px-md" align="right" style="width: 200px;">
             <q-btn
               style="width: 163px;"
               dense
-              outline=""
+              outline
               padding="0"
               class="text-black bg-white font-24 z-top"
               label="ออกจากระบบ"
