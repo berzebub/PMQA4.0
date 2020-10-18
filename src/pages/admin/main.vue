@@ -67,7 +67,7 @@
               <td class="q-pa-sm" align="center">{{ item.password }}</td>
               <td class="q-pa-sm" align="center">{{ item.tel }}</td>
               <td class="q-pa-sm" align="center">
-                <q-btn size="sm" flat icon="far fa-trash-alt"></q-btn>
+                <q-btn @click="deleteAssessor(item)" size="sm" flat icon="far fa-trash-alt"></q-btn>
               </td>
               <td class="q-pa-sm" align="center">
                 <q-btn @click="editAssessor(item)" size="sm" flat icon="fas fa-edit"></q-btn>
@@ -187,6 +187,21 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <q-dialog v-model="isShowAssessorDeleteDialog">
+      <q-card style="width:430px">
+        <div class="font-24 q-pt-sm q-pl-lg">ลบผู้ประเมิน</div>
+        <q-card-section align="center">คุณต้องการลบ "{{ assessorData.name }}" ใช่หรือไม่</q-card-section>
+        <q-card-actions align="center" class="q-pb-lg">
+          <q-btn style="width:150px" @click="clearTempForm()" v-close-popup outline label="ยกเลิก"></q-btn>
+          <q-btn
+            @click="confirmDeleteAssessor()"
+            style="width:150px"
+            color="secondary"
+            label="บันทึก"
+          ></q-btn>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -200,6 +215,7 @@ export default {
       assessorList: "",
       isShowEditUserDialog: false,
       isShowAssessorDataDialog: false,
+      isShowAssessorDeleteDialog: false,
       assessorDialogMode: "add",
       activeUserDataTemp: "",
       assessorData: {
@@ -216,6 +232,20 @@ export default {
     };
   },
   methods: {
+    async confirmDeleteAssessor() {
+      const url = this.apiPath + "deleteAssessor.php";
+      let postData = {
+        id: this.assessorData.id,
+      };
+      let data = await Axios.post(url, postData);
+      this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
+      this.isShowAssessorDeleteDialog = false;
+      this.loadAssessor();
+    },
+    deleteAssessor(item) {
+      this.isShowAssessorDeleteDialog = true;
+      this.assessorData = { ...item };
+    },
     confirmAddEditAssessor() {
       if (this.assessorDialogMode == "add") {
         this.confirmAddAssessor();
