@@ -920,12 +920,6 @@ export default {
 
       // Save Data
       isSaveData: false
-
-      //test
-      // test : {
-      //   user_id : this.$q.sessionStorage.getItem("uid"),
-      //   q_number : 1,
-      // }
     };
   },
   methods: {
@@ -1005,7 +999,43 @@ export default {
           x.q_number == "2" && x.category == "ค." && x.category_q_number == "1"
       )[0].text;
     },
+    async checkFinishStatus() {
+      // console.log(this.checkEnvironment);
+      const url = this.apiPath + "user/setUserStepperLog.php";
+      if (
+        this.checkEnvironment == 5 &&
+        this.checkRelation == 3 &&
+        this.checkCompetition == 3 &&
+        this.checkStategy == 1 &&
+        this.checkPerformance == 1
+      ) {
+        // FINISH ALL
+        let postData = {
+          category: "category0",
+          user_id: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          status: 1 // 1 = finish
+        };
+        let data = await Axios.post(url, postData);
+      } else if (
+        this.checkEnvironment >= 1 ||
+        this.checkRelation >= 1 ||
+        this.checkCompetition >= 1 ||
+        this.checkStategy >= 1 ||
+        this.checkPerformance >= 1
+      ) {
+        let postData = {
+          category: "category0",
+          user_id: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          status: 2 // 1 = not finish all
+        };
+        let data = await Axios.post(url, postData);
+      }
+    },
+
     async saveData() {
+      this.checkFinishStatus();
       let uid = this.$q.sessionStorage.getItem("uid");
       // ข้อ1 หมวด ก ข้อที่1
       let sendData = [
@@ -1113,7 +1143,6 @@ export default {
       };
       const url = this.apiPath + "user/addUpdateCategory0.php";
       let post = await Axios.post(url, finalData);
-      console.log(post);
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;

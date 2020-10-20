@@ -31,11 +31,11 @@
                 :class="
                   active == 1
                     ? 'text-white'
-                    : statusForm1 == 'none'
+                    : currentStep.category0 == '0'
                     ? 'text-grey-1'
-                    : statusForm1 == 'doing'
+                    : currentStep.category0 == '2'
                     ? 'text-amber-9'
-                    : statusForm1 == 'success'
+                    : currentStep.category0 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -60,11 +60,11 @@
                 :class="
                   active == 2
                     ? 'text-white'
-                    : statusForm2 == 'none'
+                    : currentStep.category1 == '0'
                     ? 'text-grey-1'
-                    : statusForm2 == 'doing'
+                    : currentStep.category1 == '2'
                     ? 'text-amber-9'
-                    : statusForm2 == 'success'
+                    : currentStep.category1 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -89,11 +89,11 @@
                 :class="
                   active == 3
                     ? 'text-white'
-                    : statusForm3 == 'none'
+                    : currentStep.category2 == '0'
                     ? 'text-grey-1'
-                    : statusForm3 == 'doing'
+                    : currentStep.category2 == '2'
                     ? 'text-amber-9'
-                    : statusForm3 == 'success'
+                    : currentStep.category2 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -118,11 +118,11 @@
                 :class="
                   active == 4
                     ? 'text-white'
-                    : statusForm4 == 'none'
+                    : currentStep.category3 == '0'
                     ? 'text-grey-1'
-                    : statusForm4 == 'doing'
+                    : currentStep.category3 == '2'
                     ? 'text-amber-9'
-                    : statusForm4 == 'success'
+                    : currentStep.category3 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -147,11 +147,11 @@
                 :class="
                   active == 5
                     ? 'text-white'
-                    : statusForm5 == 'none'
+                    : currentStep.category4 == '0'
                     ? 'text-grey-1'
-                    : statusForm5 == 'doing'
+                    : currentStep.category4 == '2'
                     ? 'text-amber-9'
-                    : statusForm5 == 'success'
+                    : currentStep.category4 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -176,11 +176,11 @@
                 :class="
                   active == 6
                     ? 'text-white'
-                    : statusForm6 == 'none'
+                    : currentStep.category5 == '0'
                     ? 'text-grey-1'
-                    : statusForm6 == 'doing'
+                    : currentStep.category5 == '2'
                     ? 'text-amber-9'
-                    : statusForm6 == 'success'
+                    : currentStep.category5 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -205,11 +205,11 @@
                 :class="
                   active == 7
                     ? 'text-white'
-                    : statusForm7 == 'none'
+                    : currentStep.category6 == '0'
                     ? 'text-grey-1'
-                    : statusForm7 == 'doing'
+                    : currentStep.category6 == '2'
                     ? 'text-amber-9'
-                    : statusForm7 == 'success'
+                    : currentStep.category6 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -234,11 +234,11 @@
                 :class="
                   active == 8
                     ? 'text-white'
-                    : statusForm8 == 'none'
+                    : currentStep.category7 == '0'
                     ? 'text-grey-1'
-                    : statusForm8 == 'doing'
+                    : currentStep.category7 == '2'
                     ? 'text-amber-9'
-                    : statusForm8 == 'success'
+                    : currentStep.category7 == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -260,7 +260,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 1">
-          <step-one @statusForm="(val) => (statusForm1 = val)"></step-one>
+          <step-one @statusForm="val => (statusForm1 = val)"></step-one>
         </div>
       </transition>
 
@@ -357,6 +357,7 @@ import stepSix from "../components/step6";
 import stepSeven from "../components/step7";
 import stepEight from "../components/step8";
 import stepFooter from "../components/footer";
+import Axios from "axios";
 export default {
   components: {
     stepOne,
@@ -367,7 +368,7 @@ export default {
     stepSix,
     stepSeven,
     stepEight,
-    stepFooter,
+    stepFooter
   },
   data() {
     return {
@@ -380,8 +381,23 @@ export default {
       statusForm6: "none",
       statusForm7: "none",
       statusForm8: "none",
+      currentStep: ""
     };
   },
+  methods: {
+    async getStepperLog() {
+      const url = this.apiPath + "user/getStepperLog.php";
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y")
+      };
+      let data = await Axios.post(url, postData);
+      this.currentStep = data.data;
+    }
+  },
+  created() {
+    this.getStepperLog();
+  }
 };
 </script>
 

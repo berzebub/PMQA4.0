@@ -418,6 +418,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
@@ -428,10 +429,11 @@ export default {
       step5: false,
       step6: false,
       step7: false,
-      step8: false,
+      step8: false
     };
   },
   computed: {
+ 
     checkSteper() {
       if (
         this.step1 &&
@@ -447,8 +449,11 @@ export default {
       } else {
         return false;
       }
-    },
+    }
   },
+  created() {
+ 
+  }
 };
 </script>
 
