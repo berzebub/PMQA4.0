@@ -3,7 +3,9 @@
     <div class="relative-position">
       <div class="row bg1 container-bg">
         <div class="col q-pr-lg self-center" align="right">
-          <span class="text-white" style="font-size: 18px;">วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562</span>
+          <span class="text-white" style="font-size: 18px;"
+            >วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562</span
+          >
         </div>
       </div>
       <div class="bg2 container-bg"></div>
@@ -18,11 +20,16 @@
     >
       <div class="self-center">
         <div style="width: 430px;" class="container-login q-py-lg">
-          <div align="center" class="bg2 relative-position" style="height: 58px;">
+          <div
+            align="center"
+            class="bg2 relative-position"
+            style="height: 58px;"
+          >
             <span
               style="font-size: 80px; width: 100%;"
               class="absolute-center font-roboto-b"
-            >PMQA 4.0</span>
+              >PMQA 4.0</span
+            >
           </div>
           <div class="q-py-lg q-px-xl" align="center">
             <span style="font-size: 20px;">
@@ -105,7 +112,7 @@ export default {
       department: "ผู้ดูแลระบบ",
       departmentOptions: ["ผู้ใช้แต่ละหน่วยงาน", "ผู้ประเมิน", "ผู้ดูแลระบบ"],
 
-      isShowPassword: false,
+      isShowPassword: false
     };
   },
   methods: {
@@ -114,7 +121,7 @@ export default {
         let postData = {
           username: this.username,
           password: this.password,
-          type: this.department,
+          type: this.department
         };
         const url = "http://localhost/pmqa4.0_api/login.php";
         let checkAdminLogin = await Axios.post(url, postData);
@@ -124,7 +131,7 @@ export default {
     },
     async login() {
       this.$q.loading.show({
-        delay: 400,
+        delay: 400
       });
       let isPass = await this.checkLogin();
       this.$q.loading.hide();
@@ -136,7 +143,7 @@ export default {
         this.$q.notify({
           message: "ไม่พบรหัสผู้ใช้งาน กรุณาตรวจสอบใหม่อีกครั้ง",
           color: "red",
-          position: "bottom",
+          position: "bottom"
         });
       }
     },
@@ -148,8 +155,8 @@ export default {
         // ADMIN
         this.$router.push("/admin/main");
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
