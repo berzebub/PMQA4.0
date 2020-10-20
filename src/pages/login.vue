@@ -125,7 +125,7 @@ export default {
         };
         const url = "http://localhost/pmqa4.0_api/login.php";
         let checkAdminLogin = await Axios.post(url, postData);
-        let result = checkAdminLogin.data == 1 ? true : false;
+        let result = checkAdminLogin.data;
         a(result);
       });
     },
@@ -134,8 +134,10 @@ export default {
         delay: 400
       });
       let isPass = await this.checkLogin();
+      // console.log(isPass);
+      this.$q.sessionStorage.set("uid", isPass);
       this.$q.loading.hide();
-      if (isPass) {
+      if (isPass > 0) {
         // LOGIN SUCCESS
         this.checkRouteAccess();
       } else {

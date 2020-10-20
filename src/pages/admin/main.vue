@@ -247,7 +247,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      tab: "ผู้ประเมิน",
+      tab: "ผู้ใช้งาน",
       userList: "",
       assessorList: "",
       isShowEditUserDialog: false,
@@ -317,14 +317,18 @@ export default {
     async loadUser() {
       const url = this.apiPath + "getUser.php";
       let userList = await Axios.get(url);
-      let result = userList.data.sort((a, b) => a.id - b.id);
-      this.userList = userList.data;
+      if (userList.data) {
+        let result = userList.data.sort((a, b) => a.id - b.id);
+        this.userList = userList.data;
+      }
     },
     async loadAssessor() {
       const url = this.apiPath + "getAssessor.php";
       let assessorList = await Axios.get(url);
-      let result = assessorList.data.sort((a, b) => a.id - b.id);
-      this.assessorList = result;
+      if (assessorList.data) {
+        let result = assessorList.data.sort((a, b) => a.id - b.id);
+        this.assessorList = result;
+      }
     },
     editUser(item) {
       this.isShowEditUserDialog = true;
