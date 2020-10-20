@@ -2,9 +2,9 @@
   <q-page class>
     <div class="q-px-xl q-pt-md relative-position">
       <q-btn
-        class="absolute"
+        class="absolute font-18"
         @click="addAssessor()"
-        style="right:65px"
+        style="right:65px;"
         label="เพิ่มผู้ประเมิน"
       ></q-btn>
       <q-tabs
@@ -22,38 +22,48 @@
       </q-tabs>
     </div>
 
-    <div class="q-px-xl q-pt-sm">
+    <div class="q-px-xl q-pt-md">
       <!-- USER LIST -->
       <q-tab-panels v-model="tab" class>
         <q-tab-panel name="ผู้ใช้งาน">
           <table class="table-style">
             <tr class="bg-cblue text-white">
-              <td class="q-pa-sm" align="left">กอง / สำนัก</td>
-              <td class="q-pa-sm" style="width:150px" align="center">
+              <td class="q-py-sm q-px-md" align="left">กอง / สำนัก</td>
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">
                 ชื่อผู้ใช้งาน
               </td>
-              <td class="q-pa-sm" style="width:150px" align="center">
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">
                 รหัสผ่าน
               </td>
-              <td class="q-pa-sm" style="width:200px" align="center">
+              <td class="q-py-sm q-px-md" style="width:200px" align="center">
                 ผู้ประสานงาน
               </td>
-              <td class="q-pa-sm" style="width:120px" align="center">
+              <td class="q-py-sm q-px-md" style="width:120px" align="center">
                 เบอร์โทร
               </td>
-              <td class="q-pa-sm" align="center" style="width:70px">แก้ไข</td>
+              <td class="q-py-sm q-px-md" align="center" style="width:70px">
+                แก้ไข
+              </td>
             </tr>
             <tr
               v-for="(item, index) in userList"
               :key="index"
               :class="index % 2 != 0 ? 'bg-grey-3' : 'bg-white'"
             >
-              <td class="q-pa-sm">{{ item.office }}</td>
-              <td class="q-pa-sm" align="center">{{ item.username }}</td>
-              <td class="q-pa-sm" align="center">{{ item.password }}</td>
-              <td class="q-pa-sm" align="center">{{ item.collaborator }}</td>
-              <td class="q-pa-sm" align="center">{{ item.tel }}</td>
-              <td class="q-pa-sm" align="center">
+              <td class="q-py-sm q-px-md">{{ item.office }}</td>
+              <td class="q-py-sm q-px-md" align="center">
+                {{ item.username }}
+              </td>
+              <td class="q-py-sm q-px-md" align="center">
+                {{ item.password }}
+              </td>
+              <td class="q-py-sm q-px-md" align="center">
+                {{ item.collaborator }}
+              </td>
+              <td class="q-py-sm q-px-md" align="center">
+                {{ telFormatter(item.tel) }}
+              </td>
+              <td class="q-py-sm q-px-md" align="center">
                 <q-btn
                   @click="editUser(item)"
                   size="sm"
@@ -68,29 +78,37 @@
         <q-tab-panel name="ผู้ประเมิน">
           <table class="table-style">
             <tr class="bg-cblue text-white">
-              <td class="q-pa-sm" align="left">ชื่อ-นามสกุล</td>
-              <td class="q-pa-sm" style="width:150px" align="center">
+              <td class="q-py-sm q-px-md" align="left">ชื่อ-นามสกุล</td>
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">
                 ชื่อผู้ใช้งาน
               </td>
-              <td class="q-pa-sm" style="width:150px" align="center">
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">
                 รหัสผ่าน
               </td>
-              <td class="q-pa-sm" style="width:200px" align="center">
+              <td class="q-py-sm q-px-md" style="width:200px" align="center">
                 เบอร์โทร
               </td>
-              <td class="q-pa-sm" style="width:120px" align="center">ลบ</td>
-              <td class="q-pa-sm" align="center" style="width:70px">แก้ไข</td>
+              <td class="q-py-sm q-px-md" style="width:120px" align="center">
+                ลบ
+              </td>
+              <td class="q-py-sm q-px-md" align="center" style="width:70px">
+                แก้ไข
+              </td>
             </tr>
             <tr
               v-for="(item, index) in assessorList"
               :key="index"
               :class="index % 2 != 0 ? 'bg-grey-3' : 'bg-white'"
             >
-              <td class="q-pa-sm">{{ item.name }}</td>
-              <td class="q-pa-sm" align="center">{{ item.username }}</td>
-              <td class="q-pa-sm" align="center">{{ item.password }}</td>
-              <td class="q-pa-sm" align="center">{{ item.tel }}</td>
-              <td class="q-pa-sm" align="center">
+              <td class="q-py-sm q-px-md">{{ item.name }}</td>
+              <td class="q-py-sm q-px-md" align="center">
+                {{ item.username }}
+              </td>
+              <td class="q-py-sm q-px-md" align="center">
+                {{ item.password }}
+              </td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.tel }}</td>
+              <td class="q-py-sm q-px-md" align="center">
                 <q-btn
                   @click="deleteAssessor(item)"
                   size="sm"
@@ -98,7 +116,7 @@
                   icon="far fa-trash-alt"
                 ></q-btn>
               </td>
-              <td class="q-pa-sm" align="center">
+              <td class="q-py-sm q-px-md" align="center">
                 <q-btn
                   @click="editAssessor(item)"
                   size="sm"
@@ -247,7 +265,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      tab: "ผู้ประเมิน",
+      tab: "ผู้ใช้งาน",
       userList: "",
       assessorList: "",
       isShowEditUserDialog: false,
@@ -380,6 +398,9 @@ export default {
     loadInitialData() {
       this.loadUser();
       this.loadAssessor();
+    },
+    telFormatter(tel) {
+      return tel.substr(0, 3) + "-" + tel.substr(4, 3) + "-" + tel.substr(7);
     }
   },
   created() {

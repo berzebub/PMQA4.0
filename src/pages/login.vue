@@ -133,11 +133,10 @@ export default {
       this.$q.loading.show({
         delay: 400
       });
-      let isPass = await this.checkLogin();
-      // console.log(isPass);
-      this.$q.sessionStorage.set("uid", isPass);
+      let getData = await this.checkLogin();
+      this.$q.sessionStorage.set("uid", getData);
       this.$q.loading.hide();
-      if (isPass > 0) {
+      if (getData > 0) {
         // LOGIN SUCCESS
         this.checkRouteAccess();
       } else {

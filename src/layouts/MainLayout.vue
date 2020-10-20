@@ -42,6 +42,7 @@
               padding="0"
               class="text-black bg-white font-24 z-top"
               label="ออกจากระบบ"
+              @click="isShowLogoutDialog = true"
             ></q-btn>
           </div>
         </div>
@@ -133,6 +134,22 @@
           </q-card-actions>
         </q-card>
       </q-dialog>
+      <q-dialog v-model="isShowLogoutDialog">
+        <q-card class="q-pa-md">
+          <q-card-section class="text-h5">
+            ต้องการออกจากระบบใช่หรือไม่?
+          </q-card-section>
+          <q-card-actions align="center">
+            <q-btn label="ยกเลิก" style="width:150px" v-close-popup></q-btn>
+            <q-btn
+              label="ตกลง"
+              @click="confirmLogOut()"
+              color="secondary"
+              style="width:150px"
+            ></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </q-page-container>
   </q-layout>
 </template>
@@ -143,6 +160,7 @@ export default {
   name: "MainLayout",
   data() {
     return {
+      isShowLogoutDialog: false,
       isPwd: true,
       isPwdNew: true,
       isPwdNewRepeat: true,
@@ -155,6 +173,10 @@ export default {
     };
   },
   methods: {
+    confirmLogOut() {
+      this.$q.sessionStorage.clear();
+      this.$router.push("/");
+    },
     async confirmEditPassword() {
       const url = this.apiPath + "changeAdminPassword.php";
       let data = await Axios.post(url, {
@@ -163,8 +185,6 @@ export default {
         oldPassword: this.oldPassword,
         repeatNewPassword: this.repeatNewPassword
       });
-
-      console.log(data.data);
 
       if (data.data == "error old password") {
         //

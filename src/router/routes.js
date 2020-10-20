@@ -5,6 +5,11 @@ const routes = [
     name: "login"
   },
   {
+    path: "/addUser",
+    component: () => import("pages/admin/tempAddUser.vue"),
+    name: "addUser"
+  },
+  {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
