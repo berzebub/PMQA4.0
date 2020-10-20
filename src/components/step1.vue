@@ -928,10 +928,166 @@ export default {
 
       // Save Data
       isSaveData: false
+
+      //test
+      // test : {
+      //   user_id : this.$q.sessionStorage.getItem("uid"),
+      //   q_number : 1,
+      // }
     };
   },
   methods: {
     saveData() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      // ข้อ1 หมวด ก ข้อที่1
+      let sendData = [
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 1,
+          text: this.inputEnvironment1,
+          year: 2020
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 2,
+          text: this.inputEnvironment2,
+          year: 2020
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 3,
+          text: this.inputEnvironment3,
+          year: 2020
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 4,
+          text: this.inputEnvironment4,
+          year: 2020
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 5,
+          text: this.inputEnvironment5,
+          year: 2020
+        },
+        // หมวด ข
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 1,
+          text: this.inputRelation1,
+          year: 2020
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 2,
+          text: this.inputRelation2,
+          year: 2020
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 3,
+          text: this.inputRelation3,
+          year: 2020
+        },
+        // เริ่มข้อ2 หมวด ก.
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 1,
+          text: this.inputCompetitionEnvironment1,
+          year: 2020
+        },
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 2,
+          text: this.inputCompetitionEnvironment2,
+          year: 2020
+        },
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 3,
+          text: this.inputCompetitionEnvironment3,
+          year: 2020
+        },
+        // เริ่มข้อ2 หมวด ข.
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 1,
+          text: this.inputStategy,
+          year: 2020
+        },
+        // เริ่มข้อ2 หมวด ค.
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ค.",
+          category_q_number: 1,
+          text: this.inputPerformanceSystem,
+          year: 2020
+        }
+      ];
+      console.log(sendData);
+      // // ข้อ1 หมวด ก ข้อที่2
+      // let q1_a_2 = {
+      //   q_number: 1,
+      //   user_id: uid,
+      //   category: "ก.",
+      //   category_q_number: 2,
+      //   text: this.inputEnvironment2,
+      //   year: 2020
+      // };
+      // // ข้อ1 หมวด ก ข้อที่3
+      // let q1_a_3 = {
+      //   q_number: 1,
+      //   user_id: uid,
+      //   category: "ก.",
+      //   category_q_number: 3,
+      //   text: this.inputEnvironment3,
+      //   year: 2020
+      // };
+      // // ข้อ1 หมวด ก ข้อที่4
+      // let q1_a_4 = {
+      //   q_number: 1,
+      //   user_id: uid,
+      //   category: "ก.",
+      //   category_q_number: 4,
+      //   text: this.inputEnvironment4,
+      //   year: 2020
+      // };
+      // // ข้อ1 หมวด ก ข้อที่5
+      // let q1_a_5 = {
+      //   q_number: 1,
+      //   user_id: uid,
+      //   category: "ก.",
+      //   category_q_number: 5,
+      //   text: this.inputEnvironment5,
+      //   year: 2020
+      // };
+
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
