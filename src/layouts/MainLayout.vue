@@ -27,6 +27,7 @@
               padding="0"
               class="text-black bg-white font-24 z-top"
               label="เปลี่ยนรหัสผ่าน"
+              @click="isShowEditAdminPassword = true"
             ></q-btn>
           </div>
           <div
@@ -65,15 +66,54 @@
             >
               <div class="col-6">รหัสผ่านเดิม</div>
               <div class="col-6">
-                <q-input dense outlined v-model="oldPassword"></q-input>
+                <q-input
+                  v-model="oldPassword"
+                  dense
+                  outlined
+                  :type="isPwd ? 'password' : 'text'"
+                >
+                  <template v-slot:append>
+                    <q-icon
+                      :name="isPwd ? 'visibility_off' : 'visibility'"
+                      class="cursor-pointer"
+                      @click="isPwd = !isPwd"
+                    />
+                  </template>
+                </q-input>
               </div>
               <div class="col-6 q-py-sm">รหัสผ่านใหม่</div>
               <div class="col-6 q-py-sm">
-                <q-input dense outlined v-model="newPassword"></q-input>
+                <q-input
+                  v-model="newPassword"
+                  dense
+                  outlined
+                  :type="isPwdNew ? 'password' : 'text'"
+                >
+                  <template v-slot:append>
+                    <q-icon
+                      :name="isPwdNew ? 'visibility_off' : 'visibility'"
+                      class="cursor-pointer"
+                      @click="isPwdNew = !isPwdNew"
+                    />
+                  </template>
+                </q-input>
               </div>
               <div class="col-6">รหัสผ่านใหม่อีกครั้ง</div>
               <div class="col-6">
-                <q-input dense outlined v-model="repeatNewPassword"></q-input>
+                <q-input
+                  v-model="repeatNewPassword"
+                  dense
+                  outlined
+                  :type="isPwdNewRepeat ? 'password' : 'text'"
+                >
+                  <template v-slot:append>
+                    <q-icon
+                      :name="isPwdNewRepeat ? 'visibility_off' : 'visibility'"
+                      class="cursor-pointer"
+                      @click="isPwdNewRepeat = !isPwdNewRepeat"
+                    />
+                  </template>
+                </q-input>
               </div>
             </div>
           </q-card-section>
@@ -85,7 +125,7 @@
               label="ยกเลิก"
             ></q-btn>
             <q-btn
-              @click="confirmEditUserData()"
+              @click="confirmEditPassword()"
               style="width:150px"
               color="secondary"
               label="บันทึก"
@@ -98,10 +138,14 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   name: "MainLayout",
   data() {
     return {
+      isPwd: true,
+      isPwdNew: true,
+      isPwdNewRepeat: true,
       leftDrawerOpen: false,
       isShowEditAdminPassword: false,
       // edit admin password
@@ -111,37 +155,35 @@ export default {
     };
   },
   methods: {
-    confirmEditUserData() {
-      //   let validatePassword = this.validatePassword();
-    },
-    validatePassword() {
-      if (
-        this.oldPassword != this.activeUserDataTemp.password ||
-        this.newPassword != this.repeatNewPassword ||
-        this.newPassword == "" ||
-        this.repeatNewPassword == "" ||
-        this.newPassword.length < 4
-      ) {
-        // match old password
-        if (this.oldPassword != this.activeUserDataTemp.password) {
-          this.notify("กรุณาตรวจสอบรหัสผ่านเดิมอีกครั้ง", "red");
-        }
-        if (
-          this.newPassword != this.repeatNewPassword ||
-          this.newPassword == "" ||
-          this.repeatNewPassword == ""
-        ) {
-          this.notify("รหัสผ่านใหม่ต้องเหมือนกันทั้งสองช่อง", "red");
-        }
-        if (this.newPassword.length < 4) {
-          this.notify("กรุณาตั้งรหัสผ่านอย่างน้อย 4 หลัก", "red");
-        }
-        return false;
+    async confirmEditPassword() {
+      const url = this.apiPath + "changeAdminPassword.php";
+      let data = await Axios.post(url, {
+        id: this.$q.sessionStorage.getItem("uid"),
+        newPassword: this.newPassword,
+        oldPassword: this.oldPassword,
+        repeatNewPassword: this.repeatNewPassword
+      });
+
+      console.log(data.data);
+
+      if (data.data == "error old password") {
+        //
+        this.notify("กรุณาตรวจสอบรหัสปัจจุบันผ่านอีกครั้ง", "red");
+      } else if (data.data == "error repeat password") {
+        this.notify(
+          "รหัสผ่านใหม่ และ รหัสผ่านใหม่อีกครั้ง ต้องเหมือนกัน",
+          "red"
+        );
+      } else if (data.data == "error password length") {
+        this.notify("รหัสผ่านอย่างน้อย 4 ตัวอักษร", "red");
       } else {
-        return true;
+        this.notify("บันทึกสำเร็จ", "green");
+        this.isShowEditAdminPassword = false;
+        this.oldPassword = "";
+        this.newPassword = "";
+        this.repeatNewPassword = "";
       }
-    },
-    getOldPassword() {}
+    }
   }
 };
 </script>
