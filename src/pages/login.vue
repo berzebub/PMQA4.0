@@ -148,10 +148,14 @@ export default {
       }
     },
     checkRouteAccess() {
+      // p == permission
       if (this.department == "ผู้ใช้แต่ละหน่วยงาน") {
+        this.$q.sessionStorage.set("p", "0");
         this.$router.push("/main");
       } else if (this.department == "ผู้ประเมิน") {
+        this.$q.sessionStorage.set("p", "1");
       } else {
+        this.$q.sessionStorage.set("p", "2");
         // ADMIN
         this.$router.push("/admin/main");
       }
