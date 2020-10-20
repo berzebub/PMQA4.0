@@ -247,7 +247,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      tab: "ผู้ใช้งาน",
+      tab: "ผู้ประเมิน",
       userList: "",
       assessorList: "",
       isShowEditUserDialog: false,
