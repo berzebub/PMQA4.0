@@ -35,6 +35,33 @@ Vue.mixin({
         color: color,
         position: position
       });
+    },
+    convertMonth(month) {
+      if (month == 1) {
+        return "มกราคม";
+      } else if (month == 2) {
+        return "กุมภาพันธ์";
+      } else if (month == 3) {
+        return "มีนาคม";
+      } else if (month == 4) {
+        return "เมษายน";
+      } else if (month == 5) {
+        return "พฤษภาคม";
+      } else if (month == 6) {
+        return "มิถุนายน";
+      } else if (month == 7) {
+        return "กรกฎาคม";
+      } else if (month == 8) {
+        return "สิงหาคม";
+      } else if (month == 9) {
+        return "กันยายน";
+      } else if (month == 10) {
+        return "ตุลาคม";
+      } else if (month == 11) {
+        return "พฤศจิกายน";
+      } else if (month == 12) {
+        return "ธันวาคม";
+      }
     }
   }
 });

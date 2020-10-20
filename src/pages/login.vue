@@ -4,7 +4,7 @@
       <div class="row bg1 container-bg">
         <div class="col q-pr-lg self-center" align="right">
           <span class="text-white" style="font-size: 18px;"
-            >วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562</span
+            >วันสิ้นสุดการประเมิน : {{ endDate }}</span
           >
         </div>
       </div>
@@ -111,8 +111,8 @@ export default {
       password: "",
       department: "ผู้ดูแลระบบ",
       departmentOptions: ["ผู้ใช้แต่ละหน่วยงาน", "ผู้ประเมิน", "ผู้ดูแลระบบ"],
-
-      isShowPassword: false
+      isShowPassword: false,
+      endDate: ""
     };
   },
   methods: {
@@ -155,7 +155,24 @@ export default {
         // ADMIN
         this.$router.push("/admin/main");
       }
+    },
+    async getAssessmentDate() {
+      const url = this.apiPath + "getAssessmentDate.php";
+      let assessmentDate = await Axios.get(url);
+      let endDate = assessmentDate.data.end_date;
+
+      endDate = endDate.split("-");
+      endDate =
+        endDate[2] +
+        " " +
+        this.convertMonth(Number(endDate[1])) +
+        " " +
+        (Number(endDate[0]) + 543);
+      this.endDate = endDate;
     }
+  },
+  created() {
+    this.getAssessmentDate();
   }
 };
 </script>
