@@ -167,12 +167,14 @@ export default {
       let endDate = assessmentDate.data.end_date;
 
       endDate = endDate.split("-");
+      this.$q.sessionStorage.set("y", Number(endDate[0]));
       endDate =
         endDate[2] +
         " " +
         this.convertMonth(Number(endDate[1])) +
         " " +
         (Number(endDate[0]) + 543);
+
       this.endDate = endDate;
     }
   },
