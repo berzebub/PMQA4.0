@@ -95,14 +95,13 @@
                           </q-card-section>
                         </q-card>
                       </q-dialog>
-
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputEnvironment1"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputEnvironment1 = e.target.value)"
+                          v-model.lazy="inputEnvironment1"
                         />
                       </div>
                     </div>
@@ -147,12 +146,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputEnvironment2"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputEnvironment2 = e.target.value)"
+                          v-model.lazy="inputEnvironment2"
                         />
                       </div>
                     </div>
@@ -207,12 +206,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputEnvironment3"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputEnvironment3 = e.target.value)"
+                          v-model.lazy="inputEnvironment3"
                         />
                       </div>
                     </div>
@@ -251,12 +250,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputEnvironment4"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputEnvironment4 = e.target.value)"
+                          v-model.lazy="inputEnvironment4"
                         />
                       </div>
                     </div>
@@ -295,12 +294,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputEnvironment5"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputEnvironment5 = e.target.value)"
+                          v-model.lazy="inputEnvironment5"
                         />
                       </div>
                     </div>
@@ -382,12 +381,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputRelation1"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputRelation1 = e.target.value)"
+                          v-model.lazy="inputRelation1"
                         />
                       </div>
                     </div>
@@ -430,12 +429,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputRelation2"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputRelation2 = e.target.value)"
+                          v-model.lazy="inputRelation2"
                         />
                       </div>
                     </div>
@@ -479,12 +478,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputRelation3"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputRelation3 = e.target.value)"
+                          v-model.lazy="inputRelation3"
                         />
                       </div>
                     </div>
@@ -577,14 +576,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputCompetitionEnvironment1"
                           bg-color="white"
-                          type="textarea"
-                          @change="
-                            e => (inputCompetitionEnvironment1 = e.target.value)
-                          "
+                          v-model.lazy="inputCompetitionEnvironment1"
                         />
                       </div>
                     </div>
@@ -622,14 +619,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputCompetitionEnvironment2"
                           bg-color="white"
-                          type="textarea"
-                          @change="
-                            e => (inputCompetitionEnvironment2 = e.target.value)
-                          "
+                          v-model.lazy="inputCompetitionEnvironment2"
                         />
                       </div>
                     </div>
@@ -672,14 +667,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputCompetitionEnvironment3"
                           bg-color="white"
-                          type="textarea"
-                          @change="
-                            e => (inputCompetitionEnvironment3 = e.target.value)
-                          "
+                          v-model.lazy="inputCompetitionEnvironment3"
                         />
                       </div>
                     </div>
@@ -759,12 +752,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputStategy"
                           bg-color="white"
-                          type="textarea"
-                          @change="e => (inputStategy = e.target.value)"
+                          v-model.lazy="inputStategy"
                         />
                       </div>
                     </div>
@@ -840,14 +833,12 @@
                       </q-dialog>
 
                       <div class="q-mt-sm">
-                        <q-input
+                        <textarea
+                          style="width:100%;border-radius:5px"
+                          rows="5"
                           outlined=""
-                          :value="inputPerformanceSystem"
                           bg-color="white"
-                          type="textarea"
-                          @change="
-                            e => (inputPerformanceSystem = e.target.value)
-                          "
+                          v-model.lazy="inputPerformanceSystem"
                         />
                       </div>
                     </div>
@@ -875,6 +866,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
@@ -937,7 +929,83 @@ export default {
     };
   },
   methods: {
-    saveData() {
+    async getData() {
+      const url = this.apiPath + "user/getCategory0.php";
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y")
+      };
+      let data = await Axios.post(url, postData);
+      let getData = data.data;
+
+      // ข้อ 1 ก 1
+      this.inputEnvironment1 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ก." && x.category_q_number == "1"
+      )[0].text;
+      // ข้อ1 ก2
+      this.inputEnvironment2 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ก." && x.category_q_number == "2"
+      )[0].text;
+      // ข้อ1 ก3
+      this.inputEnvironment3 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ก." && x.category_q_number == "3"
+      )[0].text;
+      // ข้อ1 ก4
+      this.inputEnvironment4 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ก." && x.category_q_number == "4"
+      )[0].text;
+      // ข้อ1 ก5
+      this.inputEnvironment5 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ก." && x.category_q_number == "5"
+      )[0].text;
+      // ข้อ1 ข1
+      this.inputRelation1 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ข." && x.category_q_number == "1"
+      )[0].text;
+      // ข้อ1 ข2
+      this.inputRelation2 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ข." && x.category_q_number == "2"
+      )[0].text;
+      // ข้อ1 ข3
+      this.inputRelation3 = getData.filter(
+        x =>
+          x.q_number == "1" && x.category == "ข." && x.category_q_number == "3"
+      )[0].text;
+
+      // ข้อ2 ก1
+      this.inputCompetitionEnvironment1 = getData.filter(
+        x =>
+          x.q_number == "2" && x.category == "ก." && x.category_q_number == "1"
+      )[0].text;
+      // ข้อ2 ก2
+      this.inputCompetitionEnvironment2 = getData.filter(
+        x =>
+          x.q_number == "2" && x.category == "ก." && x.category_q_number == "2"
+      )[0].text;
+      // ข้อ2 ก3
+      this.inputCompetitionEnvironment3 = getData.filter(
+        x =>
+          x.q_number == "2" && x.category == "ก." && x.category_q_number == "3"
+      )[0].text;
+      // ข้อ2 ข1
+      this.inputStategy = getData.filter(
+        x =>
+          x.q_number == "2" && x.category == "ข." && x.category_q_number == "1"
+      )[0].text;
+      // ข้อ2 ค1
+      this.inputPerformanceSystem = getData.filter(
+        x =>
+          x.q_number == "2" && x.category == "ค." && x.category_q_number == "1"
+      )[0].text;
+    },
+    async saveData() {
       let uid = this.$q.sessionStorage.getItem("uid");
       // ข้อ1 หมวด ก ข้อที่1
       let sendData = [
@@ -946,40 +1014,35 @@ export default {
           user_id: uid,
           category: "ก.",
           category_q_number: 1,
-          text: this.inputEnvironment1,
-          year: 2020
+          text: this.inputEnvironment1
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 2,
-          text: this.inputEnvironment2,
-          year: 2020
+          text: this.inputEnvironment2
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 3,
-          text: this.inputEnvironment3,
-          year: 2020
+          text: this.inputEnvironment3
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 4,
-          text: this.inputEnvironment4,
-          year: 2020
+          text: this.inputEnvironment4
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 5,
-          text: this.inputEnvironment5,
-          year: 2020
+          text: this.inputEnvironment5
         },
         // หมวด ข
         {
@@ -987,24 +1050,21 @@ export default {
           user_id: uid,
           category: "ข.",
           category_q_number: 1,
-          text: this.inputRelation1,
-          year: 2020
+          text: this.inputRelation1
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ข.",
           category_q_number: 2,
-          text: this.inputRelation2,
-          year: 2020
+          text: this.inputRelation2
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ข.",
           category_q_number: 3,
-          text: this.inputRelation3,
-          year: 2020
+          text: this.inputRelation3
         },
         // เริ่มข้อ2 หมวด ก.
         {
@@ -1012,24 +1072,21 @@ export default {
           user_id: uid,
           category: "ก.",
           category_q_number: 1,
-          text: this.inputCompetitionEnvironment1,
-          year: 2020
+          text: this.inputCompetitionEnvironment1
         },
         {
           q_number: 2,
           user_id: uid,
           category: "ก.",
           category_q_number: 2,
-          text: this.inputCompetitionEnvironment2,
-          year: 2020
+          text: this.inputCompetitionEnvironment2
         },
         {
           q_number: 2,
           user_id: uid,
           category: "ก.",
           category_q_number: 3,
-          text: this.inputCompetitionEnvironment3,
-          year: 2020
+          text: this.inputCompetitionEnvironment3
         },
         // เริ่มข้อ2 หมวด ข.
         {
@@ -1037,8 +1094,7 @@ export default {
           user_id: uid,
           category: "ข.",
           category_q_number: 1,
-          text: this.inputStategy,
-          year: 2020
+          text: this.inputStategy
         },
         // เริ่มข้อ2 หมวด ค.
         {
@@ -1046,48 +1102,18 @@ export default {
           user_id: uid,
           category: "ค.",
           category_q_number: 1,
-          text: this.inputPerformanceSystem,
-          year: 2020
+          text: this.inputPerformanceSystem
         }
       ];
-      console.log(sendData);
-      // // ข้อ1 หมวด ก ข้อที่2
-      // let q1_a_2 = {
-      //   q_number: 1,
-      //   user_id: uid,
-      //   category: "ก.",
-      //   category_q_number: 2,
-      //   text: this.inputEnvironment2,
-      //   year: 2020
-      // };
-      // // ข้อ1 หมวด ก ข้อที่3
-      // let q1_a_3 = {
-      //   q_number: 1,
-      //   user_id: uid,
-      //   category: "ก.",
-      //   category_q_number: 3,
-      //   text: this.inputEnvironment3,
-      //   year: 2020
-      // };
-      // // ข้อ1 หมวด ก ข้อที่4
-      // let q1_a_4 = {
-      //   q_number: 1,
-      //   user_id: uid,
-      //   category: "ก.",
-      //   category_q_number: 4,
-      //   text: this.inputEnvironment4,
-      //   year: 2020
-      // };
-      // // ข้อ1 หมวด ก ข้อที่5
-      // let q1_a_5 = {
-      //   q_number: 1,
-      //   user_id: uid,
-      //   category: "ก.",
-      //   category_q_number: 5,
-      //   text: this.inputEnvironment5,
-      //   year: 2020
-      // };
-
+      let finalData = {
+        postData: sendData,
+        mode: 0,
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("uid")
+      };
+      const url = this.apiPath + "user/addUpdateCategory0.php";
+      let post = await Axios.post(url, finalData);
+      console.log(post);
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
@@ -1124,7 +1150,7 @@ export default {
         this.status = "success";
       }
 
-      this.$emit("statusForm", this.status);
+      // this.$emit("statusForm", this.status);
 
       return environmentCount;
     },
@@ -1150,7 +1176,7 @@ export default {
         this.status = "success";
       }
 
-      this.$emit("statusForm", this.status);
+      // this.$emit("statusForm", this.status);
 
       return relationCount;
     },
@@ -1176,7 +1202,7 @@ export default {
         this.status = "success";
       }
 
-      this.$emit("statusForm", this.status);
+      // this.$emit("statusForm", this.status);
 
       return competitionCount;
     },
@@ -1194,7 +1220,7 @@ export default {
         this.status = "success";
       }
 
-      this.$emit("statusForm", this.status);
+      // this.$emit("statusForm", this.status);
 
       return stategyCount;
     },
@@ -1212,10 +1238,13 @@ export default {
         this.status = "success";
       }
 
-      this.$emit("statusForm", this.status);
+      // this.$emit("statusForm", this.status);
 
       return performanceCount;
     }
+  },
+  created() {
+    this.getData();
   }
 };
 </script>
