@@ -24,8 +24,8 @@ body {
 }
 
 .container-content {
-  width: 1200px;
-  min-height: calc(100vh - 250px);
+  width: 1280px;
+  min-height: calc(100vh - 300px);
   max-height: fit-content;
   margin: auto;
 }
@@ -50,24 +50,84 @@ body {
   font-size: 14px;
 }
 
+.font-14m {
+  font-size: 14px;
+  font-family: PROMPT-M;
+}
+
+.font-14b {
+  font-size: 14px;
+  font-family: PROMPT-B;
+}
+
 .font-16 {
   font-size: 16px;
+}
+
+.font-16m {
+  font-size: 16px;
+  font-family: PROMPT-M;
+}
+
+.font-16b {
+  font-size: 16px;
+  font-family: PROMPT-B;
 }
 
 .font-18 {
   font-size: 18px;
 }
 
+.font-18m {
+  font-size: 18px;
+  font-family: PROMPT-M;
+}
+
+.font-18b {
+  font-size: 18px;
+  font-family: PROMPT-B;
+}
+
 .font-20 {
   font-size: 20px;
+}
+
+.font-20m {
+  font-size: 20px;
+  font-family: PROMPT-M;
+}
+
+.font-20b {
+  font-size: 20px;
+  font-family: PROMPT-B;
 }
 
 .font-22 {
   font-size: 22px;
 }
 
+.font-22m {
+  font-size: 22px;
+  font-family: PROMPT-M;
+}
+
+.font-22b {
+  font-size: 22px;
+  font-family: PROMPT-B;
+}
+
 .font-24 {
   font-size: 24px;
+}
+
+.font-24m {
+  font-size: 24px;
+  font-family: PROMPT-M;
+}
+
+.font-24b {
+  font-size: 24px;
+  font-family: PROMPT-B;
 }
 
 .bg1 {
@@ -80,6 +140,10 @@ body {
 
 .bg3 {
   background-color: #e0e0e0;
+}
+
+.bg4 {
+  background-color: #e5e5e5;
 }
 
 .color1 {

@@ -102,7 +102,7 @@
                           :value="inputEnvironment1"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputEnvironment1 = e.target.value)"
+                          @change="e => (inputEnvironment1 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -152,7 +152,7 @@
                           :value="inputEnvironment2"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputEnvironment2 = e.target.value)"
+                          @change="e => (inputEnvironment2 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -212,7 +212,7 @@
                           :value="inputEnvironment3"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputEnvironment3 = e.target.value)"
+                          @change="e => (inputEnvironment3 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -256,7 +256,7 @@
                           :value="inputEnvironment4"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputEnvironment4 = e.target.value)"
+                          @change="e => (inputEnvironment4 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -300,7 +300,7 @@
                           :value="inputEnvironment5"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputEnvironment5 = e.target.value)"
+                          @change="e => (inputEnvironment5 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -387,7 +387,7 @@
                           :value="inputRelation1"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputRelation1 = e.target.value)"
+                          @change="e => (inputRelation1 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -435,7 +435,7 @@
                           :value="inputRelation2"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputRelation2 = e.target.value)"
+                          @change="e => (inputRelation2 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -484,7 +484,7 @@
                           :value="inputRelation3"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputRelation3 = e.target.value)"
+                          @change="e => (inputRelation3 = e.target.value)"
                         />
                       </div>
                     </div>
@@ -583,8 +583,7 @@
                           bg-color="white"
                           type="textarea"
                           @change="
-                            (e) =>
-                              (inputCompetitionEnvironment1 = e.target.value)
+                            e => (inputCompetitionEnvironment1 = e.target.value)
                           "
                         />
                       </div>
@@ -629,8 +628,7 @@
                           bg-color="white"
                           type="textarea"
                           @change="
-                            (e) =>
-                              (inputCompetitionEnvironment2 = e.target.value)
+                            e => (inputCompetitionEnvironment2 = e.target.value)
                           "
                         />
                       </div>
@@ -680,8 +678,7 @@
                           bg-color="white"
                           type="textarea"
                           @change="
-                            (e) =>
-                              (inputCompetitionEnvironment3 = e.target.value)
+                            e => (inputCompetitionEnvironment3 = e.target.value)
                           "
                         />
                       </div>
@@ -767,7 +764,7 @@
                           :value="inputStategy"
                           bg-color="white"
                           type="textarea"
-                          @change="(e) => (inputStategy = e.target.value)"
+                          @change="e => (inputStategy = e.target.value)"
                         />
                       </div>
                     </div>
@@ -849,7 +846,7 @@
                           bg-color="white"
                           type="textarea"
                           @change="
-                            (e) => (inputPerformanceSystem = e.target.value)
+                            e => (inputPerformanceSystem = e.target.value)
                           "
                         />
                       </div>
@@ -864,7 +861,7 @@
       <!-- End BOX 2 -->
     </div>
 
-    <div style="padding: 100px 0px 0px 0px;" align="center">
+    <div style="padding: 70px 0px 30px 0px;" align="center">
       <q-btn
         class="bg-teal text-white font-18"
         label="บันทึกข้อมูล"
@@ -930,7 +927,7 @@ export default {
       inputPerformanceSystem: "",
 
       // Save Data
-      isSaveData: false,
+      isSaveData: false
     };
   },
   methods: {
@@ -939,7 +936,7 @@ export default {
       setTimeout(() => {
         this.isSaveData = false;
       }, 1000);
-    },
+    }
   },
   computed: {
     checkEnvironment() {
@@ -1062,8 +1059,8 @@ export default {
       this.$emit("statusForm", this.status);
 
       return performanceCount;
-    },
-  },
+    }
+  }
 };
 </script>
 
