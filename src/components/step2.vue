@@ -17,6 +17,7 @@
             dense-toggle=""
             dense=""
             expand-icon-class="text-grey-10"
+            default-opened=""
             header-style="height:70px;"
           >
             <template v-slot:header>
@@ -43,7 +44,7 @@
 
               <div>
                 <div class="bg4 row">
-                  <div class="col-6">
+                  <div class="col-6" style="width:530px;">
                     <q-tabs
                       v-model="tabs1"
                       dense
@@ -114,7 +115,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_1[0]" value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -131,7 +132,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_1[1]" value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -149,7 +150,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_1[2]" value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -168,7 +169,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="basic_assessment_1"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -189,7 +190,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="basic_file_pdf_1"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -212,7 +213,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="basic_file_image_1"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -235,6 +236,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -280,7 +282,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="advance_guide_list_1[0]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -306,7 +308,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="advance_assessment_1"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -327,7 +329,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="advance_file_pdf_1"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -350,7 +352,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="advance_file_image_1"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -373,6 +375,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -419,7 +422,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="signifi_guide_list_1[0]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -443,7 +446,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="signifi_assessment_1"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -464,7 +467,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="signifi_file_pdf_1"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -487,7 +490,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="signifi_file_image_1"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -510,6 +513,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -558,7 +562,7 @@
 
               <div>
                 <div class="bg4 row">
-                  <div class="col-6">
+                   <div class="col-6" style="width:530px;">
                     <q-tabs
                       v-model="tabs2"
                       dense
@@ -569,7 +573,7 @@
                       narrow-indicator
                     >
                       <q-tab
-                        content-class="q-pa-sm"
+                        content-class="q-pa-sm "
                         no-caps=""
                         name="Basic"
                         label="Basic"
@@ -626,7 +630,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_2[0]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -642,7 +646,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_2[1]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -658,7 +662,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_2[2]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span>การบริหารงานตามหลักธรรมภิบาล</span>
@@ -674,7 +678,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="basic_assessment_2"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -695,7 +699,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="basic_file_pdf_2"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -718,7 +722,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="basic_file_image_2"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -741,6 +745,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -787,7 +792,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="advance_guide_list_2[0]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -803,7 +808,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="advance_guide_list_2[1]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -822,7 +827,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="advance_guide_list_2[2]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span>เปิดเผยผลการดำเนินงานสู่สาธารณะ</span>
@@ -838,7 +843,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="advance_assessment_2"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -859,7 +864,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="advance_file_pdf_2"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -882,7 +887,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="advance_file_image_2"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -905,6 +910,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -949,7 +955,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="signifi_guide_list_2[0]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -965,7 +971,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="signifi_guide_list_2[1]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -984,7 +990,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="signifi_guide_list_2[2]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1002,7 +1008,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="signifi_assessment_2"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1023,7 +1029,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="signifi_file_pdf_2"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1046,7 +1052,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="signifi_file_image_2"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1069,6 +1075,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -1096,7 +1103,6 @@
             dense-toggle=""
             dense=""
             expand-icon-class="text-grey-10"
-            default-opened=""
             header-style="height:70px;"
           >
             <template v-slot:header>
@@ -1121,7 +1127,7 @@
 
               <div>
                 <div class="bg4 row">
-                  <div class="col-6">
+                   <div class="col-6" style="width:530px;">
                     <q-tabs
                       v-model="tabs3"
                       dense
@@ -1188,7 +1194,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_3[0]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1204,7 +1210,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_3[1]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1219,7 +1225,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="basic_guide_list_3[2]" value="" />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1239,7 +1245,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="basic_assessment_3"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1260,7 +1266,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="basic_file_pdf_3"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1283,7 +1289,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="basic_file_image_3"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1306,6 +1312,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -1350,7 +1357,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="advance_guide_list_3[0]"  value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1365,7 +1372,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="advance_guide_list_3[1]"  value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1384,7 +1391,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="advance_assessment_3"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1405,7 +1412,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="advance_file_pdf_3"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1428,7 +1435,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="advance_file_image_3"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1451,6 +1458,7 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -1494,7 +1502,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="right" />
+                                  <q-checkbox v-model="signifi_guide_list_3[0]" value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1519,7 +1527,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="text"
+                                v-model="signifi_assessment_3"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1540,7 +1548,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="signifi_file_pdf_3"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1563,7 +1571,7 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="files"
+                                  v-model="signifi_file_image_3"
                                   dense=""
                                   style="border:2px solid #e84c93;border-radius:10px;"
                                   borderless
@@ -1586,6 +1594,565 @@
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
                                   :disable="isSaveData"
+                                  :loading="isSaveData"
+                                  style="width: 220px; border-radius: 0px;"
+                                  push
+                                  @click="saveData()"
+                                ></q-btn>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </q-tab-panel>
+                  </q-tab-panels>
+                </div>
+              </div>
+            </q-card>
+          </q-expansion-item>
+        </q-list>
+      </div>
+
+      <!-- 1.4 -->
+      <div class="q-mt-sm q-mb-md">
+        <q-list bordered>
+          <q-expansion-item
+            group="dataForm"
+            header-class="bg-white "
+            dense-toggle=""
+            dense=""
+            expand-icon-class="text-grey-10"
+            header-style="height:70px;"
+          >
+            <template v-slot:header>
+              <div class="row full-width q-pa-sm">
+                <div class="col self-center">
+                  <span
+                    >1.4
+                    การคำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศตามทิศทางยุทธศาสตร์</span
+                  >
+                </div>
+                <q-space></q-space>
+                <div class="col-3 self-center q-px-xl " style="width:250px;">
+                  <div style="width:180px;border:1px solid" align="center">
+                    <span class="font-18">ยังไม่ทำการประเมิน</span>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <q-card>
+              <q-separator class="bg-grey-7" style="height: 1px;"></q-separator>
+
+              <div>
+                <div class="bg4 row">
+                   <div class="col-6 font-18" style="width:530px;">
+                    <q-tabs
+                      v-model="tabs4"
+                      dense
+                      align="justify"
+                      class="text-black"
+                      active-color="black"
+                      indicator-color="pink-5"
+                      narrow-indicator
+                    >
+                      <q-tab
+                        content-class="q-pa-sm"
+                        no-caps=""
+                        name="Basic"
+                        label="Basic"
+                      />
+                      <q-tab
+                        content-class="q-pa-sm"
+                        no-caps=""
+                        name="Advance"
+                        label="Advance"
+                      />
+                      <q-tab
+                        content-class="q-pa-sm"
+                        no-caps=""
+                        name="Significance"
+                        label="Significance"
+                      />
+                    </q-tabs>
+                  </div>
+                </div>
+                <div class=" q-pa-md">
+                  <q-tab-panels v-model="tabs4" animated>
+                    <!-- 1.4 Basic -->
+                    <q-tab-panel name="Basic" class="no-padding">
+                      <div class="row">
+                        <div
+                          class="col-5"
+                          style="width:530px;border-right:1px solid #e0e0e0"
+                        >
+                          <div class="q-pa-md font-18 q-mb-xl">
+                            <div>
+                              <span class="font-18b">ระดับดำเนินการ</span>
+                            </div>
+                            <div class="q-mt-md">
+                              <span
+                                >- การประเมินและติดตามโครงการ กระบวนการ
+                                และยุทธศาสตร์ที่อาจ มีผลกระทบเชิงลบต่อสังคม
+                                <br />-
+                                การติดตามตัวชี้วัดและผลการดำเนินการขององค์การอย่างต่อเนื่อง
+                              </span>
+                            </div>
+                          </div>
+
+                          <q-separator></q-separator>
+                          <div class="q-pa-md font-18">
+                            <div>
+                              <span class="font-18b">แนวทางดำเนินการ</span>
+                            </div>
+                            <div class="q-mt-sm">
+                              <div class="row">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="basic_guide_list_4[0]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >ประเมินความเสี่ยงโครงการ กระบวนการ
+                                    และยุทธศาสตร์ที่อาจมี
+                                    ผลกระทบเชิงลบต่อสังคมอย่างต่อเนื่อง</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div class="row q-mt-md">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="basic_guide_list_4[1]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >เตรียมมาตรการป้องกันและแก้ไขปัญหาต่ต่างๆ
+                                    เช่น การทำประชาพิจารณ์
+                                    เพื่อรับฟังความคิดเห็นทั้งก่อน / ระหว่าง /
+                                    หลังดำเนินโครงการ</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div class="row q-mt-md">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="basic_guide_list_4[2]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >กำหนดตัวชี้วัดและติดตามผลการดำเนินการอย่างต่อเนื่อง</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div class="row q-mt-md">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="basic_guide_list_4[3]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >รวบรวมข้อมูล / สถิติ /
+                                    ผลการดำเนินการที่เกี่ยวข้อง
+                                    ให้พร้อมต่อการถูกติดตาม /
+                                    ตรวจสอบจากทุกภาคส่วน</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col q-pl-lg q-pr-sm">
+                          <div>
+                            <div>
+                              <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                            </div>
+                            <div class="q-my-md">
+                              <q-input
+                                v-model="basic_assessment_4"
+                                outlined=""
+                                placeholder="คำอธิบายผลการประเมิน"
+                                type="textarea"
+                                rows="17"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="q-mt-lg">
+                              <span class="font-18b"
+                                >อัพโหลดข้อมูลเพิ่มเติม</span
+                              >
+                            </div>
+                            <div class="row justify-between q-my-sm">
+                              <div
+                                class="col-4 q-pa-md self-center"
+                                style="width:205px;"
+                              >
+                                <q-file
+                                  v-model="basic_file_pdf_4"
+                                  dense=""
+                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  borderless
+                                  accept=".pdf"
+                                >
+                                  <template v-slot:prepend>
+                                    <div
+                                      class="absolute-center fit"
+                                      align="center"
+                                    >
+                                      <span class="font-16 text-black"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+                                </q-file>
+                              </div>
+                              <div
+                                class="col-4 q-pa-md self-center"
+                                style="width:205px;"
+                              >
+                                <q-file
+                                  v-model="basic_file_image_4"
+                                  dense=""
+                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  borderless
+                                  accept=".jpg,.png"
+                                >
+                                  <template v-slot:prepend>
+                                    <div
+                                      class="absolute-center fit"
+                                      align="center"
+                                    >
+                                      <span class="font-16 text-black"
+                                        >รูปภาพประกอบ</span
+                                      >
+                                    </div>
+                                  </template>
+                                </q-file>
+                              </div>
+                              <div class="col q-py-md " align="right">
+                                <q-btn
+                                  class="bg-teal text-white font-18"
+                                  label="บันทึกข้อมูล"
+                                  :disable="isSaveData"
+                                  :loading="isSaveData"
+                                  style="width: 220px; border-radius: 0px;"
+                                  push
+                                  @click="saveData()"
+                                ></q-btn>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </q-tab-panel>
+
+                    <!-- 1.4 Advance -->
+                    <q-tab-panel name="Advance" class="no-padding">
+                      <div class="row">
+                        <div
+                          class="col-5"
+                          style="width:530px;border-right:1px solid #e0e0e0"
+                        >
+                          <div class="q-pa-md font-18 q-mb-xl ">
+                            <div>
+                              <span class="font-18b">ระดับดำเนินการ</span>
+                            </div>
+                            <div class="q-mt-md">
+                              <span
+                                >- การติดตามรายงานผลกระทบ
+                                โดยผ่านกลไกการสื่อสารและเทคโนโลยี
+                                ดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันการณ์ประชาชน
+                                ภาคเอกชน และท้องถิ่น
+                              </span>
+                            </div>
+                          </div>
+
+                          <q-separator></q-separator>
+                          <div class="q-pa-md font-18">
+                            <div>
+                              <span class="font-18b">แนวทางดำเนินการ</span>
+                            </div>
+                            <div class="q-mt-sm">
+                              <div class="row">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="advance_guide_list_4[0]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >ใช้เทคโนโลยีการสื่อสารและดิจิทับที่ทันสมัยเพื่อติดตามชี้วัดและ
+                                    ผลการดำเนินการเพื่อรายงานผลได้อย่างรวดเร็วและทัน
+                                    เหตุการณ์</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div class="row q-mt-md">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="advance_guide_list_4[1]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >สร้างเครือข่ายเฝ้าระวังเพื่อการแก้ไขปัญหาได้อย่างรวดเร็วและทันเหตุการณ์</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col q-pl-lg q-pr-sm">
+                          <div>
+                            <div>
+                              <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                            </div>
+                            <div class="q-my-md">
+                              <q-input
+                                v-model="advance_assessment_4"
+                                outlined=""
+                                placeholder="คำอธิบายผลการประเมิน"
+                                type="textarea"
+                                rows="17"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="q-mt-lg">
+                              <span class="font-18b"
+                                >อัพโหลดข้อมูลเพิ่มเติม</span
+                              >
+                            </div>
+                            <div class="row justify-between q-my-sm">
+                              <div
+                                class="col-4 q-pa-md self-center"
+                                style="width:205px;"
+                              >
+                                <q-file
+                                  v-model="advance_file_pdf_4"
+                                  dense=""
+                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  borderless
+                                  accept=".pdf"
+                                >
+                                  <template v-slot:prepend>
+                                    <div
+                                      class="absolute-center fit"
+                                      align="center"
+                                    >
+                                      <span class="font-16 text-black"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+                                </q-file>
+                              </div>
+                              <div
+                                class="col-4 q-pa-md self-center"
+                                style="width:205px;"
+                              >
+                                <q-file
+                                  v-model="advance_file_image_4"
+                                  dense=""
+                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  borderless
+                                  accept=".jpg,.png"
+                                >
+                                  <template v-slot:prepend>
+                                    <div
+                                      class="absolute-center fit"
+                                      align="center"
+                                    >
+                                      <span class="font-16 text-black"
+                                        >รูปภาพประกอบ</span
+                                      >
+                                    </div>
+                                  </template>
+                                </q-file>
+                              </div>
+                              <div class="col q-py-md " align="right">
+                                <q-btn
+                                  class="bg-teal text-white font-18"
+                                  label="บันทึกข้อมูล"
+                                  :disable="isSaveData"
+                                  :loading="isSaveData"
+                                  style="width: 220px; border-radius: 0px;"
+                                  push
+                                  @click="saveData()"
+                                ></q-btn>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </q-tab-panel>
+
+                    <!-- 1.4 Significance -->
+                    <q-tab-panel name="Significance" class="no-padding">
+                      <div class="row">
+                        <div
+                          class="col-5"
+                          style="width:530px;border-right:1px solid #e0e0e0"
+                        >
+                          <div class="q-pa-md font-18 q-mb-xl ">
+                            <div>
+                              <span class="font-18b">ระดับดำเนินการ</span>
+                            </div>
+                            <div class="q-mt-md">
+                              <span
+                                >-
+                                การติดตามผลการดำเนินการและผลกระทบที่เกิดขึ้นทั้งในระยะสั้นและ
+                                ระยะยาวและผลกระทบที่มีต่อเศรษฐกิจ สังคม
+                                สาธารณสุข และสิ่งแวดล้อม
+                              </span>
+                            </div>
+                          </div>
+
+                          <q-separator></q-separator>
+                          <div class="q-pa-md font-18">
+                            <div>
+                              <span class="font-18b">แนวทางดำเนินการ</span>
+                            </div>
+                            <div class="q-mt-sm">
+                              <div class="row">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="signifi_guide_list_4[0]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >ส่วนราชการมีการกำหนดตัววัดที่บรรลุผลลัพธ์ในเชิง
+                                    - ยุทธศาสตร์ของส่วนราชการ -
+                                    ยุทธศาสตร์พื้นที่ (ถ้ามี) - ยุทธศาสตร์ชาติ -
+                                    ผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข
+                                    สิ่งแวดล้อม</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div class="row q-mt-md">
+                                <div
+                                  class="col-1 "
+                                  style="width:50px;"
+                                  align="center"
+                                >
+                                  <q-checkbox v-model="signifi_guide_list_4[1]" value />
+                                </div>
+                                <div class="col  q-py-xs">
+                                  <span
+                                    >ส่วนราชการมีการติดตามตัววัด
+                                    โดยมีการวิเคราะห์เพื่อรู้เท่าทัน
+                                    สถานการณ์และกำหนดมาตรการ /
+                                    แนวทางเพื่อป้องกัน /
+                                    ส่งเสริมการดำเนินการเพื่อผลลัพธ์
+                                    ที่ดีต่อเศรษฐกิจ สังคม สาธารณสุข
+                                    สิ่งแวดล้อม</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col q-pl-lg q-pr-sm">
+                          <div>
+                            <div>
+                              <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                            </div>
+                            <div class="q-my-md">
+                              <q-input
+                                v-model="signifi_assessment_4"
+                                outlined=""
+                                placeholder="คำอธิบายผลการประเมิน"
+                                type="textarea"
+                                rows="17"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="q-mt-lg">
+                              <span class="font-18b"
+                                >อัพโหลดข้อมูลเพิ่มเติม</span
+                              >
+                            </div>
+                            <div class="row justify-between q-my-sm">
+                              <div
+                                class="col-4 q-pa-md self-center"
+                                style="width:205px;"
+                              >
+                                <q-file
+                                  v-model="signifi_file_pdf_4"
+                                  dense=""
+                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  borderless
+                                  accept=".pdf"
+                                >
+                                  <template v-slot:prepend>
+                                    <div
+                                      class="absolute-center fit"
+                                      align="center"
+                                    >
+                                      <span class="font-16 text-black"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+                                </q-file>
+                              </div>
+                              <div
+                                class="col-4 q-pa-md self-center"
+                                style="width:205px;"
+                              >
+                                <q-file
+                                  v-model="signifi_file_image_4"
+                                  dense=""
+                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  borderless
+                                  accept=".jpg,.png"
+                                >
+                                  <template v-slot:prepend>
+                                    <div
+                                      class="absolute-center fit"
+                                      align="center"
+                                    >
+                                      <span class="font-16 text-black"
+                                        >รูปภาพประกอบ</span
+                                      >
+                                    </div>
+                                  </template>
+                                </q-file>
+                              </div>
+                              <div class="col q-py-md " align="right">
+                                <q-btn
+                                  class="bg-teal text-white font-18"
+                                  label="บันทึกข้อมูล"
+                                  :disable="isSaveData"
+                                  :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
                                   @click="saveData()"
@@ -1604,17 +2171,6 @@
         </q-list>
       </div>
     </div>
-
-    <!-- <div style="padding: 70px 0px 30px 0px;" class="brx" align="center">
-      <q-btn
-        class="bg-teal text-white font-18"
-        label="บันทึกข้อมูล"
-        :disable="isSaveData"
-        style="width: 220px; border-radius: 0px;"
-        push
-        @click="saveData()"
-      ></q-btn>
-    </div> -->
   </div>
 </template>
 
@@ -1622,13 +2178,84 @@
 export default {
   data() {
     return {
-      tabs1: "Basic",
-      tabs2: "Basic",
-      tabs3: "Significance",
-      tabs4: "Basic",
+      // Form 1.1
+      tabs1: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      basic_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Basic
+      advance_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Advance
+      signifi_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Significance
+
+      basic_guide_list_1:[false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_1:[false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_1:[false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+
+      basic_file_pdf_1:null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_1:null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_1:null, // อัพโหลดไพล์ PDF หน้า Significance
+
+      basic_file_image_1:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_1:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_1:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      // -----------------------------------------
+
+      // Form 1.2
+      tabs2: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      basic_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Basic
+      advance_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Advance
+      signifi_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Significance
+
+      basic_guide_list_2:[false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_2:[false,false,false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_2:[false,false,false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+
+      basic_file_pdf_2:null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_2:null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_2:null, // อัพโหลดไพล์ PDF หน้า Significance
+
+      basic_file_image_2:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_2:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_2:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      // -----------------------------------------
+
+      // Form 1.3
+      tabs3: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      basic_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Basic
+      advance_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Advance
+      signifi_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Significance
+
+      basic_guide_list_3:[false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_3:[false,false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_3:[false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+
+      basic_file_pdf_3:null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_3:null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_3:null, // อัพโหลดไพล์ PDF หน้า Significance
+
+      basic_file_image_3:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_3:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_3:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      // -----------------------------------------
+
+      // Form 1.4
+      tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      basic_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Basic
+      advance_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Advance
+      signifi_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Significance
+
+      basic_guide_list_4:[false,false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_4:[false,false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_4:[false,false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+
+      basic_file_pdf_4:null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_4:null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_4:null, // อัพโหลดไพล์ PDF หน้า Significance
+
+      basic_file_image_4:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_4:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_4:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      // -----------------------------------------
 
       // Save Data
-      isSaveData: false
+      isSaveData: false,
     };
   },
   methods: {
@@ -1637,132 +2264,11 @@ export default {
       setTimeout(() => {
         this.isSaveData = false;
       }, 1000);
-    }
+    },
   },
-  computed: {
-    checkEnvironment() {
-      let environmentCount = 0;
-
-      if (this.inputEnvironment1) {
-        environmentCount++;
-      }
-
-      if (this.inputEnvironment2) {
-        environmentCount++;
-      }
-
-      if (this.inputEnvironment3) {
-        environmentCount++;
-      }
-
-      if (this.inputEnvironment4) {
-        environmentCount++;
-      }
-
-      if (this.inputEnvironment5) {
-        environmentCount++;
-      }
-
-      if (environmentCount > 0 && environmentCount < 5) {
-        this.status = "doing";
-      } else if (environmentCount == 5) {
-        this.status = "success";
-      }
-
-      this.$emit("statusForm", this.status);
-
-      return environmentCount;
-    },
-
-    checkRelation() {
-      let relationCount = 0;
-
-      if (this.inputRelation1) {
-        relationCount++;
-      }
-
-      if (this.inputRelation2) {
-        relationCount++;
-      }
-
-      if (this.inputRelation3) {
-        relationCount++;
-      }
-
-      if (relationCount > 0 && relationCount < 5) {
-        this.status = "doing";
-      } else if (relationCount == 5) {
-        this.status = "success";
-      }
-
-      this.$emit("statusForm", this.status);
-
-      return relationCount;
-    },
-
-    checkCompetition() {
-      let competitionCount = 0;
-
-      if (this.inputCompetitionEnvironment1) {
-        competitionCount++;
-      }
-
-      if (this.inputCompetitionEnvironment2) {
-        competitionCount++;
-      }
-
-      if (this.inputCompetitionEnvironment3) {
-        competitionCount++;
-      }
-
-      if (competitionCount > 0 && competitionCount < 5) {
-        this.status = "doing";
-      } else if (competitionCount == 5) {
-        this.status = "success";
-      }
-
-      this.$emit("statusForm", this.status);
-
-      return competitionCount;
-    },
-
-    checkStategy() {
-      let stategyCount = 0;
-
-      if (this.inputStategy) {
-        stategyCount++;
-      }
-
-      if (stategyCount > 0 && stategyCount < 5) {
-        this.status = "doing";
-      } else if (stategyCount == 5) {
-        this.status = "success";
-      }
-
-      this.$emit("statusForm", this.status);
-
-      return stategyCount;
-    },
-
-    checkPerformance() {
-      let performanceCount = 0;
-
-      if (this.inputPerformanceSystem) {
-        performanceCount++;
-      }
-
-      if (performanceCount > 0 && performanceCount < 5) {
-        this.status = "doing";
-      } else if (performanceCount == 5) {
-        this.status = "success";
-      }
-
-      this.$emit("statusForm", this.status);
-
-      return performanceCount;
-    }
-  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
