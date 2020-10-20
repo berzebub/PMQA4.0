@@ -12,7 +12,7 @@
       <div>
         <q-list bordered>
           <q-expansion-item
-            group="dataForm"
+            group="dataFormStep1"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -33,7 +33,31 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span class="font-18">ยังไม่ทำการประเมิน</span>
+                    <span
+                      class="font-18"
+                      v-if="
+                        !basic_success_form_1 &&
+                          !advance_success_form_1 &&
+                          !signifi_success_form_1
+                      "
+                      >ยังไม่ทำการประเมิน</span
+                    >
+                    <div class=" font-18" v-else>
+                      <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                      ></q-icon>
+                      <span v-if="signifi_success_form_1">
+                        Significance
+                      </span>
+                      <span v-else-if="advance_success_form_1">
+                        Advance
+                      </span>
+                      <span v-else="basic_success_form_1">
+                        Basic
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -54,24 +78,58 @@
                       indicator-color="pink-5"
                       narrow-indicator
                     >
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Basic"
-                        label="Basic"
-                      />
+                      <q-tab content-class="q-pa-sm" no-caps="" name="Basic">
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="basic_success_form_1"
+                            ></q-icon>
+                            <span>Basic</span>
+                          </div>
+                        </template>
+                      </q-tab>
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        label="Advance"
-                      />
+                        :disable="!basic_success_form_1"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="advance_success_form_1"
+                            ></q-icon>
+                            <span>Advance</span>
+                          </div>
+                        </template></q-tab
+                      >
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        label="Significance"
-                      />
+                        :disable="!advance_success_form_1"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="signifi_success_form_1"
+                            ></q-icon>
+                            <span>Significance</span>
+                          </div>
+                        </template></q-tab
+                      >
                     </q-tabs>
                   </div>
                 </div>
@@ -115,7 +173,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_1[0]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_1[0]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -132,7 +193,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_1[1]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_1[1]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -150,7 +214,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_1[2]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_1[2]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -282,7 +349,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_1[0]" value="" />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_1[0]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -422,7 +492,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_1[0]" value="" />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_1[0]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -536,7 +609,7 @@
       <div class="q-mt-sm">
         <q-list bordered>
           <q-expansion-item
-            group="dataForm"
+            group="dataFormStep1"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -551,7 +624,31 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span class="font-18">ยังไม่ทำการประเมิน</span>
+                    <span
+                      class="font-18"
+                      v-if="
+                        !basic_success_form_2 &&
+                          !advance_success_form_2 &&
+                          !signifi_success_form_2
+                      "
+                      >ยังไม่ทำการประเมิน</span
+                    >
+                    <div class=" font-18" v-else>
+                      <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                      ></q-icon>
+                      <span v-if="signifi_success_form_2">
+                        Significance
+                      </span>
+                      <span v-else-if="advance_success_form_2">
+                        Advance
+                      </span>
+                      <span v-else="basic_success_form_2">
+                        Basic
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -562,7 +659,7 @@
 
               <div>
                 <div class="bg4 row">
-                   <div class="col-6" style="width:530px;">
+                  <div class="col-6" style="width:530px;">
                     <q-tabs
                       v-model="tabs2"
                       dense
@@ -572,24 +669,58 @@
                       indicator-color="pink-5"
                       narrow-indicator
                     >
-                      <q-tab
-                        content-class="q-pa-sm "
-                        no-caps=""
-                        name="Basic"
-                        label="Basic"
-                      />
+                      <q-tab content-class="q-pa-sm" no-caps="" name="Basic">
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="basic_success_form_2"
+                            ></q-icon>
+                            <span>Basic</span>
+                          </div>
+                        </template>
+                      </q-tab>
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        label="Advance"
-                      />
+                        :disable="!basic_success_form_2"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="advance_success_form_2"
+                            ></q-icon>
+                            <span>Advance</span>
+                          </div>
+                        </template></q-tab
+                      >
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        label="Significance"
-                      />
+                        :disable="!advance_success_form_2"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="signifi_success_form_2"
+                            ></q-icon>
+                            <span>Significance</span>
+                          </div>
+                        </template></q-tab
+                      >
                     </q-tabs>
                   </div>
                 </div>
@@ -630,7 +761,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_2[0]" value="" />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_2[0]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -646,7 +780,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_2[1]" value="" />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_2[1]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -662,7 +799,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_2[2]" value="" />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_2[2]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span>การบริหารงานตามหลักธรรมภิบาล</span>
@@ -792,7 +932,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_2[0]" value="" />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_2[0]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -808,7 +951,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_2[1]" value="" />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_2[1]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -827,7 +973,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_2[2]" value="" />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_2[2]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span>เปิดเผยผลการดำเนินงานสู่สาธารณะ</span>
@@ -955,7 +1104,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_2[0]" value="" />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_2[0]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -971,7 +1123,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_2[1]" value="" />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_2[1]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -990,7 +1145,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_2[2]" value="" />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_2[2]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1098,7 +1256,7 @@
       <div class="q-mt-sm">
         <q-list bordered>
           <q-expansion-item
-            group="dataForm"
+            group="dataFormStep1"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -1116,7 +1274,31 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span class="font-18">ยังไม่ทำการประเมิน</span>
+                    <span
+                      class="font-18"
+                      v-if="
+                        !basic_success_form_3 &&
+                          !advance_success_form_3 &&
+                          !signifi_success_form_3
+                      "
+                      >ยังไม่ทำการประเมิน</span
+                    >
+                    <div class=" font-18" v-else>
+                      <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                      ></q-icon>
+                      <span v-if="signifi_success_form_3">
+                        Significance
+                      </span>
+                      <span v-else-if="advance_success_form_3">
+                        Advance
+                      </span>
+                      <span v-else="basic_success_form_3">
+                        Basic
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1127,7 +1309,7 @@
 
               <div>
                 <div class="bg4 row">
-                   <div class="col-6" style="width:530px;">
+                  <div class="col-6" style="width:530px;">
                     <q-tabs
                       v-model="tabs3"
                       dense
@@ -1137,24 +1319,58 @@
                       indicator-color="pink-5"
                       narrow-indicator
                     >
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Basic"
-                        label="Basic"
-                      />
+                      <q-tab content-class="q-pa-sm" no-caps="" name="Basic">
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="basic_success_form_3"
+                            ></q-icon>
+                            <span>Basic</span>
+                          </div>
+                        </template>
+                      </q-tab>
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        label="Advance"
-                      />
+                        :disable="!basic_success_form_3"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="advance_success_form_3"
+                            ></q-icon>
+                            <span>Advance</span>
+                          </div>
+                        </template></q-tab
+                      >
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        label="Significance"
-                      />
+                        :disable="!advance_success_form_3"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="signifi_success_form_3"
+                            ></q-icon>
+                            <span>Significance</span>
+                          </div>
+                        </template></q-tab
+                      >
                     </q-tabs>
                   </div>
                 </div>
@@ -1194,7 +1410,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_3[0]" value="" />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_3[0]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1210,7 +1429,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_3[1]" value="" />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_3[1]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1225,7 +1447,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_3[2]" value="" />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_3[2]"
+                                    value=""
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1357,7 +1582,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_3[0]"  value />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_3[0]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1372,7 +1600,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_3[1]"  value />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_3[1]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1502,7 +1733,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_3[0]" value />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_3[0]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1617,7 +1851,7 @@
       <div class="q-mt-sm q-mb-md">
         <q-list bordered>
           <q-expansion-item
-            group="dataForm"
+            group="dataFormStep1"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -1635,7 +1869,31 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span class="font-18">ยังไม่ทำการประเมิน</span>
+                    <span
+                      class="font-18"
+                      v-if="
+                        !basic_success_form_4 &&
+                          !advance_success_form_4 &&
+                          !signifi_success_form_4
+                      "
+                      >ยังไม่ทำการประเมิน</span
+                    >
+                    <div class=" font-18" v-else>
+                      <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                      ></q-icon>
+                      <span v-if="signifi_success_form_4">
+                        Significance
+                      </span>
+                      <span v-else-if="advance_success_form_4">
+                        Advance
+                      </span>
+                      <span v-else="basic_success_form_4">
+                        Basic
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1646,7 +1904,7 @@
 
               <div>
                 <div class="bg4 row">
-                   <div class="col-6 font-18" style="width:530px;">
+                  <div class="col-6 font-18" style="width:530px;">
                     <q-tabs
                       v-model="tabs4"
                       dense
@@ -1656,24 +1914,58 @@
                       indicator-color="pink-5"
                       narrow-indicator
                     >
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Basic"
-                        label="Basic"
-                      />
+                      <q-tab content-class="q-pa-sm" no-caps="" name="Basic">
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="basic_success_form_4"
+                            ></q-icon>
+                            <span>Basic</span>
+                          </div>
+                        </template>
+                      </q-tab>
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        label="Advance"
-                      />
+                        :disable="!basic_success_form_4"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="advance_success_form_4"
+                            ></q-icon>
+                            <span>Advance</span>
+                          </div>
+                        </template></q-tab
+                      >
                       <q-tab
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        label="Significance"
-                      />
+                        :disable="!advance_success_form_4"
+                      >
+                        <template v-slot:default>
+                          <div>
+                            <q-icon
+                              class="q-mr-xs"
+                              name="fas fa-check-circle"
+                              color="teal"
+                              size="16px"
+                              v-if="signifi_success_form_4"
+                            ></q-icon>
+                            <span>Significance</span>
+                          </div>
+                        </template></q-tab
+                      >
                     </q-tabs>
                   </div>
                 </div>
@@ -1712,7 +2004,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_4[0]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_4[0]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1729,7 +2024,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_4[1]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_4[1]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1747,7 +2045,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_4[2]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_4[2]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1762,7 +2063,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="basic_guide_list_4[3]" value />
+                                  <q-checkbox
+                                    v-model="basic_guide_list_4[3]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1895,7 +2199,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_4[0]" value />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_4[0]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -1912,7 +2219,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="advance_guide_list_4[1]" value />
+                                  <q-checkbox
+                                    v-model="advance_guide_list_4[1]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -2042,7 +2352,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_4[0]" value />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_4[0]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -2061,7 +2374,10 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="signifi_guide_list_4[1]" value />
+                                  <q-checkbox
+                                    v-model="signifi_guide_list_4[1]"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
@@ -2184,17 +2500,22 @@ export default {
       advance_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Advance
       signifi_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_1:[false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_1:[false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_1:[false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+      basic_guide_list_1: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_1: [false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_1: [false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
 
-      basic_file_pdf_1:null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_1:null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_1:null, // อัพโหลดไพล์ PDF หน้า Significance
+      basic_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Significance
 
-      basic_file_image_1:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_1:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_1:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      basic_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+
+      basic_success_form_1: false,
+      advance_success_form_1: false,
+      signifi_success_form_1: false,
+
       // -----------------------------------------
 
       // Form 1.2
@@ -2203,17 +2524,21 @@ export default {
       advance_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Advance
       signifi_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_2:[false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_2:[false,false,false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_2:[false,false,false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+      basic_guide_list_2: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_2: [false, false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_2: [false, false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
 
-      basic_file_pdf_2:null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_2:null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_2:null, // อัพโหลดไพล์ PDF หน้า Significance
+      basic_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Significance
 
-      basic_file_image_2:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_2:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_2:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      basic_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+
+      basic_success_form_2: false,
+      advance_success_form_2: false,
+      signifi_success_form_2: false,
       // -----------------------------------------
 
       // Form 1.3
@@ -2222,17 +2547,21 @@ export default {
       advance_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Advance
       signifi_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_3:[false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_3:[false,false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_3:[false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+      basic_guide_list_3: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_3: [false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_3: [false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
 
-      basic_file_pdf_3:null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_3:null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_3:null, // อัพโหลดไพล์ PDF หน้า Significance
+      basic_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Significance
 
-      basic_file_image_3:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_3:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_3:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      basic_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+
+      basic_success_form_3: false,
+      advance_success_form_3: false,
+      signifi_success_form_3: false,
       // -----------------------------------------
 
       // Form 1.4
@@ -2241,21 +2570,25 @@ export default {
       advance_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Advance
       signifi_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_4:[false,false,false,false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_4:[false,false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_4:[false,false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
+      basic_guide_list_4: [false, false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
+      advance_guide_list_4: [false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
+      signifi_guide_list_4: [false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
 
-      basic_file_pdf_4:null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_4:null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_4:null, // อัพโหลดไพล์ PDF หน้า Significance
+      basic_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Basic
+      advance_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Advance
+      signifi_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Significance
 
-      basic_file_image_4:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_4:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_4:null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+      basic_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
+      advance_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
+      signifi_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
+
+      basic_success_form_4: false,
+      advance_success_form_4: false,
+      signifi_success_form_4: false,
       // -----------------------------------------
 
       // Save Data
-      isSaveData: false,
+      isSaveData: false
     };
   },
   methods: {
@@ -2264,11 +2597,9 @@ export default {
       setTimeout(() => {
         this.isSaveData = false;
       }, 1000);
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
