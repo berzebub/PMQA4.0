@@ -52,7 +52,7 @@ CREATE TABLE `category0_log`
   `year` INT NOT NULL
 ) ENGINE=InnoDB COLLATE=utf8_bin COMMENT='ตารางเก็บข้อมูลการประเมินลักษณะองค์กร';
 
-CREATE TABLE `category1-6_log`
+CREATE TABLE `category1_6_log`
 (
   `id` INT NOT NULL,
   `user_id` INT NOT NULL,
@@ -63,10 +63,8 @@ CREATE TABLE `category1-6_log`
   `check_box` TEXT NOT NULL COMMENT 'เช็ค box ที่เลือก
 รูปแบบ 0-0-0
 0 = false, 1 = true',
-  `pdf_path` TEXT NOT NULL,
-  `img_path` TEXT NOT NULL,
-  `status` INT NOT NULL COMMENT '0= false , 1= true
-สถานะการบันทึกข้อมูลข้อนั้นๆ',
+  `is_pdf` INT NOT NULL COMMENT '0=ไม่มีไฟล์, 1=มีไฟล์',
+  `is_img` INT NOT NULL COMMENT '0=ไม่มีไฟล์, 1=มีไฟล์',
   `year` INT NOT NULL
 ) ENGINE=InnoDB COLLATE=utf8_bin;
 
@@ -75,10 +73,10 @@ ALTER TABLE `assessor_accounts` ADD PRIMARY KEY (`id`);
 ALTER TABLE `assessment_status` ADD PRIMARY KEY (`id`);
 ALTER TABLE `user_stepper_log` ADD PRIMARY KEY (`id`);
 ALTER TABLE `category0_log` ADD PRIMARY KEY (`id`);
-ALTER TABLE `category1-6_log` ADD PRIMARY KEY (`id`);
+ALTER TABLE `category1_6_log` ADD PRIMARY KEY (`id`);
 ALTER TABLE `user_accounts` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE `assessor_accounts` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE `assessment_status` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE `user_stepper_log` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE `category0_log` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
-ALTER TABLE `category1-6_log` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE `category1_6_log` CHANGE COLUMN `id` `id`  INT NOT NULL AUTO_INCREMENT;
