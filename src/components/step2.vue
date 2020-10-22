@@ -96,7 +96,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_1"
+                        :disable="
+                          !basic_success_form_1 ||
+                            basic_guide_list_1.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -107,7 +110,7 @@
                               size="16px"
                               v-if="advance_success_form_1"
                             ></q-icon>
-                            <span>Advance</span>
+                            <span>Advance </span>
                           </div>
                         </template></q-tab
                       >
@@ -115,7 +118,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_1"
+                        :disable="
+                          !advance_success_form_1 ||
+                            advance_guide_list_1.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -903,7 +909,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_2"
+                        :disable="
+                          !basic_success_form_2 ||
+                            basic_guide_list_2.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -922,7 +931,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_2"
+                        :disable="
+                          !advance_success_form_2 ||
+                            advance_guide_list_2.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -1769,7 +1781,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_3"
+                        :disable="
+                          !basic_success_form_3 ||
+                            basic_guide_list_3.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -1788,7 +1803,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_3"
+                        :disable="
+                          !advance_success_form_3 ||
+                            advance_guide_list_3.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -2580,7 +2598,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_4"
+                        :disable="
+                          !basic_success_form_4 ||
+                            basic_guide_list_4.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -2599,7 +2620,10 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_4"
+                        :disable="
+                          !advance_success_form_4 ||
+                            advance_guide_list_4.includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -3484,6 +3508,8 @@ export default {
           if (!checkBox.includes(0)) {
             // กรณี check ทุุกหัวข้อ // เปิด Advance
             this.basic_success_form_1 = true;
+          } else {
+            this.basic_success_form_1 = false;
           }
         } else if (mode == "advance") {
           // 1.1 mode advance
@@ -3492,12 +3518,14 @@ export default {
           let checkBox = this.advance_guide_list_1;
           checkBox = checkBox.map(x => (x == true ? 1 : 0));
           let resCheckBox = checkBox.join();
-          formData.append("check_box", checkBox);
+          formData.append("check_box", resCheckBox);
           formData.append("text", this.advance_assessment_1);
           let data = await Axios.post(url, formData);
           if (!checkBox.includes(0)) {
             // กรณี check ทุุกหัวข้อ // เปิด Signi
             this.advance_success_form_1 = true;
+          } else {
+            this.advance_success_form_1 = false;
           }
         } else {
           // 1.1 mode significance
@@ -3511,14 +3539,345 @@ export default {
           let data = await Axios.post(url, formData);
         }
       } else if (no == 2) {
+        // save 1.2
+        if (mode == "basic") {
+          // 1.2 basic
+          formData.append("img", this.basic_file_image_2);
+          formData.append("pdf", this.basic_file_pdf_2);
+          let checkBox = this.basic_guide_list_2;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.basic_assessment_2);
+          let data = await Axios.post(url, formData);
+
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Advance
+            this.basic_success_form_2 = true;
+          } else {
+            this.basic_success_form_2 = false;
+          }
+        } else if (mode == "advance") {
+          // 1.2 advance
+          formData.append("img", this.advance_file_image_2);
+          formData.append("pdf", this.advance_file_pdf_2);
+          let checkBox = this.advance_guide_list_2;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.advance_assessment_2);
+          let data = await Axios.post(url, formData);
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Signi
+            this.advance_success_form_2 = true;
+          } else {
+            this.advance_success_form_2 = false;
+          }
+        } else {
+          // 1.2 significance
+          formData.append("img", this.signifi_file_image_2);
+          formData.append("pdf", this.signifi_file_pdf_2);
+          let checkBox = this.signifi_guide_list_2;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", checkBox);
+          formData.append("text", this.signifi_assessment_2);
+          let data = await Axios.post(url, formData);
+        }
       } else if (no == 3) {
+        // save 1.3
+        if (mode == "basic") {
+          // 1.3 basic
+          formData.append("img", this.basic_file_image_3);
+          formData.append("pdf", this.basic_file_pdf_3);
+          let checkBox = this.basic_guide_list_3;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.basic_assessment_3);
+          let data = await Axios.post(url, formData);
+
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Advance
+            this.basic_success_form_3 = true;
+          } else {
+            this.basic_success_form_3 = false;
+          }
+        } else if (mode == "advance") {
+          // 1.3 advance
+          formData.append("img", this.advance_file_image_3);
+          formData.append("pdf", this.advance_file_pdf_3);
+          let checkBox = this.advance_guide_list_3;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.advance_assessment_3);
+          let data = await Axios.post(url, formData);
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Signi
+            this.advance_success_form_3 = true;
+          } else {
+            this.advance_success_form_3 = false;
+          }
+        } else {
+          // 1.3 significance
+          formData.append("img", this.signifi_file_image_3);
+          formData.append("pdf", this.signifi_file_pdf_3);
+          let checkBox = this.signifi_guide_list_3;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", checkBox);
+          formData.append("text", this.signifi_assessment_3);
+          let data = await Axios.post(url, formData);
+        }
       } else if (no == 4) {
+        if (mode == "basic") {
+          // 1.4 basic
+          formData.append("img", this.basic_file_image_4);
+          formData.append("pdf", this.basic_file_pdf_4);
+          let checkBox = this.basic_guide_list_4;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.basic_assessment_4);
+          let data = await Axios.post(url, formData);
+
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Advance
+            this.basic_success_form_4 = true;
+          } else {
+            this.basic_success_form_4 = false;
+          }
+        } else if (mode == "advance") {
+          // 1.4 advance
+          formData.append("img", this.advance_file_image_4);
+          formData.append("pdf", this.advance_file_pdf_4);
+          let checkBox = this.advance_guide_list_4;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.advance_assessment_4);
+          let data = await Axios.post(url, formData);
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Signi
+            this.advance_success_form_4 = true;
+          } else {
+            this.advance_success_form_4 = false;
+          }
+        } else {
+          // 1.4 significance
+          formData.append("img", this.signifi_file_image_4);
+          formData.append("pdf", this.signifi_file_pdf_4);
+          let checkBox = this.signifi_guide_list_4;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", checkBox);
+          formData.append("text", this.signifi_assessment_4);
+          let data = await Axios.post(url, formData);
+        }
       }
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
       }, 1000);
     },
+    getBasic1(data) {
+      // ข้อ 1.1 Basic
+      let getData = data.filter(x => x.q_number == 1 && x.mode == "basic");
+      this.basic_assessment_1 = getData[0].text;
+      // checkbox ข้อที่ 1.1 basic
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+
+      if (!checkBox.includes(false)) {
+        this.basic_success_form_1 = true;
+      }
+      this.basic_guide_list_1 = checkBox;
+      this.basic_file_image_1 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.basic_file_pdf_1 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getAdvance1(data) {
+      let getData = data.filter(x => x.q_number == 1 && x.mode == "advance");
+      this.advance_assessment_1 = getData[0].text;
+      // checkbox ข้อที่ 1.1 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      if (!checkBox.includes(false)) {
+        this.advance_success_form_1 = true;
+      }
+      this.advance_guide_list_1 = checkBox;
+      this.advance_file_image_1 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.advance_file_pdf_1 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getSignificance1(data) {
+      let getData = data.filter(
+        x => x.q_number == 1 && x.mode == "significance"
+      );
+      this.signifi_assessment_1 = getData[0].text;
+      // checkbox ข้อที่ 1.1 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      this.signifi_guide_list_1 = checkBox;
+      this.signifi_file_image_1 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.signifi_file_pdf_1 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getBasic2(data) {
+      // ข้อ 1.2 Basic
+      let getData = data.filter(x => x.q_number == 2 && x.mode == "basic");
+      this.basic_assessment_2 = getData[0].text;
+      // checkbox ข้อที่ 1.2 basic
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+
+      if (!checkBox.includes(false)) {
+        this.basic_success_form_2 = true;
+      }
+      this.basic_guide_list_2 = checkBox;
+      this.basic_file_image_2 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.basic_file_pdf_2 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getAdvance2(data) {
+      let getData = data.filter(x => x.q_number == 2 && x.mode == "advance");
+      this.advance_assessment_2 = getData[0].text;
+      // checkbox ข้อที่ 1.2 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      if (!checkBox.includes(false)) {
+        this.advance_success_form_2 = true;
+      }
+      this.advance_guide_list_2 = checkBox;
+      this.advance_file_image_2 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.advance_file_pdf_2 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getSignificance2(data) {
+      let getData = data.filter(
+        x => x.q_number == 2 && x.mode == "significance"
+      );
+      this.signifi_assessment_2 = getData[0].text;
+      // checkbox ข้อที่ 1.2 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      this.signifi_guide_list_2 = checkBox;
+      this.signifi_file_image_2 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.signifi_file_pdf_2 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getBasic3(data) {
+      // ข้อ 1.3 Basic
+      let getData = data.filter(x => x.q_number == 3 && x.mode == "basic");
+      this.basic_assessment_3 = getData[0].text;
+      // checkbox ข้อที่ 1.3 basic
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+
+      if (!checkBox.includes(false)) {
+        this.basic_success_form_3 = true;
+      }
+      this.basic_guide_list_3 = checkBox;
+      this.basic_file_image_3 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.basic_file_pdf_3 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getAdvance3(data) {
+      let getData = data.filter(x => x.q_number == 3 && x.mode == "advance");
+      this.advance_assessment_3 = getData[0].text;
+      // checkbox ข้อที่ 1.3 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      if (!checkBox.includes(false)) {
+        this.advance_success_form_3 = true;
+      }
+      this.advance_guide_list_3 = checkBox;
+      this.advance_file_image_3 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.advance_file_pdf_3 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getSignificance3(data) {
+      let getData = data.filter(
+        x => x.q_number == 3 && x.mode == "significance"
+      );
+      this.signifi_assessment_3 = getData[0].text;
+      // checkbox ข้อที่ 1.3 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      this.signifi_guide_list_3 = checkBox;
+      this.signifi_file_image_3 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.signifi_file_pdf_3 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getBasic4(data) {
+      // ข้อ 1.3 Basic
+      let getData = data.filter(x => x.q_number == 4 && x.mode == "basic");
+      this.basic_assessment_4 = getData[0].text;
+      // checkbox ข้อที่ 1.3 basic
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+
+      if (!checkBox.includes(false)) {
+        this.basic_success_form_4 = true;
+      }
+      this.basic_guide_list_4 = checkBox;
+      this.basic_file_image_4 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.basic_file_pdf_4 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getAdvance4(data) {
+      let getData = data.filter(x => x.q_number == 4 && x.mode == "advance");
+      this.advance_assessment_4 = getData[0].text;
+      // checkbox ข้อที่ 1.3 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      if (!checkBox.includes(false)) {
+        this.advance_success_form_4 = true;
+      }
+      this.advance_guide_list_4 = checkBox;
+      this.advance_file_image_4 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.advance_file_pdf_4 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+    getSignificance4(data) {
+      let getData = data.filter(
+        x => x.q_number == 4 && x.mode == "significance"
+      );
+      this.signifi_assessment_4 = getData[0].text;
+      // checkbox ข้อที่ 1.3 advance
+      let checkBox = getData[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      this.signifi_guide_list_4 = checkBox;
+      this.signifi_file_image_4 =
+        getData[0].is_img == 0 ? null : [getData[0].is_img];
+      this.signifi_file_pdf_4 =
+        getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+    },
+
     async getAssessmentData() {
       const url = this.apiPath + "user/getCategory1_6.php";
       const postData = {
@@ -3527,20 +3886,18 @@ export default {
         step: 1
       };
       let data = await Axios.post(url, postData);
-      // ข้อ 1.1 Basic
-      let basic1_1 = data.data.filter(
-        x => x.q_number == 1 && x.mode == "basic"
-      );
-      this.basic_assessment_1 = basic1_1[0].text;
-      // checkbox ข้อที่ 1.1
-      let checkBox1_1 = basic1_1[0].check_box
-        .split(",")
-        .map(x => (x == 1 ? true : false));
-      this.basic_guide_list_1 = checkBox1_1;
-      this.basic_file_image_1 =
-        basic1_1[0].is_img == 0 ? null : [basic1_1[0].is_img];
-      this.basic_file_pdf_1 =
-        basic1_1[0].is_pdf == 0 ? null : [basic1_1[0].is_pdf];
+      this.getBasic1(data.data);
+      this.getAdvance1(data.data);
+      this.getSignificance1(data.data);
+      this.getBasic2(data.data);
+      this.getAdvance2(data.data);
+      this.getSignificance2(data.data);
+      this.getBasic3(data.data);
+      this.getAdvance3(data.data);
+      this.getSignificance3(data.data);
+      this.getBasic4(data.data);
+      this.getAdvance4(data.data);
+      this.getSignificance4(data.data);
     }
   },
   created() {
