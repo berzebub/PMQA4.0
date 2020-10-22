@@ -12,7 +12,7 @@
       <div>
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep1"
+            group="dataFormStep2"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -339,7 +339,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -350,7 +350,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -368,7 +368,7 @@
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -569,7 +569,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -580,7 +580,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -591,14 +591,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -782,7 +782,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -793,7 +793,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -804,14 +804,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -856,7 +856,7 @@
       <div class="q-mt-sm">
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep1"
+            group="dataFormStep2"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -1140,7 +1140,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1151,7 +1151,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1162,14 +1162,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1351,7 +1351,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1362,7 +1362,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1373,14 +1373,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1579,7 +1579,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1590,7 +1590,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1601,14 +1601,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1653,7 +1653,7 @@
       <div class="q-mt-sm">
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep1"
+            group="dataFormStep2"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -1955,7 +1955,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1966,7 +1966,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1977,14 +1977,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2185,7 +2185,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2196,7 +2196,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2207,14 +2207,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2416,7 +2416,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2427,7 +2427,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2438,14 +2438,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2490,7 +2490,7 @@
       <div class="q-mt-sm q-mb-md">
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep1"
+            group="dataFormStep2"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -2652,10 +2652,13 @@
                                   <span
                                     >ระบบการติดตามรายงานผลของตัวชี้วัด
                                     แผนปฏิบัติการ
-                                    ยุทธศาสตร์ทั้งระยะสั้นและระยะยาว -
-                                    รายงานสถานะการบรรลุเป้าหมายที่ตั้งไว้ -
+                                    ยุทธศาสตร์ทั้งระยะสั้นและระยะยาว <br />-
+                                    รายงานสถานะการบรรลุเป้าหมายที่ตั้งไว้
+                                    <br />-
                                     เตรียมการแก้ไขปัญหากรณีไม่เป็นไปตามเป้าหมายที่ตั้งไว้
-                                    - การรายงานผลที่เกิดขึ้นต่อสาธารณะ</span
+
+                                    <br />-
+                                    การรายงานผลที่เกิดขึ้นต่อสาธารณะ</span
                                   >
                                 </div>
                               </div>
@@ -2759,7 +2762,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2770,7 +2773,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2781,14 +2784,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2861,10 +2864,13 @@
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
-                                    >แผนมีความยืดหยุ่นสามารถปรับเปลี่ยนได้ -
+                                    >แผนมีความยืดหยุ่นสามารถปรับเปลี่ยนได้
+                                    <br />-
                                     สามารถปรับแผนปฏิบัติการให้สอดคล้องกับผลที่เกิดทั้งในกรณี
                                     ที่ไม่บรรลุ หรือดีกว่าค่าเป้าหมายที่ตั้งไว้
-                                    - สามารถปรับแผนให้ทันต่อการเปลี่ยนแปลงได้
+
+                                    <br />-
+                                    สามารถปรับแผนให้ทันต่อการเปลี่ยนแปลงได้
                                   </span>
                                 </div>
                               </div>
@@ -3005,7 +3011,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -3016,7 +3022,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3027,14 +3033,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3252,7 +3258,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -3263,7 +3269,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3274,14 +3280,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
