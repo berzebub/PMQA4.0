@@ -3383,6 +3383,23 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      // test
+      basic_assessment: [],
+      basic_success_form: [],
+      basic_guide_list: [[], [], [], []],
+      basic_file_image: [],
+      basic_file_pdf: [],
+      advance_assessment: [],
+      advance_success_form: [],
+      advance_guide_list: [[], [], [], []],
+      advance_file_image: [],
+      advance_file_pdf: [],
+      signifi_assessment: [],
+      signifi_success_form: [],
+      signifi_guide_list: [[], [], [], []],
+      signifi_file_image: [],
+      signifi_file_pdf: [],
+
       // Form 1.1
       tabs1: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       basic_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Basic
@@ -3681,6 +3698,61 @@ export default {
         this.isSaveData = false;
       }, 1000);
     },
+    getBasic(data) {
+      for (let i = 1; i <= 4; i++) {
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+        this.basic_assessment[i - 1] = getData[0].text;
+        let checkBox = getData[0].check_box
+          .split(",")
+          .map(x => (x == 1 ? true : false));
+        console.log(checkBox);
+        this.basic_guide_list[i - 1] = [];
+        if (!checkBox.includes(false)) {
+          this.basic_success_form[i - 1] = true;
+          this.basic_guide_list[i - 1] = checkBox;
+          this.basic_file_image[i - 1] =
+            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.basic_file_pdf[i - 1] =
+            getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+        }
+      }
+    },
+    getAdvance(data) {
+      for (let i = 1; i <= 4; i++) {
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        this.advance_assessment[i - 1] = getData[0].text;
+        let checkBox = getData[0].check_box
+          .split(",")
+          .map(x => (x == 1 ? true : false));
+        this.advance_guide_list[i - 1] = [];
+        if (!checkBox.includes(false)) {
+          this.advance_success_form[i - 1] = true;
+        }
+        this.advance_guide_list[i - 1] = checkBox;
+        this.advance_file_image[i - 1] =
+          getData[0].is_img == 0 ? null : [getData[0].is_img];
+        this.advance_file_pdf[i - 1] =
+          getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+      }
+    },
+    getSignificance(data) {
+      for (let i = 1; i <= 4; i++) {
+        let getData = data.filter(
+          x => x.q_number == i && x.mode == "significance"
+        );
+        this.signifi_guide_list[i - 1] = [];
+        this.signifi_assessment[i - 1] = getData[0].text;
+        let checkBox = getData[0].check_box
+          .split(",")
+          .map(x => (x == 1 ? true : false));
+        this.signifi_guide_list[i - 1] = checkBox;
+        this.signifi_file_image[i - 1] =
+          getData[0].is_img == 0 ? null : [getData[0].is_img];
+        this.signifi_file_pdf[i - 1] =
+          getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+      }
+    },
+
     getBasic1(data) {
       // ข้อ 1.1 Basic
       let getData = data.filter(x => x.q_number == 1 && x.mode == "basic");
@@ -3898,6 +3970,10 @@ export default {
       this.getBasic4(data.data);
       this.getAdvance4(data.data);
       this.getSignificance4(data.data);
+      // test re structure to array
+      this.getBasic(data.data);
+      this.getAdvance(data.data);
+      this.getSignificance(data.data);
     }
   },
   created() {
