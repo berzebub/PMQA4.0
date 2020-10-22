@@ -2594,29 +2594,30 @@ export default {
   },
   methods: {
     async saveData(no) {
-      const url = (this.apiPath = "addUpdateCategory1_6.php");
+      const url = this.apiPath + "user/addUpdateCategory1_6.php";
       const userId = this.$q.sessionStorage.getItem("uid");
       const year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
       if (no == 1) {
-        formData.append("img", this.basic_file_image_1);
-        formData.append("pdf", this.basic_file_pdf_1);
+        // save 1.1 basic
         let checkBox = this.basic_guide_list_1;
         checkBox = checkBox.map(x => (x == true ? 1 : 0));
         checkBox = checkBox.join();
-        let postData = {
-          user_id: userId,
-          q_number: "",
-          mode: "basic",
-          text: this.basic_assessment_1,
-          check_box: checkBox,
-          pdf_path: "",
-          img_path: "",
-          status: "",
-          year: year
-        };
-        // save 1.1 basic
-        // let data = await Axios.post()
+        formData.append("img", this.basic_file_image_1);
+        formData.append("pdf", this.basic_file_pdf_1);
+        formData.append("user_id", userId);
+        formData.append("q_number", 1);
+        formData.append("mode", "basic");
+        formData.append("text", this.basic_assessment_1);
+        formData.append("check_box", checkBox);
+        formData.append("pdf_path", "");
+        formData.append("img_path", "");
+        formData.append("year", year);
+        formData.append("step", 1);
+
+        let data = await Axios.post(url, formData);
+        console.log(data);
+        console.log(data.data);
       }
       this.isSaveData = true;
       setTimeout(() => {
