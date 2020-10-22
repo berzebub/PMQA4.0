@@ -305,6 +305,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf_1"
+                                  @click="basic_file_pdf_1 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -364,6 +365,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image_1"
+                                  @click="basic_file_image_1 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -519,6 +521,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf_1"
+                                  @click="advance_file_pdf_1 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -578,6 +581,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image_1"
+                                  @click="advance_file_image_1 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -732,6 +736,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf_1"
+                                  @click="signifi_file_pdf_1 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -791,6 +796,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image_1"
+                                  @click="signifi_file_image_1 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1103,6 +1109,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf_2"
+                                  @click="basic_file_pdf_2 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1162,6 +1169,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image_2"
+                                  @click="basic_file_image_2 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1349,6 +1357,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf_2"
+                                  @click="advance_file_pdf_2 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1404,11 +1413,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image_2"
-                                  
+                                  @click="advance_file_image_2 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1592,11 +1601,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf_2"
-                                  
+                                  @click="signifi_file_pdf_2 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1652,11 +1661,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image_2"
-                                  
+                                  @click="signifi_file_image_2 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -1970,11 +1979,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf_3"
-                                  
+                                  @click="basic_file_pdf_3 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -2030,11 +2039,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image_3"
-                                  
+                                  @click="basic_file_image_3 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -2196,11 +2205,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf_3"
-                                  
+                                  @click="advance_file_pdf_3 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -2256,11 +2265,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                 v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image_3"
-                                 
+                                  @click="advance_file_image_3 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -2409,11 +2418,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf_3"
-                                  
+                                  @click="signifi_file_pdf_3 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -2469,11 +2478,11 @@
                                   </template>
                                 </q-file>
                                 <div
-                                v-ripple
+                                  v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image_3"
-                                  
+                                  @click="signifi_file_image_3 = null"
                                 >
                                   <span class="text-white font-12">
                                     ลบไพล์
@@ -2812,6 +2821,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf_4"
+                                  @click="basic_file_pdf_4 = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
@@ -2871,6 +2881,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image_4"
+                                  @click="basic_file_image_4 = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
@@ -2990,11 +3001,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_image_4"
+                                  v-model="advance_file_pdf_4"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_image_4
+                                    !advance_file_pdf_4
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -3003,7 +3014,7 @@
                                 >
                                   <template
                                     v-slot:prepend
-                                    v-if="!advance_file_image_4"
+                                    v-if="!advance_file_pdf_4"
                                   >
                                     <div
                                       class="absolute-center fit"
@@ -3036,7 +3047,8 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_image_4"
+                                  v-if="advance_file_pdf_4"
+                                  @click="advance_file_pdf_4 = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
@@ -3096,6 +3108,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image_4"
+                                  @click="advance_file_image_4 = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
@@ -3270,6 +3283,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf_4"
+                                  @click="signifi_file_pdf_4 = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
@@ -3329,6 +3343,7 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image_4"
+                                  @click="signifi_file_image_4 = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
@@ -3386,9 +3401,9 @@ export default {
       advance_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_1: false,
-      advance_success_form_1: false,
-      signifi_success_form_1: false,
+      basic_success_form_1: true,
+      advance_success_form_1: true,
+      signifi_success_form_1: true,
 
       // -----------------------------------------
 
@@ -3410,9 +3425,9 @@ export default {
       advance_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_2: false,
-      advance_success_form_2: false,
-      signifi_success_form_2: false,
+      basic_success_form_2: true,
+      advance_success_form_2: true,
+      signifi_success_form_2: true,
       // -----------------------------------------
 
       // Form 1.3
@@ -3433,9 +3448,9 @@ export default {
       advance_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_3: false,
-      advance_success_form_3: false,
-      signifi_success_form_3: false,
+      basic_success_form_3: true,
+      advance_success_form_3: true,
+      signifi_success_form_3: true,
       // -----------------------------------------
 
       // Form 1.4
@@ -3456,9 +3471,9 @@ export default {
       advance_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_4: false,
-      advance_success_form_4: false,
-      signifi_success_form_4: false,
+      basic_success_form_4: true,
+      advance_success_form_4: true,
+      signifi_success_form_4: true,
       // -----------------------------------------
 
       // Save Data
