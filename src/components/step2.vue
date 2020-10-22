@@ -253,17 +253,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_pdf_1"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_pdf_1
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_pdf_1"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -273,30 +281,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_pdf_1"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_image_1"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_image_1
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_image_1"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-image"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_image_1"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -395,17 +467,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_pdf_1"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_pdf_1
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_pdf_1"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -415,30 +495,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_pdf_1"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_image_1"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_image_1
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_image_1"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_image_1"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -536,17 +680,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_pdf_1"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_pdf_1
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_pdf_1"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -556,30 +708,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_pdf_1"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_image_1"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_image_1
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_image_1"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_image_1"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -835,17 +1051,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_pdf_2"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_pdf_2
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_pdf_2"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -855,30 +1079,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_pdf_2"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_image_2"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_image_2
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_image_2"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_image_2"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -1009,17 +1297,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_pdf_2"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_pdf_2
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_pdf_2"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -1029,30 +1325,95 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_pdf_2"
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_image_2"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_image_2
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_image_2"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_image_2"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -1183,17 +1544,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_pdf_2"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_pdf_2
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_pdf_2"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -1203,30 +1572,96 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_pdf_2"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_image_2"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_image_2
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_image_2"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_image_2"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -1487,17 +1922,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_pdf_3"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_pdf_3
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_pdf_3"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -1507,30 +1950,96 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_pdf_3"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_image_3"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_image_3
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_image_3"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_image_3"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -1639,17 +2148,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_pdf_3"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_pdf_3
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_pdf_3"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -1659,30 +2176,96 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_pdf_3"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_image_3"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_image_3
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_image_3"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                 v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_image_3"
+                                 
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -1778,17 +2361,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_pdf_3"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_pdf_3
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_pdf_3"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -1798,30 +2389,96 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_pdf_3"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_image_3"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_image_3
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_image_3"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                v-ripple
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_image_3"
+                                  
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -2104,17 +2761,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_pdf_4"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_pdf_4
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_pdf_4"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -2124,30 +2789,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_pdf_4"
+                                  v-ripple
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="basic_file_image_4"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !basic_file_image_4
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!basic_file_image_4"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_image_4"
+                                  v-ripple
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -2257,17 +2986,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_pdf_4"
+                                  v-model="advance_file_image_4"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_image_4
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_image_4"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -2277,30 +3014,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_image_4"
+                                  v-ripple
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="advance_file_image_4"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !advance_file_image_4
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!advance_file_image_4"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="advance_file_image_4"
+                                  v-ripple
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -2418,17 +3219,25 @@
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_pdf_4"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_pdf_4
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
                                   accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_pdf_4"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
@@ -2438,30 +3247,94 @@
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
                                 </q-file>
+                                <div
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_pdf_4"
+                                  v-ripple
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div
-                                class="col-4 q-pa-md self-center"
+                                class="col-4 q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
                                   v-model="signifi_file_image_4"
                                   dense=""
-                                  style="border:2px solid #e84c93;border-radius:10px;"
+                                  style=""
+                                  :style="
+                                    !signifi_file_image_4
+                                      ? 'border:2px solid #e84c93;border-radius:10px;'
+                                      : 'border:2px solid #000000;border-radius:0px;'
+                                  "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".pdf"
                                 >
-                                  <template v-slot:prepend>
+                                  <template
+                                    v-slot:prepend
+                                    v-if="!signifi_file_image_4"
+                                  >
                                     <div
                                       class="absolute-center fit"
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
+                                        >pdf เอกสารเพิ่มเติม</span
+                                      >
+                                    </div>
+                                  </template>
+
+                                  <template v-slot:file="{ index, file }">
+                                    <div
+                                      class="absolute-center full-width"
+                                      align="center"
+                                    >
+                                      <q-icon
+                                        name="fas fa-file-pdf"
+                                        class="color1 q-px-xs"
+                                        size="25px"
+                                      ></q-icon>
+                                      <span
+                                        class=""
+                                        style="text-decoration:underline"
+                                        >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
                                   </template>
                                 </q-file>
+                                <div
+                                  class="bg1 relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="signifi_file_image_4"
+                                  v-ripple
+                                >
+                                  <span class="text-white font-12">
+                                    ลบไพล์
+                                  </span>
+                                </div>
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
