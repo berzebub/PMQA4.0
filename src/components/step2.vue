@@ -282,7 +282,7 @@
                                     </div>
                                   </template>
 
-                                  <template v-slot:file="{ index, file }">
+                                  <template v-slot:file>
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
@@ -308,7 +308,7 @@
                                   @click="basic_file_pdf_1 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -326,7 +326,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".jpg,.png"
                                 >
                                   <template
                                     v-slot:prepend
@@ -368,7 +368,7 @@
                                   @click="basic_file_image_1 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -380,7 +380,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData(1)"
+                                  @click="saveData(1, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -524,7 +524,7 @@
                                   @click="advance_file_pdf_1 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -542,7 +542,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -584,7 +584,7 @@
                                   @click="advance_file_image_1 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -596,7 +596,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(1, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -739,7 +739,7 @@
                                   @click="signifi_file_pdf_1 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -757,7 +757,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -799,7 +799,7 @@
                                   @click="signifi_file_image_1 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -811,7 +811,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(1, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1112,7 +1112,7 @@
                                   @click="basic_file_pdf_2 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1130,7 +1130,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1172,7 +1172,7 @@
                                   @click="basic_file_image_2 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1184,7 +1184,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(2, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1360,7 +1360,7 @@
                                   @click="advance_file_pdf_2 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1378,7 +1378,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1420,7 +1420,7 @@
                                   @click="advance_file_image_2 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1432,7 +1432,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(2, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1608,7 +1608,7 @@
                                   @click="signifi_file_pdf_2 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1626,7 +1626,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -1668,7 +1668,7 @@
                                   @click="signifi_file_image_2 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1680,7 +1680,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(2, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1986,7 +1986,7 @@
                                   @click="basic_file_pdf_3 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2004,7 +2004,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2046,7 +2046,7 @@
                                   @click="basic_file_image_3 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2058,7 +2058,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(3, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2212,7 +2212,7 @@
                                   @click="advance_file_pdf_3 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2230,7 +2230,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2272,7 +2272,7 @@
                                   @click="advance_file_image_3 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2284,7 +2284,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(3, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2425,7 +2425,7 @@
                                   @click="signifi_file_pdf_3 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2443,7 +2443,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2485,7 +2485,7 @@
                                   @click="signifi_file_image_3 = null"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2497,7 +2497,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(3, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2825,7 +2825,7 @@
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2843,7 +2843,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -2885,7 +2885,7 @@
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2897,7 +2897,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(4, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -3052,7 +3052,7 @@
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3070,7 +3070,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -3112,7 +3112,7 @@
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3124,7 +3124,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(4, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -3287,7 +3287,7 @@
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3305,7 +3305,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".pdf"
+                                  accept=".png,.jpg"
                                 >
                                   <template
                                     v-slot:prepend
@@ -3347,7 +3347,7 @@
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3359,7 +3359,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(4, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -3401,9 +3401,9 @@ export default {
       advance_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_1: true,
-      advance_success_form_1: true,
-      signifi_success_form_1: true,
+      basic_success_form_1: false,
+      advance_success_form_1: false,
+      signifi_success_form_1: false,
 
       // -----------------------------------------
 
@@ -3425,9 +3425,9 @@ export default {
       advance_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_2: true,
-      advance_success_form_2: true,
-      signifi_success_form_2: true,
+      basic_success_form_2: false,
+      advance_success_form_2: false,
+      signifi_success_form_2: false,
       // -----------------------------------------
 
       // Form 1.3
@@ -3448,9 +3448,9 @@ export default {
       advance_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_3: true,
-      advance_success_form_3: true,
-      signifi_success_form_3: true,
+      basic_success_form_3: false,
+      advance_success_form_3: false,
+      signifi_success_form_3: false,
       // -----------------------------------------
 
       // Form 1.4
@@ -3471,9 +3471,9 @@ export default {
       advance_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
       signifi_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
 
-      basic_success_form_4: true,
-      advance_success_form_4: true,
-      signifi_success_form_4: true,
+      basic_success_form_4: false,
+      advance_success_form_4: false,
+      signifi_success_form_4: false,
       // -----------------------------------------
 
       // Save Data
@@ -3481,37 +3481,94 @@ export default {
     };
   },
   methods: {
-    async saveData(no) {
+    async saveData(no, mode) {
       const url = this.apiPath + "user/addUpdateCategory1_6.php";
       const userId = this.$q.sessionStorage.getItem("uid");
       const year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
+
+      formData.append("user_id", userId);
+      formData.append("q_number", no);
+      formData.append("mode", mode);
+      formData.append("year", year);
+      formData.append("step", 1);
       if (no == 1) {
         // save 1.1 basic
-        let checkBox = this.basic_guide_list_1;
-        checkBox = checkBox.map(x => (x == true ? 1 : 0));
-        checkBox = checkBox.join();
-        formData.append("img", this.basic_file_image_1);
-        formData.append("pdf", this.basic_file_pdf_1);
-        formData.append("user_id", userId);
-        formData.append("q_number", 1);
-        formData.append("mode", "basic");
-        formData.append("text", this.basic_assessment_1);
-        formData.append("check_box", checkBox);
-        formData.append("pdf_path", "");
-        formData.append("img_path", "");
-        formData.append("year", year);
-        formData.append("step", 1);
+        if (mode == "basic") {
+          // 1.1 mode basic
+          formData.append("img", this.basic_file_image_1);
+          formData.append("pdf", this.basic_file_pdf_1);
+          let checkBox = this.basic_guide_list_1;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", resCheckBox);
+          formData.append("text", this.basic_assessment_1);
+          let data = await Axios.post(url, formData);
 
-        let data = await Axios.post(url, formData);
-        console.log(data);
-        console.log(data.data);
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Advance
+            this.basic_success_form_1 = true;
+          }
+        } else if (mode == "advance") {
+          // 1.1 mode advance
+          formData.append("img", this.advance_file_image_1);
+          formData.append("pdf", this.advance_file_pdf_1);
+          let checkBox = this.advance_guide_list_1;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", checkBox);
+          formData.append("text", this.advance_assessment_1);
+          let data = await Axios.post(url, formData);
+          if (!checkBox.includes(0)) {
+            // กรณี check ทุุกหัวข้อ // เปิด Signi
+            this.advance_success_form_1 = true;
+          }
+        } else {
+          // 1.1 mode significance
+          formData.append("img", this.signifi_file_image_1);
+          formData.append("pdf", this.signifi_file_pdf_1);
+          let checkBox = this.signifi_guide_list_1;
+          checkBox = checkBox.map(x => (x == true ? 1 : 0));
+          let resCheckBox = checkBox.join();
+          formData.append("check_box", checkBox);
+          formData.append("text", this.signifi_assessment_1);
+          let data = await Axios.post(url, formData);
+        }
+      } else if (no == 2) {
+      } else if (no == 3) {
+      } else if (no == 4) {
       }
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
       }, 1000);
+    },
+    async getAssessmentData() {
+      const url = this.apiPath + "user/getCategory1_6.php";
+      const postData = {
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        step: 1
+      };
+      let data = await Axios.post(url, postData);
+      // ข้อ 1.1 Basic
+      let basic1_1 = data.data.filter(
+        x => x.q_number == 1 && x.mode == "basic"
+      );
+      this.basic_assessment_1 = basic1_1[0].text;
+      // checkbox ข้อที่ 1.1
+      let checkBox1_1 = basic1_1[0].check_box
+        .split(",")
+        .map(x => (x == 1 ? true : false));
+      this.basic_guide_list_1 = checkBox1_1;
+      this.basic_file_image_1 =
+        basic1_1[0].is_img == 0 ? null : basic1_1[0].is_img;
+      this.basic_file_pdf_1 =
+        basic1_1[0].is_pdf == 0 ? null : basic1_1[0].is_pdf;
     }
+  },
+  created() {
+    this.getAssessmentData();
   }
 };
 </script>
