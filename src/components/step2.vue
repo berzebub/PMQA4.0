@@ -337,7 +337,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -355,7 +355,7 @@
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -553,7 +553,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -564,14 +564,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -768,7 +768,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -779,14 +779,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1141,7 +1141,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1152,14 +1152,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1389,7 +1389,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1400,14 +1400,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1637,7 +1637,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -1648,14 +1648,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2015,7 +2015,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2026,14 +2026,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2241,7 +2241,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2252,14 +2252,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2454,7 +2454,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2465,14 +2465,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2854,7 +2854,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -2865,14 +2865,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3081,7 +3081,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3092,14 +3092,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3316,7 +3316,7 @@
                                       align="center"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
@@ -3327,14 +3327,14 @@
                                       align="center"
                                     >
                                       <q-icon
-                                        name="fas fa-file-pdf"
+                                        name="fas fa-file-image"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class=""
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
+                                        >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
