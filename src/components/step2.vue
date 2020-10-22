@@ -378,7 +378,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(1)"
                                 ></q-btn>
                               </div>
                             </div>
@@ -3364,6 +3364,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
@@ -3465,7 +3466,31 @@ export default {
     };
   },
   methods: {
-    saveData() {
+    async saveData(no) {
+      const url = (this.apiPath = "addUpdateCategory1_6.php");
+      const userId = this.$q.sessionStorage.getItem("uid");
+      const year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      if (no == 1) {
+        formData.append("img", this.basic_file_image_1);
+        formData.append("pdf", this.basic_file_pdf_1);
+        let checkBox = this.basic_guide_list_1;
+        checkBox = checkBox.map(x => (x == true ? 1 : 0));
+        checkBox = checkBox.join();
+        let postData = {
+          user_id: userId,
+          q_number: "",
+          mode: "basic",
+          text: this.basic_assessment_1,
+          check_box: checkBox,
+          pdf_path: "",
+          img_path: "",
+          status: "",
+          year: year
+        };
+        // save 1.1 basic
+        // let data = await Axios.post()
+      }
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
