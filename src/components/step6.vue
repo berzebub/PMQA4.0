@@ -301,24 +301,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!basic_file_image_1"
-                                  >
+                                  
+
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!basic_file_image_1"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -326,12 +325,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -547,24 +548,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!advance_file_image_1"
-                                  >
+                                 
+
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!advance_file_image_1"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -572,12 +572,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -793,24 +795,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!signifi_file_image_1"
-                                  >
+                                  
+                                  
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!signifi_file_image_1"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -818,12 +819,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -1182,24 +1185,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!basic_file_image_2"
-                                  >
+                                  
+
+                                    <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!basic_file_image_2"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -1207,12 +1209,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -1445,24 +1449,22 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!advance_file_image_2"
-                                  >
+                                 
+                                   <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!advance_file_image_2"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -1470,12 +1472,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -1671,24 +1675,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!signifi_file_image_2"
-                                  >
+                                  
+
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!signifi_file_image_2"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -1696,12 +1699,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -2029,24 +2034,24 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!basic_file_image_3"
-                                  >
+                                  
+
+                                  
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!basic_file_image_3"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -2054,12 +2059,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -2276,24 +2283,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!advance_file_image_3"
-                                  >
+                                  
+
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!advance_file_image_3"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -2301,12 +2307,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -2521,24 +2529,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!signifi_file_image_3"
-                                  >
+                                  
+
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!signifi_file_image_3"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -2546,12 +2553,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   v-ripple
@@ -2899,24 +2908,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!basic_file_image_4"
-                                  >
+                                  
+                                  
+                                  <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!basic_file_image_4"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -2924,12 +2932,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   class="bg1 relative-position cursor-pointer"
@@ -3126,24 +3136,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!advance_file_image_4"
-                                  >
+                                 
+
+                                    <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!advance_file_image_4"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -3151,12 +3160,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   class="bg1 relative-position cursor-pointer"
@@ -3358,24 +3369,23 @@
                                   borderless
                                   accept=".jpg,.png"
                                 >
-                                  <template
-                                    v-slot:prepend
-                                    v-if="!signifi_file_image_4"
-                                  >
+                                  
+
+                                   <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
+                                      v-if="!signifi_file_image_4"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
-                                  </template>
 
-                                  <template v-slot:file="{ index, file }">
                                     <div
                                       class="absolute-center full-width"
                                       align="center"
+                                      v-else
                                     >
                                       <q-icon
                                         name="fas fa-file-image"
@@ -3383,12 +3393,14 @@
                                         size="25px"
                                       ></q-icon>
                                       <span
-                                        class=""
+                                        class="font-14 text-black"
                                         style="text-decoration:underline"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
                                   </template>
+
+                                  <template v-slot:file> </template>
                                 </q-file>
                                 <div
                                   class="bg1 relative-position cursor-pointer"
