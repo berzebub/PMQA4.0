@@ -372,7 +372,7 @@ export default {
   },
   data() {
     return {
-      active: 2,
+      active: 1,
       statusForm1: "none",
       statusForm2: "none",
       statusForm3: "none",
@@ -392,7 +392,11 @@ export default {
         year: this.$q.sessionStorage.getItem("y")
       };
       let data = await Axios.post(url, postData);
-      this.currentStep = data.data;
+      if(data.data){
+        this.currentStep = data.data;
+      }
+      
+      
     }
   },
   created() {

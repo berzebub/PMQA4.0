@@ -924,6 +924,7 @@ export default {
   },
   methods: {
     async getData() {
+      this.loadingShow()
       const url = this.apiPath + "user/getCategory0.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
@@ -998,6 +999,7 @@ export default {
         x =>
           x.q_number == "2" && x.category == "ค." && x.category_q_number == "1"
       )[0].text;
+      this.loadingHide()
     },
     async checkFinishStatus() {
       // console.log(this.checkEnvironment);
@@ -1266,9 +1268,6 @@ export default {
       } else if (performanceCount == 5) {
         this.status = "success";
       }
-
-      // this.$emit("statusForm", this.status);
-
       return performanceCount;
     }
   },

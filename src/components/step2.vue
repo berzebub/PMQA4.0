@@ -4001,6 +4001,7 @@ export default {
     // },
 
     async getAssessmentData() {
+      this.loadingShow()
       const url = this.apiPath + "user/getCategory1_6.php";
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
@@ -4029,6 +4030,7 @@ export default {
       }
       
       this.isLoadAssessmentFinish = true      
+      this.loadingHide()
   
     },
     reRenderComponent(){
