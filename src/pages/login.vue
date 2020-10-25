@@ -123,7 +123,7 @@ export default {
           password: this.password,
           type: this.department
         };
-        const url = "http://localhost/pmqa4.0_api/login.php";
+        const url = this.apiPath + "login.php";
         let checkAdminLogin = await Axios.post(url, postData);
         let result = checkAdminLogin.data;
         a(result);

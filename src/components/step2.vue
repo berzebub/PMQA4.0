@@ -309,7 +309,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[0]"
@@ -368,7 +368,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[0]"
@@ -524,7 +524,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[0]"
@@ -583,7 +583,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[0]"
@@ -738,7 +738,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[0]"
@@ -797,7 +797,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[0]"
@@ -1118,7 +1118,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[1]"
@@ -1177,7 +1177,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[1]"
@@ -1367,7 +1367,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[1]"
@@ -1426,7 +1426,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[1]"
@@ -1616,7 +1616,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[1]"
@@ -1675,7 +1675,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[1]"
@@ -2001,7 +2001,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[2]"
@@ -2060,7 +2060,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[2]"
@@ -2227,7 +2227,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[2]"
@@ -2286,7 +2286,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[2]"
@@ -2439,7 +2439,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[2]"
@@ -2498,7 +2498,7 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  v-ripple
+                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[2]"
@@ -2850,8 +2850,8 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[3]"
-                                  @click="basic_file_pdf[3] = null"
-                                  v-rippl,reRenderComponent()e
+                                  @click="basic_file_pdf[3] = null,reRenderComponent()"
+                                
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2909,8 +2909,8 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[3]"
-                                  @click="basic_file_image[3] = null"
-                                  v-rippl,reRenderComponent()e
+                                  @click="basic_file_image[3] = null,reRenderComponent()"
+                                
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3077,8 +3077,8 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[3]"
-                                  @click="advance_file_pdf[3] = null"
-                                  v-rippl,reRenderComponent()e
+                                  @click="advance_file_pdf[3] = null,reRenderComponent()"
+                                
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3136,8 +3136,8 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[3]"
-                                  @click="advance_file_image[3] = null"
-                                  v-rippl,reRenderComponent()e
+                                  @click="advance_file_image[3] = null,reRenderComponent()"
+                                
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3312,8 +3312,8 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[3]"
-                                  @click="signifi_file_pdf[3] = null"
-                                  v-rippl,reRenderComponent()e
+                                  @click="signifi_file_pdf[3] = null,reRenderComponent()"
+                                
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3371,8 +3371,8 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[3]"
-                                  @click="signifi_file_image[3] = null"
-                                  v-rippl,reRenderComponent()e
+                                  @click="signifi_file_image[3] = null,reRenderComponent()"
+                                
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
