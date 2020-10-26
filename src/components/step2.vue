@@ -9,7 +9,7 @@
     <!-- Start BOX 1 -->
     <div class="q-mt-lg font-18">
       <!-- 1.1 -->
-      <div >
+      <div>
         <q-list bordered>
           <q-expansion-item
             group="dataFormStep1"
@@ -33,31 +33,30 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span
-                      class="font-18"
-                      v-if="
-                        !basic_success_form[0] &&
-                          !advance_success_form[0] &&
-                          !signifi_success_form[0]
-                      "
-                      >ยังไม่ทำการประเมิน</span
-                    >
-                    <div class=" font-18" v-else>
-                      <q-icon
+
+                     <q-icon
                         color="teal"
                         name="fas fa-check-circle"
                         size="16px"
+                        v-if="assessmentStatus[0] != -1 && assessmentStatus[0] != 0"
                       ></q-icon>
-                      <span v-if="signifi_success_form[0]">
-                        Significance
-                      </span>
-                      <span v-else-if="advance_success_form[0]">
-                        Advance
-                      </span>
-                      <span v-else="basic_success_form[0]">
-                        Basic
-                      </span>
-                    </div>
+                    <span class="font-18" v-if="assessmentStatus[0] == -1">
+                      ยังไม่ทำการประเมิน
+                    </span>
+                    <span v-else-if="assessmentStatus[0] == 1">
+                      Basic
+                    </span>
+                    <span v-else-if="assessmentStatus[0] == 2">
+                      Advance
+                    </span>
+                    <span v-else-if="assessmentStatus[0] == 0">
+                      ประเมินแล้ว
+                    </span>
+                    <span v-else>
+                      Significance
+                    </span>
+
+                  
                   </div>
                 </div>
               </div>
@@ -108,7 +107,10 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form[0]"
+                              v-if="
+                                advance_success_form[0] &&
+                                  !basic_guide_list[0].includes(false)
+                              "
                             ></q-icon>
                             <span>Advance </span>
                           </div>
@@ -241,7 +243,9 @@
                         <div class="col q-pl-lg q-pr-sm">
                           <div>
                             <div>
-                              <span class="font-18b">คำอธิบายผลการประเมิน </span>
+                              <span class="font-18b"
+                                >คำอธิบายผลการประเมิน
+                              </span>
                             </div>
                             <div class="q-my-md">
                               <q-input
@@ -309,11 +313,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[0]"
-                                  @click="basic_file_pdf[0] = null,reRenderComponent()"
+                                  @click="
+                                    (basic_file_pdf[0] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -368,11 +374,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[0]"
-                                  @click="basic_file_image[0] = null,reRenderComponent()"
+                                  @click="
+                                    (basic_file_image[0] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -524,11 +532,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[0]"
-                                  @click="advance_file_pdf[0] = null,reRenderComponent()"
+                                  @click="
+                                    (advance_file_pdf[0] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -583,11 +593,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[0]"
-                                  @click="advance_file_image[0] = null,reRenderComponent()"
+                                  @click="
+                                    (advance_file_image[0] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -649,7 +661,7 @@
                                   <q-checkbox
                                     v-model="signifi_guide_list[0][0]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -738,11 +750,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[0]"
-                                  @click="signifi_file_pdf[0] = null,reRenderComponent()"
+                                  @click="
+                                    (signifi_file_pdf[0] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -797,11 +811,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[0]"
-                                  @click="signifi_file_image[0] = null,reRenderComponent()"
+                                  @click="
+                                    (signifi_file_image[0] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -851,13 +867,31 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span
-                      class="font-18"
-                      v-if="
-                        !basic_success_form[1] &&
-                          !advance_success_form[1] &&
-                          !signifi_success_form[1]
-                      "
+
+                    <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                        v-if="assessmentStatus[1] != -1 && assessmentStatus[1] != 0"
+                      ></q-icon>
+                    <span class="font-18" v-if="assessmentStatus[1] == -1">
+                      ยังไม่ทำการประเมิน
+                    </span>
+                    <span v-else-if="assessmentStatus[1] == 1">
+                      Basic
+                    </span>
+                    <span v-else-if="assessmentStatus[1] == 2">
+                      Advance
+                    </span>
+                    <span v-else-if="assessmentStatus[1] == 0">
+                      ประเมินแล้ว
+                    </span>
+                    <span v-else>
+                      Significance
+                    </span>
+
+
+                    <!-- <span class="font-18" v-if="!checkStatus(2)"
                       >ยังไม่ทำการประเมิน</span
                     >
                     <div class=" font-18" v-else>
@@ -875,7 +909,9 @@
                       <span v-else="basic_success_form[1]">
                         Basic
                       </span>
-                    </div>
+                    </div> -->
+
+
                   </div>
                 </div>
               </div>
@@ -926,7 +962,10 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form[1]"
+                              v-if="
+                                advance_success_form[1] &&
+                                  !basic_guide_list[1].includes(false)
+                              "
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -997,7 +1036,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[1][0]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1017,7 +1056,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[1][1]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1037,7 +1076,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[1][2]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1118,11 +1157,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[1]"
-                                  @click="basic_file_pdf[1] = null,reRenderComponent()"
+                                  @click="
+                                    (basic_file_pdf[1] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -1177,11 +1218,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[1]"
-                                  @click="basic_file_image[1] = null,reRenderComponent()"
+                                  @click="
+                                    (basic_file_image[1] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -1243,7 +1286,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[1][0]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1263,7 +1306,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[1][1]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1286,7 +1329,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[1][2]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1367,11 +1410,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[1]"
-                                  @click="advance_file_pdf[1] = null,reRenderComponent()"
+                                  @click="
+                                    (advance_file_pdf[1] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -1426,11 +1471,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[1]"
-                                  @click="advance_file_image[1] = null,reRenderComponent()"
+                                  @click="
+                                    (advance_file_image[1] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -1490,7 +1537,7 @@
                                   <q-checkbox
                                     v-model="signifi_guide_list[1][0]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1510,7 +1557,7 @@
                                   <q-checkbox
                                     v-model="signifi_guide_list[1][1]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1533,7 +1580,7 @@
                                   <q-checkbox
                                     v-model="signifi_guide_list[1][2]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1616,11 +1663,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[1]"
-                                  @click="signifi_file_pdf[1] = null,reRenderComponent()"
+                                  @click="
+                                    (signifi_file_pdf[1] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -1675,11 +1724,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[1]"
-                                  @click="signifi_file_image[1] = null,reRenderComponent()"
+                                  @click="
+                                    (signifi_file_image[1] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -1732,13 +1783,8 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span
-                      class="font-18"
-                      v-if="
-                        !basic_success_form[2] &&
-                          !advance_success_form[2] &&
-                          !signifi_success_form[2]
-                      "
+
+                    <!-- <span class="font-18" v-if="!checkStatus(3)"
                       >ยังไม่ทำการประเมิน</span
                     >
                     <div class=" font-18" v-else>
@@ -1750,13 +1796,41 @@
                       <span v-if="signifi_success_form[2]">
                         Significance
                       </span>
-                      <span v-else-if="advance_success_form[2]">
+                      <span
+                        v-else-if="
+                          advance_success_form[2] &&
+                            !basic_guide_list[2].includes(false)
+                        "
+                      >
                         Advance
                       </span>
                       <span v-else="basic_success_form[2]">
                         Basic
                       </span>
-                    </div>
+                    </div> -->
+
+                          <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                        v-if="assessmentStatus[2] != -1 && assessmentStatus[2] != 0"
+                      ></q-icon>
+                    <span class="font-18" v-if="assessmentStatus[2] == -1">
+                      ยังไม่ทำการประเมิน
+                    </span>
+                    <span v-else-if="assessmentStatus[2] == 1">
+                      Basic
+                    </span>
+                    <span v-else-if="assessmentStatus[2] == 2">
+                      Advance
+                    </span>
+                    <span v-else-if="assessmentStatus[2] == 0">
+                      ประเมินแล้ว
+                    </span>
+                    <span v-else>
+                      Significance
+                    </span>
+
                   </div>
                 </div>
               </div>
@@ -1807,7 +1881,10 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form[2]"
+                              v-if="
+                                advance_success_form[2] &&
+                                  !basic_guide_list[2].includes(false)
+                              "
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -1877,7 +1954,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[2][0]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1897,7 +1974,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[2][1]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1916,7 +1993,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[2][2]"
                                     value=""
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2001,11 +2078,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[2]"
-                                  @click="basic_file_pdf[2] = null,reRenderComponent()"
+                                  @click="
+                                    (basic_file_pdf[2] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2060,11 +2139,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[2]"
-                                  @click="basic_file_image[2] = null,reRenderComponent()"
+                                  @click="
+                                    (basic_file_image[2] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2124,7 +2205,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[2][0]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2143,7 +2224,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[2][1]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2227,11 +2308,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[2]"
-                                  @click="advance_file_pdf[2] = null,reRenderComponent()"
+                                  @click="
+                                    (advance_file_pdf[2] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2286,11 +2369,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[2]"
-                                  @click="advance_file_image[2] = null,reRenderComponent()"
+                                  @click="
+                                    (advance_file_image[2] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2349,7 +2434,7 @@
                                   <q-checkbox
                                     v-model="signifi_guide_list[2][0]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2439,11 +2524,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[2]"
-                                  @click="signifi_file_pdf[2] = null,reRenderComponent()"
+                                  @click="
+                                    (signifi_file_pdf[2] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2498,11 +2585,13 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[2]"
-                                  @click="signifi_file_image[2] = null,reRenderComponent()"
+                                  @click="
+                                    (signifi_file_image[2] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2555,13 +2644,8 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <span
-                      class="font-18"
-                      v-if="
-                        !basic_success_form[3] &&
-                          !advance_success_form[3] &&
-                          !signifi_success_form[3]
-                      "
+
+                    <!-- <span class="font-18" v-if="!checkStatus(4)"
                       >ยังไม่ทำการประเมิน</span
                     >
                     <div class=" font-18" v-else>
@@ -2579,7 +2663,32 @@
                       <span v-else="basic_success_form[3]">
                         Basic
                       </span>
-                    </div>
+                    </div> -->
+
+                          <q-icon
+                        color="teal"
+                        name="fas fa-check-circle"
+                        size="16px"
+                        v-if="assessmentStatus[3] != -1 && assessmentStatus[3] != 0"
+                      ></q-icon>
+                    <span class="font-18" v-if="assessmentStatus[3] == -1">
+                      ยังไม่ทำการประเมิน
+                    </span>
+                    <span v-else-if="assessmentStatus[3] == 1">
+                      Basic
+                    </span>
+                    <span v-else-if="assessmentStatus[3] == 2">
+                      Advance
+                    </span>
+                    <span v-else-if="assessmentStatus[3] == 0">
+                      ประเมินแล้ว
+                    </span>
+                    <span v-else>
+                      Significance
+                    </span>
+
+
+
                   </div>
                 </div>
               </div>
@@ -2630,7 +2739,10 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form[3]"
+                              v-if="
+                                advance_success_form[3] &&
+                                  !basic_guide_list[3].includes(false)
+                              "
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -2699,7 +2811,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[3][0]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2718,7 +2830,7 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                   @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                     v-model="basic_guide_list[3][1]"
                                     value
                                   />
@@ -2742,7 +2854,7 @@
                                   <q-checkbox
                                     v-model="basic_guide_list[3][2]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2759,7 +2871,7 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                   @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                     v-model="basic_guide_list[3][3]"
                                     value
                                   />
@@ -2850,8 +2962,10 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[3]"
-                                  @click="basic_file_pdf[3] = null,reRenderComponent()"
-                                
+                                  @click="
+                                    (basic_file_pdf[3] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2909,8 +3023,10 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[3]"
-                                  @click="basic_file_image[3] = null,reRenderComponent()"
-                                
+                                  @click="
+                                    (basic_file_image[3] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -2970,7 +3086,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[3][0]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2991,7 +3107,7 @@
                                   <q-checkbox
                                     v-model="advance_guide_list[3][1]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -3077,8 +3193,10 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_pdf[3]"
-                                  @click="advance_file_pdf[3] = null,reRenderComponent()"
-                                
+                                  @click="
+                                    (advance_file_pdf[3] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3136,8 +3254,10 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="advance_file_image[3]"
-                                  @click="advance_file_image[3] = null,reRenderComponent()"
-                                
+                                  @click="
+                                    (advance_file_image[3] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3197,7 +3317,7 @@
                                   <q-checkbox
                                     v-model="signifi_guide_list[3][0]"
                                     value
-                                     @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -3218,7 +3338,7 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                   @input="reRenderComponent()"
+                                    @input="reRenderComponent()"
                                     v-model="signifi_guide_list[3][1]"
                                     value
                                   />
@@ -3312,8 +3432,10 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_pdf[3]"
-                                  @click="signifi_file_pdf[3] = null,reRenderComponent()"
-                                
+                                  @click="
+                                    (signifi_file_pdf[3] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3371,8 +3493,10 @@
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="signifi_file_image[3]"
-                                  @click="signifi_file_image[3] = null,reRenderComponent()"
-                                
+                                  @click="
+                                    (signifi_file_image[3] = null),
+                                      reRenderComponent()
+                                  "
                                 >
                                   <span class="text-white font-12">
                                     ลบไฟล์
@@ -3412,123 +3536,90 @@ export default {
   data() {
     return {
       // test
-      isLoadAssessmentFinish :false,
+      assessmentData: "",
+      isLoadAssessmentFinish: false,
       basic_assessment: [],
-      basic_success_form: [false,false,false,false],
-      basic_guide_list: [[false,false,false], [false,false,false], [false,false,false], [false,false,false,false]],
+      basic_success_form: [false, false, false, false],
+      basic_guide_list: [
+        [false, false, false],
+        [false, false, false],
+        [false, false, false],
+        [false, false, false, false]
+      ],
       basic_file_image: [],
       basic_file_pdf: [],
       advance_assessment: [],
       advance_success_form: [],
-      advance_guide_list: [[false], [false,false,false], [false,false], [false,false]],
+      advance_guide_list: [
+        [false],
+        [false, false, false],
+        [false, false],
+        [false, false]
+      ],
       advance_file_image: [],
       advance_file_pdf: [],
       signifi_assessment: [],
       signifi_success_form: [],
-      signifi_guide_list: [[false], [false,false,false], [false], [false,false]],
+      signifi_guide_list: [
+        [false],
+        [false, false, false],
+        [false],
+        [false, false]
+      ],
       signifi_file_image: [],
       signifi_file_pdf: [],
-
       // // Form 1.1
       tabs1: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // basic_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Basic
-      // advance_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Advance
-      // signifi_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Significance
-
-      // basic_guide_list_1: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      // advance_guide_list_1: [false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      // signifi_guide_list_1: [false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      // basic_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Basic
-      // advance_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Advance
-      // signifi_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      // basic_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      // advance_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      // signifi_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      // basic_success_form_1: false,
-      // advance_success_form_1: false,
-      // signifi_success_form_1: false,
-
-      // // -----------------------------------------
-
       // // Form 1.2
       tabs2: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // basic_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Basic
-      // advance_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Advance
-      // signifi_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Significance
-
-      // basic_guide_list_2: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      // advance_guide_list_2: [false, false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      // signifi_guide_list_2: [false, false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      // basic_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Basic
-      // advance_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Advance
-      // signifi_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      // basic_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      // advance_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      // signifi_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      // basic_success_form_2: false,
-      // advance_success_form_2: false,
-      // signifi_success_form_2: false,
-      // // -----------------------------------------
-
       // // Form 1.3
       tabs3: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // basic_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Basic
-      // advance_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Advance
-      // signifi_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Significance
-
-      // basic_guide_list_3: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      // advance_guide_list_3: [false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      // signifi_guide_list_3: [false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      // basic_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Basic
-      // advance_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Advance
-      // signifi_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      // basic_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      // advance_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      // signifi_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      // basic_success_form_3: false,
-      // advance_success_form_3: false,
-      // signifi_success_form_3: false,
-      // // -----------------------------------------
-
       // // Form 1.4
       tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // basic_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Basic
-      // advance_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Advance
-      // signifi_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Significance
-
-      // basic_guide_list_4: [false, false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      // advance_guide_list_4: [false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      // signifi_guide_list_4: [false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      // basic_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Basic
-      // advance_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Advance
-      // signifi_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      // basic_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      // advance_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      // signifi_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      // basic_success_form_4: false,
-      // advance_success_form_4: false,
-      // signifi_success_form_4: false,
-      // -----------------------------------------
-
       // Save Data
-      isSaveData: false
+      isSaveData: false,
+      assessmentStatus : [-1,-1,-1,-1]
     };
   },
   methods: {
+    checkStatus(no) {
+        let res = -1;
+            if (this.basic_guide_list[no-1].includes(false)) {
+              // ทำ basic แล้วแต่ไม่ครบ
+              res = 0; //ไม่ได้คะแนน
+            }
+             else {
+            //   // ทำ basic ครบ เช็ค advance ต่อ
+              res = 1;
+                if (this.advance_guide_list[no-1].includes(false)) {
+                  // ทำ advance แล้วแต่ไม่ครบ
+                  res = 1; //basic
+                } 
+                else {
+                  // advanceครบ
+                  res = 2;
+                    if (this.signifi_guide_list[no-1].includes(false)) {
+                      // ทำ signi แต่ไม่ครบ
+                      res = 2;
+                    } else {
+                      res = 3;
+                    }
+                }
+            }
+            return res
+    },
+
+    checkInitialStatus(no){
+      let checkStatus = this.assessmentData.filter(x => x.q_number == no.toString())
+      if(checkStatus.length == 0){
+        return - 1
+      }else{
+        return this.checkStatus(no)
+      }
+    },
+
     async saveData(no, mode) {
-      let index = no - 1
+      let index = no - 1;
       const url = this.apiPath + "user/addUpdateCategory1_6.php";
       const userId = this.$q.sessionStorage.getItem("uid");
       const year = this.$q.sessionStorage.getItem("y");
@@ -3540,204 +3631,64 @@ export default {
       formData.append("year", year);
       formData.append("step", 1);
       // if (no == 1) {
-        // save 1.1 basic
-        if (mode == "basic") {
-          // 1.1 mode basic
-          formData.append("img", this.basic_file_image[index]);
-          formData.append("pdf", this.basic_file_pdf[index]);
-          let checkBox = this.basic_guide_list[index];
-          checkBox = checkBox.map(x => (x == true ? 1 : 0));
-          let resCheckBox = checkBox.join();
-          formData.append("check_box", resCheckBox);
-          formData.append("text", this.basic_assessment[index]);
-          let data = await Axios.post(url, formData);
+      // save 1.1 basic
+      if (mode == "basic") {
+        // 1.1 mode basic
+        formData.append("img", this.basic_file_image[index]);
+        formData.append("pdf", this.basic_file_pdf[index]);
+        let checkBox = this.basic_guide_list[index];
+        checkBox = checkBox.map(x => (x == true ? 1 : 0));
+        let resCheckBox = checkBox.join();
+        formData.append("check_box", resCheckBox);
+        formData.append("text", this.basic_assessment[index]);
+        let data = await Axios.post(url, formData);
 
-          if (!checkBox.includes(0)) {
-            // กรณี check ทุุกหัวข้อ // เปิด Advance
-            this.basic_success_form[index] = true;
-          } else {
-            this.basic_success_form[index] = false;
-          }
-        } else if (mode == "advance") {
-          // 1.1 mode advance
-          formData.append("img", this.advance_file_image[index]);
-          formData.append("pdf", this.advance_file_pdf[index]);
-          let checkBox = this.advance_guide_list[index];
-          checkBox = checkBox.map(x => (x == true ? 1 : 0));
-          let resCheckBox = checkBox.join();
-          formData.append("check_box", resCheckBox);
-          formData.append("text", this.advance_assessment[index]);
-          let data = await Axios.post(url, formData);
-          if (!checkBox.includes(0)) {
-            // กรณี check ทุุกหัวข้อ // เปิด Signi
-            this.advance_success_form[index] = true;
-          } else {
-            this.advance_success_form[index] = false;
-          }
+        if (!checkBox.includes(0)) {
+          // กรณี check ทุุกหัวข้อ // เปิด Advance
+          this.basic_success_form[index] = true;
         } else {
-          // 1.1 mode significance
-          formData.append("img", this.signifi_file_image[index]);
-          formData.append("pdf", this.signifi_file_pdf[index]);
-          let checkBox = this.signifi_guide_list[index];
-          checkBox = checkBox.map(x => (x == true ? 1 : 0));
-          let resCheckBox = checkBox.join();
-          formData.append("check_box", checkBox);
-          formData.append("text", this.signifi_assessment[index]);
-          let data = await Axios.post(url, formData);
+          this.basic_success_form[index] = false;
         }
+      } else if (mode == "advance") {
+        // 1.1 mode advance
+        formData.append("img", this.advance_file_image[index]);
+        formData.append("pdf", this.advance_file_pdf[index]);
+        let checkBox = this.advance_guide_list[index];
+        checkBox = checkBox.map(x => (x == true ? 1 : 0));
+        let resCheckBox = checkBox.join();
+        formData.append("check_box", resCheckBox);
+        formData.append("text", this.advance_assessment[index]);
+        let data = await Axios.post(url, formData);
+        if (!checkBox.includes(0)) {
+          // กรณี check ทุุกหัวข้อ // เปิด Signi
+          this.advance_success_form[index] = true;
+        } else {
+          this.advance_success_form[index] = false;
+        }
+      } else {
+        // 1.1 mode significance
+        formData.append("img", this.signifi_file_image[index]);
+        formData.append("pdf", this.signifi_file_pdf[index]);
+        let checkBox = this.signifi_guide_list[index];
+        checkBox = checkBox.map(x => (x == true ? 1 : 0));
+        let resCheckBox = checkBox.join();
+        formData.append("check_box", checkBox);
+        formData.append("text", this.signifi_assessment[index]);
+        if (!checkBox.includes(0)) {
+          // กรณี check ทุุกหัวข้อ // เปิด Signi
+          this.signifi_success_form[index] = true;
+        } else {
+          this.signifi_success_form[index] = false;
+        }
+        let data = await Axios.post(url, formData);
+      }
+      // console.log(this.checkStatus(no));
+         this.assessmentStatus[no-1] = this.checkStatus(no)
+        // this.assessmentStatus.push("")
+        // this.assessmentStatus.pop()
 
-        // if(!this.basic_success_form.includes(false)){
-        //   // กรณีประเมิน basic ครบทุกช่อง mark ว่า หมวด1 ทำเสร็จ
-        //    const url = this.apiPath + "user/setUserStepperLog.php";
-        //     let postData = {
-        //   category: "category1",
-        //   user_id: this.$q.sessionStorage.getItem("uid"),
-        //   year: this.$q.sessionStorage.getItem("y"),
-        //   status: 1 // 1 = finish
-        // };
-        //   let data = await Axios.post(url, postData);
-        // }
+      this.reRenderComponent();
 
-          this.reRenderComponent()
-      // } 
-      // else if (no == 2) {
-      //   // save 1.2
-      //   if (mode == "basic") {
-      //     // 1.2 basic
-      //     formData.append("img", this.basic_file_image_2);
-      //     formData.append("pdf", this.basic_file_pdf_2);
-      //     let checkBox = this.basic_guide_list_2;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", resCheckBox);
-      //     formData.append("text", this.basic_assessment_2);
-      //     let data = await Axios.post(url, formData);
-
-      //     if (!checkBox.includes(0)) {
-      //       // กรณี check ทุุกหัวข้อ // เปิด Advance
-      //       this.basic_success_form_2 = true;
-      //     } else {
-      //       this.basic_success_form_2 = false;
-      //     }
-      //   } else if (mode == "advance") {
-      //     // 1.2 advance
-      //     formData.append("img", this.advance_file_image_2);
-      //     formData.append("pdf", this.advance_file_pdf_2);
-      //     let checkBox = this.advance_guide_list_2;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", resCheckBox);
-      //     formData.append("text", this.advance_assessment_2);
-      //     let data = await Axios.post(url, formData);
-      //     if (!checkBox.includes(0)) {
-      //       // กรณี check ทุุกหัวข้อ // เปิด Signi
-      //       this.advance_success_form_2 = true;
-      //     } else {
-      //       this.advance_success_form_2 = false;
-      //     }
-      //   } else {
-      //     // 1.2 significance
-      //     formData.append("img", this.signifi_file_image_2);
-      //     formData.append("pdf", this.signifi_file_pdf_2);
-      //     let checkBox = this.signifi_guide_list_2;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", checkBox);
-      //     formData.append("text", this.signifi_assessment_2);
-      //     let data = await Axios.post(url, formData);
-      //   }
-      // } else if (no == 3) {
-      //   // save 1.3
-      //   if (mode == "basic") {
-      //     // 1.3 basic
-      //     formData.append("img", this.basic_file_image_3);
-      //     formData.append("pdf", this.basic_file_pdf_3);
-      //     let checkBox = this.basic_guide_list_3;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", resCheckBox);
-      //     formData.append("text", this.basic_assessment_3);
-      //     let data = await Axios.post(url, formData);
-
-      //     if (!checkBox.includes(0)) {
-      //       // กรณี check ทุุกหัวข้อ // เปิด Advance
-      //       this.basic_success_form_3 = true;
-      //     } else {
-      //       this.basic_success_form_3 = false;
-      //     }
-      //   } else if (mode == "advance") {
-      //     // 1.3 advance
-      //     formData.append("img", this.advance_file_image_3);
-      //     formData.append("pdf", this.advance_file_pdf_3);
-      //     let checkBox = this.advance_guide_list_3;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", resCheckBox);
-      //     formData.append("text", this.advance_assessment_3);
-      //     let data = await Axios.post(url, formData);
-      //     if (!checkBox.includes(0)) {
-      //       // กรณี check ทุุกหัวข้อ // เปิด Signi
-      //       this.advance_success_form_3 = true;
-      //     } else {
-      //       this.advance_success_form_3 = false;
-      //     }
-      //   } else {
-      //     // 1.3 significance
-      //     formData.append("img", this.signifi_file_image_3);
-      //     formData.append("pdf", this.signifi_file_pdf_3);
-      //     let checkBox = this.signifi_guide_list_3;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", checkBox);
-      //     formData.append("text", this.signifi_assessment_3);
-      //     let data = await Axios.post(url, formData);
-      //   }
-      // } else if (no == 4) {
-      //   if (mode == "basic") {
-      //     // 1.4 basic
-      //     formData.append("img", this.basic_file_image_4);
-      //     formData.append("pdf", this.basic_file_pdf_4);
-      //     let checkBox = this.basic_guide_list_4;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", resCheckBox);
-      //     formData.append("text", this.basic_assessment_4);
-      //     let data = await Axios.post(url, formData);
-
-      //     if (!checkBox.includes(0)) {
-      //       // กรณี check ทุุกหัวข้อ // เปิด Advance
-      //       this.basic_success_form_4 = true;
-      //     } else {
-      //       this.basic_success_form_4 = false;
-      //     }
-      //   } else if (mode == "advance") {
-      //     // 1.4 advance
-      //     formData.append("img", this.advance_file_image_4);
-      //     formData.append("pdf", this.advance_file_pdf_4);
-      //     let checkBox = this.advance_guide_list_4;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", resCheckBox);
-      //     formData.append("text", this.advance_assessment_4);
-      //     let data = await Axios.post(url, formData);
-      //     if (!checkBox.includes(0)) {
-      //       // กรณี check ทุุกหัวข้อ // เปิด Signi
-      //       this.advance_success_form_4 = true;
-      //     } else {
-      //       this.advance_success_form_4 = false;
-      //     }
-      //   } else {
-      //     // 1.4 significance
-      //     formData.append("img", this.signifi_file_image_4);
-      //     formData.append("pdf", this.signifi_file_pdf_4);
-      //     let checkBox = this.signifi_guide_list_4;
-      //     checkBox = checkBox.map(x => (x == true ? 1 : 0));
-      //     let resCheckBox = checkBox.join();
-      //     formData.append("check_box", checkBox);
-      //     formData.append("text", this.signifi_assessment_4);
-      //     let data = await Axios.post(url, formData);
-      //   }
-      // }
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
@@ -3746,48 +3697,47 @@ export default {
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "basic");
-        console.log(getData[0]);
-        if(getData.length > 0){
-           this.basic_assessment[i - 1] = getData[0].text;
-        let checkBox = getData[0].check_box
-          .split(",")
-          .map(x => (x == 1 ? true : false));
-        // console.log(checkBox);
-        this.basic_guide_list[i - 1] = [];
+        if (getData.length > 0) {
+          if (getData[0].text != "undefined") {
+            this.basic_assessment[i - 1] = getData[0].text;
+          } else {
+            this.basic_assessment[i - 1] = "";
+          }
+          let checkBox = getData[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+          this.basic_guide_list[i - 1] = [];
           if (!checkBox.includes(false)) {
             this.basic_success_form[i - 1] = true;
-           }else{
+          } else {
             this.basic_success_form[i - 1] = false;
-           }
+          }
           this.basic_guide_list[i - 1] = checkBox;
           this.basic_file_image[i - 1] =
             getData[0].is_img == 0 ? null : [getData[0].is_img];
           this.basic_file_pdf[i - 1] =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-       
         }
-       
       }
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "advance");
-        if(getData.length > 0){
-             this.advance_assessment[i - 1] = getData[0].text;
-        let checkBox = getData[0].check_box
-          .split(",")
-          .map(x => (x == 1 ? true : false));
-        this.advance_guide_list[i - 1] = [];
-        if (!checkBox.includes(false)) {
-          this.advance_success_form[i - 1] = true;
+        if (getData.length > 0) {
+          this.advance_assessment[i - 1] = getData[0].text;
+          let checkBox = getData[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+          this.advance_guide_list[i - 1] = [];
+          if (!checkBox.includes(false)) {
+            this.advance_success_form[i - 1] = true;
+          }
+          this.advance_guide_list[i - 1] = checkBox;
+          this.advance_file_image[i - 1] =
+            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.advance_file_pdf[i - 1] =
+            getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
-        this.advance_guide_list[i - 1] = checkBox;
-        this.advance_file_image[i - 1] =
-          getData[0].is_img == 0 ? null : [getData[0].is_img];
-        this.advance_file_pdf[i - 1] =
-          getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-        }
-     
       }
     },
     getSignificance(data) {
@@ -3795,225 +3745,27 @@ export default {
         let getData = data.filter(
           x => x.q_number == i && x.mode == "significance"
         );
-        if(getData.length > 0){
-        this.signifi_guide_list[i - 1] = [];
-        this.signifi_assessment[i - 1] = getData[0].text;
-        let checkBox = getData[0].check_box
-          .split(",")
-          .map(x => (x == 1 ? true : false));
+        if (getData.length > 0) {
+          this.signifi_guide_list[i - 1] = [];
+          this.signifi_assessment[i - 1] = getData[0].text;
+          let checkBox = getData[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
 
-        if (!checkBox.includes(false)) {
-          this.signifi_success_form[i - 1] = true;
+          if (!checkBox.includes(false)) {
+            this.signifi_success_form[i - 1] = true;
+          }
+          this.signifi_guide_list[i - 1] = checkBox;
+          this.signifi_file_image[i - 1] =
+            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.signifi_file_pdf[i - 1] =
+            getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
-        this.signifi_guide_list[i - 1] = checkBox;
-        this.signifi_file_image[i - 1] =
-          getData[0].is_img == 0 ? null : [getData[0].is_img];
-        this.signifi_file_pdf[i - 1] =
-          getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-        }
-      
       }
     },
 
-    // getBasic1(data) {
-    //   // ข้อ 1.1 Basic
-    //   let getData = data.filter(x => x.q_number == 1 && x.mode == "basic");
-    //   this.basic_assessment_1 = getData[0].text;
-    //   // checkbox ข้อที่ 1.1 basic
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-
-    //   if (!checkBox.includes(false)) {
-    //     this.basic_success_form_1 = true;
-    //   }
-    //   this.basic_guide_list_1 = checkBox;
-    //   this.basic_file_image_1 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.basic_file_pdf_1 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getAdvance1(data) {
-    //   let getData = data.filter(x => x.q_number == 1 && x.mode == "advance");
-    //   this.advance_assessment_1 = getData[0].text;
-    //   // checkbox ข้อที่ 1.1 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   if (!checkBox.includes(false)) {
-    //     this.advance_success_form_1 = true;
-    //   }
-    //   this.advance_guide_list_1 = checkBox;
-    //   this.advance_file_image_1 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.advance_file_pdf_1 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getSignificance1(data) {
-    //   let getData = data.filter(
-    //     x => x.q_number == 1 && x.mode == "significance"
-    //   );
-    //   this.signifi_assessment_1 = getData[0].text;
-    //   // checkbox ข้อที่ 1.1 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   this.signifi_guide_list_1 = checkBox;
-    //   this.signifi_file_image_1 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.signifi_file_pdf_1 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getBasic2(data) {
-    //   // ข้อ 1.2 Basic
-    //   let getData = data.filter(x => x.q_number == 2 && x.mode == "basic");
-    //   this.basic_assessment_2 = getData[0].text;
-    //   // checkbox ข้อที่ 1.2 basic
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-
-    //   if (!checkBox.includes(false)) {
-    //     this.basic_success_form_2 = true;
-    //   }
-    //   this.basic_guide_list_2 = checkBox;
-    //   this.basic_file_image_2 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.basic_file_pdf_2 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getAdvance2(data) {
-    //   let getData = data.filter(x => x.q_number == 2 && x.mode == "advance");
-    //   this.advance_assessment_2 = getData[0].text;
-    //   // checkbox ข้อที่ 1.2 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   if (!checkBox.includes(false)) {
-    //     this.advance_success_form_2 = true;
-    //   }
-    //   this.advance_guide_list_2 = checkBox;
-    //   this.advance_file_image_2 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.advance_file_pdf_2 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getSignificance2(data) {
-    //   let getData = data.filter(
-    //     x => x.q_number == 2 && x.mode == "significance"
-    //   );
-    //   this.signifi_assessment_2 = getData[0].text;
-    //   // checkbox ข้อที่ 1.2 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   this.signifi_guide_list_2 = checkBox;
-    //   this.signifi_file_image_2 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.signifi_file_pdf_2 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getBasic3(data) {
-    //   // ข้อ 1.3 Basic
-    //   let getData = data.filter(x => x.q_number == 3 && x.mode == "basic");
-    //   this.basic_assessment_3 = getData[0].text;
-    //   // checkbox ข้อที่ 1.3 basic
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-
-    //   if (!checkBox.includes(false)) {
-    //     this.basic_success_form_3 = true;
-    //   }
-    //   this.basic_guide_list_3 = checkBox;
-    //   this.basic_file_image_3 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.basic_file_pdf_3 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getAdvance3(data) {
-    //   let getData = data.filter(x => x.q_number == 3 && x.mode == "advance");
-    //   this.advance_assessment_3 = getData[0].text;
-    //   // checkbox ข้อที่ 1.3 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   if (!checkBox.includes(false)) {
-    //     this.advance_success_form_3 = true;
-    //   }
-    //   this.advance_guide_list_3 = checkBox;
-    //   this.advance_file_image_3 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.advance_file_pdf_3 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getSignificance3(data) {
-    //   let getData = data.filter(
-    //     x => x.q_number == 3 && x.mode == "significance"
-    //   );
-    //   this.signifi_assessment_3 = getData[0].text;
-    //   // checkbox ข้อที่ 1.3 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   this.signifi_guide_list_3 = checkBox;
-    //   this.signifi_file_image_3 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.signifi_file_pdf_3 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getBasic4(data) {
-    //   // ข้อ 1.3 Basic
-    //   let getData = data.filter(x => x.q_number == 4 && x.mode == "basic");
-    //   this.basic_assessment_4 = getData[0].text;
-    //   // checkbox ข้อที่ 1.3 basic
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-
-    //   if (!checkBox.includes(false)) {
-    //     this.basic_success_form_4 = true;
-    //   }
-    //   this.basic_guide_list_4 = checkBox;
-    //   this.basic_file_image_4 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.basic_file_pdf_4 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getAdvance4(data) {
-    //   let getData = data.filter(x => x.q_number == 4 && x.mode == "advance");
-    //   this.advance_assessment_4 = getData[0].text;
-    //   // checkbox ข้อที่ 1.3 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   if (!checkBox.includes(false)) {
-    //     this.advance_success_form_4 = true;
-    //   }
-    //   this.advance_guide_list_4 = checkBox;
-    //   this.advance_file_image_4 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.advance_file_pdf_4 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-    // getSignificance4(data) {
-    //   let getData = data.filter(
-    //     x => x.q_number == 4 && x.mode == "significance"
-    //   );
-    //   this.signifi_assessment_4 = getData[0].text;
-    //   // checkbox ข้อที่ 1.3 advance
-    //   let checkBox = getData[0].check_box
-    //     .split(",")
-    //     .map(x => (x == 1 ? true : false));
-    //   this.signifi_guide_list_4 = checkBox;
-    //   this.signifi_file_image_4 =
-    //     getData[0].is_img == 0 ? null : [getData[0].is_img];
-    //   this.signifi_file_pdf_4 =
-    //     getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
-    // },
-
     async getAssessmentData() {
-      this.loadingShow()
+      this.loadingShow();
       const url = this.apiPath + "user/getCategory1_6.php";
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
@@ -4021,41 +3773,30 @@ export default {
         step: 1
       };
       let data = await Axios.post(url, postData);
-      // this.getBasic1(data.data);
-      // this.getAdvance1(data.data);
-      // this.getSignificance1(data.data);
-      // this.getBasic2(data.data);
-      // this.getAdvance2(data.data);
-      // this.getSignificance2(data.data);
-      // this.getBasic3(data.data);
-      // this.getAdvance3(data.data);
-      // this.getSignificance3(data.data);
-      // this.getBasic4(data.data);
-      // this.getAdvance4(data.data);
-      // this.getSignificance4(data.data);
-      // test re structure to array
-      if(data.data){
-      this.getBasic(data.data);
-      this.getAdvance(data.data);
-      this.getSignificance(data.data);
-      this.reRenderComponent()
+      this.assessmentData = data.data;
+      if (data.data) {
+        this.getBasic(data.data);
+        this.getAdvance(data.data);
+        this.getSignificance(data.data);
+        for(let i =0 ;i <4 ;i++ ){
+          this.assessmentStatus[i] = this.checkInitialStatus(i+1)
+        }
+        this.reRenderComponent();
       }
-      
-      this.isLoadAssessmentFinish = true      
-      this.loadingHide()
-  
+
+      this.isLoadAssessmentFinish = true;
+      this.loadingHide();
     },
-    reRenderComponent(){
-      this.basic_success_form.push("")
-      this.basic_success_form.pop()
-      this.advance_success_form.push("")
-      this.advance_success_form.pop()
-      this.signifi_success_form.push("")
-      this.signifi_success_form.pop()
-    },
+    reRenderComponent() {
+      this.basic_success_form.push("");
+      this.basic_success_form.pop();
+      this.advance_success_form.push("");
+      this.advance_success_form.pop();
+      this.signifi_success_form.push("");
+      this.signifi_success_form.pop();
+    }
   },
 
-  
   created() {
     this.getAssessmentData();
   }

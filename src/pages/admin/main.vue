@@ -4,8 +4,9 @@
       <q-btn
         class="absolute font-18"
         @click="addAssessor()"
-        style="right:65px;"
+        style="right:65px;width:180px"
         label="เพิ่มผู้ประเมิน"
+        v-show="tab == 'ผู้ประเมิน'"
       ></q-btn>
       <q-tabs
         v-model="tab"
@@ -14,15 +15,27 @@
         active-color="black"
         indicator-color="pink"
         align="justify"
-        style="width:180px;"
+        style="width:250px;"
         narrow-indicator
       >
-        <q-tab name="ผู้ใช้งาน" label="ผู้ใช้งาน" />
-        <q-tab name="ผู้ประเมิน" label="ผู้ประเมิน" />
+        <q-tab name="ผู้ใช้งาน">
+          <template slot="default">
+            <span class="font-24 text-black">
+              ผู้ใช้งาน
+            </span>
+          </template>
+        </q-tab>
+        <q-tab name="ผู้ประเมิน">
+          <template slot="default">
+            <span class="font-24 text-black">
+              ผู้ประเมิน
+            </span></template
+          >
+        </q-tab>
       </q-tabs>
     </div>
 
-    <div class="q-px-xl q-pt-md">
+    <div class="q-px-xl q-pt-xs">
       <!-- USER LIST -->
       <q-tab-panels v-model="tab" class>
         <q-tab-panel name="ผู้ใช้งาน">
@@ -38,7 +51,7 @@
               <td class="q-py-sm q-px-md" style="width:200px" align="center">
                 ผู้ประสานงาน
               </td>
-              <td class="q-py-sm q-px-md" style="width:120px" align="center">
+              <td class="q-py-sm q-px-md" style="width:180px" align="center">
                 เบอร์โทร
               </td>
               <td class="q-py-sm q-px-md" align="center" style="width:70px">
@@ -85,7 +98,7 @@
               <td class="q-py-sm q-px-md" style="width:150px" align="center">
                 รหัสผ่าน
               </td>
-              <td class="q-py-sm q-px-md" style="width:200px" align="center">
+              <td class="q-py-sm q-px-md" style="width:180px" align="center">
                 เบอร์โทร
               </td>
               <td class="q-py-sm q-px-md" style="width:120px" align="center">
@@ -257,12 +270,17 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
 
 <script>
 import Axios from "axios";
+import myFooter from "../../components/footer";
 export default {
+  components: {
+    myFooter
+  },
   data() {
     return {
       tab: "ผู้ใช้งาน",

@@ -1,18 +1,28 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="z-max">
-      <div class="relative-position">
-        <div class="row bg1 container-header relative-position">
+    <q-header class="">
+      <div class="relative-position  ">
+        <div class="row  bg1 container-header">
           <div class="col q-pr-lg self-center" align="right">
-            <span class="text-white font-24"
-              >วันสิ้นสุดการประเมิน : 15 ธันวาคม 2562</span
+            <span
+              @click="setAssessmentDate()"
+              class="text-white font-24"
+              :class="{
+                'underline-text relative-position z-top cursor-pointer ':
+                  $q.sessionStorage.getItem('p') == 2
+              }"
+            >
+              วันสิ้นสุดการประเมิน : {{ endDate }}</span
             >
           </div>
         </div>
         <div class="row bg2 container-header relative-position">
           <div class="col-1" style="width: 280px;"></div>
-          <div class="col self-center font-24 text-black" align="center">
-            <span>กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน</span>
+          <div class="col self-center font-18 text-black" align="center">
+            <!-- TODO หัวข้อต้อง fetch มา -->
+            <span v-if="$q.sessionStorage.getItem('p') == '0'">{{
+              userData.office
+            }}</span>
           </div>
           <div
             v-if="$q.sessionStorage.getItem('p') == '2'"
@@ -25,7 +35,7 @@
               dense
               outline
               padding="0"
-              class="text-black bg-white font-24 z-top"
+              class="text-black bg-white relative-position z-top font-18 "
               label="เปลี่ยนรหัสผ่าน"
               @click="isShowEditAdminPassword = true"
             ></q-btn>
@@ -40,10 +50,12 @@
               dense
               outline
               padding="0"
-              class="text-black bg-white font-24 z-top"
-              label="ออกจากระบบ"
+              class="text-black bg-white relative-position z-top font-18 "
               @click="isShowLogoutDialog = true"
-            ></q-btn>
+            >
+              <q-icon name="fas fa-sign-out-alt" size="sm"></q-icon>
+              &nbsp;ออกจากระบบ</q-btn
+            >
           </div>
         </div>
         <div class="absolute-bottom" style="left: 20px; bottom: -10px;">
@@ -67,36 +79,12 @@
             >
               <div class="col-6">รหัสผ่านเดิม</div>
               <div class="col-6">
-                <q-input
-                  v-model="oldPassword"
-                  dense
-                  outlined
-                  :type="isPwd ? 'password' : 'text'"
-                >
-                  <template v-slot:append>
-                    <q-icon
-                      :name="isPwd ? 'visibility_off' : 'visibility'"
-                      class="cursor-pointer"
-                      @click="isPwd = !isPwd"
-                    />
-                  </template>
+                <q-input v-model="oldPassword" dense outlined type="password">
                 </q-input>
               </div>
               <div class="col-6 q-py-sm">รหัสผ่านใหม่</div>
               <div class="col-6 q-py-sm">
-                <q-input
-                  v-model="newPassword"
-                  dense
-                  outlined
-                  :type="isPwdNew ? 'password' : 'text'"
-                >
-                  <template v-slot:append>
-                    <q-icon
-                      :name="isPwdNew ? 'visibility_off' : 'visibility'"
-                      class="cursor-pointer"
-                      @click="isPwdNew = !isPwdNew"
-                    />
-                  </template>
+                <q-input v-model="newPassword" dense outlined type="password">
                 </q-input>
               </div>
               <div class="col-6">รหัสผ่านใหม่อีกครั้ง</div>
@@ -105,15 +93,8 @@
                   v-model="repeatNewPassword"
                   dense
                   outlined
-                  :type="isPwdNewRepeat ? 'password' : 'text'"
+                  type="password"
                 >
-                  <template v-slot:append>
-                    <q-icon
-                      :name="isPwdNewRepeat ? 'visibility_off' : 'visibility'"
-                      class="cursor-pointer"
-                      @click="isPwdNewRepeat = !isPwdNewRepeat"
-                    />
-                  </template>
                 </q-input>
               </div>
             </div>
@@ -135,8 +116,8 @@
         </q-card>
       </q-dialog>
       <q-dialog v-model="isShowLogoutDialog">
-        <q-card class="q-pa-md">
-          <q-card-section class="text-h5">
+        <q-card class="q-pa-md" style="width:450px">
+          <q-card-section class="font-24" align="center">
             ต้องการออกจากระบบใช่หรือไม่?
           </q-card-section>
           <q-card-actions align="center">
@@ -146,6 +127,98 @@
               @click="confirmLogOut()"
               color="secondary"
               style="width:150px"
+            ></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+      <!-- set assessment date -->
+      <q-dialog v-model="isShowAssessmentDate" persistent="" class="z-top">
+        <q-card style="width:450px">
+          <div class="font-24" style="padding-left:40px;padding-top:20px">
+            สถานะ
+          </div>
+          <q-card-section style="padding-left:75px">
+            <q-radio
+              color="pink"
+              label="ปิดการประเมิน"
+              val="0"
+              v-model="assessmentStatus"
+            ></q-radio>
+            <q-radio
+              class="q-pl-lg"
+              color="pink"
+              label="เปิดการประเมิน"
+              val="1"
+              v-model="assessmentStatus"
+            ></q-radio>
+          </q-card-section>
+          <div class="q-px-lg">
+            <hr />
+          </div>
+          <div class="font-18" style="padding-left:40px;padding-top:20px">
+            <div class="row items-center">
+              ประจำปี
+              <div class="q-pl-md">
+                <q-select
+                  outlined=""
+                  :options="endYearOptions"
+                  dense=""
+                  style="width:90px"
+                  class="font-18"
+                  v-model="yearSelected"
+                ></q-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="font-18" style="padding-left:40px;padding-top:20px">
+            วันสิ้นสุดการประเมิน
+            <div class="row q-pt-sm">
+              <div>
+                <q-select
+                  style="width:100px"
+                  outlined=""
+                  dense
+                  v-model="endDateSelected"
+                  label="วันที่"
+                  :options="endDateOptions"
+                ></q-select>
+              </div>
+              <div class="q-px-md">
+                <q-select
+                  style="width:130px"
+                  outlined=""
+                  dense
+                  :options="endMonthOptions"
+                  v-model="endMonthSelected"
+                  label="เดือน"
+                  @input="changeMonth()"
+                ></q-select>
+              </div>
+              <div>
+                <q-select
+                  style="width:100px"
+                  outlined=""
+                  dense
+                  v-model="endYearSelected"
+                  :options="endYearOptions"
+                  label="ปี"
+                ></q-select>
+              </div>
+            </div>
+          </div>
+          <q-card-actions align="center" class="q-py-lg">
+            <q-btn
+              style="width:150px"
+              v-close-popup
+              outline
+              label="ยกเลิก"
+            ></q-btn>
+            <q-btn
+              @click="confirmSetAssessmentDate()"
+              style="width:150px"
+              color="secondary"
+              label="บันทึก"
             ></q-btn>
           </q-card-actions>
         </q-card>
@@ -160,6 +233,14 @@ export default {
   name: "MainLayout",
   data() {
     return {
+      userData: "",
+      yearOptions: [],
+      endDateSelected: "1",
+      endMonthSelected: "",
+      endYearSelected: "",
+      yearSelected: "2563",
+      assessmentStatus: "0",
+      isShowAssessmentDate: false,
       isShowLogoutDialog: false,
       isPwd: true,
       isPwdNew: true,
@@ -169,10 +250,73 @@ export default {
       // edit admin password
       oldPassword: "",
       newPassword: "",
-      repeatNewPassword: ""
+      repeatNewPassword: "",
+      endDate: "",
+      endDateOptions: [],
+      endMonthOptions: [
+        "มกราคม",
+        "กุมภาพันธ์",
+        "มีนาคม",
+        "เมษายน",
+        "พฤษภาคม",
+        "มิถุนายน",
+        "กรกฎาคม",
+        "สิงหาคม",
+        "กันยายน",
+        "ตุลาคม",
+        "พฤศจิกายน",
+        "ธันวาคม"
+      ],
+      endYearOptions: []
     };
   },
   methods: {
+    async confirmSetAssessmentDate() {
+      const url = this.apiPath + "updateAssessmentDate.php";
+      let endDate =
+        this.endYearSelected -
+        543 +
+        "-" +
+        Number(this.endMonthOptions.indexOf(this.endMonthSelected) + 1) +
+        "-" +
+        this.endDateSelected;
+
+      let postData = {
+        year: this.yearSelected,
+        end_date: endDate,
+        status: this.assessmentStatus
+      };
+      let data = await Axios.post(url, postData);
+      this.isShowAssessmentDate = false;
+      this.getAssessmentDate();
+    },
+    setAssessmentDate() {
+      if (this.$q.sessionStorage.getItem("p") == "2") {
+        this.isShowAssessmentDate = true;
+      }
+    },
+    async getAssessmentDate() {
+      const url = this.apiPath + "getAssessmentDate.php";
+      let assessmentDate = await Axios.get(url);
+      let endDate = assessmentDate.data.end_date;
+
+      endDate = endDate.split("-");
+      this.$q.sessionStorage.set("y", Number(endDate[0]));
+
+      this.endDateSelected = endDate[2];
+      this.endMonthSelected = this.endMonthOptions[endDate[1] - 1];
+
+      this.endYearSelected = Number(endDate[0]) + 543;
+
+      endDate =
+        endDate[2] +
+        " " +
+        this.convertMonth(Number(endDate[1])) +
+        " " +
+        (Number(endDate[0]) + 543);
+
+      this.endDate = endDate;
+    },
     confirmLogOut() {
       this.$q.sessionStorage.clear();
       this.$router.push("/");
@@ -203,6 +347,44 @@ export default {
         this.newPassword = "";
         this.repeatNewPassword = "";
       }
+    },
+    getDaysInMonth(month, year) {
+      return new Date(year, month, 0).getDate();
+    },
+    changeMonth() {
+      let year = this.endYearSelected;
+      let month = this.endMonthOptions.indexOf(this.endMonthSelected);
+      let days = this.getDaysInMonth(month + 1, year);
+      this.endDateOptions = [];
+      for (let i = 1; i <= days; i++) {
+        this.endDateOptions.push(i);
+      }
+      if (this.endDateSelected > days) {
+        this.endDateSelected = 1;
+      }
+    },
+    async getUserData() {
+      const url = this.apiPath + "user/getUserData.php";
+      let postData = {
+        id: this.$q.sessionStorage.getItem("uid")
+      };
+      let data = await Axios.post(url, postData);
+      this.userData = data.data;
+    }
+  },
+  created() {
+    this.getAssessmentDate();
+    let date = new Date();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    this.endYearOptions = [year + 543, year + 544, year + 545];
+    let days = this.getDaysInMonth(month + 1, year);
+    for (let i = 1; i <= days; i++) {
+      this.endDateOptions.push(i);
+    }
+
+    if (this.$q.sessionStorage.getItem("p") == "0") {
+      this.getUserData();
     }
   }
 };
@@ -216,5 +398,8 @@ export default {
 .container-login {
   border: 3px solid #000;
   border-radius: 10px;
+}
+.underline-text {
+  text-decoration: underline;
 }
 </style>

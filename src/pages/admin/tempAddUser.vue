@@ -37,6 +37,13 @@ export default {
       const url = this.apiPath + "addUser.php";
       let addUser = await Axios.post(url, this.data);
       this.notify("สำเร็จ", "green");
+      this.data = {
+        office: "",
+        username: "",
+        password: "2410",
+        collaborator: "สมศรี มากมีศรี",
+        tel: "096-582-5555"
+      };
     }
   }
 };

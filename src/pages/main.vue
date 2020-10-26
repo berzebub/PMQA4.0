@@ -9,13 +9,13 @@
           >
             <!-- ลักษณะองค์กร -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper/0')"
+                  @click="$router.push('/stepper/0')"
                 >
                   <q-icon size="50px" class="color1" name="fas fa-flag">
                   </q-icon
@@ -32,7 +32,7 @@
                       outline
                       square
                       :color="currentStep.category0 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category0 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -51,7 +51,7 @@
 
             <!-- หมวด 1 -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
@@ -77,7 +77,7 @@
                       outline
                       square
                       :color="currentStep.category1 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category1 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -96,7 +96,7 @@
 
             <!-- หมวด 2  -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
@@ -123,7 +123,7 @@
                       outline
                       square
                       :color="currentStep.category2 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category2 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -142,13 +142,13 @@
 
             <!-- หมวด 3 -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper/3')"
+                  @click="$router.push('/stepper/3')"
                 >
                   <q-icon
                     size="50px"
@@ -168,7 +168,7 @@
                       outline
                       square
                       :color="currentStep.category3 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category3 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -194,13 +194,13 @@
           >
             <!-- หมวด 4 -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper/4')"
+                  @click="$router.push('/stepper/4')"
                 >
                   <q-icon
                     size="50px"
@@ -220,7 +220,7 @@
                       outline
                       square
                       :color="currentStep.category4 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category4 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -239,13 +239,13 @@
 
             <!-- หมวด 5 -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper/5')"
+                  @click="$router.push('/stepper/5')"
                 >
                   <q-icon
                     size="50px"
@@ -265,7 +265,7 @@
                       outline
                       square
                       :color="currentStep.category5 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category5 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -284,13 +284,13 @@
 
             <!-- หมวด 6 -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper/6')"
+                  @click="$router.push('/stepper/6')"
                 >
                   <q-icon
                     size="50px"
@@ -310,7 +310,7 @@
                       outline
                       square
                       :color="currentStep.category6 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category6 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -329,13 +329,13 @@
 
             <!-- หมวด 7 -->
             <div class="col-2 relative-position">
-              <div class="absolute-center z-top">
+              <div class="absolute-center ">
                 <q-btn
                   round=""
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper/7')"
+                  @click="$router.push('/stepper/7')"
                 >
                   <q-icon
                     size="50px"
@@ -355,7 +355,7 @@
                       outline
                       square
                       :color="currentStep.category7 == '1' ? 'teal' : ''"
-                      :class="!currentStep.category7 == '0' ? 'bg2 color2' : ''"
+                      class="bg2 color2"
                       size="20px"
                       dense=""
                     >
@@ -430,22 +430,20 @@ export default {
       step6: false,
       step7: false,
       step8: false,
-       currentStep: ""
+      currentStep: ""
     };
   },
   methods: {
-       async getStepperLog() {
+    async getStepperLog() {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y")
       };
       let data = await Axios.post(url, postData);
-      if(data.data){
+      if (data.data) {
         this.currentStep = data.data;
       }
-      
-      
     }
   },
   computed: {
@@ -464,12 +462,10 @@ export default {
       } else {
         return false;
       }
-    },
-   
+    }
   },
   created() {
-     this.getStepperLog();
- 
+    this.getStepperLog();
   }
 };
 </script>

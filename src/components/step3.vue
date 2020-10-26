@@ -35,9 +35,9 @@
                     <span
                       class="font-18"
                       v-if="
-                        !basic_success_form_1 &&
-                          !advance_success_form_1 &&
-                          !signifi_success_form_1
+                        !basic_success_form[0] &&
+                          !advance_success_form[0] &&
+                          !signifi_success_form[0]
                       "
                       >ยังไม่ทำการประเมิน</span
                     >
@@ -47,13 +47,13 @@
                         name="fas fa-check-circle"
                         size="16px"
                       ></q-icon>
-                      <span v-if="signifi_success_form_1">
+                      <span v-if="signifi_success_form[0]">
                         Significance
                       </span>
-                      <span v-else-if="advance_success_form_1">
+                      <span v-else-if="advance_success_form[0]">
                         Advance
                       </span>
-                      <span v-else="basic_success_form_1">
+                      <span v-else="basic_success_form[0]">
                         Basic
                       </span>
                     </div>
@@ -85,7 +85,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="basic_success_form_1"
+                              v-if="basic_success_form[0]"
                             ></q-icon>
                             <span>Basic</span>
                           </div>
@@ -95,7 +95,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_1"
+                        :disable="!basic_success_form[0]"
                       >
                         <template v-slot:default>
                           <div>
@@ -104,7 +104,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form_1"
+                              v-if="advance_success_form[0]"
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -114,7 +114,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_1"
+                        :disable="!advance_success_form[0]"
                       >
                         <template v-slot:default>
                           <div>
@@ -123,7 +123,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form_1"
+                              v-if="signifi_success_form[0]"
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -170,8 +170,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_1[0]"
+                                    v-model="basic_guide_list[0][0]"
                                     value
+                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -190,8 +191,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_1[1]"
+                                    v-model="basic_guide_list[0][1]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -206,8 +208,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_1[2]"
+                                    v-model="basic_guide_list[0][2]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -228,8 +231,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_1[3]"
+                                    v-model="basic_guide_list[0][3]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -249,7 +253,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="basic_assessment_1"
+                                v-model="basic_assessment[0]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -270,11 +274,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_pdf_1"
+                                  v-model="basic_file_pdf[0]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_pdf_1
+                                    !basic_file_pdf[0]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -285,7 +289,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_pdf_1"
+                                      v-if="!basic_file_pdf[0]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -316,11 +320,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_pdf_1"
-                                  @click="basic_file_pdf_1 = null"
+                                  v-if="basic_file_pdf[0]"
+                                  @click="basic_file_pdf[0] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -330,11 +334,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_image_1"
+                                  v-model="basic_file_image[0]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_image_1
+                                    !basic_file_image[0]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -345,7 +349,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_image_1"
+                                      v-if="!basic_file_image[0]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -376,11 +380,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_image_1"
-                                  @click="basic_file_image_1 = null"
+                                  v-if="basic_file_image[0]"
+                                  @click="basic_file_image[0] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -392,7 +396,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData(1)"
+                                  @click="saveData(1, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -437,8 +441,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_1[0]"
+                                    v-model="advance_guide_list[0][0]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -457,8 +462,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_1[1]"
+                                    v-model="advance_guide_list[0][1]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -478,7 +484,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="advance_assessment_1"
+                                v-model="advance_assessment[0]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -499,11 +505,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_pdf_1"
+                                  v-model="advance_file_pdf[0]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_pdf_1
+                                    !advance_file_pdf[0]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -514,7 +520,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_pdf_1"
+                                      v-if="!advance_file_pdf[0]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -545,11 +551,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_pdf_1"
-                                  @click="advance_file_pdf_1 = null"
+                                  v-if="advance_file_pdf[0]"
+                                  @click="advance_file_pdf[0] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -558,11 +564,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_image_1"
+                                  v-model="advance_file_image[0]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_image_1
+                                    !advance_file_image[0]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -573,7 +579,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_image_1"
+                                      v-if="!advance_file_image[0]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -604,11 +610,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_image_1"
-                                  @click="advance_file_image_1 = null"
+                                  v-if="advance_file_image[0]"
+                                  @click="advance_file_image[0] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -620,7 +626,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(1, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -662,8 +668,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_1[0]"
+                                    v-model="signifi_guide_list[0][0]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -689,7 +696,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="signifi_assessment_1"
+                                v-model="signifi_assessment[0]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -710,11 +717,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_pdf_1"
+                                  v-model="signifi_file_pdf[0]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_pdf_1
+                                    !signifi_file_pdf[0]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -725,7 +732,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_pdf_1"
+                                      v-if="!signifi_file_pdf[0]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -756,11 +763,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_pdf_1"
-                                  @click="signifi_file_pdf_1 = null"
+                                  v-if="signifi_file_pdf[0]"
+                                  @click="signifi_file_pdf[0] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -769,11 +776,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_image_1"
+                                  v-model="signifi_file_image[0]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_image_1
+                                    !signifi_file_image[0]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -784,7 +791,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_image_1"
+                                      v-if="!signifi_file_image[0]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -815,11 +822,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_image_1"
-                                  @click="signifi_file_image_1 = null"
+                                  v-if="signifi_file_image[0]"
+                                  @click="signifi_file_image[0] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -831,7 +838,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(1, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -872,9 +879,9 @@
                     <span
                       class="font-18"
                       v-if="
-                        !basic_success_form_2 &&
-                          !advance_success_form_2 &&
-                          !signifi_success_form_2
+                        !basic_success_form[1] &&
+                          !advance_success_form[1] &&
+                          !signifi_success_form[1]
                       "
                       >ยังไม่ทำการประเมิน</span
                     >
@@ -884,13 +891,13 @@
                         name="fas fa-check-circle"
                         size="16px"
                       ></q-icon>
-                      <span v-if="signifi_success_form_2">
+                      <span v-if="signifi_success_form[1]">
                         Significance
                       </span>
-                      <span v-else-if="advance_success_form_2">
+                      <span v-else-if="advance_success_form[1]">
                         Advance
                       </span>
-                      <span v-else="basic_success_form_2">
+                      <span v-else="basic_success_form[1]">
                         Basic
                       </span>
                     </div>
@@ -922,7 +929,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="basic_success_form_2"
+                              v-if="basic_success_form[1]"
                             ></q-icon>
                             <span>Basic</span>
                           </div>
@@ -932,7 +939,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_2"
+                        :disable="!basic_success_form[1]"
                       >
                         <template v-slot:default>
                           <div>
@@ -941,7 +948,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form_2"
+                              v-if="advance_success_form[1]"
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -951,7 +958,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_2"
+                        :disable="!advance_success_form[1]"
                       >
                         <template v-slot:default>
                           <div>
@@ -960,7 +967,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form_2"
+                              v-if="signifi_success_form[1]"
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -1005,8 +1012,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_2[0]"
+                                    v-model="basic_guide_list[1][0]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1025,8 +1033,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_2[1]"
+                                    v-model="basic_guide_list[1][1]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1045,7 +1054,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="basic_assessment_2"
+                                v-model="basic_assessment[1]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1066,11 +1075,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_pdf_2"
+                                  v-model="basic_file_pdf[1]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_pdf_2
+                                    !basic_file_pdf[1]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1081,7 +1090,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_pdf_2"
+                                      v-if="!basic_file_pdf[1]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -1112,11 +1121,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_pdf_2"
-                                  @click="basic_file_pdf_2 = null"
+                                  v-if="basic_file_pdf[1]"
+                                  @click="basic_file_pdf[1] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1125,11 +1134,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_image_2"
+                                  v-model="basic_file_image[1]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_image_2
+                                    !basic_file_image[1]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1140,7 +1149,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_image_2"
+                                      v-if="!basic_file_image[1]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -1171,11 +1180,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_image_2"
-                                  @click="basic_file_image_2 = null"
+                                  v-if="basic_file_image[1]"
+                                  @click="basic_file_image[1] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1187,7 +1196,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(2, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1229,8 +1238,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_2[0]"
+                                    v-model="advance_guide_list[1][0]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1254,7 +1264,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="advance_assessment_2"
+                                v-model="advance_assessment[1]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1275,11 +1285,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_pdf_2"
+                                  v-model="advance_file_pdf[1]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_pdf_2
+                                    !advance_file_pdf[1]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1290,7 +1300,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_pdf_2"
+                                      v-if="!advance_file_pdf[1]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -1321,11 +1331,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_pdf_2"
-                                  @click="advance_file_pdf_2 = null"
+                                  v-if="advance_file_pdf[1]"
+                                  @click="advance_file_pdf[1] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1334,11 +1344,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_image_2"
+                                  v-model="advance_file_image[1]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_image_2
+                                    !advance_file_image[1]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1349,7 +1359,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_image_2"
+                                      v-if="!advance_file_image[1]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -1380,11 +1390,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_image_2"
-                                  @click="advance_file_image_2 = null"
+                                  v-if="advance_file_image[1]"
+                                  @click="advance_file_image[1] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1396,7 +1406,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(2, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1439,8 +1449,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_2[0]"
+                                    v-model="signifi_guide_list[1][0]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1458,8 +1469,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_2[1]"
+                                    v-model="signifi_guide_list[1][1]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1480,7 +1492,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="signifi_assessment_2"
+                                v-model="signifi_assessment[1]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1501,11 +1513,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_pdf_2"
+                                  v-model="signifi_file_pdf[1]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_pdf_2
+                                    !signifi_file_pdf[1]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1516,7 +1528,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_pdf_2"
+                                      v-if="!signifi_file_pdf[1]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -1547,11 +1559,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_pdf_2"
-                                  @click="signifi_file_pdf_2 = null"
+                                  v-if="signifi_file_pdf[1]"
+                                  @click="signifi_file_pdf[1] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1560,11 +1572,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_image_2"
+                                  v-model="signifi_file_image[1]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_image_2
+                                    !signifi_file_image[1]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1575,7 +1587,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_image_2"
+                                      v-if="!signifi_file_image[1]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -1606,11 +1618,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_image_2"
-                                  @click="signifi_file_image_2 = null"
+                                  v-if="signifi_file_image[1]"
+                                  @click="signifi_file_image[1] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1622,7 +1634,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(2, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -1664,9 +1676,9 @@
                     <span
                       class="font-18"
                       v-if="
-                        !basic_success_form_3 &&
-                          !advance_success_form_3 &&
-                          !signifi_success_form_3
+                        !basic_success_form[2] &&
+                          !advance_success_form[2] &&
+                          !signifi_success_form[2]
                       "
                       >ยังไม่ทำการประเมิน</span
                     >
@@ -1676,13 +1688,13 @@
                         name="fas fa-check-circle"
                         size="16px"
                       ></q-icon>
-                      <span v-if="signifi_success_form_3">
+                      <span v-if="signifi_success_form[2]">
                         Significance
                       </span>
-                      <span v-else-if="advance_success_form_3">
+                      <span v-else-if="advance_success_form[2]">
                         Advance
                       </span>
-                      <span v-else="basic_success_form_3">
+                      <span v-else="basic_success_form[2]">
                         Basic
                       </span>
                     </div>
@@ -1714,7 +1726,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="basic_success_form_3"
+                              v-if="basic_success_form[2]"
                             ></q-icon>
                             <span>Basic</span>
                           </div>
@@ -1724,7 +1736,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_3"
+                        :disable="!basic_success_form[2]"
                       >
                         <template v-slot:default>
                           <div>
@@ -1733,7 +1745,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form_3"
+                              v-if="advance_success_form[2]"
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -1743,7 +1755,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_3"
+                        :disable="!advance_success_form[2]"
                       >
                         <template v-slot:default>
                           <div>
@@ -1752,7 +1764,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form_3"
+                              v-if="signifi_success_form[2]"
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -1796,8 +1808,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_3[0]"
+                                    v-model="basic_guide_list[2][0]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1814,8 +1827,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_3[1]"
+                                    v-model="basic_guide_list[2][1]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1833,8 +1847,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_3[2]"
+                                    v-model="basic_guide_list[2][2]"
                                     value=""
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -1854,7 +1869,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="basic_assessment_3"
+                                v-model="basic_assessment[2]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -1875,11 +1890,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_pdf_3"
+                                  v-model="basic_file_pdf[2]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_pdf_3
+                                    !basic_file_pdf[2]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1890,7 +1905,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_pdf_3"
+                                      v-if="!basic_file_pdf[2]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -1921,11 +1936,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_pdf_3"
-                                  @click="basic_file_pdf_3 = null"
+                                  v-if="basic_file_pdf[2]"
+                                  @click="basic_file_pdf[2] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1934,11 +1949,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_image_3"
+                                  v-model="basic_file_image[2]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_image_3
+                                    !basic_file_image[2]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -1949,7 +1964,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_image_3"
+                                      v-if="!basic_file_image[2]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -1980,11 +1995,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_image_3"
-                                  @click="basic_file_image_3 = null"
+                                  v-if="basic_file_image[2]"
+                                  @click="basic_file_image[2] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -1996,7 +2011,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(3, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2040,8 +2055,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_3[0]"
+                                    v-model="advance_guide_list[2][0]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2059,8 +2075,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_3[1]"
+                                    v-model="advance_guide_list[2][1]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2082,7 +2099,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="advance_assessment_3"
+                                v-model="advance_assessment[2]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -2103,11 +2120,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_pdf_3"
+                                  v-model="advance_file_pdf[2]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_pdf_3
+                                    !advance_file_pdf[2]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2118,7 +2135,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_pdf_3"
+                                      v-if="!advance_file_pdf[2]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -2149,11 +2166,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_pdf_3"
-                                  @click="advance_file_pdf_3 = null"
+                                  v-if="advance_file_pdf[2]"
+                                  @click="advance_file_pdf[2] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2162,11 +2179,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_image_3"
+                                  v-model="advance_file_image[2]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_image_3
+                                    !advance_file_image[2]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2177,7 +2194,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_image_3"
+                                      v-if="!advance_file_image[2]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -2208,11 +2225,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_image_3"
-                                  @click="advance_file_image_3 = null"
+                                  v-if="advance_file_image[2]"
+                                  @click="advance_file_image[2] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2224,7 +2241,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(3, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2271,8 +2288,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_3[0]"
+                                    v-model="signifi_guide_list[2][0]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2290,8 +2308,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_3[1]"
+                                    v-model="signifi_guide_list[2][1]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2311,7 +2330,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="signifi_assessment_3"
+                                v-model="signifi_assessment[2]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -2332,11 +2351,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_pdf_3"
+                                  v-model="signifi_file_pdf[2]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_pdf_3
+                                    !signifi_file_pdf[2]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2347,7 +2366,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_pdf_3"
+                                      v-if="!signifi_file_pdf[2]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -2378,11 +2397,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_pdf_3"
-                                  @click="signifi_file_pdf_3 = null"
+                                  v-if="signifi_file_pdf[2]"
+                                  @click="signifi_file_pdf[2] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2391,11 +2410,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_image_3"
+                                  v-model="signifi_file_image[2]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_image_3
+                                    !signifi_file_image[2]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2406,7 +2425,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_image_3"
+                                      v-if="!signifi_file_image[2]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -2437,11 +2456,11 @@
                                   v-ripple
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_image_3"
-                                  @click="signifi_file_image_3 = null"
+                                  v-if="signifi_file_image[2]"
+                                  @click="signifi_file_image[2] = null,reRenderComponent()"
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2453,7 +2472,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(3, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2494,9 +2513,9 @@
                     <span
                       class="font-18"
                       v-if="
-                        !basic_success_form_4 &&
-                          !advance_success_form_4 &&
-                          !signifi_success_form_4
+                        !basic_success_form[3] &&
+                          !advance_success_form[3] &&
+                          !signifi_success_form[3]
                       "
                       >ยังไม่ทำการประเมิน</span
                     >
@@ -2506,13 +2525,13 @@
                         name="fas fa-check-circle"
                         size="16px"
                       ></q-icon>
-                      <span v-if="signifi_success_form_4">
+                      <span v-if="signifi_success_form[3]">
                         Significance
                       </span>
-                      <span v-else-if="advance_success_form_4">
+                      <span v-else-if="advance_success_form[3]">
                         Advance
                       </span>
-                      <span v-else="basic_success_form_4">
+                      <span v-else="basic_success_form[3]">
                         Basic
                       </span>
                     </div>
@@ -2544,7 +2563,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="basic_success_form_4"
+                              v-if="basic_success_form[3]"
                             ></q-icon>
                             <span>Basic</span>
                           </div>
@@ -2554,7 +2573,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="!basic_success_form_4"
+                        :disable="!basic_success_form[3]"
                       >
                         <template v-slot:default>
                           <div>
@@ -2563,7 +2582,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="advance_success_form_4"
+                              v-if="advance_success_form[3]"
                             ></q-icon>
                             <span>Advance</span>
                           </div>
@@ -2573,7 +2592,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="!advance_success_form_4"
+                        :disable="!advance_success_form[3]"
                       >
                         <template v-slot:default>
                           <div>
@@ -2582,7 +2601,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form_4"
+                              v-if="signifi_success_form[3]"
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -2627,8 +2646,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list_4[0]"
+                                    v-model="basic_guide_list[3][0]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2655,7 +2675,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="basic_assessment_4"
+                                v-model="basic_assessment[3]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -2676,11 +2696,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_pdf_4"
+                                  v-model="basic_file_pdf[3]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_pdf_4
+                                    !basic_file_pdf[3]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2691,7 +2711,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_pdf_4"
+                                      v-if="!basic_file_pdf[3]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -2721,12 +2741,12 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_pdf_4"
-                                  @click="basic_file_pdf_4 = null"
+                                  v-if="basic_file_pdf[3]"
+                                  @click="basic_file_pdf[3] = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2735,11 +2755,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_image_4"
+                                  v-model="basic_file_image[3]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_image_4
+                                    !basic_file_image[3]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2750,7 +2770,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_image_4"
+                                      v-if="!basic_file_image[3]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -2780,12 +2800,12 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_image_4"
-                                  @click="basic_file_image_4 = null"
+                                  v-if="basic_file_image[3]"
+                                  @click="basic_file_image[3] = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2797,7 +2817,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(4, 'basic')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -2839,8 +2859,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_4[0]"
+                                    v-model="advance_guide_list[3][0]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2863,8 +2884,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_4[1]"
+                                    v-model="advance_guide_list[3][1]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2881,8 +2903,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list_4[2]"
+                                    v-model="advance_guide_list[3][2]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -2902,7 +2925,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="advance_assessment_4"
+                                v-model="advance_assessment[3]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -2923,11 +2946,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_pdf_4"
+                                  v-model="advance_file_pdf[3]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_pdf_4
+                                    !advance_file_pdf[3]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2938,7 +2961,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_pdf_4"
+                                      v-if="!advance_file_pdf[3]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -2968,12 +2991,12 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_pdf_4"
-                                  @click="advance_file_pdf_4 = null"
+                                  v-if="advance_file_pdf[3]"
+                                  @click="advance_file_pdf[3] = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -2982,11 +3005,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_image_4"
+                                  v-model="advance_file_image[3]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_image_4
+                                    !advance_file_image[3]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -2997,7 +3020,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_image_4"
+                                      v-if="!advance_file_image[3]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -3027,12 +3050,12 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_image_4"
-                                  @click="advance_file_image_4 = null"
+                                  v-if="advance_file_image[3]"
+                                  @click="advance_file_image[3] = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3044,7 +3067,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(4, 'advance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -3088,8 +3111,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_4[0]"
+                                    v-model="signifi_guide_list[3][0]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -3108,8 +3132,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_4[1]"
+                                    v-model="signifi_guide_list[3][1]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -3127,8 +3152,9 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list_4[2]"
+                                    v-model="signifi_guide_list[3][2]"
                                     value
+                                     @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
@@ -3147,7 +3173,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="signifi_assessment_4"
+                                v-model="signifi_assessment[3]"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -3168,11 +3194,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_pdf_4"
+                                  v-model="signifi_file_pdf[3]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_pdf_4
+                                    !signifi_file_pdf[3]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -3183,7 +3209,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_pdf_4"
+                                      v-if="!signifi_file_pdf[3]"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -3213,12 +3239,12 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_pdf_4"
-                                  @click="signifi_file_pdf_4 = null"
+                                  v-if="signifi_file_pdf[3]"
+                                  @click="signifi_file_pdf[3] = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3227,11 +3253,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_image_4"
+                                  v-model="signifi_file_image[3]"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_image_4
+                                    !signifi_file_image[3]
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -3242,7 +3268,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_image_4"
+                                      v-if="!signifi_file_image[3]"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -3272,12 +3298,12 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_image_4"
-                                  @click="signifi_file_image_4 = null"
+                                  v-if="signifi_file_image[3]"
+                                  @click="signifi_file_image[3] = null"
                                   v-ripple
                                 >
                                   <span class="text-white font-12">
-                                    ลบไพล์
+                                    ลบไฟล์
                                   </span>
                                 </div>
                               </div>
@@ -3289,7 +3315,7 @@
                                   :loading="isSaveData"
                                   style="width: 220px; border-radius: 0px;"
                                   push
-                                  @click="saveData()"
+                                  @click="saveData(4, 'significance')"
                                 ></q-btn>
                               </div>
                             </div>
@@ -3313,134 +3339,221 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      // test
+      isLoadAssessmentFinish: false,
+      basic_assessment: [],
+      basic_success_form: [false, false, false, false],
+      basic_guide_list: [
+        [false, false, false, false],
+        [false, false],
+        [false, false, false],
+        [false]
+      ],
+      basic_file_image: [],
+      basic_file_pdf: [],
+      advance_assessment: [],
+      advance_success_form: [],
+      advance_guide_list: [
+        [false, false],
+        [false],
+        [false, false],
+        [false, false, false]
+      ],
+      advance_file_image: [],
+      advance_file_pdf: [],
+      signifi_assessment: [],
+      signifi_success_form: [],
+      signifi_guide_list: [
+        [false],
+        [false, false],
+        [false, false],
+        [false, false, false]
+      ],
+      signifi_file_image: [],
+      signifi_file_pdf: [],
+
       // Form 1.1
       tabs1: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      basic_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Basic
-      advance_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Advance
-      signifi_assessment_1: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_1: [false, false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_1: [false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_1: [false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      basic_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_1: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      basic_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_1: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      basic_success_form_1: false,
-      advance_success_form_1: false,
-      signifi_success_form_1: false,
-
-      // -----------------------------------------
 
       // Form 1.2
       tabs2: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      basic_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Basic
-      advance_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Advance
-      signifi_assessment_2: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_2: [false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_2: [false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_2: [false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      basic_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_2: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      basic_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_2: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      basic_success_form_2: false,
-      advance_success_form_2: false,
-      signifi_success_form_2: false,
-      // -----------------------------------------
 
       // Form 1.3
       tabs3: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      basic_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Basic
-      advance_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Advance
-      signifi_assessment_3: "", // คำอธิบายผลการประเมิน หน้า Significance
 
-      basic_guide_list_3: [false, false, false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_3: [false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_3: [false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      basic_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_3: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      basic_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_3: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      basic_success_form_3: false,
-      advance_success_form_3: false,
-      signifi_success_form_3: false,
-      // -----------------------------------------
 
       // Form 1.4
       tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      basic_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Basic
-      advance_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Advance
-      signifi_assessment_4: "", // คำอธิบายผลการประเมิน หน้า Significance
-
-      basic_guide_list_4: [false], // แนวทางการดำเนินการ หน้า Basic เก็บข้อมูลเป็น Array
-      advance_guide_list_4: [false, false, false], // แนวทางการดำเนินการ หน้า Advance เก็บข้อมูลเป็น Array
-      signifi_guide_list_4: [false, false, false], // แนวทางการดำเนินการ หน้า Significance เก็บข้อมูลเป็น Array
-
-      basic_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Basic
-      advance_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Advance
-      signifi_file_pdf_4: null, // อัพโหลดไพล์ PDF หน้า Significance
-
-      basic_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Basic
-      advance_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Advance
-      signifi_file_image_4: null, // อัพโหลดไพล์ Image JPG or PNG หน้า Significance
-
-      basic_success_form_4: false,
-      advance_success_form_4: false,
-      signifi_success_form_4: false,
-      // -----------------------------------------
+ 
 
       // Save Data
       isSaveData: false
     };
   },
   methods: {
-    async saveData(no) {
-      const url = (this.apiPath = "addUpdateCategory1_6.php");
+    reRenderComponent() {
+      this.basic_success_form.push("");
+      this.basic_success_form.pop();
+      this.advance_success_form.push("");
+      this.advance_success_form.pop();
+      this.signifi_success_form.push("");
+      this.signifi_success_form.pop();
+    },
+    async saveData(no, mode) {
+      let index = no - 1;
+      const url = this.apiPath + "user/addUpdateCategory1_6.php";
       const userId = this.$q.sessionStorage.getItem("uid");
       const year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
-      if (no == 1) {
-        formData.append("img", this.basic_file_image_1);
-        formData.append("pdf", this.basic_file_pdf_1);
-        let checkBox = this.basic_guide_list_1;
+
+      formData.append("user_id", userId);
+      formData.append("q_number", no);
+      formData.append("mode", mode);
+      formData.append("year", year);
+      formData.append("step", 2);
+      // if (no == 1) {
+      // save 1.1 basic
+      if (mode == "basic") {
+        // 1.1 mode basic
+        formData.append("img", this.basic_file_image[index]);
+        formData.append("pdf", this.basic_file_pdf[index]);
+        let checkBox = this.basic_guide_list[index];
         checkBox = checkBox.map(x => (x == true ? 1 : 0));
-        checkBox = checkBox.join();
-        let postData = {
-          user_id: userId,
-          q_number: "",
-          mode: "basic",
-          text: this.basic_assessment_1,
-          check_box: checkBox,
-          pdf_path: "",
-          img_path: "",
-          status: "",
-          year: year
-        };
-        // save 1.1 basic
-        // let data = await Axios.post()
+        let resCheckBox = checkBox.join();
+        formData.append("check_box", resCheckBox);
+        formData.append("text", this.basic_assessment[index]);
+        let data = await Axios.post(url, formData);
+
+        if (!checkBox.includes(0)) {
+          // กรณี check ทุุกหัวข้อ // เปิด Advance
+          this.basic_success_form[index] = true;
+        } else {
+          this.basic_success_form[index] = false;
+        }
+      } else if (mode == "advance") {
+        formData.append("img", this.advance_file_image[index]);
+        formData.append("pdf", this.advance_file_pdf[index]);
+        let checkBox = this.advance_guide_list[index];
+        checkBox = checkBox.map(x => (x == true ? 1 : 0));
+        let resCheckBox = checkBox.join();
+        formData.append("check_box", resCheckBox);
+        formData.append("text", this.advance_assessment[index]);
+        let data = await Axios.post(url, formData);
+        if (!checkBox.includes(0)) {
+          // กรณี check ทุุกหัวข้อ // เปิด Signi
+          this.advance_success_form[index] = true;
+        } else {
+          this.advance_success_form[index] = false;
+        }
+      } else {
+        // 1.1 mode significance
+        formData.append("img", this.signifi_file_image[index]);
+        formData.append("pdf", this.signifi_file_pdf[index]);
+        let checkBox = this.signifi_guide_list[index];
+        checkBox = checkBox.map(x => (x == true ? 1 : 0));
+        let resCheckBox = checkBox.join();
+        formData.append("check_box", checkBox);
+        formData.append("text", this.signifi_assessment[index]);
+        let data = await Axios.post(url, formData);
       }
+
+      this.reRenderComponent();
+
       this.isSaveData = true;
       setTimeout(() => {
         this.isSaveData = false;
       }, 1000);
+    },
+    async getAssessmentData() {
+      this.loadingShow();
+      const url = this.apiPath + "user/getCategory1_6.php";
+      const postData = {
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        step: 2
+      };
+      let data = await Axios.post(url, postData);
+      if (data.data) {
+        this.getBasic(data.data);
+        this.getAdvance(data.data);
+        this.getSignificance(data.data);
+        this.reRenderComponent();
+      }
+
+      this.isLoadAssessmentFinish = true;
+      this.loadingHide();
+    },
+    getBasic(data) {
+      for (let i = 1; i <= 4; i++) {
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+        if (getData.length > 0) {
+          this.basic_assessment[i - 1] = getData[0].text;
+          let checkBox = getData[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+          // console.log(checkBox);
+          this.basic_guide_list[i - 1] = [];
+          if (!checkBox.includes(false)) {
+            this.basic_success_form[i - 1] = true;
+          } else {
+            this.basic_success_form[i - 1] = false;
+          }
+          this.basic_guide_list[i - 1] = checkBox;
+          this.basic_file_image[i - 1] =
+            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.basic_file_pdf[i - 1] =
+            getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+        }
+      }
+    },
+    getAdvance(data) {
+      for (let i = 1; i <= 4; i++) {
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        if (getData.length > 0) {
+          this.advance_assessment[i - 1] = getData[0].text;
+          let checkBox = getData[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+          this.advance_guide_list[i - 1] = [];
+          if (!checkBox.includes(false)) {
+            this.advance_success_form[i - 1] = true;
+          }
+          this.advance_guide_list[i - 1] = checkBox;
+          this.advance_file_image[i - 1] =
+            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.advance_file_pdf[i - 1] =
+            getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+        }
+      }
+    },
+    getSignificance(data) {
+      for (let i = 1; i <= 4; i++) {
+        let getData = data.filter(
+          x => x.q_number == i && x.mode == "significance"
+        );
+        if (getData.length > 0) {
+          this.signifi_guide_list[i - 1] = [];
+          this.signifi_assessment[i - 1] = getData[0].text;
+          let checkBox = getData[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+
+          if (!checkBox.includes(false)) {
+            this.signifi_success_form[i - 1] = true;
+          }
+          this.signifi_guide_list[i - 1] = checkBox;
+          this.signifi_file_image[i - 1] =
+            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.signifi_file_pdf[i - 1] =
+            getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
+        }
+      }
     }
+  },
+  created() {
+    this.getAssessmentData();
   }
 };
 </script>

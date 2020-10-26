@@ -3,13 +3,13 @@
     <div class="relative-position">
       <div class="row bg1 container-bg">
         <div class="col q-pr-lg self-center" align="right">
-          <span class="text-white" style="font-size: 18px;"
+          <span class="text-white font-24"
             >วันสิ้นสุดการประเมิน : {{ endDate }}</span
           >
         </div>
       </div>
       <div class="bg2 container-bg"></div>
-      <div class="absolute-top" style="left: 20px;">
+      <div class="absolute-top" style="left: 20px;top:8px">
         <q-img class src="../../public/images/logo.png" width="250px"></q-img>
       </div>
     </div>
@@ -76,7 +76,7 @@
             <div class="q-mt-sm">
               <q-select
                 outlined
-                label="ผู้ใช้ในแต่ละหน่วยงาน"
+                label="ผู้ใช้แต่ละหน่วยงาน"
                 v-model="department"
                 :options="departmentOptions"
               >
@@ -109,7 +109,7 @@ export default {
     return {
       username: "",
       password: "",
-      department: "ผู้ดูแลระบบ",
+      department: "ผู้ใช้แต่ละหน่วยงาน",
       departmentOptions: ["ผู้ใช้แต่ละหน่วยงาน", "ผู้ประเมิน", "ผู้ดูแลระบบ"],
       isShowPassword: false,
       endDate: ""
