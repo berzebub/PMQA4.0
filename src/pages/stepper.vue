@@ -395,13 +395,12 @@ export default {
       if(data.data){
         this.currentStep = data.data;
       }
-      
-      
-    }
+    },
   },
   created() {
     this.getStepperLog();
   }
+ 
 };
 </script>
 

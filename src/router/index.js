@@ -18,6 +18,7 @@ Vue.mixin({
   data() {
     return {
       apiPath: "https://api.winner-english.com/pmqa4_0_api/"
+      // apiPath : "http://localhost/pmqa4.0_api/"
     };
   },
   methods: {

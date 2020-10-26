@@ -1011,6 +1011,7 @@ export default {
         this.checkStategy == 1 &&
         this.checkPerformance == 1
       ) {
+        console.log('finish all');
         // FINISH ALL
         let postData = {
           category: "category0",
@@ -1019,6 +1020,7 @@ export default {
           status: 1 // 1 = finish
         };
         let data = await Axios.post(url, postData);
+        console.log(data);
       } else if (
         this.checkEnvironment >= 1 ||
         this.checkRelation >= 1 ||
@@ -1026,6 +1028,7 @@ export default {
         this.checkStategy >= 1 ||
         this.checkPerformance >= 1
       ) {
+        console.log("finish some");
         let postData = {
           category: "category0",
           user_id: this.$q.sessionStorage.getItem("uid"),
@@ -1033,6 +1036,7 @@ export default {
           status: 2 // 1 = not finish all
         };
         let data = await Axios.post(url, postData);
+                console.log(data);
       }
     },
 

@@ -3586,6 +3586,18 @@ export default {
           let data = await Axios.post(url, formData);
         }
 
+        // if(!this.basic_success_form.includes(false)){
+        //   // กรณีประเมิน basic ครบทุกช่อง mark ว่า หมวด1 ทำเสร็จ
+        //    const url = this.apiPath + "user/setUserStepperLog.php";
+        //     let postData = {
+        //   category: "category1",
+        //   user_id: this.$q.sessionStorage.getItem("uid"),
+        //   year: this.$q.sessionStorage.getItem("y"),
+        //   status: 1 // 1 = finish
+        // };
+        //   let data = await Axios.post(url, postData);
+        // }
+
           this.reRenderComponent()
       // } 
       // else if (no == 2) {

@@ -15,7 +15,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step1 = !step1), $router.push('/stepper')"
+                  @click=" $router.push('/stepper')"
                 >
                   <q-icon size="50px" class="color1" name="fas fa-flag">
                   </q-icon
@@ -31,8 +31,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step1 ? 'teal' : ''"
-                      :class="!step1 ? 'bg2 color2' : ''"
+                      :color="currentStep.category0 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category0 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -76,8 +76,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step2 ? 'teal' : ''"
-                      :class="!step2 ? 'bg2 color2' : ''"
+                      :color="currentStep.category1 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category1 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -102,7 +102,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step3 = !step3), $router.push('/stepper')"
+                  @click="$router.push('/stepper')"
                 >
                   <q-icon
                     size="50px"
@@ -122,8 +122,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step3 ? 'teal' : ''"
-                      :class="!step3 ? 'bg2 color2' : ''"
+                      :color="currentStep.category2 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category2 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -148,7 +148,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step4 = !step4), $router.push('/stepper')"
+                  @click=" $router.push('/stepper')"
                 >
                   <q-icon
                     size="50px"
@@ -167,8 +167,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step4 ? 'teal' : ''"
-                      :class="!step4 ? 'bg2 color2' : ''"
+                      :color="currentStep.category3 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category3 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -200,7 +200,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step5 = !step5), $router.push('/stepper')"
+                  @click=" $router.push('/stepper')"
                 >
                   <q-icon
                     size="50px"
@@ -219,8 +219,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step5 ? 'teal' : ''"
-                      :class="!step5 ? 'bg2 color2' : ''"
+                      :color="currentStep.category4 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category4 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -245,7 +245,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step6 = !step6), $router.push('/stepper')"
+                  @click=" $router.push('/stepper')"
                 >
                   <q-icon
                     size="50px"
@@ -264,8 +264,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step6 ? 'teal' : ''"
-                      :class="!step6 ? 'bg2 color2' : ''"
+                      :color="currentStep.category5 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category5 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -290,7 +290,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step7 = !step7), $router.push('/stepper')"
+                  @click=" $router.push('/stepper')"
                 >
                   <q-icon
                     size="50px"
@@ -309,8 +309,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step7 ? 'teal' : ''"
-                      :class="!step7 ? 'bg2 color2' : ''"
+                      :color="currentStep.category6 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category6 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -335,7 +335,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step8 = !step8), $router.push('/stepper')"
+                  @click=" $router.push('/stepper')"
                 >
                   <q-icon
                     size="50px"
@@ -354,8 +354,8 @@
                     <q-chip
                       outline
                       square
-                      :color="step8 ? 'teal' : ''"
-                      :class="!step8 ? 'bg2 color2' : ''"
+                      :color="currentStep.category7 == '1' ? 'teal' : ''"
+                      :class="!currentStep.category7 == '0' ? 'bg2 color2' : ''"
                       size="20px"
                       dense=""
                     >
@@ -429,11 +429,26 @@ export default {
       step5: false,
       step6: false,
       step7: false,
-      step8: false
+      step8: false,
+       currentStep: ""
     };
   },
+  methods: {
+       async getStepperLog() {
+      const url = this.apiPath + "user/getStepperLog.php";
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y")
+      };
+      let data = await Axios.post(url, postData);
+      if(data.data){
+        this.currentStep = data.data;
+      }
+      
+      
+    }
+  },
   computed: {
- 
     checkSteper() {
       if (
         this.step1 &&
@@ -449,9 +464,11 @@ export default {
       } else {
         return false;
       }
-    }
+    },
+   
   },
   created() {
+     this.getStepperLog();
  
   }
 };
