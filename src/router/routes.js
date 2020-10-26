@@ -19,7 +19,7 @@ const routes = [
         name: "main"
       },
       {
-        path: "/stepper",
+        path: "/stepper/:step",
         component: () => import("pages/stepper.vue"),
         name: "stepper"
       },

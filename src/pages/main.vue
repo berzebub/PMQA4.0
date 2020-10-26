@@ -15,7 +15,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper')"
+                  @click=" $router.push('/stepper/0')"
                 >
                   <q-icon size="50px" class="color1" name="fas fa-flag">
                   </q-icon
@@ -57,7 +57,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="(step2 = !step2), $router.push('/stepper')"
+                  @click="$router.push('/stepper/1')"
                 >
                   <q-icon
                     size="50px"
@@ -102,7 +102,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click="$router.push('/stepper')"
+                  @click="$router.push('/stepper/2')"
                 >
                   <q-icon
                     size="50px"
@@ -148,7 +148,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper')"
+                  @click=" $router.push('/stepper/3')"
                 >
                   <q-icon
                     size="50px"
@@ -200,7 +200,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper')"
+                  @click=" $router.push('/stepper/4')"
                 >
                   <q-icon
                     size="50px"
@@ -245,7 +245,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper')"
+                  @click=" $router.push('/stepper/5')"
                 >
                   <q-icon
                     size="50px"
@@ -290,7 +290,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper')"
+                  @click=" $router.push('/stepper/6')"
                 >
                   <q-icon
                     size="50px"
@@ -335,7 +335,7 @@
                   size="45px"
                   push=""
                   class="bg3"
-                  @click=" $router.push('/stepper')"
+                  @click=" $router.push('/stepper/7')"
                 >
                   <q-icon
                     size="50px"

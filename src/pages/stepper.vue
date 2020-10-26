@@ -372,7 +372,7 @@ export default {
   },
   data() {
     return {
-      active: 1,
+      active: Number(this.$route.params.step) +1 ,
       statusForm1: "none",
       statusForm2: "none",
       statusForm3: "none",
