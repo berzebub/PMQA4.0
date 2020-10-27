@@ -116,17 +116,25 @@
         </q-card>
       </q-dialog>
       <q-dialog v-model="isShowLogoutDialog">
-        <q-card class="q-pa-md" style="width:450px">
+        <q-card class="q-pa-sm" style="width:450px">
           <q-card-section class="font-24" align="center">
-            ต้องการออกจากระบบใช่หรือไม่?
+            ออกจากระบบ
           </q-card-section>
-          <q-card-actions align="center">
-            <q-btn label="ยกเลิก" style="width:150px" v-close-popup></q-btn>
+          <q-card-section class="font-18" align="center">
+            คุณต้องการออกจากระบบใช่หรือไหม?
+          </q-card-section>
+          <q-card-actions align="center" class="q-mt-md q-mb-md">
             <q-btn
-              label="ตกลง"
+              label="ยกเลิก"
+              style="width:150px;border-radius:0px;border:1px solid"
+              v-close-popup
+            ></q-btn>
+            <q-btn
+              label="ออกจากระบบ"
               @click="confirmLogOut()"
               color="secondary"
-              style="width:150px"
+              style="width:150px;border-radius:0px"
+              push
             ></q-btn>
           </q-card-actions>
         </q-card>
