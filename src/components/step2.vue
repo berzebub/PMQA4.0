@@ -16,7 +16,7 @@
             dense-toggle=""
             dense=""
             expand-icon-class="text-grey-10"
-            default-opened=""
+            :default-opened="index == 0"
             header-style="height:70px;"
           >
             <template v-slot:header>
@@ -61,8 +61,10 @@
               <div>
                 <div class="bg4 row">
                   <div class="col-6" style="width:530px;">
+
+
                     <q-tabs
-                      v-model="tabs1"
+                      v-model="tabs[index]"
                       dense
                       align="justify"
                       class="text-black"
@@ -78,7 +80,7 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-show="basic_success_form[0]"
+                              v-show="item.status >= 1"
                             ></q-icon>
                             <span>Basic</span>
                           </div>
@@ -89,8 +91,7 @@
                         no-caps=""
                         name="Advance"
                         :disable="
-                          !basic_success_form[0] ||
-                            basic_guide_list[0].includes(false)
+                          item.status <1
                         "
                       >
                         <template v-slot:default>
@@ -101,8 +102,7 @@
                               color="teal"
                               size="16px"
                               v-if="
-                                advance_success_form[0] &&
-                                  !basic_guide_list[0].includes(false)
+                                item.status > 1 
                               "
                             ></q-icon>
                             <span>Advance </span>
@@ -114,8 +114,7 @@
                         no-caps=""
                         name="Significance"
                         :disable="
-                          !advance_success_form[0] ||
-                            advance_guide_list[0].includes(false)
+                          !item.status >1 
                         "
                       >
                         <template v-slot:default>
@@ -126,9 +125,7 @@
                               color="teal"
                               size="16px"
                               v-if="
-                                signifi_success_form[0] &&
-                                  advance_success_form[0] &&
-                                  basic_success_form[0]
+                               item.status == 3
                               "
                             ></q-icon>
                             <span>Significance</span>
@@ -139,7 +136,7 @@
                   </div>
                 </div>
                 <div class=" q-pa-md">
-                  <q-tab-panels v-model="tabs1" animated>
+                  <q-tab-panels v-model="tabs[index]" animated>
                     <q-tab-panel name="Basic" class="no-padding">
                       <div class="row">
                         <div
@@ -152,15 +149,12 @@
                             </div>
                             <div class="q-mt-md">
                               <span
-                                >-
-                                ผู้บริหารของส่วนราชการได้สร้างความยั่งยืนโดยการกำหนดวิสัยทัศน์
-                                และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจ
-                                และภาระหน้าที่ของส่วนราชการ (Mission based)
-                                <br />
-                                <br />
-                                -
-                                มีการถ่ายถอดผ่านระบบการนำองค์การเพื่อให้เกิดการดำเนินการทั่ว
-                                ทั้งส่วนราชการ</span
+                              v-for="(text,index2) in item.basic.titleText"
+                                >
+                                -{{ text }}
+                                <br>
+                                <br>
+                                </span
                               >
                             </div>
                           </div>
@@ -171,68 +165,24 @@
                               <span class="font-18b">แนวทางดำเนินการ</span>
                             </div>
                             <div class="q-mt-sm">
-                              <div class="row">
+                              <div class="row" v-for="(checkbox,index3) in item.basic.checkBox" :class="index3 != 0 ? 'q-mt-md' : null">
                                 <div
                                   class="col-1 "
                                   style="width:50px;"
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="basic_guide_list[0][0]"
-                                    @input="reRenderComponent()"
+                                    v-model="data[index].basic.checkBox[index3].status"
                                     value
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
-                                    >ผู้บริหารกำหนดวิสัยทัศน์ ยุทธศาสตร์
-                                    เป้าหมายและตัวชี้วัด ชัดเจนตอบสนอง
-                                    ต่อพันธกิจและภาระหน้าที่ของส่วนราชการ</span
+                                    >{{checkbox.text}}</span
                                   >
                                 </div>
                               </div>
-
-                              <div class="row q-mt-md">
-                                <div
-                                  class="col-1 "
-                                  style="width:50px;"
-                                  align="center"
-                                >
-                                  <q-checkbox
-                                    v-model="basic_guide_list[0][1]"
-                                    @input="reRenderComponent()"
-                                    value
-                                  />
-                                </div>
-                                <div class="col  q-py-xs">
-                                  <span
-                                    >ผู้บริหารสื่อสารถ่ายทอดวิสัยทัศน์
-                                    ยุทธศาสตร์ เป้าหมาย
-                                    และตัวชี้วัดไปสู่ทุกระดับ
-                                    ขององค์การอย่างทั่วถึง</span
-                                  >
-                                </div>
-                              </div>
-
-                              <div class="row q-mt-md">
-                                <div
-                                  class="col-1 "
-                                  style="width:50px;"
-                                  align="center"
-                                >
-                                  <q-checkbox
-                                    v-model="basic_guide_list[0][2]"
-                                    @input="reRenderComponent()"
-                                    value
-                                  />
-                                </div>
-                                <div class="col  q-py-xs">
-                                  <span
-                                    >ส่วนราชการมีระบบการสื่อสารภายในองค์การทั่วถึง
-                                    รวดเร็ว ทันการณ์</span
-                                  >
-                                </div>
-                              </div>
+                            
                             </div>
                           </div>
                         </div>
@@ -245,7 +195,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="basic_assessment[0]"
+                                v-model="data[index].basic.explain"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -266,24 +216,24 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_pdf[0]"
+                                  v-model="data[index].basic.pdf_file"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_pdf[0]
+                                    !data[index].basic.pdf_file
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
                                   accept=".pdf"
-                                  v-if="!basic_file_pdf[0]"
+                                  v-if="!data[index].basic.pdf_file"
                                   @input="uploadPDFTemp('1', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_pdf[0]"
+                                      v-if="!data[index].basic.pdf_file"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม
@@ -313,7 +263,7 @@
                                 <div
                                   class="relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_pdf[0]"
+                                  v-if="data[index].basic.pdf_file"
                                 >
                                   <div
                                     class="full-width q-py-xs"
@@ -336,9 +286,7 @@
                                   <div
                                     class="bg1 text-white font-12 q-py-sm"
                                     @click="
-                                      (basic_file_pdf[0] = null),
-                                        reRenderComponent()
-                                    "
+                                      (data[index].basic.pdf_file = null)"
                                   >
                                     ลบไฟล์
                                   </div>
@@ -349,24 +297,24 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="basic_file_image[0]"
+                                  v-model="data[index].basic.img_file"
                                   dense=""
                                   style=""
                                   :style="
-                                    !basic_file_image[0]
+                                    !data[index].basic.img_file
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
                                   accept=".jpg"
-                                  v-if="!basic_file_image[0]"
+                                  v-if="!data[index].basic.img_file"
                                   @input="uploadIMGTemp('1', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!basic_file_image[0]"
+                                      v-if="!data[index].basic.img_file"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ
@@ -396,7 +344,7 @@
                                 <div
                                   class="relative-position cursor-pointer"
                                   align="center"
-                                  v-if="basic_file_image[0]"
+                                  v-if="data[index].basic.img_file"
                                 >
                                   <div
                                     class="full-width q-py-xs"
@@ -419,9 +367,7 @@
                                   <div
                                     class="bg1 text-white font-12 q-py-sm"
                                     @click="
-                                      (basic_file_image[0] = null),
-                                        reRenderComponent()
-                                    "
+                                      (data[index].basic.img_file = null)"
                                   >
                                     ลบไฟล์
                                   </div>
@@ -444,6 +390,7 @@
                       </div>
                     </q-tab-panel>
 
+<!-- ADVANCE -->
                     <q-tab-panel name="Advance" class="no-padding">
                       <div class="row">
                         <div
@@ -455,12 +402,11 @@
                               <span class="font-18b">ระดับดำเนินการ</span>
                             </div>
                             <div class="q-mt-md">
-                              <span
-                                >- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน
-                                โดยการกำหนดวิสัยทัศน์
-                                และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ
-                                และสอดรับกับยุทธศาสตร์ชาติ (Alignment with
-                                National Strategles)
+                              <span v-for="(text,advanceIndex) in item.advance.titleText"
+                                >
+                                -{{ text }}
+                                <br>
+                                <br>
                               </span>
                             </div>
                           </div>
@@ -470,30 +416,22 @@
                             <div>
                               <span class="font-18b">แนวทางดำเนินการ</span>
                             </div>
-                            <div class="q-mt-sm">
+                            <div class="q-mt-sm" v-for="(checkbox,advanceCheckboxIndex) in item.advance.checkBox" :key="advanceCheckboxIndex">
                               <div class="row">
                                 <div
                                   class="col-1 "
                                   style="width:50px;"
                                   align="center"
+                               
                                 >
                                   <q-checkbox
-                                    v-model="advance_guide_list[0][0]"
-                                    value=""
-                                    @input="reRenderComponent()"
+                                    v-model="data[index].advance.checkBox[advanceCheckboxIndex].status"
+                                    value
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
-                                  <span
-                                    >การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ
-                                    <br />
-                                    -
-                                    สนับสนุนการบรรลุยุทธศาสตร์และสร้างขีดความสามารถใน
-                                    การแข่งขันของประเทศ
-                                    <br />
-                                    -
-                                    พิจารณาและคำนึงถึงผลกระทบต่อสังคมทั้งเชิงบวกและเชิงลบ
-                                    ทั้งทางตรงและทางอ้อม</span
+                                  <span v-html="checkbox.text"
+                                    ></span
                                   >
                                 </div>
                               </div>
@@ -507,7 +445,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="advance_assessment[0]"
+                                v-model="item.advance.explain"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -528,11 +466,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_pdf[0]"
+                                  v-model="data[index].advance.pdf_file"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_pdf[0]
+                                    !data[index].advance.pdf_file
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -544,7 +482,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_pdf[0]"
+                                      v-if="!data[index].advance.pdf_file"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -574,10 +512,9 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_pdf[0]"
+                                  v-if="data[index].advance.pdf_file"
                                   @click="
-                                    (advance_file_pdf[0] = null),
-                                      reRenderComponent()
+                                    (data[index].advance.pdf_file = null)
                                   "
                                 >
                                   <span class="text-white font-12">
@@ -590,11 +527,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="advance_file_image[0]"
+                                  v-model="data[index].advance.img_file"
                                   dense=""
                                   style=""
                                   :style="
-                                    !advance_file_image[0]
+                                    !data[index].advance.img_file
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -606,7 +543,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!advance_file_image[0]"
+                                      v-if="!data[index].advance.img_file"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -636,10 +573,9 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="advance_file_image[0]"
+                                  v-if="data[index].advance.img_file"
                                   @click="
-                                    (advance_file_image[0] = null),
-                                      reRenderComponent()
+                                    (data[index].advance.img_file = null)
                                   "
                                 >
                                   <span class="text-white font-12">
@@ -664,6 +600,7 @@
                       </div>
                     </q-tab-panel>
 
+<!-- SIGNIFICANCE -->
                     <q-tab-panel name="Significance" class="no-padding">
                       <div class="row">
                         <div
@@ -674,14 +611,10 @@
                             <div>
                               <span class="font-18b">ระดับดำเนินการ</span>
                             </div>
-                            <div class="q-mt-md">
+                            <div class="q-mt-md" v-for="(signiText,signiIndex) in item.significance.titleText" :key="signiIndex">
                               <span
-                                >- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน
-                                โดยการกำหนด ยุทธศาสตร์
-                                ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ
-                                สอดรับกับทิศทางการพัฒนาและยุทธศาสตร์พื้นที่สร้างนวัตกรรมและ
-                                วัฒนธรรมในการมุ่งประโยชน์สุขประชาชน (Innovation,
-                                Citizen-centric)
+                                >
+                                - {{ signiText }}
                               </span>
                             </div>
                           </div>
@@ -691,7 +624,7 @@
                             <div>
                               <span class="font-18b">แนวทางดำเนินการ</span>
                             </div>
-                            <div class="q-mt-sm">
+                            <div class="q-mt-sm" v-for="(checkbox,signiCheckboxIndex) in item.significance.checkBox" :key='signiCheckboxIndex'>
                               <div class="row">
                                 <div
                                   class="col-1 "
@@ -699,20 +632,15 @@
                                   align="center"
                                 >
                                   <q-checkbox
-                                    v-model="signifi_guide_list[0][0]"
+                                    v-model="data[index].significance.checkBox[signiCheckboxIndex].status"
                                     value=""
-                                    @input="reRenderComponent()"
                                   />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span
-                                    >การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ
-                                    <br />- บูรณาการยุทธศาสตร์ชาติ /
-                                    ยุทธศาสตร์พื้นที่ (ถ้ามี) <br />-
-                                    สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน
-                                    เช่น มี
-                                    นโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก
-                                    และตอบสนองความต้องการของประชาชน</span
+                                  v-html="checkbox.text"
+                                    >
+                                    </span
                                   >
                                 </div>
                               </div>
@@ -726,7 +654,7 @@
                             </div>
                             <div class="q-my-md">
                               <q-input
-                                v-model="signifi_assessment[0]"
+                                v-model="data[index].significance.explain"
                                 outlined=""
                                 placeholder="คำอธิบายผลการประเมิน"
                                 type="textarea"
@@ -747,11 +675,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_pdf[0]"
+                                  v-model="data[index].significance.pdf_file"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_pdf[0]
+                                    !data[index].significance.pdf_file
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -763,7 +691,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_pdf[0]"
+                                      v-if="!data[index].significance.pdf_file"
                                     >
                                       <span class="font-16 text-black"
                                         >pdf เอกสารเพิ่มเติม</span
@@ -793,10 +721,9 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_pdf[0]"
+                                  v-if="data[index].significance.pdf_file"
                                   @click="
-                                    (signifi_file_pdf[0] = null),
-                                      reRenderComponent()
+                                    (data[index].significance.pdf_file = null)
                                   "
                                 >
                                   <span class="text-white font-12">
@@ -809,11 +736,11 @@
                                 style="width:205px;"
                               >
                                 <q-file
-                                  v-model="signifi_file_image[0]"
+                                  v-model="data[index].significance.img_file"
                                   dense=""
                                   style=""
                                   :style="
-                                    !signifi_file_image[0]
+                                    !data[index].significance.img_file
                                       ? 'border:2px solid #e84c93;border-radius:10px;'
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
@@ -825,7 +752,7 @@
                                     <div
                                       class="absolute-center fit"
                                       align="center"
-                                      v-if="!signifi_file_image[0]"
+                                      v-if="!data[index].significance.img_file"
                                     >
                                       <span class="font-16 text-black"
                                         >รูปภาพประกอบ</span
@@ -855,10 +782,9 @@
                                 <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
-                                  v-if="signifi_file_image[0]"
+                                  v-if="data[index].significance.img_file"
                                   @click="
-                                    (signifi_file_image[0] = null),
-                                      reRenderComponent()
+                                    (data[index].significance.img_file = null)
                                   "
                                 >
                                   <span class="text-white font-12">
@@ -905,7 +831,7 @@ export default {
         {
           header:
             "1.1 ระบบการนำองค์การของส่วนราชการได้สร้างองค์การที่ยั่งยืน โดยการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์เชื่อมโยง สู่การบรรลุพันธกิจ การมุ่งเน้นประโยชน์สุขประชาชนและการบรรลุผลยุทธศาสตร์ชาติและความสามารถในการแข่งขัน",
-          status: -1, //สถานะของข้อ
+          status: 3, //สถานะของข้อ
           no: 1,
           // 1.1 basic
           basic: {
@@ -943,11 +869,12 @@ export default {
             ],
             checkBox: [
               {
-                text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ
-              - สนับสนุนการบรรลุยุทธศาสตร์และสร้างขีดความสามารถใน การแข่งขันของประเทศ
+                text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ <br/>
+              - สนับสนุนการบรรลุยุทธศาสตร์และสร้างขีดความสามารถใน การแข่งขันของประเทศ<br/>
               - พิจารณาและคำนึงถึงผลกระทบต่อสังคมทั้งเชิงบวกและเชิงลบ ทั้งทางตรงและทางอ้อม`,
                 status: false
-              }
+              },
+              
             ],
             explain: "",
             pdf_file: null,
@@ -962,7 +889,8 @@ export default {
             checkBox: [
               {
                 text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ
-                        - บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)
+                <br/>
+                        - บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)<br/>
                         - สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน เช่น มี นโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก และตอบสนองความต้องการของประชาชน`,
                 status: false
               }
@@ -971,58 +899,63 @@ export default {
             pdf_file: null,
             img_file: null
           }
-        }
+        },
+         
       ],
 
       // test
       assessmentData: "",
-      isLoadAssessmentFinish: false,
-      basic_assessment: [],
-      basic_success_form: [false, false, false, false],
-      basic_guide_list: [
-        [false, false, false],
-        [false, false, false],
-        [false, false, false],
-        [false, false, false, false]
-      ],
-      basic_file_image: [],
-      basic_file_pdf: [],
-      advance_assessment: [],
-      advance_success_form: [],
-      advance_guide_list: [
-        [false],
-        [false, false, false],
-        [false, false],
-        [false, false]
-      ],
-      advance_file_image: [],
-      advance_file_pdf: [],
-      signifi_assessment: [],
-      signifi_success_form: [],
-      signifi_guide_list: [
-        [false],
-        [false, false, false],
-        [false],
-        [false, false]
-      ],
-      signifi_file_image: [],
-      signifi_file_pdf: [],
+      isLoadAssessmentFinish: true,
+      // basic_assessment: [],
+      // basic_success_form: [false, false, false, false],
+      // basic_guide_list: [
+      //   [false, false, false],
+      //   [false, false, false],
+      //   [false, false, false],
+      //   [false, false, false, false]
+      // ],
+      // basic_file_image: [],
+      // basic_file_pdf: [],
+      // advance_assessment: [],
+      // advance_success_form: [],
+      // advance_guide_list: [
+      //   [false],
+      //   [false, false, false],
+      //   [false, false],
+      //   [false, false]
+      // ],
+      // advance_file_image: [],
+      // advance_file_pdf: [],
+      // signifi_assessment: [],
+      // signifi_success_form: [],
+      // signifi_guide_list: [
+      //   [false],
+      //   [false, false, false],
+      //   [false],
+      //   [false, false]
+      // ],
+      // signifi_file_image: [],
+      // signifi_file_pdf: [],
       // // Form 1.1
-      tabs1: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      // tabs1: "Significance", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       // // Form 1.2
-      tabs2: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      // tabs2: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       // // Form 1.3
-      tabs3: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      // tabs3: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       // // Form 1.4
-      tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
+      // tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       // Save Data
       isSaveData: false,
-      assessmentStatus: [-1, -1, -1, -1]
+      // assessmentStatus: [-1, -1, -1, -1],
+      tabs : ["Basic","Basic","Basic"]
     };
   },
   methods: {
+    test(){
+      this.tabs.push("")
+      this.tabs.pop()
+    },
     async uploadPDFTemp(no, mode) {
-      //  let pdfFileName = `${this.$q.sessionStorage.getItem("uid")}-1-${no}-${mode}-${this.$q.sessionStorage.getItem('y')}.pdf`
       let userId = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -1356,13 +1289,11 @@ export default {
           );
         }
       }
-
-      // console.log("get img")
     }
   },
 
   created() {
-    this.getAssessmentData();
+    // this.getAssessmentData();
   }
 };
 </script>

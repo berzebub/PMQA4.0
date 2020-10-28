@@ -105,6 +105,7 @@
               v-close-popup
               outline
               label="ยกเลิก"
+              @click="cancelEditPassword()"
             ></q-btn>
             <q-btn
               @click="confirmEditPassword()"
@@ -279,6 +280,11 @@ export default {
     };
   },
   methods: {
+    cancelEditPassword() {
+      this.oldPassword = "";
+      this.newPassword = "";
+      this.repeatNewPassword = "";
+    },
     async confirmSetAssessmentDate() {
       const url = this.apiPath + "updateAssessmentDate.php";
       let endDate =

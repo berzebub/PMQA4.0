@@ -97,7 +97,11 @@
       </div>
     </div>
 
-    <div class="bg1 container-bg"></div>
+    <div class="bg1 container-bg row items-center">
+      <div align="right" style="width:100%" class="font-18 text-white q-pr-lg">
+        สงวนลิขสิทธิ์ 2563 : กรมควบคุมโรค
+      </div align="right">
+    </div>
   </div>
 </template>
 
@@ -197,11 +201,11 @@ export default {
       const url = this.apiPath + "getAssessmentDate.php";
       let assessmentDate = await Axios.get(url);
       let endDate = assessmentDate.data.end_date;
-
       endDate = endDate.split("-");
       this.$q.sessionStorage.set("y", Number(endDate[0]));
+
       endDate =
-        endDate[2] +
+        Number(endDate[2]) +
         " " +
         this.convertMonth(Number(endDate[1])) +
         " " +

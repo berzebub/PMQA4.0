@@ -40,9 +40,9 @@ export default {
       this.data = {
         office: "",
         username: "",
-        password: "2410",
-        collaborator: "สมศรี มากมีศรี",
-        tel: "096-582-5555"
+        password: "",
+        collaborator: "",
+        tel: ""
       };
     }
   }

@@ -51,8 +51,8 @@
               <td class="q-py-sm q-px-md" style="width:200px" align="center">
                 ผู้ประสานงาน
               </td>
-              <td class="q-py-sm q-px-md" style="width:180px" align="center">
-                เบอร์โทร
+              <td class="q-py-sm q-px-md" style="width:250px" align="center">
+                อีเมล
               </td>
               <td class="q-py-sm q-px-md" align="center" style="width:70px">
                 แก้ไข
@@ -182,7 +182,7 @@
                 v-model="activeUserDataTemp.collaborator"
               ></q-input>
             </div>
-            <div class="col-3">เบอร์โทร</div>
+            <div class="col-3">อีเมล</div>
             <div class="col-8">
               <q-input
                 dense
