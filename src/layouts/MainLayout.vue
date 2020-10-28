@@ -169,6 +169,7 @@
               ประจำปี
               <div class="q-pl-md">
                 <q-select
+                  :disable="assessmentStatus == '0'"
                   outlined=""
                   :options="endYearOptions"
                   dense=""
@@ -185,6 +186,7 @@
             <div class="row q-pt-sm">
               <div>
                 <q-select
+                  :disable="assessmentStatus == '0'"
                   style="width:100px"
                   outlined=""
                   dense
@@ -195,6 +197,7 @@
               </div>
               <div class="q-px-md">
                 <q-select
+                  :disable="assessmentStatus == '0'"
                   style="width:130px"
                   outlined=""
                   dense
@@ -206,6 +209,7 @@
               </div>
               <div>
                 <q-select
+                  :disable="assessmentStatus == '0'"
                   style="width:100px"
                   outlined=""
                   dense

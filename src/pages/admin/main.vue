@@ -7,6 +7,7 @@
         style="right:65px;width:180px"
         label="เพิ่มผู้ประเมิน"
         v-show="tab == 'ผู้ประเมิน'"
+        outline=""
       ></q-btn>
       <q-tabs
         v-model="tab"
@@ -99,7 +100,7 @@
                 รหัสผ่าน
               </td>
               <td class="q-py-sm q-px-md" style="width:180px" align="center">
-                เบอร์โทร
+                อีเมล
               </td>
               <td class="q-py-sm q-px-md" style="width:120px" align="center">
                 ลบ
@@ -250,7 +251,7 @@
                 ref="assessorPassword"
               ></q-input>
             </div>
-            <div class="col-3">เบอร์โทร</div>
+            <div class="col-3">อีเมล</div>
             <div class="col-8">
               <q-input dense outlined v-model="assessorData.tel"></q-input>
             </div>
@@ -337,7 +338,7 @@ export default {
         id: this.assessorData.id
       };
       let data = await Axios.post(url, postData);
-      this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
+      this.notify("ลบข้อมูลสำเร็จ", "secondary");
       this.isShowAssessorDeleteDialog = false;
       this.loadAssessor();
     },
@@ -395,9 +396,13 @@ export default {
       const url = this.apiPath + "getUser.php";
       let userList = await Axios.get(url);
       if (userList.data) {
-        let result = userList.data.sort((a, b) => a.id - b.id);
+        console.log(userList.data);
+        let result = userList.data.sort((a, b) =>
+          a.username > b.username ? 1 : -1
+        );
         this.userList = userList.data;
       }
+      this.loadingHide();
     },
     async loadAssessor() {
       const url = this.apiPath + "getAssessor.php";
