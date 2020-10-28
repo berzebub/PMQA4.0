@@ -43,7 +43,7 @@
             </q-btn>
           </div>
           <div class="absolute-center" align="center" style="top: 50px;">
-            <span class="text-no-wrap">ลักษณะองค์กร</span>
+            <span class="text-no-wrap">ลักษณะองค์การ</span>
           </div>
         </div>
         <div class="relative-position" style="width: 55px;">
@@ -372,7 +372,7 @@ export default {
   },
   data() {
     return {
-      active: Number(this.$route.params.step) +1 ,
+      active: Number(this.$route.params.step) + 1,
       statusForm1: "none",
       statusForm2: "none",
       statusForm3: "none",
@@ -392,15 +392,14 @@ export default {
         year: this.$q.sessionStorage.getItem("y")
       };
       let data = await Axios.post(url, postData);
-      if(data.data){
+      if (data.data) {
         this.currentStep = data.data;
       }
-    },
+    }
   },
   created() {
     this.getStepperLog();
   }
- 
 };
 </script>
 

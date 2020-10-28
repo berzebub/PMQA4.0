@@ -7,7 +7,7 @@
           <div
             class="container-border-lock row justify-between relative-position"
           >
-            <!-- ลักษณะองค์กร -->
+            <!-- ลักษณะองค์การ -->
             <div class="col-2 relative-position">
               <div class="absolute-center ">
                 <q-btn
@@ -44,7 +44,7 @@
                       <span class="font-16">เสร็จสิ้น</span>
                     </q-chip>
                   </div>
-                  <span class="text-no-wrap">ลักษณะองค์กร</span>
+                  <span class="text-no-wrap">ลักษณะองค์การ</span>
                 </div>
               </div>
             </div>

@@ -158,6 +158,9 @@
                 dense
                 outlined
                 v-model="activeUserDataTemp.username"
+                :rules="[val => val.length > 0]"
+                ref="username"
+                hide-bottom-space=""
               ></q-input>
             </div>
             <div class="col-3 q-py-sm">รหัสผ่าน</div>
@@ -166,6 +169,9 @@
                 dense
                 outlined
                 v-model="activeUserDataTemp.password"
+                ref="password"
+                :rules="[val => val.length > 0]"
+                hide-bottom-space=""
               ></q-input>
             </div>
             <div class="col-3 q-pb-sm">ผู้ประสานงาน</div>
@@ -189,7 +195,6 @@
         <q-card-actions align="center" class="q-pb-lg">
           <q-btn
             style="width:150px"
-            @click="clearTempForm()"
             v-close-popup
             outline
             label="ยกเลิก"
@@ -214,15 +219,36 @@
           <div class="row items-center" style="width:91%;margin:auto">
             <div class="col-3">ชื่อ-นามสกุล</div>
             <div class="col-8">
-              <q-input dense outlined v-model="assessorData.name"></q-input>
+              <q-input
+                :rules="[val => val.length > 0]"
+                dense
+                outlined
+                hide-bottom-space=""
+                v-model="assessorData.name"
+                ref="assessorName"
+              ></q-input>
             </div>
             <div class="col-3 q-py-sm">ชื่อผู้ใช้งาน</div>
             <div class="col-8 q-py-sm">
-              <q-input dense outlined v-model="assessorData.username"></q-input>
+              <q-input
+                :rules="[val => val.length > 0]"
+                dense
+                outlined
+                hide-bottom-space=""
+                v-model="assessorData.username"
+                ref="assessorUsername"
+              ></q-input>
             </div>
             <div class="col-3 q-pb-sm">รหัสผ่าน</div>
             <div class="col-8 q-pb-sm">
-              <q-input dense outlined v-model="assessorData.password"></q-input>
+              <q-input
+                :rules="[val => val.length > 0]"
+                dense
+                outlined
+                hide-bottom-space=""
+                v-model="assessorData.password"
+                ref="assessorPassword"
+              ></q-input>
             </div>
             <div class="col-3">เบอร์โทร</div>
             <div class="col-8">
@@ -320,10 +346,24 @@ export default {
       this.assessorData = { ...item };
     },
     confirmAddEditAssessor() {
-      if (this.assessorDialogMode == "add") {
-        this.confirmAddAssessor();
+      //       assessorName
+      // assessorUsername
+      // assessorPassword
+      this.$refs.assessorName.validate();
+      this.$refs.assessorUsername.validate();
+      this.$refs.assessorPassword.validate();
+      if (
+        this.$refs.assessorName.hasError ||
+        this.$refs.assessorUsername.hasError ||
+        this.$refs.assessorPassword.hasError
+      ) {
+        return;
       } else {
-        this.confirmEditAssessorData();
+        if (this.assessorDialogMode == "add") {
+          this.confirmAddAssessor();
+        } else {
+          this.confirmEditAssessorData();
+        }
       }
     },
     async confirmAddAssessor() {
@@ -351,6 +391,7 @@ export default {
       this.isShowAssessorDataDialog = true;
     },
     async loadUser() {
+      this.loadingShow();
       const url = this.apiPath + "getUser.php";
       let userList = await Axios.get(url);
       if (userList.data) {
@@ -365,6 +406,7 @@ export default {
         let result = assessorList.data.sort((a, b) => a.id - b.id);
         this.assessorList = result;
       }
+      this.loadingHide();
     },
     editUser(item) {
       this.isShowEditUserDialog = true;
@@ -372,9 +414,12 @@ export default {
     },
 
     async confirmEditUserData() {
+      this.$refs.username.validate();
+      this.$refs.password.validate();
+      if (this.$refs.username.hasError || this.$refs.password.hasError) {
+        return;
+      }
       this.loadingShow();
-      //   let checkValidatePassword = this.validatePassword();
-      //   if (checkValidatePassword) {
       let postData = this.activeUserDataTemp;
       const url = this.apiPath + "updateUser.php";
       await Axios.post(url, postData);
@@ -383,7 +428,6 @@ export default {
       this.isShowEditUserDialog = false;
       this.loadingHide();
       this.loadUser();
-      //   }
     },
     clearTempForm() {
       this.oldPassword = "";
@@ -407,7 +451,7 @@ export default {
       if (data.data == 0) {
         this.notify("ชื่อผู้ใช้งานนี้ได้ถูกใช้ไปแล้ว", "red");
       } else {
-        this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
+        this.notify("แก้ไขข้อมูลสำเร็จ", "secondary");
         this.clearTempForm();
         this.isShowAssessorDataDialog = false;
         this.loadAssessor();

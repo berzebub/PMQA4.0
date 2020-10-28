@@ -76,7 +76,6 @@
             <div class="q-mt-sm">
               <q-select
                 outlined
-                label="ผู้ใช้แต่ละหน่วยงาน"
                 v-model="department"
                 :options="departmentOptions"
               >
@@ -150,11 +149,11 @@ export default {
     },
     checkRouteAccess() {
       // p == permission
-      let date = new Date()
-      let day = date.getDate()
-      let month = date.getMonth()
-      let year = date.getFullYear()
-        let monthArr = [
+      let date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth();
+      let year = date.getFullYear();
+      let monthArr = [
         "มกราคม",
         "กุมภาพันธ์",
         "มีนาคม",
@@ -167,24 +166,21 @@ export default {
         "ตุลาคม",
         "พฤศจิกายน",
         "ธันวาคม"
-      ]
-      month = monthArr[month]
+      ];
+      month = monthArr[month];
 
-      let endDate = this.endDate.split(" ")
-      let endDay = endDate[0]
-      let endMonth = endDate[1]
-      let endYear = endDate[2]
-      endMonth = monthArr.indexOf(endMonth)
-      month = monthArr.indexOf(month)
+      // let endDate = this.endDate.split(" ")
+      // let endDay = endDate[0]
+      // let endMonth = endDate[1]
+      // let endYear = endDate[2]
+      // endMonth = monthArr.indexOf(endMonth)
+      // month = monthArr.indexOf(month)
 
-      console.log(day,month,year);
-      console.log(endDay,endMonth,endYear);
-
-      if(day > Number(endDay) && month > endMonth && year > Number(endYear) ){
-        // กรณีหมดเวลาประเมิน
-        console.log("เกินเวลาประเมิน");
-      }
-      return
+      // // if(day > Number(endDay) && month > endMonth && year > Number(endYear) ){
+      // //   // กรณีหมดเวลาประเมิน
+      // //   console.log("เกินเวลาประเมิน");
+      // // }
+      // // return
       if (this.department == "ผู้ใช้แต่ละหน่วยงาน") {
         this.$q.sessionStorage.set("p", "0");
         this.$router.push("/main");

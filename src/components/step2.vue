@@ -33,13 +33,14 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-
-                     <q-icon
-                        color="teal"
-                        name="fas fa-check-circle"
-                        size="16px"
-                        v-if="assessmentStatus[0] != -1 && assessmentStatus[0] != 0"
-                      ></q-icon>
+                    <q-icon
+                      color="teal"
+                      name="fas fa-check-circle"
+                      size="16px"
+                      v-if="
+                        assessmentStatus[0] != -1 && assessmentStatus[0] != 0
+                      "
+                    ></q-icon>
                     <span class="font-18" v-if="assessmentStatus[0] == -1">
                       ยังไม่ทำการประเมิน
                     </span>
@@ -50,13 +51,9 @@
                       Advance
                     </span>
                     <span v-else-if="assessmentStatus[0] == 0">
-                      ประเมินแล้ว
+                      ไม่ผ่านการประเมิน
                     </span>
-                    <span v-else>
-                      Significance
-                    </span>
-
-                  
+                    <span v-else> Significance </span>
                   </div>
                 </div>
               </div>
@@ -132,7 +129,11 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form[0]"
+                              v-if="
+                                signifi_success_form[0] &&
+                                  advance_success_form[0] &&
+                                  basic_success_form[0]
+                              "
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -261,8 +262,8 @@
                           <div>
                             <div class="q-mt-lg">
                               <span class="font-18b"
-                                >อัพโหลดข้อมูลเพิ่มเติม</span
-                              >
+                                >อัพโหลดข้อมูลเพิ่มเติม
+                              </span>
                             </div>
                             <div class="row justify-between q-my-sm">
                               <div
@@ -280,6 +281,8 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  v-if="!basic_file_pdf[0]"
+                                  @input="uploadPDFTemp('1', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -288,8 +291,8 @@
                                       v-if="!basic_file_pdf[0]"
                                     >
                                       <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
-                                      >
+                                        >pdf เอกสารเพิ่มเติม
+                                      </span>
                                     </div>
 
                                     <div
@@ -305,25 +308,45 @@
                                       <span
                                         class="font-14 text-black"
                                         style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
                                       >
+                                        pdf เอกสารเพิ่มเติม
+                                      </span>
                                     </div>
                                   </template>
-
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  class="bg1 relative-position cursor-pointer"
+                                  class="relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_pdf[0]"
-                                  @click="
-                                    (basic_file_pdf[0] = null),
-                                      reRenderComponent()
-                                  "
                                 >
-                                  <span class="text-white font-12">
+                                  <div
+                                    class="full-width q-py-xs"
+                                    align="center"
+                                    style="border:2px solid #000000;border-radius:0px;"
+                                  >
+                                    <q-icon
+                                      name="fas fa-file-pdf"
+                                      class="color1 q-px-xs"
+                                      size="20px"
+                                    ></q-icon>
+                                    <span
+                                      class="font-14 text-black"
+                                      style="text-decoration:underline"
+                                      @click="getPDF('1', 'basic')"
+                                    >
+                                      pdf เอกสารเพิ่มเติม
+                                    </span>
+                                  </div>
+                                  <div
+                                    class="bg1 text-white font-12 q-py-sm"
+                                    @click="
+                                      (basic_file_pdf[0] = null),
+                                        reRenderComponent()
+                                    "
+                                  >
                                     ลบไฟล์
-                                  </span>
+                                  </div>
                                 </div>
                               </div>
                               <div
@@ -340,7 +363,9 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".jpg,.png"
+                                  accept=".jpg"
+                                  v-if="!basic_file_image[0]"
+                                  @input="uploadIMGTemp('1', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -349,8 +374,8 @@
                                       v-if="!basic_file_image[0]"
                                     >
                                       <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
-                                      >
+                                        >รูปภาพประกอบ
+                                      </span>
                                     </div>
 
                                     <div
@@ -359,21 +384,55 @@
                                       v-else
                                     >
                                       <q-icon
-                                        name="fas fa-file-image"
+                                        name="fas fa-file-pdf"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
                                       <span
                                         class="font-14 text-black"
                                         style="text-decoration:underline"
-                                        >รูปภาพประกอบ</span
                                       >
+                                        รูปภาพประกอบ
+                                      </span>
                                     </div>
                                   </template>
-
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
+                                  class="relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="basic_file_image[0]"
+                                >
+                                  <div
+                                    class="full-width q-py-xs"
+                                    align="center"
+                                    style="border:2px solid #000000;border-radius:0px;"
+                                  >
+                                    <q-icon
+                                      name="fas fa-file-pdf"
+                                      class="color1 q-px-xs"
+                                      size="20px"
+                                    ></q-icon>
+                                    <span
+                                      class="font-14 text-black"
+                                      style="text-decoration:underline"
+                                      @click="getIMG('1', 'basic')"
+                                    >
+                                      รูปภาพประกอบ
+                                    </span>
+                                  </div>
+                                  <div
+                                    class="bg1 text-white font-12 q-py-sm"
+                                    @click="
+                                      (basic_file_image[0] = null),
+                                        reRenderComponent()
+                                    "
+                                  >
+                                    ลบไฟล์
+                                  </div>
+                                </div>
+
+                                <!-- <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="basic_file_image[0]"
@@ -385,7 +444,7 @@
                                   <span class="text-white font-12">
                                     ลบไฟล์
                                   </span>
-                                </div>
+                                </div> -->
                               </div>
                               <div class="col q-py-md " align="right">
                                 <q-btn
@@ -499,6 +558,7 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  @input="uploadPDFTemp('1', 'advance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -559,7 +619,8 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
+                                  @input="uploadIMGTemp('1', 'advance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -717,6 +778,7 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  @input="uploadPDFTemp('1', 'significance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -777,7 +839,8 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
+                                  @input="uploadIMGTemp('1', 'significance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -867,13 +930,14 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-
                     <q-icon
-                        color="teal"
-                        name="fas fa-check-circle"
-                        size="16px"
-                        v-if="assessmentStatus[1] != -1 && assessmentStatus[1] != 0"
-                      ></q-icon>
+                      color="teal"
+                      name="fas fa-check-circle"
+                      size="16px"
+                      v-if="
+                        assessmentStatus[1] != -1 && assessmentStatus[1] != 0
+                      "
+                    ></q-icon>
                     <span class="font-18" v-if="assessmentStatus[1] == -1">
                       ยังไม่ทำการประเมิน
                     </span>
@@ -884,12 +948,11 @@
                       Advance
                     </span>
                     <span v-else-if="assessmentStatus[1] == 0">
-                      ประเมินแล้ว
+                      ไม่ผ่านการประเมิน
                     </span>
                     <span v-else>
                       Significance
                     </span>
-
 
                     <!-- <span class="font-18" v-if="!checkStatus(2)"
                       >ยังไม่ทำการประเมิน</span
@@ -910,8 +973,6 @@
                         Basic
                       </span>
                     </div> -->
-
-
                   </div>
                 </div>
               </div>
@@ -987,7 +1048,11 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form[1]"
+                              v-if="
+                                signifi_success_form[1] &&
+                                  advance_success_form[1] &&
+                                  basic_success_form[1]
+                              "
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -1124,6 +1189,7 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  @input="uploadPDFTemp('2', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -1184,7 +1250,8 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
+                                  @input="uploadIMGTemp('2', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -1377,6 +1444,7 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  @input="uploadPDFTemp('2', 'advance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -1437,7 +1505,8 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
+                                  @input="uploadIMGTemp('2', 'advance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -1630,6 +1699,7 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  @input="uploadPDFTemp('2', 'significance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -1690,7 +1760,8 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
+                                  @input="uploadIMGTemp('2', 'significance')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -1783,7 +1854,6 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-
                     <!-- <span class="font-18" v-if="!checkStatus(3)"
                       >ยังไม่ทำการประเมิน</span
                     >
@@ -1809,12 +1879,14 @@
                       </span>
                     </div> -->
 
-                          <q-icon
-                        color="teal"
-                        name="fas fa-check-circle"
-                        size="16px"
-                        v-if="assessmentStatus[2] != -1 && assessmentStatus[2] != 0"
-                      ></q-icon>
+                    <q-icon
+                      color="teal"
+                      name="fas fa-check-circle"
+                      size="16px"
+                      v-if="
+                        assessmentStatus[2] != -1 && assessmentStatus[2] != 0
+                      "
+                    ></q-icon>
                     <span class="font-18" v-if="assessmentStatus[2] == -1">
                       ยังไม่ทำการประเมิน
                     </span>
@@ -1825,12 +1897,11 @@
                       Advance
                     </span>
                     <span v-else-if="assessmentStatus[2] == 0">
-                      ประเมินแล้ว
+                      ไม่ผ่านการประเมิน
                     </span>
                     <span v-else>
                       Significance
                     </span>
-
                   </div>
                 </div>
               </div>
@@ -1906,7 +1977,11 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form[2]"
+                              v-if="
+                                signifi_success_form[2] &&
+                                  advance_success_form[2] &&
+                                  basic_success_form[2]
+                              "
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -2045,6 +2120,7 @@
                                   "
                                   borderless
                                   accept=".pdf"
+                                  @input="uploadPDFTemp('3', 'basic')"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -2105,7 +2181,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -2335,7 +2411,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -2551,7 +2627,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -2644,7 +2720,6 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-
                     <!-- <span class="font-18" v-if="!checkStatus(4)"
                       >ยังไม่ทำการประเมิน</span
                     >
@@ -2665,12 +2740,14 @@
                       </span>
                     </div> -->
 
-                          <q-icon
-                        color="teal"
-                        name="fas fa-check-circle"
-                        size="16px"
-                        v-if="assessmentStatus[3] != -1 && assessmentStatus[3] != 0"
-                      ></q-icon>
+                    <q-icon
+                      color="teal"
+                      name="fas fa-check-circle"
+                      size="16px"
+                      v-if="
+                        assessmentStatus[3] != -1 && assessmentStatus[3] != 0
+                      "
+                    ></q-icon>
                     <span class="font-18" v-if="assessmentStatus[3] == -1">
                       ยังไม่ทำการประเมิน
                     </span>
@@ -2681,14 +2758,11 @@
                       Advance
                     </span>
                     <span v-else-if="assessmentStatus[3] == 0">
-                      ประเมินแล้ว
+                      ไม่ผ่านการประเมิน
                     </span>
                     <span v-else>
                       Significance
                     </span>
-
-
-
                   </div>
                 </div>
               </div>
@@ -2764,7 +2838,11 @@
                               name="fas fa-check-circle"
                               color="teal"
                               size="16px"
-                              v-if="signifi_success_form[3]"
+                              v-if="
+                                signifi_success_form[3] &&
+                                  advance_success_form[3] &&
+                                  basic_success_form[3]
+                              "
                             ></q-icon>
                             <span>Significance</span>
                           </div>
@@ -2986,7 +3064,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -3217,7 +3295,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -3456,7 +3534,7 @@
                                       : 'border:2px solid #000000;border-radius:0px;'
                                   "
                                   borderless
-                                  accept=".png,.jpg"
+                                  accept=".jpg"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -3578,43 +3656,86 @@ export default {
       tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       // Save Data
       isSaveData: false,
-      assessmentStatus : [-1,-1,-1,-1]
+      assessmentStatus: [-1, -1, -1, -1]
     };
   },
   methods: {
+    async uploadPDFTemp(no, mode) {
+      //  let pdfFileName = `${this.$q.sessionStorage.getItem("uid")}-1-${no}-${mode}-${this.$q.sessionStorage.getItem('y')}.pdf`
+      let userId = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+
+      formData.append("user_id", userId);
+      formData.append("q_number", no);
+      formData.append("mode", mode);
+      formData.append("year", year);
+      formData.append("step", 1);
+      if (mode == "basic") {
+        formData.append("pdf", this.basic_file_pdf[no - 1]);
+      } else if (mode == "advance") {
+        formData.append("pdf", this.advance_file_pdf[no - 1]);
+      } else {
+        formData.append("pdf", this.signifi_file_pdf[no - 1]);
+      }
+      const url = this.apiPath + "uploadTempFile.php";
+      let data = await Axios.post(url, formData);
+    },
+    async uploadIMGTemp(no, mode) {
+      //  let pdfFileName = `${this.$q.sessionStorage.getItem("uid")}-1-${no}-${mode}-${this.$q.sessionStorage.getItem('y')}.pdf`
+      let userId = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+
+      formData.append("user_id", userId);
+      formData.append("q_number", no);
+      formData.append("mode", mode);
+      formData.append("year", year);
+      formData.append("step", 1);
+      if (mode == "basic") {
+        formData.append("img", this.basic_file_image[no - 1]);
+      } else if (mode == "advance") {
+        formData.append("img", this.advance_file_image[no - 1]);
+      } else {
+        formData.append("img", this.signifi_file_image[no - 1]);
+      }
+      const url = this.apiPath + "uploadTempFile1.php";
+      let data = await Axios.post(url, formData);
+      console.log(data.data);
+    },
     checkStatus(no) {
-        let res = -1;
-            if (this.basic_guide_list[no-1].includes(false)) {
-              // ทำ basic แล้วแต่ไม่ครบ
-              res = 0; //ไม่ได้คะแนน
-            }
-             else {
-            //   // ทำ basic ครบ เช็ค advance ต่อ
-              res = 1;
-                if (this.advance_guide_list[no-1].includes(false)) {
-                  // ทำ advance แล้วแต่ไม่ครบ
-                  res = 1; //basic
-                } 
-                else {
-                  // advanceครบ
-                  res = 2;
-                    if (this.signifi_guide_list[no-1].includes(false)) {
-                      // ทำ signi แต่ไม่ครบ
-                      res = 2;
-                    } else {
-                      res = 3;
-                    }
-                }
-            }
-            return res
+      let res = -1;
+      if (this.basic_guide_list[no - 1].includes(false)) {
+        // ทำ basic แล้วแต่ไม่ครบ
+        res = 0; //ไม่ได้คะแนน
+      } else {
+        //   // ทำ basic ครบ เช็ค advance ต่อ
+        res = 1;
+        if (this.advance_guide_list[no - 1].includes(false)) {
+          // ทำ advance แล้วแต่ไม่ครบ
+          res = 1; //basic
+        } else {
+          // advanceครบ
+          res = 2;
+          if (this.signifi_guide_list[no - 1].includes(false)) {
+            // ทำ signi แต่ไม่ครบ
+            res = 2;
+          } else {
+            res = 3;
+          }
+        }
+      }
+      return res;
     },
 
-    checkInitialStatus(no){
-      let checkStatus = this.assessmentData.filter(x => x.q_number == no.toString())
-      if(checkStatus.length == 0){
-        return - 1
-      }else{
-        return this.checkStatus(no)
+    checkInitialStatus(no) {
+      let checkStatus = this.assessmentData.filter(
+        x => x.q_number == no.toString()
+      );
+      if (checkStatus.length == 0) {
+        return -1;
+      } else {
+        return this.checkStatus(no);
       }
     },
 
@@ -3630,6 +3751,7 @@ export default {
       formData.append("mode", mode);
       formData.append("year", year);
       formData.append("step", 1);
+
       // if (no == 1) {
       // save 1.1 basic
       if (mode == "basic") {
@@ -3642,7 +3764,6 @@ export default {
         formData.append("check_box", resCheckBox);
         formData.append("text", this.basic_assessment[index]);
         let data = await Axios.post(url, formData);
-
         if (!checkBox.includes(0)) {
           // กรณี check ทุุกหัวข้อ // เปิด Advance
           this.basic_success_form[index] = true;
@@ -3682,10 +3803,11 @@ export default {
         }
         let data = await Axios.post(url, formData);
       }
+
       // console.log(this.checkStatus(no));
-         this.assessmentStatus[no-1] = this.checkStatus(no)
-        // this.assessmentStatus.push("")
-        // this.assessmentStatus.pop()
+      this.assessmentStatus[no - 1] = this.checkStatus(no);
+      // this.assessmentStatus.push("")
+      // this.assessmentStatus.pop()
 
       this.reRenderComponent();
 
@@ -3778,8 +3900,8 @@ export default {
         this.getBasic(data.data);
         this.getAdvance(data.data);
         this.getSignificance(data.data);
-        for(let i =0 ;i <4 ;i++ ){
-          this.assessmentStatus[i] = this.checkInitialStatus(i+1)
+        for (let i = 0; i < 4; i++) {
+          this.assessmentStatus[i] = this.checkInitialStatus(i + 1);
         }
         this.reRenderComponent();
       }
@@ -3794,6 +3916,87 @@ export default {
       this.advance_success_form.pop();
       this.signifi_success_form.push("");
       this.signifi_success_form.pop();
+    },
+    getPDF(no, mode) {
+      let pdfFileName = `${this.$q.sessionStorage.getItem(
+        "uid"
+      )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
+      if (mode == "basic") {
+        if (this.basic_file_pdf[no - 1].type == "application/pdf") {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/uploadTemp/" +
+              pdfFileName
+          );
+        } else {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/upload/" + pdfFileName
+          );
+        }
+      } else if (mode == "advance") {
+        if (this.advance_file_pdf[no - 1].type == "application/pdf") {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/uploadTemp/" +
+              pdfFileName
+          );
+        } else {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/upload/" + pdfFileName
+          );
+        }
+      } else {
+        if (this.signifi_file_pdf[no - 1].type == "application/pdf") {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/uploadTemp/" +
+              pdfFileName
+          );
+        } else {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/upload/" + pdfFileName
+          );
+        }
+      }
+    },
+    getIMG(no, mode) {
+      let imgFileName = `${this.$q.sessionStorage.getItem(
+        "uid"
+      )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
+
+      if (mode == "basic") {
+        if (this.basic_file_image[no - 1].type == "image/jpeg") {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/uploadTemp/" +
+              imgFileName
+          );
+        } else {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/upload/" + imgFileName
+          );
+        }
+      } else if (mode == "advance") {
+        if (this.advance_file_image[no - 1].type == "image/jpeg") {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/uploadTemp/" +
+              imgFileName
+          );
+        } else {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/upload/" + imgFileName
+          );
+        }
+      } else {
+        if (this.signifi_file_image[no - 1].type == "image/jpeg") {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/uploadTemp/" +
+              imgFileName
+          );
+        } else {
+          window.open(
+            "https://api.winner-english.com/pmqa4_0_api/upload/" + imgFileName
+          );
+        }
+      }
+
+      // console.log("get img")
     }
   },
 

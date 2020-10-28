@@ -2,7 +2,7 @@
   <div class="">
     <div class="bg3 q-pa-md q-px-lg" style="border-radius: 10px;">
       <div>
-        <span class="font-24">ลักษณะองค์กร</span>
+        <span class="font-24">ลักษณะองค์การ</span>
       </div>
       <div class="q-pa-sm">
         <span class="font-16"
