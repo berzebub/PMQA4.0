@@ -12,8 +12,9 @@
                   $q.sessionStorage.getItem('p') == 2
               }"
             >
-              วันสิ้นสุดการประเมิน : {{ endDate }}</span
-            >
+              <span v-if="assessmentStatus == '0'">ปิดการประเมิน</span>
+              <span v-else> วันสิ้นสุดการประเมิน : {{ endDate }}</span>
+            </span>
           </div>
         </div>
         <div class="row bg2 container-header relative-position">
@@ -151,14 +152,14 @@
               color="pink"
               label="ปิดการประเมิน"
               val="0"
-              v-model="assessmentStatus"
+              v-model="assessmentStatusTemp"
             ></q-radio>
             <q-radio
               class="q-pl-lg"
               color="pink"
               label="เปิดการประเมิน"
               val="1"
-              v-model="assessmentStatus"
+              v-model="assessmentStatusTemp"
             ></q-radio>
           </q-card-section>
           <div class="q-px-lg">
@@ -169,7 +170,7 @@
               ประจำปี
               <div class="q-pl-md">
                 <q-select
-                  :disable="assessmentStatus == '0'"
+                  :disable="assessmentStatusTemp == '0'"
                   outlined=""
                   :options="endYearOptions"
                   dense=""
@@ -186,7 +187,7 @@
             <div class="row q-pt-sm">
               <div>
                 <q-select
-                  :disable="assessmentStatus == '0'"
+                  :disable="assessmentStatusTemp == '0'"
                   style="width:100px"
                   outlined=""
                   dense
@@ -197,7 +198,7 @@
               </div>
               <div class="q-px-md">
                 <q-select
-                  :disable="assessmentStatus == '0'"
+                  :disable="assessmentStatusTemp == '0'"
                   style="width:130px"
                   outlined=""
                   dense
@@ -209,7 +210,7 @@
               </div>
               <div>
                 <q-select
-                  :disable="assessmentStatus == '0'"
+                  :disable="assessmentStatusTemp == '0'"
                   style="width:100px"
                   outlined=""
                   dense
@@ -253,6 +254,7 @@ export default {
       endYearSelected: "",
       yearSelected: "2563",
       assessmentStatus: "0",
+      assessmentStatusTemp: "0",
       isShowAssessmentDate: false,
       isShowLogoutDialog: false,
       isPwd: true,
@@ -302,7 +304,7 @@ export default {
       let postData = {
         year: this.yearSelected,
         end_date: endDate,
-        status: this.assessmentStatus
+        status: this.assessmentStatusTemp
       };
       let data = await Axios.post(url, postData);
       this.isShowAssessmentDate = false;
@@ -316,6 +318,9 @@ export default {
     async getAssessmentDate() {
       const url = this.apiPath + "getAssessmentDate.php";
       let assessmentDate = await Axios.get(url);
+
+      this.assessmentStatus = assessmentDate.data.status;
+      this.yearSelected = assessmentDate.data.year;
       let endDate = assessmentDate.data.end_date;
 
       endDate = endDate.split("-");
