@@ -47,9 +47,11 @@
                   size="22px"
                   color="secondary"
                 ></q-icon>
-                <span class="q-ml-sm q-mr-md">
-                  {{ `เสร็จสิ้น ${checkEnvironment}/5` }}</span
-                >
+                <div style="width:125px;" align="right">
+                  <span class="q-ml-sm q-mr-md">
+                    {{ `เสร็จสิ้น ${checkEnvironment}/5` }}</span
+                  >
+                </div>
               </template>
               <q-card class="bg3">
                 <q-separator
@@ -104,6 +106,127 @@
                           v-model.lazy="inputEnvironment1"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentPDF1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentPDF1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentPDF1"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentPDF1"
+                            @click="inputEnvironmentPDF1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentIMG1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentIMG1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentIMG1"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentIMG1"
+                            @click="inputEnvironmentIMG1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Input Content 2 -->
@@ -153,6 +276,127 @@
                           bg-color="white"
                           v-model.lazy="inputEnvironment2"
                         />
+                      </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentPDF2"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentPDF2
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentPDF2"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentPDF2"
+                            @click="inputEnvironmentPDF2 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentIMG2"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentIMG2
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentIMG2"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentIMG2"
+                            @click="inputEnvironmentIMG2 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -214,6 +458,127 @@
                           v-model.lazy="inputEnvironment3"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentPDF3"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentPDF3
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentPDF3"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentPDF3"
+                            @click="inputEnvironmentPDF3 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentIMG3"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentIMG3
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentIMG3"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentIMG3"
+                            @click="inputEnvironmentIMG3 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Input Content 4 -->
@@ -257,6 +622,127 @@
                           bg-color="white"
                           v-model.lazy="inputEnvironment4"
                         />
+                      </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentPDF4"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentPDF4
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentPDF4"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentPDF4"
+                            @click="inputEnvironmentPDF4 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentIMG4"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentIMG4
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentIMG4"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentIMG4"
+                            @click="inputEnvironmentIMG4 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -302,6 +788,127 @@
                           v-model.lazy="inputEnvironment5"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentPDF5"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentPDF5
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentPDF5"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentPDF5"
+                            @click="inputEnvironmentPDF5 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputEnvironmentIMG5"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputEnvironmentIMG5
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputEnvironmentIMG5"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentIMG5"
+                            @click="inputEnvironmentIMG5 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </q-card-section>
@@ -334,9 +941,11 @@
                   size="22px"
                   color="secondary"
                 ></q-icon>
-                <span class="q-ml-sm q-mr-md">
-                  {{ `เสร็จสิ้น ${checkRelation}/3` }}</span
-                >
+                <div style="width:125px;" align="right">
+                  <span class="q-ml-sm q-mr-md">
+                    {{ `เสร็จสิ้น ${checkRelation}/3` }}</span
+                  >
+                </div>
               </template>
 
               <q-card class="bg3">
@@ -389,6 +998,127 @@
                           v-model.lazy="inputRelation1"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputRelationPDF1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputRelationPDF1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputRelationPDF1"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputRelationPDF1"
+                            @click="inputRelationPDF1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputRelationIMG1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputRelationIMG1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputRelationIMG1"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputRelationIMG1"
+                            @click="inputRelationIMG1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Input Content 2 -->
@@ -436,6 +1166,127 @@
                           bg-color="white"
                           v-model.lazy="inputRelation2"
                         />
+                      </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputRelationPDF2"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputRelationPDF2
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputRelationPDF2"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputRelationPDF2"
+                            @click="inputRelationPDF2 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputRelationIMG2"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputRelationIMG2
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputRelationIMG2"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputRelationIMG2"
+                            @click="inputRelationIMG2 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -486,6 +1337,127 @@
                           v-model.lazy="inputRelation3"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputRelationPDF3"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputRelationPDF3
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputRelationPDF3"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputRelationPDF3"
+                            @click="inputRelationPDF3 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputRelationIMG3"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputRelationIMG3
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputRelationIMG3"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputRelationIMG3"
+                            @click="inputRelationIMG3 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </q-card-section>
@@ -495,7 +1467,7 @@
           <!-- Relation Content -->
         </div>
       </div>
-      <!-- End BOX 2 -->
+      <!-- End BOX 1 -->
 
       <!-- Start BOX 2 -->
       <div class="q-mt-lg">
@@ -527,9 +1499,11 @@
                   size="22px"
                   color="secondary"
                 ></q-icon>
-                <span class="q-ml-sm q-mr-md">
-                  {{ `เสร็จสิ้น ${checkCompetition}/3` }}</span
-                >
+                <div style="width:125px;" align="right">
+                  <span class="q-ml-sm q-mr-md">
+                    {{ `เสร็จสิ้น ${checkCompetition}/3` }}</span
+                  >
+                </div>
               </template>
 
               <q-card class="bg3">
@@ -584,6 +1558,127 @@
                           v-model.lazy="inputCompetitionEnvironment1"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputCompetitionEnvironmentPDF1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputCompetitionEnvironmentPDF1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputCompetitionEnvironmentPDF1"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputCompetitionEnvironmentPDF1"
+                            @click="inputCompetitionEnvironmentPDF1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputCompetitionEnvironmentIMG1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputCompetitionEnvironmentIMG1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputCompetitionEnvironmentIMG1"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputCompetitionEnvironmentIMG1"
+                            @click="inputCompetitionEnvironmentIMG1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Input Content 2 -->
@@ -626,6 +1721,127 @@
                           bg-color="white"
                           v-model.lazy="inputCompetitionEnvironment2"
                         />
+                      </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputCompetitionEnvironmentPDF2"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputCompetitionEnvironmentPDF2
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputCompetitionEnvironmentPDF2"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputCompetitionEnvironmentPDF2"
+                            @click="inputCompetitionEnvironmentPDF2 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputCompetitionEnvironmentIMG2"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputCompetitionEnvironmentIMG2
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputCompetitionEnvironmentIMG2"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputCompetitionEnvironmentIMG2"
+                            @click="inputCompetitionEnvironmentIMG2 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -675,12 +1891,134 @@
                           v-model.lazy="inputCompetitionEnvironment3"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputCompetitionEnvironmentPDF3"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputCompetitionEnvironmentPDF3
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputCompetitionEnvironmentPDF3"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputCompetitionEnvironmentPDF3"
+                            @click="inputCompetitionEnvironmentPDF3 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputCompetitionEnvironmentIMG3"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputCompetitionEnvironmentIMG3
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputCompetitionEnvironmentIMG3"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputCompetitionEnvironmentIMG3"
+                            @click="inputCompetitionEnvironmentIMG3 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
           </div>
+
           <div class="q-mt-xs">
             <q-expansion-item
               group="boxInputTwo"
@@ -704,9 +2042,11 @@
                   size="22px"
                   color="secondary"
                 ></q-icon>
-                <span class="q-ml-sm q-mr-md">
-                  {{ `เสร็จสิ้น ${checkStategy}/1` }}</span
-                >
+                <div style="width:125px;" align="right">
+                  <span class="q-ml-sm q-mr-md ">
+                    {{ `เสร็จสิ้น ${checkStategy}/1` }}</span
+                  >
+                </div>
               </template>
 
               <q-card class="bg3">
@@ -760,12 +2100,134 @@
                           v-model.lazy="inputStategy"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputStategyPDF1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputStategyPDF1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputStategyPDF1"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputStategyPDF1"
+                            @click="inputStategyPDF1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputStategyIMG1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputStategyIMG1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputStategyIMG1"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputStategyIMG1"
+                            @click="inputStategyIMG1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
           </div>
+
           <div class="q-mt-xs">
             <q-expansion-item
               group="boxInputTwo"
@@ -789,9 +2251,11 @@
                   size="22px"
                   color="secondary"
                 ></q-icon>
-                <span class="q-ml-sm q-mr-md">
-                  {{ `เสร็จสิ้น ${checkPerformance}/1` }}</span
-                >
+                <div style="width:125px;" align="right">
+                  <span class="q-ml-sm q-mr-md">
+                    {{ `เสร็จสิ้น ${checkPerformance}/1` }}</span
+                  >
+                </div>
               </template>
               <q-card class="bg3">
                 <q-separator
@@ -841,6 +2305,127 @@
                           v-model.lazy="inputPerformanceSystem"
                         />
                       </div>
+
+                      <div class=" row ">
+                        <div></div>
+                        <q-space></q-space>
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputPerformanceSystemPDF1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputPerformanceSystemPDF1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".pdf"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputPerformanceSystemPDF1"
+                              >
+                                <span class="font-16 text-black"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-pdf"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputPerformanceSystemPDF1"
+                            @click="inputPerformanceSystemPDF1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="q-ml-lg">
+                          <q-file
+                            v-model="inputPerformanceSystemIMG1"
+                            dense=""
+                            style="width:160px;overflow:hidden;"
+                            :style="
+                              !inputPerformanceSystemIMG1
+                                ? 'border:2px solid #e84c93;border-radius:10px;'
+                                : 'border:2px solid #000000;border-radius:0px;'
+                            "
+                            borderless
+                            accept=".jpg"
+                            @input="saveData()"
+                            class="bg-white"
+                          >
+                            <template v-slot:prepend>
+                              <div
+                                class="absolute-center fit"
+                                align="center"
+                                v-if="!inputPerformanceSystemIMG1"
+                              >
+                                <span class="font-16 text-black"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+
+                              <div
+                                class="absolute-center full-width"
+                                align="center"
+                                style="overflow:hidden;"
+                                v-else
+                              >
+                                <q-icon
+                                  name="fas fa-file-image"
+                                  class="color1 q-px-xs"
+                                  size="25px"
+                                ></q-icon>
+                                <span
+                                  class="font-14 text-black"
+                                  style="text-decoration:underline"
+                                  >รูปภาพประกอบ</span
+                                >
+                              </div>
+                            </template>
+
+                            <template v-slot:file> </template>
+                          </q-file>
+                          <div
+                            class="bg1 relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputPerformanceSystemIMG1"
+                            @click="inputPerformanceSystemIMG1 = null"
+                          >
+                            <span class="text-white font-12">
+                              ลบไฟล์
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </q-card-section>
@@ -877,46 +2462,72 @@ export default {
       environmentCount: 0,
       isEnvironmentDialog1: false,
       inputEnvironment1: "",
+      inputEnvironmentPDF1: null,
+      inputEnvironmentIMG1: null,
 
       isEnvironmentDialog2: false,
       inputEnvironment2: "",
+      inputEnvironmentPDF2: null,
+      inputEnvironmentIMG2: null,
 
       isEnvironmentDialog3: false,
       inputEnvironment3: "",
+      inputEnvironmentPDF3: null,
+      inputEnvironmentIMG3: null,
 
       isEnvironmentDialog4: false,
       inputEnvironment4: "",
+      inputEnvironmentPDF4: null,
+      inputEnvironmentIMG4: null,
 
       isEnvironmentDialog5: false,
       inputEnvironment5: "",
+      inputEnvironmentPDF5: null,
+      inputEnvironmentIMG5: null,
 
       // Relation
       isRelationDialog1: false,
       inputRelation1: "",
+      inputRelationPDF1: null,
+      inputRelationIMG1: null,
 
       isRelationDialog2: false,
       inputRelation2: "",
+      inputRelationPDF2: null,
+      inputRelationIMG2: null,
 
       isRelationDialog3: false,
       inputRelation3: "",
+      inputRelationPDF3: null,
+      inputRelationIMG3: null,
 
       // Competition Environment
       isCompetitionEnvironmentDialog1: false,
       inputCompetitionEnvironment1: "",
+      inputCompetitionEnvironmentPDF1: null,
+      inputCompetitionEnvironmentIMG1: null,
 
       isCompetitionEnvironmentDialog2: false,
       inputCompetitionEnvironment2: "",
+      inputCompetitionEnvironmentPDF2: null,
+      inputCompetitionEnvironmentIMG2: null,
 
       isCompetitionEnvironmentDialog3: false,
       inputCompetitionEnvironment3: "",
+      inputCompetitionEnvironmentPDF3: null,
+      inputCompetitionEnvironmentIMG3: null,
 
       // Stategy
       isStategyDialog: false,
       inputStategy: "",
+      inputStategyPDF1: null,
+      inputStategyIMG1: null,
 
       // Performance improvement system
       isPerformanceSystemDialog: false,
       inputPerformanceSystem: "",
+      inputPerformanceSystemPDF1: null,
+      inputPerformanceSystemIMG1: null,
 
       // Save Data
       isSaveData: false
@@ -924,7 +2535,7 @@ export default {
   },
   methods: {
     async getData() {
-      this.loadingShow()
+      this.loadingShow();
       const url = this.apiPath + "user/getCategory0.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
@@ -932,6 +2543,8 @@ export default {
       };
       let data = await Axios.post(url, postData);
       let getData = data.data;
+
+      console.log(getData);
 
       // ข้อ 1 ก 1
       this.inputEnvironment1 = getData.filter(
@@ -999,7 +2612,7 @@ export default {
         x =>
           x.q_number == "2" && x.category == "ค." && x.category_q_number == "1"
       )[0].text;
-      this.loadingHide()
+      this.loadingHide();
     },
     async checkFinishStatus() {
       // console.log(this.checkEnvironment);
@@ -1011,7 +2624,7 @@ export default {
         this.checkStategy == 1 &&
         this.checkPerformance == 1
       ) {
-        console.log('finish all');
+        console.log("finish all");
         // FINISH ALL
         let postData = {
           category: "category0",
@@ -1036,7 +2649,17 @@ export default {
           status: 2 // 1 = not finish all
         };
         let data = await Axios.post(url, postData);
-                console.log(data);
+        console.log(data);
+      } else {
+        console.log("finish some");
+        let postData = {
+          category: "category0",
+          user_id: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          status: 0 // 1 = not finish all
+        };
+        let data = await Axios.post(url, postData);
+        console.log(data);
       }
     },
 
@@ -1150,8 +2773,11 @@ export default {
       const url = this.apiPath + "user/addUpdateCategory0.php";
       let post = await Axios.post(url, finalData);
       this.isSaveData = true;
+
       setTimeout(() => {
         this.isSaveData = false;
+
+        this.$emit("statusForm", true);
       }, 1000);
     }
   },

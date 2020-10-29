@@ -32,7 +32,7 @@
                   active == 1
                     ? 'text-white'
                     : currentStep.category0 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category0 == '2'
                     ? 'text-amber-9'
                     : currentStep.category0 == '1'
@@ -61,7 +61,7 @@
                   active == 2
                     ? 'text-white'
                     : currentStep.category1 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category1 == '2'
                     ? 'text-amber-9'
                     : currentStep.category1 == '1'
@@ -90,7 +90,7 @@
                   active == 3
                     ? 'text-white'
                     : currentStep.category2 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category2 == '2'
                     ? 'text-amber-9'
                     : currentStep.category2 == '1'
@@ -119,7 +119,7 @@
                   active == 4
                     ? 'text-white'
                     : currentStep.category3 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category3 == '2'
                     ? 'text-amber-9'
                     : currentStep.category3 == '1'
@@ -148,7 +148,7 @@
                   active == 5
                     ? 'text-white'
                     : currentStep.category4 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category4 == '2'
                     ? 'text-amber-9'
                     : currentStep.category4 == '1'
@@ -177,7 +177,7 @@
                   active == 6
                     ? 'text-white'
                     : currentStep.category5 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category5 == '2'
                     ? 'text-amber-9'
                     : currentStep.category5 == '1'
@@ -206,7 +206,7 @@
                   active == 7
                     ? 'text-white'
                     : currentStep.category6 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category6 == '2'
                     ? 'text-amber-9'
                     : currentStep.category6 == '1'
@@ -235,7 +235,7 @@
                   active == 8
                     ? 'text-white'
                     : currentStep.category7 == '0'
-                    ? 'text-grey-1'
+                    ? 'text-black'
                     : currentStep.category7 == '2'
                     ? 'text-amber-9'
                     : currentStep.category7 == '1'
@@ -260,7 +260,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 1">
-          <step-one @statusForm="val => (statusForm1 = val)"></step-one>
+          <step-one @statusForm="getStepperLog()"></step-one>
         </div>
       </transition>
 
@@ -270,7 +270,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 2">
-          <step-two></step-two>
+          <step-two @statusForm="getStepperLog()"></step-two>
         </div>
       </transition>
 
@@ -280,7 +280,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 3">
-          <step-three></step-three>
+          <step-three @statusForm="getStepperLog()"></step-three>
         </div>
       </transition>
 
@@ -290,7 +290,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 4">
-          <step-four></step-four>
+          <step-four @statusForm="getStepperLog()"></step-four>
         </div>
       </transition>
 
@@ -300,7 +300,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 5">
-          <step-five></step-five>
+          <step-five @statusForm="getStepperLog()"></step-five>
         </div>
       </transition>
 
@@ -314,7 +314,7 @@
           transition-show="jump-down"
           transition-hide="jump-up"
         >
-          <step-six></step-six>
+          <step-six @statusForm="getStepperLog()"></step-six>
         </div>
       </transition>
 
@@ -328,7 +328,7 @@
           transition-show="jump-down"
           transition-hide="jump-up"
         >
-          <step-seven></step-seven>
+          <step-seven @statusForm="getStepperLog()"></step-seven>
         </div>
       </transition>
 
@@ -338,7 +338,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 8">
-          <step-eight></step-eight>
+          <step-eight @statusForm="getStepperLog()"></step-eight>
         </div>
       </transition>
     </div>
