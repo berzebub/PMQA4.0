@@ -217,8 +217,8 @@ export default {
               [this.$q.sessionStorage.getItem("y") + 541]: null
             }
           ],
-          successRate: [0, 0],
-          score: [0, 0],
+          successRate: [],
+          score: [],
           scoreStandard: ["ยิ่งมากยิ่งดี"],
           status: -1 //-1 ยังไม่ประเมิน
         }
@@ -233,13 +233,14 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid"),
         q_number: this.data[index].no,
         status: this.data[index].status,
-        indicators: `'[${this.data[index].indicators}]'`,
-        goal: this.data[index].goalCurrentYear,
-        success_rate: this.data[index].successRate,
-        score: this.data[index].score,
-        score_standard: this.data[index].scoreStandard,
-        unit: this.data[index].unit,
-        result: this.data[index].result
+        indicators: JSON.stringify(this.data[index].indicators),
+        goal: JSON.stringify(this.data[index].goalCurrentYear),
+        success_rate: JSON.stringify(this.data[index].successRate),
+        score: JSON.stringify(this.data[index].score),
+        score_standard: JSON.stringify(this.data[index].scoreStandard),
+        unit: JSON.stringify(this.data[index].unit),
+        result: JSON.stringify(this.data[index].result),
+        year: this.currentYear
       };
 
       //  "user_id" => $user_id,
