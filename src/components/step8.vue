@@ -165,11 +165,14 @@
           </div>
         </q-expansion-item>
       </q-list>
+
+      <q-btn label="testUpload" color="teal" @click="uploadStep7(0)"> </q-btn>
     </div>
   </div>
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
@@ -184,9 +187,9 @@ export default {
           headerTextLower:
             "ตัวชี้วัดของการบรรลุผลลัพธ์ตามพันธกิจหรือภารกิจของส่วนราชการ (Function base, Area base)",
           numberOfIndicators: 2,
-          indicators: ["indicator1"],
+          indicators: [],
           goalCurrentYear: [100],
-          unit: ["บาท"],
+          unit: [],
           result: [
             {
               [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -214,11 +217,45 @@ export default {
               [this.$q.sessionStorage.getItem("y") + 541]: null
             }
           ],
+          successRate: [0, 0],
+          score: [0, 0],
           scoreStandard: ["ยิ่งมากยิ่งดี"],
           status: -1 //-1 ยังไม่ประเมิน
         }
       ]
     };
+  },
+  methods: {
+    async uploadStep7(index) {
+      const url = this.apiPath + "user/addUpdateCategory7.php";
+
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        q_number: this.data[index].no,
+        status: this.data[index].status,
+        indicators: `'[${this.data[index].indicators}]'`,
+        goal: this.data[index].goalCurrentYear,
+        success_rate: this.data[index].successRate,
+        score: this.data[index].score,
+        score_standard: this.data[index].scoreStandard,
+        unit: this.data[index].unit,
+        result: this.data[index].result
+      };
+
+      //  "user_id" => $user_id,
+      //   "q_number" => $q_number,
+      //   "status" => $status,
+      //   "indicators" => $indicators,
+      //   "goal" => $goal,
+      //   "success_rate" => $success_rate,
+      //   "score" => $score,
+      //   "unit" => $unit,
+      //    "score_standard" => $score_standard,
+      //    "year" => $year
+
+      let data = await Axios.post(url, postData);
+      console.log(data.data);
+    }
   }
 };
 </script>
