@@ -12,7 +12,11 @@
                   $q.sessionStorage.getItem('p') == 2
               }"
             >
-              <span v-if="assessmentStatus == '0'">ปิดการประเมิน</span>
+              <span v-if="assessmentStatus == '0'">
+                <span v-show="$q.sessionStorage.getItem('p') == 2">
+                  ปิดการประเมิน</span
+                >
+              </span>
               <span v-else> วันสิ้นสุดการประเมิน : {{ endDate }}</span>
             </span>
           </div>
@@ -311,6 +315,7 @@ export default {
       this.getAssessmentDate();
     },
     setAssessmentDate() {
+      this.getAssessmentDate();
       if (this.$q.sessionStorage.getItem("p") == "2") {
         this.isShowAssessmentDate = true;
       }
@@ -318,8 +323,8 @@ export default {
     async getAssessmentDate() {
       const url = this.apiPath + "getAssessmentDate.php";
       let assessmentDate = await Axios.get(url);
-
       this.assessmentStatus = assessmentDate.data.status;
+      this.assessmentStatusTemp = assessmentDate.data.status;
       this.yearSelected = assessmentDate.data.year;
       let endDate = assessmentDate.data.end_date;
 
@@ -332,7 +337,7 @@ export default {
       this.endYearSelected = Number(endDate[0]) + 543;
 
       endDate =
-        endDate[2] +
+        Number(endDate[2]) +
         " " +
         this.convertMonth(Number(endDate[1])) +
         " " +

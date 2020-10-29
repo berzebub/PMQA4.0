@@ -3,7 +3,7 @@
     <div class="relative-position">
       <div class="row bg1 container-bg">
         <div class="col q-pr-lg self-center" align="right">
-          <span class="text-white font-24"
+          <span class="text-white font-24" v-show="assessmentStatus == '1'"
             >วันสิ้นสุดการประเมิน : {{ endDate }}</span
           >
         </div>
@@ -115,7 +115,8 @@ export default {
       department: "ผู้ใช้แต่ละหน่วยงาน",
       departmentOptions: ["ผู้ใช้แต่ละหน่วยงาน", "ผู้ประเมิน", "ผู้ดูแลระบบ"],
       isShowPassword: false,
-      endDate: ""
+      endDate: "",
+      assessmentStatus : 0
     };
   },
   methods: {
@@ -200,6 +201,7 @@ export default {
     async getAssessmentDate() {
       const url = this.apiPath + "getAssessmentDate.php";
       let assessmentDate = await Axios.get(url);
+      this.assessmentStatus = assessmentDate.data.status
       let endDate = assessmentDate.data.end_date;
       endDate = endDate.split("-");
       this.$q.sessionStorage.set("y", Number(endDate[0]));

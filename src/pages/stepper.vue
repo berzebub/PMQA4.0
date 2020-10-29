@@ -53,7 +53,7 @@
               push
               class="q-pa-sm"
               :class="active == 2 ? 'bg1' : 'bg3'"
-              @click="active = 2"
+              @click="(active = 2), route('0')"
             >
               <q-icon
                 name="fas fa-street-view"
@@ -82,7 +82,7 @@
               push
               class="q-pa-sm"
               :class="active == 3 ? 'bg1' : 'bg3'"
-              @click="active = 3"
+              @click="(active = 3), route('1')"
             >
               <q-icon
                 name="fas fa-map-signs"
@@ -111,7 +111,7 @@
               push
               class="q-pa-sm"
               :class="active == 4 ? 'bg1' : 'bg3'"
-              @click="active = 4"
+              @click="(active = 4), route('2')"
             >
               <q-icon
                 name="fas fa-users"
@@ -140,7 +140,7 @@
               push
               class="q-pa-sm"
               :class="active == 5 ? 'bg1' : 'bg3'"
-              @click="active = 5"
+              @click="(active = 5), route('3')"
             >
               <q-icon
                 name="fas fa-chart-line"
@@ -169,7 +169,7 @@
               push
               class="q-pa-sm"
               :class="active == 6 ? 'bg1' : 'bg3'"
-              @click="active = 6"
+              @click="(active = 6), route('4')"
             >
               <q-icon
                 name="fas fa-users-cog"
@@ -198,7 +198,7 @@
               push
               class="q-pa-sm"
               :class="active == 7 ? 'bg1' : 'bg3'"
-              @click="active = 7"
+              @click="(active = 7), route('5')"
             >
               <q-icon
                 name="fas fa-project-diagram"
@@ -227,7 +227,7 @@
               push
               class="q-pa-sm"
               :class="active == 8 ? 'bg1' : 'bg3'"
-              @click="active = 8"
+              @click="(active = 8), route('6')"
             >
               <q-icon
                 name="fas fa-trophy"
@@ -385,6 +385,11 @@ export default {
     };
   },
   methods: {
+    route(route) {
+      let newRoute = Number(route) + 1;
+      newRoute = newRoute.toString();
+      this.$router.push("/stepper/" + newRoute);
+    },
     async getStepperLog() {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
