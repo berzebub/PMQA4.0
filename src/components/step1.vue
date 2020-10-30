@@ -122,8 +122,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
                             class="bg-white"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ก.', 1)"
+                            v-if="!inputEnvironmentPDF1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -156,16 +157,52 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
+                          <!-- @click="getIMG(item.no, 'basic')" -->
+
                           <div
+                            class="relative-position cursor-pointer"
+                            align="center"
+                            v-if="inputEnvironmentPDF1"
+                          >
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="
+                                (inputEnvironmentPDF1 = null),
+                                  deleteFile(type, 1, 'ก.', 1)
+                              "
+                            >
+                              ลบไฟล์
+                            </div>
+                          </div>
+
+                          <!-- <div
                             class="bg1 relative-position cursor-pointer"
                             align="center"
                             v-if="inputEnvironmentPDF1"
-                            @click="inputEnvironmentPDF1 = null"
+                            
                           >
                             <span class="text-white font-12">
                               ลบไฟล์
                             </span>
-                          </div>
+                          </div> -->
                         </div>
 
                         <div class="q-ml-lg">
@@ -180,7 +217,7 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ก.', 1)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -293,7 +330,7 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ก.', 2)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -351,7 +388,7 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ก.', 2)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -474,7 +511,7 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ก.', 3)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -532,7 +569,7 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ก.', 3)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -639,7 +676,7 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ก.', 4)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -697,7 +734,7 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ก.', 4)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -804,7 +841,7 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ก.', 5)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -862,7 +899,7 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ก.', 5)"
                             class="bg-white"
                           >
                             <template v-slot:prepend>
@@ -2544,74 +2581,143 @@ export default {
       let data = await Axios.post(url, postData);
       let getData = data.data;
 
-      // console.log(getData);
+      if (getData) {
+        // ข้อ 1 ก 1
+        this.inputEnvironment1 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        )[0].text;
 
-      // ข้อ 1 ก 1
-      this.inputEnvironment1 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ก." && x.category_q_number == "1"
-      )[0].text;
-      // ข้อ1 ก2
-      this.inputEnvironment2 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ก." && x.category_q_number == "2"
-      )[0].text;
-      // ข้อ1 ก3
-      this.inputEnvironment3 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ก." && x.category_q_number == "3"
-      )[0].text;
-      // ข้อ1 ก4
-      this.inputEnvironment4 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ก." && x.category_q_number == "4"
-      )[0].text;
-      // ข้อ1 ก5
-      this.inputEnvironment5 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ก." && x.category_q_number == "5"
-      )[0].text;
-      // ข้อ1 ข1
-      this.inputRelation1 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ข." && x.category_q_number == "1"
-      )[0].text;
-      // ข้อ1 ข2
-      this.inputRelation2 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ข." && x.category_q_number == "2"
-      )[0].text;
-      // ข้อ1 ข3
-      this.inputRelation3 = getData.filter(
-        x =>
-          x.q_number == "1" && x.category == "ข." && x.category_q_number == "3"
-      )[0].text;
+        let checkFile1 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        )[0];
 
-      // ข้อ2 ก1
-      this.inputCompetitionEnvironment1 = getData.filter(
-        x =>
-          x.q_number == "2" && x.category == "ก." && x.category_q_number == "1"
-      )[0].text;
-      // ข้อ2 ก2
-      this.inputCompetitionEnvironment2 = getData.filter(
-        x =>
-          x.q_number == "2" && x.category == "ก." && x.category_q_number == "2"
-      )[0].text;
-      // ข้อ2 ก3
-      this.inputCompetitionEnvironment3 = getData.filter(
-        x =>
-          x.q_number == "2" && x.category == "ก." && x.category_q_number == "3"
-      )[0].text;
-      // ข้อ2 ข1
-      this.inputStategy = getData.filter(
-        x =>
-          x.q_number == "2" && x.category == "ข." && x.category_q_number == "1"
-      )[0].text;
-      // ข้อ2 ค1
-      this.inputPerformanceSystem = getData.filter(
-        x =>
-          x.q_number == "2" && x.category == "ค." && x.category_q_number == "1"
-      )[0].text;
+        if (checkFile1.is_img == 0) {
+          // กรณีไม่มีรูปภาพ
+          this.inputEnvironmentIMG1 = null;
+        } else {
+          this.inputEnvironmentIMG1 = [1];
+        }
+        if (checkFile1.is_pdf == 0) {
+          // กรณีไม่มีรูปภาพ
+          this.inputEnvironmentPDF1 = null;
+        } else {
+          this.inputEnvironmentPDF1 = [1];
+        }
+
+        // ข้อ1 ก2
+        this.inputEnvironment2 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        )[0].text;
+
+        let checkFile2 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        )[0];
+
+        if (checkFile2.is_img == 0) {
+          // กรณีไม่มีรูปภาพ
+          this.inputEnvironmentIMG2 = null;
+        } else {
+          this.inputEnvironmentIMG2 = [1];
+        }
+        if (checkFile2.is_pdf == 0) {
+          // กรณีไม่มีรูปภาพ
+          this.inputEnvironmentPDF2 = null;
+        } else {
+          this.inputEnvironmentPDF2 = [1];
+        }
+
+        // ข้อ1 ก3
+        this.inputEnvironment3 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "3"
+        )[0].text;
+        // ข้อ1 ก4
+        this.inputEnvironment4 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "4"
+        )[0].text;
+        // ข้อ1 ก5
+        this.inputEnvironment5 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "5"
+        )[0].text;
+        // ข้อ1 ข1
+        this.inputRelation1 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "1"
+        )[0].text;
+        // ข้อ1 ข2
+        this.inputRelation2 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "2"
+        )[0].text;
+        // ข้อ1 ข3
+        this.inputRelation3 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "3"
+        )[0].text;
+
+        // ข้อ2 ก1
+        this.inputCompetitionEnvironment1 = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        )[0].text;
+        // ข้อ2 ก2
+        this.inputCompetitionEnvironment2 = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        )[0].text;
+        // ข้อ2 ก3
+        this.inputCompetitionEnvironment3 = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "3"
+        )[0].text;
+        // ข้อ2 ข1
+        this.inputStategy = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ข." &&
+            x.category_q_number == "1"
+        )[0].text;
+        // ข้อ2 ค1
+        this.inputPerformanceSystem = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ค." &&
+            x.category_q_number == "1"
+        )[0].text;
+      }
+
       this.loadingHide();
     },
     async checkFinishStatus() {
@@ -2624,7 +2730,6 @@ export default {
         this.checkStategy == 1 &&
         this.checkPerformance == 1
       ) {
-        console.log("finish all");
         // FINISH ALL
         let postData = {
           category: "category0",
@@ -2641,7 +2746,6 @@ export default {
         this.checkStategy >= 1 ||
         this.checkPerformance >= 1
       ) {
-        console.log("finish some");
         let postData = {
           category: "category0",
           user_id: this.$q.sessionStorage.getItem("uid"),
@@ -2651,7 +2755,6 @@ export default {
         let data = await Axios.post(url, postData);
         // console.log(data);
       } else {
-        console.log("finish some");
         let postData = {
           category: "category0",
           user_id: this.$q.sessionStorage.getItem("uid"),
@@ -2673,35 +2776,45 @@ export default {
           user_id: uid,
           category: "ก.",
           category_q_number: 1,
-          text: this.inputEnvironment1
+          text: this.inputEnvironment1,
+          pdf_file: this.inputEnvironmentPDF1,
+          img_file: this.inputEnvironmentIMG1
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 2,
-          text: this.inputEnvironment2
+          text: this.inputEnvironment2,
+          pdf_file: this.inputEnvironmentPDF2,
+          img_file: this.inputEnvironmentIMG2
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 3,
-          text: this.inputEnvironment3
+          text: this.inputEnvironment3,
+          pdf_file: this.inputEnvironmentPDF3,
+          img_file: this.inputEnvironmentIMG3
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 4,
-          text: this.inputEnvironment4
+          text: this.inputEnvironment4,
+          pdf_file: this.inputEnvironmentPDF4,
+          img_file: this.inputEnvironmentIMG4
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ก.",
           category_q_number: 5,
-          text: this.inputEnvironment5
+          text: this.inputEnvironment5,
+          pdf_file: this.inputEnvironmentPDF5,
+          img_file: this.inputEnvironmentIMG5
         },
         // หมวด ข
         {
@@ -2709,21 +2822,27 @@ export default {
           user_id: uid,
           category: "ข.",
           category_q_number: 1,
-          text: this.inputRelation1
+          text: this.inputRelation1,
+          pdf_file: this.inputRelationPDF1,
+          img_file: this.inputRelationIMG1
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ข.",
           category_q_number: 2,
-          text: this.inputRelation2
+          text: this.inputRelation2,
+          pdf_file: this.inputRelationPDF2,
+          img_file: this.inputRelationIMG2
         },
         {
           q_number: 1,
           user_id: uid,
           category: "ข.",
           category_q_number: 3,
-          text: this.inputRelation3
+          text: this.inputRelation3,
+          pdf_file: this.inputRelationPDF3,
+          img_file: this.inputRelationIMG3
         },
         // เริ่มข้อ2 หมวด ก.
         {
@@ -2731,21 +2850,27 @@ export default {
           user_id: uid,
           category: "ก.",
           category_q_number: 1,
-          text: this.inputCompetitionEnvironment1
+          text: this.inputCompetitionEnvironment1,
+          pdf_file: this.inputCompetitionEnvironmentPDF1,
+          img_file: this.inputCompetitionEnvironmentIMG1
         },
         {
           q_number: 2,
           user_id: uid,
           category: "ก.",
           category_q_number: 2,
-          text: this.inputCompetitionEnvironment2
+          text: this.inputCompetitionEnvironment2,
+          pdf_file: this.inputCompetitionEnvironmentPDF2,
+          img_file: this.inputCompetitionEnvironmentIMG2
         },
         {
           q_number: 2,
           user_id: uid,
           category: "ก.",
           category_q_number: 3,
-          text: this.inputCompetitionEnvironment3
+          text: this.inputCompetitionEnvironment3,
+          pdf_file: this.inputCompetitionEnvironmentPDF3,
+          img_file: this.inputCompetitionEnvironmentIMG3
         },
         // เริ่มข้อ2 หมวด ข.
         {
@@ -2753,7 +2878,9 @@ export default {
           user_id: uid,
           category: "ข.",
           category_q_number: 1,
-          text: this.inputStategy
+          text: this.inputStategy,
+          pdf_file: this.inputStategyPDF1,
+          img_file: this.inputStategyIMG1
         },
         // เริ่มข้อ2 หมวด ค.
         {
@@ -2761,7 +2888,9 @@ export default {
           user_id: uid,
           category: "ค.",
           category_q_number: 1,
-          text: this.inputPerformanceSystem
+          text: this.inputPerformanceSystem,
+          pdf_file: this.inputPerformanceSystemPDF1,
+          img_file: this.inputPerformanceSystemIMG1
         }
       ];
       let finalData = {
@@ -2779,7 +2908,43 @@ export default {
 
         this.$emit("statusForm", true);
       }, 1000);
+    },
+    async uploadFile(file, type, q_number, category, category_q_number) {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("file", file);
+      formData.append("q_number", q_number);
+      formData.append("category", category);
+      formData.append("category_q_number", category_q_number);
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      formData.append("type", type);
+      const url = this.apiPath + "user/uploadFileCategory0.php";
+      let data = await Axios.post(url, formData);
+    },
+    // deleteFile(type,1,'ก.',1)(){},
+    deleteFile(type, q_number, category, category_q_number) {
+      // type = img / pdf
+      // q_number = ข้อใหญ่
+      // category = หมวด
+      // category_q_number = ข้อย่อย
+
+      // ส่ง API ไปเพื่อ Update ฐานข้อมูล
+      // อัพเดทสถานะ IMG หรือ PDF ขึ้นอยู่กับ type ให้เป็น 0
+      let postData = {
+        type: type,
+        q_number: q_number,
+        category: category,
+        category_q_number: category_q_number
+      };
     }
+
+    // uploadData(val,'pdf',1,'ก',1)
+
+    // uploadData(val,'pdf',1,'ก',1) {
+    //   console.log(val);
+    // }
   },
   computed: {
     checkEnvironment() {
