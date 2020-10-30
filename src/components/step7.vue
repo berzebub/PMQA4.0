@@ -2,7 +2,7 @@
   <div class="" v-show="isLoadAssessmentFinish">
     <div class="bg4 q-pa-md q-px-lg" style="border-radius: 10px;">
       <div>
-        <span class="font-24">หมวด 1 การนำองค์การ</span>
+        <span class="font-24">หมวด 6 การมุ่งเน้นระบบปฏิบัติการ</span>
       </div>
     </div>
 
@@ -416,6 +416,9 @@
                           <div class="q-pa-md font-18">
                             <div>
                               <span class="font-18b">แนวทางดำเนินการ</span>
+                            </div>
+                            <div v-if="item.no == 2" class="q-py-sm">
+                              มีการสร้างนวัตกรรมในการปรับปรุงให้เกิดขึ้นใน
                             </div>
                             <div
                               class="q-mt-sm"
@@ -1242,10 +1245,6 @@ export default {
     };
   },
   methods: {
-    test() {
-      this.tabs.push("");
-      this.tabs.pop();
-    },
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;
@@ -1304,7 +1303,7 @@ export default {
       formData.append("q_number", no);
       formData.append("mode", mode);
       formData.append("year", year);
-      formData.append("step", 5);
+      formData.append("step", 6);
       console.log(this.data[index].basic.pdf_file);
 
       // if (no == 1) {
@@ -1516,7 +1515,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 5
+        step: 6
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -1524,22 +1523,10 @@ export default {
         this.getBasic(data.data);
         this.getAdvance(data.data);
         this.getSignificance(data.data);
-        // for (let i = 0; i < 4; i++) {
-        //   this.assessmentStatus[i] = this.checkInitialStatus(i + 1);
-        // }
-        // this.reRenderComponent();
       }
 
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
-    },
-    reRenderComponent() {
-      this.basic_success_form.push("");
-      this.basic_success_form.pop();
-      this.advance_success_form.push("");
-      this.advance_success_form.pop();
-      this.signifi_success_form.push("");
-      this.signifi_success_form.pop();
     },
     getPDF(no, mode) {
       let random = Math.random()
@@ -1547,7 +1534,7 @@ export default {
         .substring(7);
       let pdfFileName = `${this.$q.sessionStorage.getItem(
         "uid"
-      )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
+      )}-6-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
       window.open(
         "https://api.winner-english.com/pmqa4_0_api/upload/" +
@@ -1562,7 +1549,7 @@ export default {
         .substring(7);
       let imgFileName = `${this.$q.sessionStorage.getItem(
         "uid"
-      )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
+      )}-6-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
 
       window.open(
         "https://api.winner-english.com/pmqa4_0_api/upload/" +

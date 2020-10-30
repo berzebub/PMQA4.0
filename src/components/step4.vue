@@ -1529,7 +1529,7 @@ export default {
         .substring(7);
       let pdfFileName = `${this.$q.sessionStorage.getItem(
         "uid"
-      )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
+      )}-3-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
       window.open(
         "https://api.winner-english.com/pmqa4_0_api/upload/" +
@@ -1544,7 +1544,7 @@ export default {
         .substring(7);
       let imgFileName = `${this.$q.sessionStorage.getItem(
         "uid"
-      )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
+      )}-3-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
 
       window.open(
         "https://api.winner-english.com/pmqa4_0_api/upload/" +
