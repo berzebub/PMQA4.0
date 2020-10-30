@@ -112,6 +112,9 @@
                           item.status < 2 ||
                             data[index].advance.checkBox
                               .map(x => x.status)
+                              .includes(false) ||
+                            data[index].basic.checkBox
+                              .map(x => x.status)
                               .includes(false)
                         "
                       >
@@ -170,15 +173,16 @@
                                 >
                                   <q-checkbox v-model="checkbox.status" value />
                                 </div>
-                                <div class="col  q-py-xs">
-                                  <span>{{ checkbox.text }}</span>
-                                </div>
+                                <div
+                                  class="col  q-py-xs"
+                                  v-html="checkbox.text"
+                                ></div>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        <div class="col q-pl-lg q-pr-sm">
+                        <div class="col q-pl-lg q-pr-sm ">
                           <!-- Explain Basic -->
                           <div>
                             <div>
@@ -198,7 +202,7 @@
                           </div>
 
                           <!-- Upload File Basic -->
-                          <div>
+                          <div class="q-px-md ">
                             <div class="q-mt-lg">
                               <span class="font-18b"
                                 >อัพโหลดข้อมูลเพิ่มเติม
@@ -263,6 +267,7 @@
                                     class="full-width q-py-xs"
                                     align="center"
                                     style="border:2px solid #000000;border-radius:0px;"
+                                    @click="getPDF(item.no, 'basic')"
                                   >
                                     <q-icon
                                       name="fas fa-file-pdf"
@@ -272,7 +277,6 @@
                                     <span
                                       class="font-14 text-black"
                                       style="text-decoration:underline"
-                                      @click="getPDF(item.no, 'basic')"
                                     >
                                       pdf เอกสารเพิ่มเติม
                                     </span>
@@ -348,6 +352,7 @@
                                     class="full-width q-py-xs"
                                     align="center"
                                     style="border:2px solid #000000;border-radius:0px;"
+                                    @click="getIMG(item.no, 'basic')"
                                   >
                                     <q-icon
                                       name="fas fa-file-pdf"
@@ -357,7 +362,6 @@
                                     <span
                                       class="font-14 text-black"
                                       style="text-decoration:underline"
-                                      @click="getIMG(item.no, 'basic')"
                                     >
                                       รูปภาพประกอบ
                                     </span>
@@ -473,6 +477,7 @@
                                   borderless
                                   accept=".pdf"
                                   @input="saveData(item.no, 'advance')"
+                                  v-if="!item.advance.pdf_file"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -506,19 +511,37 @@
                                   <template v-slot:file> </template>
                                 </q-file>
                                 <div
-                                  class="bg1 relative-position cursor-pointer"
+                                  class=" relative-position cursor-pointer"
                                   align="center"
                                   v-if="item.advance.pdf_file"
-                                  @click="
-                                    (typeFile = 'PDF'),
-                                      (typeNo = item.no),
-                                      (typeMode = 'advance'),
-                                      (isDelete = true)
-                                  "
                                 >
-                                  <span class="text-white font-12">
+                                  <div
+                                    class="full-width q-py-xs"
+                                    align="center"
+                                    style="border:2px solid #000000;border-radius:0px"
+                                    @click="getPDF(item.no, 'advance')"
+                                  >
+                                    <q-icon
+                                      name="fas fa-file-pdf"
+                                      class="color1 q-px-xs"
+                                    ></q-icon>
+                                    <span
+                                      class="font-14 text-black"
+                                      style="text-decoration:underline"
+                                      >pdf เอกสารเพิ่มเติม</span
+                                    >
+                                  </div>
+                                  <div
+                                    @click="
+                                      (typeFile = 'PDF'),
+                                        (typeNo = item.no),
+                                        (typeMode = 'advance'),
+                                        (isDelete = true)
+                                    "
+                                    class="text-white font-12 bg1 q-py-sm"
+                                  >
                                     ลบไฟล์
-                                  </span>
+                                  </div>
                                 </div>
                               </div>
                               <div
@@ -537,6 +560,7 @@
                                   borderless
                                   accept=".jpg"
                                   @input="saveData(item.no, 'advance')"
+                                  v-if="!item.advance.img_file"
                                 >
                                   <template v-slot:prepend>
                                     <div
@@ -555,7 +579,7 @@
                                       v-else
                                     >
                                       <q-icon
-                                        name="fas fa-file-image"
+                                        name="fas fa-file-pdf"
                                         class="color1 q-px-xs"
                                         size="25px"
                                       ></q-icon>
@@ -569,20 +593,39 @@
 
                                   <template v-slot:file> </template>
                                 </q-file>
+
                                 <div
-                                  class="bg1 relative-position cursor-pointer"
+                                  class=" relative-position cursor-pointer"
                                   align="center"
                                   v-if="item.advance.img_file"
-                                  @click="
-                                    (typeFile = 'รูปภาพ'),
-                                      (typeNo = item.no),
-                                      (typeMode = 'advance'),
-                                      (isDelete = true)
-                                  "
                                 >
-                                  <span class="text-white font-12">
+                                  <div
+                                    class="full-width q-py-xs"
+                                    align="center"
+                                    style="border:2px solid #000000;border-radius:0px"
+                                    @click="getIMG(item.no, 'advance')"
+                                  >
+                                    <q-icon
+                                      name="fas fa-file-pdf"
+                                      class="color1 q-px-xs"
+                                    ></q-icon>
+                                    <span
+                                      class="font-14 text-black"
+                                      style="text-decoration:underline"
+                                      >รูปภาพประกอบ</span
+                                    >
+                                  </div>
+                                  <div
+                                    @click="
+                                      (typeFile = 'รูปภาพ'),
+                                        (typeNo = item.no),
+                                        (typeMode = 'advance'),
+                                        (isDelete = true)
+                                    "
+                                    class="text-white font-12 bg1 q-py-sm"
+                                  >
                                     ลบไฟล์
-                                  </span>
+                                  </div>
                                 </div>
                               </div>
                               <div class="col q-py-md " align="right">
@@ -681,6 +724,7 @@
                               >
                                 <q-file
                                   v-model="item.significance.pdf_file"
+                                  v-if="!item.significance.pdf_file"
                                   dense=""
                                   style="overflow:hidden;"
                                   :style="
@@ -716,6 +760,7 @@
                                       <span
                                         class="font-14 text-black"
                                         style="text-decoration:underline"
+                                        @click="getPDF(item.no, 'significance')"
                                         >pdf เอกสารเพิ่มเติม</span
                                       >
                                     </div>
@@ -723,7 +768,42 @@
 
                                   <template v-slot:file> </template>
                                 </q-file>
+
                                 <div
+                                  class=" relative-position cursor-pointer"
+                                  align="center"
+                                  v-if="item.significance.pdf_file"
+                                >
+                                  <div
+                                    class="full-width q-py-xs"
+                                    align="center"
+                                    style="border:2px solid #000000;border-radius:0px"
+                                    @click="getPDF(item.no, 'significance')"
+                                  >
+                                    <q-icon
+                                      name="fas fa-file-pdf"
+                                      class="color1 q-px-xs"
+                                    ></q-icon>
+                                    <span
+                                      class="font-14 text-black"
+                                      style="text-decoration:underline"
+                                      >pdf เอกสารเพิ่มเติม</span
+                                    >
+                                  </div>
+                                  <div
+                                    @click="
+                                      (typeFile = 'PDF'),
+                                        (typeNo = item.no),
+                                        (typeMode = 'significance'),
+                                        (isDelete = true)
+                                    "
+                                    class="text-white font-12 bg1 q-py-sm"
+                                  >
+                                    ลบไฟล์
+                                  </div>
+                                </div>
+
+                                <!-- <div
                                   class="bg1 relative-position cursor-pointer"
                                   align="center"
                                   v-if="item.significance.pdf_file"
@@ -737,7 +817,7 @@
                                   <span class="text-white font-12">
                                     ลบไฟล์
                                   </span>
-                                </div>
+                                </div> -->
                               </div>
                               <div
                                 class="col-4 q-pa-md self-start"
@@ -745,6 +825,7 @@
                               >
                                 <q-file
                                   v-model="item.significance.img_file"
+                                  v-if="!item.significance.img_file"
                                   dense=""
                                   style="overflow:hidden;"
                                   :style="
@@ -781,6 +862,7 @@
                                       <span
                                         class="font-14 text-black"
                                         style="text-decoration:underline"
+                                        @click="getIMG(item.no, 'significance')"
                                         >รูปภาพประกอบ</span
                                       >
                                     </div>
@@ -788,20 +870,39 @@
 
                                   <template v-slot:file> </template>
                                 </q-file>
+
                                 <div
-                                  class="bg1 relative-position cursor-pointer"
+                                  class=" relative-position cursor-pointer"
                                   align="center"
                                   v-if="item.significance.img_file"
-                                  @click="
-                                    (typeFile = 'รูปภาพ'),
-                                      (typeNo = item.no),
-                                      (typeMode = 'significance'),
-                                      (isDelete = true)
-                                  "
                                 >
-                                  <span class="text-white font-12">
+                                  <div
+                                    class="full-width q-py-xs"
+                                    align="center"
+                                    style="border:2px solid #000000;border-radius:0px"
+                                    @click="getIMG(item.no, 'significance')"
+                                  >
+                                    <q-icon
+                                      name="fas fa-file-pdf"
+                                      class="color1 q-px-xs"
+                                    ></q-icon>
+                                    <span
+                                      class="font-14 text-black"
+                                      style="text-decoration:underline"
+                                      >pdf เอกสารเพิ่มเติม</span
+                                    >
+                                  </div>
+                                  <div
+                                    @click="
+                                      (typeFile = 'รูปภาพ'),
+                                        (typeNo = item.no),
+                                        (typeMode = 'significance'),
+                                        (isDelete = true)
+                                    "
+                                    class="text-white font-12 bg1 q-py-sm"
+                                  >
                                     ลบไฟล์
-                                  </span>
+                                  </div>
                                 </div>
                               </div>
                               <div class="col q-py-md " align="right">
@@ -882,7 +983,7 @@ export default {
             mode: "basic",
             titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืนโดยการกำหนดวิสัยทัศน์  และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจ และภาระหน้าที่ของส่วนราชการ (Mission based) 
             
-            <br><br>- มีการถ่ายถอดผ่านระบบการนำองค์การเพื่อให้เกิดการดำเนินการทั่ว ทั้งส่วนราชการ `,
+            <br>- มีการถ่ายถอดผ่านระบบการนำองค์การเพื่อให้เกิดการดำเนินการทั่ว ทั้งส่วนราชการ `,
             checkBox: [
               {
                 text: `ผู้บริหารกำหนดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมายและตัวชี้วัด ชัดเจนตอบสนอง ต่อพันธกิจและภาระหน้าที่ของส่วนราชการ`,
@@ -922,10 +1023,240 @@ export default {
             checkBox: [
               {
                 text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ
-<br>- บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)
-<br>- สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน เช่น มี
-  นโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก
-  และตอบสนองความต้องการของประชาชน`,
+            <br>- บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)
+            <br>- สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน เช่น มี
+              นโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก
+              และตอบสนองความต้องการของประชาชน`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          }
+        },
+        // ******************************************************************************************
+        {
+          header: "1.2 การป้องกันทุจริตและสร้างความโปร่งใส",
+          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
+          no: 2,
+          // 1.2 basic
+          basic: {
+            mode: "basic",
+            titleText: `- นโยบายและระบบการกำกับผู้ดูแลที่เสริมสร้างความโปร่งใสและการ
+            ป้องกันทุจริต รวมทั้งระบบการตรวจสอบที่มีประสิทธิภาพ<br>
+          - มีมาตรการที่ถ่ายทอดสู่การปฏิบัติและการติดตามรายงานผลอย่าง   
+            ชัดเจน`,
+            checkBox: [
+              {
+                text: `แนวทางและระบบการตรวจสอบกำกับผู้ดูแลที่เสริมสร้างความ
+              โปร่งใสและป้องกันทุจริต`,
+                status: false
+              },
+              {
+                text: `มาตรการที่ถ่ายทอดสู่การปฏิบัติและติดตามรายงานผล อย่างชัดเจน`,
+                status: false
+              },
+              {
+                text: `การบริหารงานตามหลักธรรมภิบาล`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          },
+          // 1.2 advance ******************************
+          advance: {
+            mode: "advance",
+            titleText: `- การประเมินประสิทธิผลและตัววัดการป้องกันทุจริตและการสร้างความ
+                        โปร่งใสภายในส่วนราชการ และมีการปรับปรุงอย่างสม่ำเสมอ<br>
+                      - การรายงานผลการดำเนินการของส่วนราชการต่อสาธารณะ   
+                        และหน่วยงานบังคับบัญชา`,
+            checkBox: [
+              {
+                text: `มีตัววัดในการตรวจติดตามป้องกันทุจริต และมีการปรับปรุง
+            สม่ำเสมอ`,
+                status: false
+              },
+              {
+                text: `มีมาตรการป้องกันการทุจริตในเชิงรุก (Pro-active) เช่น พัฒนากระบวนการทำงานให้โปร่งใส่มีระบบร้องเรียน/ร้องทุกข์ สร้างกระบวนการติดตามตรวจสอบการทุจริต และการปกป้อง ผู้ร้องเรียน`,
+                status: false
+              },
+              {
+                text: `เปิดเผยผลการดำเนินงานสู่สาธารณะ`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          },
+          // 1.2 significance
+          significance: {
+            mode: "significance",
+            titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน โดยการกำหนด ยุทธศาสตร์ ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ สอดรับกับทิศทางการพัฒนาและยุทธศาสตร์พื้นที่สร้างนวัตกรรมและ วัฒนธรรมในการมุ่งประโยชน์สุขประชาชน (Innovation, Citizen-centric)`,
+            checkBox: [
+              {
+                text: `มีดัชนีความโปร่งใสจากการประเมินโดยองค์การอิสระและมี ผลลัพธ์ที่ดี`,
+                status: false
+              },
+              {
+                text: `มีการส่งเสริมการเป็นองค์การด้านความโปร่งใส เช่น มีการ ค้นหาความเป็นเลิศ (Best Practice:BP) ด้านความโปร่งใส มีการสร้างต้นแบบ (Role Model) ด้านความโปร่งใส`,
+                status: false
+              },
+              {
+                text: `ได้รับรางวัลด้านความโปร่งใสจากองค์การภายนอก`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          }
+        },
+        // ***************************************1.3 *******************************************
+        {
+          header:
+            "1.3 การมุ่งเน้นการบรรลุผลสัมฤทธิ์ของส่วนราชการผ่านการสร้างการมีส่วนร่วมของบุคลากรภายในและภายนอก",
+          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
+          no: 3,
+          // 1.3 basic
+          basic: {
+            mode: "basic",
+            titleText: `- การสื่อสารและการสร้างสภาพแวดล้อมภายในเพื่อให้มุ่งเน้นผลสัมฤทธิ์<br>
+            - การสร้างกลไกที่เอื้อให้ประชาชนและเครือข่ายภายนอกเข้ามามีส่วนร่วม
+              ในการทำงาน`,
+            checkBox: [
+              {
+                text: `ส่วนราชการมีแนวทางสื่อสารและสร้างสภาพแวดล้อมภายใน
+              องค์การให้มุ่งผลสัมฤทธิ์ในการทำงาน`,
+                status: false
+              },
+              {
+                text: `ปรับปรุงกฏระเบียบที่เอื้อให้ประชาชนเข้ามามีส่วนร่วม`,
+                status: false
+              },
+              {
+                text: `มีแนวทางในการสร้างเครือข่ายให้ ภาคประชาชน ภาคเอกชน และท้องถิ่นจากองค์การภายนอกเข้ามามีส่วนร่วมกันในการทำงาน`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          },
+          // 1.3 advance ******************************
+          advance: {
+            mode: "advance",
+            titleText: `- การตั้งเป้าหมาย ท้าทาย และการส่งเสริมให้เกิดนวัตกรรมของกระบวน   
+            การและการบริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
+            checkBox: [
+              {
+                text: `มีการตั้งเป้าหมายที่ท้าทายรองรับการเปลี่ยนแปลง`,
+                status: false
+              },
+              {
+                text: `มีแนวทางการส่งเสริมให้เกิดนวัตกรรมของกระบวนการทำงานและการให้บริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          },
+          // 1.2 significance
+          significance: {
+            mode: "significance",
+            titleText: `- การสร้างนวัตกรรมที่มีผลกระทบสูงและเชิงนโยบายที่นำไปสู่การแก้
+            ปัญหาที่มีความซับซ้อน`,
+            checkBox: [
+              {
+                text: `ผู้บริหารส่งเสริมการสร้างนวัตกรรมเชิงนโยบายที่ส่งผลในระดับ
+                ประเทศและนำไปสู่การแก้ปัญหาที่มีความซับซ้อน เช่น การสร้าง
+                ความร่วมมือจากหลายหน่วยงาน หรือการใช้กลไกห้องปฏิบัติการ นวัตกรรมภาครัฐ (Government Innovation Lab) โดยการนำ กระบวนการคิดเชิงออกแบบ (Design Thinking) ในลักษณะที่ให้
+                ประชาชน/ผู้มีส่วนได้ส่วนเสียเข้ามามีส่วนร่วมในทุกกระบวนการ`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          }
+        },
+        // ******************************************** 1.4 *****************************
+        {
+          header:
+            "1.4 การคำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศตามทิศทางยุทธศาสตร์",
+          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
+          no: 4,
+          // 1.4 basic
+          basic: {
+            mode: "basic",
+            titleText: `- การประเมินและติดตามโครงการ กระบวนการ และยุทธศาสตร์ที่อาจ 
+              มีผลกระทบเชิงลบต่อสังคม<br>
+            - การติดตามตัวชี้วัดและผลการดำเนินการขององค์การอย่างต่อเนื่อง
+            `,
+            checkBox: [
+              {
+                text: `ประเมินความเสี่ยงโครงการ กระบวนการ และยุทธศาสตร์ที่อาจมี
+              ผลกระทบเชิงลบต่อสังคมอย่างต่อเนื่อง`,
+                status: false
+              },
+              {
+                text: `เตรียมมาตรการป้องกันและแก้ไขปัญหาต่ต่างๆ เช่น การทำประชาพิจารณ์ เพื่อรับฟังความคิดเห็นทั้งก่อน / ระหว่าง / หลังดำเนินโครงการ`,
+                status: false
+              },
+              {
+                text: `กำหนดตัวชี้วัดและติดตามผลการดำเนินการอย่างต่อเนื่อง`,
+                status: false
+              },
+              {
+                text: `รวบรวมข้อมูล / สถิติ / ผลการดำเนินการที่เกี่ยวข้อง ให้พร้อมต่อการถูกติดตาม / ตรวจสอบจากทุกภาคส่วน`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          },
+          // 1.4 advanec
+          advance: {
+            mode: "advance",
+            titleText: `- การติดตามรายงานผลกระทบ โดยผ่านกลไกการสื่อสารและเทคโนโลยี  
+            ดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันการณ์ประชาชน ภาคเอกชน  
+            และท้องถิ่น`,
+            checkBox: [
+              {
+                text: `ใช้เทคโนโลยีการสื่อสารและดิจิทับที่ทันสมัยเพื่อติดตามชี้วัดและ ผลการดำเนินการเพื่อรายงานผลได้อย่างรวดเร็วและทัน เหตุการณ์`,
+                status: false
+              },
+              {
+                text: `สร้างเครือข่ายเฝ้าระวังเพื่อการแก้ไขปัญหาได้อย่างรวดเร็วและทันเหตุการณ์`,
+                status: false
+              }
+            ],
+            explain: "",
+            pdf_file: null,
+            img_file: null
+          },
+          // 1.4 significance
+          significance: {
+            mode: "significance",
+            titleText: `- การติดตามผลการดำเนินการและผลกระทบที่เกิดขึ้นทั้งในระยะสั้นและ 
+            ระยะยาวและผลกระทบที่มีต่อเศรษฐกิจ สังคม สาธารณสุข  
+            และสิ่งแวดล้อม`,
+            checkBox: [
+              {
+                text: `ส่วนราชการมีการกำหนดตัววัดที่บรรลุผลลัพธ์ในเชิง<br>
+              - ยุทธศาสตร์ของส่วนราชการ<br>
+              - ยุทธศาสตร์พื้นที่ (ถ้ามี)<br>
+              - ยุทธศาสตร์ชาติ<br>
+              - ผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
+                status: false
+              },
+              {
+                text: `ส่วนราชการมีการติดตามตัววัด โดยมีการวิเคราะห์เพื่อรู้เท่าทัน สถานการณ์และกำหนดมาตรการ / แนวทางเพื่อป้องกัน / ส่งเสริมการดำเนินการเพื่อผลลัพธ์ ที่ดีต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
                 status: false
               }
             ],
@@ -940,52 +1271,11 @@ export default {
       typeNo: "",
       typeMode: "",
       isDelete: false,
-
-      // test
       assessmentData: "",
       isLoadAssessmentFinish: true,
-      // basic_assessment: [],
-      // basic_success_form: [false, false, false, false],
-      // basic_guide_list: [
-      //   [false, false, false],
-      //   [false, false, false],
-      //   [false, false, false],
-      //   [false, false, false, false]
-      // ],
-      // basic_file_image: [],
-      // basic_file_pdf: [],
-      // advance_assessment: [],
-      // advance_success_form: [],
-      // advance_guide_list: [
-      //   [false],
-      //   [false, false, false],
-      //   [false, false],
-      //   [false, false]
-      // ],
-      // advance_file_image: [],
-      // advance_file_pdf: [],
-      // signifi_assessment: [],
-      // signifi_success_form: [],
-      // signifi_guide_list: [
-      //   [false],
-      //   [false, false, false],
-      //   [false],
-      //   [false, false]
-      // ],
-      // signifi_file_image: [],
-      // signifi_file_pdf: [],
-      // // Form 1.1
-      // tabs1: "Significance", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // // Form 1.2
-      // tabs2: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // // Form 1.3
-      // tabs3: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
-      // // Form 1.4
-      // tabs4: "Basic", // เลือกหน้าที่จะกรอกข้อมูล Basic, Advance, Significance
       // Save Data
       isSaveData: false,
-      // assessmentStatus: [-1, -1, -1, -1],
-      tabs: ["Basic", "Basic", "Basic"]
+      tabs: ["Basic", "Basic", "Basic", "Basic"]
     };
   },
   methods: {
@@ -1038,6 +1328,7 @@ export default {
     },
 
     async saveData(no, mode) {
+      console.log(no, mode);
       this.isSaveData = true;
 
       let index = no - 1;
