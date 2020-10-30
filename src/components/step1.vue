@@ -2544,7 +2544,7 @@ export default {
       let data = await Axios.post(url, postData);
       let getData = data.data;
 
-      console.log(getData);
+      // console.log(getData);
 
       // ข้อ 1 ก 1
       this.inputEnvironment1 = getData.filter(
@@ -2633,7 +2633,7 @@ export default {
           status: 1 // 1 = finish
         };
         let data = await Axios.post(url, postData);
-        console.log(data);
+        // console.log(data);
       } else if (
         this.checkEnvironment >= 1 ||
         this.checkRelation >= 1 ||
@@ -2649,7 +2649,7 @@ export default {
           status: 2 // 1 = not finish all
         };
         let data = await Axios.post(url, postData);
-        console.log(data);
+        // console.log(data);
       } else {
         console.log("finish some");
         let postData = {
@@ -2659,7 +2659,7 @@ export default {
           status: 0 // 1 = not finish all
         };
         let data = await Axios.post(url, postData);
-        console.log(data);
+        // console.log(data);
       }
     },
 

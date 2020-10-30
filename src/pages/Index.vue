@@ -15,15 +15,15 @@ export default {
     };
   },
   methods: {
-    async testGetAPI() {
-      const url = "http://localhost/pmqa4.0_api/testJSONAPI.php";
-      let data = await Axios.get(url);
-      console.log(data.data);
-      this.data = data.data;
-    }
+    // async testGetAPI() {
+    //   const url = "http://localhost/pmqa4.0_api/testJSONAPI.php";
+    //   let data = await Axios.get(url);
+    //   // console.log(data.data);
+    //   this.data = data.data;
+    // }
   },
   created() {
-    this.testGetAPI();
+    // this.testGetAPI();
   }
 };
 </script>

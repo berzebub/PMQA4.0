@@ -228,7 +228,6 @@ export default {
   methods: {
     async uploadStep7(index) {
       const url = this.apiPath + "user/addUpdateCategory7.php";
-
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
         q_number: this.data[index].no,
@@ -242,20 +241,8 @@ export default {
         result: JSON.stringify(this.data[index].result),
         year: this.currentYear
       };
-
-      //  "user_id" => $user_id,
-      //   "q_number" => $q_number,
-      //   "status" => $status,
-      //   "indicators" => $indicators,
-      //   "goal" => $goal,
-      //   "success_rate" => $success_rate,
-      //   "score" => $score,
-      //   "unit" => $unit,
-      //    "score_standard" => $score_standard,
-      //    "year" => $year
-
       let data = await Axios.post(url, postData);
-      console.log(data.data);
+      // console.log(data.data);
     }
   }
 };

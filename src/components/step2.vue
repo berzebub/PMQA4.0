@@ -84,7 +84,12 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="item.status < 1"
+                        :disable="
+                          item.status < 1 ||
+                            data[index].basic.checkBox
+                              .map(x => x.status)
+                              .includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -103,7 +108,12 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="item.status < 2"
+                        :disable="
+                          item.status < 2 ||
+                            data[index].advance.checkBox
+                              .map(x => x.status)
+                              .includes(false)
+                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -846,7 +856,7 @@
               style="width:130px;border-radius:0px;"
               label="ตกลง"
               :disable="isSaveData"
-              @click="saveData(typeNo, typeMode), deleteFile()"
+              @click="deleteFile(typeNo, typeMode)"
             ></q-btn>
           </div>
         </q-card-section>
@@ -865,7 +875,7 @@ export default {
         {
           header:
             "1.1 ระบบการนำองค์การของส่วนราชการได้สร้างองค์การที่ยั่งยืน โดยการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์เชื่อมโยง สู่การบรรลุพันธกิจ การมุ่งเน้นประโยชน์สุขประชาชนและการบรรลุผลยุทธศาสตร์ชาติและความสามารถในการแข่งขัน",
-          status: 0, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
+          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 1,
           // 1.1 basic
           basic: {
@@ -983,12 +993,13 @@ export default {
       this.tabs.push("");
       this.tabs.pop();
     },
-    deleteFile() {
+    deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;
       } else {
         this.data[this.typeNo - 1][this.typeMode].img_file = null;
       }
+      this.saveData(no, mode);
     },
     checkStatus(no) {
       let res = -1;
@@ -1040,6 +1051,7 @@ export default {
       formData.append("mode", mode);
       formData.append("year", year);
       formData.append("step", 1);
+      console.log(this.data[index].basic.pdf_file);
 
       // if (no == 1) {
       // save 1.1 basic
@@ -1138,23 +1150,25 @@ export default {
         let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
-            this.basic_assessment[i - 1] = getData[0].text;
+            this.data[i - 1].basic.explain = getData[0].text;
           } else {
-            this.basic_assessment[i - 1] = "";
+            this.data[i - 1].basic.explain = "";
           }
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
-          this.basic_guide_list[i - 1] = [];
+          this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
-            this.basic_success_form[i - 1] = true;
-          } else {
-            this.basic_success_form[i - 1] = false;
+            this.data[i - 1].status = 1;
           }
-          this.basic_guide_list[i - 1] = checkBox;
-          this.basic_file_image[i - 1] =
+
+          for (let j = 0; j < checkBox.length; j++) {
+            this.data[i - 1].basic.checkBox[j].status = checkBox[j];
+          }
+
+          this.data[i - 1].basic.img_file =
             getData[0].is_img == 0 ? null : [getData[0].is_img];
-          this.basic_file_pdf[i - 1] =
+          this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
@@ -1162,19 +1176,34 @@ export default {
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        let getDataBasic = data.filter(
+          x => x.q_number == i && x.mode == "basic"
+        );
         if (getData.length > 0) {
-          this.advance_assessment[i - 1] = getData[0].text;
+          this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
-          this.advance_guide_list[i - 1] = [];
-          if (!checkBox.includes(false)) {
-            this.advance_success_form[i - 1] = true;
+
+          let checkBoxBasic = getDataBasic[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+
+          if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
+            // ผ่าน advance
+            this.data[i - 1].status = 2;
           }
-          this.advance_guide_list[i - 1] = checkBox;
-          this.advance_file_image[i - 1] =
+          // else {
+          //   this.data[i - 1].status = 1;
+          // }
+
+          for (let j = 0; j < checkBox.length; j++) {
+            this.data[i - 1].advance.checkBox[j].status = checkBox[j];
+          }
+
+          this.data[i - 1].advance.img_file =
             getData[0].is_img == 0 ? null : [getData[0].is_img];
-          this.advance_file_pdf[i - 1] =
+          this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
@@ -1184,20 +1213,44 @@ export default {
         let getData = data.filter(
           x => x.q_number == i && x.mode == "significance"
         );
+        let getDataBasic = data.filter(
+          x => x.q_number == i && x.mode == "basic"
+        );
+        let getDataAdvance = data.filter(
+          x => x.q_number == i && x.mode == "advance"
+        );
+
         if (getData.length > 0) {
-          this.signifi_guide_list[i - 1] = [];
-          this.signifi_assessment[i - 1] = getData[0].text;
+          this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
 
-          if (!checkBox.includes(false)) {
-            this.signifi_success_form[i - 1] = true;
+          let checkBoxBasic = getDataBasic[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+
+          let checkBoxAdvance = getDataAdvance[0].check_box
+            .split(",")
+            .map(x => (x == 1 ? true : false));
+
+          if (
+            !checkBox.includes(false) &&
+            !checkBoxBasic.includes(false) &&
+            !checkBoxAdvance.includes(false)
+          ) {
+            this.data[i - 1].status = 3;
           }
-          this.signifi_guide_list[i - 1] = checkBox;
-          this.signifi_file_image[i - 1] =
+          // else {
+          //   this.data[i - 1].status = 2;
+          // }
+          for (let j = 0; j < checkBox.length; j++) {
+            this.data[i - 1].significance.checkBox[j].status = checkBox[j];
+          }
+
+          this.data[i - 1].significance.img_file =
             getData[0].is_img == 0 ? null : [getData[0].is_img];
-          this.signifi_file_pdf[i - 1] =
+          this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
@@ -1217,10 +1270,10 @@ export default {
         this.getBasic(data.data);
         this.getAdvance(data.data);
         this.getSignificance(data.data);
-        for (let i = 0; i < 4; i++) {
-          this.assessmentStatus[i] = this.checkInitialStatus(i + 1);
-        }
-        this.reRenderComponent();
+        // for (let i = 0; i < 4; i++) {
+        //   this.assessmentStatus[i] = this.checkInitialStatus(i + 1);
+        // }
+        // this.reRenderComponent();
       }
 
       this.isLoadAssessmentFinish = true;
@@ -1235,27 +1288,39 @@ export default {
       this.signifi_success_form.pop();
     },
     getPDF(no, mode) {
+      let random = Math.random()
+        .toString(36)
+        .substring(7);
       let pdfFileName = `${this.$q.sessionStorage.getItem(
         "uid"
       )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
       window.open(
-        "https://api.winner-english.com/pmqa4_0_api/upload/" + pdfFileName
+        "https://api.winner-english.com/pmqa4_0_api/upload/" +
+          pdfFileName +
+          "?" +
+          random
       );
     },
     getIMG(no, mode) {
+      let random = Math.random()
+        .toString(36)
+        .substring(7);
       let imgFileName = `${this.$q.sessionStorage.getItem(
         "uid"
       )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
 
       window.open(
-        "https://api.winner-english.com/pmqa4_0_api/upload/" + imgFileName
+        "https://api.winner-english.com/pmqa4_0_api/upload/" +
+          imgFileName +
+          "?" +
+          random
       );
     }
   },
 
   created() {
-    // this.getAssessmentData();
+    this.getAssessmentData();
   }
 };
 </script>

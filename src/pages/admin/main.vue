@@ -396,7 +396,7 @@ export default {
       const url = this.apiPath + "getUser.php";
       let userList = await Axios.get(url);
       if (userList.data) {
-        console.log(userList.data);
+        // console.log(userList.data);
         let result = userList.data.sort((a, b) =>
           a.username > b.username ? 1 : -1
         );
