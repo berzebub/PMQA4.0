@@ -1545,10 +1545,6 @@ export default {
         this.getBasic(data.data);
         this.getAdvance(data.data);
         this.getSignificance(data.data);
-        // for (let i = 0; i < 4; i++) {
-        //   this.assessmentStatus[i] = this.checkInitialStatus(i + 1);
-        // }
-        // this.reRenderComponent();
       }
 
       this.isLoadAssessmentFinish = true;
