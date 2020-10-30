@@ -11,7 +11,7 @@
       <div>
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep1"
+            group="dataFormStep2"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -802,22 +802,6 @@
                                     ลบไฟล์
                                   </div>
                                 </div>
-
-                                <!-- <div
-                                  class="bg1 relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.significance.pdf_file"
-                                  @click="
-                                    (typeFile = 'PDF'),
-                                      (typeNo = item.no),
-                                      (typeMode = 'significance'),
-                                      (isDelete = true)
-                                  "
-                                >
-                                  <span class="text-white font-12">
-                                    ลบไฟล์
-                                  </span>
-                                </div> -->
                               </div>
                               <div
                                 class="col-4 q-pa-md self-start"
