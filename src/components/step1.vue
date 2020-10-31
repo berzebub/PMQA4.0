@@ -158,8 +158,6 @@
                             <template v-slot:file> </template>
                           </q-file>
 
-                          <!-- @click="getIMG(item.no, 'basic')" -->
-
                           <div
                             class="relative-position cursor-pointer"
                             align="center"
@@ -169,6 +167,7 @@
                               class="full-width q-py-sm bg-white"
                               align="center"
                               style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ก.', 1)"
                             >
                               <q-icon
                                 name="fas fa-file-pdf"
@@ -184,25 +183,11 @@
                             </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
-                              @click="
-                                (inputEnvironmentPDF1 = null),
-                                  deleteFile(type, 1, 'ก.', 1)
-                              "
+                              @click="deleteFile('pdf', 1, 'ก.', 1)"
                             >
                               ลบไฟล์
                             </div>
                           </div>
-
-                          <!-- <div
-                            class="bg1 relative-position cursor-pointer"
-                            align="center"
-                            v-if="inputEnvironmentPDF1"
-                            
-                          >
-                            <span class="text-white font-12">
-                              ลบไฟล์
-                            </span>
-                          </div> -->
                         </div>
 
                         <div class="q-ml-lg">
@@ -219,6 +204,7 @@
                             accept=".jpg"
                             @input="val => uploadFile(val, 'img', 1, 'ก.', 1)"
                             class="bg-white"
+                            v-if="!inputEnvironmentIMG1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -252,15 +238,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentIMG1"
-                            @click="inputEnvironmentIMG1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ก.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ก.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -321,6 +329,7 @@
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF2"
+                            v-if="!inputEnvironmentPDF2"
                             dense=""
                             style="width:160px;overflow:hidden;"
                             :style="
@@ -365,20 +374,42 @@
                             <template v-slot:file> </template>
                           </q-file>
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentPDF2"
-                            @click="inputEnvironmentPDF2 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ก.', 2)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ก.', 2)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentIMG2"
+                            v-if="!inputEnvironmentIMG2"
                             dense=""
                             style="width:160px;overflow:hidden;"
                             :style="
@@ -423,15 +454,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentIMG2"
-                            @click="inputEnvironmentIMG2 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ก.', 2)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ก.', 2)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -502,6 +555,7 @@
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF3"
+                            v-if="!inputEnvironmentPDF3"
                             dense=""
                             style="width:160px;overflow:hidden;"
                             :style="
@@ -545,21 +599,44 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentPDF3"
-                            @click="inputEnvironmentPDF3 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ก.', 3)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ก.', 3)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentIMG3"
+                            v-if="!inputEnvironmentIMG3"
                             dense=""
                             style="width:160px;overflow:hidden;"
                             :style="
@@ -604,15 +681,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentIMG3"
-                            @click="inputEnvironmentIMG3 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ก.', 3)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ก.', 3)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -667,6 +766,7 @@
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF4"
+                            v-if="!inputEnvironmentPDF4"
                             dense=""
                             style="width:160px;overflow:hidden;"
                             :style="
@@ -710,15 +810,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentPDF4"
-                            @click="inputEnvironmentPDF4 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ก.', 4)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ก.', 4)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -736,6 +858,7 @@
                             accept=".jpg"
                             @input="val => uploadFile(val, 'img', 1, 'ก.', 4)"
                             class="bg-white"
+                            v-if="!inputEnvironmentIMG4"
                           >
                             <template v-slot:prepend>
                               <div
@@ -769,15 +892,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentIMG4"
-                            @click="inputEnvironmentIMG4 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ก.', 4)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ก.', 4)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -843,6 +988,7 @@
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ก.', 5)"
                             class="bg-white"
+                            v-if="!inputEnvironmentPDF5"
                           >
                             <template v-slot:prepend>
                               <div
@@ -875,15 +1021,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentPDF5"
-                            @click="inputEnvironmentPDF5 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ก.', 5)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ก.', 5)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -901,6 +1069,7 @@
                             accept=".jpg"
                             @input="val => uploadFile(val, 'img', 1, 'ก.', 5)"
                             class="bg-white"
+                            v-if="!inputEnvironmentIMG5"
                           >
                             <template v-slot:prepend>
                               <div
@@ -934,15 +1103,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputEnvironmentIMG5"
-                            @click="inputEnvironmentIMG5 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ก.', 5)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ก.', 5)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1051,8 +1242,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ข.', 1)"
                             class="bg-white"
+                            v-if="!inputRelationPDF1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1085,15 +1277,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputRelationPDF1"
-                            @click="inputRelationPDF1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ข.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ข.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -1109,8 +1323,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ข.', 1)"
                             class="bg-white"
+                            v-if="!inputRelationIMG1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1144,15 +1359,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputRelationIMG1"
-                            @click="inputRelationIMG1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ข.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ข.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1220,8 +1457,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ข.', 2)"
                             class="bg-white"
+                            v-if="!inputRelationPDF2"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1254,15 +1492,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputRelationPDF2"
-                            @click="inputRelationPDF2 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ข.', 2)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ข.', 2)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -1278,8 +1538,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ข.', 2)"
                             class="bg-white"
+                            v-if="!inputRelationIMG2"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1313,15 +1574,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputRelationIMG2"
-                            @click="inputRelationIMG2 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ข.', 2)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ข.', 2)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1390,8 +1673,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 1, 'ข.', 3)"
                             class="bg-white"
+                            v-if="!inputRelationPDF3"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1424,15 +1708,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputRelationPDF3"
-                            @click="inputRelationPDF3 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 1, 'ข.', 3)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 1, 'ข.', 3)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -1448,8 +1754,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 1, 'ข.', 3)"
                             class="bg-white"
+                            v-if="!inputRelationIMG3"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1483,15 +1790,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputRelationIMG3"
-                            @click="inputRelationIMG3 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 1, 'ข.', 3)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 1, 'ข.', 3)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1611,8 +1940,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 2, 'ก.', 1)"
                             class="bg-white"
+                            v-if="!inputCompetitionEnvironmentPDF1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1645,15 +1975,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputCompetitionEnvironmentPDF1"
-                            @click="inputCompetitionEnvironmentPDF1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 2, 'ก.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 2, 'ก.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -1669,8 +2021,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 2, 'ก.', 1)"
                             class="bg-white"
+                            v-if="!inputCompetitionEnvironmentIMG1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1704,15 +2057,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputCompetitionEnvironmentIMG1"
-                            @click="inputCompetitionEnvironmentIMG1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 2, 'ก.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 2, 'ก.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1775,8 +2150,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 2, 'ก.', 2)"
                             class="bg-white"
+                            v-if="!inputCompetitionEnvironmentPDF2"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1809,15 +2185,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputCompetitionEnvironmentPDF2"
-                            @click="inputCompetitionEnvironmentPDF2 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 2, 'ก.', 2)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 2, 'ก.', 2)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -1833,8 +2231,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 2, 'ก.', 2)"
                             class="bg-white"
+                            v-if="!inputCompetitionEnvironmentIMG2"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1868,15 +2267,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputCompetitionEnvironmentIMG2"
-                            @click="inputCompetitionEnvironmentIMG2 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 2, 'ก.', 2)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 2, 'ก.', 2)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1944,8 +2365,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
                             class="bg-white"
+                            @input="val => uploadFile(val, 'pdf', 2, 'ก.', 3)"
+                            v-if="!inputCompetitionEnvironmentPDF3"
                           >
                             <template v-slot:prepend>
                               <div
@@ -1978,15 +2400,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputCompetitionEnvironmentPDF3"
-                            @click="inputCompetitionEnvironmentPDF3 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 2, 'ก.', 3)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 2, 'ก.', 3)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -2002,8 +2446,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'img', 2, 'ก.', 3)"
                             class="bg-white"
+                            v-if="!inputCompetitionEnvironmentIMG3"
                           >
                             <template v-slot:prepend>
                               <div
@@ -2037,15 +2482,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputCompetitionEnvironmentIMG3"
-                            @click="inputCompetitionEnvironmentIMG3 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 2, 'ก.', 3)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 2, 'ก.', 3)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -2153,8 +2620,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
+                            @input="val => uploadFile(val, 'pdf', 2, 'ข.', 1)"
                             class="bg-white"
+                            v-if="!inputStategyPDF1"
                           >
                             <template v-slot:prepend>
                               <div
@@ -2187,15 +2655,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputStategyPDF1"
-                            @click="inputStategyPDF1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 2, 'ข.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 2, 'ข.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -2211,8 +2701,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
                             class="bg-white"
+                            v-if="!inputStategyIMG1"
+                            @input="val => uploadFile(val, 'img', 2, 'ข.', 1)"
                           >
                             <template v-slot:prepend>
                               <div
@@ -2246,15 +2737,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputStategyIMG1"
-                            @click="inputStategyIMG1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 2, 'ข.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 2, 'ข.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -2358,8 +2871,9 @@
                             "
                             borderless
                             accept=".pdf"
-                            @input="saveData()"
                             class="bg-white"
+                            v-if="!inputPerformanceSystemPDF1"
+                            @input="val => uploadFile(val, 'pdf', 2, 'ค.', 1)"
                           >
                             <template v-slot:prepend>
                               <div
@@ -2392,15 +2906,37 @@
 
                             <template v-slot:file> </template>
                           </q-file>
+
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputPerformanceSystemPDF1"
-                            @click="inputPerformanceSystemPDF1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('pdf', 2, 'ค.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                pdf เอกสารเพิ่มเติม
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('pdf', 2, 'ค.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
 
@@ -2416,8 +2952,9 @@
                             "
                             borderless
                             accept=".jpg"
-                            @input="saveData()"
                             class="bg-white"
+                            v-if="!inputPerformanceSystemIMG1"
+                            @input="val => uploadFile(val, 'img', 2, 'ค.', 1)"
                           >
                             <template v-slot:prepend>
                               <div
@@ -2452,14 +2989,35 @@
                             <template v-slot:file> </template>
                           </q-file>
                           <div
-                            class="bg1 relative-position cursor-pointer"
+                            class="relative-position cursor-pointer"
+                            style="width:160px"
                             align="center"
                             v-if="inputPerformanceSystemIMG1"
-                            @click="inputPerformanceSystemIMG1 = null"
                           >
-                            <span class="text-white font-12">
+                            <div
+                              class="full-width q-py-sm bg-white"
+                              align="center"
+                              style="border:2px solid #000000;border-radius:0px;"
+                              @click="openFile('img', 2, 'ค.', 1)"
+                            >
+                              <q-icon
+                                name="fas fa-file-pdf"
+                                class="color1 q-px-xs"
+                                size="20px"
+                              ></q-icon>
+                              <span
+                                class="font-14 text-black"
+                                style="text-decoration:underline"
+                              >
+                                รูปภาพประกอบ
+                              </span>
+                            </div>
+                            <div
+                              class="bg1 text-white font-12 q-py-sm"
+                              @click="deleteFile('img', 2, 'ค.', 1)"
+                            >
                               ลบไฟล์
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -2484,6 +3042,40 @@
         @click="saveData()"
       ></q-btn>
     </div>
+
+    <q-dialog v-model="isDelete" persistent="">
+      <q-card style="max-width:400px;width:100%;">
+        <q-card-section align="center">
+          <div class="q-pb-md">
+            <span style="font-size:24px;">ลบไพล์</span>
+          </div>
+          <div class="q-pa-md font-18">
+            <span>คุณต้องการลบไฟล์ หรือไม่</span>
+          </div>
+        </q-card-section>
+        <q-card-section>
+          <div align="center">
+            <q-btn
+              class="font-14 q-mx-xs"
+              dense=""
+              outline=""
+              style="width:130px;border-radius:0px;"
+              label="ยกเลิก"
+              v-close-popup
+            ></q-btn>
+            <q-btn
+              class="bg-teal text-white font-14 q-mx-xs"
+              push
+              dense=""
+              style="width:130px;border-radius:0px;"
+              label="ตกลง"
+              :disable="isSaveData"
+              @click="confirmDeleteFile()"
+            ></q-btn>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -2492,8 +3084,10 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      temp: "",
       // Emit Data Status
       status: "none",
+      isDelete: false,
 
       // Environment
       environmentCount: 0,
@@ -2571,6 +3165,102 @@ export default {
     };
   },
   methods: {
+    async confirmDeleteFile() {
+      let data = this.temp;
+      if (data.q_number == 1) {
+        if (data.category == "ก.") {
+          if (data.type == "pdf") {
+            if (data.category_q_number == 1) {
+              this.inputEnvironmentPDF1 = null;
+            } else if (data.category_q_number == 2) {
+              this.inputEnvironmentPDF2 = null;
+            } else if (data.category_q_number == 3) {
+              this.inputEnvironmentPDF3 = null;
+            } else if (data.category_q_number == 4) {
+              this.inputEnvironmentPDF4 = null;
+            } else if (data.category_q_number == 5) {
+              this.inputEnvironmentPDF5 = null;
+            }
+          } else {
+            if (data.category_q_number == 1) {
+              this.inputEnvironmentIMG1 = null;
+            } else if (data.category_q_number == 2) {
+              this.inputEnvironmentIMG2 = null;
+            } else if (data.category_q_number == 3) {
+              this.inputEnvironmentIMG3 = null;
+            } else if (data.category_q_number == 4) {
+              this.inputEnvironmentIMG4 = null;
+            } else if (data.category_q_number == 5) {
+              this.inputEnvironmentIMG5 = null;
+            }
+          }
+        } else {
+          if (data.type == "pdf") {
+            if (data.category_q_number == 1) {
+              this.inputRelationPDF1 = null;
+            } else if (data.category_q_number == 2) {
+              this.inputRelationPDF2 = null;
+            } else if (data.category_q_number == 3) {
+              this.inputRelationPDF3 = null;
+            }
+          } else {
+            if (data.category_q_number == 1) {
+              this.inputRelationIMG1 = null;
+            } else if (data.category_q_number == 2) {
+              this.inputRelationIMG2 = null;
+            } else if (data.category_q_number == 3) {
+              this.inputRelationIMG3 = null;
+            }
+          }
+        }
+      } else {
+        if (data.category == "ก.") {
+          if (data.type == "pdf") {
+            if (data.category_q_number == 1) {
+              this.inputCompetitionEnvironmentPDF1 = null;
+            } else if (data.category_q_number == 2) {
+              this.inputCompetitionEnvironmentPDF2 = null;
+            } else if (data.category_q_number == 3) {
+              this.inputCompetitionEnvironmentPDF3 = null;
+            }
+          } else {
+            if (data.category_q_number == 1) {
+              this.inputCompetitionEnvironmentIMG1 = null;
+            } else if (data.category_q_number == 2) {
+              this.inputCompetitionEnvironmentIMG2 = null;
+            } else if (data.category_q_number == 3) {
+              this.inputCompetitionEnvironmentIMG3 = null;
+            }
+          }
+        } else if (data.category == "ข.") {
+          if (data.type == "pdf") {
+            this.inputStategyPDF1 = null;
+          } else {
+            this.inputStategyIMG1 = null;
+          }
+        } else {
+          if (data.type == "pdf") {
+            this.inputPerformanceSystemPDF1 = null;
+          } else {
+            this.inputPerformanceSystemIMG1 = null;
+          }
+        }
+      }
+
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        q_number: data.q_number,
+        category: data.category,
+        category_q_number: data.category_q_number,
+        year: this.$q.sessionStorage.getItem("y"),
+        type: data.type
+      };
+
+      const url = this.apiPath + "user/deleteFileCategory0.php";
+      let dataAx = await Axios.post(url, postData);
+
+      this.isDelete = false;
+    },
     async getData() {
       this.loadingShow();
       const url = this.apiPath + "user/getCategory0.php";
@@ -2583,139 +3273,403 @@ export default {
 
       if (getData) {
         // ข้อ 1 ก 1
-        this.inputEnvironment1 = getData.filter(
+        let inputEnvironment1 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "1"
-        )[0].text;
+        );
 
-        let checkFile1 = getData.filter(
-          x =>
-            x.q_number == "1" &&
-            x.category == "ก." &&
-            x.category_q_number == "1"
-        )[0];
+        if (inputEnvironment1.length) {
+          this.inputEnvironment1 = inputEnvironment1[0].text;
+          let checkFile1 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "1"
+          )[0];
 
-        if (checkFile1.is_img == 0) {
-          // กรณีไม่มีรูปภาพ
-          this.inputEnvironmentIMG1 = null;
-        } else {
-          this.inputEnvironmentIMG1 = [1];
-        }
-        if (checkFile1.is_pdf == 0) {
-          // กรณีไม่มีรูปภาพ
-          this.inputEnvironmentPDF1 = null;
-        } else {
-          this.inputEnvironmentPDF1 = [1];
+          if (checkFile1.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG1 = null;
+          } else {
+            this.inputEnvironmentIMG1 = [1];
+          }
+          if (checkFile1.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF1 = null;
+          } else {
+            this.inputEnvironmentPDF1 = [1];
+          }
         }
 
         // ข้อ1 ก2
-        this.inputEnvironment2 = getData.filter(
+        let inputEnvironment2 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "2"
-        )[0].text;
+        );
 
-        let checkFile2 = getData.filter(
-          x =>
-            x.q_number == "1" &&
-            x.category == "ก." &&
-            x.category_q_number == "2"
-        )[0];
+        if (inputEnvironment2.length) {
+          this.inputEnvironment2 = inputEnvironment2[0].text;
+          let checkFile2 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "2"
+          )[0];
 
-        if (checkFile2.is_img == 0) {
-          // กรณีไม่มีรูปภาพ
-          this.inputEnvironmentIMG2 = null;
-        } else {
-          this.inputEnvironmentIMG2 = [1];
-        }
-        if (checkFile2.is_pdf == 0) {
-          // กรณีไม่มีรูปภาพ
-          this.inputEnvironmentPDF2 = null;
-        } else {
-          this.inputEnvironmentPDF2 = [1];
+          if (checkFile2.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG2 = null;
+          } else {
+            this.inputEnvironmentIMG2 = [1];
+          }
+          if (checkFile2.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF2 = null;
+          } else {
+            this.inputEnvironmentPDF2 = [1];
+          }
         }
 
         // ข้อ1 ก3
-        this.inputEnvironment3 = getData.filter(
+        let inputEnvironment3 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "3"
-        )[0].text;
+        );
+
+        if (inputEnvironment3.length) {
+          this.inputEnvironment3 = inputEnvironment3[0].text;
+          let checkFile3 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "3"
+          )[0];
+
+          if (checkFile3.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG3 = null;
+          } else {
+            this.inputEnvironmentIMG3 = [1];
+          }
+          if (checkFile3.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF3 = null;
+          } else {
+            this.inputEnvironmentPDF3 = [1];
+          }
+        }
+
         // ข้อ1 ก4
-        this.inputEnvironment4 = getData.filter(
+        let inputEnvironment4 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "4"
-        )[0].text;
+        );
+        if (inputEnvironment4.length) {
+          this.inputEnvironment4 = inputEnvironment4[0].text;
+          let checkFile4 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "4"
+          )[0];
+
+          if (checkFile4.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG4 = null;
+          } else {
+            this.inputEnvironmentIMG4 = [1];
+          }
+          if (checkFile4.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF4 = null;
+          } else {
+            this.inputEnvironmentPDF4 = [1];
+          }
+        }
+
         // ข้อ1 ก5
-        this.inputEnvironment5 = getData.filter(
+        let inputEnvironment5 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "5"
-        )[0].text;
+        );
+        if (inputEnvironment5.length) {
+          this.inputEnvironment5 = inputEnvironment5[0].text;
+          let checkFile5 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "5"
+          )[0];
+
+          if (checkFile5.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG5 = null;
+          } else {
+            this.inputEnvironmentIMG5 = [1];
+          }
+          if (checkFile5.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF5 = null;
+          } else {
+            this.inputEnvironmentPDF5 = [1];
+          }
+        }
+
         // ข้อ1 ข1
-        this.inputRelation1 = getData.filter(
+        let inputRelation1 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ข." &&
             x.category_q_number == "1"
-        )[0].text;
+        );
+        if (inputRelation1.length) {
+          this.inputRelation1 = inputRelation1[0].text;
+          let checkFile6 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ข." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile6.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationIMG1 = null;
+          } else {
+            this.inputRelationIMG1 = [1];
+          }
+          if (checkFile6.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationPDF1 = null;
+          } else {
+            this.inputRelationPDF1 = [1];
+          }
+        }
+
         // ข้อ1 ข2
-        this.inputRelation2 = getData.filter(
+        let inputRelation2 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ข." &&
             x.category_q_number == "2"
-        )[0].text;
+        );
+
+        if (inputRelation2.length) {
+          this.inputRelation2 = inputRelation2[0].text;
+          let checkFile7 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ข." &&
+              x.category_q_number == "2"
+          )[0];
+
+          if (checkFile7.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationIMG2 = null;
+          } else {
+            this.inputRelationIMG2 = [1];
+          }
+          if (checkFile7.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationPDF2 = null;
+          } else {
+            this.inputRelationPDF2 = [1];
+          }
+        }
+
         // ข้อ1 ข3
-        this.inputRelation3 = getData.filter(
+        let inputRelation3 = getData.filter(
           x =>
             x.q_number == "1" &&
             x.category == "ข." &&
             x.category_q_number == "3"
-        )[0].text;
+        );
+
+        if (inputRelation3.length) {
+          this.inputRelation3 = inputRelation3[0].text;
+          let checkFile8 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ข." &&
+              x.category_q_number == "3"
+          )[0];
+
+          if (checkFile8.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationIMG3 = null;
+          } else {
+            this.inputRelationIMG3 = [1];
+          }
+          if (checkFile8.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationPDF3 = null;
+          } else {
+            this.inputRelationPDF3 = [1];
+          }
+        }
 
         // ข้อ2 ก1
-        this.inputCompetitionEnvironment1 = getData.filter(
+        let inputCompetitionEnvironment1 = getData.filter(
           x =>
             x.q_number == "2" &&
             x.category == "ก." &&
             x.category_q_number == "1"
-        )[0].text;
+        );
+        if (inputCompetitionEnvironment1.length) {
+          this.inputCompetitionEnvironment1 =
+            inputCompetitionEnvironment1[0].text;
+          let checkFile9 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ก." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile9.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentIMG1 = null;
+          } else {
+            this.inputCompetitionEnvironmentIMG1 = [1];
+          }
+          if (checkFile9.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentPDF1 = null;
+          } else {
+            this.inputCompetitionEnvironmentPDF1 = [1];
+          }
+        }
+
         // ข้อ2 ก2
-        this.inputCompetitionEnvironment2 = getData.filter(
+        let inputCompetitionEnvironment2 = getData.filter(
           x =>
             x.q_number == "2" &&
             x.category == "ก." &&
             x.category_q_number == "2"
-        )[0].text;
+        );
+
+        if (inputCompetitionEnvironment2.length) {
+          this.inputCompetitionEnvironment2 =
+            inputCompetitionEnvironment2[0].text;
+          let checkFile10 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ก." &&
+              x.category_q_number == "2"
+          )[0];
+
+          if (checkFile10.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentIMG2 = null;
+          } else {
+            this.inputCompetitionEnvironmentIMG2 = [1];
+          }
+          if (checkFile10.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentPDF2 = null;
+          } else {
+            this.inputCompetitionEnvironmentPDF2 = [1];
+          }
+        }
+
         // ข้อ2 ก3
-        this.inputCompetitionEnvironment3 = getData.filter(
+        let inputCompetitionEnvironment3 = getData.filter(
           x =>
             x.q_number == "2" &&
             x.category == "ก." &&
             x.category_q_number == "3"
-        )[0].text;
+        );
+        if (inputCompetitionEnvironment3.length) {
+          this.inputCompetitionEnvironment3 =
+            inputCompetitionEnvironment3[0].text;
+          let checkFile11 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ก." &&
+              x.category_q_number == "3"
+          )[0];
+
+          if (checkFile11.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentIMG3 = null;
+          } else {
+            this.inputCompetitionEnvironmentIMG3 = [1];
+          }
+          if (checkFile11.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentPDF3 = null;
+          } else {
+            this.inputCompetitionEnvironmentPDF3 = [1];
+          }
+        }
+
         // ข้อ2 ข1
-        this.inputStategy = getData.filter(
+        let inputStategy = getData.filter(
           x =>
             x.q_number == "2" &&
             x.category == "ข." &&
             x.category_q_number == "1"
-        )[0].text;
+        );
+        if (inputStategy.length) {
+          this.inputStategy = inputStategy[0].text;
+          let checkFile12 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ข." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile12.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputStategyIMG1 = null;
+          } else {
+            this.inputStategyIMG1 = [1];
+          }
+          if (checkFile12.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputStategyPDF1 = null;
+          } else {
+            this.inputStategyPDF1 = [1];
+          }
+        }
+
         // ข้อ2 ค1
-        this.inputPerformanceSystem = getData.filter(
+        let inputPerformanceSystem = getData.filter(
           x =>
             x.q_number == "2" &&
             x.category == "ค." &&
             x.category_q_number == "1"
-        )[0].text;
+        );
+        if (inputPerformanceSystem.length) {
+          this.inputPerformanceSystem = inputPerformanceSystem[0].text;
+          let checkFile13 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ค." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile13.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputPerformanceSystemIMG1 = null;
+          } else {
+            this.inputPerformanceSystemIMG1 = [1];
+          }
+          if (checkFile13.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputPerformanceSystemPDF1 = null;
+          } else {
+            this.inputPerformanceSystemPDF1 = [1];
+          }
+        }
       }
 
       this.loadingHide();
@@ -2923,28 +3877,40 @@ export default {
       const url = this.apiPath + "user/uploadFileCategory0.php";
       let data = await Axios.post(url, formData);
     },
-    // deleteFile(type,1,'ก.',1)(){},
     deleteFile(type, q_number, category, category_q_number) {
-      // type = img / pdf
-      // q_number = ข้อใหญ่
-      // category = หมวด
-      // category_q_number = ข้อย่อย
-
-      // ส่ง API ไปเพื่อ Update ฐานข้อมูล
-      // อัพเดทสถานะ IMG หรือ PDF ขึ้นอยู่กับ type ให้เป็น 0
       let postData = {
         type: type,
         q_number: q_number,
         category: category,
         category_q_number: category_q_number
       };
+      this.temp = postData;
+      this.isDelete = true;
+
+      // this.confirmDeleteFile(postData);
+    },
+    openFile(type, q_number, category, category_q_number) {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      if (category == "ก.") {
+        category = "a";
+      } else if (category == "ข.") {
+        category = "b";
+      } else {
+        category = "c";
+      }
+      let r = Math.random()
+        .toString(36)
+        .substring(7);
+      let fileName;
+      if (type == "pdf") {
+        fileName = `${uid}-${q_number}-${category}-${category_q_number}-${year}.pdf?${r}`;
+      } else {
+        fileName = `${uid}-${q_number}-${category}-${category_q_number}-${year}.jpg?${r}`;
+      }
+      let link = this.apiPath + "uploadcategory0/" + fileName;
+      window.open(link);
     }
-
-    // uploadData(val,'pdf',1,'ก',1)
-
-    // uploadData(val,'pdf',1,'ก',1) {
-    //   console.log(val);
-    // }
   },
   computed: {
     checkEnvironment() {

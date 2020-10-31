@@ -1263,10 +1263,7 @@ export default {
     };
   },
   methods: {
-    test() {
-      this.tabs.push("");
-      this.tabs.pop();
-    },
+   
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;

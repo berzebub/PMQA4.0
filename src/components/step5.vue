@@ -1303,7 +1303,6 @@ export default {
     },
 
     async saveData(no, mode) {
-      console.log(no, mode);
       this.isSaveData = true;
 
       let index = no - 1;
