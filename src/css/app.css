@@ -160,6 +160,18 @@ body {
   background-color: #e5e5e5;
 }
 
+.bg5 {
+  background-color: #009688;
+}
+
+.bg6 {
+  background-color: #d9b750;
+}
+
+.bg7 {
+  background-color: #657b0b;
+}
+
 .color1 {
   color: #e84c93;
 }
@@ -170,4 +182,16 @@ body {
 
 .color3 {
   color: #e0e0e0;
+}
+
+.color5 {
+  color: #009688;
+}
+
+.color6 {
+  color: #d9b750;
+}
+
+.color7 {
+  color: #657b0b;
 }
