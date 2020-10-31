@@ -172,6 +172,18 @@ body {
   background-color: #657b0b;
 }
 
+.bg8 {
+  background-color: #1976d2;
+}
+
+.bg9 {
+  background-color: #009688;
+}
+
+.bg10 {
+  background-color: #757575;
+}
+
 .color1 {
   color: #e84c93;
 }
@@ -194,4 +206,16 @@ body {
 
 .color7 {
   color: #657b0b;
+}
+
+.color8 {
+  color: #1976d2;
+}
+
+.color9 {
+  color: #009688;
+}
+
+.color10 {
+  color: #757575;
 }
