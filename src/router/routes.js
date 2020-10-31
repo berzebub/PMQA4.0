@@ -29,6 +29,16 @@ const routes = [
         name: "stepper"
       },
       {
+        path: "/waitingAssessment",
+        component: () => import("pages/waitingAssessment.vue"),
+        name: "waitingAssessment"
+      },
+      {
+        path: "/assessment",
+        component: () => import("pages/assessment.vue"),
+        name: "assessment"
+      },
+      {
         path: "/admin/main",
         component: () => import("pages/admin/main.vue"),
         name: "adminMain"
