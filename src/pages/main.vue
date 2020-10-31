@@ -443,6 +443,7 @@ export default {
   },
   methods: {
     async getStepperLog() {
+      this.loadingShow();
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),

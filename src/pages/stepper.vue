@@ -24,7 +24,7 @@
               push
               class="q-pa-sm"
               :class="active == 1 ? 'bg1' : 'bg3'"
-              @click="active = 1"
+              @click="active = 1,route('-1')"
             >
               <q-icon
                 name="fas fa-flag"

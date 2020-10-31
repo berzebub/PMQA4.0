@@ -11,7 +11,7 @@
       <div>
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep1"
+            group="dataFormStep6"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -1338,8 +1338,32 @@ export default {
       }
     },
 
+     async checkPassStatus(){
+      let status = 0
+      let mapStatus = this.data.map(x =>x.status)
+      if(!mapStatus.includes(-1)){
+        // ประเมินครบแล้วทุกข้อ
+        status = 1
+      }else if (mapStatus.every(x => x == -1)){
+        // ยังไม่เคยทำสักข้อ
+        status = 0
+      }else{
+        // ทำแล้วบางข้อ
+        status = 2
+      }
+
+     const url = this.apiPath + "user/setUserStepperLog.php";
+     let postData = {
+          category: "category5",
+          user_id: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          status: status // 1 = finish
+        };
+        let data = await Axios.post(url, postData);
+        this.$emit("statusForm")
+    },
+
     async saveData(no, mode) {
-      console.log(no, mode);
       this.isSaveData = true;
 
       let index = no - 1;
@@ -1445,6 +1469,7 @@ export default {
       this.isSaveData = false;
 
       this.isDelete = false;
+      this.checkPassStatus()
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
@@ -1566,7 +1591,6 @@ export default {
         step: 5
       };
       let data = await Axios.post(url, postData);
-      // console.log(data.data);
       this.assessmentData = data.data;
       if (data.data) {
         this.getBasic(data.data);
