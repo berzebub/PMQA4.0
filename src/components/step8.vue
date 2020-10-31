@@ -14,7 +14,6 @@
           dense-toggle=""
           dense=""
           expand-icon-class="text-grey-10"
-          :default-opened="index == 0"
           header-style="height:70px;"
         >
           <template v-slot:header>
@@ -60,7 +59,23 @@
               :key="indexResult"
             >
               <div class="row">
-                <div class="q-pa-md border col-5" align="center">ตัวชี้วัด</div>
+                <div
+                  class="q-pa-md border col-5 relative-position  row items-center"
+                  align="center"
+                >
+                  <q-btn
+                    v-show="indexResult != 0"
+                    class="cursor-pointer relative-position"
+                    round=""
+                    icon="fas fa-trash-alt"
+                    color="teal"
+                    size="12px"
+                    @click="deleteIndicator(index, indexSub, indexResult)"
+                  ></q-btn>
+                  <div class="col-10" align="center">
+                    ตัวชี้วัด
+                  </div>
+                </div>
                 <div class="q-pa-md border col" align="center">ผลดำเนินการ</div>
                 <div class="q-pa-md border " style="width:150px" align="center">
                   %ความสำเร็จ
@@ -131,7 +146,7 @@
                           class="relative-position"
                         >
                           <q-input
-                            v-model="
+                            v-model.number="
                               data[index].question[indexSub].result[
                                 indexResult
                               ][currentYear - i + 1]
@@ -161,20 +176,52 @@
                   </div>
                 </div>
                 <div class="q-pa-md border " style="width:150px" align="center">
-                  <span v-if="item.question[indexSub].successRate[indexResult]">
-                    {{ item.question[indexSub].successRate[indexResult] }}%
+                  <span>
+                    {{
+                      calculateSuccessRate(
+                        item.question[indexSub].result[indexResult][
+                          currentYear
+                        ],
+                        item.question[indexSub].goalCurrentYear[indexResult],
+                        item.question[indexSub].scoreStandard[indexResult],
+                        index,
+                        indexSub,
+                        indexResult
+                      )
+                    }}
                   </span>
                 </div>
                 <div class="q-pa-md border " style="width:150px" align="center">
-                  <span v-if="item.question[indexSub].score[indexResult]">{{
-                    item.question[indexSub].score[indexResult]
-                  }}</span>
+                  <span>
+                    {{
+                      calculateScore(
+                        calculateSuccessRate(
+                          item.question[indexSub].result[indexResult][
+                            currentYear
+                          ],
+                          item.question[indexSub].goalCurrentYear[indexResult],
+                          item.question[indexSub].scoreStandard[indexResult]
+                        ),
+                        index,
+                        indexSub,
+                        indexResult
+                      )
+                    }}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-          <q-btn label="testUpload" color="teal" @click="saveCategory7(0)">
-          </q-btn>
+
+          <div class="q-py-md" align="center">
+            <q-btn
+              class="bg-teal text-white font-18"
+              label="บันทึกข้อมูล"
+              style="width: 220px; border-radius: 0px;"
+              push
+              @click="saveCategory7(item.no)"
+            ></q-btn>
+          </div>
         </q-expansion-item>
       </q-list>
     </div>
@@ -200,14 +247,14 @@ export default {
               headerTextUpper:
                 "1. ตัววัดตามภารกิจหลัก <b>(จำเป็น)</b> <br>ตัวชี้วัดของการบรรลุผลลัพธ์ตามพันธกิจหรือภารกิจของส่วนราชการ (Function base, Area base)",
               numberOfIndicators: 1,
-              indicators: ['7.1.1'],
-              goalCurrentYear: [2500],
-              unit: [10],
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
               result: [
                 {
-                  [this.$q.sessionStorage.getItem("y") + 543]: 1600,
-                  [this.$q.sessionStorage.getItem("y") + 542]: 1200,
-                  [this.$q.sessionStorage.getItem("y") + 541]: 1400
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -230,8 +277,8 @@ export default {
                   [this.$q.sessionStorage.getItem("y") + 541]: null
                 }
               ],
-              successRate: [136],
-              score: ['0'],
+              successRate: [],
+              score: [],
               scoreStandard: [
                 "ยิ่งน้อยยิ่งดี",
                 "ยิ่งมากยิ่งดี",
@@ -245,14 +292,14 @@ export default {
               headerTextUpper: `2. ตัววัดตามนโยบายและแผนรัฐบาล<br>
               ตัวชี้วัดของการบรรลุผลลัพธ์ตามนโยบายและแผนรัฐบาล (Agenda base)`,
               numberOfIndicators: 1,
-              indicators: [200],
-              goalCurrentYear: [200],
-              unit: [20],
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
               result: [
                 {
-                  [this.$q.sessionStorage.getItem("y") + 543]: 300,
-                  [this.$q.sessionStorage.getItem("y") + 542]: 400,
-                  [this.$q.sessionStorage.getItem("y") + 541]: 500
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -275,8 +322,1072 @@ export default {
                   [this.$q.sessionStorage.getItem("y") + 541]: null
                 }
               ],
-              successRate: [20],
-              score: [200],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 3,
+              headerTextUpper: `3. การดำเนินการด้านกฏหมายตัวชี้วัดของการดำเนินการด้านกฏหมาย`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 4,
+              headerTextUpper: `4. ตัววัดของการบรรลุตามแผนยุทธศาสตร์ (จำเป็น)ตัวชี้วัดของการบรรลุผลตามแผนยุทธศาสตร์`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 5,
+              headerTextUpper: `5. การบรรลุตามยุทธศาสตร์อื่นๆ เช่น การบรรลุตัววัดร่วม การจัดอันดับ เป็นต้น
+ตัวชี้วัดของการบรรลุตามยุทธศาสตร์อื่นๆ ตามนโยบายของส่วนราชการหรือของรัฐบาล`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
+        },
+        {
+          title: "7.2 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านผู้รับบริการ และประชาชน",
+          no: 2,
+          status: -1, //-1 ยังไม่ประเมิน
+          question: [
+            {
+              subNo: 1,
+              headerTextUpper: `1.ความพึงพอใจของผู้รับบริการและผู้มีส่วนได้ส่วนเสีย <b>(จำเป็น)</b><br>
+ตัวชี้วัดของการบรรลุผลลัพธ์ของความพึงพอใจของผู้รับบริการและผู้มีส่วนได้ส่วนเสียจากการใช้บริการของส่วนราชการ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งน้อยยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 2,
+              headerTextUpper: `2. ผลของความผูกพันและการให้ความร่วมมือ (จำเป็น) 
+ตัวชี้วัดที่แสดงออกถึงความผูกพันและการให้ความร่วมมือจากประชาชนและผู้เข้ามารับการบริการจากส่วนราชการ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 3,
+              headerTextUpper: `3. ผลการดำเนินการด้านโครงการประชารัฐ
+ตัวชี้วัดที่แสดงการบรรลุผลหรือความสำเร็จของการดำเนินการด้านโครงการประชารัฐ เช่น ยอดการจำกหน่ายสินค้าภายใต้โครงการประชารัฐ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 4,
+              headerTextUpper: `4.ผลจากการปรบเปลี่ยนด้านการบริการที่เกิดประโยชน์ต่อผู้รับบริการที่สามารถวัดผลได้
+ตัวชี้วัดที่สะท้อนถึงผลจากการปรับเปลี่ยนด้านการบริการ และนวัตกรรมการบริการที่เกิดประโยชน์ ต่อผู้รับบริการที่สามารถวัดผลได้`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 5,
+              headerTextUpper: `5. การแก้ไขเรื่องร้องเรียน
+ตัวชี้วัดที่สะท้อนถึงการจัดการข้อร้องเรียนที่ได้รับการแก้ไขอย่างรวดเร็วและเกิดผล`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
+        },
+        {
+          title: "7.3 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านการพัฒนาบุคลากร",
+          no: 3,
+          status: -1, //-1 ยังไม่ประเมิน
+          question: [
+            {
+              subNo: 1,
+              headerTextUpper: `1.จำนวนนวัตกรรมต่อบุคลากร <b>(จำเป็น)</b><br>ตัวชี้วัดของการพัฒนานวัตกรรมที่เกิดจากบุคลากรของส่วนราชการ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งน้อยยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 2,
+              headerTextUpper: `2. การเรียนรู้และผลการพัฒนา <b>(จำเป็น) </b><br>ตัวชี้วัดของการเรียนรู้และผลการพัฒนาบุคลากรของส่วนราชการ
+`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 3,
+              headerTextUpper: `3. ความก้าวหน้าและการก้าวขึ้นสู่ตำแหน่งตามแผน<br>
+ตัวชี้วัดที่แสดงถึงความก้าวหน้าของบุคลากรและความก้าวหน้าขึ้นสู่ตำแหน่งตามแผน
+`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 4,
+              headerTextUpper: `4.จำนวนบุคลากรที่ได้รับการแต่งตั้งให้ไปร่วมในภาคีเครือข่ายภายนอกทั้งระดับชาติและนานาชาติ<br>
+ตัวชี้วัดที่แสดงถึงบุคลากรของส่วนราชการที่ได้รับการแต่งตั้งให้ไปร่วมในภาคีเครือข่ายภายนอกทั้งระดับชาติและนานาชาติ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 5,
+              headerTextUpper: `5. จำนวนบุคลากรที่อาสาสมัครในโครงการที่ตอบสนองนโยบายหน่วยงาน<br>
+ตัวชี้วัดที่แสดงถึงบุคลากรของส่วนราชการไปเป็นอาสาสมัครในโครงการที่ตอบสนองนโยบายหน่วยงาน`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
+        },
+        {
+          title: "7.4 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านการเป็นต้นแบบ",
+          no: 4,
+          status: -1, //-1 ยังไม่ประเมิน
+          question: [
+            {
+              subNo: 1,
+              headerTextUpper: `1.จำนวนรางวัลที่ได้รับจากภายนอก <b>(จำเป็น)</b><br>
+ตัวชี้วัดที่แสดงถึงสำเร็จของการเป็นต้นแบบของส่วนราชการที่ได้รับรางวัลจากหน่วยงานภายนอกที่แสดงถึงความสำเร็จในการปรับปรุงกระบวนการ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งน้อยยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 2,
+              headerTextUpper: `2. จำนวน Best practice <b>(จำเป็น) </b><br>
+ตัวชี้วัดที่แสดงถึงสำเร็จของการเป็นต้นแบบของส่วนราชการที่เป็น Best practice
+`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 3,
+              headerTextUpper: `3. จำนวนรางวัลที่ได้รับจากหน่วยงานระดับกรม / ระดับกระทรวง<br>
+ตัวชี้วดที่แสดงถึงสำเร็จของการเป็นต้นแบบของส่วนราชการ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 4,
+              headerTextUpper: `4.การจัดอันดับในระดับนานาชาติ<br>
+ตัวชี้วัดที่แสดงถึงสำเร็จของการแข่งขัน โดยได้รับการจัดอันดับในระดับนานาชาติ`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 5,
+              headerTextUpper: `5. จำนวนบุคลากรที่ได้รับการยกย่องจากภายนอก<br>
+ตัวชี้วัดที่แสดงถึงสำเร็จของการเป็นต้นแบบของส่วนราชการ โดยมีบุคลากรของตนเองได้รับการยกย่องจากภายนอก`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
+        },
+        {
+          title:
+            "7.5 การบรรลุผลลัพธตามตัวชี้วัดด้านผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข และสิ่งแวดล้อม",
+          no: 5,
+          status: -1, //-1 ยังไม่ประเมิน
+          question: [
+            {
+              subNo: 1,
+              headerTextUpper: `1.การบรรลุผลของตัววัดร่วม (กระบวนการที่ดำเนินการร่วมกันหลายหน่วยงาน)<b> (จำเป็น)</b><br>
+ตัวชี้วัดของการบรรลุผลลัพธ์การบรรลุผลของตัววัดร่วม ในการมีกระบวนการที่ดำเนินการข้ามหลายหน่วยงานของส่วนราชการ (Area base)`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งน้อยยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 2,
+              headerTextUpper: `2. ตัววัดผลกระทบจากการดำเนินการที่มีต่อต้านเศรษฐกิจ
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อต้านเศรษฐกิจ
+`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 3,
+              headerTextUpper: `3. ตัววัดผลกระทบจากการดำเนินการที่มีต่อด้านสังคม
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านสังคม`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 4,
+              headerTextUpper: `4. ตัววัดผลกระทบจากการดำเนินการที่มีต่อต้านสาธารณสุข
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อต้านสาธารณสุข`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
+            },
+            {
+              subNo: 5,
+              headerTextUpper: `5. ตัววัดผลกระทบจากการดำเนินการที่มีต่อต้านสิ่งแวดล้อม
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อท้านสิ่งแวดล้อม`,
+              numberOfIndicators: 1,
+              indicators: [],
+              goalCurrentYear: [],
+              unit: [],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [],
+              score: [],
               scoreStandard: [
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
@@ -291,26 +1402,93 @@ export default {
     };
   },
   methods: {
-    calculateHighBetter(q_number){
+    deleteIndicator(index, indexSub, indexResult) {
+      this.data[index].question[indexSub].indicators.splice(indexResult, 1);
+      this.data[index].question[indexSub].goalCurrentYear.splice(
+        indexResult,
+        1
+      );
+      this.data[index].question[indexSub].unit.splice(indexResult, 1);
+      this.data[index].question[indexSub].successRate.splice(indexResult, 1);
+      this.data[index].question[indexSub].score.splice(indexResult, 1);
+      this.data[index].question[indexSub].result = [
+        {
+          [this.$q.sessionStorage.getItem("y") + 543]: null,
+          [this.$q.sessionStorage.getItem("y") + 542]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
+        },
+        {
+          [this.$q.sessionStorage.getItem("y") + 543]: null,
+          [this.$q.sessionStorage.getItem("y") + 542]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
+        },
+        {
+          [this.$q.sessionStorage.getItem("y") + 543]: null,
+          [this.$q.sessionStorage.getItem("y") + 542]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
+        },
+        {
+          [this.$q.sessionStorage.getItem("y") + 543]: null,
+          [this.$q.sessionStorage.getItem("y") + 542]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
+        },
+        {
+          [this.$q.sessionStorage.getItem("y") + 543]: null,
+          [this.$q.sessionStorage.getItem("y") + 542]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
+        }
+      ];
+
+      this.data[index].question[indexSub].numberOfIndicators--;
+      this.data.push("");
+      this.data.pop();
+    },
+    calculateSuccessRate(no1, no2, type, index, indexSub, indexResult) {
       // การคำนวณคะแนนยิ่งมากยิ่งดี
+      // console.log(type);
+      let result = 0;
+      if (type == "ยิ่งมากยิ่งดี") {
+        result = (no1 / no2) * 100;
+      } else {
+        let cal = 100 - (no1 / no2) * 100;
+        result = 100 + cal;
+      }
+      if (no1 && no2) {
+        return result ? result.toFixed(2) + "%" : null;
+      }
     },
 
-    calculateLowBetter(q_number){
+    calculateScore(score, index, indexSub, indexResult) {
       // การคำนวณคะแนนยิ่งน้อยยิ่งดี
+      let result = 0;
+      if (score) {
+        score = score.replace("%", "");
+        score = Number(score);
+      }
+
+      if (score < 100) {
+        result = 0;
+      } else if (score <= 101) {
+        result = 300;
+      } else if (score <= 105) {
+        result = 400;
+      } else if (score > 105) {
+        result = 500;
+      }
+      return result != 0 ? result : 0;
     },
-    async saveCategory7(index) {
+    async saveCategory7(q_number) {
+      let index = q_number - 1;
       const url = this.apiPath + "user/addUpdateCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        q_number: this.data[index].no,
+        q_number: q_number,
         status: this.data[index].status,
         json: JSON.stringify(this.data[index].question),
         year: this.currentYear
       };
-      // console.log(postData);
-      let data = await Axios.post(url, postData);
 
-      console.log(data);
+      let data = await Axios.post(url, postData);
     },
     async getCategory7() {
       const url = this.apiPath + "user/getCategory7.php";
@@ -319,13 +1497,17 @@ export default {
         year: this.$q.sessionStorage.getItem("y") + 543
       };
       let data = await Axios.post(url, postData);
-      let getData = data.data
+      let getData = data.data;
 
-      for (let i = 0; i < getData.length; i++) {
-       let json = JSON.parse(getData[i].json)
-       this.data[i].question = json
+      getData = getData.sort((a, b) => Number(a.number) - Number(b.number));
+
+      for (let i = 0; i < 5; i++) {
+        if (getData[i]) {
+          let index = Number(getData[i].q_number) - 1;
+          let json = JSON.parse(getData[i].json);
+          this.data[index].question = json;
+        }
       }
-
     }
   },
   created() {
