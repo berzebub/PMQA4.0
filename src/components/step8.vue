@@ -30,24 +30,23 @@
             </div>
           </template>
 
-          <div>
+          <div class="" v-for="(sub, indexSub) in item.question">
             <q-separator class="bg-grey-7" style="height: 1px;"></q-separator>
             <div class="bg-4 row q-py-sm ">
               <div class="col" style="padding-left:37px">
-                <span v-html="item.headerTextUpper"> </span> &nbsp;<q-icon
-                  class="cursor-pointer relative-position"
-                  v-ripple
-                  color="teal"
-                  name="help"
-                  size="md"
-                ></q-icon>
-                <br />{{ item.headerTextLower }}
+                <span v-html="sub.headerTextUpper"> </span> &nbsp;
+                <br />
               </div>
               <q-space></q-space>
               <div class="col-1 q-pr-lg  self-center" align="right">
                 <q-icon
                   name="add_circle"
                   class="cursor-pointer relative-position"
+                  @click="
+                    data[index].question[indexSub].numberOfIndicators < 5
+                      ? data[index].question[indexSub].numberOfIndicators++
+                      : null
+                  "
                   v-ripple
                   color="teal"
                   size="lg"
@@ -56,7 +55,8 @@
             </div>
             <!-- ROW HEADER -->
             <div
-              v-for="(result, indexResult) in item.numberOfIndicators"
+              v-for="(result, indexResult) in item.question[indexSub]
+                .numberOfIndicators"
               :key="indexResult"
             >
               <div class="row">
@@ -72,7 +72,9 @@
               <div class="row">
                 <div class="q-pa-sm border col-5" align="center">
                   <q-input
-                    v-model="data[index].indicators[indexResult]"
+                    v-model="
+                      data[index].question[indexSub].indicators[indexResult]
+                    "
                     type="textarea"
                     outlined=""
                     rows="5"
@@ -85,7 +87,9 @@
                     <div class="col q-px-md">
                       <q-input
                         v-model.number="
-                          data[index].goalCurrentYear[indexResult]
+                          data[index].question[indexSub].goalCurrentYear[
+                            indexResult
+                          ]
                         "
                         type="number"
                         outlined=""
@@ -94,7 +98,9 @@
                     </div>
                     <div class="col">
                       <q-input
-                        v-model="data[index].unit[indexResult]"
+                        v-model="
+                          data[index].question[indexSub].unit[indexResult]
+                        "
                         outlined=""
                         dense=""
                         label="หน่วย"
@@ -126,9 +132,9 @@
                         >
                           <q-input
                             v-model="
-                              data[index].result[indexResult][
-                                currentYear - i + 1
-                              ]
+                              data[index].question[indexSub].result[
+                                indexResult
+                              ][currentYear - i + 1]
                             "
                             type="number"
                             dense=""
@@ -142,7 +148,11 @@
                     <div style="width:140px" align="left">การคำนวนคะแนน</div>
                     <div style="width:252px">
                       <q-select
-                        v-model="data[index].scoreStandard[indexResult]"
+                        v-model="
+                          data[index].question[indexSub].scoreStandard[
+                            indexResult
+                          ]
+                        "
                         dense=""
                         outlined=""
                         :options="scoreStandardOptions"
@@ -150,23 +160,23 @@
                     </div>
                   </div>
                 </div>
-                <div
-                  class="q-pa-md border "
-                  style="width:150px"
-                  align="center"
-                ></div>
-                <div
-                  class="q-pa-md border "
-                  style="width:150px"
-                  align="center"
-                ></div>
+                <div class="q-pa-md border " style="width:150px" align="center">
+                  <span v-if="item.question[indexSub].successRate[indexResult]">
+                    {{ item.question[indexSub].successRate[indexResult] }}%
+                  </span>
+                </div>
+                <div class="q-pa-md border " style="width:150px" align="center">
+                  <span v-if="item.question[indexSub].score[indexResult]">{{
+                    item.question[indexSub].score[indexResult]
+                  }}</span>
+                </div>
               </div>
             </div>
           </div>
+          <q-btn label="testUpload" color="teal" @click="saveCategory7(0)">
+          </q-btn>
         </q-expansion-item>
       </q-list>
-
-      <q-btn label="testUpload" color="teal" @click="uploadStep7(0)"> </q-btn>
     </div>
   </div>
 </template>
@@ -183,67 +193,143 @@ export default {
         {
           title: "7.1 การบรรลุผลลัพธ์ตามตัวชี้วัดตามพันธกิจ",
           no: 1,
-          headerTextUpper: "1. ตัววัดตามภารกิจหลัก <b>(จำเป็น)</b>",
-          headerTextLower:
-            "ตัวชี้วัดของการบรรลุผลลัพธ์ตามพันธกิจหรือภารกิจของส่วนราชการ (Function base, Area base)",
-          numberOfIndicators: 2,
-          indicators: [],
-          goalCurrentYear: [100],
-          unit: [],
-          result: [
+          status: -1, //-1 ยังไม่ประเมิน
+          question: [
             {
-              [this.$q.sessionStorage.getItem("y") + 543]: null,
-              [this.$q.sessionStorage.getItem("y") + 542]: null,
-              [this.$q.sessionStorage.getItem("y") + 541]: null
+              subNo: 1,
+              headerTextUpper:
+                "1. ตัววัดตามภารกิจหลัก <b>(จำเป็น)</b> <br>ตัวชี้วัดของการบรรลุผลลัพธ์ตามพันธกิจหรือภารกิจของส่วนราชการ (Function base, Area base)",
+              numberOfIndicators: 1,
+              indicators: ['7.1.1'],
+              goalCurrentYear: [2500],
+              unit: [10],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: 1600,
+                  [this.$q.sessionStorage.getItem("y") + 542]: 1200,
+                  [this.$q.sessionStorage.getItem("y") + 541]: 1400
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [136],
+              score: ['0'],
+              scoreStandard: [
+                "ยิ่งน้อยยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
-              [this.$q.sessionStorage.getItem("y") + 543]: null,
-              [this.$q.sessionStorage.getItem("y") + 542]: null,
-              [this.$q.sessionStorage.getItem("y") + 541]: null
-            },
-            {
-              [this.$q.sessionStorage.getItem("y") + 543]: null,
-              [this.$q.sessionStorage.getItem("y") + 542]: null,
-              [this.$q.sessionStorage.getItem("y") + 541]: null
-            },
-            {
-              [this.$q.sessionStorage.getItem("y") + 543]: null,
-              [this.$q.sessionStorage.getItem("y") + 542]: null,
-              [this.$q.sessionStorage.getItem("y") + 541]: null
-            },
-            {
-              [this.$q.sessionStorage.getItem("y") + 543]: null,
-              [this.$q.sessionStorage.getItem("y") + 542]: null,
-              [this.$q.sessionStorage.getItem("y") + 541]: null
+              subNo: 2,
+              headerTextUpper: `2. ตัววัดตามนโยบายและแผนรัฐบาล<br>
+              ตัวชี้วัดของการบรรลุผลลัพธ์ตามนโยบายและแผนรัฐบาล (Agenda base)`,
+              numberOfIndicators: 1,
+              indicators: [200],
+              goalCurrentYear: [200],
+              unit: [20],
+              result: [
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: 300,
+                  [this.$q.sessionStorage.getItem("y") + 542]: 400,
+                  [this.$q.sessionStorage.getItem("y") + 541]: 500
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                },
+                {
+                  [this.$q.sessionStorage.getItem("y") + 543]: null,
+                  [this.$q.sessionStorage.getItem("y") + 542]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
+              ],
+              successRate: [20],
+              score: [200],
+              scoreStandard: [
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี",
+                "ยิ่งมากยิ่งดี"
+              ]
             }
-          ],
-          successRate: [],
-          score: [],
-          scoreStandard: ["ยิ่งมากยิ่งดี"],
-          status: -1 //-1 ยังไม่ประเมิน
+          ]
         }
       ]
     };
   },
   methods: {
-    async uploadStep7(index) {
+    calculateHighBetter(q_number){
+      // การคำนวณคะแนนยิ่งมากยิ่งดี
+    },
+
+    calculateLowBetter(q_number){
+      // การคำนวณคะแนนยิ่งน้อยยิ่งดี
+    },
+    async saveCategory7(index) {
       const url = this.apiPath + "user/addUpdateCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
         q_number: this.data[index].no,
         status: this.data[index].status,
-        indicators: JSON.stringify(this.data[index].indicators),
-        goal: JSON.stringify(this.data[index].goalCurrentYear),
-        success_rate: JSON.stringify(this.data[index].successRate),
-        score: JSON.stringify(this.data[index].score),
-        score_standard: JSON.stringify(this.data[index].scoreStandard),
-        unit: JSON.stringify(this.data[index].unit),
-        result: JSON.stringify(this.data[index].result),
+        json: JSON.stringify(this.data[index].question),
         year: this.currentYear
       };
+      // console.log(postData);
       let data = await Axios.post(url, postData);
-      // console.log(data.data);
+
+      console.log(data);
+    },
+    async getCategory7() {
+      const url = this.apiPath + "user/getCategory7.php";
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y") + 543
+      };
+      let data = await Axios.post(url, postData);
+      let getData = data.data
+
+      for (let i = 0; i < getData.length; i++) {
+       let json = JSON.parse(getData[i].json)
+       this.data[i].question = json
+      }
+
     }
+  },
+  created() {
+    this.getCategory7();
   }
 };
 </script>

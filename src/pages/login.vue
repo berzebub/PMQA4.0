@@ -51,6 +51,7 @@
                 placeholder="รหัสผ่าน"
                 :type="isShowPassword ? '' : 'password'"
                 v-model="password"
+                @keyup.enter="login()"
               >
                 <template v-slot:prepend>
                   <q-icon name="fas fa-key" size="30px" />
@@ -174,18 +175,6 @@ export default {
       ];
       month = monthArr[month];
 
-      // let endDate = this.endDate.split(" ")
-      // let endDay = endDate[0]
-      // let endMonth = endDate[1]
-      // let endYear = endDate[2]
-      // endMonth = monthArr.indexOf(endMonth)
-      // month = monthArr.indexOf(month)
-
-      // // if(day > Number(endDay) && month > endMonth && year > Number(endYear) ){
-      // //   // กรณีหมดเวลาประเมิน
-      // //   console.log("เกินเวลาประเมิน");
-      // // }
-      // // return
       if (this.department == "ผู้ใช้แต่ละหน่วยงาน") {
         this.$q.sessionStorage.set("p", "0");
         this.$router.push("/main");
