@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center q-pa-md">
+  <q-page class="flex flex-center q-pa-md" v-if="activeShow < 3">
     <!-- กรณีส่งแบบประเมินไปแล้ว และยังไม่ปิดการประเมิน แต่คณะกรรมการยังพิจารณาอยู่ && ส่งการประเมินในปีล่าสุดไปแล้ว -->
     <div style="max-width:800px;" align="center">
       <div v-if="activeShow == 0">
@@ -36,7 +36,7 @@
 export default {
   data() {
     return {
-      activeShow: 1
+      activeShow: this.$route.params.type
     };
   }
 };
