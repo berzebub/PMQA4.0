@@ -1,3 +1,4 @@
+import Axios from "axios";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -36,6 +37,12 @@ Vue.mixin({
         color: color,
         position: position
       });
+    },
+    async getDate(){
+      return new Promise(async (a,b) => {
+        let date = await Axios.get("https://api.winner-english.com/pmqa4_0_api/getDate.php")
+        a(date.data)
+      })
     },
     convertMonth(month) {
       if (month == 1) {

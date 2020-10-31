@@ -1,6 +1,10 @@
 <template>
   <q-page class="row justify-center">
-    <div class="col-10 row self-center q-pa-md" style="width: 850px;">
+    <div
+      class="col-10 row self-center q-pa-md"
+      v-if="isShowStepper"
+      style="width: 850px;"
+    >
       <div class="col">
         <!-- Set Top -->
         <div style="padding: 65px 0px 129px 0px;">
@@ -430,11 +434,15 @@ export default {
       step6: false,
       step7: false,
       step8: false,
-      currentStep: ""
+      currentStep: "",
+      isShowStepper: false,
+      endDate: "",
+      assessmentStatus: ""
     };
   },
   methods: {
     async getStepperLog() {
+      this.loadingShow();
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
@@ -443,6 +451,75 @@ export default {
       let data = await Axios.post(url, postData);
       if (data.data) {
         this.currentStep = data.data;
+      }
+      let currentDate = await this.getDate();
+
+      // if (data.data.send_status == "0") {
+      //   // ยังไม่ส่งแบบประเมิน
+      //   this.isShowStepper = true;
+      // } else {
+      //   // ส่งแล้ว
+      //   this.$router.push("/waitingAssessment");
+      // }
+
+      this.checkAssessmentStatus();
+
+      this.loadingHide();
+    },
+    async getAssessmentDate() {
+      let currentDate = await this.getDate();
+      const url = this.apiPath + "getAssessmentDate.php";
+      let assessmentDate = await Axios.get(url);
+      this.assessmentStatus = assessmentDate.data.status;
+      let endDate = assessmentDate.data.end_date;
+
+      endDate = endDate.split("-");
+
+      this.$q.sessionStorage.set("y", Number(endDate[0]));
+
+      endDate =
+        Number(endDate[2]) +
+        " " +
+        this.convertMonth(Number(endDate[1])) +
+        " " +
+        (Number(endDate[0]) + 543);
+
+      this.endDate = endDate;
+      this.getStepperLog();
+    },
+    async checkAssessmentStatus() {
+      let currentDate = await this.getDate();
+      let endDate = this.endDate;
+
+      let timeStampCurrentDate = new Date(
+        currentDate[0].year - 543,
+        Number(currentDate[0].month) - 1,
+        currentDate[0].date
+      ).getTime();
+
+      let timeStampEndDate = new Date(endDate).getTime();
+
+      if (this.currentStep.send_status == "1") {
+        // ส่งแบบประเมินแล้ว
+        this.$router.push("/waitingAssessment");
+      } else {
+        // ยังไม่ส่งแบบประเมิน
+        if (this.assessmentStatus == "0") {
+          // ปิดการประเมิน
+          // กรณียังไม่ส่งแบบประเมิน และ ถูกปิดการประเมินไปแล้ว
+          // ไปหน้า หมดวเลาการส่ง
+        } else {
+          // เปิดการประเมิน
+          // เปิดหน้าหลัก
+          if (timeStampCurrentDate > timeStampEndDate) {
+            // ไม่ปิดประเมิน แต่หมดเวลา
+            // console.log("หมดเวลาทำแบบประเมิน");
+          } else {
+            // console.log("ยังทำแบบประเมินได้");
+            // ไม่ปิดประเมิน ยังมีเวลา
+            this.isShowStepper = true;
+          }
+        }
       }
     }
   },
@@ -465,7 +542,7 @@ export default {
     }
   },
   created() {
-    this.getStepperLog();
+    this.getAssessmentDate();
   }
 };
 </script>
