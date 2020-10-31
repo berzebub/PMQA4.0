@@ -398,6 +398,8 @@ export default {
       };
       let data = await Axios.post(url, postData);
       this.userData = data.data;
+
+      this.$q.sessionStorage.set("office", data.data.office);
     }
   },
   created() {

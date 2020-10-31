@@ -1,5 +1,10 @@
 <template>
   <div class="bg-print">
+    <div class="absolute q-pa-md" id="print" style="right:0;top:0;">
+      <q-btn round="" class="bg5 text-white" push="" @click="printBtn()">
+        <q-icon name="fas fa-print"></q-icon
+      ></q-btn>
+    </div>
     <div class="pageA4">
       <table>
         <thead>
@@ -7,17 +12,17 @@
             <td>
               <div class="relative-position">
                 <div class="row bg1 container-header">
-                  <div class="col  self-center" align="right"></div>
+                  <div class="col self-center" align="right"></div>
                 </div>
                 <div class="row bg2 container-header relative-position">
                   <div
-                    class="col-1 self-center q-px-md"
+                    class="col-1 self-center q-px-md "
                     align="right"
-                    style="width: 150px;"
+                    style="width: 230px;"
                   ></div>
-                  <div class="col  self-center q-px-md" align="right">
+                  <div class="col  self-center q-px-md" align="center">
                     <span class="font-16">
-                      กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน
+                      {{ $q.sessionStorage.getItem("office") }}
                     </span>
                   </div>
                   <div
@@ -122,11 +127,11 @@
           <div
             class="col-1 self-center q-px-md"
             align="right"
-            style="width: 150px;"
+            style="width: 230px;"
           ></div>
-          <div class="col  self-center q-px-md" align="right">
+          <div class="col  self-center q-px-md" align="center">
             <span class="font-16">
-              กองควบคุมโรคและภัยสุขภาพในภาวะฉุกเฉิน
+              {{ $q.sessionStorage.getItem("office") }}
             </span>
           </div>
           <div
@@ -233,15 +238,13 @@ export default {
           enabled: false
         }
       });
+    },
+    printBtn() {
+      window.print();
     }
   },
   mounted() {
     this.render();
-
-    setTimeout(() => {
-      // window.print();
-      // window.close();
-    }, 1500);
   }
 };
 </script>
@@ -283,6 +286,10 @@ table {
     height: fit-content;
     background-color: #fff;
     padding: 0px;
+  }
+
+  #print {
+    display: none;
   }
 
   .pageA4 {
