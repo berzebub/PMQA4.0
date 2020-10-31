@@ -437,12 +437,12 @@ export default {
       currentStep: "",
       isShowStepper: false,
       endDate: "",
-      assessmentStatus: ""
+      assessmentStatus: "",
+      endAssessmentDate: ""
     };
   },
   methods: {
     async getStepperLog() {
-      this.loadingShow();
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
@@ -453,25 +453,16 @@ export default {
         this.currentStep = data.data;
       }
       let currentDate = await this.getDate();
-
-      // if (data.data.send_status == "0") {
-      //   // ยังไม่ส่งแบบประเมิน
-      //   this.isShowStepper = true;
-      // } else {
-      //   // ส่งแล้ว
-      //   this.$router.push("/waitingAssessment");
-      // }
-
       this.checkAssessmentStatus();
-
-      this.loadingHide();
     },
     async getAssessmentDate() {
+      this.loadingShow();
       let currentDate = await this.getDate();
       const url = this.apiPath + "getAssessmentDate.php";
       let assessmentDate = await Axios.get(url);
       this.assessmentStatus = assessmentDate.data.status;
       let endDate = assessmentDate.data.end_date;
+      this.endAssessmentDate = endDate;
 
       endDate = endDate.split("-");
 
@@ -489,39 +480,33 @@ export default {
     },
     async checkAssessmentStatus() {
       let currentDate = await this.getDate();
-      let endDate = this.endDate;
-
+      let endDate = this.endAssessmentDate;
+      let timeStampEndDate = new Date(endDate).getTime();
       let timeStampCurrentDate = new Date(
         currentDate[0].year - 543,
         Number(currentDate[0].month) - 1,
         currentDate[0].date
       ).getTime();
 
-      let timeStampEndDate = new Date(endDate).getTime();
-
-      if (this.currentStep.send_status == "1") {
-        // ส่งแบบประเมินแล้ว
-        this.$router.push("/waitingAssessment/0");
+      if (timeStampCurrentDate > timeStampEndDate) {
+        // หมดเวลา
+        this.$router.push("/waitingAssessment/1");
       } else {
-        // ยังไม่ส่งแบบประเมิน
-        if (this.assessmentStatus == "0") {
-          // ปิดการประเมิน
-          // กรณียังไม่ส่งแบบประเมิน และ ถูกปิดการประเมินไปแล้ว
-          // ไปหน้า หมดวเลาการส่ง
-        } else {
-          // เปิดการประเมิน
-          // เปิดหน้าหลัก
-          if (timeStampCurrentDate > timeStampEndDate) {
-            // ไม่ปิดประเมิน แต่หมดเวลา
-            // console.log("หมดเวลาทำแบบประเมิน");
-              this.$router.push("/waitingAssessment/1");
+        if (this.currentStep.send_status == "1") {
+          // ส่งแบบประเมินแล้ว
+          console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
+          this.$router.push("/waitingAssessment/0");
+        } else if (this.currentStep.send_status == "0") {
+          if (this.assessmentStatus == "0") {
+            console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
+            this.$router.push("/waitingAssessment/1");
           } else {
-            // console.log("ยังทำแบบประเมินได้");
-            // ไม่ปิดประเมิน ยังมีเวลา
+            console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
             this.isShowStepper = true;
           }
         }
       }
+      this.loadingHide();
     }
   },
   computed: {
