@@ -488,9 +488,15 @@ export default {
         currentDate[0].date
       ).getTime();
 
-      if (timeStampCurrentDate > timeStampEndDate) {
-        // หมดเวลา
-        this.$router.push("/waitingAssessment/1");
+      if (timeStampCurrentDate > timeStampEndDate || this.assessmentStatus =='0') {
+        // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลา
+        if (this.currentStep.send_status == "1") {
+          console.log("หมดเวลา แต่ส่งประเมินแล้ว");
+          this.$router.push("/waitingAssessment/2");
+        } else {
+          console.log("หมดเวลา ยังไม่ส่งแบบประเมิน")
+          this.$router.push("/waitingAssessment/1");
+        }
       } else {
         if (this.currentStep.send_status == "1") {
           // ส่งแบบประเมินแล้ว
