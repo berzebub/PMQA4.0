@@ -12,7 +12,7 @@
             class="container-border-lock row justify-between relative-position"
           >
             <!-- ลักษณะองค์การ -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -54,7 +54,7 @@
             </div>
 
             <!-- หมวด 1 -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -99,7 +99,7 @@
             </div>
 
             <!-- หมวด 2  -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -145,7 +145,7 @@
             </div>
 
             <!-- หมวด 3 -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -197,7 +197,7 @@
             class="container-border-lock row reverse justify-between relative-position"
           >
             <!-- หมวด 4 -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -242,7 +242,7 @@
             </div>
 
             <!-- หมวด 5 -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -287,7 +287,7 @@
             </div>
 
             <!-- หมวด 6 -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -332,7 +332,7 @@
             </div>
 
             <!-- หมวด 7 -->
-            <div class="col-2 relative-position">
+            <div class="col-2 relative-position" style="z-index:5;">
               <div class="absolute-center ">
                 <q-btn
                   round=""
@@ -489,13 +489,16 @@ export default {
         currentDate[0].date
       ).getTime();
 
-      if (timeStampCurrentDate > timeStampEndDate || this.assessmentStatus =='0') {
+      if (
+        timeStampCurrentDate > timeStampEndDate ||
+        this.assessmentStatus == "0"
+      ) {
         // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลา
         if (this.currentStep.send_status == "1") {
           console.log("หมดเวลา แต่ส่งประเมินแล้ว");
           this.$router.push("/waitingAssessment/2");
         } else {
-          console.log("หมดเวลา ยังไม่ส่งแบบประเมิน")
+          console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
           this.$router.push("/waitingAssessment/1");
         }
       } else {
@@ -546,6 +549,7 @@ export default {
   right: 0px;
   width: 650px;
   border: 3px solid #e0e0e0;
+  z-index: 2;
 }
 
 .container-border-right {
@@ -557,5 +561,6 @@ export default {
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
   border-left-color: transparent;
+  z-index: 1;
 }
 </style>
