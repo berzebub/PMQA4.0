@@ -28,8 +28,12 @@ const routes = [
         component: () => import("pages/stepper.vue"),
         name: "stepper"
       },
+
+      //type 0 = ส่งแบบประเมินแล้ว
+      // type 1  = หมดเวลา
+      // type 2 = กรรมการพิจารณาแล้ว
       {
-        path: "/waitingAssessment",
+        path: "/waitingAssessment/:type",
         component: () => import("pages/waitingAssessment.vue"),
         name: "waitingAssessment"
       },

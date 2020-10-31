@@ -501,7 +501,7 @@ export default {
 
       if (this.currentStep.send_status == "1") {
         // ส่งแบบประเมินแล้ว
-        this.$router.push("/waitingAssessment");
+        this.$router.push("/waitingAssessment/0");
       } else {
         // ยังไม่ส่งแบบประเมิน
         if (this.assessmentStatus == "0") {
@@ -514,6 +514,7 @@ export default {
           if (timeStampCurrentDate > timeStampEndDate) {
             // ไม่ปิดประเมิน แต่หมดเวลา
             // console.log("หมดเวลาทำแบบประเมิน");
+              this.$router.push("/waitingAssessment/1");
           } else {
             // console.log("ยังทำแบบประเมินได้");
             // ไม่ปิดประเมิน ยังมีเวลา
