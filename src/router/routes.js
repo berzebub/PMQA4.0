@@ -15,6 +15,11 @@ const routes = [
     name: "test"
   },
   {
+    path: "/print/assessment",
+    component: () => import("pages/printAssessment.vue"),
+    name: "printAssessment"
+  },
+  {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
@@ -47,6 +52,7 @@ const routes = [
         component: () => import("pages/assessmentComplete.vue"),
         name: "assessmentComplete"
       },
+
       {
         path: "/admin/main",
         component: () => import("pages/admin/main.vue"),

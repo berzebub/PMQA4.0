@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     printBtn() {
-      this.$router.push("/printAssessment");
+      this.$router.push("/print/assessment");
     },
     render() {
       Highcharts.chart("container", {
