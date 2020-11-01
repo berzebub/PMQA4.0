@@ -20,6 +20,11 @@ const routes = [
     name: "printAssessment"
   },
   {
+    path: "/reset",
+    component: () => import("pages/reset.vue"),
+    name: "reset"
+  },
+  {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [

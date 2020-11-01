@@ -407,6 +407,7 @@
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-teal text-white'"
+          @click='sendAssessment()'
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
@@ -438,10 +439,23 @@ export default {
       isShowStepper: false,
       endDate: "",
       assessmentStatus: "",
-      endAssessmentDate: ""
+      endAssessmentDate: "",
+      checkSteper : false
     };
   },
   methods: {
+   async sendAssessment(){
+     const url = this.apiPath + "user/setUserStepperLog.php";
+     let postData = {
+          category: "category1",
+          user_id: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          status: 1, // 1 = finish
+          send_status : 1
+        };
+        let data = await Axios.post(url, postData);
+       this.$router.push("/waitingAssessment/0");
+    },
     async getStepperLog() {
       this.loadingShow();
       const url = this.apiPath + "user/getStepperLog.php";
@@ -450,6 +464,14 @@ export default {
         year: this.$q.sessionStorage.getItem("y")
       };
       let data = await Axios.post(url, postData);
+let newData = data.data
+    let checkStatus = [newData.category0,newData.category1,newData.category2,newData.category3,newData.category4,newData.category5,newData.category6,newData.category7]
+
+    if(checkStatus.every(x => x == '1')){
+      this.checkSteper = true
+    }else{
+      this.checkSteper = false
+    }
       if (data.data) {
         this.currentStep = data.data;
       }
@@ -514,28 +536,15 @@ export default {
             console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
             this.isShowStepper = true;
           }
+        }else{
+           this.isShowStepper = true;
         }
       }
       this.loadingHide();
     }
   },
   computed: {
-    checkSteper() {
-      if (
-        this.step1 &&
-        this.step2 &&
-        this.step3 &&
-        this.step4 &&
-        this.step5 &&
-        this.step6 &&
-        this.step7 &&
-        this.step8
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+  
   },
   created() {
     this.getAssessmentDate();

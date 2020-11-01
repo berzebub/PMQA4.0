@@ -101,9 +101,15 @@
                   align="center"
                 >
                   <span>
-                    <span class="block" style="font-size:32px">{{
-                      item.score.reduce((a, b) => a + b, 0) / 4
+                    <span class="block" style="font-size:24px">
+                      <span v-if="index != 6">   {{
+                      (item.score.reduce((a, b) => a + b, 0) / 4).toFixed(2)
                     }}</span>
+                      <span v-else>   {{
+                      (item.score.reduce((a, b) => a + b, 0) / 6).toFixed(2)
+                    }}</span>
+                   
+                    </span>
                     <span class="block" style="margin-top:-10px;font-size:12px"
                       >คะแนน</span
                     >

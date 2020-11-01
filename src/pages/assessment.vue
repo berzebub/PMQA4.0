@@ -32,9 +32,9 @@
             v-for="(item, index) in dataList"
             :key="index"
           >
-            <div class="col-3 self-center q-pa-sm" align="center">
+            <div class=" self-center q-pa-sm " style="width:260px" align="center">
               <q-icon
-                size="70px"
+                size="55px"
                 class="color1"
                 :name="item.fontawesome"
               ></q-icon>
@@ -43,12 +43,13 @@
               <span
                 class=" block"
                 align="left"
-                style="width:200px;font-size:24px;"
-                >{{ item.title }}</span
+                style="font-size:24px;"
+                v-html="item.title"
+                ></span
               >
             </div>
             <div class="col q-pr-xl q-pb-xl self-end q-pa-sm ">
-              <div class="row q-px-lg">
+              <div class="row q-px-lg ">
                 <div
                   class="col self-end q-px-lg"
                   v-for="(score, index2) in item.score"
@@ -57,6 +58,7 @@
                   <div
                     class="bg5 relative-position"
                     :style="`height:${(130 / 500) * score || 2}px`"
+                   
                     align="center"
                   >
                     <span
@@ -98,17 +100,17 @@ export default {
           score: [0, 0, 0, 0]
         },
         {
-          title: `2. การวางแผน เชิงยุทธศาสตร์`,
+          title: `2. การวางแผน<br> เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
           score: [0, 0, 0, 0]
         },
         {
-          title: `3. การให้ความสำคัญ กับผู้รับบริการและ ผู้มีส่วนได้ส่วนเสีย`,
+          title: `3. การให้ความสำคัญ<br> กับผู้รับบริการและ<br> ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
           score: [0, 0, 0, 0]
         },
         {
-          title: `4. การวัด การวิเคราะห์ และการจัดการความรู้`,
+          title: `4. การวัด การวิเคราะห์<br> และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
           score: [0, 0, 0, 0]
         },
@@ -125,7 +127,7 @@ export default {
         {
           title: `7. ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0,0,0]
         }
       ],
       totalAvgScore: 0,
@@ -144,10 +146,20 @@ export default {
       let avgScoreLst = [];
 
       for (let i = 0; i < this.dataList.length; i++) {
+
+        let devine = 4
+
+        if(i == 6){
+          devine = 6
+        }
+
+
+      
         avgScoreLst.push(
-          this.dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / 4
+          this.dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / devine
         );
       }
+
 
       this.totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
 
@@ -156,6 +168,8 @@ export default {
         avgScore: avgScoreLst,
         totalAvgScore: parseInt(this.totalAvgScore)
       };
+
+      console.log(setPrintData);
 
       this.$q.sessionStorage.set("printData", setPrintData);
 
@@ -225,7 +239,7 @@ export default {
         series: [
           {
             name: "",
-            data: [500, 400, 100, 400, 400, 400, 500],
+            data: avgScoreLst,
             pointPlacement: "on",
             showInLegend: false,
             type: "area",
@@ -262,13 +276,23 @@ export default {
       const url = this.apiPath + "user/getAllCategory1_6.php";
 
       const postData = {
-        year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid")
+        year: this.$q.sessionStorage.getItem("y") ,
+        user_id: this.$q.sessionStorage.getItem("uid") 
       };
 
       let getData = await Axios.post(url, postData);
-
       getData = getData.data;
+
+
+  const postData1 = {
+        year: this.$q.sessionStorage.getItem("y")+543 ,
+        user_id: this.$q.sessionStorage.getItem("uid") 
+      };
+
+
+
+      
+  
 
       for (let i = 0; i < this.dataList.length; i++) {
         for (let ii = 0; ii < this.dataList[i].score.length; ii++) {
@@ -336,6 +360,16 @@ export default {
           this.dataList[i].score[ii] = setScore;
         }
       }
+
+        const url1 = this.apiPath + "user/getCategory7.php";
+      let getCategory7 = await Axios.post(url1,postData1)
+
+
+      let cat7 = getCategory7.data.sort((a,b) => Number(a.q_number) - Number(b.q_number))
+
+
+      this.dataList[6].score = cat7.map(x => Number(x.avg_score))
+
 
       this.render();
     }
