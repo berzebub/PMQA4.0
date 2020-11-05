@@ -2,8 +2,8 @@
   <q-page>
     <div v-show="!isLoadData">
       <div style="width:1200px;margin:auto;">
-        <div class="row relative-position ">
-          <div class="col-5  " align="center">
+        <div class="row  relative-position ">
+          <div class="col-5 q-pt-lg " align="center">
             <div id="container"></div>
           </div>
           <div class="col self-center  " align="center">
@@ -14,13 +14,17 @@
             >
           </div>
           <div class="absolute q-pa-md" style="right:0">
-            <q-btn round="" push="" class="bg-teal" @click="printBtn()">
+            <q-btn round="" push="" size="lg" class="bg-teal" @click="printBtn()">
               <q-icon
                 class="text-white"
-                size="18px"
+                size="md"
                 name="fas fa-print"
               ></q-icon>
             </q-btn>
+          </div>
+            <div class="absolute q-pa-md" style="left:0">
+            <!-- <q-btn  push="" icon="fas fa-chevron-left" label="ย้อนกลับ" size="lg"  @click="printBtn()">
+            </q-btn> -->
           </div>
         </div>
 
@@ -28,28 +32,15 @@
 
         <div class=" q-mt-lg ">
           <div
-            class="row q-pb-lg q-pa-md "
+            class="row  items-end q-pb-lg q-pa-md "
+            style="min-height:120px"
             v-for="(item, index) in dataList"
             :key="index"
           >
-            <div class=" self-center q-pa-sm " style="width:260px" align="center">
-              <q-icon
-                size="55px"
-                class="color1"
-                :name="item.fontawesome"
-              ></q-icon>
-              <br />
-              <br />
-              <span
-                class=" block"
-                align="left"
-                style="font-size:24px;"
-                v-html="item.title"
-                ></span
-              >
+            <div class=" self-center q-pa-sm  font-18" v-html="item.title" style="width:350px" align="left">
             </div>
-            <div class="col q-pr-xl q-pb-xl self-end q-pa-sm ">
-              <div class="row q-px-lg ">
+            <div class="col q-px-md  q-pa-sm  " >
+              <div class="row q-px-lg  ">
                 <div
                   class="col self-end q-px-lg"
                   v-for="(score, index2) in item.score"
@@ -79,7 +70,8 @@
           </div>
         </div>
       </div>
-      <step-footer></step-footer>
+
+      <step-footer class="q-pt-lg"></step-footer>
     </div>
   </q-page>
 </template>
@@ -100,17 +92,17 @@ export default {
           score: [0, 0, 0, 0]
         },
         {
-          title: `2. การวางแผน<br> เชิงยุทธศาสตร์`,
+          title: `2. การวางแผน เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
           score: [0, 0, 0, 0]
         },
         {
-          title: `3. การให้ความสำคัญ<br> กับผู้รับบริการและ<br> ผู้มีส่วนได้ส่วนเสีย`,
+          title: `3. การให้ความสำคัญกับผู้รับบริการและ<br> ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
           score: [0, 0, 0, 0]
         },
         {
-          title: `4. การวัด การวิเคราะห์<br> และการจัดการความรู้`,
+          title: `4. การวัด การวิเคราะห์ และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
           score: [0, 0, 0, 0]
         },
@@ -169,14 +161,15 @@ export default {
         totalAvgScore: parseInt(this.totalAvgScore)
       };
 
-      console.log(setPrintData);
 
       this.$q.sessionStorage.set("printData", setPrintData);
 
       Highcharts.chart("container", {
+          credits: {
+    enabled: false
+  },
         chart: {
           polar: true,
-          height: "500",
           style: {
             fontFamily: "PROMPT-R"
           }
@@ -187,7 +180,7 @@ export default {
         },
 
         title: {
-          text: "Budget vs spending",
+          text: "",
           x: -80
         },
 
@@ -367,8 +360,14 @@ export default {
 
       let cat7 = getCategory7.data.sort((a,b) => Number(a.q_number) - Number(b.q_number))
 
+     let mapCat7 = cat7.map(x => Number(x.avg_score))
 
-      this.dataList[6].score = cat7.map(x => Number(x.avg_score))
+      for (let i = 0; i < 6; i++) {
+        let checkExist = cat7.filter(x => x.q_number == (i+1).toString())
+        if(checkExist.length){
+          this.dataList[6].score[i] = parseInt(mapCat7[i])
+        }
+      }
 
 
       this.render();

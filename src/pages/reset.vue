@@ -72,39 +72,38 @@ export default {
   },
   methods: {
     async checkAdminPassword() {
-
-        return new Promise(async (a, b) => {
+      return new Promise(async (a, b) => {
         let postData = {
-          username: 'admin',
+          username: "admin",
           password: this.password,
-          type: 'ผู้ดูแลระบบ'
+          type: "ผู้ดูแลระบบ",
         };
         const url = this.apiPath + "login.php";
         let checkAdminLogin = await Axios.post(url, postData);
         let result = checkAdminLogin.data;
         a(result);
       });
-
- 
     },
     async reset() {
       const url = this.apiPath + "user/resetData.php";
-let checkPassword = await this.checkAdminPassword()
+      let checkPassword = await this.checkAdminPassword();
       if (checkPassword == 1) {
         let postData = {
           user_id: this.user.value,
-          year: this.year -543,
+          year: this.year - 543,
         };
         let data = await Axios.post(url, postData);
-        console.log(data.data);
-      }else{
-          this.$q.notify(
-              {
-                  message : "รหัสผ่านผิดพลาด",
-                  color : "red",
-                  position : 'bottom'
-              }
-          )
+        this.$q.notify({
+          message : "รีเซตข้อมูลเสร็จสิ้น",
+          color : "secondary",
+          position : "bottom"
+        })
+      } else {
+        this.$q.notify({
+          message: "รหัสผ่านผิดพลาด",
+          color: "red",
+          position: "bottom",
+        });
       }
     },
     async getUser() {

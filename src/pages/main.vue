@@ -392,10 +392,12 @@
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-white'"
+            to="/assessment"
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
             name="fas fa-print"
+          
           ></q-icon>
           <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
             >พิมพ์ผลการประเมิน
@@ -465,13 +467,17 @@ export default {
       };
       let data = await Axios.post(url, postData);
 let newData = data.data
-    let checkStatus = [newData.category0,newData.category1,newData.category2,newData.category3,newData.category4,newData.category5,newData.category6,newData.category7]
-
-    if(checkStatus.every(x => x == '1')){
+let checkStatus = false
+if(newData){
+   checkStatus = [newData.category0,newData.category1,newData.category2,newData.category3,newData.category4,newData.category5,newData.category6,newData.category7]  
+   if(checkStatus.every(x => x == '1')){
       this.checkSteper = true
     }else{
       this.checkSteper = false
     }
+}
+ 
+  
       if (data.data) {
         this.currentStep = data.data;
       }
@@ -511,29 +517,30 @@ let newData = data.data
         currentDate[0].date
       ).getTime();
 
+
       if (
         timeStampCurrentDate > timeStampEndDate ||
         this.assessmentStatus == "0"
       ) {
         // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลา
         if (this.currentStep.send_status == "1") {
-          console.log("หมดเวลา แต่ส่งประเมินแล้ว");
+          // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
           this.$router.push("/waitingAssessment/2");
         } else {
-          console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
+          // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
           this.$router.push("/waitingAssessment/1");
         }
       } else {
         if (this.currentStep.send_status == "1") {
           // ส่งแบบประเมินแล้ว
-          console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
+          // console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
           this.$router.push("/waitingAssessment/0");
         } else if (this.currentStep.send_status == "0") {
           if (this.assessmentStatus == "0") {
-            console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
+            // console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
             this.$router.push("/waitingAssessment/1");
           } else {
-            console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
+            // console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
             this.isShowStepper = true;
           }
         }else{

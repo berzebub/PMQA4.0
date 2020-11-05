@@ -25,7 +25,7 @@
               <div class="col-3 self-center q-px-xl" style="width:250px;">
                 <div style="width:180px;border:1px solid" align="center">
                   <span class="font-18" v-if="item.avgScore == -1">ยังไม่ทำการประเมิน</span>
-                  <span v-else>{{ item.avgScore }}</span>
+                  <span v-else>{{ parseInt(item.avgScore) }} </span>
                 </div>
               </div>
             </div>
@@ -1483,7 +1483,7 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              headerTextUpper: `2. จำนวนนวัตกรรมของการปรับปรุงกระบวนการตัวชี้วัดของนวัตกรรมการปรับปรุงกระบวนการ
+              headerTextUpper: `2. จำนวนนวัตกรรมของการปรับปรุงกระบวนการ<br>ตัวชี้วัดของนวัตกรรมการปรับปรุงกระบวนการ
 `,
               numberOfIndicators: 1,
               indicators: [],
@@ -1529,7 +1529,7 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              headerTextUpper: `3. ผลการปรับปรุงจากการใช้เทคโนโลยีดิจิทัล (จำเป็น)
+              headerTextUpper: `3. ผลการปรับปรุงจากการใช้เทคโนโลยีดิจิทัล <b>(จำเป็น)</b><br>
 ตัวชี้วัดผลลัพธ์ของการปรับปรุงกระบวนการ และการบริการจากการใช้เทคโนโลยีดิจิทัล ทั้งทางตรงและทางอ้อม`,
               numberOfIndicators: 1,
               indicators: [],
@@ -1575,7 +1575,7 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              headerTextUpper: `4. ประสิทธิผลของการบรรเทาผลกระทบด้านภัยพิบัติต่างๆ
+              headerTextUpper: `4. ประสิทธิผลของการบรรเทาผลกระทบด้านภัยพิบัติต่างๆ<br>
 ตัวชี้วัดที่แสดงถึงประสิทธิผลของการบรรเทาผลกระทบด้านภัยพิบัติต่างๆ`,
               numberOfIndicators: 1,
               indicators: [],
@@ -1621,7 +1621,7 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              headerTextUpper: `5. นวัตกรรมการปรับปรุงด้านนโยบาย กฏระเบียบและกฏหมาย
+              headerTextUpper: `5. นวัตกรรมการปรับปรุงด้านนโยบาย กฏระเบียบและกฏหมาย<br>
 ตัวชี้วัดของนวัตกรรมการปรับปรุงด้านนโยบาย กฏระเบียบ และกฏหมาย`,
               numberOfIndicators: 1,
               indicators: [],
@@ -1782,7 +1782,7 @@ export default {
         status: this.data[index].status,
         json: JSON.stringify(this.data[index].question),
         year: this.currentYear,
-        avg_score: this.data[index].avgScore,
+        avg_score: Number(this.data[index].avgScore),
       };
 
       let data = await Axios.post(url, postData);
@@ -1844,11 +1844,19 @@ export default {
         if (this.data[index].question[0].avgScore >= 0 && this.data[index].question[1].avgScore >= 0) {
          let avg =
             totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
-             this.data[index].avgScore = avg.toFixed(2)
+             this.data[index].avgScore = Number(avg)
         } else {
           this.data[index].avgScore = -1;
         }
-      } 
+      } else if(q_number == 6){
+         if (this.data[index].question[0].avgScore >= 0 && this.data[index].question[2].avgScore >= 0) {
+         let avg =
+            totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
+             this.data[index].avgScore = Number(avg)
+        } else {
+          this.data[index].avgScore = -1;
+        }
+      }
 
       // console.log(scoreTemp);
       // this.data[index].avgScore = scoreTemp.reduce((a,b) => a+b,0) / scoreTemp.length

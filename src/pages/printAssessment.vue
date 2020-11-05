@@ -1,8 +1,8 @@
 <template>
   <div class="bg-print">
     <div class="absolute q-pa-md" id="print" style="right:0;top:0;">
-      <q-btn round="" class="bg5 text-white" push="" @click="printBtn()">
-        <q-icon name="fas fa-print"></q-icon
+      <q-btn round="" size="lg" class="bg5 text-white" push="" @click="printBtn()">
+        <q-icon name="fas fa-print" size="md"></q-icon
       ></q-btn>
     </div>
     <div class="pageA4">
@@ -31,7 +31,7 @@
                     style="width: 150px;"
                   >
                     <span class="font-16">
-                      ปี 2563
+                      ปี {{$q.sessionStorage.getItem("y")  + 543}}
                     </span>
                   </div>
                 </div>
@@ -49,20 +49,15 @@
         <tbody>
           <tr v-for="(item, index) in dataList" :key="index">
             <td>
-              <div class="row q-mt-md ">
+              <div class="row q-mt-md  items-end" style="height:100px">
                 <div class="col-3 self-center q-pa-sm" align="center">
-                  <q-icon
-                    size="40px"
-                    class="color1"
-                    :name="item.fontawesome"
-                  ></q-icon>
-                  <br />
-                  <br />
+                 
                   <span
-                    class=" block"
+                    class=" block "
                     align="left"
-                    style="width:150px;font-size:16px;"
-                    >{{ item.title }}</span
+                    style="width:330px;font-size:14px;"
+                    v-html="printTitle[index]"
+                    ></span
                   >
                 </div>
                 <div class="col q-pb-lg  self-end ">
@@ -103,10 +98,10 @@
                   <span>
                     <span class="block" style="font-size:24px">
                       <span v-if="index != 6">   {{
-                      (item.score.reduce((a, b) => a + b, 0) / 4).toFixed(2)
+                      parseInt(item.score.reduce((a, b) => a + b, 0) / 4)
                     }}</span>
                       <span v-else>   {{
-                      (item.score.reduce((a, b) => a + b, 0) / 6).toFixed(2)
+                      parseInt(item.score.reduce((a, b) => a + b, 0) / 6)
                     }}</span>
                    
                     </span>
@@ -154,7 +149,7 @@
           <q-img src="../../public/images/logo.png" width="200px"></q-img>
         </div>
       </div>
-      <div class="q-my-xl row q-px-xl " align="center" style="font-size:30px;">
+      <div class="q-my-xl row q-px-xl " align="center" style="font-size:24px;">
         <div align="center">ผลดำเนินการ PMQA4.0 ในภาพรวม</div>
         <q-space></q-space>
         <div align="center">{{ totalAvgScore }} คะแนน</div>
@@ -170,6 +165,9 @@
 export default {
   data() {
     return {
+      printTitle : [`1. การนำองค์การ`,`2. การวางแผน เชิงยุทธศาสตร์`,`3. การให้ความสำคัญกับ<br>ผู้รับบริการและ
+ผู้มีส่วนได้ส่วนเสีย`,`4. การวัด การวิเคราะห์ และ<br>การจัดการความรู้`,`5. การมุ่งเน้นบุคลากร`,`6. การมุ่งเน้นระบบ ปฏิบัติการ`,'7. ผลลัพธ์การดำเนินการ'],
+
       dataList: this.$q.sessionStorage.getItem("printData").data,
       totalAvgScore: this.$q.sessionStorage.getItem("printData").totalAvgScore
     };
@@ -221,7 +219,7 @@ export default {
           lineWidth: 0,
           min: 100,
           max: 500,
-          gridLineColor: "#000000"
+          gridLineColor: "#000000",
         },
 
         tooltip: {

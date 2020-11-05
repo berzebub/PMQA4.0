@@ -45,11 +45,30 @@
               @click="isShowEditAdminPassword = true"
             ></q-btn>
           </div>
+              <div
+              v-if="$route.name == 'assessment'"
+            class="col-1 self-center q-px-md"
+            align="right"
+            style="width: 170px;"
+          >
+          
+            <q-btn
+              style="width: 163px;"
+              dense
+              outline
+              padding="0"
+              class="text-black bg-white relative-position z-top font-18 "
+              @click="$router.push('/main')"
+            >
+            หน้าหลัก</q-btn
+            >
+          </div>
           <div
             class="col-1 self-center q-px-md"
             align="right"
             style="width: 200px;"
           >
+          
             <q-btn
               style="width: 163px;"
               dense
