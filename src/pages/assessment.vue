@@ -2,45 +2,41 @@
   <q-page>
     <div v-show="!isLoadData">
       <div style="width:1200px;margin:auto;">
-        <div class="row  relative-position ">
-          <div class="col-5 q-pt-lg " align="center">
+        <div class="row relative-position">
+          <div class="col-5 q-pt-lg" align="center">
             <div id="container"></div>
           </div>
-          <div class="col self-center  " align="center">
+          <div class="col self-center" align="center">
             <span style="font-size:24px;">ผลดำเนินการ PMQA4.0 ในภาพรวม</span>
             <br />
-            <span style="font-size:48px;"
-              >{{ parseInt(totalAvgScore) }} คะแนน</span
-            >
+            <span style="font-size:48px;">{{ parseInt(totalAvgScore) }} คะแนน</span>
           </div>
           <div class="absolute q-pa-md" style="right:0">
-            <q-btn round="" push="" size="lg" class="bg-teal" @click="printBtn()">
-              <q-icon
-                class="text-white"
-                size="md"
-                name="fas fa-print"
-              ></q-icon>
+            <q-btn round push size="lg" class="bg-teal" @click="printBtn()">
+              <q-icon class="text-white" size="md" name="fas fa-print"></q-icon>
             </q-btn>
           </div>
-            <div class="absolute q-pa-md" style="left:0">
-            <!-- <q-btn  push="" icon="fas fa-chevron-left" label="ย้อนกลับ" size="lg"  @click="printBtn()">
-            </q-btn> -->
+          <div class="absolute q-pa-md" style="left:0">
           </div>
         </div>
 
         <q-separator class="bg-black" style="height:2px;"></q-separator>
 
-        <div class=" q-mt-lg ">
+        <div class="q-mt-lg">
           <div
-            class="row  items-end q-pb-lg q-pa-md "
+            class="row items-end q-pb-lg q-pa-md"
             style="min-height:120px"
             v-for="(item, index) in dataList"
             :key="index"
           >
-            <div class=" self-center q-pa-sm  font-18" v-html="item.title" style="width:350px" align="left">
-            </div>
-            <div class="col q-px-md  q-pa-sm  " >
-              <div class="row q-px-lg  ">
+            <div
+              class="self-center q-pa-sm font-18"
+              v-html="item.title"
+              style="width:350px"
+              align="left"
+            ></div>
+            <div class="col q-px-md q-pa-sm">
+              <div class="row q-px-lg">
                 <div
                   class="col self-end q-px-lg"
                   v-for="(score, index2) in item.score"
@@ -49,19 +45,16 @@
                   <div
                     class="bg5 relative-position"
                     :style="`height:${(130 / 500) * score || 2}px`"
-                   
                     align="center"
                   >
                     <span
-                      class="absolute-center text-white "
+                      class="absolute-center text-white"
                       style="font-size:24px;"
-                      >{{ score || "" }}</span
-                    >
+                    >{{ score || "" }}</span>
                     <span
                       class="absolute-bottom"
                       style="bottom:-45px;font-size:24px;"
-                      >{{ `${index + 1}.${index2 + 1}` }}</span
-                    >
+                    >{{ `${index + 1}.${index2 + 1}` }}</span>
                   </div>
                 </div>
               </div>
@@ -81,7 +74,7 @@ import stepFooter from "../components/footer";
 import Axios from "axios";
 export default {
   components: {
-    stepFooter
+    stepFooter,
   },
   data() {
     return {
@@ -89,47 +82,47 @@ export default {
         {
           title: `1. การนำองค์การ `,
           fontawesome: "fas fa-street-view",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
           title: `2. การวางแผน เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
           title: `3. การให้ความสำคัญกับผู้รับบริการและ<br> ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
           title: `4. การวัด การวิเคราะห์ และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
           title: `5. การมุ่งเน้นบุคลากร`,
           fontawesome: "fas fa-users-cog",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
           title: `6. การมุ่งเน้นระบบ ปฏิบัติการ`,
           fontawesome: "fas fa-project-diagram",
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
           title: `7. ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
-          score: [0, 0, 0, 0,0,0]
-        }
+          score: [0, 0, 0, 0, 0, 0],
+        },
       ],
       totalAvgScore: 0,
-      isLoadData: true
+      isLoadData: true,
     };
   },
   methods: {
     printBtn() {
       let result = this.$router.resolve({
-        path: "/print/assessment"
+        path: "/print/assessment",
       });
 
       window.open(result.href, "__blank");
@@ -138,17 +131,15 @@ export default {
       let avgScoreLst = [];
 
       for (let i = 0; i < this.dataList.length; i++) {
+        let devine = 4;
 
-        let devine = 4
-
-        if(i == 6){
-          devine = 6
+        if (i == 6) {
+          devine = 6;
         }
 
-
-      
         avgScoreLst.push(
-          this.dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / devine
+          this.dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) /
+            devine
         );
       }
 
@@ -158,34 +149,33 @@ export default {
       let setPrintData = {
         data: this.dataList,
         avgScore: avgScoreLst,
-        totalAvgScore: parseInt(this.totalAvgScore)
+        totalAvgScore: parseInt(this.totalAvgScore),
       };
-
 
       this.$q.sessionStorage.set("printData", setPrintData);
 
       Highcharts.chart("container", {
-          credits: {
-    enabled: false
-  },
+        credits: {
+          enabled: false,
+        },
         chart: {
           polar: true,
           style: {
-            fontFamily: "PROMPT-R"
-          }
+            fontFamily: "PROMPT-R",
+          },
         },
 
         accessibility: {
-          description: ""
+          description: "",
         },
 
         title: {
           text: "",
-          x: -80
+          x: -80,
         },
 
         pane: {
-          size: "80%"
+          size: "80%",
         },
 
         xAxis: {
@@ -197,17 +187,17 @@ export default {
             "หมวด 4",
             "หมวด 5",
             "หมวด 6",
-            "หมวด 7"
+            "หมวด 7",
           ],
           tickmarkPlacement: "on",
           lineWidth: 0,
           labels: {
             style: {
               fontSize: "16px",
-              color: "#000000"
-            }
+              color: "#000000",
+            },
           },
-          gridLineColor: "transparent"
+          gridLineColor: "transparent",
         },
 
         yAxis: {
@@ -215,18 +205,18 @@ export default {
           lineWidth: 0,
           min: 0,
           max: 500,
-          gridLineColor: "#000000"
+          gridLineColor: "#000000",
         },
 
         tooltip: {
           shared: true,
-          pointFormat: "<span >คะแนน: <b>{point.y:,.0f}</b><br/>"
+          pointFormat: "<span >คะแนน: <b>{point.y:,.0f}</b><br/>",
         },
 
         legend: {
           align: "right",
           verticalAlign: "middle",
-          layout: "vertical"
+          layout: "vertical",
         },
 
         series: [
@@ -237,29 +227,29 @@ export default {
             showInLegend: false,
             type: "area",
             color: "#79BDA3",
-            borderColor: "#009688"
-          }
+            borderColor: "#009688",
+          },
         ],
 
         responsive: {
           rules: [
             {
               condition: {
-                maxWidth: 500
+                maxWidth: 500,
               },
               chartOptions: {
                 legend: {
                   align: "center",
                   verticalAlign: "bottom",
-                  layout: "horizontal"
+                  layout: "horizontal",
                 },
                 pane: {
-                  size: "70%"
-                }
-              }
-            }
-          ]
-        }
+                  size: "70%",
+                },
+              },
+            },
+          ],
+        },
       });
 
       this.isLoadData = false;
@@ -269,113 +259,50 @@ export default {
       const url = this.apiPath + "user/getAllCategory1_6.php";
 
       const postData = {
-        year: this.$q.sessionStorage.getItem("y") ,
-        user_id: this.$q.sessionStorage.getItem("uid") 
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("uid"),
       };
 
       let getData = await Axios.post(url, postData);
       getData = getData.data;
 
 
-  const postData1 = {
-        year: this.$q.sessionStorage.getItem("y")+543 ,
-        user_id: this.$q.sessionStorage.getItem("uid") 
+      const postData1 = {
+        year: this.$q.sessionStorage.getItem("y") + 543,
+        user_id: this.$q.sessionStorage.getItem("uid"),
       };
 
-
-
       
-  
 
       for (let i = 0; i < this.dataList.length; i++) {
-        for (let ii = 0; ii < this.dataList[i].score.length; ii++) {
-          let setScore = 0;
-
-          let getBasic = getData.filter(
-            x => x.step == i + 1 && x.mode == "basic" && x.q_number == ii + 1
-          );
-
-          let getAdvance = getData.filter(
-            x => x.step == i + 1 && x.mode == "advance" && x.q_number == ii + 1
-          );
-
-          let getSignificance = getData.filter(
-            x =>
-              x.step == i + 1 &&
-              x.mode == "significance" &&
-              x.q_number == ii + 1
-          );
-
-          let getBasicScore = 0;
-          let getAdvanceScore = 0;
-          let getSignificanceScore = 0;
-
-          let sumScore = 0;
-
-          if (getBasic.length) {
-            getBasicScore = getBasic[0].check_box
-              .split(",")
-              .every(x => x == "1")
-              ? 300
-              : 0;
-          }
-
-          if (getBasicScore != 0) {
-            setScore = 300;
-
-            if (getAdvance.length) {
-              getAdvanceScore = getAdvance[0].check_box
-                .split(",")
-                .every(x => x == "1")
-                ? 400
-                : 0;
-            }
-
-            if (getAdvanceScore != 0) {
-              setScore = 400;
-
-              if (getSignificance.length) {
-                getSignificanceScore = getSignificance[0].check_box
-                  .split(",")
-                  .every(x => x == "1")
-                  ? 500
-                  : 0;
-              }
-
-              if (getSignificanceScore != 0) {
-                setScore = 500;
-              }
-            }
-          } else {
-            setScore = 0;
-          }
-
-          this.dataList[i].score[ii] = setScore;
-        }
+        console.log(getData.filter(x => x.step == i+1))
+        let score = getData.filter(x => x.step == i+1 && x.mode == 'basic')
+        score = score.sort((a,b) => Number(a.q_number) - Number(b.q_number))
+        this.dataList[i].score = score.map(x => Number(x.score))
       }
 
-        const url1 = this.apiPath + "user/getCategory7.php";
-      let getCategory7 = await Axios.post(url1,postData1)
+      const url1 = this.apiPath + "user/getCategory7.php";
+      let getCategory7 = await Axios.post(url1, postData1);
 
+      let cat7 = getCategory7.data.sort(
+        (a, b) => Number(a.q_number) - Number(b.q_number)
+      );
 
-      let cat7 = getCategory7.data.sort((a,b) => Number(a.q_number) - Number(b.q_number))
-
-     let mapCat7 = cat7.map(x => Number(x.avg_score))
+      let mapCat7 = cat7.map((x) => Number(x.avg_score));
 
       for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter(x => x.q_number == (i+1).toString())
-        if(checkExist.length){
-          this.dataList[6].score[i] = parseInt(mapCat7[i])
+        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
+        if (checkExist.length) {
+          this.dataList[6].score[i] = parseInt(mapCat7[i]);
         }
       }
 
-
       this.render();
-    }
+    },
   },
   mounted() {
     this.getData();
-  }
+  },
 };
 </script>
 

@@ -6,12 +6,11 @@
       </div>
     </div>
 
-    <!-- Start BOX 1 -->
-    <div class="q-mt-sm font-18" v-for="(item, index) in data" :key="index">
+ <div class="q-mt-sm font-18" v-for="(item, index) in data" :key="index">
       <div>
         <q-list bordered>
           <q-expansion-item
-            group="dataFormStep3"
+            group="dataFormStep2"
             header-class="bg-white "
             dense-toggle=""
             dense=""
@@ -27,23 +26,13 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <q-icon
-                      color="teal"
-                      name="fas fa-check-circle"
-                      size="16px"
-                      v-if="item.status != -1 && item.status != 0"
-                    ></q-icon>
+                    
                     <span class="font-18" v-if="item.status == -1">
                       ยังไม่ทำการประเมิน
                     </span>
-                    <span v-else-if="item.status == 1">
-                      Basic
+                    <span v-else>
+                      {{ Math.round(item.score) }}
                     </span>
-                    <span v-else-if="item.status == 2">
-                      Advance
-                    </span>
-                    <span v-else-if="item.status == 0">
-                      ไม่ผ่านการประเมิน
                     </span>
                     <span v-else> Significance </span>
                   </div>
@@ -84,12 +73,7 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Advance"
-                        :disable="
-                          item.status < 1 ||
-                            data[index].basic.checkBox
-                              .map(x => x.status)
-                              .includes(false)
-                        "
+                        
                       >
                         <template v-slot:default>
                           <div>
@@ -108,15 +92,6 @@
                         content-class="q-pa-sm"
                         no-caps=""
                         name="Significance"
-                        :disable="
-                          item.status < 2 ||
-                            data[index].advance.checkBox
-                              .map(x => x.status)
-                              .includes(false) ||
-                            data[index].basic.checkBox
-                              .map(x => x.status)
-                              .includes(false)
-                        "
                       >
                         <template v-slot:default>
                           <div>
@@ -171,7 +146,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="checkbox.status" value />
+                                  <q-checkbox color="pink-4" keep-color="" v-model="checkbox.status" value />
                                 </div>
                                 <div
                                   class="col  q-py-xs"
@@ -182,7 +157,7 @@
                           </div>
                         </div>
 
-                        <div class="col q-pl-lg q-pr-sm  ">
+                        <div class="col q-pl-lg q-pr-sm ">
                           <!-- Explain Basic -->
                           <div>
                             <div>
@@ -208,9 +183,9 @@
                                 >อัพโหลดข้อมูลเพิ่มเติม
                               </span>
                             </div>
-                            <div class="row justify-between q-my-sm">
+                            <div class="row  q-my-sm">
                               <div
-                                class="col-4 q-pa-md self-start"
+                                class="col-4  q-pa-md self-start"
                                 style="width:205px;"
                               >
                                 <q-file
@@ -294,92 +269,8 @@
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.basic.img_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.basic.img_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".jpg"
-                                  v-if="!item.basic.img_file"
-                                  @input="saveData(item.no, 'basic')"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.basic.img_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >รูปภาพประกอบ
-                                      </span>
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-pdf"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                      >
-                                        รูปภาพประกอบ
-                                      </span>
-                                    </div>
-                                  </template>
-                                  <template v-slot:file> </template>
-                                </q-file>
-                                <div
-                                  class="relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.basic.img_file"
-                                >
-                                  <div
-                                    class="full-width q-py-xs"
-                                    align="center"
-                                    style="border:2px solid #000000;border-radius:0px;"
-                                    @click="getIMG(item.no, 'basic')"
-                                  >
-                                    <q-icon
-                                      name="fas fa-file-pdf"
-                                      class="color1 q-px-xs"
-                                      size="20px"
-                                    ></q-icon>
-                                    <span
-                                      class="font-14 text-black"
-                                      style="text-decoration:underline"
-                                    >
-                                      รูปภาพประกอบ
-                                    </span>
-                                  </div>
-                                  <div
-                                    class="bg1 text-white font-12 q-py-sm"
-                                    @click="
-                                      (typeFile = 'รูปภาพ'),
-                                        (typeNo = item.no),
-                                        (typeMode = 'basic'),
-                                        (isDelete = true)
-                                    "
-                                  >
-                                    ลบไฟล์
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col q-py-md " align="right">
+                            
+                              <div class="col  q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
                                   label="บันทึกข้อมูล"
@@ -429,7 +320,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox v-model="checkbox.status" value />
+                                  <q-checkbox color="pink-4" keep-color="" v-model="checkbox.status" value />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span v-html="checkbox.text"></span>
@@ -544,90 +435,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.advance.img_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.advance.img_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".jpg"
-                                  @input="saveData(item.no, 'advance')"
-                                  v-if="!item.advance.img_file"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.advance.img_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-pdf"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-                                  </template>
-
-                                  <template v-slot:file> </template>
-                                </q-file>
-
-                                <div
-                                  class=" relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.advance.img_file"
-                                >
-                                  <div
-                                    class="full-width q-py-xs"
-                                    align="center"
-                                    style="border:2px solid #000000;border-radius:0px"
-                                    @click="getIMG(item.no, 'advance')"
-                                  >
-                                    <q-icon
-                                      name="fas fa-file-pdf"
-                                      class="color1 q-px-xs"
-                                    ></q-icon>
-                                    <span
-                                      class="font-14 text-black"
-                                      style="text-decoration:underline"
-                                      >รูปภาพประกอบ</span
-                                    >
-                                  </div>
-                                  <div
-                                    @click="
-                                      (typeFile = 'รูปภาพ'),
-                                        (typeNo = item.no),
-                                        (typeMode = 'advance'),
-                                        (isDelete = true)
-                                    "
-                                    class="text-white font-12 bg1 q-py-sm"
-                                  >
-                                    ลบไฟล์
-                                  </div>
-                                </div>
-                              </div>
+                         
                               <div class="col q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -679,7 +487,7 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox
+                                  <q-checkbox color="pink-4" keep-color=""
                                     v-model="
                                       data[index].significance.checkBox[
                                         signiCheckboxIndex
@@ -803,92 +611,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.significance.img_file"
-                                  v-if="!item.significance.img_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.significance.img_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".jpg"
-                                  @input="saveData(item.no, 'significance')"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.significance.img_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      style="overflow:hidden;"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-image"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                        @click="getIMG(item.no, 'significance')"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-                                  </template>
-
-                                  <template v-slot:file> </template>
-                                </q-file>
-
-                                <div
-                                  class=" relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.significance.img_file"
-                                >
-                                  <div
-                                    class="full-width q-py-xs"
-                                    align="center"
-                                    style="border:2px solid #000000;border-radius:0px"
-                                    @click="getIMG(item.no, 'significance')"
-                                  >
-                                    <q-icon
-                                      name="fas fa-file-pdf"
-                                      class="color1 q-px-xs"
-                                    ></q-icon>
-                                    <span
-                                      class="font-14 text-black"
-                                      style="text-decoration:underline"
-                                      >pdf เอกสารเพิ่มเติม</span
-                                    >
-                                  </div>
-                                  <div
-                                    @click="
-                                      (typeFile = 'รูปภาพ'),
-                                        (typeNo = item.no),
-                                        (typeMode = 'significance'),
-                                        (isDelete = true)
-                                    "
-                                    class="text-white font-12 bg1 q-py-sm"
-                                  >
-                                    ลบไฟล์
-                                  </div>
-                                </div>
-                              </div>
+                          
                               <div class="col q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -914,11 +637,12 @@
       </div>
     </div>
 
+
     <q-dialog v-model="isDelete" persistent="">
       <q-card style="max-width:400px;width:100%;">
         <q-card-section align="center">
           <div class="q-pb-md">
-            <span style="font-size:24px;">ลบไพล์</span>
+            <span style="font-size:24px;">ลบไฟล์</span>
           </div>
           <div class="q-pa-md font-18">
             <span>คุณต้องการลบไฟล์ {{ typeFile }} หรือไม่</span>
@@ -1260,10 +984,7 @@ export default {
     };
   },
   methods: {
-    test() {
-      this.tabs.push("");
-      this.tabs.pop();
-    },
+   
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;
@@ -1307,6 +1028,9 @@ export default {
         return this.checkStatus(no);
       }
     },
+
+    
+
     async checkPassStatus(){
       let status = 0
       let mapStatus = this.data.map(x =>x.status)
@@ -1333,10 +1057,13 @@ export default {
     },
 
     async saveData(no, mode) {
-      this.isSaveData = true;
+      console.clear()
+
      
+      // this.isSaveData = true;
 
       let index = no - 1;
+      let score = 0
       const url = this.apiPath + "user/addUpdateCategory1_6.php";
       const userId = this.$q.sessionStorage.getItem("uid");
       const year = this.$q.sessionStorage.getItem("y");
@@ -1348,46 +1075,89 @@ export default {
       formData.append("year", year);
       formData.append("step", 2);
 
+      let basicCheckbox = this.data[index].basic.checkBox.map(x => x.status == true ? 1 : 0)
+      let advanceCheckbox  = this.data[index].advance.checkBox.map(x => x.status == true ? 1 : 0)
+      let signiCheckbox  = this.data[index].significance.checkBox.map(x => x.status == true ? 1 : 0)
+
+      // console.log("--")
+      // console.log(advanceCheckbox)
+      // console.log("--")
+      // console.log(signiCheckbox)
+
+// Basic
+let scorePerCheckboxBasic = 300 / basicCheckbox.length
+let scoreBasic = basicCheckbox.filter(x => x == 1)
+scoreBasic = scorePerCheckboxBasic * scoreBasic.length
+// advance
+let scorePerCheckboxAdvance = 100 / advanceCheckbox.length
+let scoreAdvance = advanceCheckbox.filter(x => x == 1)
+scoreAdvance = scorePerCheckboxAdvance * scoreAdvance.length
+// signi
+let scorePerCheckboxSigni = 100 / signiCheckbox.length;
+let scoreSigni = signiCheckbox.filter(x => x == 1)
+scoreSigni = scorePerCheckboxSigni * scoreSigni.length
+
+score += scoreBasic
+if(basicCheckbox.every(x => x == 1)){
+  score+= scoreAdvance
+}
+ if (advanceCheckbox.every(x => x == 1) && basicCheckbox.every(x => x == 1)){
+  score += scoreSigni
+}
+
+this.data[index].score = score
+
+this.data.push("")
+this.data.pop()
+this.data[index].status = 0
+
+
+   formData.append("score", score);
+     let checkBox = this.data[index].basic.checkBox;
+
+        checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
+     let checkBoxAdvance = this.data[index].advance.checkBox;
+
+          checkBoxAdvance = checkBoxAdvance.map(x =>
+            x.status == true ? 1 : 0
+          );
+   let checkBoxSigni = this.data[index].significance.checkBox;
+
+            checkBoxSigni = checkBoxSigni.map(x => (x.status == true ? 1 : 0));
+
+            // Check Status
+
+            let isCheckBasicAll = !checkBox.includes(0)
+            let isCheckAdvanceAll = !checkBoxAdvance.includes(0)
+            let isCheckSigniAll = !checkBoxSigni.includes(0)
+
+            if(isCheckBasicAll){
+              this.data[index].status = 1
+            }
+
+            if(isCheckBasicAll && isCheckAdvanceAll){
+              this.data[index].status = 2
+            }
+
+            if(isCheckBasicAll && isCheckAdvanceAll && isCheckSigniAll){
+              this.data[index].status = 3
+            }
+
+
+
       // if (no == 1) {
       // save 1.1 basic
       if (mode == "basic") {
         // mode basic
-        formData.append("img", this.data[index].basic.img_file);
         formData.append("pdf", this.data[index].basic.pdf_file);
-        let checkBox = this.data[index].basic.checkBox;
-
-        checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
-
+      
         let resCheckBox = checkBox.join();
 
         formData.append("check_box", resCheckBox);
         formData.append("text", this.data[index].basic.explain);
         let data = await Axios.post(url, formData);
 
-        if (!checkBox.includes(0)) {
-          // กรณี check ทุุกหัวข้อ // เปิด Advance
-          this.data[index].status = 1;
-
-          let checkBoxAdvance = this.data[index].advance.checkBox;
-
-          checkBoxAdvance = checkBoxAdvance.map(x =>
-            x.status == true ? 1 : 0
-          );
-
-          if (!checkBoxAdvance.includes(0)) {
-            this.data[index].status = 2;
-
-            let checkBoxSigni = this.data[index].significance.checkBox;
-
-            checkBoxSigni = checkBoxSigni.map(x => (x.status == true ? 1 : 0));
-
-            if (!checkBoxSigni.includes(0)) {
-              this.data[index].status = 3;
-            }
-          }
-        } else {
-          this.data[index].status = 0;
-        }
+       
       } else if (mode == "advance") {
         //  mode advance
         formData.append("img", this.data[index].advance.img_file);
@@ -1401,20 +1171,7 @@ export default {
         formData.append("check_box", resCheckBox);
         formData.append("text", this.data[index].advance.explain);
         let data = await Axios.post(url, formData);
-        if (!checkBox.includes(0)) {
-          // กรณี check ทุุกหัวข้อ // เปิด Advance
-          this.data[index].status = 2;
-
-          let checkBoxSigni = this.data[index].significance.checkBox;
-
-          checkBoxSigni = checkBoxSigni.map(x => (x.status == true ? 1 : 0));
-
-          if (!checkBoxSigni.includes(0)) {
-            this.data[index].status = 3;
-          }
-        } else {
-          this.data[index].status = 1;
-        }
+      
       } else {
         // mode significance
         formData.append("img", this.data[index].significance.img_file);
@@ -1428,18 +1185,13 @@ export default {
         formData.append("check_box", resCheckBox);
         formData.append("text", this.data[index].significance.explain);
         let data = await Axios.post(url, formData);
-        if (!checkBox.includes(0)) {
-          // กรณี check ทุุกหัวข้อ // เปิด Advance
-          this.data[index].status = 3;
-        } else {
-          this.data[index].status = 2;
-        }
+     
       }
 
       this.isSaveData = false;
 
       this.isDelete = false;
-       this.checkPassStatus()
+           this.checkPassStatus()
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
@@ -1462,8 +1214,9 @@ export default {
             this.data[i - 1].basic.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].basic.img_file =
-            getData[0].is_img == 0 ? null : [getData[0].is_img];
+          this.data[i - 1].score = getData[0].score
+
+       
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1489,16 +1242,14 @@ export default {
             // ผ่าน advance
             this.data[i - 1].status = 2;
           }
-          // else {
-          //   this.data[i - 1].status = 1;
-          // }
-
+      
           for (let j = 0; j < checkBox.length; j++) {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].advance.img_file =
-            getData[0].is_img == 0 ? null : [getData[0].is_img];
+              this.data[i - 1].score = getData[0].score
+
+      
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1537,15 +1288,14 @@ export default {
           ) {
             this.data[i - 1].status = 3;
           }
-          // else {
-          //   this.data[i - 1].status = 2;
-          // }
+ 
           for (let j = 0; j < checkBox.length; j++) {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].significance.img_file =
-            getData[0].is_img == 0 ? null : [getData[0].is_img];
+              this.data[i - 1].score = getData[0].score
+
+    
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1571,6 +1321,7 @@ export default {
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
     },
+
     getPDF(no, mode) {
       let random = Math.random()
         .toString(36)
@@ -1586,21 +1337,7 @@ export default {
           random
       );
     },
-    getIMG(no, mode) {
-      let random = Math.random()
-        .toString(36)
-        .substring(7);
-      let imgFileName = `${this.$q.sessionStorage.getItem(
-        "uid"
-      )}-2-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.jpg`;
-
-      window.open(
-        "https://api.winner-english.com/pmqa4_0_api/upload/" +
-          imgFileName +
-          "?" +
-          random
-      );
-    }
+ 
   },
 
   created() {

@@ -15,36 +15,17 @@
               <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs text-teal" style="border:1px solid teal;border-radius:5px">
-                      <q-icon color='teal' name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>เสร็จสิ้น
+                    <div class="col q-pa-xs " :class="currentStep.category0 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category0 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
                     </div>
                     <div class='q-pl-sm'>
-                      <q-btn size="13px" icon="fas fa-print" round color="teal"></q-btn>
+                      <q-btn :disable="currentStep.category0 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category0 == '1' ? 'teal' : 'grey'"></q-btn>
                     </div>
                     <div class="col-12 ">
                       <span class="text-no-wrap" style="position:relative;left:-20px">ลักษณะสำคัญองค์การ</span>
                     </div>
                   </div>
                 </div>
-
-                <!-- <div class="font-18 ">
-                  <div class="row items-center ">
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category0 == '1' ? 'teal' : ''"
-                      class="bg2 color2 col"
-                      size="20px"
-                      dense
-                      
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                    
-                  </div>
-                  <span class="text-no-wrap">ลักษณะองค์การ</span>
-                </div>-->
               </div>
             </div>
 
@@ -55,23 +36,24 @@
                   <q-icon size="50px" class="color1" name="fas fa-street-view"></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category1 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 1
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category1 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category1 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category1 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category1 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 1</span>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+
             </div>
 
             <!-- หมวด 2  -->
@@ -82,7 +64,25 @@
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+                <div class="font-18">
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category2 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category2 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category2 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category2 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 2</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
                   <div>
                     <q-chip
@@ -98,7 +98,7 @@
                     </q-chip>
                   </div>หมวด 2
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <!-- หมวด 3 -->
@@ -108,7 +108,25 @@
                   <q-icon size="50px" class="color1" name="fas fa-users"></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+                <div class="font-18">
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category3 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category3 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category3 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category3 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 3</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
                   <div>
                     <q-chip
@@ -124,7 +142,7 @@
                     </q-chip>
                   </div>หมวด 3
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -139,7 +157,25 @@
                   <q-icon size="50px" class="color1" name="fas fa-chart-line"></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+                <div class="font-18">
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category4 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category4 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category4 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category4 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 4</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
                   <div>
                     <q-chip
@@ -155,7 +191,7 @@
                     </q-chip>
                   </div>หมวด 4
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <!-- หมวด 5 -->
@@ -165,7 +201,25 @@
                   <q-icon size="50px" class="color1" name="fas fa-users-cog"></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+                <div class="font-18">
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category5 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category5 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category5 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category5 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
                   <div>
                     <q-chip
@@ -181,7 +235,7 @@
                     </q-chip>
                   </div>หมวด 5
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <!-- หมวด 6 -->
@@ -191,7 +245,25 @@
                   <q-icon size="50px" class="color1" name="fas fa-project-diagram"></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+                <div class="font-18">
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category6 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category6 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category6 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category6 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 6</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
                   <div>
                     <q-chip
@@ -207,7 +279,7 @@
                     </q-chip>
                   </div>หมวด 6
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <!-- หมวด 7 -->
@@ -217,7 +289,25 @@
                   <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -150px;" align="center">
+
+                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+                <div class="font-18">
+                  <div class="row items-center">
+                    <div class="col q-pa-xs " :class="currentStep.category7 == '1' ?'border-teal' : 'border-grey'" >
+                      <q-icon  :color="currentStep.category7 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    </div>
+                    <div class='q-pl-sm'>
+                      <q-btn :disable="currentStep.category7 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category7 == '1' ? 'teal' : 'grey'"></q-btn>
+                    </div>
+                    <div class="col-12 ">
+                      <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 7</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
                   <div>
                     <q-chip
@@ -233,7 +323,7 @@
                     </q-chip>
                   </div>หมวด 7
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -432,5 +522,15 @@ export default {
   border-bottom-right-radius: 50%;
   border-left-color: transparent;
   z-index: 1;
+}
+.border-teal{
+  border:1px solid teal;
+  border-radius:5px;
+  color:teal
+}
+.border-grey{
+  border:1px solid rgb(173, 168, 168);
+  border-radius:5px;
+  color :rgb(173, 168, 168);
 }
 </style>

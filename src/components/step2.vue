@@ -27,26 +27,13 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    <q-icon
-                      color="teal"
-                      name="fas fa-check-circle"
-                      size="16px"
-                      v-if="item.status != -1 && item.status != 0"
-                    ></q-icon>
+                    
                     <span class="font-18" v-if="item.status == -1">
                       ยังไม่ทำการประเมิน
                     </span>
                     <span v-else>
                       {{ Math.round(item.score) }}
                     </span>
-                    <!-- <span v-else-if="item.status == 1">
-                      Basic
-                    </span>
-                    <span v-else-if="item.status == 2">
-                      Advance
-                    </span>
-                    <span v-else-if="item.status == 0">
-                      ไม่ผ่านการประเมิน -->
                     </span>
                     <span v-else> Significance </span>
                   </div>
@@ -449,90 +436,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.advance.img_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.advance.img_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".jpg"
-                                  @input="saveData(item.no, 'advance')"
-                                  v-if="!item.advance.img_file"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.advance.img_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-pdf"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-                                  </template>
-
-                                  <template v-slot:file> </template>
-                                </q-file>
-
-                                <div
-                                  class=" relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.advance.img_file"
-                                >
-                                  <div
-                                    class="full-width q-py-xs"
-                                    align="center"
-                                    style="border:2px solid #000000;border-radius:0px"
-                                    @click="getIMG(item.no, 'advance')"
-                                  >
-                                    <q-icon
-                                      name="fas fa-file-pdf"
-                                      class="color1 q-px-xs"
-                                    ></q-icon>
-                                    <span
-                                      class="font-14 text-black"
-                                      style="text-decoration:underline"
-                                      >รูปภาพประกอบ</span
-                                    >
-                                  </div>
-                                  <div
-                                    @click="
-                                      (typeFile = 'รูปภาพ'),
-                                        (typeNo = item.no),
-                                        (typeMode = 'advance'),
-                                        (isDelete = true)
-                                    "
-                                    class="text-white font-12 bg1 q-py-sm"
-                                  >
-                                    ลบไฟล์
-                                  </div>
-                                </div>
-                              </div>
+                         
                               <div class="col q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -708,92 +612,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.significance.img_file"
-                                  v-if="!item.significance.img_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.significance.img_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".jpg"
-                                  @input="saveData(item.no, 'significance')"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.significance.img_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      style="overflow:hidden;"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-image"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                        @click="getIMG(item.no, 'significance')"
-                                        >รูปภาพประกอบ</span
-                                      >
-                                    </div>
-                                  </template>
-
-                                  <template v-slot:file> </template>
-                                </q-file>
-
-                                <div
-                                  class=" relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.significance.img_file"
-                                >
-                                  <div
-                                    class="full-width q-py-xs"
-                                    align="center"
-                                    style="border:2px solid #000000;border-radius:0px"
-                                    @click="getIMG(item.no, 'significance')"
-                                  >
-                                    <q-icon
-                                      name="fas fa-file-pdf"
-                                      class="color1 q-px-xs"
-                                    ></q-icon>
-                                    <span
-                                      class="font-14 text-black"
-                                      style="text-decoration:underline"
-                                      >pdf เอกสารเพิ่มเติม</span
-                                    >
-                                  </div>
-                                  <div
-                                    @click="
-                                      (typeFile = 'รูปภาพ'),
-                                        (typeNo = item.no),
-                                        (typeMode = 'significance'),
-                                        (isDelete = true)
-                                    "
-                                    class="text-white font-12 bg1 q-py-sm"
-                                  >
-                                    ลบไฟล์
-                                  </div>
-                                </div>
-                              </div>
+                          
                               <div class="col q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -1295,6 +1114,8 @@ if(basicCheckbox.every(x => x == 1)){
 
 this.data[index].score = score
 this.data[index].status = 0
+this.data.push("")
+this.data.pop()
 
    formData.append("score", score);
      let checkBox = this.data[index].basic.checkBox;
@@ -1505,14 +1326,7 @@ this.data[index].status = 0
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
     },
-    reRenderComponent() {
-      this.basic_success_form.push("");
-      this.basic_success_form.pop();
-      this.advance_success_form.push("");
-      this.advance_success_form.pop();
-      this.signifi_success_form.push("");
-      this.signifi_success_form.pop();
-    },
+  
     getPDF(no, mode) {
       let random = Math.random()
         .toString(36)
