@@ -65,6 +65,23 @@ const routes = [
       }
     ]
   },
+  // ASSESSOR
+  {
+    path : "/",
+    component: () => import("layouts/AssessorLayout.vue"),
+    children:[
+      {
+        path : "/assessor/main",
+        component: () => import("pages/assessor/main.vue"),
+        name : "assessorMain"
+      },
+      {
+        path : "/assessor/details",
+        component: () => import("pages/assessor/details.vue"),
+        name : "assessorDetails"
+      }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

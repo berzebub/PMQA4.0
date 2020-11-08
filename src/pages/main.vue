@@ -15,14 +15,31 @@
               <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category0 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category0 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category0 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category0 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category0 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category0 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category0 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category0 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
-                      <span class="text-no-wrap" style="position:relative;left:-20px">ลักษณะสำคัญองค์การ</span>
+                    <div class="col-12">
+                      <span
+                        class="text-no-wrap"
+                        style="position:relative;left:-20px"
+                      >ลักษณะสำคัญองค์การ</span>
                     </div>
                   </div>
                 </div>
@@ -37,23 +54,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category1 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category1 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category1 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category1 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category1 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category1 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category1 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category1 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 1</span>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
 
             <!-- หมวด 2  -->
@@ -64,23 +93,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category2 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category2 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category2 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category2 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category2 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category2 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category2 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category2 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 2</span>
                     </div>
                   </div>
                 </div>
               </div>
-
-
 
               <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
@@ -98,7 +139,7 @@
                     </q-chip>
                   </div>หมวด 2
                 </div>
-              </div> -->
+              </div>-->
             </div>
 
             <!-- หมวด 3 -->
@@ -109,22 +150,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category3 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category3 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category3 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category3 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category3 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category3 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category3 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category3 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 3</span>
                     </div>
                   </div>
                 </div>
               </div>
-
 
               <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
@@ -142,7 +196,7 @@
                     </q-chip>
                   </div>หมวด 3
                 </div>
-              </div> -->
+              </div>-->
             </div>
           </div>
         </div>
@@ -158,22 +212,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category4 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category4 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category4 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category4 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category4 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category4 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category4 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category4 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 4</span>
                     </div>
                   </div>
                 </div>
               </div>
-
 
               <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
@@ -191,7 +258,7 @@
                     </q-chip>
                   </div>หมวด 4
                 </div>
-              </div> -->
+              </div>-->
             </div>
 
             <!-- หมวด 5 -->
@@ -202,22 +269,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category5 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category5 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category5 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category5 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category5 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category5 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category5 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category5 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 5</span>
                     </div>
                   </div>
                 </div>
               </div>
-
 
               <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
@@ -235,7 +315,7 @@
                     </q-chip>
                   </div>หมวด 5
                 </div>
-              </div> -->
+              </div>-->
             </div>
 
             <!-- หมวด 6 -->
@@ -246,22 +326,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category6 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category6 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category6 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category6 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category6 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category6 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category6 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category6 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 6</span>
                     </div>
                   </div>
                 </div>
               </div>
-
 
               <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
                 <div class="font-18">
@@ -279,7 +372,7 @@
                     </q-chip>
                   </div>หมวด 6
                 </div>
-              </div> -->
+              </div>-->
             </div>
 
             <!-- หมวด 7 -->
@@ -290,40 +383,35 @@
                 </q-btn>
               </div>
 
-                <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
+              <div class="absolute-bottom" style="bottom: -150px;width:145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div class="col q-pa-xs " :class="currentStep.category7 == '1' ?'border-teal' : 'border-grey'" >
-                      <q-icon  :color="currentStep.category7 == '1' ? 'teal' : ''" name="fas fa-check-circle" class="q-mr-xs" size="18px"></q-icon>เสร็จสิ้น
+                    <div
+                      class="col q-pa-xs"
+                      :class="currentStep.category7 == '1' ?'border-teal' : 'border-grey'"
+                    >
+                      <q-icon
+                        :color="currentStep.category7 == '1' ? 'teal' : ''"
+                        name="fas fa-check-circle"
+                        class="q-mr-xs"
+                        size="18px"
+                      ></q-icon>เสร็จสิ้น
                     </div>
-                    <div class='q-pl-sm'>
-                      <q-btn :disable="currentStep.category7 == '0'" size="12px" icon="fas fa-print" round   :color="currentStep.category7 == '1' ? 'teal' : 'grey'"></q-btn>
+                    <div class="q-pl-sm">
+                      <q-btn
+                        :disable="currentStep.category7 == '0'"
+                        size="12px"
+                        icon="fas fa-print"
+                        round
+                        :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
+                      ></q-btn>
                     </div>
-                    <div class="col-12 ">
+                    <div class="col-12">
                       <span class="text-no-wrap" style="position:relative;left:-20px">หมวด 7</span>
                     </div>
                   </div>
                 </div>
               </div>
-
-
-              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
-                <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category7 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 7
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -336,6 +424,16 @@
       </div>
 
       <div class="col-12 q-py-xl" style="margin-top: 100px;" align="center">
+        <q-btn
+          :disable="!checkSteper"
+          style="width: 180px; border-radius: 0px;"
+          push
+          class="q-mx-md q-py-sm"
+          :class="!checkSteper ? 'bg3' : 'bg-white'"
+        >
+          <q-icon :class="!checkSteper ? 'color2' : ''" name="fas fa-print"></q-icon>
+          <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm">พิมพ์การประเมิน</span>
+        </q-btn>
         <q-btn
           :disable="!checkSteper"
           style="width: 180px; border-radius: 0px;"
@@ -385,7 +483,120 @@ export default {
     };
   },
   methods: {
+    async getScore() {
+      console.clear();
+      const url = this.apiPath + "user/getAllCategory1_6.php";
+
+      const postData = {
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("uid"),
+      };
+
+      let getData = await Axios.post(url, postData);
+      getData = getData.data;
+
+      const postData1 = {
+        year: this.$q.sessionStorage.getItem("y") + 543,
+        user_id: this.$q.sessionStorage.getItem("uid"),
+      };
+
+      let dataList = [
+        {
+          score: [0, 0, 0, 0],
+        },
+        {
+          score: [0, 0, 0, 0],
+        },
+        {
+          score: [0, 0, 0, 0],
+        },
+        {
+          score: [0, 0, 0, 0],
+        },
+        {
+          score: [0, 0, 0, 0],
+        },
+        {
+          score: [0, 0, 0, 0],
+        },
+        {
+          score: [0, 0, 0, 0, 0, 0],
+        },
+      ];
+
+      for (let i = 0; i < dataList.length; i++) {
+        let score = getData.filter((x) => x.step == i + 1 && x.mode == "basic");
+        score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
+        dataList[i].score = score.map((x) => Number(x.score));
+      }
+
+      const url1 = this.apiPath + "user/getCategory7.php";
+      let getCategory7 = await Axios.post(url1, postData1);
+
+      let cat7 = getCategory7.data.sort(
+        (a, b) => Number(a.q_number) - Number(b.q_number)
+      );
+
+      let mapCat7 = cat7.map((x) => Number(x.avg_score));
+
+      for (let i = 0; i < 6; i++) {
+        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
+        if (checkExist.length) {
+          dataList[6].score[i] = parseInt(mapCat7[i]);
+        }
+      }
+
+      let avgScoreLst = [];
+      // let avgTemp2 = []
+
+      for (let i = 0; i < dataList.length; i++) {
+        let devine = 4;
+
+        if (i == 6) {
+          devine = 6;
+        }
+        // avgTemp2.push(
+        //   {
+        //     category : i+1,
+        //     avgScore :  dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
+        //   }
+        // )
+
+        avgScoreLst.push(
+          dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
+        );
+      }
+
+      let totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
+
+      let result = {
+        score : avgScoreLst,
+        totalAvgScore : totalAvgScore
+      }
+
+      return result;
+    },
     async sendAssessment() {
+      let avgScore = await this.getScore();
+
+
+      const sendAPI = this.apiPath + "user/sendAssessment.php";
+      let postSendData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        office_score: avgScore.totalAvgScore,
+        year: this.$q.sessionStorage.getItem("y"),
+        category1_score : Math.round(avgScore.score[0]),
+        category2_score : Math.round(avgScore.score[1]),
+        category3_score : Math.round(avgScore.score[2]),
+        category4_score : Math.round(avgScore.score[3]),
+        category5_score : Math.round(avgScore.score[4]),
+        category6_score : Math.round(avgScore.score[5]),
+        category7_score : Math.round(avgScore.score[6]),
+      };
+
+
+      let send = Axios.post(sendAPI, postSendData);
+
       const url = this.apiPath + "user/setUserStepperLog.php";
       let postData = {
         category: "category1",
@@ -523,14 +734,14 @@ export default {
   border-left-color: transparent;
   z-index: 1;
 }
-.border-teal{
-  border:1px solid teal;
-  border-radius:5px;
-  color:teal
+.border-teal {
+  border: 1px solid teal;
+  border-radius: 5px;
+  color: teal;
 }
-.border-grey{
-  border:1px solid rgb(173, 168, 168);
-  border-radius:5px;
-  color :rgb(173, 168, 168);
+.border-grey {
+  border: 1px solid rgb(173, 168, 168);
+  border-radius: 5px;
+  color: rgb(173, 168, 168);
 }
 </style>

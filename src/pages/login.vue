@@ -26,9 +26,9 @@
             style="height: 58px;"
           >
             <span
-              style="font-size: 80px; width: 100%;"
+              style="font-size: 55px; width: 100%;"
               class="absolute-center font-roboto-b"
-              >PMQA 4.0</span
+              >DDC-PMQA 4.0</span
             >
           </div>
           <div class="q-py-lg q-px-xl" align="center">
@@ -180,7 +180,7 @@ export default {
         this.$router.push("/main");
       } else if (this.department == "ผู้ประเมิน") {
         this.$q.sessionStorage.set("p", "1");
-        //  this.$router.push("/assessor/main");
+         this.$router.push("/assessor/main");
       } else {
         this.$q.sessionStorage.set("p", "2");
         // ADMIN
