@@ -24,6 +24,47 @@ const routes = [
     component: () => import("pages/reset.vue"),
     name: "reset"
   },
+  // PRINT ASSESSMENT PAPER
+  {
+    path : "/print/0",
+    component: () => import("pages/print0.vue"),
+    name : "printStep0"
+  },
+  {
+    path : "/print/1",
+    component: () => import("pages/print1.vue"),
+    name : "printStep1"
+  },
+  {
+    path : "/print/2",
+    component: () => import("pages/print2.vue"),
+    name : "printStep2"
+  },
+  {
+    path : "/print/3",
+    component: () => import("pages/print3.vue"),
+    name : "printStep3"
+  },
+  {
+    path : "/print/4",
+    component: () => import("pages/print4.vue"),
+    name : "printStep4"
+  },
+  {
+    path : "/print/5",
+    component: () => import("pages/print5.vue"),
+    name : "printStep5"
+  },
+  {
+    path : "/print/6",
+    component: () => import("pages/print6.vue"),
+    name : "printStep6"
+  },
+  {
+    path : "/print/7",
+    component: () => import("pages/print7.vue"),
+    name : "printStep7"
+  },
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),

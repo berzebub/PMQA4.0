@@ -33,6 +33,7 @@
                         icon="fas fa-print"
                         round
                         :color="currentStep.category0 == '1' ? 'teal' : 'grey'"
+                        @click="printData(0)"
                       ></q-btn>
                     </div>
                     <div class="col-12">
@@ -73,6 +74,7 @@
                         :disable="currentStep.category1 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(1)"
                         round
                         :color="currentStep.category1 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -112,6 +114,7 @@
                         :disable="currentStep.category2 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(2)"
                         round
                         :color="currentStep.category2 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -122,24 +125,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
-                <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category2 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 2
-                </div>
-              </div>-->
             </div>
 
             <!-- หมวด 3 -->
@@ -169,6 +154,7 @@
                         :disable="currentStep.category3 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(3)"
                         round
                         :color="currentStep.category3 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -179,24 +165,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
-                <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category3 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 3
-                </div>
-              </div>-->
             </div>
           </div>
         </div>
@@ -231,6 +199,7 @@
                         :disable="currentStep.category4 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(4)"
                         round
                         :color="currentStep.category4 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -241,24 +210,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
-                <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category4 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 4
-                </div>
-              </div>-->
             </div>
 
             <!-- หมวด 5 -->
@@ -288,6 +239,7 @@
                         :disable="currentStep.category5 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(5)"
                         round
                         :color="currentStep.category5 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -298,24 +250,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
-                <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category5 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 5
-                </div>
-              </div>-->
             </div>
 
             <!-- หมวด 6 -->
@@ -345,6 +279,7 @@
                         :disable="currentStep.category6 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(6)"
                         round
                         :color="currentStep.category6 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -355,24 +290,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="absolute-bottom" style="bottom: -150px;" align="center">
-                <div class="font-18">
-                  <div>
-                    <q-chip
-                      outline
-                      square
-                      :color="currentStep.category6 == '1' ? 'teal' : ''"
-                      class="bg2 color2"
-                      size="20px"
-                      dense
-                    >
-                      <q-icon name="fas fa-check-circle" class="q-mr-xs" size="22px"></q-icon>
-                      <span class="font-16">เสร็จสิ้น</span>
-                    </q-chip>
-                  </div>หมวด 6
-                </div>
-              </div>-->
             </div>
 
             <!-- หมวด 7 -->
@@ -402,6 +319,7 @@
                         :disable="currentStep.category7 == '0'"
                         size="12px"
                         icon="fas fa-print"
+                        @click="printData(7)"
                         round
                         :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
                       ></q-btn>
@@ -483,6 +401,14 @@ export default {
     };
   },
   methods: {
+    printData(step) {
+      let route = this.$router.resolve(
+        {
+          name : "printStep" + step
+        }
+      )
+      window.open(route.href)
+    },
     async getScore() {
       console.clear();
       const url = this.apiPath + "user/getAllCategory1_6.php";
@@ -555,12 +481,6 @@ export default {
         if (i == 6) {
           devine = 6;
         }
-        // avgTemp2.push(
-        //   {
-        //     category : i+1,
-        //     avgScore :  dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
-        //   }
-        // )
 
         avgScoreLst.push(
           dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
@@ -570,30 +490,28 @@ export default {
       let totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
 
       let result = {
-        score : avgScoreLst,
-        totalAvgScore : totalAvgScore
-      }
+        score: avgScoreLst,
+        totalAvgScore: totalAvgScore,
+      };
 
       return result;
     },
     async sendAssessment() {
       let avgScore = await this.getScore();
 
-
       const sendAPI = this.apiPath + "user/sendAssessment.php";
       let postSendData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
         office_score: avgScore.totalAvgScore,
         year: this.$q.sessionStorage.getItem("y"),
-        category1_score : Math.round(avgScore.score[0]),
-        category2_score : Math.round(avgScore.score[1]),
-        category3_score : Math.round(avgScore.score[2]),
-        category4_score : Math.round(avgScore.score[3]),
-        category5_score : Math.round(avgScore.score[4]),
-        category6_score : Math.round(avgScore.score[5]),
-        category7_score : Math.round(avgScore.score[6]),
+        category1_score: Math.round(avgScore.score[0]),
+        category2_score: Math.round(avgScore.score[1]),
+        category3_score: Math.round(avgScore.score[2]),
+        category4_score: Math.round(avgScore.score[3]),
+        category5_score: Math.round(avgScore.score[4]),
+        category6_score: Math.round(avgScore.score[5]),
+        category7_score: Math.round(avgScore.score[6]),
       };
-
 
       let send = Axios.post(sendAPI, postSendData);
 
