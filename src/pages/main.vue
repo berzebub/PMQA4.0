@@ -397,17 +397,21 @@ export default {
       endDate: "",
       assessmentStatus: "",
       endAssessmentDate: "",
-      checkSteper: false,
+      checkSteper: false
     };
   },
   methods: {
-    printData(step) {
-      let route = this.$router.resolve(
-        {
-          name : "printStep" + step
-        }
-      )
-      window.open(route.href)
+    async sendAssessment() {
+      const url = this.apiPath + "user/setUserStepperLog.php";
+      let postData = {
+        category: "category1",
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y"),
+        status: 1, // 1 = finish
+        send_status: 1
+      };
+      let data = await Axios.post(url, postData);
+      this.$router.push("/waitingAssessment/0");
     },
     async getScore() {
       console.clear();
@@ -535,7 +539,7 @@ export default {
       };
       let data = await Axios.post(url, postData);
       let newData = data.data;
-      let checkStatus = false;
+      let checkStatus = [];
       if (newData) {
         checkStatus = [
           newData.category0,
@@ -545,15 +549,15 @@ export default {
           newData.category4,
           newData.category5,
           newData.category6,
-          newData.category7,
+          newData.category7
         ];
-        if (checkStatus.every((x) => x == "1")) {
-          this.checkSteper = true;
-        } else {
-          this.checkSteper = false;
-        }
       }
 
+      if (checkStatus.every(x => x == "1")) {
+        this.checkSteper = true;
+      } else {
+        this.checkSteper = false;
+      }
       if (data.data) {
         this.currentStep = data.data;
       }
