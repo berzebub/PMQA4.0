@@ -1,5 +1,14 @@
 <template>
   <div class="">
+    <div class="float-right q-pa-md">
+      <q-btn
+        class="printBtn"
+        icon="fas fa-print"
+        color="pink-4"
+        round
+        @click="printBtn()"
+      ></q-btn>
+    </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div class="absolute-right text-h7 printDate">
@@ -12,12 +21,19 @@
       </div>
       <div style="height:15px"></div>
 
-      <div align="center" class="bg-grey-5 q-py-sm text-h6">
+      <div
+        align="left"
+        class="b-color text-white q-py-sm q-pl-md"
+        style="width:80%;font-size:18px"
+      >
         หมวด 1 การนำองค์การ
       </div>
+
       <div class="q-pt-md">
         <p>
-          <b>เป้าหมาย : </b>
+          <b class="t-color">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เป้าหมาย :
+          </b>
           เพื่อให้ระบบการนำองค์การของหน่วยงานมุ่งเน้นสัมฤทธิผลและสร้างความยั่งยืนให้กับองค์การโดยหน่วยงานกำหนดวิสัยทัศน์และแผนยุธศาสตร์ที่นำไปสู่การบรรลุพันธกิจและสอดรับกับยุทธศาสตร์ชาติกำหนดนโยบายในการกำกับดูแลที่มีประสิทธิผลในเรื่องการป้องกันทุจริตและการสร้างความโปร่งใสสร้างสภาพแวดล้อมภายในที่มุ่งเน้นการบรรลุผลสัมฤทธิ์ของหน่วยงานและผลกระทบที่เกิดขึ้นทั้งระยะสั้นและระยะยาวอย่างต่อเนื่องและทันเหตุการณ์
           (ด้วยกลไกของเทคโนโลยีดิจิทัล) โดยคำนึงถึง
           ผลกระทบต่อสังคมและมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศความทิศทางยุทธศาสตร์
@@ -25,146 +41,85 @@
       </div>
 
       <div class="q-pt-sm">
-        <div class="border-black">
-          <div class="q-py-sm">
-            <b class="text-h5 q-px-sm">หมวด 1 การนำองค์การ</b>
-            <!-- 1.1 -->
-            <div class="row q-pt-md q-px-sm ">
-              <div style="width:170px" class="q-pr-md">
-                1.1 ระบบการนำองค์การ<br />ที่สร้างความยั่งยืน
-              </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">Basic<br />(A&D)</div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Advance<br />(Alignment)
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Significance<br />(Integration)
-                    </div>
-                  </div>
-                </div>
-                <div class="row q-pt-md" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์<br />ตอบสนองพันธกิจ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์สอด<br />รับกับยุทธศาสตร์ประเทศ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs q-py-sm">
-                      สร้างนวตกรรม/วัฒนธรรมที่<br />มุ่งประโยชน์สุขประชาชน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.2 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.2 ป้องกันทุจริตและ<br />สร้างความโปร่งใส
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      นโยบายการป้องกันทุจริต<br />และระบบกำกับดูแลที่มีประสิทธิภาพ
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การติดตาม ปรับปรุง
-                      และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
-                      เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.3 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.3
-                การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การตั้งเป้าหมายท้าทาย
-                      และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.4 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามผลดำเนินการและผลกระทบระยะสั้นและระยะยาวที่มีต่อเศรษฐกิจ
-                      สังคม สาธารณสุข และสิ่งแวดล้อม
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="row" style="background-color:#F2F2F2">
+          <div class="col-3 q-pa-md brr"></div>
+          <div class="col-3 q-pa-md brr" align="center">
+            <div>Basic<br />(A&D)</div>
+          </div>
+          <div class="col-3 q-pa-md brr" align="center">
+            Advance<br />(Alignment)
+          </div>
+          <div class="col-3 q-pa-md" align="center">
+            Significance<br />(Integration)
+          </div>
+        </div>
+        <!-- 2.1 -->
+        <div class="row" style="background-color:#FBE0E9;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            1.1 ระบบการนำองค์การ<br />ที่สร้างความยั่งยืน
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วิสัยทัศน์/ยุทธศาสตร์<br />ตอบสนองพันธกิจ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วิสัยทัศน์/ยุทธศาสตร์สอด<br />รับกับยุทธศาสตร์ประเทศ
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            สร้างนวตกรรม/วัฒนธรรมที่<br />มุ่งประโยชน์สุขประชาชน
+          </div>
+        </div>
+        <!-- 2.2 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            1.2 ป้องกันทุจริตและ สร้างความโปร่งใส
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            นโยบายการป้องกันทุจริต และระบบกำกับดูแลที่มีประสิทธิภาพ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การติดตาม ปรับปรุง และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
+            เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
+          </div>
+        </div>
+        <!-- 2.3 -->
+        <div class="row" style="background-color:#FBE0E9;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            1.3
+            การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การตั้งเป้าหมายท้าทาย
+            และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
+          </div>
+        </div>
+        <!-- 2.4 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            ติดตามผลดำเนินการและผลกระทบระยะสั้นและระยะยาวที่มีต่อเศรษฐกิจ สังคม
+            สาธารณสุข และสิ่งแวดล้อม
           </div>
         </div>
       </div>
 
-      <div align="center" class="q-mt-lg">ภาพที่ 1 หมวด 1 การนำองค์การ</div>
+      <div align="center" class="q-mt-lg">หมวด 1 การนำองค์การ</div>
     </div>
     <!-- end page1 -->
 
@@ -642,7 +597,6 @@ export default {
         this.getAdvance(data.data);
         this.getSignificance(data.data);
       }
-
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
     },
@@ -782,6 +736,16 @@ td,
 th {
   border: 1px solid;
 }
+
+.brr {
+  border-right: 1px solid;
+}
+.b-color {
+  background-color: #f077a0;
+}
+.t-color {
+  color: #f077a0;
+}
 .printDate {
   top: 10px;
   right: 80px;
@@ -823,6 +787,9 @@ th {
 @media print {
   @page {
     size: landscape;
+  }
+  .printBtn {
+    visibility: hidden;
   }
   .printDate {
     top: -20px;

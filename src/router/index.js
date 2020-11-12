@@ -46,6 +46,9 @@ Vue.mixin({
         a(date.data);
       });
     },
+    printBtn() {
+      window.print();
+    },
     convertMonth(month) {
       if (month == 1) {
         return "มกราคม";

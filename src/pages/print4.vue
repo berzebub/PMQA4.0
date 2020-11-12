@@ -1,5 +1,14 @@
 <template>
   <div class="">
+    <div class="float-right q-pa-md">
+      <q-btn
+        class="printBtn"
+        icon="fas fa-print"
+        color="pink-4"
+        round
+        @click="printBtn()"
+      ></q-btn>
+    </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div class="absolute-right text-h7 printDate">
@@ -12,161 +21,111 @@
       </div>
       <div style="height:15px"></div>
 
-      <div align="center" class="bg-grey-5 q-py-sm text-h6">
+      <div
+        align="left"
+        class="b-color q-py-sm text-white q-pl-md"
+        style="width:80%;font-size:18px"
+      >
         หมวด 4 การวัด การวิเคราะห์ และการจัดการความรู้
       </div>
       <div class="q-pt-md">
         <p>
-          <b>เป้าหมาย : </b>
-          เพื่อให้ระบบการนำองค์การของหน่วยงานมุ่งเน้นสัมฤทธิผลและสร้างความยั่งยืนให้กับองค์การโดยหน่วยงานกำหนดวิสัยทัศน์และแผนยุธศาสตร์ที่นำไปสู่การบรรลุพันธกิจและสอดรับกับยุทธศาสตร์ชาติกำหนดนโยบายในการกำกับดูแลที่มีประสิทธิผลในเรื่องการป้องกันทุจริตและการสร้างความโปร่งใสสร้างสภาพแวดล้อมภายในที่มุ่งเน้นการบรรลุผลสัมฤทธิ์ของหน่วยงานและผลกระทบที่เกิดขึ้นทั้งระยะสั้นและระยะยาวอย่างต่อเนื่องและทันเหตุการณ์
-          (ด้วยกลไกของเทคโนโลยีดิจิทัล) โดยคำนึงถึง
-          ผลกระทบต่อสังคมและมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศความทิศทางยุทธศาสตร์
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="t-color">เป้าหมาย : </b>
+          เพื่อให้ส่วนราชการมีการใช้ข้อมูลและสารสนเทศ
+          มากำหนดตัววัดที่สามารถใช้ติดตามงานทั้งในระดับปฏิบัติการและระดับยุทธศาสตร์ได้อย่างมีประสิทธิผลทั่วทั้งองค์การ
+          รวมทั้งการสื่อสารและเปิดเผยข้อมูลสู่ผู้ใช้งานทั้งภายในและภายนอก
+          มีการวิเคราะห์ผลจากข้อมูลและตัววัด
+          เพื่อการแก้ปัญหาและตอบสนองได้อย่างมีประสิทธิภาพ ทันเวลา และเชิงรุก
+          มีการใช้ความรู้และองค์ความรู้ของส่วนราชการในการแก้ปัญหา
+          เรียนรู้และมีเหตุผลในเชิงจริยธรรม มีการบริหารจัดการข้อมูล สารสนเทศ
+          และระบบการทำงานที่ปรับเป็นดิจิทัลเต็มรูปแบบ มีประสิทธิภาพ และใช้งานได้
         </p>
       </div>
 
       <div class="q-pt-sm">
-        <div class="border-black">
-          <div class="q-py-sm">
-            <b class="text-h5 q-px-sm"
-              >หมวด 4 การวัด การวิเคราะห์ และการจัดการความรู้</b
-            >
-            <!-- 1.1 -->
-            <div class="row q-pt-md q-px-sm ">
-              <div style="width:170px" class="q-pr-md">
-                1.1 ระบบการนำองค์การ<br />ที่สร้างความยั่งยืน
-              </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">Basic<br />(A&D)</div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Advance<br />(Alignment)
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Significance<br />(Integration)
-                    </div>
-                  </div>
-                </div>
-                <div class="row q-pt-md" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์<br />ตอบสนองพันธกิจ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์สอด<br />รับกับยุทธศาสตร์ประเทศ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs q-py-sm">
-                      สร้างนวตกรรม/วัฒนธรรมที่<br />มุ่งประโยชน์สุขประชาชน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.2 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.2 ป้องกันทุจริตและ<br />สร้างความโปร่งใส
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      นโยบายการป้องกันทุจริต<br />และระบบกำกับดูแลที่มีประสิทธิภาพ
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การติดตาม ปรับปรุง
-                      และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
-                      เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.3 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.3
-                การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การตั้งเป้าหมายท้าทาย
-                      และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.4 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามผลดำเนินการและผลกระทบระยะสั้นและระยะยาวที่มีต่อเศรษฐกิจ
-                      สังคม สาธารณสุข และสิ่งแวดล้อม
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="row" style="background-color:#F2F2F2">
+          <div class="col-3 q-pa-md brr"></div>
+          <div class="col-3 q-pa-md brr" align="center">
+            <div>Basic<br />(A&D)</div>
+          </div>
+          <div class="col-3 q-pa-md brr" align="center">
+            Advance<br />(Alignment)
+          </div>
+          <div class="col-3 q-pa-md" align="center">
+            Significance<br />(Integration)
+          </div>
+        </div>
+        <!-- 4.1 -->
+        <div class="row" style="background-color:#E8F5FB;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            4.1 การกำหนดตัววัดเพื่อการติดตามงานอย่างมีประสิทธิผล
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การวางแผนและรวบรวมข้อมูลและตัววัดทุกระดับโดยใช้เทคโนโลยีสารสนเทศ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            ระบบจัดการข้อมูลมีประสิทธิภาพ ปลอดภัย น่าเชื่อถือ พร้อมใช้
+            เข้าถึงง่าย
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            การจัดให้มีข้อมูลและสารสนเทศที่มีประโยชน์ต่อประชาชนโดยไม่ต้องร้องขอ
+          </div>
+        </div>
+        <!-- 4.2 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            4.2 การวิเคราะห์ผลจากข้อมูลและตัววัดในทุกระดับเพื่อการแก้ปัญหา
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การวิเคราะห์ผลจากข้อมูลและตัววัดเพื่อแก้ปัญหาในกระบวนการที่สำคัญ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            เพื่อค้นหาสาเหตุของปัญหาและแก้ไขในเชิงนโยบานและการปรับยุทธศาสตร์
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            เชื่อมโยงผลในทุกระดับเพื่อคาดการณ์ผลลัพธ์ที่อาจเกิดขึ้น
+          </div>
+        </div>
+        <!-- 4.3 -->
+        <div class="row" style="background-color:#E8F5FB;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            4.3
+            การใช้ความรู้และองค์ความรู้ของส่วนราชการในการแก้ปัญหาเรียนรู้และมีเหตุผล
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การรวบรวมองค์ความรู้ อย่างเป็นระบบเพื่อใช้ในการเรียนรู้ พัฒนา
+            และต่อยอด
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วิเคราะห์เชื่อมโยงข้อมูลและองค์ความรู้จากภายนอกเพื่อแก้ปัญหาและสร้างนวัตกรรม
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            นำองค์ความรู้ไปใช้ปรับปรุงจนเกิดกระบวนการที่เป็นเลิศ
+            บรรลุยุทธศาสตร์และการสร้างมูลค่าเพิ่มสู่ประชาชน
+          </div>
+        </div>
+        <!-- 4.4 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            4.4 การบริหารจัดการข้อมูล สารสนเทศ
+            และการปรับระบบการทำงานเป็นดิจิทัลเต็มรูปแบบ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วางแผนปรับรูปแบบการทำงานและการรวบรวมข้อมูลเป็นระบบดิจิทัลอย่างมีประสิทธิภาพ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            มีระบบความมั่นคงทางไซเบอร์ และการเตรียมพร้อมในภาวะฉุกเฉิน
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            ใช้ดิจิทัลเพื่อเพิ่มประสิทธิภาพกระบวนการ ลดต้นทุน
+            และรวบรวมข้อมูลได้อย่างมีประสิทธิผล
           </div>
         </div>
       </div>
 
-      <div align="center" class="q-mt-lg">ภาพที่ 1 หมวด 1 การนำองค์การ</div>
+      <div align="center" class="q-mt-lg">
+        หมวด 4 การวัด การวิเคราะห์ และการจัดการความรู้
+      </div>
     </div>
     <!-- end page1 -->
 
@@ -312,10 +271,10 @@
                   </td>
                 </tr>
                 <tr v-show="index == 1" style="visibility:hidden">
-                  <td colspan="3" style="height:20px">123456</td>
+                  <td colspan="3" style="height:250px">123456</td>
                 </tr>
                 <tr v-show="index == 2" style="visibility:hidden">
-                  <td colspan="3" style="height:350px">123456</td>
+                  <td colspan="3" style="height:50px">123456</td>
                 </tr>
               </tbody>
             </table>
@@ -748,6 +707,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.brr {
+  border-right: 1px solid;
+}
+.b-color {
+  background-color: #313191;
+}
+.t-color {
+  color: #313191;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -802,6 +770,9 @@ th {
   .printDate {
     top: -20px;
     right: 80px;
+  }
+  .printBtn {
+    visibility: hidden;
   }
   .a4-portrait {
     width: 210mm;

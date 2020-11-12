@@ -1,5 +1,14 @@
 <template>
   <div class="">
+    <div class="float-right q-pa-md">
+      <q-btn
+        class="printBtn"
+        icon="fas fa-print"
+        color="pink-4"
+        round
+        @click="printBtn()"
+      ></q-btn>
+    </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div class="absolute-right text-h7 printDate">
@@ -12,161 +21,107 @@
       </div>
       <div style="height:15px"></div>
 
-      <div align="center" class="bg-grey-5 q-py-sm text-h6">
+      <div
+        align="left"
+        class="b-color q-py-sm text-white q-pl-md"
+        style="width:80%;font-size:18px"
+      >
         หมวด 3 การให้ความสำคัญกับผู้รับบริการและผู้มีส่วนได้ส่วนเสีย
       </div>
       <div class="q-pt-md">
         <p>
-          <b>เป้าหมาย : </b>
-          เพื่อให้ระบบการนำองค์การของหน่วยงานมุ่งเน้นสัมฤทธิผลและสร้างความยั่งยืนให้กับองค์การโดยหน่วยงานกำหนดวิสัยทัศน์และแผนยุธศาสตร์ที่นำไปสู่การบรรลุพันธกิจและสอดรับกับยุทธศาสตร์ชาติกำหนดนโยบายในการกำกับดูแลที่มีประสิทธิผลในเรื่องการป้องกันทุจริตและการสร้างความโปร่งใสสร้างสภาพแวดล้อมภายในที่มุ่งเน้นการบรรลุผลสัมฤทธิ์ของหน่วยงานและผลกระทบที่เกิดขึ้นทั้งระยะสั้นและระยะยาวอย่างต่อเนื่องและทันเหตุการณ์
-          (ด้วยกลไกของเทคโนโลยีดิจิทัล) โดยคำนึงถึง
-          ผลกระทบต่อสังคมและมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศความทิศทางยุทธศาสตร์
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="t-color">เป้าหมาย : </b>
+          เพื่อให้ส่วนราชการพัฒนาระบบข้อมูลและสารสนเทศด้านการบริการประชาชนที่ทันสมัยรวดเร็วและเข้าถึงในทุกระดับ
+          เพื่อนำมาใช้ประโยชน์ในการสร้างนวัตกรรมการบริการที่สร้างความแตกต่างและตอบสนองความต้องการเฉพาะกลุ่ม
+          และความต้องการเฉพาะบุคคลซึ่งสามารถออกแบบได้ (Personalized Service)
+          วางแผนเชิงรุกในการตอบสนองความต้องการและความคาดหวังของกลุ่มผู้รับบริการและผู้มีส่วนได้ส่วนเสียทั้งปัจจุบันและอนาคต
+          มีกระบวนการแก้ไขข้อร้องเรียนที่รวดเร็ว และสร้างสรรค์
+          โดยปฏิบัติงานบนพื้นฐานของข้อมูลความต้องการของประชาชน
+          ส่งผลต่อความพึงพอใจ
+          สร้างความร่วมมือของกลุ่มผู้รับบริการและผู้มีส่วนได้ส่วนเสีย
         </p>
       </div>
 
       <div class="q-pt-sm">
-        <div class="border-black">
-          <div class="q-py-sm">
-            <b class="text-h5 q-px-sm"
-              >หมวด 3 การให้ความสำคัญกับผู้รับบริการและผู้มีส่วนได้ส่วนเสีย</b
-            >
-            <!-- 1.1 -->
-            <div class="row q-pt-md q-px-sm ">
-              <div style="width:170px" class="q-pr-md">
-                1.1 ระบบการนำองค์การ<br />ที่สร้างความยั่งยืน
-              </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">Basic<br />(A&D)</div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Advance<br />(Alignment)
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Significance<br />(Integration)
-                    </div>
-                  </div>
-                </div>
-                <div class="row q-pt-md" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์<br />ตอบสนองพันธกิจ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์สอด<br />รับกับยุทธศาสตร์ประเทศ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs q-py-sm">
-                      สร้างนวตกรรม/วัฒนธรรมที่<br />มุ่งประโยชน์สุขประชาชน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.2 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.2 ป้องกันทุจริตและ<br />สร้างความโปร่งใส
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      นโยบายการป้องกันทุจริต<br />และระบบกำกับดูแลที่มีประสิทธิภาพ
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การติดตาม ปรับปรุง
-                      และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
-                      เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.3 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.3
-                การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การตั้งเป้าหมายท้าทาย
-                      และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.4 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามผลดำเนินการและผลกระทบระยะสั้นและระยะยาวที่มีต่อเศรษฐกิจ
-                      สังคม สาธารณสุข และสิ่งแวดล้อม
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="row" style="background-color:#F2F2F2">
+          <div class="col-3 q-pa-md brr"></div>
+          <div class="col-3 q-pa-md brr" align="center">
+            <div>Basic<br />(A&D)</div>
+          </div>
+          <div class="col-3 q-pa-md brr" align="center">
+            Advance<br />(Alignment)
+          </div>
+          <div class="col-3 q-pa-md" align="center">
+            Significance<br />(Integration)
+          </div>
+        </div>
+        <!-- 3.1 -->
+        <div class="row" style="background-color:#FCEDD6;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            3.1 ระบบข้อมูลและสารสนเทศที่ทันสมัยเพื่อการบริการและการเข้าถึง
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            ใช้ข้อมูลเพื่อตอบสนองความต้องการที่แตกต่าง
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วิเคราะห์เพื่อค้นหาความต้องการและความคาดหวังใหม่
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            ใช้ข้อมูลทั้งภายในและภายนอกเพื่อวางนโยบายเชิงรุกทั้งปัจจุบันและอนาคต
+          </div>
+        </div>
+        <!-- 3.2 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            3.2 การประเมินความพึงพอใจและความผูกพัน
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การประเมินความพึงพอใจ และความผูกพัน ของกลุ่มผู้รับบริการ
+            และผู้มีส่วนได้ส่วนเสียหลัก
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วิเคราะห์ผลเพื่อตอบสนองความต้องการ และแก้ปัญหาเชิงรุก
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            บูรณาการกับฐานข้อมูลแหล่งอื่น
+            เพื่อการวางแผนและการสร้างนวัตกรรมในการให้บริการ
+          </div>
+        </div>
+        <!-- 3.3 -->
+        <div class="row" style="background-color:#FCEDD6;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            3.3 การสร้างนวัตกรรมการบริการและตอบสนองความต้องการเฉพาะกลุ่ม
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การปรับปรุงบริการที่ตอบสนองความต้องการและความคาดหวังของกลุ่มผู้รับบริการและผู้มีส่วนได้ส่วนเสียหลัก
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            ปรับปรุงกระบวนการและสร้างนวัตกรรมที่ตอบสนองความต้องการในภาพรวมและเฉพาะกลุ่ม
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            สร้างนวัตกรรมที่สามารถออกแบบการให้บริการเฉพาะบุคคล
+          </div>
+        </div>
+        <!-- 3.4 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            3.4 กระบวนการแก้ไขข้อร้องเรียนที่รวดเร็วและสร้างสรรค์
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            กระบวนการรับข้อร้องเรียนอย่างเป็นระบบ และมีมาตรฐาน
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            กระบวนการจัดการข้อร้องเรียนเป็นระบบ ตอบสนองรวดเร็ว ทันการณ์
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            ใช้เทคโนโลยีเพื่อตอบสนองและสร้างความพึงพอใจ
           </div>
         </div>
       </div>
 
-      <div align="center" class="q-mt-lg">ภาพที่ 1 หมวด 1 การนำองค์การ</div>
+      <div align="center" class="q-mt-lg">
+        หมวด 3 การให้ความสำคัญกับผู้รับบริการและผู้มีส่วนได้ส่วนเสีย
+      </div>
     </div>
     <!-- end page1 -->
 
@@ -312,11 +267,11 @@
                   </td>
                 </tr>
                 <tr v-show="index == 1" style="visibility:hidden">
-                  <td colspan="3" style="height:20px">123456</td>
+                  <td colspan="3" style="height:320px">123123</td>
                 </tr>
-                <tr v-show="index == 2" style="visibility:hidden">
+                <!-- <tr v-show="index == 2" style="visibility:hidden">
                   <td colspan="3" style="height:350px">123456</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -738,6 +693,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.brr {
+  border-right: 1px solid;
+}
+.b-color {
+  background-color: #f9980f;
+}
+.t-color {
+  color: #f9980f;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -788,6 +752,9 @@ th {
 @media print {
   @page {
     size: landscape;
+  }
+  .printBtn {
+    visibility: hidden;
   }
   .printDate {
     top: -20px;

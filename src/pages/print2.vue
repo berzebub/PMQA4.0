@@ -1,170 +1,128 @@
 <template>
   <div class="">
+    <div class="float-right q-pa-md">
+      <q-btn
+        class="printBtn"
+        icon="fas fa-print"
+        color="pink-4"
+        round
+        @click="printBtn()"
+      ></q-btn>
+    </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div class="absolute-right text-h7 printDate">
         {{ printDate }}
       </div>
-      <div align="center" class=" q-py-sm   relative-position">
-        <div class="text-h6">
+      <div align="center" class=" q-py-sm relative-position ">
+        <div class="text-h6 ">
           {{ $q.sessionStorage.getItem("office") }}
         </div>
       </div>
       <div style="height:15px"></div>
 
-      <div align="center" class="bg-grey-5 q-py-sm text-h6">
+      <div
+        align="left"
+        class="b-color text-white q-py-sm q-pl-md"
+        style="width:80%;font-size:18px"
+      >
         หมวด 2 การวางแผนเชิงยุทธศาสตร์
       </div>
       <div class="q-pt-md">
         <p>
-          <b>เป้าหมาย : </b>
-          เพื่อให้ระบบการนำองค์การของหน่วยงานมุ่งเน้นสัมฤทธิผลและสร้างความยั่งยืนให้กับองค์การโดยหน่วยงานกำหนดวิสัยทัศน์และแผนยุธศาสตร์ที่นำไปสู่การบรรลุพันธกิจและสอดรับกับยุทธศาสตร์ชาติกำหนดนโยบายในการกำกับดูแลที่มีประสิทธิผลในเรื่องการป้องกันทุจริตและการสร้างความโปร่งใสสร้างสภาพแวดล้อมภายในที่มุ่งเน้นการบรรลุผลสัมฤทธิ์ของหน่วยงานและผลกระทบที่เกิดขึ้นทั้งระยะสั้นและระยะยาวอย่างต่อเนื่องและทันเหตุการณ์
-          (ด้วยกลไกของเทคโนโลยีดิจิทัล) โดยคำนึงถึง
-          ผลกระทบต่อสังคมและมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศความทิศทางยุทธศาสตร์
+          <b class="t-color">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เป้าหมาย :
+          </b>
+          เพื่อให้ส่วนราชการมีกระบวนการวางแผนยุทธศาสตร์ที่มีประสิทธิผล
+          รองรับการเปลี่ยนแปลงและสร้างขีดความสามารถในการแข่งขัน
+          กำหนดเป้าหมายเชิงยุทธศาสตร์ทั้งระยะสั้นและระยะยาว
+          ที่สอดคล้องกับพันธกิจของส่วนราชการและเชื่อมโยงกับยุทธศาสตร์ชาติ
+          มีแผนงานที่ขับเคลื่อนลงไปทุกภาคส่วนมีการติดตามผลของการบรรลุเป้าหมายเชิงยุทธศาสตร์
+          และการรายงานผลอย่างมีประสิทธิภาพ เพื่อการแก้ไขปัญหาได้ทันท่วงที
         </p>
       </div>
 
       <div class="q-pt-sm">
-        <div class="border-black">
-          <div class="q-py-sm">
-            <b class="text-h5 q-px-sm"> หมวด 2 การวางแผนเชิงยุทธศาสตร์</b>
-            <!-- 1.1 -->
-            <div class="row q-pt-md q-px-sm ">
-              <div style="width:170px" class="q-pr-md">
-                1.1 ระบบการนำองค์การ<br />ที่สร้างความยั่งยืน
-              </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">Basic<br />(A&D)</div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Advance<br />(Alignment)
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black bg-grey-5">
-                      Significance<br />(Integration)
-                    </div>
-                  </div>
-                </div>
-                <div class="row q-pt-md" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์<br />ตอบสนองพันธกิจ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์สอด<br />รับกับยุทธศาสตร์ประเทศ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs q-py-sm">
-                      สร้างนวตกรรม/วัฒนธรรมที่<br />มุ่งประโยชน์สุขประชาชน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.2 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.2 ป้องกันทุจริตและ<br />สร้างความโปร่งใส
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      นโยบายการป้องกันทุจริต<br />และระบบกำกับดูแลที่มีประสิทธิภาพ
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การติดตาม ปรับปรุง
-                      และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
-                      เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.3 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.3
-                การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การตั้งเป้าหมายท้าทาย
-                      และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.4 -->
-            <div class="row q-px-sm">
-              <div style="width:170px" class="q-pr-md">
-                1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามผลดำเนินการและผลกระทบระยะสั้นและระยะยาวที่มีต่อเศรษฐกิจ
-                      สังคม สาธารณสุข และสิ่งแวดล้อม
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="row" style="background-color:#F2F2F2">
+          <div class="col-3 q-pa-md brr"></div>
+          <div class="col-3 q-pa-md brr" align="center">
+            <div>Basic<br />(A&D)</div>
+          </div>
+          <div class="col-3 q-pa-md brr" align="center">
+            Advance<br />(Alignment)
+          </div>
+          <div class="col-3 q-pa-md" align="center">
+            Significance<br />(Integration)
+          </div>
+        </div>
+        <!-- 2.1 -->
+        <div class="row" style="background-color:#F8E6DC;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            2.1
+            แผนยุทธสาสตร์ที่ตอบสนองความท้าทายและสร้างนวัตกรรมเพื่อการเปลี่ยนแปลง
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            กระบวนการวางแผนยุทธศาสตร์ที่เป็นระบบตอบสนองความต้องการของประชาชนและบรรลุพันธกิจองค์การ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            แผนยุทธศาสตร์ตอบสนองความท้าท้ายของส่วนราชการมีการคาดการณ์การเปลี่ยนแปลงที่กำลังจะเกิดในอนาคต
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            แผนยุทธศาสตร์เพิ่มขีดความสามารถในการแข่งขันสร้างโอกาส
+            และส่งเสริมการพัฒนาประเทศ
+          </div>
+        </div>
+        <!-- 2.2 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            2.2 เป้าหมายยุทธศาสตร์ทั้งระยะสั้นและระระยาว
+            สอดคล้องพันธกิจและยุทธศาสตร์ชาติ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            กำหนดเป้าประสงค์และตัวชี้วัดที่ตอบสนองพันธกิจในระยะสั้น ระยะยาว
+            และสร้างการเปลี่ยนแปลง
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            วิเคราะห์ผลกระทบของเป้าประสงค์และตัวชี้วัดทั้งระยะสั้นและระยะยาวต่อยุทธศาสตร์ประเทศ
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            วิเคราะห์ผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม
+            ทั้งทางตรงและทางอ้อม
+          </div>
+        </div>
+        <!-- 2.3 -->
+        <div class="row" style="background-color:#F8E6DC;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            2.3 แผนงานขับเคลื่อนลงไปทุกภาคส่วน
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            แผนครอบคลุมทุกส่วน ชัดเจน มีการสื่อสารสู่การปฎิบัติ
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            แผนเน้นประสิทธิภาพ ทำน้อยได้มาก และสร้างคุณค่าแก่ประชาชน
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            บูรณาการกับแผนงานด้านบุคลากร การใช้ทรัพยากร การใช้ข้อมูลร่วมกัน
+          </div>
+        </div>
+        <!-- 2.4 -->
+        <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
+          <div align="center" class="col-3 q-pa-md brr">
+            2.4 การติดตามผล การแก้ไขปัญหา และการรายงานผล
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การติดตามรายงานผลและการบรรลุเป้าหมายเชิงยุทธศาสตร์
+          </div>
+          <div align="center" class="col-3 q-pa-md brr">
+            การคาดการณ์ การแก้ปัญหา และการปรับแผนให้ทันต่อการเปลี่ยนแปลง
+          </div>
+          <div align="center" class="col-3 q-pa-md">
+            ปรับแผนตอบสนองได้ทันเวลา เชิงรุก มีประสิทธิผล
           </div>
         </div>
       </div>
 
-      <div align="center" class="q-mt-lg">ภาพที่ 1 หมวด 1 การนำองค์การ</div>
+      <div align="center" class="q-mt-lg">หมวด 2 การวางแผนเชิงยุทธศาสตร์</div>
     </div>
     <!-- end page1 -->
 
@@ -175,7 +133,7 @@
           {{ item.header }}
 
           <div>
-            <table>
+            <table class="m-table">
               <thead>
                 <tr style="height:20px;visibility:hidden">
                   <th colspan="3"></th>
@@ -309,11 +267,8 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr v-show="index == 1" style="visibility:hidden">
-                  <td colspan="3" style="height:20px">123456</td>
-                </tr>
-                <tr v-show="index == 2" style="visibility:hidden">
-                  <td colspan="3" style="height:350px">123456</td>
+                <tr v-show="index == 0" style="visibility:hidden">
+                  <td colspan="3" style="height:150px"></td>
                 </tr>
               </tbody>
             </table>
@@ -768,13 +723,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.brr {
+  border-right: 1px solid;
+}
+.b-color {
+  background-color: #d1242a;
+}
+.t-color {
+  color: #d1242a;
+}
 table {
   width: 100%;
   border-collapse: collapse;
 }
+table,
 tr,
-td,
-th {
+th,
+td {
   border: 1px solid;
 }
 .printDate {
@@ -818,6 +783,9 @@ th {
 @media print {
   @page {
     size: landscape;
+  }
+  .printBtn {
+    visibility: hidden;
   }
   .printDate {
     top: -20px;
