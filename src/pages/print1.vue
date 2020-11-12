@@ -2,6 +2,16 @@
   <div class="">
     <!-- page1 -->
     <div class="a4-landscape-flip">
+      <div class="absolute-right text-h7 printDate">
+        {{ printDate }}
+      </div>
+      <div align="center" class=" q-py-sm   relative-position">
+        <div class="text-h6">
+          {{ $q.sessionStorage.getItem("office") }}
+        </div>
+      </div>
+      <div style="height:15px"></div>
+
       <div align="center" class="bg-grey-5 q-py-sm text-h6">
         หมวด 1 การนำองค์การ
       </div>
@@ -25,14 +35,16 @@
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black">Basic<br />(A&D)</div>
+                  <div class="col-4  q-px-xs" align="center">
+                    <div class="border-black bg-grey-5">Basic<br />(A&D)</div>
                   </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black">Advance<br />(Alignment)</div>
+                  <div class="col-4  q-px-xs" align="center">
+                    <div class="border-black bg-grey-5">
+                      Advance<br />(Alignment)
+                    </div>
                   </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black">
+                  <div class="col-4  q-px-xs" align="center">
+                    <div class="border-black bg-grey-5">
                       Significance<br />(Integration)
                     </div>
                   </div>
@@ -168,7 +180,7 @@
                 <tr style="height:20px;visibility:hidden">
                   <th colspan="3"></th>
                 </tr>
-                <tr class="">
+                <tr class="bg-grey-5">
                   <th style="width:23%">ระดับ</th>
                   <th style="width:23%">แนวทางดำเนินการ</th>
                   <th>คำอธิบาย</th>
@@ -177,9 +189,17 @@
               <tbody>
                 <!-- BASIC -->
                 <tr>
-                  <td class="q-pa-sm " style="vertical-align:top">
+                  <td
+                    class="q-pa-sm relative-position"
+                    style="vertical-align:top"
+                  >
                     <u>Basic</u><br />
                     <div v-html="item.basic.titleText"></div>
+                    <div class="absolute-bottom q-pa-md" align="center">
+                      <div class="border-black " v-if="item.basic.pdf_file">
+                        มีเอกสารแนบ
+                      </div>
+                    </div>
                   </td>
                   <td class="q-pa-sm " style="vertical-align:top">
                     <div
@@ -189,7 +209,12 @@
                     >
                       <div class="row">
                         <div class="col-1 " style="width:50px;" align="center">
-                          <q-checkbox read-only :value="checkbox.status" />
+                          <q-checkbox
+                            color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="checkbox.status"
+                          />
                         </div>
                         <div class="col  q-py-xs">
                           <span v-html="checkbox.text"> </span>
@@ -197,15 +222,23 @@
                       </div>
                     </div>
                   </td>
-                  <td class="q-pa-sm">
+                  <td class="q-pa-sm " style="vertical-align:top">
                     <div v-html="item.basic.explain"></div>
                   </td>
                 </tr>
                 <!-- ADVANCE -->
                 <tr>
-                  <td class="q-pa-sm " style="vertical-align:top">
+                  <td
+                    class="q-pa-sm relative-position "
+                    style="vertical-align:top"
+                  >
                     <u>Advance</u><br />
                     <div v-html="item.advance.titleText"></div>
+                    <div class="absolute-bottom q-pa-md" align="center">
+                      <div class="border-black " v-if="item.advance.pdf_file">
+                        มีเอกสารแนบ
+                      </div>
+                    </div>
                   </td>
                   <td class="q-pa-sm " style="vertical-align:top">
                     <div
@@ -215,7 +248,12 @@
                     >
                       <div class="row">
                         <div class="col-1 " style="width:50px;" align="center">
-                          <q-checkbox read-only :value="checkbox.status" />
+                          <q-checkbox
+                            color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="checkbox.status"
+                          />
                         </div>
                         <div class="col  q-py-xs">
                           <span v-html="checkbox.text"> </span>
@@ -223,16 +261,27 @@
                       </div>
                     </div>
                   </td>
-                  <td class="q-pa-sm">
+                  <td class="q-pa-sm" style="vertical-align:top">
                     <div v-html="item.advance.explain"></div>
                   </td>
                 </tr>
 
                 <!-- SIGNI -->
                 <tr>
-                  <td class="q-pa-sm " style="vertical-align:top">
+                  <td
+                    class="q-pa-sm relative-position"
+                    style="vertical-align:top"
+                  >
                     <u>Significance</u><br />
                     <div v-html="item.significance.titleText"></div>
+                    <div class="absolute-bottom q-pa-md" align="center">
+                      <div
+                        class="border-black "
+                        v-if="item.significance.pdf_file"
+                      >
+                        มีเอกสารแนบ
+                      </div>
+                    </div>
                   </td>
                   <td class="q-pa-sm " style="vertical-align:top">
                     <div
@@ -243,7 +292,12 @@
                     >
                       <div class="row">
                         <div class="col-1 " style="width:50px;" align="center">
-                          <q-checkbox read-only :value="checkbox.status" />
+                          <q-checkbox
+                            color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="checkbox.status"
+                          />
                         </div>
                         <div class="col  q-py-xs">
                           <span v-html="checkbox.text"> </span>
@@ -251,7 +305,7 @@
                       </div>
                     </div>
                   </td>
-                  <td class="q-pa-sm">
+                  <td class="q-pa-sm" style="vertical-align:top">
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
@@ -275,6 +329,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      printDate: "",
       data: [
         {
           score: 0,
@@ -695,10 +750,24 @@ export default {
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
+    },
+    async getDate() {
+      return new Promise(async (a, b) => {
+        let date = await Axios.get(
+          "https://api.winner-english.com/pmqa4_0_api/getDate.php"
+        );
+        a(date.data);
+      });
     }
   },
-  created() {
+  async created() {
     this.getAssessmentData();
+    let printDate = await this.getDate();
+    printDate = printDate[0];
+    printDate = `${printDate.date} ${this.showMonth(printDate.month)} ${
+      printDate.year
+    }`;
+    this.printDate = printDate;
   }
 };
 </script>
@@ -712,6 +781,10 @@ tr,
 td,
 th {
   border: 1px solid;
+}
+.printDate {
+  top: 10px;
+  right: 80px;
 }
 .a4-portrait {
   width: 210mm;
@@ -727,6 +800,7 @@ th {
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
+  position: relative;
 }
 .a4-landscape {
   width: 297mm;
@@ -750,6 +824,10 @@ th {
   @page {
     size: landscape;
   }
+  .printDate {
+    top: -20px;
+    right: 80px;
+  }
   .a4-portrait {
     width: 210mm;
     height: 297mm;
@@ -767,7 +845,7 @@ th {
     transform-origin: 0 0;
     padding: 0cm 1cm;
     position: relative;
-    left: -80px;
+    left: -70px;
   }
 
   .bg {

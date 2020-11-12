@@ -38,11 +38,13 @@ Vue.mixin({
         position: position
       });
     },
-    async getDate(){
-      return new Promise(async (a,b) => {
-        let date = await Axios.get("https://api.winner-english.com/pmqa4_0_api/getDate.php")
-        a(date.data)
-      })
+    async getDate() {
+      return new Promise(async (a, b) => {
+        let date = await Axios.get(
+          "https://api.winner-english.com/pmqa4_0_api/getDate.php"
+        );
+        a(date.data);
+      });
     },
     convertMonth(month) {
       if (month == 1) {
@@ -69,6 +71,33 @@ Vue.mixin({
         return "พฤศจิกายน";
       } else if (month == 12) {
         return "ธันวาคม";
+      }
+    },
+    showMonth(month) {
+      if (month == 1) {
+        return "ม.ค.";
+      } else if (month == 2) {
+        return "ก.พ.";
+      } else if (month == 3) {
+        return "มี.ค.";
+      } else if (month == 4) {
+        return "เม.ย.";
+      } else if (month == 5) {
+        return "พ.ค.";
+      } else if (month == 6) {
+        return "มิ.ย.";
+      } else if (month == 7) {
+        return "ก.ค.";
+      } else if (month == 8) {
+        return "ส.ค.";
+      } else if (month == 9) {
+        return "ก.ย.";
+      } else if (month == 10) {
+        return "ต.ค.";
+      } else if (month == 11) {
+        return "พ.ย.";
+      } else if (month == 12) {
+        return "ธ.ค.";
       }
     }
   }
