@@ -3,16 +3,16 @@
     <div
       class="col-10 row self-center q-pa-md"
       v-if="isShowStepper"
-      style="width: 850px;"
+      style="width: 850px"
     >
       <div class="col">
         <!-- Set Top -->
-        <div style="padding: 65px 0px 129px 0px;">
+        <div style="padding: 65px 0px 129px 0px">
           <div
             class="container-border-lock row justify-between relative-position"
           >
             <!-- ลักษณะองค์การ -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -30,7 +30,7 @@
               </div>
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -64,7 +64,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >ลักษณะสำคัญองค์การ</span
                       >
                     </div>
@@ -74,7 +74,7 @@
             </div>
 
             <!-- หมวด 1 -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -93,7 +93,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -127,7 +127,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 1</span
                       >
                     </div>
@@ -137,7 +137,7 @@
             </div>
 
             <!-- หมวด 2  -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -156,7 +156,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -190,7 +190,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 2</span
                       >
                     </div>
@@ -200,7 +200,7 @@
             </div>
 
             <!-- หมวด 3 -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -219,7 +219,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -253,7 +253,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 3</span
                       >
                     </div>
@@ -265,12 +265,12 @@
         </div>
 
         <!-- Set Bottom -->
-        <div style="padding: 129px 0px 65px 0px;">
+        <div style="padding: 129px 0px 65px 0px">
           <div
             class="container-border-lock row reverse justify-between relative-position"
           >
             <!-- หมวด 4 -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -289,7 +289,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -323,7 +323,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 4</span
                       >
                     </div>
@@ -333,7 +333,7 @@
             </div>
 
             <!-- หมวด 5 -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -352,7 +352,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -386,7 +386,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 5</span
                       >
                     </div>
@@ -396,7 +396,7 @@
             </div>
 
             <!-- หมวด 6 -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -415,7 +415,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -449,7 +449,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 6</span
                       >
                     </div>
@@ -459,7 +459,7 @@
             </div>
 
             <!-- หมวด 7 -->
-            <div class="col-2 relative-position" style="z-index:5;">
+            <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
                   round
@@ -478,7 +478,7 @@
 
               <div
                 class="absolute-bottom"
-                style="bottom: -150px;width:145px"
+                style="bottom: -150px; width: 145px"
                 align="center"
               >
                 <div class="font-18">
@@ -512,7 +512,7 @@
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
-                        style="position:relative;left:-20px"
+                        style="position: relative; left: -20px"
                         >หมวด 7</span
                       >
                     </div>
@@ -530,13 +530,14 @@
         </div>
       </div>
 
-      <div class="col-12 q-py-xl" style="margin-top: 100px;" align="center">
+      <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
         <q-btn
           :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px;"
+          style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-white'"
+          @click="$router.push('/printAll')"
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
@@ -548,7 +549,7 @@
         </q-btn>
         <q-btn
           :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px;"
+          style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-white'"
@@ -564,7 +565,7 @@
         </q-btn>
         <q-btn
           :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px;"
+          style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-teal text-white'"
@@ -601,13 +602,13 @@ export default {
       endDate: "",
       assessmentStatus: "",
       endAssessmentDate: "",
-      checkSteper: false
+      checkSteper: false,
     };
   },
   methods: {
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step
+        name: "printStep" + step,
       });
       window.open(route.href);
     },
@@ -618,7 +619,7 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y"),
         status: 1, // 1 = finish
-        send_status: 1
+        send_status: 1,
       };
       let data = await Axios.post(url, postData);
       this.$router.push("/waitingAssessment/0");
@@ -629,7 +630,7 @@ export default {
 
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid")
+        user_id: this.$q.sessionStorage.getItem("uid"),
       };
 
       let getData = await Axios.post(url, postData);
@@ -637,37 +638,37 @@ export default {
 
       const postData1 = {
         year: this.$q.sessionStorage.getItem("y") + 543,
-        user_id: this.$q.sessionStorage.getItem("uid")
+        user_id: this.$q.sessionStorage.getItem("uid"),
       };
 
       let dataList = [
         {
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
-          score: [0, 0, 0, 0]
+          score: [0, 0, 0, 0],
         },
         {
-          score: [0, 0, 0, 0, 0, 0]
-        }
+          score: [0, 0, 0, 0, 0, 0],
+        },
       ];
 
       for (let i = 0; i < dataList.length; i++) {
-        let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
+        let score = getData.filter((x) => x.step == i + 1 && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
-        dataList[i].score = score.map(x => Number(x.score));
+        dataList[i].score = score.map((x) => Number(x.score));
       }
 
       const url1 = this.apiPath + "user/getCategory7.php";
@@ -677,10 +678,10 @@ export default {
         (a, b) => Number(a.q_number) - Number(b.q_number)
       );
 
-      let mapCat7 = cat7.map(x => Number(x.avg_score));
+      let mapCat7 = cat7.map((x) => Number(x.avg_score));
 
       for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
+        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
         if (checkExist.length) {
           dataList[6].score[i] = parseInt(mapCat7[i]);
         }
@@ -697,7 +698,7 @@ export default {
         }
 
         avgScoreLst.push(
-          dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / devine
+          dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
         );
       }
 
@@ -705,7 +706,7 @@ export default {
 
       let result = {
         score: avgScoreLst,
-        totalAvgScore: totalAvgScore
+        totalAvgScore: totalAvgScore,
       };
 
       return result;
@@ -724,7 +725,7 @@ export default {
         category4_score: Math.round(avgScore.score[3]),
         category5_score: Math.round(avgScore.score[4]),
         category6_score: Math.round(avgScore.score[5]),
-        category7_score: Math.round(avgScore.score[6])
+        category7_score: Math.round(avgScore.score[6]),
       };
 
       let send = Axios.post(sendAPI, postSendData);
@@ -735,7 +736,7 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y"),
         status: 1, // 1 = finish
-        send_status: 1
+        send_status: 1,
       };
       let data = await Axios.post(url, postData);
       this.$router.push("/waitingAssessment/0");
@@ -745,7 +746,7 @@ export default {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y")
+        year: this.$q.sessionStorage.getItem("y"),
       };
       let data = await Axios.post(url, postData);
       let newData = data.data;
@@ -759,11 +760,11 @@ export default {
           newData.category4,
           newData.category5,
           newData.category6,
-          newData.category7
+          newData.category7,
         ];
       }
 
-      if (checkStatus.every(x => x == "1")) {
+      if (checkStatus.every((x) => x == "1")) {
         this.checkSteper = true;
       } else {
         this.checkSteper = false;
@@ -837,12 +838,12 @@ export default {
         }
       }
       this.loadingHide();
-    }
+    },
   },
   computed: {},
   created() {
     this.getAssessmentDate();
-  }
+  },
 };
 </script>
 

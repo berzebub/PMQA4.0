@@ -26,44 +26,49 @@ const routes = [
   },
   // PRINT ASSESSMENT PAPER
   {
-    path : "/print/0",
+    path: "/printAll",
+    component: () => import("pages/printAll.vue"),
+    name: "printAll"
+  },
+  {
+    path: "/print/0",
     component: () => import("pages/print0.vue"),
-    name : "printStep0"
+    name: "printStep0"
   },
   {
-    path : "/print/1",
+    path: "/print/1",
     component: () => import("pages/print1.vue"),
-    name : "printStep1"
+    name: "printStep1"
   },
   {
-    path : "/print/2",
+    path: "/print/2",
     component: () => import("pages/print2.vue"),
-    name : "printStep2"
+    name: "printStep2"
   },
   {
-    path : "/print/3",
+    path: "/print/3",
     component: () => import("pages/print3.vue"),
-    name : "printStep3"
+    name: "printStep3"
   },
   {
-    path : "/print/4",
+    path: "/print/4",
     component: () => import("pages/print4.vue"),
-    name : "printStep4"
+    name: "printStep4"
   },
   {
-    path : "/print/5",
+    path: "/print/5",
     component: () => import("pages/print5.vue"),
-    name : "printStep5"
+    name: "printStep5"
   },
   {
-    path : "/print/6",
+    path: "/print/6",
     component: () => import("pages/print6.vue"),
-    name : "printStep6"
+    name: "printStep6"
   },
   {
-    path : "/print/7",
+    path: "/print/7",
     component: () => import("pages/print7.vue"),
-    name : "printStep7"
+    name: "printStep7"
   },
   {
     path: "/",
@@ -108,18 +113,18 @@ const routes = [
   },
   // ASSESSOR
   {
-    path : "/",
+    path: "/",
     component: () => import("layouts/AssessorLayout.vue"),
-    children:[
+    children: [
       {
-        path : "/assessor/main",
+        path: "/assessor/main",
         component: () => import("pages/assessor/main.vue"),
-        name : "assessorMain"
+        name: "assessorMain"
       },
       {
-        path : "/assessor/details",
+        path: "/assessor/details",
         component: () => import("pages/assessor/details.vue"),
-        name : "assessorDetails"
+        name: "assessorDetails"
       }
     ]
   },
