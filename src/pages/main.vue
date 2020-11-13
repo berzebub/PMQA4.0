@@ -537,7 +537,7 @@
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-white'"
-          @click="$router.push('/printAll')"
+          @click="printAll()"
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
@@ -606,6 +606,10 @@ export default {
     };
   },
   methods: {
+    printAll(){
+      let route = this.$router.resolve({name : 'printAll'})
+      window.open(route.href)
+    },
     printData(step) {
       let route = this.$router.resolve({
         name: "printStep" + step,
