@@ -294,7 +294,7 @@ export default {
     return {
       // 7.1
       d711: false,
-      d712: true,
+      d712: false,
       d713: false,
       d714: false,
       d715: false,
@@ -1342,8 +1342,8 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              headerTextUpper: `2. ตัววัดผลกระทบจากการดำเนินการที่มีต่อต้านเศรษฐกิจ
-ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อต้านเศรษฐกิจ
+              headerTextUpper: `2. ตัววัดผลกระทบจากการดำเนินการที่มีต่อด้านเศรษฐกิจ
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านเศรษฐกิจ
 `,
               numberOfIndicators: 1,
               indicators: [],
@@ -1435,8 +1435,8 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              headerTextUpper: `4. ตัววัดผลกระทบจากการดำเนินการที่มีต่อต้านสาธารณสุข
-ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อต้านสาธารณสุข`,
+              headerTextUpper: `4. ตัววัดผลกระทบจากการดำเนินการด้านสาธารณสุข<br>
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านสาธารณสุข`,
               numberOfIndicators: 1,
               indicators: [],
               goalCurrentYear: [],
@@ -1481,8 +1481,8 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              headerTextUpper: `5. ตัววัดผลกระทบจากการดำเนินการที่มีต่อต้านสิ่งแวดล้อม
-ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อท้านสิ่งแวดล้อม`,
+              headerTextUpper: `5. ตัววัดผลกระทบจากการดำเนินการที่มีต่อด้านสิ่งแวดล้อม<br>
+ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านสิ่งแวดล้อม`,
               numberOfIndicators: 1,
               indicators: [],
               goalCurrentYear: [],
@@ -1963,7 +1963,7 @@ export default {
         // ข้อ 1 กับ 4 จำเป็น
         if (
           this.data[index].question[0].avgScore >= 0 &&
-          this.data[index].question[3].avg >= 0
+          this.data[index].question[3].avgScore >= 0
         ) {
           this.data[index].avgScore =
             totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
@@ -1992,7 +1992,6 @@ export default {
           let index = Number(getData[i].q_number) - 1;
           let json = JSON.parse(getData[i].json);
 
-          console.log(json);
           this.data[index].avgScore = getData[i].avg_score;
           this.data[index].question = json;
         }

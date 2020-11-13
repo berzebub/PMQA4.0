@@ -102,6 +102,12 @@
             สร้างนวัตกรรมที่สามารถออกแบบการให้บริการเฉพาะบุคคล
           </div>
         </div>
+        <div style="height:35px;background-color:#f2f2f2" class="row">
+          <div class="col-3 brr"></div>
+          <div class="col-3 brr"></div>
+          <div class="col-3 brr"></div>
+          <div class="col-3 "></div>
+        </div>
         <!-- 3.4 -->
         <div class="row" style="background-color:#F2F2F2;color:#4D4C4E">
           <div align="center" class="col-3 q-pa-md brr">
