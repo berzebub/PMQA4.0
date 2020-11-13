@@ -130,6 +130,11 @@
     <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
         <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
+          <div
+            :class="{
+              'q-pt-lg ': $route.name == 'printAll',
+            }"
+          ></div>
           {{ item.header }}
 
           <div>
@@ -269,6 +274,12 @@
                 </tr>
                 <tr v-show="index == 0" style="visibility: hidden">
                   <td colspan="3" style="height: 150px"></td>
+                </tr>
+                <tr
+                  v-show="index == 2 && $route.name != 'printAll'"
+                  style="visibility: hidden"
+                >
+                  <td colspan="3" style="height: 250px"></td>
                 </tr>
                 <tr
                   v-show="index == 0 && $route.name == 'printAll'"

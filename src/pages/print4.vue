@@ -280,10 +280,16 @@
                   v-show="index == 1 && $route.name != 'printAll'"
                   style="visibility: hidden"
                 >
-                  <td colspan="3" style="height: 250px">123456</td>
+                  <td colspan="3" style="height: 550px">123456</td>
                 </tr>
                 <tr v-show="index == 2" style="visibility: hidden">
                   <td colspan="3" style="height: 50px">123456</td>
+                </tr>
+                <tr
+                  v-show="index == 2 && $route.name != 'printAll'"
+                  style="visibility: hidden"
+                >
+                  <td colspan="3" style="height: 70px">123456</td>
                 </tr>
               </tbody>
             </table>

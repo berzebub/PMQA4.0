@@ -282,6 +282,12 @@
                   <td colspan="3" style="height: 130px">123456</td>
                 </tr>
                 <tr
+                  v-show="index == 2 && $route.name != 'printAll'"
+                  style="visibility: hidden"
+                >
+                  <td colspan="3" style="height: 70px">123456</td>
+                </tr>
+                <tr
                   v-show="index == 2 && $route.name == 'printAll'"
                   style="visibility: hidden"
                 >

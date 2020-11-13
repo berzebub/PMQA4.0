@@ -281,23 +281,26 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr v-show="index == 1" style="visibility: hidden">
-                  <td colspan="3" style="height: 20px">123456</td>
+                <tr
+                  v-show="index == 1 && $route.name != 'printAll'"
+                  style="visibility: hidden"
+                >
+                  <td colspan="3" style="height: 100px">123456</td>
                 </tr>
                 <tr
                   v-show="index == 1 && $route.name == 'printAll'"
                   style="visibility: hidden"
                 >
-                  <td colspan="3" style="height: 100px">123456</td>
+                  <td colspan="3" style="height: 80px">123456</td>
                 </tr>
-                <tr
+                <!-- <tr
                   v-show="index == 2 && $route.name == 'printAll'"
                   style="visibility: hidden"
                 >
                   <td colspan="3" style="height: 100px">123456</td>
-                </tr>
+                </tr> -->
                 <tr v-show="index == 2" style="visibility: hidden">
-                  <td colspan="3" style="height: 350px">123456</td>
+                  <td colspan="3" style="height: 450px">123456</td>
                 </tr>
               </tbody>
             </table>
