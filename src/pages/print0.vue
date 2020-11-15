@@ -1,505 +1,584 @@
 <template>
   <div class="">
+    <div class="float-right q-pa-md">
+      <q-btn
+        class="printBtn"
+        icon="fas fa-print"
+        color="pink-4"
+        round
+        @click="printBtn()"
+      ></q-btn>
+    </div>
     <!-- page1 -->
-    <div class="a4-landscape">
-      <div align="center" class="bg-grey-5 q-py-sm text-h5">
-        หมวด 1 การนำองค์การ
+    <div class="a4-portrait">
+      <div class="absolute-right text-h7 printDate">
+        {{ printDate }}
       </div>
+      <div align="center" class="q-py-sm relative-position">
+        <div class="text-h6">
+          {{ $q.sessionStorage.getItem("office") }}
+        </div>
+      </div>
+      <div style="height: 15px"></div>
+
+      <div
+        align="left"
+        class="b-color text-white q-py-sm q-pl-md"
+        style="width: 80%; font-size: 18px"
+      >
+        ลักษณะสำคัญองค์การ
+      </div>
+
       <div class="q-pt-md">
-        <p>
-          <b>เป้าหมาย : </b>
-          เพื่อให้ระบบการนำองค์การของหน่วยงานมุ่งเน้นสัมฤทธิผลและสร้างความยั่งยืนให้กับองค์การโดยหน่วยงานกำหนดวิสัยทัศน์และแผนยุธศาสตร์ที่นำไปสู่การบรรลุพันธกิจและสอดรับกับยุทธศาสตร์ชาติกำหนดนโยบายในการกำกับดูแลที่มีประสิทธิผลในเรื่องการป้องกันทุจริตและการสร้างความโปร่งใสสร้างสภาพแวดล้อมภายในที่มุ่งเน้นการบรรลุผลสัมฤทธิ์ของหน่วยงานและผลกระทบที่เกิดขึ้นทั้งระยะสั้นและระยะยาวอย่างต่อเนื่องและทันเหตุการณ์
-          (ด้วยกลไกของเทคโนโลยีดิจิทัล) โดยคำนึงถึง
-          ผลกระทบต่อสังคมและมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศความทิศทางยุทธศาสตร์
+        <span class="font-24 q-pl-lg">ลักษณะองค์การ</span>
+        <p class="q-pl-lg">
+       ลักษณะสำคัญของอค์การ คือ ภาพรวมของส่วนราชการ สิ่งสำคัญที่มีอิทธิผลต่อวิธีการดำเนินงาน และความท้าทายสำคัญที่ส่วนราชการเผชิญอยู่สำหรับการดำเนินการของส่วนราชการ ที่ต้องการ ตอบสนอง การบริหาจัดการเพื่อนำไปสู่การเป็นระบบราชการ 4.0 ควรพิจารณาในรายละเอียดดังนี้
         </p>
       </div>
 
-      <div class="q-pt-sm">
-        <div class="border-black">
-          <div class="q-py-sm">
-            <b class="text-h5 q-px-sm">หมวด 1 การนำองค์การ</b>
-            <!-- 1.1 -->
-            <div class="row q-pt-md q-px-sm ">
-              <div style="width:220px" class="q-pr-md">
-                1.1 ระบบการนำองค์การ<br />ที่สร้างความยั่งยืน
-              </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black">Basic<br />(A&D)</div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black">Advance<br />(Alignment)</div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black">
-                      Significance<br />(Integration)
-                    </div>
-                  </div>
-                </div>
-                <div class="row q-pt-md" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์<br />ตอบสนองพันธกิจ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black  q-px-xs q-py-sm">
-                      วิสัยทัศน์/ยุทธศาสตร์สอด<br />รับกับยุทธศาสตร์ประเทศ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black q-px-xs q-py-sm">
-                      สร้างนวตกรรม/วัฒนธรรมที่<br />มุ่งประโยชน์สุขประชาชน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.2 -->
-            <div class="row q-px-sm">
-              <div style="width:220px" class="q-pr-md">
-                1.2 ป้องกันทุจริตและ<br />สร้างความโปร่งใส
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      นโยบายการป้องกันทุจริต<br />และระบบกำกับดูแลที่มีประสิทธิภาพ
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การติดตาม ปรับปรุง
-                      และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
-                    </div>
-                  </div>
-                  <div class="col-4  q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
-                      เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.3 -->
-            <div class="row q-px-sm">
-              <div style="width:220px" class="q-pr-md">
-                1.3
-                การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การตั้งเป้าหมายท้าทาย
-                      และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="q-py-md">
-              <q-separator></q-separator>
-            </div>
-            <!-- 1.4 -->
-            <div class="row q-px-sm">
-              <div style="width:220px" class="q-pr-md">
-                1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
-              </div>
-              <div class="col">
-                <div class="row" style="font-size:13px">
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
-                    </div>
-                  </div>
-                  <div class="col-4 q-px-xs" align="center">
-                    <div class="border-black fit q-px-xs  q-py-sm">
-                      ติดตามผลดำเนินการและผลกระทบระยะสั้นและระยะยาวที่มีต่อเศรษฐกิจ
-                      สังคม สาธารณสุข และสิ่งแวดล้อม
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div
+        align="left"
+        class="text-white q-py-sm q-pl-md"
+        style="width: 80%; font-size: 18px;background-color:#757575"
+      >
+        1. ลักษณะองค์การ: คุณลักษณะสำคัญของส่วนราชการคืออะไร
       </div>
 
-      <div align="center" class="q-mt-lg">ภาพที่ 1 หมวด 1 การนำองค์การ</div>
+
     </div>
     <!-- end page1 -->
 
+
+     
+
     <!-- start next -->
-    <div class="a4-landscape ">
-      <div>
-        1.1 ระบบการนำองค์การของหน่วยงานได้สร้างองค์การที่ยั่งยืน
-        โดยการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์เชื่องโยงสู่การบรรลุพันธกิจ
-        การมุ่งเน้นประโยชน์สุขประชาชน และการบรรลุผลยุทธศาสตร์ชาติ
-        และความสามารถในการแข่งขัน
-
-        <div class="q-pt-md">
-          <table>
-            <thead>
-              <tr style="height:30px;visibility:hidden">
-                <th colspan="3"></th>
-              </tr>
-              <tr class="">
-                <th style="width:23%">ระดับ</th>
-                <th style="width:23%">แนวทางดำเนินการ</th>
-                <th>คำอธิบาย</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="i in 14">
-                <td class="q-pa-sm">
-                  <u>Basic</u><br />
-                  -
-                  ผู้บริหารของส่วนราชการได้สร้างความยั่งยืนโดยการกำหนดวิสัยทัศน์
-                  และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจ และภาระหน้าที่ของส่วนราชการ
-                  (Mission based)
-
-                  <br />-
-                  มีการถ่ายถอดผ่านระบบการนำองค์การเพื่อให้เกิดการดำเนินการทั่ว
-                  ทั้งส่วนราชการ
-                </td>
-                <td class="q-pa-sm"></td>
-                <td class="q-pa-sm"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
-      data: [
-        {
-          score: 0,
-          header:
-            "1.1 ระบบการนำองค์การของส่วนราชการได้สร้างองค์การที่ยั่งยืน โดยการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์เชื่อมโยง สู่การบรรลุพันธกิจ การมุ่งเน้นประโยชน์สุขประชาชนและการบรรลุผลยุทธศาสตร์ชาติและความสามารถในการแข่งขัน",
-          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
-          no: 1,
-          // 1.1 basic
-          basic: {
-            mode: "basic",
-            titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืนโดยการกำหนดวิสัยทัศน์  และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจ และภาระหน้าที่ของส่วนราชการ (Mission based) 
-            
-            <br>- มีการถ่ายถอดผ่านระบบการนำองค์การเพื่อให้เกิดการดำเนินการทั่ว ทั้งส่วนราชการ `,
-            checkBox: [
-              {
-                text: `ผู้บริหารกำหนดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมายและตัวชี้วัด ชัดเจนตอบสนอง ต่อพันธกิจและภาระหน้าที่ของส่วนราชการ`,
-                status: false
-              },
-              {
-                text: `ผู้บริหารสื่อสารถ่ายทอดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมาย และตัวชี้วัดไปสู่ทุกระดับ ขององค์การอย่างทั่วถึง`,
-                status: false
-              },
-              {
-                text: `ส่วนราชการมีระบบการสื่อสารภายในองค์การทั่วถึง รวดเร็ว ทันการณ์`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.1 advanec
-          advance: {
-            mode: "advance",
-            titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน โดยการกำหนดวิสัยทัศน์ และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ และสอดรับกับยุทธศาสตร์ชาติ (Alignment with National Strategies)`,
-            checkBox: [
-              {
-                text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ <br>- สนับสนุนการบรรลุยุทธศาสตร์และสร้างขีดความสามารถใน การแข่งขันของประเทศ <br>- พิจารณาและคำนึงถึงผลกระทบต่อสังคมทั้งเชิงบวกและเชิงลบ ทั้งทางตรงและทางอ้อม`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.1 significance
-          significance: {
-            mode: "significance",
-            titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน โดยการกำหนด ยุทธศาสตร์ ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ สอดรับกับทิศทางการพัฒนาและยุทธศาสตร์พื้นที่สร้างนวัตกรรมและ วัฒนธรรมในการมุ่งประโยชน์สุขประชาชน (Innovation, Citizen-centric)`,
-            checkBox: [
-              {
-                text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ
-            <br>- บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)
-            <br>- สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน เช่น มีนโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก
-              และตอบสนองความต้องการของประชาชน`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
+      printDate: "",
+       temp: "",
+      // Emit Data Status
+      status: "none",
+      isDelete: false,
+
+      // Environment
+      environmentCount: 0,
+      isEnvironmentDialog1: false,
+      inputEnvironment1: "",
+      inputEnvironmentPDF1: null,
+      inputEnvironmentIMG1: null,
+
+      isEnvironmentDialog2: false,
+      inputEnvironment2: "",
+      inputEnvironmentPDF2: null,
+      inputEnvironmentIMG2: null,
+
+      isEnvironmentDialog3: false,
+      inputEnvironment3: "",
+      inputEnvironmentPDF3: null,
+      inputEnvironmentIMG3: null,
+
+      isEnvironmentDialog4: false,
+      inputEnvironment4: "",
+      inputEnvironmentPDF4: null,
+      inputEnvironmentIMG4: null,
+
+      isEnvironmentDialog5: false,
+      inputEnvironment5: "",
+      inputEnvironmentPDF5: null,
+      inputEnvironmentIMG5: null,
+
+      // Relation
+      isRelationDialog1: false,
+      inputRelation1: "",
+      inputRelationPDF1: null,
+      inputRelationIMG1: null,
+
+      isRelationDialog2: false,
+      inputRelation2: "",
+      inputRelationPDF2: null,
+      inputRelationIMG2: null,
+
+      isRelationDialog3: false,
+      inputRelation3: "",
+      inputRelationPDF3: null,
+      inputRelationIMG3: null,
+
+      // Competition Environment
+      isCompetitionEnvironmentDialog1: false,
+      inputCompetitionEnvironment1: "",
+      inputCompetitionEnvironmentPDF1: null,
+      inputCompetitionEnvironmentIMG1: null,
+
+      isCompetitionEnvironmentDialog2: false,
+      inputCompetitionEnvironment2: "",
+      inputCompetitionEnvironmentPDF2: null,
+      inputCompetitionEnvironmentIMG2: null,
+
+      isCompetitionEnvironmentDialog3: false,
+      inputCompetitionEnvironment3: "",
+      inputCompetitionEnvironmentPDF3: null,
+      inputCompetitionEnvironmentIMG3: null,
+
+      // Stategy
+      isStategyDialog: false,
+      inputStategy: "",
+      inputStategyPDF1: null,
+      inputStategyIMG1: null,
+
+      // Performance improvement system
+      isPerformanceSystemDialog: false,
+      inputPerformanceSystem: "",
+      inputPerformanceSystemPDF1: null,
+      inputPerformanceSystemIMG1: null,
+
+      // Save Data
+      isSaveData: false
+      
+      
+    };
+  },
+  methods: {
+
+    async getData() {
+      this.loadingShow();
+      const url = this.apiPath + "user/getCategory0.php";
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y")
+      };
+      let data = await Axios.post(url, postData);
+      let getData = data.data;
+
+      if (getData) {
+        // ข้อ 1 ก 1
+        let inputEnvironment1 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        );
+
+        if (inputEnvironment1.length) {
+          this.inputEnvironment1 = inputEnvironment1[0].text;
+          let checkFile1 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile1.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG1 = null;
+          } else {
+            this.inputEnvironmentIMG1 = [1];
           }
-        },
-        // ******************************************************************************************
-        {
-          header: "1.2 การป้องกันทุจริตและสร้างความโปร่งใส",
-          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
-          no: 2,
-          score: 0,
-          // 1.2 basic
-          basic: {
-            mode: "basic",
-            titleText: `- นโยบายและระบบการกำกับดูแลที่เสริมสร้างความโปร่งใสและการ
-            ป้องกันทุจริต รวมทั้งระบบการตรวจสอบที่มีประสิทธิภาพ<br>
-          - มีมาตรการที่ถ่ายทอดสู่การปฏิบัติและการติดตามรายงานผลอย่าง   
-            ชัดเจน`,
-            checkBox: [
-              {
-                text: `แนวทางและระบบการตรวจสอบกำกับดูแลที่เสริมสร้างความ
-              โปร่งใสและป้องกันทุจริต`,
-                status: false
-              },
-              {
-                text: `มาตรการที่ถ่ายทอดสู่การปฏิบัติและติดตามรายงานผล อย่างชัดเจน`,
-                status: false
-              },
-              {
-                text: `การบริหารงานตามหลักธรรมภิบาล`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.2 advance ******************************
-          advance: {
-            mode: "advance",
-            titleText: `- การประเมินประสิทธิผลและตัววัดการป้องกันทุจริตและการสร้างความโปร่งใสภายในส่วนราชการ และมีการปรับปรุงอย่างสม่ำเสมอ<br>
-                      - การรายงานผลการดำเนินการของส่วนราชการต่อสาธารณะ   
-                        และหน่วยงานบังคับบัญชา`,
-            checkBox: [
-              {
-                text: `มีตัววัดในการตรวจติดตามป้องกันทุจริต และมีการปรับปรุง
-            สม่ำเสมอ`,
-                status: false
-              },
-              {
-                text: `มีมาตรการป้องกันการทุจริตในเชิงรุก (Pro-active) เช่น พัฒนากระบวนการทำงานให้โปร่งใส มีระบบร้องเรียน/ร้องทุกข์ สร้างกระบวนการติดตามตรวจสอบการทุจริต และการปกป้องผู้ร้องเรียน`,
-                status: false
-              },
-              {
-                text: `เปิดเผยผลการดำเนินงานสู่สาธารณะ`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.2 significance
-          significance: {
-            mode: "significance",
-            titleText: `-ผลการประเมินความโปร่งใสในระดับองค์การโดยองค์การอิสระ<br>ระดับชาติหรือนานาชาติ<br>
-            -เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส`,
-            checkBox: [
-              {
-                text: `มีดัชนีความโปร่งใสจากการประเมินโดยองค์การอิสระและมี ผลลัพธ์ที่ดี`,
-                status: false
-              },
-              {
-                text: `มีการส่งเสริมการเป็นองค์การด้านความโปร่งใส เช่น มีการ ค้นหาความเป็นเลิศ (Best Practice:BP) ด้านความโปร่งใส มีการสร้างต้นแบบ (Role Model) ด้านความโปร่งใส`,
-                status: false
-              },
-              {
-                text: `ได้รับรางวัลด้านความโปร่งใสจากองค์การภายนอก`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          }
-        },
-        // ***************************************1.3 *******************************************
-        {
-          score: 0,
-          header:
-            "1.3 การมุ่งเน้นการบรรลุผลสัมฤทธิ์ของส่วนราชการผ่านการสร้างการมีส่วนร่วมของบุคลากรภายในและภายนอก",
-          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
-          no: 3,
-          // 1.3 basic
-          basic: {
-            mode: "basic",
-            titleText: `- การสื่อสารและการสร้างสภาพแวดล้อมภายในเพื่อให้มุ่งเน้นผลสัมฤทธิ์<br>
-            - การสร้างกลไกที่เอื้อให้ประชาชนและเครือข่ายภายนอกเข้ามามีส่วนร่วม
-              ในการทำงาน`,
-            checkBox: [
-              {
-                text: `ส่วนราชการมีแนวทางสื่อสารและสร้างสภาพแวดล้อมภายใน
-              องค์การให้มุ่งผลสัมฤทธิ์ในการทำงาน`,
-                status: false
-              },
-              {
-                text: `ปรับปรุงกฏระเบียบที่เอื้อให้ประชาชนเข้ามามีส่วนร่วม`,
-                status: false
-              },
-              {
-                text: `มีแนวทางในการสร้างเครือข่ายให้ ภาคประชาชน ภาคเอกชน และท้องถิ่นจากองค์การภายนอกเข้ามามีส่วนร่วมกันในการทำงาน`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.3 advance ******************************
-          advance: {
-            mode: "advance",
-            titleText: `- การตั้งเป้าหมาย ท้าทาย และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
-            checkBox: [
-              {
-                text: `มีการตั้งเป้าหมายที่ท้าทายรองรับการเปลี่ยนแปลง`,
-                status: false
-              },
-              {
-                text: `มีแนวทางการส่งเสริมให้เกิดนวัตกรรมของกระบวนการทำงานและการให้บริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.3 significance
-          significance: {
-            mode: "significance",
-            titleText: `- การสร้างนวัตกรรมที่มีผลกระทบสูงและเชิงนโยบายที่นำไปสู่การแก้
-            ปัญหาที่มีความซับซ้อน`,
-            checkBox: [
-              {
-                text: `ผู้บริหารส่งเสริมการสร้างนวัตกรรมเชิงนโยบายที่ส่งผลในระดับ
-                ประเทศและนำไปสู่การแก้ปัญหาที่มีความซับซ้อน เช่น การสร้าง
-                ความร่วมมือจากหลายหน่วยงาน หรือการใช้กลไกห้องปฏิบัติการ นวัตกรรมภาครัฐ (Government Innovation Lab) โดยการนำ กระบวนการคิดเชิงออกแบบ (Design Thinking) ในลักษณะที่ให้
-                ประชาชน/ผู้มีส่วนได้ส่วนเสียเข้ามามีส่วนร่วมในทุกกระบวนการ`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          }
-        },
-        // ******************************************** 1.4 *****************************
-        {
-          score: 0,
-          header:
-            "1.4 การคำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศตามทิศทางยุทธศาสตร์",
-          status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
-          no: 4,
-          // 1.4 basic
-          basic: {
-            mode: "basic",
-            titleText: `- การประเมินและติดตามโครงการ กระบวนการ และยุทธศาสตร์ที่อาจมีผลกระทบเชิงลบต่อสังคม<br>
-            - การติดตามตัวชี้วัดและผลการดำเนินการขององค์การอย่างต่อเนื่อง
-            `,
-            checkBox: [
-              {
-                text: `ประเมินความเสี่ยงโครงการ กระบวนการ และยุทธศาสตร์ที่อาจมีผลกระทบเชิงลบต่อสังคมอย่างต่อเนื่อง`,
-                status: false
-              },
-              {
-                text: `เตรียมมาตรการป้องกันและแก้ไขปัญหาต่างๆ เช่น การทำประชาพิจารณ์ เพื่อรับฟังความคิดเห็นทั้งก่อน / ระหว่าง / หลังดำเนินโครงการ`,
-                status: false
-              },
-              {
-                text: `กำหนดตัวชี้วัดและติดตามผลการดำเนินการอย่างต่อเนื่อง`,
-                status: false
-              },
-              {
-                text: `รวบรวมข้อมูล / สถิติ / ผลการดำเนินการที่เกี่ยวข้อง ให้พร้อมต่อการถูกติดตาม / ตรวจสอบจากทุกภาคส่วน`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.4 advanec
-          advance: {
-            mode: "advance",
-            titleText: `- การติดตามรายงานผลกระทบ โดยผ่านกลไกการสื่อสารและเทคโนโลยี  
-            ดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันการณ์ประชาชน ภาคเอกชน  
-            และท้องถิ่น`,
-            checkBox: [
-              {
-                text: `ใช้เทคโนโลยีการสื่อสารและดิจิทับที่ทันสมัยเพื่อติดตามชี้วัดและ ผลการดำเนินการเพื่อรายงานผลได้อย่างรวดเร็วและทัน เหตุการณ์`,
-                status: false
-              },
-              {
-                text: `สร้างเครือข่ายเฝ้าระวังเพื่อการแก้ไขปัญหาได้อย่างรวดเร็วและทันเหตุการณ์`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
-          },
-          // 1.4 significance
-          significance: {
-            mode: "significance",
-            titleText: `- การติดตามผลการดำเนินการและผลกระทบที่เกิดขึ้นทั้งในระยะสั้นและ 
-            ระยะยาวและผลกระทบที่มีต่อเศรษฐกิจ สังคม สาธารณสุข  
-            และสิ่งแวดล้อม`,
-            checkBox: [
-              {
-                text: `ส่วนราชการมีการกำหนดตัววัดที่บรรลุผลลัพธ์ในเชิง<br>
-              - ยุทธศาสตร์ของส่วนราชการ<br>
-              - ยุทธศาสตร์พื้นที่ (ถ้ามี)<br>
-              - ยุทธศาสตร์ชาติ<br>
-              - ผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
-                status: false
-              },
-              {
-                text: `ส่วนราชการมีการติดตามตัววัด โดยมีการวิเคราะห์เพื่อรู้เท่าทัน สถานการณ์และกำหนดมาตรการ / แนวทางเพื่อป้องกัน / ส่งเสริมการดำเนินการเพื่อผลลัพธ์ ที่ดีต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
-                status: false
-              }
-            ],
-            explain: "",
-            pdf_file: null,
-            img_file: null
+          if (checkFile1.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF1 = null;
+          } else {
+            this.inputEnvironmentPDF1 = [1];
           }
         }
-      ]
-    };
-  }
+
+        // ข้อ1 ก2
+        let inputEnvironment2 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        );
+
+        if (inputEnvironment2.length) {
+          this.inputEnvironment2 = inputEnvironment2[0].text;
+          let checkFile2 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "2"
+          )[0];
+
+          if (checkFile2.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG2 = null;
+          } else {
+            this.inputEnvironmentIMG2 = [1];
+          }
+          if (checkFile2.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF2 = null;
+          } else {
+            this.inputEnvironmentPDF2 = [1];
+          }
+        }
+
+        // ข้อ1 ก3
+        let inputEnvironment3 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "3"
+        );
+
+        if (inputEnvironment3.length) {
+          this.inputEnvironment3 = inputEnvironment3[0].text;
+          let checkFile3 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "3"
+          )[0];
+
+          if (checkFile3.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG3 = null;
+          } else {
+            this.inputEnvironmentIMG3 = [1];
+          }
+          if (checkFile3.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF3 = null;
+          } else {
+            this.inputEnvironmentPDF3 = [1];
+          }
+        }
+
+        // ข้อ1 ก4
+        let inputEnvironment4 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "4"
+        );
+        if (inputEnvironment4.length) {
+          this.inputEnvironment4 = inputEnvironment4[0].text;
+          let checkFile4 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "4"
+          )[0];
+
+          if (checkFile4.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG4 = null;
+          } else {
+            this.inputEnvironmentIMG4 = [1];
+          }
+          if (checkFile4.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF4 = null;
+          } else {
+            this.inputEnvironmentPDF4 = [1];
+          }
+        }
+
+        // ข้อ1 ก5
+        let inputEnvironment5 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "5"
+        );
+        if (inputEnvironment5.length) {
+          this.inputEnvironment5 = inputEnvironment5[0].text;
+          let checkFile5 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ก." &&
+              x.category_q_number == "5"
+          )[0];
+
+          if (checkFile5.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentIMG5 = null;
+          } else {
+            this.inputEnvironmentIMG5 = [1];
+          }
+          if (checkFile5.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputEnvironmentPDF5 = null;
+          } else {
+            this.inputEnvironmentPDF5 = [1];
+          }
+        }
+
+        // ข้อ1 ข1
+        let inputRelation1 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "1"
+        );
+        if (inputRelation1.length) {
+          this.inputRelation1 = inputRelation1[0].text;
+          let checkFile6 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ข." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile6.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationIMG1 = null;
+          } else {
+            this.inputRelationIMG1 = [1];
+          }
+          if (checkFile6.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationPDF1 = null;
+          } else {
+            this.inputRelationPDF1 = [1];
+          }
+        }
+
+        // ข้อ1 ข2
+        let inputRelation2 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "2"
+        );
+
+        if (inputRelation2.length) {
+          this.inputRelation2 = inputRelation2[0].text;
+          let checkFile7 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ข." &&
+              x.category_q_number == "2"
+          )[0];
+
+          if (checkFile7.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationIMG2 = null;
+          } else {
+            this.inputRelationIMG2 = [1];
+          }
+          if (checkFile7.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationPDF2 = null;
+          } else {
+            this.inputRelationPDF2 = [1];
+          }
+        }
+
+        // ข้อ1 ข3
+        let inputRelation3 = getData.filter(
+          x =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "3"
+        );
+
+        if (inputRelation3.length) {
+          this.inputRelation3 = inputRelation3[0].text;
+          let checkFile8 = getData.filter(
+            x =>
+              x.q_number == "1" &&
+              x.category == "ข." &&
+              x.category_q_number == "3"
+          )[0];
+
+          if (checkFile8.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationIMG3 = null;
+          } else {
+            this.inputRelationIMG3 = [1];
+          }
+          if (checkFile8.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputRelationPDF3 = null;
+          } else {
+            this.inputRelationPDF3 = [1];
+          }
+        }
+
+        // ข้อ2 ก1
+        let inputCompetitionEnvironment1 = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        );
+        if (inputCompetitionEnvironment1.length) {
+          this.inputCompetitionEnvironment1 =
+            inputCompetitionEnvironment1[0].text;
+          let checkFile9 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ก." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile9.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentIMG1 = null;
+          } else {
+            this.inputCompetitionEnvironmentIMG1 = [1];
+          }
+          if (checkFile9.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentPDF1 = null;
+          } else {
+            this.inputCompetitionEnvironmentPDF1 = [1];
+          }
+        }
+
+        // ข้อ2 ก2
+        let inputCompetitionEnvironment2 = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        );
+
+        if (inputCompetitionEnvironment2.length) {
+          this.inputCompetitionEnvironment2 =
+            inputCompetitionEnvironment2[0].text;
+          let checkFile10 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ก." &&
+              x.category_q_number == "2"
+          )[0];
+
+          if (checkFile10.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentIMG2 = null;
+          } else {
+            this.inputCompetitionEnvironmentIMG2 = [1];
+          }
+          if (checkFile10.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentPDF2 = null;
+          } else {
+            this.inputCompetitionEnvironmentPDF2 = [1];
+          }
+        }
+
+        // ข้อ2 ก3
+        let inputCompetitionEnvironment3 = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "3"
+        );
+        if (inputCompetitionEnvironment3.length) {
+          this.inputCompetitionEnvironment3 =
+            inputCompetitionEnvironment3[0].text;
+          let checkFile11 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ก." &&
+              x.category_q_number == "3"
+          )[0];
+
+          if (checkFile11.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentIMG3 = null;
+          } else {
+            this.inputCompetitionEnvironmentIMG3 = [1];
+          }
+          if (checkFile11.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputCompetitionEnvironmentPDF3 = null;
+          } else {
+            this.inputCompetitionEnvironmentPDF3 = [1];
+          }
+        }
+
+        // ข้อ2 ข1
+        let inputStategy = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ข." &&
+            x.category_q_number == "1"
+        );
+        if (inputStategy.length) {
+          this.inputStategy = inputStategy[0].text;
+          let checkFile12 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ข." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile12.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputStategyIMG1 = null;
+          } else {
+            this.inputStategyIMG1 = [1];
+          }
+          if (checkFile12.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputStategyPDF1 = null;
+          } else {
+            this.inputStategyPDF1 = [1];
+          }
+        }
+
+        // ข้อ2 ค1
+        let inputPerformanceSystem = getData.filter(
+          x =>
+            x.q_number == "2" &&
+            x.category == "ค." &&
+            x.category_q_number == "1"
+        );
+        if (inputPerformanceSystem.length) {
+          this.inputPerformanceSystem = inputPerformanceSystem[0].text;
+          let checkFile13 = getData.filter(
+            x =>
+              x.q_number == "2" &&
+              x.category == "ค." &&
+              x.category_q_number == "1"
+          )[0];
+
+          if (checkFile13.is_img == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputPerformanceSystemIMG1 = null;
+          } else {
+            this.inputPerformanceSystemIMG1 = [1];
+          }
+          if (checkFile13.is_pdf == 0) {
+            // กรณีไม่มีรูปภาพ
+            this.inputPerformanceSystemPDF1 = null;
+          } else {
+            this.inputPerformanceSystemPDF1 = [1];
+          }
+        }
+      }
+
+      this.loadingHide();
+    },
+
+    async getDate() {
+      return new Promise(async (a, b) => {
+        let date = await Axios.get(
+          "https://api.winner-english.com/pmqa4_0_api/getDate.php"
+        );
+        a(date.data);
+      });
+    },
+  },
+  async created() {
+    // this.getAssessmentData();
+    let printDate = await this.getDate();
+    printDate = printDate[0];
+    printDate = `${printDate.date} ${this.showMonth(printDate.month)} ${
+      printDate.year
+    }`;
+    this.printDate = printDate;
+    this.getData()
+  },
 };
 </script>
 
@@ -513,20 +592,29 @@ td,
 th {
   border: 1px solid;
 }
+
+.brr {
+  border-right: 1px solid;
+}
+.b-color {
+  background-color: #F29A1C;
+}
+.t-color {
+  color: #F29A1C;
+}
+.printDate {
+  top: 10px;
+  right: 80px;
+}
 .a4-portrait {
   width: 210mm;
   height: 297mm;
   margin: auto;
   background-color: white;
-  padding: 1cm 2cm;
+  padding: 0;
 }
-.a4-landscape {
-  width: 297mm;
-  height: 210mm;
-  margin: auto;
-  background-color: white;
-  padding: 1cm 2cm;
-}
+
+
 .bg {
   background-color: #f1f1f1;
   height: 100%;
@@ -539,19 +627,19 @@ th {
   margin: 0;
 }
 @media print {
-  @page {
-    size: landscape;
+  .printBtn {
+    visibility: hidden;
+  }
+  .printDate {
+    top: -20px;
+    right: 80px;
   }
   .a4-portrait {
     width: 210mm;
     height: 297mm;
+    border:1px solid red
   }
-  .a4-landscape {
-    width: 297mm;
-    height: 210mm;
-    // transform: rotate(270deg) translate(-297mm, 0);
-    // transform-origin: 0 0;
-  }
+
   .bg {
     background-color: white;
   }
