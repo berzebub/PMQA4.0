@@ -1,5 +1,6 @@
 <template>
   <div>
+    <print0 > </print0>
     <print1 class="print1"> </print1>
     <print2 class="print2"> </print2>
     <print3 class="print3"></print3>
@@ -19,6 +20,7 @@ import print5 from "./print5";
 import print6 from "./print6";
 export default {
   components: {
+     print0,
     print1,
     print2,
     print3,

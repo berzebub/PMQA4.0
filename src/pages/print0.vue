@@ -1,6 +1,8 @@
 <template>
   <div class="">
     <div class="float-right q-pa-md">
+      <div class="bg-red"></div>
+
       <q-btn
         class="printBtn"
         icon="fas fa-print"
@@ -10,7 +12,7 @@
       ></q-btn>
     </div>
     <!-- page1 -->
-    <div class="a4-portrait">
+    <div  :class="$route.name == 'printAll' ? 'a4-portrait-all' : 'a4-portrait'">
       <div class="absolute-right text-h7 printDate">
         {{ printDate }}
       </div>
@@ -32,27 +34,261 @@
       <div class="q-pt-md">
         <span class="font-24 q-pl-lg">ลักษณะองค์การ</span>
         <p class="q-pl-lg">
-       ลักษณะสำคัญของอค์การ คือ ภาพรวมของส่วนราชการ สิ่งสำคัญที่มีอิทธิผลต่อวิธีการดำเนินงาน และความท้าทายสำคัญที่ส่วนราชการเผชิญอยู่สำหรับการดำเนินการของส่วนราชการ ที่ต้องการ ตอบสนอง การบริหาจัดการเพื่อนำไปสู่การเป็นระบบราชการ 4.0 ควรพิจารณาในรายละเอียดดังนี้
+          ลักษณะสำคัญของอค์การ คือ ภาพรวมของส่วนราชการ
+          สิ่งสำคัญที่มีอิทธิผลต่อวิธีการดำเนินงาน
+          และความท้าทายสำคัญที่ส่วนราชการเผชิญอยู่สำหรับการดำเนินการของส่วนราชการ
+          ที่ต้องการ ตอบสนอง การบริหาจัดการเพื่อนำไปสู่การเป็นระบบราชการ 4.0
+          ควรพิจารณาในรายละเอียดดังนี้
         </p>
       </div>
 
-        <div
+      <!-- ข้อ1 -->
+      <div
         align="left"
         class="text-white q-py-sm q-pl-md"
         style="width: 80%; font-size: 18px;background-color:#757575"
       >
         1. ลักษณะองค์การ: คุณลักษณะสำคัญของส่วนราชการคืออะไร
       </div>
+      <!-- ก -->
 
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <div style="padding:10px"></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in q1A" :key="index">
+            <td >
+              <div
+                v-if="index == 0"
+                style="margin-left:40px;margin-top:20px"
+                class="q-pb-lg"
+              >
+                <div
+                  align="left"
+                  class="text-black q-py-sm q-pl-md"
+                  style="width: 80%; font-size: 18px;background-color:#FFD494"
+                >
+                  ก. สภาพแวดล้อมของส่วนราชการ
+                </div>
+              </div>
+              <div style="margin-left:50px" class="q-pb-lg">
+                <div class="q-px-lg ">
+                  <span v-if="index == 0">(1) พันธกิจหรือหน้าที่ตามกฏหมาย
+                  </span>
+                  <span v-else-if="index == 1">(2) วิสัยทัศน์และค่านิยม</span>
+                  <span v-else-if="index == 2">(3) ลักษณะโดยรวมของบุคลากร</span>
+                  <span v-else-if="index == 3">(4) สินทรัพย์</span>
+                  <span v-else-if="index == 4"
+                    >(5) กฏหมาย กฏระเบียบและข้อบังคับ</span
+                  >
+                      &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                </div>
+              
+                <div class="q-px-lg">
+                  {{ item.text }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <div style="padding:10px"></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in q1B" :key="index">
+            <td class="">
+              <div
+                v-if="index == 0"
+                style="margin-left:40px;margin-top:20px"
+                class="q-pb-lg"
+              >
+                <div
+                  align="left"
+                  class="text-black q-py-sm q-pl-md"
+                  style="width: 80%; font-size: 18px;background-color:#FFD494"
+                >
+                  ข. สภาพแวดล้อมของส่วนราชการ
+                </div>
+              </div>
+              <div style="margin-left:50px" class="q-pb-lg">
+                <div class="q-px-lg">
+                  <span v-if="index == 0">(1) โครงสร้างองค์การ</span>
+                  <span v-else-if="index == 1"
+                    >(2) ผู้รับบริการและผู้มีส่วนได้ส่วนเสีย</span
+                  >
+                  <span v-else-if="index == 2"
+                    >(3)
+                    ส่วนราชการหรือองค์การที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
+                  >
+                     &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                </div>
+                <div class="q-px-lg">
+                  {{ item.text }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ข้อ2 -->
+
+      <div
+        align="left"
+        class="text-white q-py-sm q-pl-md"
+        style="width: 80%; font-size: 18px;background-color:#757575"
+      >
+        2. สภาวการณ์ขององค์การ: สภาวการณ์เชิงยุทธศาสตร์ของส่วนราชการเป็นเช่นใด?
+      </div>
+      <!-- ก -->
+
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <div style="padding:10px"></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in q2A" :key="index">
+            <td>
+              <div
+                v-if="index == 0"
+                style="margin-left:40px;margin-top:20px"
+                class="q-pb-lg"
+              >
+                <div
+                  align="left"
+                  class="text-black q-py-sm q-pl-md"
+                  style="width: 80%; font-size: 18px;background-color:#FFD494"
+                >
+                  ก. สภาพแวดล้อมของส่วนราชการ
+                </div>
+              </div>
+              <div style="margin-left:50px" class="q-pb-lg">
+                <div class="q-px-lg">
+                  <span v-if="index == 0">(1) พันธกิจหรือหน้าที่ตามกฏหมาย</span>
+                  <span v-else-if="index == 1">(2) วิสัยทัศน์และค่านิยม</span>
+                  <span v-else-if="index == 2">(3) ลักษณะโดยรวมของบุคลากร</span>
+                  <span v-else-if="index == 3">(4) สินทรัพย์</span>
+                  <span v-else-if="index == 4"
+                    >(5) กฏหมาย กฏระเบียบและข้อบังคับ</span
+                  >
+                     &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                </div>
+                <div class="q-px-lg">
+                  {{ item.text }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <div style="padding:10px"></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in q2B" :key="index">
+            <td>
+              <div
+                v-if="index == 0"
+                style="margin-left:40px;margin-top:20px"
+                class="q-pb-lg"
+              >
+                <div
+                  align="left"
+                  class="text-black q-py-sm q-pl-md"
+                  style="width: 80%; font-size: 18px;background-color:#FFD494"
+                >
+                  ข. สภาพแวดล้อมของส่วนราชการ
+                </div>
+              </div>
+
+              <div style="margin-left:50px" class="q-pb-lg">
+                <div class="q-px-lg">
+                  <span v-if="index == 0">(1) โครงสร้างองค์การ</span>
+                  <span v-else-if="index == 1"
+                    >(2) ผู้รับบริการและผู้มีส่วนได้ส่วนเสีย</span
+                  >
+                  <span v-else-if="index == 2"
+                    >(3)
+                    ส่วนราชการหรือองค์การที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
+                  >
+                     &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                </div>
+                <div class="q-px-lg">
+                  {{ item.text }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <div style="padding:10px"></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in q2C" :key="index">
+            <td>
+              <div
+                v-if="index == 0"
+                style="margin-left:40px;margin-top:20px"
+                class="q-pb-lg"
+              >
+                <div
+                  align="left"
+                  class="text-black q-py-sm q-pl-md"
+                  style="width: 80%; font-size: 18px;background-color:#FFD494"
+                >
+                  ค. ระบบการปรับปรุงผลดำเนินการ
+                </div>
+              </div>
+
+              <div style="margin-left:50px" class="q-pb-lg">
+                <div class="q-px-lg">
+                  <span v-if="index == 0"
+                    >(1)
+                    ความท้าทายเชิงยุทธศาสตร์และความได้เปรียบเชิงยุทธศาสตร์</span
+                  >
+                </div>
+                <div class="q-px-lg">
+                  {{ item.text }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+       <div class="break"></div>
     </div>
     <!-- end page1 -->
 
-
-     
-
     <!-- start next -->
-    
   </div>
 </template>
 
@@ -61,8 +297,13 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      q1A: "",
+      q1B: "",
+       q2A: "",
+      q2B: "",
+      q2C: "",
       printDate: "",
-       temp: "",
+      temp: "",
       // Emit Data Status
       status: "none",
       isDelete: false,
@@ -140,12 +381,9 @@ export default {
 
       // Save Data
       isSaveData: false
-      
-      
     };
   },
   methods: {
-
     async getData() {
       this.loadingShow();
       const url = this.apiPath + "user/getCategory0.php";
@@ -557,6 +795,136 @@ export default {
         }
       }
 
+      let sendData = [
+        {
+          q_number: 1,
+
+          category: "ก.",
+          category_q_number: 1,
+          text: this.inputEnvironment1,
+          pdf_file: this.inputEnvironmentPDF1,
+          img_file: this.inputEnvironmentIMG1
+        },
+        {
+          q_number: 1,
+
+          category: "ก.",
+          category_q_number: 2,
+          text: this.inputEnvironment2,
+          pdf_file: this.inputEnvironmentPDF2,
+          img_file: this.inputEnvironmentIMG2
+        },
+        {
+          q_number: 1,
+
+          category: "ก.",
+          category_q_number: 3,
+          text: this.inputEnvironment3,
+          pdf_file: this.inputEnvironmentPDF3,
+          img_file: this.inputEnvironmentIMG3
+        },
+        {
+          q_number: 1,
+
+          category: "ก.",
+          category_q_number: 4,
+          text: this.inputEnvironment4,
+          pdf_file: this.inputEnvironmentPDF4,
+          img_file: this.inputEnvironmentIMG4
+        },
+        {
+          q_number: 1,
+
+          category: "ก.",
+          category_q_number: 5,
+          text: this.inputEnvironment5,
+          pdf_file: this.inputEnvironmentPDF5,
+          img_file: this.inputEnvironmentIMG5
+        },
+        // หมวด ข
+        {
+          q_number: 1,
+
+          category: "ข.",
+          category_q_number: 1,
+          text: this.inputRelation1,
+          pdf_file: this.inputRelationPDF1,
+          img_file: this.inputRelationIMG1
+        },
+        {
+          q_number: 1,
+
+          category: "ข.",
+          category_q_number: 2,
+          text: this.inputRelation2,
+          pdf_file: this.inputRelationPDF2,
+          img_file: this.inputRelationIMG2
+        },
+        {
+          q_number: 1,
+
+          category: "ข.",
+          category_q_number: 3,
+          text: this.inputRelation3,
+          pdf_file: this.inputRelationPDF3,
+          img_file: this.inputRelationIMG3
+        },
+        // เริ่มข้อ2 หมวด ก.
+        {
+          q_number: 2,
+
+          category: "ก.",
+          category_q_number: 1,
+          text: this.inputCompetitionEnvironment1,
+          pdf_file: this.inputCompetitionEnvironmentPDF1,
+          img_file: this.inputCompetitionEnvironmentIMG1
+        },
+        {
+          q_number: 2,
+
+          category: "ก.",
+          category_q_number: 2,
+          text: this.inputCompetitionEnvironment2,
+          pdf_file: this.inputCompetitionEnvironmentPDF2,
+          img_file: this.inputCompetitionEnvironmentIMG2
+        },
+        {
+          q_number: 2,
+
+          category: "ก.",
+          category_q_number: 3,
+          text: this.inputCompetitionEnvironment3,
+          pdf_file: this.inputCompetitionEnvironmentPDF3,
+          img_file: this.inputCompetitionEnvironmentIMG3
+        },
+        // เริ่มข้อ2 หมวด ข.
+        {
+          q_number: 2,
+
+          category: "ข.",
+          category_q_number: 1,
+          text: this.inputStategy,
+          pdf_file: this.inputStategyPDF1,
+          img_file: this.inputStategyIMG1
+        },
+        // เริ่มข้อ2 หมวด ค.
+        {
+          q_number: 2,
+
+          category: "ค.",
+          category_q_number: 1,
+          text: this.inputPerformanceSystem,
+          pdf_file: this.inputPerformanceSystemPDF1,
+          img_file: this.inputPerformanceSystemIMG1
+        }
+      ];
+
+      this.q1A = sendData.filter(x => x.q_number == 1 && x.category == "ก.");
+      this.q1B = sendData.filter(x => x.q_number == 1 && x.category == "ข.");
+      this.q2A = sendData.filter(x => x.q_number == 2 && x.category == "ก.");
+      this.q2B = sendData.filter(x => x.q_number == 2 && x.category == "ข.");
+      this.q2C = sendData.filter(x => x.q_number == 2 && x.category == "ค.");
+
       this.loadingHide();
     },
 
@@ -567,7 +935,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     // this.getAssessmentData();
@@ -577,8 +945,8 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-    this.getData()
-  },
+    this.getData();
+  }
 };
 </script>
 
@@ -587,20 +955,15 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-tr,
-td,
-th {
-  border: 1px solid;
-}
 
 .brr {
   border-right: 1px solid;
 }
 .b-color {
-  background-color: #F29A1C;
+  background-color: #f29a1c;
 }
 .t-color {
-  color: #F29A1C;
+  color: #f29a1c;
 }
 .printDate {
   top: 10px;
@@ -608,7 +971,6 @@ th {
 }
 .a4-portrait {
   width: 210mm;
-  height: 297mm;
   margin: auto;
   background-color: white;
   padding: 0;
@@ -631,13 +993,16 @@ th {
     visibility: hidden;
   }
   .printDate {
-    top: -20px;
-    right: 80px;
+    right: 50px;
+    top:20px
   }
-  .a4-portrait {
-    width: 210mm;
-    height: 297mm;
-    border:1px solid red
+  .a4-portrait-all {
+    width: 297mm;
+    padding: 1.5cm;
+  }
+
+  .a4-portrait{
+    width : 210nm;
   }
 
   .bg {

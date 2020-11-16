@@ -47,10 +47,13 @@
                     :style="`height:${(130 / 500) * score || 2}px`"
                     align="center"
                   >
+                   
                     <span
                       class="absolute-center text-white"
                       style="font-size:24px;"
-                    >{{ score || "" }}</span>
+                    >
+                 
+                    {{ score == "0" ?'' :score }}</span>
                     <span
                       class="absolute-bottom"
                       style="bottom:-45px;font-size:24px;"
@@ -255,7 +258,6 @@ export default {
       this.isLoadData = false;
     },
     async getData() {
-      console.clear();
       const url = this.apiPath + "user/getAllCategory1_6.php";
 
       const postData = {
@@ -272,13 +274,19 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid"),
       };
 
-      
 
       for (let i = 0; i < this.dataList.length; i++) {
-        console.log(getData.filter(x => x.step == i+1))
         let score = getData.filter(x => x.step == i+1 && x.mode == 'basic')
         score = score.sort((a,b) => Number(a.q_number) - Number(b.q_number))
-        this.dataList[i].score = score.map(x => Number(x.score))
+        this.dataList[i].score.forEach((element,index) => {
+          let filt = score.filter(x => x.q_number == index+1)
+          if(filt.length){
+            this.dataList[i].score[index] = filt[0].score
+          }else{
+            this.dataList[i].score[index] = "0"
+          }
+        });
+        // this.dataList[i].score = score.map(x => Number(x.score))
       }
 
       const url1 = this.apiPath + "user/getCategory7.php";
@@ -292,8 +300,9 @@ export default {
 
       for (let i = 0; i < 6; i++) {
         let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
+
         if (checkExist.length) {
-          this.dataList[6].score[i] = parseInt(mapCat7[i]);
+          this.dataList[6].score[i] = parseInt(checkExist[0].avg_score);
         }
       }
 
