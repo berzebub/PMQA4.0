@@ -23,6 +23,9 @@ body {
   border: 1px solid#f00;
 }
 
+.break {
+  break-after: page;
+}
 .container-content {
   width: 1280px;
   min-height: calc(100vh - 320px);

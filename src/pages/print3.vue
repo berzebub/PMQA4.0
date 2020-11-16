@@ -132,12 +132,10 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape">
+    <div class="a4-landscape ">
       <div v-for="(item, index) in data" :key="index">
-        <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
-          <div class="" :class="{ 'q-pt-lg': $route.name == 'printAll' }">
-            {{ item.header }}
-          </div>
+        <div class="q-pt-md">
+          {{ item.header }}
 
           <div>
             <table>
@@ -274,22 +272,11 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr
-                  v-show="index == 1 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 150px">123123</td>
-                </tr>
-                <tr
-                  v-show="index == 1 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 90px">123123</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="break"></div>
       </div>
     </div>
   </div>
@@ -318,12 +305,12 @@ export default {
 กันโดยรวบรวมข้อมูลจาก<br>
 - ช่องทางต่างๆ เช่น ผลสำรวจความพึงพอใจ แบบสอบถามความ
 คิดเห็นการประชุมรวบรวมความคิดเห็นจากภายในองค์การ / ภายนอกองค์การ / เครือข่าย เป็นต้น<br>- ฐานข้อมูลของส่วนราชการ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.1 advanec
           advance: {
@@ -337,12 +324,12 @@ export default {
 ส่วนเสียในรูปแบบต่างๆ เช่น รูปแบบ Big Data เสียง ภาพ และ ข้อความ<br>
 - ค้นหาความต้องการ ความคาดหวังของกลุ่มผู้รับบริการ<br> ผู้มีส่วนได้ส่วนเสียนำไปสู่การตอบสนองที่ดียิ่งขึ้น
 `,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.1 significance
           significance: {
@@ -358,13 +345,13 @@ export default {
 - วิเคราะห์แนวโน้มการเปลี่ยนแปลงที่กำลังจะเกิดขึ้น<br>
 - กำหนดนโยบายเชิงรุกในการตอบสนองความต้องการและความคาดหวังของผู้รับบริการและผู้มีส่วนได้ส่วนเสียทั้งปัจจุบันและ อนาคต
 `,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************************************************************
         {
@@ -381,12 +368,12 @@ export default {
               {
                 text: `ประเมินความพึงพอใจและความผูกพันในรูปแบบที่เหมาะสมเพื่อ
 ให้ได้ข้อมูลที่สามารถนำมาใช้ประโยชน์ในการวิเคราะห์และปรับปรุงกระบวนการทำงาน เช่น การให้บริการทันการณ์การสำรวจ พฤติกรรมที่ตอบสนองต่อนโยบายบริการต่างๆ เป็นต้น`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.2 advance ******************************
           advance: {
@@ -396,12 +383,12 @@ export default {
               {
                 text: `นำผลการประเมินความพึงพอใจ และความผูกพันมาวิเคราะห์เพื่อ
 ค้นหาโอกาสในการปรับปรุงและแก้ไขปัญหาเชิงรุก`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.2 significance
           significance: {
@@ -413,13 +400,13 @@ export default {
 และผู้มีส่วนได้ส่วนเสียจากแหล่งอื่นๆ เพื่อ <br>
 - แก้ปัญหาความไม่พึงพอใจในการให้บริการที่ดีขึ้น<br>
 - เป็นแนวทางในการวางแผนยุทธศาสตร์และการสร้างนวัตกรรม`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ***************************************3.3 *******************************************
         {
@@ -433,20 +420,20 @@ export default {
             checkBox: [
               {
                 text: `มีกระบวนการในการทบทวนและการปรับปรุงการบริการอย่างต่อเนื่อง`,
-                status: false,
+                status: false
               },
               {
                 text: `มีช่องทางการสื่อสารที่สามารถเข้าถึงผู้รับบริการ และผู้มีส่วนได้ส่วนเสียหลัก`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการถ่ายทอดไปยังหน่วยงานที่เกี่ยวข้องในทุกพื้นที่เพื่อให้เกิด การปฏิบัติอย่างจริงจัง`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.3 advance ******************************
           advance: {
@@ -459,12 +446,12 @@ export default {
 - ความต้องการภาพรวม<br>
 - ความต้องการเฉพาะกลุ่ม เช่น กลุ่มที่มีความต้องการเฉพาะให้
 สามารถเข้าถึงการบริการได้`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.3 significance
           significance: {
@@ -475,17 +462,17 @@ export default {
                 text: `การสร้างนวัตกรรมการให้บริการที่<br>
 - มีความคล่องตัวในการให้บริการตามความแตกต่างของผู้รับ บริการ<br>
 - เอื้อให้ผู้รับบริการสามารถออกแบบตามความต้องการเฉพาะ บุคคล (Customized Service)`,
-                status: false,
+                status: false
               },
               {
                 text: `การเชื่อมโยงข้อมูลเพื่อความสะดวกในการเข้าถึงบริการ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************** 3.4 *****************************
         {
@@ -499,22 +486,22 @@ export default {
             checkBox: [
               {
                 text: `มีช่องทางการรับเรื่องร้องเรียนที่สามารถเข้าถึงได้`,
-                status: false,
+                status: false
               },
               {
                 text: `มีกระบวนการรับข้อร้องเรียนที่ให้ความสะดวกในการร้องเรียน
 ของผู้รับบริการและผู้มีส่วนได้ส่วนเสีย`,
-                status: false,
+                status: false
               },
               {
                 text: `มีมาตรฐานการจัดการข้อร้องเรียน และการตอบสนองกลับต่อ
 ข้อร้องเรียน (Response)`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.4 advanec
           advance: {
@@ -523,17 +510,17 @@ export default {
             checkBox: [
               {
                 text: `มีการตอบสนองกลับต่อข้อร้องเรียนอย่างรวดเร็ว`,
-                status: false,
+                status: false
               },
               {
                 text: `ใช้เทคโนโลยีดิจิทัลมาช่วยในการทำงานและการแก้ปัญหาในเชิงรุก
 (Response and React)`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 3.4 significance
           significance: {
@@ -544,20 +531,20 @@ export default {
                 text: `มีการตอบสนองกลับต่อข้อร้องเรียนอย่างรวดเร็ว แก้ปัญหาได้
 อย่างทันการณ์
 `,
-                status: false,
+                status: false
               },
               {
                 text: `ใช้เทคโนโลยีดิจิทัล และพัฒนาระบบการสื่อสารเพื่อสร้างความ
 เชื่อมั่นและความพึงพอใจในการจัดการข้อร้องเรียน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
-        },
-      ],
+            img_file: null
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -567,7 +554,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 3,
+        step: 3
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -582,7 +569,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -591,7 +578,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -610,21 +597,19 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
-        );
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
@@ -645,28 +630,28 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "significance"
+          x => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
+          x => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxAdvance = getDataAdvance[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (
             !checkBox.includes(false) &&
@@ -694,7 +679,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     this.getAssessmentData();
@@ -704,7 +689,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  },
+  }
 };
 </script>
 
@@ -752,6 +737,8 @@ th {
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
+  min-height: 210mm;
+  max-height: fit-content;
 }
 .bg {
   background-color: #f1f1f1;
@@ -781,7 +768,7 @@ th {
   }
   .a4-landscape {
     width: 297mm;
-    height: 210mm;
+    padding: 1cm 1cm;
   }
 
   .a4-landscape-flip {

@@ -138,7 +138,7 @@
     <!-- start next -->
     <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
-        <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
+        <div class="q-pt-md">
           {{ item.header }}
 
           <div>
@@ -276,25 +276,11 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr
-                  v-show="index == 1 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 550px">123456</td>
-                </tr>
-                <tr v-show="index == 2" style="visibility: hidden">
-                  <td colspan="3" style="height: 50px">123456</td>
-                </tr>
-                <tr
-                  v-show="index == 2 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 70px">123456</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="break"></div>
       </div>
     </div>
   </div>
@@ -320,20 +306,20 @@ export default {
             checkBox: [
               {
                 text: `มีการวางแผนและรวบรวมข้อมูลตัววัดในระดับปฏิบัติการและยุทธศาสตร์`,
-                status: false,
+                status: false
               },
               {
                 text: `นำข้อมูลมาใช้ในการติดตามการปฏิบัติงานและใช้สนับสนุน การทำงานให้มีประสิทธิภาพดีขึ้น`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการพัฒนาเทคโนโลยีดิจิทัลมาใช้ในการบูรณาการข้อมูล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.1 advanec
           advance: {
@@ -342,16 +328,16 @@ export default {
             checkBox: [
               {
                 text: `ระบบการจัดการข้อมูลและสารสนเทศที่มีประสิทธิภาพ ปลอดภัยน่าเชื่อถือ และพร้อมใช้`,
-                status: false,
+                status: false
               },
               {
                 text: `คำนึงถึงผู้ใช้งานทั้งภายในและภายนอกที่เกี่ยวข้องสามารถเข้าถึงได้อย่างมีประสิทธิผล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.1 significance
           significance: {
@@ -360,17 +346,17 @@ export default {
             checkBox: [
               {
                 text: `มีการรายงานผลการดำเนินการของส่วนราชการและนำเสนอข้อมูลและสารสนเทศที่มีประโยชน์ต่อสาธารณะโดยไม่ต้องร้องขอ และอยู่ในรูปแบบที่เข้าใจง่าย`,
-                status: false,
+                status: false
               },
               {
                 text: `การดำเนินการอยู่บนพื้นฐานการสำรวจความต้องการและ ข้อเสนอแนะจากภาคประชาชนอย่างสม่ำเสมอ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************************************************************
         {
@@ -385,16 +371,16 @@ export default {
             checkBox: [
               {
                 text: `มีกลไกในการวิเคราะห์ข้อมูลและตัววัดในทุกระดับเพื่อใช้ในการติดตามและแก้ไขปัญหา`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการวิเคราะห์เปรียบเทียบผลการดำเนินการกับค่าเป้าหมายเพื่อนำไปแก้ไขปรับปรุงกระบวนการทำงาน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.2 advance ******************************
           advance: {
@@ -403,16 +389,16 @@ export default {
             checkBox: [
               {
                 text: `การนำผลการวิเคราะห์มาค้นหาสาเหตุของปัญหา และคาดการณ์ผลที่จะเกิดขึ้น`,
-                status: false,
+                status: false
               },
               {
                 text: `นำไปแก้ปัญหาในเชิงนโยบายและการปรับปรุงยุทธศาสตร์`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.2 significance
           significance: {
@@ -424,17 +410,17 @@ export default {
                 text: `การวิเคราะห์ผลจากข้อมูลและตัววัดที่รวบรวมในส่วนราชการเพื่อ
 เชื่อมโยงค้นหาสาเหตุของปัญหา แก้ปัญหาได้อย่างทันการณ์
 `,
-                status: false,
+                status: false
               },
               {
                 text: `การนำเทคโนโลยีมาใช้เพื่อตอบสนองต่อสถานการณ์อย่างทันท่วงทีและสามารถคาดการณ์ผลลัพธ์ตามที่วางแผนไว้ `,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ***************************************4.3 *******************************************
         {
@@ -452,17 +438,17 @@ export default {
                 text: `กระบวนการรวบรวมข้อมูลสารสนเทศและองค์ความรู้ที่เกี่ยวข้อง
 กับการทำงานอย่างเป็นระบบ
 `,
-                status: false,
+                status: false
               },
               {
                 text: `นำข้อมูลมาวิเคราะห์และรวบรวมไว้เพื่อนำไปใช้ประโยชน์และต่อ
 ยอดการเรียนรู้ภายในหน่วนงาน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.3 advance ******************************
           advance: {
@@ -472,16 +458,16 @@ export default {
               {
                 text: `กระบวนการรวบรวมและวิเคราะห์ข้อมูล สารสนเทศ และองค์ความรู้เชื่อมโยงกับข้อมูล สารสนเทศ และองค์ความรู้จากภายนอกองค์การ
 `,
-                status: false,
+                status: false
               },
               {
                 text: `นำองค์ความรู้มาใช้เพื่อสร้างนวัตกรรม`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.3 significance
           significance: {
@@ -490,17 +476,17 @@ export default {
             checkBox: [
               {
                 text: `การนำองค์ความรู้ไปใช้ในการแก้ไขปัญหาจนเกิดเป็นแนวปฏิบัติที่ดี (Best Practices)`,
-                status: false,
+                status: false
               },
               {
                 text: `การพัฒนาองค์ความรู้จนเกิดการสร้างมาตรฐานใหม่หรือรูปแบบการบริการที่สร้างมูลค่าเพิ่มแก่ประชาชน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************** 4.4 *****************************
         {
@@ -517,16 +503,16 @@ export default {
               {
                 text: `การจัดทำแผนการปรับเปลี่ยนรูปแบบการทำงานและการรวบรวมข้อมูลมาเป็นระบบดิจิทัล
 `,
-                status: false,
+                status: false
               },
               {
                 text: `มีตัววัดเพื่อใช้ติดตามการบรรลุตามแผนการปรับเปลี่ยนสู่ระบบดิจิทัลอย่างมีประสิทธิภาพ (รวมทั้งการพัฒนาระบบการจัดการข้อมูลเพื่อรองรับการเชื่อมต่อของข้อมูลกับส่วนราชการอื่นตาม ภาระหน้าที่)`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.4 advanec
           advance: {
@@ -536,21 +522,21 @@ export default {
               {
                 text: `การวิเคราะห์ความเสี่ยงของระบบเทคโนโลยีดิจิทัล
 `,
-                status: false,
+                status: false
               },
               {
                 text: `การวางแผนการป้องกันการโจมตีทางไซเบอร์`,
-                status: false,
+                status: false
               },
               {
                 text: `การเตรียมพร้อมต่อภัยพิบัติและภาวะฉุกเฉินที่อาจมีต่อระบบ
 ฐานข้อมูลและการปฏิบัติการบนไซเบอร์ พร้อมทั้งแผนรองรับ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 4.4 significance
           significance: {
@@ -564,15 +550,15 @@ export default {
 <br>- ติดตามงานอย่างรวดเร็ว
 <br>- การสร้างนวัตกรรมการให้บริการ
 <br>- การเชื่อมโยงเครือข่ายและข้อมูล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
-        },
-      ],
+            img_file: null
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -582,7 +568,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 4,
+        step: 4
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -597,7 +583,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -606,7 +592,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -625,21 +611,19 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
-        );
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
@@ -660,28 +644,28 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "significance"
+          x => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
+          x => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxAdvance = getDataAdvance[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (
             !checkBox.includes(false) &&
@@ -709,7 +693,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     this.getAssessmentData();
@@ -719,7 +703,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  },
+  }
 };
 </script>
 
@@ -767,6 +751,8 @@ th {
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
+  min-height: 210mm;
+  max-height: fit-content;
 }
 .bg {
   background-color: #f1f1f1;
@@ -796,7 +782,6 @@ th {
   }
   .a4-landscape {
     width: 297mm;
-    height: 210mm;
   }
 
   .a4-landscape-flip {

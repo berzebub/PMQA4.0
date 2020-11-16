@@ -137,7 +137,7 @@
     <!-- start next -->
     <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
-        <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
+        <div class="q-pt-md">
           {{ item.header }}
 
           <div>
@@ -275,28 +275,11 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr v-show="index == 0" style="visibility: hidden">
-                  <td colspan="3" style="height: 50px">123456</td>
-                </tr>
-                <tr v-show="index == 2" style="visibility: hidden">
-                  <td colspan="3" style="height: 130px">123456</td>
-                </tr>
-                <tr
-                  v-show="index == 2 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 70px">123456</td>
-                </tr>
-                <tr
-                  v-show="index == 2 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 100px">123456</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="break"></div>
       </div>
     </div>
   </div>
@@ -320,17 +303,17 @@ export default {
             checkBox: [
               {
                 text: `ระบบการสรรหา ว่าจ้าง บรรจุมีประสิทธิภาพ โปร่งใสและเหมาะสม`,
-                status: false,
+                status: false
               },
               {
                 text: `การจัดโครงสร้างการทำงานและการจัดวางบุคลากรไปอยู่ตำแหน่ง
 ที่เหมาะสมกับการใช้ความรู้และประสบการณ์ อย่างเต็มความสามารถก่อให้เกิดประโยชน์สูงที่สุดต่อองค์การและตอบโจทย์ ความต้องการของประชาชน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.1 advanec
           advance: {
@@ -340,20 +323,20 @@ export default {
               {
                 text: `ระบบการประเมินประสิทธิผลการทำงานของบุคลากรทุกกลุ่ม มีความชัดเจน โปร่งใส
 `,
-                status: false,
+                status: false
               },
               {
                 text: `เปิดโอกาสให้บุคลากรทุกคนสามารถวางแผนเส้นทางความก้าวหน้าของตนเองและพัฒนาความสามารถของตนในระยะยาว`,
-                status: false,
+                status: false
               },
               {
                 text: `กลไกในการกระตุ้นให้บุคลากรเกิดแรงจูงใจ และมีการทำงานที่มีประสิทธิภาพสูง`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.1 significance
           significance: {
@@ -362,21 +345,21 @@ export default {
             checkBox: [
               {
                 text: `การบูรณาการงานบริหารบุคลากรกับการปรับปรุงการทำงานของทุกๆกระบวนงาน ให้เกิดการทำงานที่มีประสิทธิภาพสูง`,
-                status: false,
+                status: false
               },
               {
                 text: `นโยบายด้านการส่งเสริมให้เกิดการสร้างนวัตกรรมและการทำงานเป็นทีม`,
-                status: false,
+                status: false
               },
               {
                 text: `การจัดการด้านบุคลากรเพื่อให้เกิดความคล่องตัวในการประสานงานในแนวระนาบกับหน่วยอื่นๆ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************************************************************
         {
@@ -396,24 +379,24 @@ export default {
             checkBox: [
               {
                 text: `ปลอดภัย`,
-                status: false,
+                status: false
               },
               {
                 text: `มีประสิทธิภาพ`,
-                status: false,
+                status: false
               },
               {
                 text: `เป็นไปตามกรอบของกฏหมาย`,
-                status: false,
+                status: false
               },
               {
                 text: `คล่องตัวและร่วมกันทำงานให้เกิดประสิทธิผล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.2 advance ******************************
           advance: {
@@ -422,24 +405,24 @@ export default {
             checkBox: [
               {
                 text: `มีความรับผิดชอบ`,
-                status: false,
+                status: false
               },
               {
                 text: `กล้าตัดสินใจ`,
-                status: false,
+                status: false
               },
               {
                 text: `เข้าถึงข้อมูลเพื่อใช้สนับสนุนการทำงานและการแก้ปัญหา`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการพัฒนาระบบฐานข้อมูลให้พร้อมสนับสนุนการทำงานอย่างมีประสิทธิภาพ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.2 significance
           significance: {
@@ -448,17 +431,17 @@ export default {
             checkBox: [
               {
                 text: `มีการทำงานเป็นทีมภายในองค์การ`,
-                status: false,
+                status: false
               },
               {
                 text: `มีกระบวนการสร้างความร่วมือกับเครือข่ายภาคประชาชนและเอกชนภานนอกในลักษณะของทีมสหสาขา (Trans-disciplinary) เพื่อร่วมกันแก้ปัญหา`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ***************************************5.3 *******************************************
         {
@@ -472,16 +455,16 @@ export default {
             checkBox: [
               {
                 text: `การสร้างวัฒนธรรมในการทำงานที่เป็นมืออาชีพ คือ มีความรอบรู้ เชี่ยวชาญ และถูกต้องตามมาตรฐาน`,
-                status: false,
+                status: false
               },
               {
                 text: `เปิดโอกาสในการนำเสนอความคิดริเริ่มและสนับสนุนความคิดสร้างสรรค์`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.3 advance ******************************
           advance: {
@@ -491,20 +474,20 @@ export default {
             checkBox: [
               {
                 text: `การค้นหาปัจจัยที่ส่งผลต่อความผูกพัน การทุ่มเท และผลการปฏิบัติงานที่ดีของบุคลากร`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการวิเคราะห์ความสัมพันธ์ระหว่างปัจจัยที่สร้างความผูกพันกับผลลัพธ์ขององค์การ`,
-                status: false,
+                status: false
               },
               {
                 text: `นำปัจจัยดังกล่าวมาใช้ในการสร้างให้บุคลากรเกิดแรงจูงใจ เพื่อให้เกิดผลการปฏิบัติงานที่ดี`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.3 significance
           significance: {
@@ -513,21 +496,21 @@ export default {
             checkBox: [
               {
                 text: `สร้างวัฒนธรรมการทำงานที่มุ่งเน้นความคล่องตัวและการมีประสิทธิภาพสูง`,
-                status: false,
+                status: false
               },
               {
                 text: `ส่งเสริมการแก้ปัญหาเชิงรุก`,
-                status: false,
+                status: false
               },
               {
                 text: `สร้างแนวคิดของการเป็นผู้ประกอบการภาครัฐ โดยมุ่งเน้น ประโยชน์ของส่วนรวม ผู้รับบริการหรือผุ้มีส่วนได้ส่วนเสีย เป็นหลัก`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************** 5.4 *****************************
         {
@@ -545,20 +528,20 @@ export default {
             checkBox: [
               {
                 text: `ความรู้ความสามารถในการทำงานและการแก้ปัญหา`,
-                status: false,
+                status: false
               },
               {
                 text: `คุณธรรม และจริยธรรม`,
-                status: false,
+                status: false
               },
               {
                 text: `ความรู้และทักษะด้านดิจิทัล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.4 advanec
           advance: {
@@ -568,16 +551,16 @@ export default {
               {
                 text: `แผนพัฒนาบุคลากรที่ตอบสนองยุทธศาสตร์
 `,
-                status: false,
+                status: false
               },
               {
                 text: `แผนพัฒนาบุคลากรที่ตอบสนองการสร้างสมรรถนะหลักขององค์การทั้งทักษะความรู้ และความเชี่ยวชาญเฉพาะด้าน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 5.4 significance
           significance: {
@@ -586,19 +569,19 @@ export default {
             checkBox: [
               {
                 text: `การพัฒนาบุคลากรให้มีทักษะและสามารถปฏิบัติงานได้หลากหลาย`,
-                status: false,
+                status: false
               },
               {
                 text: `การพัฒนาบุคลากรและผู้นำให้มีความรอบรู้ เป็นนักคิด มีความสามารถในการตัดสินใจ มีความคิดเชิงวิกฤต (Critical Thinking) ที่จะพร้อมรับกับปัญหาที่มีความซับซ้อน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
-        },
-      ],
+            img_file: null
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -608,7 +591,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 5,
+        step: 5
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -623,7 +606,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -632,7 +615,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -651,21 +634,19 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
-        );
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
@@ -686,28 +667,28 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "significance"
+          x => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
+          x => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxAdvance = getDataAdvance[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (
             !checkBox.includes(false) &&
@@ -735,7 +716,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     this.getAssessmentData();
@@ -745,7 +726,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  },
+  }
 };
 </script>
 
@@ -793,6 +774,8 @@ th {
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
+  min-height: 210mm;
+  max-height: fit-content;
 }
 .bg {
   background-color: #f1f1f1;
@@ -822,7 +805,6 @@ th {
   }
   .a4-landscape {
     width: 297mm;
-    height: 210mm;
   }
 
   .a4-landscape-flip {

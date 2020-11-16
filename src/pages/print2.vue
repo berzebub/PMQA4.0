@@ -10,7 +10,7 @@
       ></q-btn>
     </div>
     <!-- page1 -->
-    <div class="a4-landscape-flip">
+    <div class="a4-landscape-flip ">
       <div class="absolute-right text-h7 printDate">
         {{ printDate }}
       </div>
@@ -127,14 +127,9 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape">
+    <div class="a4-landscape ">
       <div v-for="(item, index) in data" :key="index">
-        <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
-          <div
-            :class="{
-              'q-pt-lg ': $route.name == 'printAll',
-            }"
-          ></div>
+        <div class="q-pt-md">
           {{ item.header }}
 
           <div>
@@ -272,31 +267,11 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr v-show="index == 0" style="visibility: hidden">
-                  <td colspan="3" style="height: 150px"></td>
-                </tr>
-                <tr
-                  v-show="index == 2 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 250px"></td>
-                </tr>
-                <tr
-                  v-show="index == 0 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 80px"></td>
-                </tr>
-                <tr
-                  v-show="index == 1 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 80px"></td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="break"></div>
       </div>
     </div>
   </div>
@@ -324,27 +299,27 @@ export default {
               {
                 text: `กระบวนการวางแผนยุทธศาสตร์เป็นระบบและสนับสนุนการ
 บรรลุพันธกิจ ส่วนราชการทั้งระยะสั้น ระยะยาว`,
-                status: false,
+                status: false
               },
               {
                 text: `วิเคราะห์สภาพแวดล้อมในการแข่งขัน`,
-                status: false,
+                status: false
               },
               {
                 text: `วางแผนยุทธศาสตร์โดยคำนึงถึง<br>
 - ประโยชน์สุขประชาชน<br>
 - รองรับการเปลี่ยนแปลงจาก สถาพแวดล้อมภายนอก เช่น<br>
 การแข่งขั้นจากภายนอกองค์การ / นอกประเทศ ความต้องการของประชาชนที่เปลี่ยนแปลงไป`,
-                status: false,
+                status: false
               },
               {
                 text: `แนวทาง/ช่องทางการสื่อสาร ถ่ายทอดยุทธศาสตร์สู่ การปฏิบัติ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.1 advanec
           advance: {
@@ -358,16 +333,16 @@ export default {
                 text: `การวิเคราะห์ความท้าทายและคาดการณ์ถึงการเปลี่ยนแปลงใน
 อนาคตอันมีผลกระทบต่อการปฏิบัติงานการให้บริการ การรับรู้
 การเข้าถึงของภาคส่วนต่างๆ`,
-                status: false,
+                status: false
               },
               {
                 text: `การกำหนดยุทธศาสตร์ แผนงานที่ตอบสนองต่อความท้าทาย และการเปลี่ยนแปลง`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.1 significance
           significance: {
@@ -382,13 +357,13 @@ export default {
 การเปลี่ยนแปลง<br>
 - มีแผนการยกระดับการให้บริการที่รวดเร็ว ฉับไว ต้นทุนต่ำ เข้าถึง
 ได้ง่ายและเข้าถึงได้ทุกที่ ทุกเวลา`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************************************************************
         {
@@ -403,16 +378,16 @@ export default {
             checkBox: [
               {
                 text: `มีแผนที่ยุทธศาสตร์ (Strategy Map) แผนระยะสั้นและแผนระยะยาวที่ส่งผลต่อยุทธศาสตร์ชาติ`,
-                status: false,
+                status: false
               },
               {
                 text: `กำหนดตัวชี้วัดและเป้าประสงค์ที่ตอบสนองพันธกิตของส่วนราชการและการเปลี่ยนแปลง`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.2 advance ******************************
           advance: {
@@ -422,12 +397,12 @@ export default {
             checkBox: [
               {
                 text: `มีการวิเคราะห์ผลกระทบของเป้าประสงค์และตัวชี้วัด ที่มีผลต่อยุทธศาสตร์ชาติทั้งระยะสั้นและระยะยาว ในมิติต่างๆ เช่นการเพิ่มขีดความสามารถในการแข่งขัน การลดผลกระทบจากข้อบังคับทางกฏหมาย `,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.2 significance
           significance: {
@@ -437,17 +412,17 @@ export default {
             checkBox: [
               {
                 text: `วิเคราะห์ความเสี่ยงระดับองค์การที่อาจเกิดขึ้น และส่งผลต่อ แผนงานและเป้าประสงค์ที่วางไว้`,
-                status: false,
+                status: false
               },
               {
                 text: `วิเคราะห์ความเสี่ยงระดับองค์การที่อาจเกิดขึ้น ที่อาจส่งผล<br>กระทบต่อระบบเศรษฐกิจ สังคม สาธารณสุข และ สิ่งแวดล้อมของประเทศ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ***************************************2.3 *******************************************
         {
@@ -462,20 +437,20 @@ export default {
             checkBox: [
               {
                 text: `รองรับยุทธศาสตร์ทุกด้านครอบคลุมทุกส่วนงาน`,
-                status: false,
+                status: false
               },
               {
                 text: `ถ่ายทอดลงไปถึงเครือข่ายระดับพื้นที่ทั้งภายในและภายนอกองค์การ`,
-                status: false,
+                status: false
               },
               {
                 text: `มีความชัดเจน และสื่อสารสู่การปฏิบัติได้อย่างมีประสิทธิผล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.3 advance ******************************
           advance: {
@@ -484,16 +459,16 @@ export default {
             checkBox: [
               {
                 text: `ประสิทธิภาพควบคู่กับประสิทธิผล (การทำน้อยได้มาก)`,
-                status: false,
+                status: false
               },
               {
                 text: `ใช้เทคโนโลยีดิจิทัลมาช่วยในการสื่อสาร การลดต้นทุน การปรับปรุงการให้บริการที่สร้างความพึงพอใจ รวดเร็ว สร้างคุณค่าแก่ประชาชน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.3 significance
           significance: {
@@ -505,21 +480,21 @@ export default {
               {
                 text: `แผนด้านบุคลากรทั้งการพัฒนาขีดความสามารถและอัตรากำลัง
 เพื่อรองรับการเปลี่ยนแปลง`,
-                status: false,
+                status: false
               },
               {
                 text: `แผนการปรับเปลี่ยนเพื่อให้ทันกับความต้องการด้านการ เปลี่ยนแปลงเทคโนโลยี`,
-                status: false,
+                status: false
               },
               {
                 text: `แผนการใช้ทรัพยากรและการใช้ข้อมูลผ่านเครือข่ายทั้งภายในและภายนอก`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************** 2.4 *****************************
         {
@@ -537,12 +512,12 @@ export default {
 - รายงานสถานะการบรรลุเป้าหมายที่ตั้งไว้<br>
 - เตรียมการแก้ไขปัญหากรณีไม่เป็นไปตามเป้าหมายที่ตั้งไว้<br>
 - การรายงานผลที่เกิดขึ้นต่อสาธารณะ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.4 advanec
           advance: {
@@ -555,20 +530,20 @@ export default {
 ที่ไม่บรรลุ หรือดีกว่าค่าเป้าหมายที่ตั้งไว้<br>
 - สามารถปรับแผนให้ทันต่อการเปลี่ยนแปลงได้
 `,
-                status: false,
+                status: false
               },
               {
                 text: `มีการคาดการณ์ผลการดำเนินการที่เกิดขึ้น`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการทบทวนแผนยุทธศาสตร์ทุกปี เพื่อให้ทันต่อการเปลี่ยนแปลง`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 2.4 significance
           significance: {
@@ -580,23 +555,23 @@ export default {
                 text: `ติดตามสถานการณ์ที่อาจส่งผลต่อการดำเนินการแผนโดย สามารถวิเคราะห์ได้ว่าปัญหาเกิดที่ใดและจะส่งผลต่อการปฏิบัติการ
 อย่างไร
 `,
-                status: false,
+                status: false
               },
               {
                 text: `มีการเตรียมความพร้อมและมีความคล่องตัวต่อสถานการณ์ที่ กำลังเปลี่ยนแปลง`,
-                status: false,
+                status: false
               },
               {
                 text: `มีแผนการจัดการเชิงรุกเพื่อปรับแผนให้ทันเวลาและเกิดผลลัพธ์ที่ดีเป็นไปตามต้องการ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
-        },
-      ],
+            img_file: null
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -606,7 +581,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 2,
+        step: 2
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -621,7 +596,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -630,7 +605,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -649,21 +624,19 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
-        );
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
@@ -684,28 +657,28 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "significance"
+          x => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
+          x => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxAdvance = getDataAdvance[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (
             !checkBox.includes(false) &&
@@ -733,7 +706,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     this.getAssessmentData();
@@ -743,7 +716,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  },
+  }
 };
 </script>
 
@@ -792,6 +765,8 @@ td {
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
+  min-height: 210mm;
+  max-height: fit-content;
 }
 .bg {
   background-color: #f1f1f1;
@@ -821,7 +796,6 @@ td {
   }
   .a4-landscape {
     width: 297mm;
-    height: 210mm;
   }
 
   .a4-landscape-flip {

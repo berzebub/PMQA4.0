@@ -2,7 +2,6 @@
   <div>
     <print1 class="print1"> </print1>
     <print2 class="print2"> </print2>
-
     <print3 class="print3"></print3>
     <print4 class="print4"></print4>
     <print5 class="print5"></print5>
@@ -25,27 +24,27 @@ export default {
     print3,
     print4,
     print5,
-    print6,
-  },
+    print6
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @media print {
-  .print1 {
-    height: 7000px;
-  }
-  .print2 {
-    height: 6040px;
-  }
-  .print3 {
-    height: 6000px;
-  }
-  .print4 {
-    height: 5200px;
-  }
-  .print5 {
-    height: 5200px;
-  }
+  // .print1 {
+  //   height: 7000px;
+  // }
+  // .print2 {
+  //   height: 6040px;
+  // }
+  // .print3 {
+  //   height: 6000px;
+  // }
+  // .print4 {
+  //   height: 5200px;
+  // }
+  // .print5 {
+  //   height: 5200px;
+  // }
 }
 </style>

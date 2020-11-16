@@ -136,10 +136,8 @@
     <!-- start next -->
     <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
-        <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
-          <div :class="{ 'q-pt-md': $route.name == 'printAll' }">
-            {{ item.header }}
-          </div>
+        <div class="q-pt-md">
+          {{ item.header }}
 
           <div>
             <table>
@@ -276,25 +274,11 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr v-show="index == 1" style="visibility: hidden">
-                  <td colspan="3" style="height: 200px">123456</td>
-                </tr>
-                <tr
-                  v-show="index == 1 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 70px">123456</td>
-                </tr>
-                <tr
-                  v-show="index == 1 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 100px">123456</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="break"></div>
       </div>
     </div>
   </div>
@@ -319,16 +303,16 @@ export default {
             checkBox: [
               {
                 text: `แนวคิดการออกแบบกระบวนการทำงานที่เชื่อมโยงตั้งแต่ต้นจน (End-to-end process design)เพื่อให้เกิดผลลัพธ์ที่มีคุณค่าแก่ประชาชน และไม่เกิดผลกระทบเชิงลบต่อสิ่งแวดล้อม`,
-                status: false,
+                status: false
               },
               {
                 text: `การประสานงานในกระบวนการที่ต้องผ่านหลายส่วนราชการ เพื่อให้เกิดประสิทธิผล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.1 advanec
           advance: {
@@ -337,16 +321,16 @@ export default {
             checkBox: [
               {
                 text: `การติดตามควมคุมกระบวนการโดยใช้ตัวชี้วัดและใช้ประโยชน์จากเทคโนโลยีที่ทันสมัย`,
-                status: false,
+                status: false
               },
               {
                 text: `การติดตามควบคุมกระบวนการโดยการใช้ข้อมูลร่วมกับเครือข่าย จากภายนอก`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.1 significance
           significance: {
@@ -355,17 +339,17 @@ export default {
             checkBox: [
               {
                 text: `การใช้เทคโนโลยีดิจิทัลในการจัดการกระบวนการและการติดตาม รายงานผลอย่างรวดเร็ว`,
-                status: false,
+                status: false
               },
               {
                 text: `การวิเคราะห์อุปสรรคปัญหาที่เกิดขึ้น หรือการใช้ข้อมูลเทียบเคียง(Benchmarks) ผลการดำเนินงานเพื่อออกแบบกระบวนการทำงานให้ตอบสนองการบูรณาการที่มุ่งสู่ความเป็นเลิศ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************************************************************
         {
@@ -380,20 +364,20 @@ export default {
             checkBox: [
               {
                 text: `มีการบริหารจัดการกระบวนหลักและกระบวนการสนับสนุนอย่างเป็นระบบ`,
-                status: false,
+                status: false
               },
               {
                 text: `กำหนดตัวชี้วัดที่ใช้ในการติดตามควบคุมการดำเนินการ`,
-                status: false,
+                status: false
               },
               {
                 text: `มีแนวทางและเครื่องมือในการปรับปรุงผลผลิต กระบวนการ และการบริการให้ดีขึ้น`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 6.2 advance ******************************
           advance: {
@@ -402,24 +386,24 @@ export default {
             checkBox: [
               {
                 text: `กระบวนหลัก`,
-                status: false,
+                status: false
               },
               {
                 text: `กระบวนการสนับสนุน`,
-                status: false,
+                status: false
               },
               {
                 text: `การบริการประชาชน`,
-                status: false,
+                status: false
               },
               {
                 text: `ความสะดวกในการรับข้อมูลข่าวสาร`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.2 significance
           significance: {
@@ -428,17 +412,17 @@ export default {
             checkBox: [
               {
                 text: `การสร้างความร่วมมือกับทุกภาคส่วนในการแก้ปัญหาเชิง บูรณาการ`,
-                status: false,
+                status: false
               },
               {
                 text: `การสร้างนวัตกรรมการปรับปรุงที่มีผลกระทบสูงจากการมีส่วนร่วมของผู้ที่เกี่ยวข้อง อาจดำเนินการผ่าน Government Innovation Lab โดยอาศัยกระบวนการคิดเชิงออกแบบ (Design Thinking)`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ***************************************1.3 *******************************************
         {
@@ -453,16 +437,16 @@ export default {
             checkBox: [
               {
                 text: `การวิเคราะห์ต้นทุน และการลงทุนในทรัพยากรต่างๆที่ใช้ในกระบวนการหลักและกระบวนการสนับสนุน เช่น การวิเคราะห์ต้นทุนรวม ต้นทุนโครงการ ต้นทุนด้านการบริหารจัดการทั้งทางตรงทางอ้อม ค่าใช้สอย และค่าวัสดุ จำแนกเป็นสัดส่วนเพื่อนำไปใช้ในการติดตามควบคุม`,
-                status: false,
+                status: false
               },
               {
                 text: `การวางแผนการลดต้นทุนทั้งระยะสั้นและระยะยาว`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 6.3 advance ******************************
           advance: {
@@ -471,16 +455,16 @@ export default {
             checkBox: [
               {
                 text: `การลดต้นทุนและเพิ่มประสิทธิภาพในการทำงานจากการใช้เทคโนโลยีและการแบ่งปันทรัพยากรในการทำงานร่วมกัน`,
-                status: false,
+                status: false
               },
               {
                 text: `การติดตามผลการลดต้นทุนและเพิ่มประสิทธิภาพ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 6.2 significance
           significance: {
@@ -489,17 +473,17 @@ export default {
             checkBox: [
               {
                 text: `การใช้เทคโนโลยีดิจิทัลเพื่อสร้างนวัตกรรมในการลดต้นทุน`,
-                status: false,
+                status: false
               },
               {
                 text: `การใช้ข้อมูลเทียลเคียง (Benchmarks) ทั้งในระดับประเทศและ นานาชาติ เพื่อการลดต้นทุนและเพิ่มขีดความสามารถในการ แข่งขัน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************** 1.4 *****************************
         {
@@ -514,16 +498,16 @@ export default {
             checkBox: [
               {
                 text: `การติดตามควบคุมกระบวนการหลักโดยใช้ข้อมูลและตัวชี้วัดของกระบวนการหลักในมิติต่างๆ เช่น ตัวชี้วัดด้านคุณภาพ ต้นทุน ความปลอดภัย สิ่งแวดล้อม เศรษฐกิจ สังคม การดูแลสาธารณสุข และ สาธารณภัย เป็นต้น`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการติดตามควบคุมกระบวนการสนับสนุนโดยใช้ข้อมูล และตัวชี้วัดของกระบวนการสนับสนุน ในมิติต่างๆ เพื่อให้เกิด ประสิทธิภาพและประสิทธิผลของกระบวนการ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 6.4 advanec
           advance: {
@@ -532,20 +516,20 @@ export default {
             checkBox: [
               {
                 text: `การติดตามควบคุมตัวชี้วัดนำ (Leading Indicators) ทั้งเชิงป้องกันและเชิงรุก ซึ่งจะส่งผลต่อประสิทธิผลของกระบวนการ และนำมาแก้ปัญหาได้อย่างทันท่วงที`,
-                status: false,
+                status: false
               },
               {
                 text: `การจัดการความเสี่ยงอย่างมีประสิทธิภาพ`,
-                status: false,
+                status: false
               },
               {
                 text: `การเตรียมพร้อมเพื่อรับมือกับภัยพิบัติและภาวะฉุกเฉิน ตลอดจนการเตรียมตัวล่วงหน้าเพื่อลดความเสียหาย`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.4 significance
           significance: {
@@ -554,19 +538,19 @@ export default {
             checkBox: [
               {
                 text: `มีการวิเคราะห์ผลกระทบที่เกิดขึ้นทั้งกระบวนการหลักและกระบวนการสนับสนุนที่อาจส่งผลกระทบต่อการบรรลุยุทธศาสตร์`,
-                status: false,
+                status: false
               },
               {
                 text: `การประสานงานและบูรณาการทั้งภายในและภายนอกเพื่อการบรรลุยุทธศาสตร์และผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข และสิ่งแวดล้อม`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
-        },
-      ],
+            img_file: null
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -576,7 +560,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 6,
+        step: 6
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -591,7 +575,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -600,7 +584,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -619,21 +603,19 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
-        );
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
@@ -654,28 +636,28 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "significance"
+          x => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
+          x => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxAdvance = getDataAdvance[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (
             !checkBox.includes(false) &&
@@ -703,7 +685,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     this.getAssessmentData();
@@ -713,7 +695,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  },
+  }
 };
 </script>
 
@@ -761,6 +743,8 @@ th {
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
+  min-height: 210mm;
+  max-height: fit-content;
 }
 .bg {
   background-color: #f1f1f1;
@@ -790,7 +774,6 @@ th {
   }
   .a4-landscape {
     width: 297mm;
-    height: 210mm;
   }
 
   .a4-landscape-flip {

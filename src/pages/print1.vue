@@ -10,7 +10,7 @@
       ></q-btn>
     </div>
     <!-- page1 -->
-    <div class="a4-landscape-flip">
+    <div class="a4-landscape-flip ">
       <div class="absolute-right text-h7 printDate">
         {{ printDate }}
       </div>
@@ -141,9 +141,9 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape">
+    <div class="a4-landscape  ">
       <div v-for="(item, index) in data" :key="index">
-        <div :class="index != 0 ? 'q-pt-lg' : 'q-pt-xl'">
+        <div class="q-pt-md">
           {{ item.header }}
 
           <div>
@@ -281,31 +281,11 @@
                     <div v-html="item.significance.explain"></div>
                   </td>
                 </tr>
-                <tr
-                  v-show="index == 1 && $route.name != 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 100px">123456</td>
-                </tr>
-                <tr
-                  v-show="index == 1 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 80px">123456</td>
-                </tr>
-                <!-- <tr
-                  v-show="index == 2 && $route.name == 'printAll'"
-                  style="visibility: hidden"
-                >
-                  <td colspan="3" style="height: 100px">123456</td>
-                </tr> -->
-                <tr v-show="index == 2" style="visibility: hidden">
-                  <td colspan="3" style="height: 450px">123456</td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="break"></div>
       </div>
     </div>
   </div>
@@ -333,20 +313,20 @@ export default {
             checkBox: [
               {
                 text: `ผู้บริหารกำหนดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมายและตัวชี้วัด ชัดเจนตอบสนอง ต่อพันธกิจและภาระหน้าที่ของส่วนราชการ`,
-                status: false,
+                status: false
               },
               {
                 text: `ผู้บริหารสื่อสารถ่ายทอดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมาย และตัวชี้วัดไปสู่ทุกระดับ ขององค์การอย่างทั่วถึง`,
-                status: false,
+                status: false
               },
               {
                 text: `ส่วนราชการมีระบบการสื่อสารภายในองค์การทั่วถึง รวดเร็ว ทันการณ์`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.1 advanec
           advance: {
@@ -355,12 +335,12 @@ export default {
             checkBox: [
               {
                 text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ <br>- สนับสนุนการบรรลุยุทธศาสตร์และสร้างขีดความสามารถใน การแข่งขันของประเทศ <br>- พิจารณาและคำนึงถึงผลกระทบต่อสังคมทั้งเชิงบวกและเชิงลบ ทั้งทางตรงและทางอ้อม`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.1 significance
           significance: {
@@ -372,13 +352,13 @@ export default {
             <br>- บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)
             <br>- สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน เช่น มีนโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก
               และตอบสนองความต้องการของประชาชน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************************************************************
         {
@@ -397,20 +377,20 @@ export default {
               {
                 text: `แนวทางและระบบการตรวจสอบกำกับดูแลที่เสริมสร้างความ
               โปร่งใสและป้องกันทุจริต`,
-                status: false,
+                status: false
               },
               {
                 text: `มาตรการที่ถ่ายทอดสู่การปฏิบัติและติดตามรายงานผล อย่างชัดเจน`,
-                status: false,
+                status: false
               },
               {
                 text: `การบริหารงานตามหลักธรรมภิบาล`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.2 advance ******************************
           advance: {
@@ -422,20 +402,20 @@ export default {
               {
                 text: `มีตัววัดในการตรวจติดตามป้องกันทุจริต และมีการปรับปรุง
             สม่ำเสมอ`,
-                status: false,
+                status: false
               },
               {
                 text: `มีมาตรการป้องกันการทุจริตในเชิงรุก (Pro-active) เช่น พัฒนากระบวนการทำงานให้โปร่งใส มีระบบร้องเรียน/ร้องทุกข์ สร้างกระบวนการติดตามตรวจสอบการทุจริต และการปกป้องผู้ร้องเรียน`,
-                status: false,
+                status: false
               },
               {
                 text: `เปิดเผยผลการดำเนินงานสู่สาธารณะ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.2 significance
           significance: {
@@ -445,21 +425,21 @@ export default {
             checkBox: [
               {
                 text: `มีดัชนีความโปร่งใสจากการประเมินโดยองค์การอิสระและมี ผลลัพธ์ที่ดี`,
-                status: false,
+                status: false
               },
               {
                 text: `มีการส่งเสริมการเป็นองค์การด้านความโปร่งใส เช่น มีการ ค้นหาความเป็นเลิศ (Best Practice:BP) ด้านความโปร่งใส มีการสร้างต้นแบบ (Role Model) ด้านความโปร่งใส`,
-                status: false,
+                status: false
               },
               {
                 text: `ได้รับรางวัลด้านความโปร่งใสจากองค์การภายนอก`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ***************************************1.3 *******************************************
         {
@@ -478,20 +458,20 @@ export default {
               {
                 text: `ส่วนราชการมีแนวทางสื่อสารและสร้างสภาพแวดล้อมภายใน
               องค์การให้มุ่งผลสัมฤทธิ์ในการทำงาน`,
-                status: false,
+                status: false
               },
               {
                 text: `ปรับปรุงกฏระเบียบที่เอื้อให้ประชาชนเข้ามามีส่วนร่วม`,
-                status: false,
+                status: false
               },
               {
                 text: `มีแนวทางในการสร้างเครือข่ายให้ ภาคประชาชน ภาคเอกชน และท้องถิ่นจากองค์การภายนอกเข้ามามีส่วนร่วมกันในการทำงาน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.3 advance ******************************
           advance: {
@@ -500,16 +480,16 @@ export default {
             checkBox: [
               {
                 text: `มีการตั้งเป้าหมายที่ท้าทายรองรับการเปลี่ยนแปลง`,
-                status: false,
+                status: false
               },
               {
                 text: `มีแนวทางการส่งเสริมให้เกิดนวัตกรรมของกระบวนการทำงานและการให้บริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.3 significance
           significance: {
@@ -522,13 +502,13 @@ export default {
                 ประเทศและนำไปสู่การแก้ปัญหาที่มีความซับซ้อน เช่น การสร้าง
                 ความร่วมมือจากหลายหน่วยงาน หรือการใช้กลไกห้องปฏิบัติการ นวัตกรรมภาครัฐ (Government Innovation Lab) โดยการนำ กระบวนการคิดเชิงออกแบบ (Design Thinking) ในลักษณะที่ให้
                 ประชาชน/ผู้มีส่วนได้ส่วนเสียเข้ามามีส่วนร่วมในทุกกระบวนการ`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
+            img_file: null
+          }
         },
         // ******************************************** 1.4 *****************************
         {
@@ -546,24 +526,24 @@ export default {
             checkBox: [
               {
                 text: `ประเมินความเสี่ยงโครงการ กระบวนการ และยุทธศาสตร์ที่อาจมีผลกระทบเชิงลบต่อสังคมอย่างต่อเนื่อง`,
-                status: false,
+                status: false
               },
               {
                 text: `เตรียมมาตรการป้องกันและแก้ไขปัญหาต่างๆ เช่น การทำประชาพิจารณ์ เพื่อรับฟังความคิดเห็นทั้งก่อน / ระหว่าง / หลังดำเนินโครงการ`,
-                status: false,
+                status: false
               },
               {
                 text: `กำหนดตัวชี้วัดและติดตามผลการดำเนินการอย่างต่อเนื่อง`,
-                status: false,
+                status: false
               },
               {
                 text: `รวบรวมข้อมูล / สถิติ / ผลการดำเนินการที่เกี่ยวข้อง ให้พร้อมต่อการถูกติดตาม / ตรวจสอบจากทุกภาคส่วน`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.4 advanec
           advance: {
@@ -574,16 +554,16 @@ export default {
             checkBox: [
               {
                 text: `ใช้เทคโนโลยีการสื่อสารและดิจิทับที่ทันสมัยเพื่อติดตามชี้วัดและ ผลการดำเนินการเพื่อรายงานผลได้อย่างรวดเร็วและทัน เหตุการณ์`,
-                status: false,
+                status: false
               },
               {
                 text: `สร้างเครือข่ายเฝ้าระวังเพื่อการแก้ไขปัญหาได้อย่างรวดเร็วและทันเหตุการณ์`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
+            img_file: null
           },
           // 1.4 significance
           significance: {
@@ -598,19 +578,19 @@ export default {
               - ยุทธศาสตร์พื้นที่ (ถ้ามี)<br>
               - ยุทธศาสตร์ชาติ<br>
               - ผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
-                status: false,
+                status: false
               },
               {
                 text: `ส่วนราชการมีการติดตามตัววัด โดยมีการวิเคราะห์เพื่อรู้เท่าทัน สถานการณ์และกำหนดมาตรการ / แนวทางเพื่อป้องกัน / ส่งเสริมการดำเนินการเพื่อผลลัพธ์ ที่ดีต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
-                status: false,
-              },
+                status: false
+              }
             ],
             explain: "",
             pdf_file: null,
-            img_file: null,
-          },
-        },
-      ],
+            img_file: null
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -620,7 +600,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 1,
+        step: 1
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -634,7 +614,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
+        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -643,7 +623,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -662,21 +642,19 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
-        );
+        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
@@ -697,28 +675,28 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          (x) => x.q_number == i && x.mode == "significance"
+          x => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          (x) => x.q_number == i && x.mode == "basic"
+          x => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          (x) => x.q_number == i && x.mode == "advance"
+          x => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxBasic = getDataBasic[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           let checkBoxAdvance = getDataAdvance[0].check_box
             .split(",")
-            .map((x) => (x == 1 ? true : false));
+            .map(x => (x == 1 ? true : false));
 
           if (
             !checkBox.includes(false) &&
@@ -746,7 +724,7 @@ export default {
         );
         a(date.data);
       });
-    },
+    }
   },
   async created() {
     this.getAssessmentData();
@@ -756,7 +734,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  },
+  }
 };
 </script>
 
@@ -802,7 +780,8 @@ th {
 }
 .a4-landscape {
   width: 297mm;
-  // height: 210mm;
+  min-height: 210mm;
+  max-height: fit-content;
   margin: auto;
   background-color: white;
   padding: 1cm 2cm;
@@ -814,6 +793,7 @@ th {
 .border-black {
   border: 1px solid;
 }
+
 @page {
   size: A4;
   margin: 0;
@@ -835,7 +815,6 @@ th {
   }
   .a4-landscape {
     width: 297mm;
-    height: 210mm;
   }
 
   .a4-landscape-flip {
