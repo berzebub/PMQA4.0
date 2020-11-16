@@ -1204,27 +1204,32 @@ this.data.pop()
           x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
+             this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
+          let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+            x => x.status
+          );
 
-          let checkBoxBasic = getDataBasic[0].check_box
-            .split(",")
-            .map(x => (x == 1 ? true : false));
+          if (getDataBasic.length) {
+            checkBoxBasic = getDataBasic[0].check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
             this.data[i - 1].status = 2;
           }
-      
+
           for (let j = 0; j < checkBox.length; j++) {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-              this.data[i - 1].score = getData[0].score
+          this.data[i - 1].score = getData[0].score;
 
-      
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1243,18 +1248,28 @@ this.data.pop()
         );
 
         if (getData.length > 0) {
+             this.data[i - 1].status = 0;
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
 
-          let checkBoxBasic = getDataBasic[0].check_box
-            .split(",")
-            .map(x => (x == 1 ? true : false));
-
-          let checkBoxAdvance = getDataAdvance[0].check_box
-            .split(",")
-            .map(x => (x == 1 ? true : false));
+           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+            x => x.status
+          );
+          if (getDataBasic.length) {
+            checkBoxBasic = getDataBasic[0].check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+          let checkBoxAdvance = this.data[i - 1].advance.checkBox.map(
+            x => x.status
+          );
+          if (getDataAdvance.length) {
+            checkBoxAdvance = getDataAdvance[0].check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
 
           if (
             !checkBox.includes(false) &&
@@ -1263,14 +1278,13 @@ this.data.pop()
           ) {
             this.data[i - 1].status = 3;
           }
- 
+
           for (let j = 0; j < checkBox.length; j++) {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-              this.data[i - 1].score = getData[0].score
+          this.data[i - 1].score = getData[0].score;
 
-    
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }

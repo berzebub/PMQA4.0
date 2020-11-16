@@ -27,13 +27,11 @@
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    
                     <span class="font-18" v-if="item.status == -1">
                       ยังไม่ทำการประเมิน
                     </span>
                     <span v-else>
                       {{ Math.round(item.score) }}
-                    </span>
                     </span>
                     <span v-else> Significance </span>
                   </div>
@@ -70,12 +68,7 @@
                           </div>
                         </template>
                       </q-tab>
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Advance"
-                        
-                      >
+                      <q-tab content-class="q-pa-sm" no-caps="" name="Advance">
                         <template v-slot:default>
                           <div>
                             <q-icon
@@ -147,7 +140,12 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox color="pink-4" keep-color="" v-model="checkbox.status" value />
+                                  <q-checkbox
+                                    color="pink-4"
+                                    keep-color=""
+                                    v-model="checkbox.status"
+                                    value
+                                  />
                                 </div>
                                 <div
                                   class="col  q-py-xs"
@@ -270,7 +268,7 @@
                                   </div>
                                 </div>
                               </div>
-                            
+
                               <div class="col  q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -321,7 +319,12 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox color="pink-4" keep-color="" v-model="checkbox.status" value />
+                                  <q-checkbox
+                                    color="pink-4"
+                                    keep-color=""
+                                    v-model="checkbox.status"
+                                    value
+                                  />
                                 </div>
                                 <div class="col  q-py-xs">
                                   <span v-html="checkbox.text"></span>
@@ -436,7 +439,7 @@
                                   </div>
                                 </div>
                               </div>
-                         
+
                               <div class="col q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -488,7 +491,9 @@
                                   style="width:50px;"
                                   align="center"
                                 >
-                                  <q-checkbox color="pink-4" keep-color=""
+                                  <q-checkbox
+                                    color="pink-4"
+                                    keep-color=""
                                     v-model="
                                       data[index].significance.checkBox[
                                         signiCheckboxIndex
@@ -612,7 +617,7 @@
                                   </div>
                                 </div>
                               </div>
-                          
+
                               <div class="col q-py-md " align="right">
                                 <q-btn
                                   class="bg-teal text-white font-18"
@@ -682,7 +687,7 @@ export default {
       // restructure
       data: [
         {
-          score : 0,
+          score: 0,
           header:
             "1.1 ระบบการนำองค์การของส่วนราชการได้สร้างองค์การที่ยั่งยืน โดยการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์เชื่อมโยง สู่การบรรลุพันธกิจ การมุ่งเน้นประโยชน์สุขประชาชนและการบรรลุผลยุทธศาสตร์ชาติและความสามารถในการแข่งขัน",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -748,7 +753,7 @@ export default {
           header: "1.2 การป้องกันทุจริตและสร้างความโปร่งใส",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 2,
-           score : 0,
+          score: 0,
           // 1.2 basic
           basic: {
             mode: "basic",
@@ -826,7 +831,7 @@ export default {
         },
         // ***************************************1.3 *******************************************
         {
-           score : 0,
+          score: 0,
           header:
             "1.3 การมุ่งเน้นการบรรลุผลสัมฤทธิ์ของส่วนราชการผ่านการสร้างการมีส่วนร่วมของบุคลากรภายในและภายนอก",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -895,7 +900,7 @@ export default {
         },
         // ******************************************** 1.4 *****************************
         {
-           score : 0,
+          score: 0,
           header:
             "1.4 การคำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศตามทิศทางยุทธศาสตร์",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -987,7 +992,6 @@ export default {
     };
   },
   methods: {
-   
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;
@@ -1032,41 +1036,38 @@ export default {
       }
     },
 
-    
-
-    async checkPassStatus(){
-      let status = 0
-      let mapStatus = this.data.map(x =>x.status)
-      if(!mapStatus.includes(-1)){
+    async checkPassStatus() {
+      let status = 0;
+      let mapStatus = this.data.map(x => x.status);
+      if (!mapStatus.includes(-1)) {
         // ประเมินครบแล้วทุกข้อ
-        status = 1
-      }else if (mapStatus.every(x => x == -1)){
+        status = 1;
+      } else if (mapStatus.every(x => x == -1)) {
         // ยังไม่เคยทำสักข้อ
-        status = 0
-      }else{
+        status = 0;
+      } else {
         // ทำแล้วบางข้อ
-        status = 2
+        status = 2;
       }
 
-     const url = this.apiPath + "user/setUserStepperLog.php";
-     let postData = {
-          category: "category1",
-          user_id: this.$q.sessionStorage.getItem("uid"),
-          year: this.$q.sessionStorage.getItem("y"),
-          status: status // 1 = finish
-        };
-        let data = await Axios.post(url, postData);
-        this.$emit("statusForm")
+      const url = this.apiPath + "user/setUserStepperLog.php";
+      let postData = {
+        category: "category1",
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y"),
+        status: status // 1 = finish
+      };
+      let data = await Axios.post(url, postData);
+      this.$emit("statusForm");
     },
 
     async saveData(no, mode) {
-      console.clear()
+      console.clear();
 
-     
       // this.isSaveData = true;
 
       let index = no - 1;
-      let score = 0
+      let score = 0;
       const url = this.apiPath + "user/addUpdateCategory1_6.php";
       const userId = this.$q.sessionStorage.getItem("uid");
       const year = this.$q.sessionStorage.getItem("y");
@@ -1078,87 +1079,90 @@ export default {
       formData.append("year", year);
       formData.append("step", 1);
 
-      let basicCheckbox = this.data[index].basic.checkBox.map(x => x.status == true ? 1 : 0)
-      let advanceCheckbox  = this.data[index].advance.checkBox.map(x => x.status == true ? 1 : 0)
-      let signiCheckbox  = this.data[index].significance.checkBox.map(x => x.status == true ? 1 : 0)
+      let basicCheckbox = this.data[index].basic.checkBox.map(x =>
+        x.status == true ? 1 : 0
+      );
+      let advanceCheckbox = this.data[index].advance.checkBox.map(x =>
+        x.status == true ? 1 : 0
+      );
+      let signiCheckbox = this.data[index].significance.checkBox.map(x =>
+        x.status == true ? 1 : 0
+      );
 
       // console.log("--")
       // console.log(advanceCheckbox)
       // console.log("--")
       // console.log(signiCheckbox)
 
-// Basic
-let scorePerCheckboxBasic = 300 / basicCheckbox.length
-let scoreBasic = basicCheckbox.filter(x => x == 1)
-scoreBasic = scorePerCheckboxBasic * scoreBasic.length
-// advance
-let scorePerCheckboxAdvance = 100 / advanceCheckbox.length
-let scoreAdvance = advanceCheckbox.filter(x => x == 1)
-scoreAdvance = scorePerCheckboxAdvance * scoreAdvance.length
-// signi
-let scorePerCheckboxSigni = 100 / signiCheckbox.length;
-let scoreSigni = signiCheckbox.filter(x => x == 1)
-scoreSigni = scorePerCheckboxSigni * scoreSigni.length
+      // Basic
+      let scorePerCheckboxBasic = 300 / basicCheckbox.length;
+      let scoreBasic = basicCheckbox.filter(x => x == 1);
+      scoreBasic = scorePerCheckboxBasic * scoreBasic.length;
+      // advance
+      let scorePerCheckboxAdvance = 100 / advanceCheckbox.length;
+      let scoreAdvance = advanceCheckbox.filter(x => x == 1);
+      scoreAdvance = scorePerCheckboxAdvance * scoreAdvance.length;
+      // signi
+      let scorePerCheckboxSigni = 100 / signiCheckbox.length;
+      let scoreSigni = signiCheckbox.filter(x => x == 1);
+      scoreSigni = scorePerCheckboxSigni * scoreSigni.length;
 
-score += scoreBasic
-if(basicCheckbox.every(x => x == 1)){
-  score+= scoreAdvance
-}
- if (advanceCheckbox.every(x => x == 1) && basicCheckbox.every(x => x == 1)){
-  score += scoreSigni
-}
+      score += scoreBasic;
+      if (basicCheckbox.every(x => x == 1)) {
+        score += scoreAdvance;
+      }
+      if (
+        advanceCheckbox.every(x => x == 1) &&
+        basicCheckbox.every(x => x == 1)
+      ) {
+        score += scoreSigni;
+      }
 
-this.data[index].score = score
-this.data[index].status = 0
-this.data.push("")
-this.data.pop()
+      this.data[index].score = score;
+      this.data[index].status = 0;
+      this.data.push("");
+      this.data.pop();
 
-   formData.append("score", score);
-     let checkBox = this.data[index].basic.checkBox;
+      formData.append("score", score);
+      let checkBox = this.data[index].basic.checkBox;
 
-        checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
-     let checkBoxAdvance = this.data[index].advance.checkBox;
+      checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
+      let checkBoxAdvance = this.data[index].advance.checkBox;
 
-          checkBoxAdvance = checkBoxAdvance.map(x =>
-            x.status == true ? 1 : 0
-          );
-   let checkBoxSigni = this.data[index].significance.checkBox;
+      checkBoxAdvance = checkBoxAdvance.map(x => (x.status == true ? 1 : 0));
+      let checkBoxSigni = this.data[index].significance.checkBox;
 
-            checkBoxSigni = checkBoxSigni.map(x => (x.status == true ? 1 : 0));
+      checkBoxSigni = checkBoxSigni.map(x => (x.status == true ? 1 : 0));
 
-            // Check Status
+      // Check Status
 
-            let isCheckBasicAll = !checkBox.includes(0)
-            let isCheckAdvanceAll = !checkBoxAdvance.includes(0)
-            let isCheckSigniAll = !checkBoxSigni.includes(0)
+      let isCheckBasicAll = !checkBox.includes(0);
+      let isCheckAdvanceAll = !checkBoxAdvance.includes(0);
+      let isCheckSigniAll = !checkBoxSigni.includes(0);
 
-            if(isCheckBasicAll){
-              this.data[index].status = 1
-            }
+      if (isCheckBasicAll) {
+        this.data[index].status = 1;
+      }
 
-            if(isCheckBasicAll && isCheckAdvanceAll){
-              this.data[index].status = 2
-            }
+      if (isCheckBasicAll && isCheckAdvanceAll) {
+        this.data[index].status = 2;
+      }
 
-            if(isCheckBasicAll && isCheckAdvanceAll && isCheckSigniAll){
-              this.data[index].status = 3
-            }
-
-
+      if (isCheckBasicAll && isCheckAdvanceAll && isCheckSigniAll) {
+        this.data[index].status = 3;
+      }
 
       // if (no == 1) {
       // save 1.1 basic
       if (mode == "basic") {
         // mode basic
         formData.append("pdf", this.data[index].basic.pdf_file);
-      
+
         let resCheckBox = checkBox.join();
 
         formData.append("check_box", resCheckBox);
         formData.append("text", this.data[index].basic.explain);
         let data = await Axios.post(url, formData);
-
-       
       } else if (mode == "advance") {
         //  mode advance
         formData.append("img", this.data[index].advance.img_file);
@@ -1172,7 +1176,6 @@ this.data.pop()
         formData.append("check_box", resCheckBox);
         formData.append("text", this.data[index].advance.explain);
         let data = await Axios.post(url, formData);
-      
       } else {
         // mode significance
         formData.append("img", this.data[index].significance.img_file);
@@ -1186,13 +1189,12 @@ this.data.pop()
         formData.append("check_box", resCheckBox);
         formData.append("text", this.data[index].significance.explain);
         let data = await Axios.post(url, formData);
-     
       }
 
       this.isSaveData = false;
 
       this.isDelete = false;
-           this.checkPassStatus()
+      this.checkPassStatus();
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
@@ -1215,9 +1217,8 @@ this.data.pop()
             this.data[i - 1].basic.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score
+          this.data[i - 1].score = getData[0].score;
 
-       
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1230,27 +1231,32 @@ this.data.pop()
           x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
+             this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
+          let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+            x => x.status
+          );
 
-          let checkBoxBasic = getDataBasic[0].check_box
-            .split(",")
-            .map(x => (x == 1 ? true : false));
+          if (getDataBasic.length) {
+            checkBoxBasic = getDataBasic[0].check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
             // ผ่าน advance
             this.data[i - 1].status = 2;
           }
-      
+
           for (let j = 0; j < checkBox.length; j++) {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-              this.data[i - 1].score = getData[0].score
+          this.data[i - 1].score = getData[0].score;
 
-      
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1269,18 +1275,28 @@ this.data.pop()
         );
 
         if (getData.length > 0) {
+             this.data[i - 1].status = 0;
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
 
-          let checkBoxBasic = getDataBasic[0].check_box
-            .split(",")
-            .map(x => (x == 1 ? true : false));
-
-          let checkBoxAdvance = getDataAdvance[0].check_box
-            .split(",")
-            .map(x => (x == 1 ? true : false));
+           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+            x => x.status
+          );
+          if (getDataBasic.length) {
+            checkBoxBasic = getDataBasic[0].check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+          let checkBoxAdvance = this.data[i - 1].advance.checkBox.map(
+            x => x.status
+          );
+          if (getDataAdvance.length) {
+            checkBoxAdvance = getDataAdvance[0].check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
 
           if (
             !checkBox.includes(false) &&
@@ -1289,14 +1305,13 @@ this.data.pop()
           ) {
             this.data[i - 1].status = 3;
           }
- 
+
           for (let j = 0; j < checkBox.length; j++) {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-              this.data[i - 1].score = getData[0].score
+          this.data[i - 1].score = getData[0].score;
 
-    
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1322,7 +1337,7 @@ this.data.pop()
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
     },
-  
+
     getPDF(no, mode) {
       let random = Math.random()
         .toString(36)
@@ -1337,8 +1352,7 @@ this.data.pop()
           "?" +
           random
       );
-    },
- 
+    }
   },
 
   created() {
