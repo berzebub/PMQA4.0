@@ -2122,6 +2122,10 @@ export default {
             score: score,
             totalIndicator: totalIndicator,
           });
+
+
+           this.data[index].question[i].score[j] = score
+
         }
       }
 
