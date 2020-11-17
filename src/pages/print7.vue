@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="float-right q-pa-md">
+    <div class="float-right q-pa-md" v-if="$route.name != 'printAll'">
       <q-btn
         class="printBtn"
         icon="fas fa-print"
@@ -13,6 +13,7 @@
     <!-- Page A4 -->
     <div class="page-A4 relative-position q-pa-md">
       <div
+        v-if="$route.name != 'printAll'"
         class="absolute-right text-h7 printDate"
         style="right:15px;top:10px;"
       >
@@ -29,7 +30,7 @@
 
       <div
         class="q-mt-md"
-        :class="index == 0 ? 'q-mt-xl' : 'q-mt-lg'"
+        :class="index == 0 ? 'q-mt-lg' : 'q-mt-md'"
         v-for="(item, index) in data"
         :key="index"
       >
@@ -1770,7 +1771,6 @@ export default {
   min-height: 297mm;
   max-height: fit-content;
   margin: auto;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .table {
@@ -1808,10 +1808,6 @@ export default {
 
   .space-top {
     padding-top: 20px;
-  }
-
-  .page-A4 {
-    box-shadow: 0 0 0px 0px rgba(0, 0, 0, 0);
   }
 }
 </style>
