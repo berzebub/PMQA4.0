@@ -33,18 +33,28 @@
             <td align="center" class="q-pa-sm">ยกเลิกการส่ง</td>
             <td align="center" class="q-pa-sm">รายละเอียด</td>
           </tr>
-          <tr v-for="(item,index) in officeData" :key="index">
+          <tr v-for="(item, index) in officeData" :key="index">
             <td align="left" class="q-pa-sm">
               <div class="q-pl-lg">{{ item.office }}</div>
             </td>
-            <td align="center" class="q-pa-sm">{{ item.send_assessment_date }}</td>
-            <td align="center" class="q-pa-sm" v-html="item.office_score"></td>
-            <td align="center" class="q-pa-sm" v-html="item.assessor_score"></td>
             <td align="center" class="q-pa-sm">
-              <u class="cursor-pointer" @click="resetAssessment(item)">ยกเลิกการส่ง</u>
+              {{ item.send_assessment_date }}
+            </td>
+            <td align="center" class="q-pa-sm" v-html="item.office_score"></td>
+            <td
+              align="center"
+              class="q-pa-sm"
+              v-html="item.assessor_score"
+            ></td>
+            <td align="center" class="q-pa-sm">
+              <u class="cursor-pointer" @click="resetAssessment(item)"
+                >ยกเลิกการส่ง</u
+              >
             </td>
             <td align="center" class="q-pa-sm">
-              <u class="cursor-pointer" >รายละเอียด</u>
+              <u @click="routeToDetails(item.userId)" class="cursor-pointer"
+                >รายละเอียด</u
+              >
             </td>
           </tr>
         </table>
@@ -53,15 +63,20 @@
     <q-dialog v-model="isShowDialogConfirmReset">
       <q-card>
         <q-card-section align="center">
-          <span  style="font-size:30px">ยกเลิกการส่ง</span>
-          
-          <div class='font-18 q-py-md'> 
-          คุณต้องการยกเลิกการส่งของ {{ officeNameTemp }} ใช่หรือไม่?
+          <span style="font-size:30px">ยกเลิกการส่ง</span>
+
+          <div class="font-18 q-py-md">
+            คุณต้องการยกเลิกการส่งของ {{ officeNameTemp }} ใช่หรือไม่?
           </div>
-          </q-card-section>
-        <q-card-actions align="center" class='q-pb-md'>
-          <q-btn style="width:150px"  v-close-popup label="ยกเลิก"></q-btn>
-          <q-btn style="width:150px" color="teal" label="ตกลง" @click="confirmReset()"></q-btn>
+        </q-card-section>
+        <q-card-actions align="center" class="q-pb-md">
+          <q-btn style="width:150px" v-close-popup label="ยกเลิก"></q-btn>
+          <q-btn
+            style="width:150px"
+            color="teal"
+            label="ตกลง"
+            @click="confirmReset()"
+          ></q-btn>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -75,7 +90,7 @@ import Axios from "axios";
 import myFooter from "../../components/footer";
 export default {
   components: {
-    myFooter,
+    myFooter
   },
   data() {
     return {
@@ -84,17 +99,21 @@ export default {
       officeData: "",
       isShowDialogConfirmReset: false,
       officeNameTemp: "",
-      activeUserId: "",
+      activeUserId: ""
     };
   },
   methods: {
+    routeToDetails(userId) {
+      this.$q.sessionStorage.set("aid",userId)
+      this.$router.push("/assessor/stepMain/" + userId);
+    },
     toDetails(userId) {
-      this.$router.push("/assessor/details/" + userId)
+      this.$router.push("/assessor/score/" + userId);
     },
     async confirmReset() {
       let postData = {
         user_id: this.activeUserId,
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
       const url = this.apiPath + "/resetAssessment.php";
       let data = await Axios.post(url, postData);
@@ -102,7 +121,7 @@ export default {
       this.$q.notify({
         message: "ยกเลิกการส่งสำเร็จ",
         position: "bottom",
-        color: "secondary",
+        color: "secondary"
       });
       this.isShowDialogConfirmReset = false;
     },
@@ -113,14 +132,14 @@ export default {
     },
 
     async getAssessmentData() {
-      this.loadingShow()
+      this.loadingShow();
       const url = this.apiPath + "user/getAllUser.php";
       let data = await Axios.get(url);
       data = data.data.sort((a, b) => (a.username > b.username ? 1 : -1));
 
       const getAssessmentAPI = this.apiPath + "getAssessmentLog.php";
       let postAssessmentData = {
-        year: this.yearSelected - 543,
+        year: this.yearSelected - 543
       };
       let assessmentLog = await Axios.post(
         getAssessmentAPI,
@@ -131,12 +150,11 @@ export default {
 
       let temp = [];
       data.forEach((element, index) => {
-        let filterData = assessmentLog.filter(
-          (x) => x.user_id == element.id
-        )[0];
+        let filterData = assessmentLog.filter(x => x.user_id == element.id)[0];
 
         let officeScore = "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
-        let assessorScore = "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
+        let assessorScore =
+          "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
         let assessmentDate = "-";
         if (filterData) {
           officeScore = filterData.office_score;
@@ -150,7 +168,8 @@ export default {
             "/" +
             getAssessmentDate[0];
           if (assessorScore == "-1") {
-            assessorScore = "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
+            assessorScore =
+              "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
           }
         }
         temp.push({
@@ -158,12 +177,12 @@ export default {
           office: element.office,
           send_assessment_date: assessmentDate,
           office_score: officeScore,
-          assessor_score: assessorScore,
+          assessor_score: assessorScore
         });
       });
       this.officeData = temp;
-      this.loadingHide()
-    },
+      this.loadingHide();
+    }
   },
   created() {
     let assessmentYear = this.$q.sessionStorage.getItem("y") + 543;
@@ -174,7 +193,7 @@ export default {
     }
     this.yearOptions = tempYear;
     this.getAssessmentData();
-  },
+  }
 };
 </script>
 

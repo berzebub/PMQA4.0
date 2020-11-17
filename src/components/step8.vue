@@ -2055,7 +2055,7 @@ export default {
         } else if (score > 105) {
           result = 500;
         }
-        return result != 0 ? result : 0;
+        return result != 0 ? parseInt(result) : 0;
       } else {
         return -1;
       }
