@@ -53,7 +53,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category0 == '0' || currentStep == ''"
+                        :disable="currentStep.category0 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         round
@@ -116,7 +116,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category1 == '0' || currentStep == ''"
+                        :disable="currentStep.category1 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(1)"
@@ -179,7 +179,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category2 == '0' || currentStep == ''"
+                        :disable="currentStep.category2 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(2)"
@@ -242,7 +242,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category3 == '0' || currentStep == ''"
+                        :disable="currentStep.category3 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(3)"
@@ -312,7 +312,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category4 == '0' || currentStep == ''"
+                        :disable="currentStep.category4 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(4)"
@@ -375,7 +375,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category5 == '0' || currentStep == ''"
+                        :disable="currentStep.category5 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(5)"
@@ -438,7 +438,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category6 == '0' || currentStep == ''"
+                        :disable="currentStep.category6 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(6)"
@@ -501,7 +501,7 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category7 == '0' || currentStep == ''"
+                        :disable="currentStep.category7 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(7)"
