@@ -26,10 +26,17 @@
                 </div>
                 <q-space></q-space>
                 <div class="col-3 self-center q-px-xl " style="width:250px;">
-                  <div style="width:180px;" :class="{'border-green' : item.a_score != '-1','border-grey' : item.a_score == '-1'}" align="center">
-                   {{ item.score }} / <span v-if="item.a_score !='-1'">{{ item.a_score }}
-                     </span>
-                     <span v-else>-</span>
+                  <div
+                    style="width:180px;"
+                    :class="{
+                      'border-green': item.a_score != '-1',
+                      'border-grey': item.a_score == '-1'
+                    }"
+                    align="center"
+                  >
+                    {{ item.score }} /
+                    <span v-if="item.a_score != '-1'">{{ item.a_score }} </span>
+                    <span v-else>-</span>
                   </div>
                 </div>
               </div>
@@ -91,6 +98,7 @@
                         color="teal"
                         icon="fas fa-file-pdf"
                         label="PDF"
+                        @click="getPDF(item.no, 'basic')"
                       ></q-btn>
                     </div>
                   </div>
@@ -197,6 +205,7 @@
                         color="teal"
                         icon="fas fa-file-pdf"
                         label="PDF"
+                        @click="getPDF(item.no, 'advance')"
                       ></q-btn>
                     </div>
                   </div>
@@ -304,6 +313,7 @@
                         color="teal"
                         icon="fas fa-file-pdf"
                         label="PDF"
+                        @click="getPDF(item.no, 'significance')"
                       ></q-btn>
                     </div>
                   </div>
@@ -369,6 +379,15 @@
                   </div>
                 </div>
               </div>
+              <q-card-actions align="center">
+                <q-btn
+                  @click="saveData(item.no)"
+                  color="teal"
+                  style="width:180px"
+                  class="font-18"
+                  label="บันทึก"
+                ></q-btn>
+              </q-card-actions>
             </q-card>
           </q-expansion-item>
         </q-list>
@@ -719,6 +738,9 @@ export default {
     };
   },
   methods: {
+    saveAssessment(no) {
+      console.log(no);
+    },
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;
@@ -788,43 +810,34 @@ export default {
       this.$emit("statusForm");
     },
 
-    async saveData(no, mode) {
+    async saveData(no) {
       console.clear();
 
       // this.isSaveData = true;
 
       let index = no - 1;
       let score = 0;
-      const url = this.apiPath + "user/addUpdateCategory1_6.php";
-      const userId = this.$q.sessionStorage.getItem("uid");
+      const url = this.apiPath + "updateScoreAssessment.php";
+      const userId = this.$q.sessionStorage.getItem("aid");
       const year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
 
-      formData.append("user_id", userId);
-      formData.append("q_number", no);
-      formData.append("mode", mode);
-      formData.append("year", year);
-      formData.append("step", 1);
-
-      let basicCheckbox = this.data[index].basic.checkBox.map(x =>
-        x.status == true ? 1 : 0
-      );
-      let advanceCheckbox = this.data[index].advance.checkBox.map(x =>
-        x.status == true ? 1 : 0
-      );
-      let signiCheckbox = this.data[index].significance.checkBox.map(x =>
-        x.status == true ? 1 : 0
+      let basicCheckbox = this.data[index].basic.checkBox_a.map(x =>
+        x == true ? 1 : 0
       );
 
-      // console.log("--")
-      // console.log(advanceCheckbox)
-      // console.log("--")
-      // console.log(signiCheckbox)
+      let advanceCheckbox = this.data[index].advance.checkBox_a.map(x =>
+        x == true ? 1 : 0
+      );
+      let signiCheckbox = this.data[index].significance.checkBox_a.map(x =>
+        x == true ? 1 : 0
+      );
 
       // Basic
       let scorePerCheckboxBasic = 300 / basicCheckbox.length;
       let scoreBasic = basicCheckbox.filter(x => x == 1);
       scoreBasic = scorePerCheckboxBasic * scoreBasic.length;
+
       // advance
       let scorePerCheckboxAdvance = 100 / advanceCheckbox.length;
       let scoreAdvance = advanceCheckbox.filter(x => x == 1);
@@ -835,6 +848,7 @@ export default {
       scoreSigni = scorePerCheckboxSigni * scoreSigni.length;
 
       score += scoreBasic;
+
       if (basicCheckbox.every(x => x == 1)) {
         score += scoreAdvance;
       }
@@ -845,83 +859,30 @@ export default {
         score += scoreSigni;
       }
 
-      this.data[index].score = score;
-      this.data[index].status = 0;
-      this.data.push("");
-      this.data.pop();
+      // console.log(scoreBasic);
+      console.log(scoreAdvance);
+      // console.log(scoreSigni);
 
-      formData.append("score", score);
-      let checkBox = this.data[index].basic.checkBox;
-
-      checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
-      let checkBoxAdvance = this.data[index].advance.checkBox;
-
-      checkBoxAdvance = checkBoxAdvance.map(x => (x.status == true ? 1 : 0));
-      let checkBoxSigni = this.data[index].significance.checkBox;
-
-      checkBoxSigni = checkBoxSigni.map(x => (x.status == true ? 1 : 0));
-
-      // Check Status
-
-      let isCheckBasicAll = !checkBox.includes(0);
-      let isCheckAdvanceAll = !checkBoxAdvance.includes(0);
-      let isCheckSigniAll = !checkBoxSigni.includes(0);
-
-      if (isCheckBasicAll) {
-        this.data[index].status = 1;
-      }
-
-      if (isCheckBasicAll && isCheckAdvanceAll) {
-        this.data[index].status = 2;
-      }
-
-      if (isCheckBasicAll && isCheckAdvanceAll && isCheckSigniAll) {
-        this.data[index].status = 3;
-      }
-
-      // if (no == 1) {
-      // save 1.1 basic
-      if (mode == "basic") {
-        // mode basic
-        formData.append("pdf", this.data[index].basic.pdf_file);
-
-        let resCheckBox = checkBox.join();
-
-        formData.append("check_box", resCheckBox);
-        formData.append("text", this.data[index].basic.explain);
-        let data = await Axios.post(url, formData);
-      } else if (mode == "advance") {
-        //  mode advance
-        formData.append("img", this.data[index].advance.img_file);
-        formData.append("pdf", this.data[index].advance.pdf_file);
-        let checkBox = this.data[index].advance.checkBox;
-
-        checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
-
-        let resCheckBox = checkBox.join();
-
-        formData.append("check_box", resCheckBox);
-        formData.append("text", this.data[index].advance.explain);
-        let data = await Axios.post(url, formData);
-      } else {
-        // mode significance
-        formData.append("img", this.data[index].significance.img_file);
-        formData.append("pdf", this.data[index].significance.pdf_file);
-        let checkBox = this.data[index].significance.checkBox;
-
-        checkBox = checkBox.map(x => (x.status == true ? 1 : 0));
-
-        let resCheckBox = checkBox.join();
-
-        formData.append("check_box", resCheckBox);
-        formData.append("text", this.data[index].significance.explain);
-        let data = await Axios.post(url, formData);
-      }
-
-      this.isSaveData = false;
-
-      this.isDelete = false;
-      this.checkPassStatus();
+      // console.log(score);
+      formData.append("user_id", userId);
+      formData.append("q_number", no);
+      formData.append("year", year);
+      formData.append("step", 1);
+      formData.append("a_score", score);
+      formData.append("suggesstion_basic", this.data[index].basic.suggesstion);
+      formData.append(
+        "suggesstion_advance",
+        this.data[index].advance.suggesstion
+      );
+      formData.append(
+        "suggesstion_significance",
+        this.data[index].significance.suggesstion
+      );
+      formData.append("basic_checkbox", basicCheckbox.join());
+      formData.append("advance_checkbox", advanceCheckbox.join());
+      formData.append("significance_checkbox", signiCheckbox.join());
+      let data = await Axios.post(url, formData);
+      this.data[index].a_score = score;
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
@@ -945,7 +906,15 @@ export default {
           }
 
           this.data[i - 1].score = getData[0].score;
-          this.data[i-1].a_score = getData[0].a_score
+          this.data[i - 1].a_score = getData[0].a_score;
+
+          if (getData[0].a_check_box) {
+            this.data[i - 1].basic.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].basic.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -958,6 +927,7 @@ export default {
         let getDataBasic = data.filter(
           x => x.q_number == i && x.mode == "basic"
         );
+
         if (getData.length > 0) {
           this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
@@ -983,8 +953,13 @@ export default {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
-          this.data[i-1].a_score = getData[0].a_score
+          if (getData[0].a_check_box) {
+            this.data[i - 1].advance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].advance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -1039,7 +1014,15 @@ export default {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[
+              i - 1
+            ].significance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].significance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -1057,7 +1040,6 @@ export default {
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
-      console.log(data.data);
       if (data.data) {
         this.getBasic(data.data);
         this.getAdvance(data.data);
@@ -1087,7 +1069,7 @@ export default {
         .toString(36)
         .substring(7);
       let pdfFileName = `${this.$q.sessionStorage.getItem(
-        "uid"
+        "aid"
       )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
       window.open(
@@ -1107,10 +1089,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.border-green{
-  border:2px solid teal
+.border-green {
+  border: 2px solid teal;
 }
 .border-grey {
-  border:2px solid #E5E5E5
+  border: 2px solid #e5e5e5;
 }
 </style>

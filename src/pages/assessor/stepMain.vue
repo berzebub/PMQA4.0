@@ -3,7 +3,6 @@
     <div
       class="col-10 row self-center q-pa-md"
       style="width: 850px"
-      v-if="isShowStepper"
     >
       <div class="col">
         <!-- Set Top -->
