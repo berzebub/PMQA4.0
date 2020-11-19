@@ -8,7 +8,7 @@
               round
               push
               class="q-pa-sm bg3"
-              @click="$router.push('/assessor/main')"
+              @click="$router.push('/assessor/stepMain/' + aid)"
             >
               <q-icon name="fas fa-home" color="teal"></q-icon>
             </q-btn>
@@ -24,7 +24,7 @@
               push
               class="q-pa-sm"
               :class="active == 1 ? 'bg1' : 'bg3'"
-              @click="active = 1,route('-1')"
+              @click="(active = 1), route('-1')"
             >
               <q-icon
                 name="fas fa-flag"
@@ -264,7 +264,7 @@
         </div>
       </transition>
 
-  <transition
+      <transition
         appear
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
@@ -274,7 +274,7 @@
         </div>
       </transition>
 
-       <transition
+      <transition
         appear
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
@@ -284,7 +284,7 @@
         </div>
       </transition>
 
-         <transition
+      <transition
         appear
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
@@ -372,6 +372,7 @@ export default {
   },
   data() {
     return {
+      aid: this.$q.sessionStorage.getItem("aid"),
       active: Number(this.$route.params.step) + 1,
       statusForm1: "none",
       statusForm2: "none",
