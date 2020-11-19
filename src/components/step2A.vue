@@ -74,12 +74,6 @@
                           Basic
                         </div>
                         &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
                       </div>
 
                       <div class="q-mt-md">
@@ -144,7 +138,6 @@
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
                         v-html="item.basic.explain"
-
                       ></div>
                     </div>
                   </div>
@@ -182,12 +175,6 @@
                           Advance
                         </div>
                         &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
                       </div>
 
                       <div class="q-mt-md">
@@ -252,7 +239,6 @@
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
                         v-html="item.advance.explain"
-
                       ></div>
                     </div>
                   </div>
@@ -291,12 +277,6 @@
                           Significance
                         </div>
                         &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
                       </div>
 
                       <div class="q-mt-md">
@@ -360,11 +340,10 @@
                           ></div>
                         </div>
                       </div>
-                       <div
+                      <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
                         v-html="item.significance.explain"
-
                       ></div>
                     </div>
                   </div>
@@ -877,7 +856,7 @@ export default {
       formData.append("basic_checkbox", basicCheckbox.join());
       formData.append("advance_checkbox", advanceCheckbox.join());
       formData.append("significance_checkbox", signiCheckbox.join());
-      formData.append("category","a_category1_score")
+      formData.append("category", "a_category1_score");
       let data = await Axios.post(url, formData);
       this.data[index].a_score = score;
     },

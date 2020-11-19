@@ -73,13 +73,7 @@
                         >
                           Basic
                         </div>
-                        &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
+                        
                       </div>
 
                       <div class="q-mt-md">
@@ -180,13 +174,7 @@
                         >
                           Advance
                         </div>
-                        &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
+                        
                       </div>
 
                       <div class="q-mt-md">
@@ -288,13 +276,7 @@
                         >
                           Significance
                         </div>
-                        &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
+                        
                       </div>
 
                       <div class="q-mt-md">

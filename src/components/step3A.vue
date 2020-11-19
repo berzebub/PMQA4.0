@@ -73,13 +73,6 @@
                         >
                           Basic
                         </div>
-                        &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
                       </div>
 
                       <div class="q-mt-md">
@@ -180,13 +173,6 @@
                         >
                           Advance
                         </div>
-                        &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
                       </div>
 
                       <div class="q-mt-md">
@@ -288,13 +274,6 @@
                         >
                           Significance
                         </div>
-                        &nbsp;
-                        <q-icon
-                          size="28px"
-                          class="cursor-pointer"
-                          color="teal"
-                          name="fas fa-question-circle"
-                        ></q-icon>
                       </div>
 
                       <div class="q-mt-md">
@@ -440,7 +419,7 @@ export default {
                 status: false
               }
             ],
-            checkBox_a: [false, false, false,false],
+            checkBox_a: [false, false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
