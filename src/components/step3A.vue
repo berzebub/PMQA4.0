@@ -440,7 +440,7 @@ export default {
                 status: false
               }
             ],
-            checkBox_a: [false, false, false],
+            checkBox_a: [false, false, false,false],
             explain: "",
             pdf_file: null,
             img_file: null
