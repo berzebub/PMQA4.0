@@ -355,7 +355,7 @@ import stepFour from "../../components/step4A";
 import stepFive from "../../components/step5A";
 import stepSix from "../../components/step6A";
 import stepSeven from "../../components/step7A";
-import stepEight from "../../components/step8";
+import stepEight from "../../components/step8A";
 import stepFooter from "../../components/footer";
 import Axios from "axios";
 export default {
