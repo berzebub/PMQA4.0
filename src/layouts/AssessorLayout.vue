@@ -13,7 +13,9 @@
               }"
             >
               <span v-if="assessmentStatus == '0'">
-                <span v-show="$q.sessionStorage.getItem('p') == 2">ปิดการประเมิน</span>
+                <span v-show="$q.sessionStorage.getItem('p') == 2"
+                  >ปิดการประเมิน</span
+                >
               </span>
               <span v-else>วันสิ้นสุดการประเมิน : {{ endDate }}</span>
             </span>
@@ -21,26 +23,22 @@
         </div>
         <div class="row bg2 justify-end container-header relative-position">
           <div
-            v-if="$route.name == 'assessorDetails'"
-            class="col-1 self-center q-px-md"
+            class="col-1 self-center "
             align="right"
-            style="width: 170px;"
           >
             <q-btn
-              style="width: 163px;"
               dense
               outline
               padding="0"
-              class="text-black bg-white relative-position z-top font-18"
+              flat
+              class="text-black relative-position z-top font-18"
               @click="$router.push('/assessor/main')"
             >
-              <q-icon size="20px" name="fas fa-home"></q-icon>
-              <span class="q-pl-sm">หน้าหลัก</span>
+              <q-icon size="30px" name="fas fa-home"></q-icon>
             </q-btn>
           </div>
           <div
-            v-if="$route.name == 'assessorMain' || $route.name == 'assessorDetails'"
-            class="col-1 self-center q-px-md"
+            class="col-1 self-center q-pl-md"
             align="right"
             style="width: 170px;"
           >
@@ -50,14 +48,22 @@
               :outline="$route.name == 'assessorMain'"
               padding="0"
               class="relative-position z-top font-18"
-              :class="$route.name == 'assessorMain' ? 'bg-white text-black' : 'bg-pink text-white border-black '"
+              :class="
+                $route.name == 'assessorDetails'
+                  ? ' bg-pink text-white border-black'
+                  : ' bg-white text-black'
+              "
               @click="$router.push('/assessor/details')"
             >
               <q-icon size="20px" name="fas fa-sort-amount-down-alt"></q-icon>
               <span class="q-pl-sm">ผลคะแนน</span>
             </q-btn>
           </div>
-          <div class="col-1 self-center q-px-md" align="right" style="width: 200px;">
+          <div
+            class="col-1 self-center q-px-md"
+            align="right"
+            style="width: 200px;"
+          >
             <q-btn
               style="width: 163px;"
               dense
@@ -66,7 +72,8 @@
               class="text-black bg-white relative-position z-top font-18"
               @click="isShowLogoutDialog = true"
             >
-              <q-icon name="fas fa-sign-out-alt" size="sm"></q-icon>&nbsp;ออกจากระบบ
+              <q-icon name="fas fa-sign-out-alt" size="sm"></q-icon
+              >&nbsp;ออกจากระบบ
             </q-btn>
           </div>
         </div>
@@ -80,8 +87,12 @@
       <router-view />
       <q-dialog v-model="isShowLogoutDialog">
         <q-card class="q-pa-sm" style="width:450px">
-          <q-card-section class="font-24" align="center">ออกจากระบบ</q-card-section>
-          <q-card-section class="font-18" align="center">คุณต้องการออกจากระบบใช่หรือไหม?</q-card-section>
+          <q-card-section class="font-24" align="center"
+            >ออกจากระบบ</q-card-section
+          >
+          <q-card-section class="font-18" align="center"
+            >คุณต้องการออกจากระบบใช่หรือไหม?</q-card-section
+          >
           <q-card-actions align="center" class="q-mt-md q-mb-md">
             <q-btn
               label="ยกเลิก"
@@ -113,7 +124,7 @@ export default {
       isShowLogoutDialog: false,
       leftDrawerOpen: false,
       endDate: "",
-      assessmentStatus: false,
+      assessmentStatus: false
     };
   },
   methods: {
@@ -138,11 +149,11 @@ export default {
     confirmLogOut() {
       this.$q.sessionStorage.clear();
       this.$router.push("/");
-    },
+    }
   },
   created() {
     this.getAssessmentDate();
-  },
+  }
 };
 </script>
 

@@ -84,11 +84,7 @@ const routes = [
         component: () => import("pages/stepper.vue"),
         name: "stepper"
       },
-      {
-        path: "assessor/stepper/:step",
-        component: () => import("pages/assessor/stepper.vue"),
-        name: "stepper"
-      },
+     
 
       //type 0 = ส่งแบบประเมินแล้ว
       // type 1  = หมดเวลา
@@ -125,6 +121,11 @@ const routes = [
         path: "/assessor/main",
         component: () => import("pages/assessor/main.vue"),
         name: "assessorMain"
+      },
+      {
+        path: "assessor/stepper/:step",
+        component: () => import("pages/assessor/stepper.vue"),
+        name: "stepper"
       },
       {
         path: "/assessor/details",

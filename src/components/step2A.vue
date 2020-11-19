@@ -104,8 +104,8 @@
                   </div>
                   <!-- checkbox -->
                   <div class="col-6" style="border-right:1px solid #e0e0e0">
-                    <div class="q-pa-sm font-18">
-                      <div class="q-mt-sm">
+                    <div class="q-pa-sm font-18 row fit">
+                      <div class="q-mt-sm row col-12">
                         <div
                           class="row"
                           v-for="(checkbox, index3) in item.basic.checkBox"
@@ -141,21 +141,22 @@
                         </div>
                       </div>
                       <div
-                        class="q-pa-md"
-                        style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;min-height:100px"
+                        class="q-pa-md col self-end"
+                        style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
                         v-html="item.basic.explain"
+
                       ></div>
                     </div>
                   </div>
                   <!-- ข้อเสนอแนะ -->
                   <div class="col-3 q-px-md ">
-                    <div class="q-my-md">
+                    <div class="q-my-md q-pt-sm ">
                       <q-input
                         v-model="item.basic.suggesstion"
                         outlined=""
                         placeholder="ข้อเสนอแนะ"
                         type="textarea"
-                        rows="17"
+                        input-style="height:300px"
                       />
                     </div>
                   </div>
@@ -211,8 +212,8 @@
                   </div>
                   <!-- checkbox -->
                   <div class="col-6" style="border-right:1px solid #e0e0e0">
-                    <div class="q-pa-sm font-18">
-                      <div class="q-mt-sm">
+                    <div class="q-pa-sm font-18 row  fit">
+                      <div class="q-mt-sm col-12">
                         <div
                           class="row"
                           v-for="(checkbox, index3) in item.advance.checkBox"
@@ -248,21 +249,22 @@
                         </div>
                       </div>
                       <div
-                        class="q-pa-md"
-                        style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;min-height:100px"
+                        class="q-pa-md col self-end"
+                        style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
                         v-html="item.advance.explain"
+
                       ></div>
                     </div>
                   </div>
                   <!-- ข้อเสนอแนะ -->
-                  <div class="col-3 q-px-md ">
-                    <div class="q-my-md">
+                  <div class="col-3 q-px-md">
+                    <div class="q-my-md ">
                       <q-input
                         v-model="item.advance.suggesstion"
                         outlined=""
                         placeholder="ข้อเสนอแนะ"
                         type="textarea"
-                        rows="17"
+                        input-style="height:300px"
                       />
                     </div>
                   </div>
@@ -279,8 +281,8 @@
                     class="col-3 relative-position"
                     style="border-right:1px solid #e0e0e0"
                   >
-                    <div class="q-pa-md font-18 q-mb-sm">
-                      <div class="row items-center">
+                    <div class="q-pa-md font-18 q-mb-sm ">
+                      <div class="row items-center ">
                         <div
                           style="border:1px solid black;border-radius:5px;width:130px"
                           align="center"
@@ -319,8 +321,8 @@
                   </div>
                   <!-- checkbox -->
                   <div class="col-6" style="border-right:1px solid #e0e0e0">
-                    <div class="q-pa-sm font-18">
-                      <div class="q-mt-sm">
+                    <div class="q-pa-sm font-18 row fit">
+                      <div class="q-mt-sm col-12">
                         <div
                           class="row"
                           v-for="(checkbox, index3) in item.significance
@@ -358,10 +360,11 @@
                           ></div>
                         </div>
                       </div>
-                      <div
-                        class="q-pa-md"
-                        style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;min-height:100px"
+                       <div
+                        class="q-pa-md col self-end"
+                        style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
                         v-html="item.significance.explain"
+
                       ></div>
                     </div>
                   </div>
@@ -373,12 +376,13 @@
                         outlined=""
                         placeholder="ข้อเสนอแนะ"
                         type="textarea"
-                        rows="17"
+                        input-style="height:300px"
                       />
                     </div>
                   </div>
                 </div>
               </div>
+              <q-separator></q-separator>
               <q-card-actions align="center">
                 <q-btn
                   @click="saveData(item.no)"
@@ -813,8 +817,6 @@ export default {
     async saveData(no) {
       console.clear();
 
-      // this.isSaveData = true;
-
       let index = no - 1;
       let score = 0;
       const url = this.apiPath + "updateScoreAssessment.php";
@@ -858,12 +860,6 @@ export default {
       ) {
         score += scoreSigni;
       }
-
-      // console.log(scoreBasic);
-      console.log(scoreAdvance);
-      // console.log(scoreSigni);
-
-      // console.log(score);
       formData.append("user_id", userId);
       formData.append("q_number", no);
       formData.append("year", year);
@@ -881,6 +877,7 @@ export default {
       formData.append("basic_checkbox", basicCheckbox.join());
       formData.append("advance_checkbox", advanceCheckbox.join());
       formData.append("significance_checkbox", signiCheckbox.join());
+      formData.append("category","a_category1_score")
       let data = await Axios.post(url, formData);
       this.data[index].a_score = score;
     },
