@@ -284,7 +284,7 @@
         </div>
       </transition>
 
-       <!--   <transition
+         <transition
         appear
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
@@ -340,7 +340,7 @@
         <div v-show="active == 8">
           <step-eight @statusForm="getStepperLog()"></step-eight>
         </div>
-      </transition> -->
+      </transition>
     </div>
 
     <step-footer></step-footer>
@@ -351,10 +351,10 @@
 import stepOne from "../../components/step1A";
 import stepTwo from "../../components/step2A";
 import stepThree from "../../components/step3A";
-import stepFour from "../../components/step4";
-import stepFive from "../../components/step5";
-import stepSix from "../../components/step6";
-import stepSeven from "../../components/step7";
+import stepFour from "../../components/step4A";
+import stepFive from "../../components/step5A";
+import stepSix from "../../components/step6A";
+import stepSeven from "../../components/step7A";
 import stepEight from "../../components/step8";
 import stepFooter from "../../components/footer";
 import Axios from "axios";
