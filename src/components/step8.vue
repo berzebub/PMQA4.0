@@ -560,7 +560,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -610,7 +610,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -659,7 +659,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -708,7 +708,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -758,7 +758,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -815,7 +815,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -864,7 +864,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -913,7 +913,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -962,7 +962,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1012,7 +1012,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1070,7 +1070,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1121,7 +1121,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1171,7 +1171,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1220,7 +1220,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1269,7 +1269,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1326,7 +1326,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1376,7 +1376,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1428,7 +1428,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1478,7 +1478,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1527,7 +1527,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1585,7 +1585,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1636,7 +1636,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1685,7 +1685,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1734,7 +1734,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1783,7 +1783,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1841,7 +1841,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1890,7 +1890,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1940,7 +1940,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1990,7 +1990,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -2039,7 +2039,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true,true,true,true,true,],
               goalCurrentYear: [],
               unit: [],
               result: [
