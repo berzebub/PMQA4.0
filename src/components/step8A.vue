@@ -172,14 +172,18 @@
                 >
                   <div>
                     <q-btn
-                      label="เหมาะสม"
-                      class="full-width text-teal"
+                      :label="
+                        item.question[indexSub].a_assesment[indexResult]
+                          ? 'เหมาะสม'
+                          : 'ไม่เหมาะสม'
+                      "
+                      class="full-width"
                       :class="
-                        !item.question[indexSub].a_assesment
+                        !item.question[indexSub].a_assesment[indexResult]
                           ? 'text-red'
                           : 'text-teal'
                       "
-                      @click="assesment(item.no, sub.subNo, indexResult)"
+                      @click="assesment(index, indexSub, indexResult)"
                       dense
                       outline
                     ></q-btn>
@@ -189,11 +193,23 @@
                       type="textarea"
                       input-style="height:345px;"
                       outlined
+                      v-model="
+                        item.question[indexSub].a_suggestion[indexResult]
+                      "
                     />
                   </div>
                 </div>
                 <div class="q-pa-sm border" style="width: 120px" align="center">
-                  <div><q-input outlined="" dense mask="###" /></div>
+                  <div>
+                    <q-input
+                      outlined=""
+                      dense
+                      mask="###"
+                      v-model="
+                        item.question[indexSub].a_successpercent[indexResult]
+                      "
+                    />
+                  </div>
                 </div>
                 <div class="q-pa-md border" style="width: 90px" align="center">
                   <span
@@ -549,7 +565,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -599,7 +615,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -648,7 +664,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -697,7 +713,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -747,7 +763,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -804,7 +820,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -853,7 +869,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -902,7 +918,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -951,7 +967,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1001,7 +1017,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1059,7 +1075,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1110,7 +1126,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1160,7 +1176,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1209,7 +1225,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1258,7 +1274,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1315,7 +1331,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1365,7 +1381,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1417,7 +1433,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1467,7 +1483,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1516,7 +1532,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1574,7 +1590,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1625,7 +1641,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1674,7 +1690,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1723,7 +1739,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1772,7 +1788,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1830,7 +1846,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1879,7 +1895,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1929,7 +1945,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1979,7 +1995,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -2028,7 +2044,7 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [false, false, false, false, false],
+              a_assesment: [true, true, true, true, true],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -2075,9 +2091,11 @@ export default {
   },
   methods: {
     assesment(no, subNo, index) {
-      this.data[no].question[subNo].assesment[index] = !this.data[no].question[
-        subNo
-      ].assesment[index];
+      this.data[no].question[subNo].a_assesment[index] = !this.data[no]
+        .question[subNo].a_assesment[index];
+
+      this.data[no].question[subNo].a_assesment.push("");
+      this.data[no].question[subNo].a_assesment.pop();
     },
     showDialog(index) {
       console.log(index);
@@ -2189,11 +2207,10 @@ export default {
       this.$emit("statusForm");
     },
     async saveCategory7(q_number) {
-      this.calAvgScore(q_number);
       let index = q_number - 1;
       const url = this.apiPath + "user/addUpdateCategory7.php";
       let postData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("aid"),
         q_number: q_number,
         status: this.data[index].status,
         json: JSON.stringify(this.data[index].question),
@@ -2202,98 +2219,6 @@ export default {
       };
 
       let data = await Axios.post(url, postData);
-      this.checkPassStatus();
-    },
-    calAvgScore(q_number) {
-      // if (q_number == 1) {
-      // 7.1 จำเป็นข้อ 1
-      // console.log(this.data[q_number - 1].question[0]);
-      let index = q_number - 1;
-
-      let scoreTemp = [];
-      for (let i = 0; i < 5; i++) {
-        let totalIndicator = this.data[index].question[i].numberOfIndicators;
-
-        for (let j = 0; j < totalIndicator; j++) {
-          let goal = this.data[index].question[i].goalCurrentYear[j];
-          let result = this.data[index].question[i].result[j][this.currentYear];
-          let type = this.data[index].question[i].scoreStandard[j];
-          let success_rate = this.calculateSuccessRate(result, goal, type);
-          let score = this.calculateScore(success_rate);
-          scoreTemp.push({
-            no: i + 1,
-            score: score,
-            totalIndicator: totalIndicator
-          });
-
-          this.data[index].question[i].score[j] = score;
-        }
-      }
-
-      for (let i = 0; i < 5; i++) {
-        let filt = scoreTemp.filter(x => x.no == i + 1);
-
-        let length = filt.length;
-
-        let avg = filt.map(x => x.score).reduce((a, b) => a + b, 0) / length;
-
-        this.data[index].question[i].avgScore = avg;
-      }
-
-      let totalAvg = this.data[index].question.map(x => {
-        if (x.avgScore >= 0) {
-          return x.avgScore;
-        }
-      });
-
-      totalAvg = totalAvg.filter(x => x >= 0);
-
-      if (q_number == 5) {
-        // ข้อ1 ย่อยจำเป็น
-        if (this.data[index].question[0].avgScore >= 0) {
-          this.data[index].avgScore =
-            totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
-        } else {
-          this.data[index].avgScore = -1;
-        }
-      } else if (q_number == 3 || q_number == 4 || q_number == 2) {
-        //7.2 // 7.3 // 7.4
-        if (
-          this.data[index].question[0].avgScore >= 0 &&
-          this.data[index].question[1].avgScore >= 0
-        ) {
-          let avg = totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
-          this.data[index].avgScore = Number(avg);
-        } else {
-          this.data[index].avgScore = -1;
-        }
-      } else if (q_number == 6) {
-        if (
-          this.data[index].question[0].avgScore >= 0 &&
-          this.data[index].question[2].avgScore >= 0
-        ) {
-          let avg = totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
-          this.data[index].avgScore = Number(avg);
-        } else {
-          this.data[index].avgScore = -1;
-        }
-      } else if (q_number == 1) {
-        // 7.1
-        // ข้อ 1 กับ 4 จำเป็น
-        if (
-          this.data[index].question[0].avgScore >= 0 &&
-          this.data[index].question[3].avgScore >= 0
-        ) {
-          this.data[index].avgScore =
-            totalAvg.reduce((a, b) => a + b, 0) / totalAvg.length;
-        } else {
-          this.data[index].avgScore = -1;
-        }
-      }
-
-      // console.log(scoreTemp);
-      // this.data[index].avgScore = scoreTemp.reduce((a,b) => a+b,0) / scoreTemp.length
-      // }
     },
     async getCategory7() {
       const url = this.apiPath + "user/getCategory7.php";
