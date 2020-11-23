@@ -392,15 +392,28 @@ export default {
       this.$router.push("/assessor/stepper/" + newRoute);
     },
     async getStepperLog() {
-      const url = this.apiPath + "user/getStepperLog.php";
-      let postData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y")
+
+       const url = this.apiPath + "user/getAllCategory1_6.php";
+
+      const postData = {
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("aid"),
       };
-      let data = await Axios.post(url, postData);
-      if (data.data) {
-        this.currentStep = data.data;
-      }
+
+      let getData = await Axios.post(url, postData);
+      getData = getData.data;
+      console.log(getData)
+
+
+      // const url = this.apiPath + "user/getStepperLog.php";
+      // let postData = {
+      //   user_id: this.$q.sessionStorage.getItem("uid"),
+      //   year: this.$q.sessionStorage.getItem("y")
+      // };
+      // let data = await Axios.post(url, postData);
+      // if (data.data) {
+      //   this.currentStep = data.data;
+      // }
     }
   },
   created() {

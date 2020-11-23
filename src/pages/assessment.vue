@@ -141,14 +141,12 @@ export default {
         }
 
         avgScoreLst.push(
-          this.dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) /
+          this.dataList[i].score.map((x) => Number(x)).reduce((a, b) => a + b, 0) /
             devine
         );
       }
 
-
       this.totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
-
       let setPrintData = {
         data: this.dataList,
         avgScore: avgScoreLst,

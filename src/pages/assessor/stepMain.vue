@@ -432,12 +432,11 @@
 
       <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
         <q-btn
-          :disable="!checkSteper"
           style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-white'"
-          @click="printAll()"
+          @click="sendAssessment()"
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
@@ -473,14 +472,7 @@ export default {
   data() {
     return {
       assessmentLog: "",
-      step1: false,
-      step2: false,
-      step3: false,
-      step4: false,
-      step5: false,
-      step6: false,
-      step7: false,
-      step8: false,
+    
       currentStep: "",
       isShowStepper: false,
       endDate: "",
@@ -503,25 +495,25 @@ export default {
       });
       window.open(route.href);
     },
-    async sendAssessment() {
-      const url = this.apiPath + "user/setUserStepperLog.php";
-      let postData = {
-        category: "category1",
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
-        status: 1, // 1 = finish
-        send_status: 1
-      };
-      let data = await Axios.post(url, postData);
-      this.$router.push("/waitingAssessment/0");
-    },
+    // async sendAssessment() {
+    //   const url = this.apiPath + "user/setUserStepperLog.php";
+    //   let postData = {
+    //     category: "category1",
+    //     user_id: this.$q.sessionStorage.getItem("uid"),
+    //     year: this.$q.sessionStorage.getItem("y"),
+    //     status: 1, // 1 = finish
+    //     send_status: 1
+    //   };
+    //   let data = await Axios.post(url, postData);
+    //   this.$router.push("/waitingAssessment/0");
+    // },
     async getScore() {
-      console.clear();
+      // console.clear();
       const url = this.apiPath + "user/getAllCategory1_6.php";
 
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid")
+        user_id: this.$q.sessionStorage.getItem("aid")
       };
 
       let getData = await Axios.post(url, postData);
@@ -529,7 +521,7 @@ export default {
 
       const postData1 = {
         year: this.$q.sessionStorage.getItem("y") + 543,
-        user_id: this.$q.sessionStorage.getItem("uid")
+        user_id: this.$q.sessionStorage.getItem("aid")
       };
 
       let dataList = [
@@ -559,8 +551,9 @@ export default {
       for (let i = 0; i < dataList.length; i++) {
         let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
-        dataList[i].score = score.map(x => Number(x.score));
+        dataList[i].score = score.map(x => Number(x.a_score));
       }
+      console.log(dataList)
 
       const url1 = this.apiPath + "user/getCategory7.php";
       let getCategory7 = await Axios.post(url1, postData1);
@@ -569,7 +562,7 @@ export default {
         (a, b) => Number(a.q_number) - Number(b.q_number)
       );
 
-      let mapCat7 = cat7.map(x => Number(x.avg_score));
+      let mapCat7 = cat7.map(x => Number(x.a_avg_score));
 
       for (let i = 0; i < 6; i++) {
         let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
@@ -579,7 +572,6 @@ export default {
       }
 
       let avgScoreLst = [];
-      // let avgTemp2 = []
 
       for (let i = 0; i < dataList.length; i++) {
         let devine = 4;
@@ -603,7 +595,13 @@ export default {
       return result;
     },
     async sendAssessment() {
+
+
       let avgScore = await this.getScore();
+
+      console.log(avgScore)
+
+      return
 
       const sendAPI = this.apiPath + "user/sendAssessment.php";
       let postSendData = {
@@ -632,39 +630,6 @@ export default {
       let data = await Axios.post(url, postData);
       this.$router.push("/waitingAssessment/0");
     },
-    async getStepperLog() {
-      this.loadingShow();
-      const url = this.apiPath + "user/getStepperLog.php";
-      let postData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y")
-      };
-      let data = await Axios.post(url, postData);
-      let newData = data.data;
-      let checkStatus = [];
-      if (newData) {
-        checkStatus = [
-          newData.category0,
-          newData.category1,
-          newData.category2,
-          newData.category3,
-          newData.category4,
-          newData.category5,
-          newData.category6,
-          newData.category7
-        ];
-      }
-
-      if (checkStatus.every(x => x == "1") && checkStatus.length) {
-        this.checkSteper = true;
-      } else {
-        this.checkSteper = false;
-      }
-      if (data.data) {
-        this.currentStep = data.data;
-      }
-      let currentDate = await this.getDate();
-    },
     async getAssessmentLog() {
       let postData = {
         year: this.$q.sessionStorage.getItem("y")
@@ -672,18 +637,49 @@ export default {
       const url = this.apiPath + "getAssessmentLog.php";
 
       let data = await Axios.post(url, postData);
-
-      this.assessmentLog = data.data.filter(
+      let dataFilter = data.data.filter(
         x => x.user_id == this.$route.params.userId
-      )[0];
+      )
+      console.log(dataFilter)
+      let isOpenSendBtn = false
+
+
+if(dataFilter.length){
+  console.log(123)
+      this.assessmentLog =dataFilter[0]
+       let assessorScore  = [-1,-1,-1,-1,-1,-1,-1]
+        assessorScore = dataFilter.map(x => {
+        return [
+          Number(x.a_category1_score),
+          Number(x.a_category2_score),
+          Number(x.a_category3_score),
+          Number(x.a_category4_score),
+          Number(x.a_category5_score),
+          Number(x.a_category6_score),
+          Number(x.a_category7_score)
+          ]
+      })
+
+    
+      assessorScore = assessorScore[0]
+
+      if(assessorScore.every(x => x != -1 )){
+        console.log("enable send btn")
+      }else{
+        console.log("disable send status")
+      }
+}
       this.isShowStepper = true;
+
+
+
+      
 
       this.loadingHide();
     }
   },
-  computed: {},
   created() {
-    this.getStepperLog();
+    // this.getStepperLog();
     this.getAssessmentLog();
   }
 };

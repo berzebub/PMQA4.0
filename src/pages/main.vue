@@ -616,18 +616,6 @@ export default {
       });
       window.open(route.href);
     },
-    async sendAssessment() {
-      const url = this.apiPath + "user/setUserStepperLog.php";
-      let postData = {
-        category: "category1",
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
-        status: 1, // 1 = finish
-        send_status: 1,
-      };
-      let data = await Axios.post(url, postData);
-      this.$router.push("/waitingAssessment/0");
-    },
     async getScore() {
       console.clear();
       const url = this.apiPath + "user/getAllCategory1_6.php";
