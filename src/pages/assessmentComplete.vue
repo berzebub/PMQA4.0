@@ -6,18 +6,18 @@
         <div class="q-mr-lg self-center">
           <q-select
             outlined
-            v-model="model"
-            :options="[]"
+            v-model="yearSelected"
+            :options="yearList"
             label="ปีงบประมาณ"
             style="width:170px;"
             dense=""
           />
         </div>
-        <div class="self-center">
+        <!-- <div class="self-center">
           <q-btn round="" push="" class="bg-teal">
             <q-icon class="text-white" size="18px" name="fas fa-print"></q-icon>
           </q-btn>
-        </div>
+        </div> -->
       </div>
       <div class="row relative-position" style>
         <div class="col-6  q-pa-lg" style="margin-top:-70px;" align="left">
@@ -73,30 +73,47 @@
             <div class="row q-pb-lg q-pa-md ">
               <div
                 class="col-3 self-center"
-                style="width:230px;border:1px solid#000;"
+                style="width:230px;"
                 align="center"
               >
-                <div style="border-bottom:1px solid;padding:25px 0px">
-                  <q-icon
-                    size="70px"
-                    class="color1"
-                    :name="dataList[activeStep].fontawesome"
-                  ></q-icon>
+                <div style="border:1px solid#000;">
+                  <div style="border-bottom:1px solid;padding:25px 0px">
+                    <q-icon
+                      size="70px"
+                      class="color1"
+                      :name="dataList[activeStep].fontawesome"
+                    ></q-icon>
+                  </div>
+
+                  <div
+                    class="bg10 text-white"
+                    style="padding:40px 0px"
+                    align="center"
+                  >
+                    <span class=" block" style="width:200px;font-size:24px;">{{
+                      dataList[activeStep].title
+                    }}</span>
+                  </div>
                 </div>
 
                 <div
-                  class="bg10 text-white"
-                  style="padding:40px 0px"
-                  align="center"
+                  v-ripple
+                  class="relative-position shadow-1 q-pa-md q-mt-lg cursor-pointer"
+                  style="border:1px solid#000;"
+                  @click="printBtn(activeStep + 1)"
                 >
-                  <span class=" block" style="width:200px;font-size:24px;">{{
-                    dataList[activeStep].title
-                  }}</span>
+                  <q-icon
+                    size="25px"
+                    class="q-mr-md"
+                    name="fas fa-print"
+                  ></q-icon>
+                  <span>พิมพ์ผลการประเมิน</span>
                 </div>
               </div>
+
               <div style="width:40px;"></div>
               <div class="col q-pb-xl self-end">
-                <div style="border:1px solid#000;" class="q-py-md">
+                <div style="border:1px solid#000;" class="q-pt-md">
                   <div class="row ">
                     <div
                       class="col-3 self-center "
@@ -111,19 +128,19 @@
                     <div style="width:40px;"></div>
                     <div
                       class="col self-end"
-                      style="border-bottom:2px solid;padding:0px 20px"
+                      style="border-bottom:2px solid;padding:0px 10px"
                       v-for="(score, index2) in dataList[activeStep].score"
                       :key="index2"
                     >
                       <div
-                        class="bg5 relative-position"
-                        style="height:100px;"
+                        class="bg11 relative-position"
+                        :style="`height:${(130 / 650) * score || 2}px`"
                         align="center"
                       >
                         <span
                           class="absolute-center text-white "
                           style="font-size:24px;"
-                          >{{ score }}</span
+                          >{{ score == 0 ? "" : score }}</span
                         >
                         <span
                           class="absolute-bottom"
@@ -154,24 +171,24 @@
                     </div>
                     <div style="width:40px;"></div>
                     <div
-                      class="col self-end"
-                      style="border-bottom:2px solid;padding:0px 20px"
+                      class="col self-end "
+                      style="border-bottom:2px solid;padding:0px 15px"
                       v-for="(score, index2) in dataList[activeStep]
                         .assessmentScore"
                       :key="index2"
                     >
                       <div
                         class="bg5 relative-position"
-                        style="height:100px;"
+                        :style="`height:${(130 / 650) * score || 2}px`"
                         align="center"
                       >
                         <span
                           class="absolute-center text-white "
                           style="font-size:24px;"
-                          >{{ score }}</span
+                          >{{ score == 0 ? "" : score }}</span
                         >
                         <span
-                          class="absolute-bottom"
+                          class="absolute-bottom "
                           style="bottom:-45px;font-size:24px;"
                           >{{ `${activeStep + 1}.${index2 + 1}` }}</span
                         >
@@ -181,53 +198,9 @@
                   </div>
 
                   <q-separator
-                    class="q-mt-xl bg-black"
+                    class="q-mt-xl transparent"
                     style="height:2px;"
                   ></q-separator>
-
-                  <div class=" row q-pt-lg q-pb-xs">
-                    <div
-                      class="col-3 self-center "
-                      style="width:160px;"
-                      align="center"
-                    >
-                      <span class="font-18">ข้อเสนอแนะ</span>
-                    </div>
-                    <div style="width:40px;"></div>
-                    <div class="col self-end " style="padding:0px 20px">
-                      <q-btn
-                        style="width:100px;border-radius:10px;border:1px solid"
-                        label="ข้อเสนอแนะ"
-                        class="bg5 no-pointer-events text-no-wrap"
-                        flat
-                      ></q-btn>
-                    </div>
-                    <div class="col self-end " style="padding:0px 20px">
-                      <q-btn
-                        style="width:100px;border-radius:10px;border:1px solid"
-                        label="ข้อเสนอแนะ"
-                        class="bg5 no-pointer-events text-no-wrap"
-                        flat
-                      ></q-btn>
-                    </div>
-                    <div class="col self-end " style="padding:0px 20px">
-                      <q-btn
-                        style="width:100px;border-radius:10px;border:1px solid"
-                        label="ข้อเสนอแนะ"
-                        class="bg5 no-pointer-events text-no-wrap"
-                        flat
-                      ></q-btn>
-                    </div>
-                    <div class="col self-end " style="padding:0px 20px">
-                      <q-btn
-                        style="width:100px;border-radius:10px;border:1px solid"
-                        label="ข้อเสนอแนะ"
-                        class="bg5 no-pointer-events text-no-wrap"
-                        flat
-                      ></q-btn>
-                    </div>
-                    <div style="width:20px;"></div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -260,6 +233,7 @@
 
 <script>
 import stepFooter from "../components/footer";
+import Axios from "axios";
 export default {
   components: {
     stepFooter
@@ -267,6 +241,8 @@ export default {
   data() {
     return {
       activeStep: 0,
+      yearList: [],
+      yearSelected: this.$q.sessionStorage.getItem("y") + 543,
       dataList: [
         {
           title: `1. การนำองค์การ `,
@@ -314,8 +290,63 @@ export default {
     };
   },
   methods: {
+    printBtn(step) {
+      let route = this.$router.resolve({
+        name: "printStep" + step + "A"
+      });
+      window.open(route.href);
+    },
     render() {
-      Highcharts.chart("container", {
+      let year = [
+        this.$q.sessionStorage.getItem("y") + 541,
+        this.$q.sessionStorage.getItem("y") + 542,
+        this.$q.sessionStorage.getItem("y") + 543
+      ];
+
+      this.yearList = year;
+
+      let dataScoreA = [];
+
+      let dataScoreB = [];
+
+      for (let i = 0; i < this.dataList.length; i++) {
+        let scoreA = this.dataList[i].score;
+        let newScoresA = [];
+
+        let scoreB = this.dataList[i].assessmentScore;
+        let newScoresB = [];
+
+        if (i != 6) {
+          newScoresA = (
+            scoreA.reduce((a, b) => {
+              return Number(a) + Number(b);
+            }, 0) / 4
+          ).toFixed(0);
+
+          newScoresB = (
+            scoreB.reduce((a, b) => {
+              return Number(a) + Number(b);
+            }, 0) / 4
+          ).toFixed(0);
+        } else {
+          newScoresA = (
+            scoreA.reduce((a, b) => {
+              return Number(a) + Number(b);
+            }, 0) / 6
+          ).toFixed(0);
+
+          newScoresB = (
+            scoreB.reduce((a, b) => {
+              return Number(a) + Number(b);
+            }, 0) / 6
+          ).toFixed(0);
+        }
+
+        dataScoreA.push(Number(newScoresA));
+        dataScoreB.push(Number(newScoresB));
+      }
+
+      let newData = Highcharts.chart("container", {
         chart: {
           polar: true,
           width: "500",
@@ -366,14 +397,14 @@ export default {
           shared: true,
           pointFormat: ""
         },
-
         legend: {
           useHTML: true,
+          borderColor: "transparent",
           align: "center",
           verticalAlign: "bottom",
-          maxHeight: 0,
+          symbolWidth: 0.1,
+          symbolHeight: 0.1,
           labelFormatter() {
-            console.log(this);
             return `<div style='display:inline-block;width:37px;height:37px;background-color:${this.color};border:.8mm solid ${this.options.borderColor};'></div> <span>${this.name}</span>`;
           }
         },
@@ -381,16 +412,16 @@ export default {
         series: [
           {
             name: "หน่วยงานประเมิน",
-            data: [100, 200, 300, 400, 500, 800, 1000],
+            data: dataScoreA,
             pointPlacement: "on",
             showInLegend: true,
             type: "area",
-            color: "#1976D2",
-            borderColor: "#418ED9"
+            color: "#418ED9",
+            borderColor: "#1976D2"
           },
           {
             name: "คณะกรรมการประเมิน",
-            data: [1000, 800, 500, 400, 300, 200, 100],
+            data: dataScoreB,
             pointPlacement: "on",
             showInLegend: true,
             type: "area",
@@ -402,10 +433,59 @@ export default {
           enabled: false
         }
       });
+    },
+    async getData() {
+      const url = this.apiPath + "user/getAllCategory1_6.php";
+
+      const postData = {
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("uid")
+      };
+
+      let getData = await Axios.post(url, postData);
+      getData = getData.data;
+
+      const postData1 = {
+        year: this.$q.sessionStorage.getItem("y") + 543,
+        user_id: this.$q.sessionStorage.getItem("uid")
+      };
+
+      for (let i = 0; i < this.dataList.length; i++) {
+        let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
+        score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
+        this.dataList[i].score.forEach((element, index) => {
+          let filt = score.filter(x => x.q_number == index + 1);
+          if (filt.length) {
+            this.dataList[i].score[index] = filt[0].score;
+          } else {
+            this.dataList[i].score[index] = "0";
+          }
+        });
+        // this.dataList[i].score = score.map(x => Number(x.score))
+      }
+
+      const url1 = this.apiPath + "user/getCategory7.php";
+      let getCategory7 = await Axios.post(url1, postData1);
+
+      let cat7 = getCategory7.data.sort(
+        (a, b) => Number(a.q_number) - Number(b.q_number)
+      );
+
+      let mapCat7 = cat7.map(x => Number(x.avg_score));
+
+      for (let i = 0; i < 6; i++) {
+        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
+
+        if (checkExist.length) {
+          this.dataList[6].score[i] = parseInt(checkExist[0].avg_score);
+        }
+      }
+
+      this.render();
     }
   },
   mounted() {
-    this.render();
+    this.getData();
   }
 };
 </script>

@@ -70,6 +70,43 @@ const routes = [
     component: () => import("pages/print7.vue"),
     name: "printStep7"
   },
+
+  // PRINT ASSESSOR PAPER
+  {
+    path: "/print/1A",
+    component: () => import("pages/print1A.vue"),
+    name: "printStep1A"
+  },
+  {
+    path: "/print/2A",
+    component: () => import("pages/print2A.vue"),
+    name: "printStep2A"
+  },
+  {
+    path: "/print/3A",
+    component: () => import("pages/print3A.vue"),
+    name: "printStep3A"
+  },
+  {
+    path: "/print/4A",
+    component: () => import("pages/print4A.vue"),
+    name: "printStep4A"
+  },
+  {
+    path: "/print/5A",
+    component: () => import("pages/print5A.vue"),
+    name: "printStep5A"
+  },
+  {
+    path: "/print/6A",
+    component: () => import("pages/print6A.vue"),
+    name: "printStep6A"
+  },
+  {
+    path: "/print/7A",
+    component: () => import("pages/print7A.vue"),
+    name: "printStep7A"
+  },
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
@@ -84,7 +121,6 @@ const routes = [
         component: () => import("pages/stepper.vue"),
         name: "stepper"
       },
-     
 
       //type 0 = ส่งแบบประเมินแล้ว
       // type 1  = หมดเวลา
