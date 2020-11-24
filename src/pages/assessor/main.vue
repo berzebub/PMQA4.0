@@ -52,7 +52,7 @@
               >
             </td>
             <td align="center" class="q-pa-sm">
-              <u @click="routeToDetails(item.userId)" class="cursor-pointer"
+              <u @click="routeToDetails(item)" class="cursor-pointer"
                 >รายละเอียด</u
               >
             </td>
@@ -103,9 +103,18 @@ export default {
     };
   },
   methods: {
-    routeToDetails(userId) {
-      this.$q.sessionStorage.set("aid",userId)
-      this.$router.push("/assessor/stepMain/" + userId);
+    routeToDetails(item) {
+      console.log(item)
+      if (item.send_assessment_date == "-") {
+        this.$q.notify({
+          message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
+          color: "red"
+        });
+      } else {
+        this.$q.sessionStorage.set("aid", item.userId);
+        this.$q.sessionStorage.set('off',item.office)
+        this.$router.push("/assessor/stepMain/" + item.userId);
+      }
     },
     toDetails(userId) {
       this.$router.push("/assessor/score/" + userId);
@@ -185,6 +194,7 @@ export default {
     }
   },
   created() {
+       this.$q.sessionStorage.remove("off")
     let assessmentYear = this.$q.sessionStorage.getItem("y") + 543;
     this.yearSelected = assessmentYear;
     let tempYear = [];

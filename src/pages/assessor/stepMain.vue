@@ -1,9 +1,18 @@
 <template>
   <q-page class="row justify-center">
+          <div class=' col-12' align="center">
+            <div style='height:20px'></div>
+            <div style='width:fit-content;border:1px solid' class='q-pa-md font-24'>
+              ผู้ประเมิน : {{ assessorName }}
+            </div>
+          </div>
     <div class="col-10 row self-center q-pa-md" style="width: 850px">
       <div class="col">
+
+  
         <!-- Set Top -->
         <div style="padding: 65px 0px 129px 0px">
+
           <div
             class="container-border-lock row justify-between relative-position"
           >
@@ -434,17 +443,13 @@
         <q-btn
           style="width: 180px; border-radius: 0px"
           push
-          class="q-mx-md q-py-sm"
-          :class="!checkSteper ? 'bg3' : 'bg-white'"
+          class="q-mx-md q-py-sm "
+          :class="{ bg2: !isShowSendBtn, 'bg-teal': isShowSendBtn }"
           @click="sendAssessment()"
+          :disable="!isShowSendBtn"
         >
-          <q-icon
-            :class="!checkSteper ? 'color2' : ''"
-            name="fas fa-paper-plane"
-          ></q-icon>
-          <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
-            >เสร็จสิ้นการประเมิน</span
-          >
+          <q-icon class="text-white" name="fas fa-paper-plane"></q-icon>
+          <span class="font-14 q-ml-sm text-white">เสร็จสิ้นการประเมิน</span>
         </q-btn>
         <div class=" absolute-left">
           <div class="absolute-bottom q-pa-lg ">
@@ -476,13 +481,9 @@ export default {
   data() {
     return {
       assessmentLog: "",
-
-      currentStep: "",
       isShowStepper: false,
-      endDate: "",
-      assessmentStatus: "",
-      endAssessmentDate: "",
-      checkSteper: false
+      isShowSendBtn: false,
+      assessorName : ""
     };
   },
   methods: {
@@ -497,138 +498,41 @@ export default {
       });
       window.open(route.href);
     },
-    // async sendAssessment() {
-    //   const url = this.apiPath + "user/setUserStepperLog.php";
-    //   let postData = {
-    //     category: "category1",
-    //     user_id: this.$q.sessionStorage.getItem("uid"),
-    //     year: this.$q.sessionStorage.getItem("y"),
-    //     status: 1, // 1 = finish
-    //     send_status: 1
-    //   };
-    //   let data = await Axios.post(url, postData);
-    //   this.$router.push("/waitingAssessment/0");
-    // },
-    async getScore() {
-      // console.clear();
-      const url = this.apiPath + "user/getAllCategory1_6.php";
-
-      const postData = {
-        year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("aid")
-      };
-
-      let getData = await Axios.post(url, postData);
-      getData = getData.data;
-
-      const postData1 = {
-        year: this.$q.sessionStorage.getItem("y") + 543,
-        user_id: this.$q.sessionStorage.getItem("aid")
-      };
-
-      let dataList = [
-        {
-          score: [0, 0, 0, 0]
-        },
-        {
-          score: [0, 0, 0, 0]
-        },
-        {
-          score: [0, 0, 0, 0]
-        },
-        {
-          score: [0, 0, 0, 0]
-        },
-        {
-          score: [0, 0, 0, 0]
-        },
-        {
-          score: [0, 0, 0, 0]
-        },
-        {
-          score: [0, 0, 0, 0, 0, 0]
-        }
-      ];
-
-      for (let i = 0; i < dataList.length; i++) {
-        let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
-        score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
-        dataList[i].score = score.map(x => Number(x.a_score));
-      }
-      console.log(dataList);
-
-      const url1 = this.apiPath + "user/getCategory7.php";
-      let getCategory7 = await Axios.post(url1, postData1);
-
-      let cat7 = getCategory7.data.sort(
-        (a, b) => Number(a.q_number) - Number(b.q_number)
-      );
-
-      let mapCat7 = cat7.map(x => Number(x.a_avg_score));
-
-      for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
-        if (checkExist.length) {
-          dataList[6].score[i] = parseInt(mapCat7[i]);
-        }
-      }
-
-      let avgScoreLst = [];
-
-      for (let i = 0; i < dataList.length; i++) {
-        let devine = 4;
-
-        if (i == 6) {
-          devine = 6;
-        }
-
-        avgScoreLst.push(
-          dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / devine
-        );
-      }
-
-      let totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
-
-      let result = {
-        score: avgScoreLst,
-        totalAvgScore: totalAvgScore
-      };
-
-      return result;
-    },
     async sendAssessment() {
-      let avgScore = await this.getScore();
+      let avg_a_score =
+        Number(this.assessmentLog.a_category1_score) +
+        Number(this.assessmentLog.a_category2_score) +
+        Number(this.assessmentLog.a_category3_score) +
+        Number(this.assessmentLog.a_category4_score) +
+        Number(this.assessmentLog.a_category5_score) +
+        Number(this.assessmentLog.a_category6_score) +
+        Number(this.assessmentLog.a_category7_score);
 
-      console.log(avgScore);
+        avg_a_score = parseInt(avg_a_score / 7)
 
-      return;
-
-      const sendAPI = this.apiPath + "user/sendAssessment.php";
-      let postSendData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        office_score: avgScore.totalAvgScore,
-        year: this.$q.sessionStorage.getItem("y"),
-        category1_score: Math.round(avgScore.score[0]),
-        category2_score: Math.round(avgScore.score[1]),
-        category3_score: Math.round(avgScore.score[2]),
-        category4_score: Math.round(avgScore.score[3]),
-        category5_score: Math.round(avgScore.score[4]),
-        category6_score: Math.round(avgScore.score[5]),
-        category7_score: Math.round(avgScore.score[6])
-      };
-
-      let send = Axios.post(sendAPI, postSendData);
-
-      const url = this.apiPath + "user/setUserStepperLog.php";
+      const url = this.apiPath + "updateAssessorScore.php";
       let postData = {
-        category: "category1",
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("aid"),
         year: this.$q.sessionStorage.getItem("y"),
-        status: 1, // 1 = finish
-        send_status: 1
+        avg_score: avg_a_score,
+        assessor_id : this.$q.sessionStorage.getItem("uid")
       };
       let data = await Axios.post(url, postData);
-      this.$router.push("/waitingAssessment/0");
+
+
+      const url1 = this.apiPath + "updateSendStatus.php"
+      let postData1 = {
+        user_id :this.$q.sessionStorage.getItem("aid"),
+         year: this.$q.sessionStorage.getItem("y"),
+      }
+
+      let data1 = await Axios.post(url1,postData1)
+      this.$q.notify(
+        {
+          color : "secondary",
+          message : "บันทึกผลการประเมินสำเร็จ"
+        }
+      )
     },
     async getAssessmentLog() {
       let postData = {
@@ -641,7 +545,6 @@ export default {
         x => x.user_id == this.$route.params.userId
       );
 
-      console.log(dataFilter);
       let isOpenSendBtn = false;
 
       if (dataFilter.length) {
@@ -662,18 +565,32 @@ export default {
         assessorScore = assessorScore[0];
 
         if (assessorScore.every(x => x != -1)) {
-          console.log("enable send btn");
+          this.isShowSendBtn = true;
         } else {
-          console.log("disable send status");
+          this.isShowSendBtn = false;
         }
       }
       this.isShowStepper = true;
 
       this.loadingHide();
-    }
+    },
+    async getAssessorInfo(){
+
+      let postData = {
+        user_id : this.$q.sessionStorage.getItem("uid")
+      }
+
+
+      const url = this.apiPath + "getAssessorInfo.php"
+
+
+      let data = await Axios.post(url,postData)
+
+      this.assessorName = data.data[0].name
+    },
   },
   created() {
-    // this.getStepperLog();
+ this.getAssessorInfo()
     this.getAssessmentLog();
   }
 };

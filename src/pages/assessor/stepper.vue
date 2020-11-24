@@ -31,11 +31,11 @@
                 :class="
                   active == 1
                     ? 'text-white'
-                    : currentStep.category0 == '0'
+                    : step0Status == '0'
                     ? 'text-black'
-                    : currentStep.category0 == '2'
+                    : step0Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category0 == '1'
+                    : step0Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -60,11 +60,11 @@
                 :class="
                   active == 2
                     ? 'text-white'
-                    : currentStep.category1 == '0'
+                    : step1Status == '0'
                     ? 'text-black'
-                    : currentStep.category1 == '2'
+                    : step1Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category1 == '1'
+                    : step1Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -89,11 +89,11 @@
                 :class="
                   active == 3
                     ? 'text-white'
-                    : currentStep.category2 == '0'
+                    : step2Status == '0'
                     ? 'text-black'
-                    : currentStep.category2 == '2'
+                    : step2Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category2 == '1'
+                    : step2Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -118,11 +118,11 @@
                 :class="
                   active == 4
                     ? 'text-white'
-                    : currentStep.category3 == '0'
+                    : step3Status == '0'
                     ? 'text-black'
-                    : currentStep.category3 == '2'
+                    : step3Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category3 == '1'
+                    : step3Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -147,11 +147,11 @@
                 :class="
                   active == 5
                     ? 'text-white'
-                    : currentStep.category4 == '0'
+                    : step4Status == '0'
                     ? 'text-black'
-                    : currentStep.category4 == '2'
+                    : step4Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category4 == '1'
+                    : step4Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -176,11 +176,11 @@
                 :class="
                   active == 6
                     ? 'text-white'
-                    : currentStep.category5 == '0'
+                    : step5Status== '0'
                     ? 'text-black'
-                    : currentStep.category5 == '2'
+                    : step5Status== '2'
                     ? 'text-amber-9'
-                    : currentStep.category5 == '1'
+                    : step5Status== '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -205,11 +205,11 @@
                 :class="
                   active == 7
                     ? 'text-white'
-                    : currentStep.category6 == '0'
+                    : step6Status == '0'
                     ? 'text-black'
-                    : currentStep.category6 == '2'
+                    : step6Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category6 == '1'
+                    : step6Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -234,11 +234,11 @@
                 :class="
                   active == 8
                     ? 'text-white'
-                    : currentStep.category7 == '0'
+                    : step7Status == '0'
                     ? 'text-black'
-                    : currentStep.category7 == '2'
+                    : step7Status == '2'
                     ? 'text-amber-9'
-                    : currentStep.category7 == '1'
+                    : step7Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -260,7 +260,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 1">
-          <step-one @statusForm="getStepperLog()"></step-one>
+          <step-one @statusForm="getStep0Status"></step-one>
         </div>
       </transition>
 
@@ -270,7 +270,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 2">
-          <step-two @statusForm="getStepperLog()"></step-two>
+          <step-two @statusForm="getStep1Status"></step-two>
         </div>
       </transition>
 
@@ -280,7 +280,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 3">
-          <step-three @statusForm="getStepperLog()"></step-three>
+          <step-three @statusForm="getStep2Status"></step-three>
         </div>
       </transition>
 
@@ -290,7 +290,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 4">
-          <step-four @statusForm="getStepperLog()"></step-four>
+          <step-four @statusForm="getStep3Status"></step-four>
         </div>
       </transition>
 
@@ -300,7 +300,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 5">
-          <step-five @statusForm="getStepperLog()"></step-five>
+          <step-five @statusForm="getStep4Status"></step-five>
         </div>
       </transition>
 
@@ -314,7 +314,7 @@
           transition-show="jump-down"
           transition-hide="jump-up"
         >
-          <step-six @statusForm="getStepperLog()"></step-six>
+          <step-six @statusForm="getStep5Status"></step-six>
         </div>
       </transition>
 
@@ -328,7 +328,7 @@
           transition-show="jump-down"
           transition-hide="jump-up"
         >
-          <step-seven @statusForm="getStepperLog()"></step-seven>
+          <step-seven @statusForm="getStep6Status"></step-seven>
         </div>
       </transition>
 
@@ -338,7 +338,7 @@
         leave-active-class="animated fadeOut"
       >
         <div v-show="active == 8">
-          <step-eight @statusForm="getStepperLog()"></step-eight>
+          <step-eight @statusForm="getStep7Status"></step-eight>
         </div>
       </transition>
     </div>
@@ -382,7 +382,17 @@ export default {
       statusForm6: "none",
       statusForm7: "none",
       statusForm8: "none",
-      currentStep: ""
+      currentStep: "",
+      
+      stepStatus : "",
+         step0Status : "",
+      step1Status : "",
+      step2Status : "",
+      step3Status : "",
+      step4Status : "",
+      step5Status : "",
+      step6Status : "",
+      step7Status : ""
     };
   },
   methods: {
@@ -391,34 +401,55 @@ export default {
       newRoute = newRoute.toString();
       this.$router.push("/assessor/stepper/" + newRoute);
     },
-    async getStepperLog() {
+    getStep0Status(val){
 
-       const url = this.apiPath + "user/getAllCategory1_6.php";
-
-      const postData = {
-        year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("aid"),
-      };
-
-      let getData = await Axios.post(url, postData);
-      getData = getData.data;
-      console.log(getData)
-
-
-      // const url = this.apiPath + "user/getStepperLog.php";
-      // let postData = {
-      //   user_id: this.$q.sessionStorage.getItem("uid"),
-      //   year: this.$q.sessionStorage.getItem("y")
-      // };
-      // let data = await Axios.post(url, postData);
-      // if (data.data) {
-      //   this.currentStep = data.data;
-      // }
-    }
+           this.step0Status = val
+    },
+    getStep1Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step1Status = val
+    },
+    getStep2Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step2Status = val
+    },
+    getStep3Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step3Status = val
+    },
+    getStep4Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step4Status = val
+    },
+    getStep5Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step5Status = val
+    },
+    getStep6Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step6Status = val
+    },
+    getStep7Status(val) {
+      // 0 = ไม่เคยประเมิน
+      // 1 = ประเมินเสร็จ
+      // 2 = ประเมินบางข้อ
+      this.step7Status = val
+    },
+    getStepperLog(){},
   },
-  created() {
-    this.getStepperLog();
-  }
+
 };
 </script>
 
