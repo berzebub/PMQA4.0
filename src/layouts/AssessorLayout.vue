@@ -22,6 +22,9 @@
           </div>
         </div>
         <div class="row bg2 justify-end container-header relative-position">
+          <div class='col offset-3 self-center  font-24 text-black ' align="center">
+            {{ $q.sessionStorage.getItem("off") }}
+          </div>
           <div
             class="col-1 self-center "
             align="right"
@@ -32,7 +35,7 @@
               padding="0"
               flat
               class="text-black relative-position z-top font-18"
-              @click="$router.push('/assessor/main')"
+              @click="$router.push('/assessor/main'),$q.sessionStorage.remove('off')"
             >
               <q-icon size="30px" name="fas fa-home"></q-icon>
             </q-btn>
