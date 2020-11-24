@@ -1194,6 +1194,7 @@ export default {
       this.isSaveData = false;
 
       this.isDelete = false;
+      // this.uSendAssessment()
       this.checkPassStatus();
     },
     getBasic(data) {
