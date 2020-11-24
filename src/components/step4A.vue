@@ -36,8 +36,8 @@
                     }"
                     align="center"
                   >
-                    {{ item.score }} /
-                    <span class="text-pink-4" v-if="item.a_score != '-1'">{{ item.a_score }} </span>
+                    {{ parseInt(item.score) }} /
+                    <span class="text-pink-4" v-if="item.a_score != '-1'">{{ parseInt(item.a_score) }} </span>
                     <span class="text-pink-4" v-else>-</span>
                   </div>
                 </div>
@@ -833,7 +833,9 @@ export default {
       formData.append("category", "a_category3_score");
 
       formData.append("a_avg_score", sum_filtera_score);
+
       let data = await Axios.post(url, formData);
+      this.emitStatus()
 
       setTimeout(() => {
         this.loadingHide();
@@ -1002,6 +1004,7 @@ export default {
       }
 
       this.isLoadAssessmentFinish = true;
+      this.emitStatus()
       this.loadingHide();
     },
     async getAssessmentLog() {
@@ -1033,6 +1036,21 @@ export default {
           "?" +
           random
       );
+    },
+    emitStatus() {
+  
+      let checkStatus = this.data.map(x => x.a_score);
+
+      if (checkStatus.every(x => x == "-1")) {
+        //  กรณียังไม่เคยประเมิน
+        this.$emit("statusForm",0)
+      } else if (checkStatus.every(x => x != "-1")) {
+        // ประเมินครบทุกข้
+           this.$emit("statusForm",1)
+      } else if (checkStatus.some(x => x != "-1")) {
+        // กรณีเคยประเมินบางข้
+           this.$emit("statusForm",2)
+      }
     }
   },
 

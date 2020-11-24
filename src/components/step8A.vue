@@ -25,18 +25,21 @@
               <q-space></q-space>
               <div class="col-3 self-center q-px-xl" style="width: 250px">
                 <div style="width: 180px; border: 1px solid" align="center">
-                  <span class="font-18" v-if="item.a_avgScore == -1">ยังไม่ทำการประเมิน</span>
+                  <span class="font-18" v-if="item.a_avgScore == -1"
+                    >ยังไม่ทำการประเมิน</span
+                  >
                   <span v-else>
                     <span class="text-teal">
                       <span v-if="item.avgScore == -1">0</span>
                       <span v-else>
-                      {{ parseInt(item.avgScore) }}
-
+                        {{ parseInt(item.avgScore) }}
                       </span>
-                      </span>
+                    </span>
                     /
                     <span class="text-pink-4">
-                      <span v-if="item.a_avgScore != -1">{{parseInt(item.a_avgScore) || 0}}</span>
+                      <span v-if="item.a_avgScore != -1">{{
+                        parseInt(item.a_avgScore) || 0
+                      }}</span>
                       <span v-else>-</span>
                     </span>
                   </span>
@@ -47,7 +50,10 @@
 
           <div class v-for="(sub, indexSub) in item.question">
             <q-separator class="bg-grey-7" style="height: 1px"></q-separator>
-            <div class="bg-4 row q-py-sm" style="border-right:1px solid;border-left:1px solid">
+            <div
+              class="bg-4 row q-py-sm"
+              style="border-right:1px solid;border-left:1px solid"
+            >
               <div class="col" style="padding-left: 37px">
                 <span v-html="sub.headerTextUpper"></span>&nbsp;
                 <q-icon
@@ -57,7 +63,8 @@
                   name="fas fa-question-circle"
                   round
                   color="teal"
-                ></q-icon>&nbsp;
+                ></q-icon
+                >&nbsp;
                 <br />
                 <span v-html="sub.headerTextLower"></span>
               </div>
@@ -88,15 +95,27 @@
                   <div class="col-10" align="center">ตัวชี้วัด</div>
                 </div>
                 <div class="q-pa-md border col" align="center">ผลดำเนินการ</div>
-                <div class="q-pa-md border col-2" style="width:250px;" align="center">การประเมินผล</div>
+                <div
+                  class="q-pa-md border col-2"
+                  style="width:250px;"
+                  align="center"
+                >
+                  การประเมินผล
+                </div>
                 <div class="q-pa-sm border" style="width: 120px" align="center">
                   %ความสำเร็จ
                   <br />ที่ประเมิน
                 </div>
-                <div class="q-pa-md border" style="width: 90px" align="center">คะแนน</div>
+                <div class="q-pa-md border" style="width: 90px" align="center">
+                  คะแนน
+                </div>
               </div>
               <div class="row">
-                <div class="q-pa-sm border col-5 row q-py-md" align="center" style="width:300px;">
+                <div
+                  class="q-pa-sm border col-5 row q-py-md"
+                  align="center"
+                  style="width:300px;"
+                >
                   <div align="center" class="q-pa-sm col-12">
                     <span
                       v-html="
@@ -108,25 +127,28 @@
                   <div class="col-12 self-end">
                     <div class="q-px-sm">
                       <div class="q-px-sm">
-                        <div style="border:1px solid" class="q-pa-sm q-px-md row">
+                        <div
+                          style="border:1px solid"
+                          class="q-pa-sm q-px-md row"
+                        >
                           <span>% ความสำเร็จ</span>
                           <q-space></q-space>
                           <span class="text-teal">
                             {{
-                            calculateSuccessRate(
-                            item.question[indexSub].result[indexResult][
-                            currentYear
-                            ],
-                            item.question[indexSub].goalCurrentYear[
-                            indexResult
-                            ],
-                            item.question[indexSub].scoreStandard[
-                            indexResult
-                            ],
-                            index,
-                            indexSub,
-                            indexResult
-                            )
+                              calculateSuccessRate(
+                                item.question[indexSub].result[indexResult][
+                                  currentYear
+                                ],
+                                item.question[indexSub].goalCurrentYear[
+                                  indexResult
+                                ],
+                                item.question[indexSub].scoreStandard[
+                                  indexResult
+                                ],
+                                index,
+                                indexSub,
+                                indexResult
+                              )
                             }}
                           </span>
                         </div>
@@ -134,9 +156,12 @@
                       <q-separator class="bg-black q-my-sm"></q-separator>
                       <div class="row">
                         <div class="col" align="left">การคำนวนคะแนน</div>
-                        <div class="self-center col center" style="font-size:16px">
+                        <div
+                          class="self-center col center"
+                          style="font-size:16px"
+                        >
                           {{
-                          item.question[indexSub].scoreStandard[indexResult]
+                            item.question[indexSub].scoreStandard[indexResult]
                           }}
                         </div>
                       </div>
@@ -151,13 +176,31 @@
                     "
                   ></div>
                 </div>
-                <div class="q-pa-md border col-2" style="width:250px;" align="center">
+                <div
+                  class="q-pa-md border col-2"
+                  style="width:250px;"
+                  align="center"
+                >
                   <div>
                     <q-btn
                       class="full-width"
-                      :label="item.question[indexSub].a_assesment[indexResult] == -1 ? 'ยังไม่ประเมิน' :item.question[indexSub].a_assesment[indexResult] == 0 ? 'ไม่เหมาะสม' : 'เหมาะสม'"
+                      :label="
+                        item.question[indexSub].a_assesment[indexResult] == -1
+                          ? 'ยังไม่ประเมิน'
+                          : item.question[indexSub].a_assesment[indexResult] ==
+                            0
+                          ? 'ไม่เหมาะสม'
+                          : 'เหมาะสม'
+                      "
                       @click="assesment(index, indexSub, indexResult)"
-                      :class="item.question[indexSub].a_assesment[indexResult] == -1 ? 'ยังไม่ประเมิน' :item.question[indexSub].a_assesment[indexResult] == 0 ? 'text-red' : 'text-teal'"
+                      :class="
+                        item.question[indexSub].a_assesment[indexResult] == -1
+                          ? 'ยังไม่ประเมิน'
+                          : item.question[indexSub].a_assesment[indexResult] ==
+                            0
+                          ? 'text-red'
+                          : 'text-teal'
+                      "
                       dense
                       outline
                     ></q-btn>
@@ -187,39 +230,52 @@
                   </div>
                 </div>
                 <div class="q-pa-md border" style="width: 90px" align="center">
-                  <span v-if="item.question[indexSub].a_assesment[indexResult] == -1 "></span>
-                  <span v-else-if="item.question[indexSub].a_assesment[indexResult] == 0">0</span>
+                  <span
+                    v-if="
+                      item.question[indexSub].a_assesment[indexResult] == -1
+                    "
+                  ></span>
+                  <span
+                    v-else-if="
+                      item.question[indexSub].a_assesment[indexResult] == 0
+                    "
+                    >0</span
+                  >
 
                   <span v-else>
                     <span
                       v-if="
-                      calculateScore(
-                        calculateSuccessRate(
-                          item.question[indexSub].result[indexResult][
-                            currentYear
-                          ],
-                          item.question[indexSub].goalCurrentYear[indexResult],
-                          item.question[indexSub].scoreStandard[indexResult]
-                        ),
-                        index,
-                        indexSub,
-                        indexResult
-                      ) != -1
-                    "
+                        calculateScore(
+                          calculateSuccessRate(
+                            item.question[indexSub].result[indexResult][
+                              currentYear
+                            ],
+                            item.question[indexSub].goalCurrentYear[
+                              indexResult
+                            ],
+                            item.question[indexSub].scoreStandard[indexResult]
+                          ),
+                          index,
+                          indexSub,
+                          indexResult
+                        ) != -1
+                      "
                     >
                       {{
-                      calculateScore(
-                      calculateSuccessRate(
-                      item.question[indexSub].result[indexResult][
-                      currentYear
-                      ],
-                      item.question[indexSub].goalCurrentYear[indexResult],
-                      item.question[indexSub].scoreStandard[indexResult]
-                      ),
-                      index,
-                      indexSub,
-                      indexResult
-                      )
+                        calculateScore(
+                          calculateSuccessRate(
+                            item.question[indexSub].result[indexResult][
+                              currentYear
+                            ],
+                            item.question[indexSub].goalCurrentYear[
+                              indexResult
+                            ],
+                            item.question[indexSub].scoreStandard[indexResult]
+                          ),
+                          index,
+                          indexSub,
+                          indexResult
+                        )
                       }}
                     </span>
                   </span>
@@ -523,7 +579,7 @@ export default {
             - ความสําเร็จของการแก้ไขกฎหมายเพื่อการปฏิรูปด้านคุ้มครองผู้บริโภค
 
 
-            `,
+            `
       ],
       dialogMessage: "",
 
@@ -557,28 +613,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -587,8 +643,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 2,
@@ -609,28 +665,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -639,8 +695,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 3,
@@ -660,28 +716,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -690,8 +746,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 4,
@@ -711,28 +767,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -741,8 +797,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 5,
@@ -763,28 +819,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -793,10 +849,10 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
-            },
-          ],
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
         },
         {
           title: "7.2 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านผู้รับบริการ และประชาชน",
@@ -823,28 +879,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -853,8 +909,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 2,
@@ -874,28 +930,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -904,8 +960,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 3,
@@ -925,28 +981,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -955,8 +1011,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 4,
@@ -976,28 +1032,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1006,8 +1062,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 5,
@@ -1028,28 +1084,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1058,10 +1114,10 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
-            },
-          ],
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
         },
         {
           title: "7.3 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านการพัฒนาบุคลากร",
@@ -1089,28 +1145,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1119,8 +1175,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 2,
@@ -1142,28 +1198,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1172,8 +1228,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 3,
@@ -1194,28 +1250,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1224,8 +1280,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 4,
@@ -1245,28 +1301,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1275,8 +1331,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 5,
@@ -1296,28 +1352,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1326,10 +1382,10 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
-            },
-          ],
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
         },
         {
           title: "7.4 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านการเป็นต้นแบบ",
@@ -1356,28 +1412,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1386,8 +1442,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 2,
@@ -1408,28 +1464,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1438,8 +1494,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 3,
@@ -1462,28 +1518,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1492,8 +1548,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 4,
@@ -1514,28 +1570,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1544,8 +1600,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 5,
@@ -1565,28 +1621,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1595,10 +1651,10 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
-            },
-          ],
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
         },
         {
           title:
@@ -1626,28 +1682,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1656,8 +1712,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 2,
@@ -1679,28 +1735,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1709,8 +1765,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 3,
@@ -1730,28 +1786,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1760,8 +1816,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 4,
@@ -1781,28 +1837,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1811,8 +1867,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 5,
@@ -1832,28 +1888,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1862,10 +1918,10 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
-            },
-          ],
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
         },
         {
           title:
@@ -1893,28 +1949,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1923,8 +1979,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 2,
@@ -1944,28 +2000,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -1974,8 +2030,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 3,
@@ -1996,28 +2052,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -2026,8 +2082,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 4,
@@ -2048,28 +2104,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -2078,8 +2134,8 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
+                "ยิ่งมากยิ่งดี"
+              ]
             },
             {
               subNo: 5,
@@ -2099,28 +2155,28 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
                 },
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: [],
               score: [],
@@ -2129,12 +2185,12 @@ export default {
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
                 "ยิ่งมากยิ่งดี",
-                "ยิ่งมากยิ่งดี",
-              ],
-            },
-          ],
-        },
-      ],
+                "ยิ่งมากยิ่งดี"
+              ]
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {
@@ -2203,28 +2259,28 @@ export default {
         {
           [this.$q.sessionStorage.getItem("y") + 543]: null,
           [this.$q.sessionStorage.getItem("y") + 542]: null,
-          [this.$q.sessionStorage.getItem("y") + 541]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
         },
         {
           [this.$q.sessionStorage.getItem("y") + 543]: null,
           [this.$q.sessionStorage.getItem("y") + 542]: null,
-          [this.$q.sessionStorage.getItem("y") + 541]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
         },
         {
           [this.$q.sessionStorage.getItem("y") + 543]: null,
           [this.$q.sessionStorage.getItem("y") + 542]: null,
-          [this.$q.sessionStorage.getItem("y") + 541]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
         },
         {
           [this.$q.sessionStorage.getItem("y") + 543]: null,
           [this.$q.sessionStorage.getItem("y") + 542]: null,
-          [this.$q.sessionStorage.getItem("y") + 541]: null,
+          [this.$q.sessionStorage.getItem("y") + 541]: null
         },
         {
           [this.$q.sessionStorage.getItem("y") + 543]: null,
           [this.$q.sessionStorage.getItem("y") + 542]: null,
-          [this.$q.sessionStorage.getItem("y") + 541]: null,
-        },
+          [this.$q.sessionStorage.getItem("y") + 541]: null
+        }
       ];
 
       this.data[index].question[indexSub].numberOfIndicators--;
@@ -2258,20 +2314,18 @@ export default {
       for (let i = 0; i < 5; i++) {
         // let totalIndicator = this.data[index].question[i].a_assessment.filter(x => x != -1).length
         let a_avgScore = this.data[index].question[i].a_score.filter(
-          (x) => x != -1
+          x => x != -1
         );
         let totalIndicator = this.data[index].question[i].score.length;
         let finalScore = a_avgScore.reduce((a, b) => a + b, 0) / totalIndicator;
         this.data[index].question[i].a_avgScore = parseInt(finalScore);
-
-      
       }
 
       let countIndicator = this.data[index].question.filter(
-        (x) => x.avgScore != -1
+        x => x.avgScore != -1
       ).length;
 
-      let finalAvg = this.data[index].question.map((x) => {
+      let finalAvg = this.data[index].question.map(x => {
         if (x.a_avgScore != -1) {
           return x.a_avgScore;
         }
@@ -2280,8 +2334,6 @@ export default {
       finalAvg = finalAvg.reduce((a, b) => a + b, 0) / countIndicator;
       finalAvg = parseInt(finalAvg);
       this.data[index].a_avgScore = finalAvg;
-
-
     },
 
     calculateScore(score) {
@@ -2307,10 +2359,18 @@ export default {
     },
 
     async saveCategory7(q_number) {
-      this.loadingShow()
+      // this.loadingShow()
       this.calAvgScore(q_number);
       let index = q_number - 1;
       const url = this.apiPath + "user/addUpdateCategory7.php";
+
+      let totala_avg_score = this.data
+        .filter(x => x.a_avgScore != "-1")
+        .map(x => Number(x.a_avgScore))
+        .reduce((a, b) => Number(a) + Number(b), 0);
+
+      totala_avg_score = parseInt(totala_avg_score / 6);
+
       let postData = {
         user_id: this.$q.sessionStorage.getItem("aid"),
         q_number: q_number,
@@ -2318,23 +2378,25 @@ export default {
         json: JSON.stringify(this.data[index].question),
         year: this.currentYear,
         avg_score: Number(this.data[index].avgScore),
-        a_avg_score : Number(this.data[index].a_avgScore)
+        a_avg_score: Number(this.data[index].a_avgScore),
+        category: "a_category7_score",
+        totala_avg_score: totala_avg_score
       };
 
       let data = await Axios.post(url, postData);
-      this.loadingHide()
+      this.checkStatus();
+      this.loadingHide();
     },
     async getCategory7() {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("aid"),
-        year: this.$q.sessionStorage.getItem("y") + 543,
+        year: this.$q.sessionStorage.getItem("y") + 543
       };
       let data = await Axios.post(url, postData);
       let getData = data.data;
 
       getData = getData.sort((a, b) => Number(a.number) - Number(b.number));
-
 
       for (let i = 0; i < 6; i++) {
         if (getData[i]) {
@@ -2342,10 +2404,12 @@ export default {
           let json = JSON.parse(getData[i].json);
           this.data[index].avgScore = getData[i].avg_score;
           this.data[index].question = json;
-          this.data[index].a_avgScore = getData[i].a_avg_score
+          this.data[index].a_avgScore = getData[i].a_avg_score;
         }
       }
-      this.isShowPage = true
+
+      this.isShowPage = true;
+      this.checkStatus();
 
       setTimeout(() => {
         this.randerGraph();
@@ -2356,7 +2420,7 @@ export default {
       let getYear = [
         this.$q.sessionStorage.getItem("y") + 541,
         this.$q.sessionStorage.getItem("y") + 542,
-        this.$q.sessionStorage.getItem("y") + 543,
+        this.$q.sessionStorage.getItem("y") + 543
       ];
 
       for (let i = 0; i < this.data.length; i++) {
@@ -2372,33 +2436,33 @@ export default {
                   "container" +
                   this.data[i].no +
                   this.data[i].question[ii].subNo +
-                  (iii + 1),
+                  (iii + 1)
               },
               title: {
-                text: this.data[i].question[ii].indicators[iii],
+                text: this.data[i].question[ii].indicators[iii]
               },
 
               yAxis: {
                 title: {
-                  text: "Number of Employees",
-                },
+                  text: this.data[i].question[ii].unit[iii]
+                }
               },
 
               xAxis: {
-                categories: getYear,
+                categories: getYear
               },
 
               legend: {
                 layout: "horizontal",
                 align: "center",
-                verticalAlign: "bottom",
+                verticalAlign: "bottom"
               },
 
               plotOptions: {
                 line: {
                   dataLabels: {
                     enabled: true,
-                    formatter: function () {
+                    formatter: function() {
                       if (this.series.name == "เป้าหมาย") {
                         if (
                           this.x ==
@@ -2409,17 +2473,17 @@ export default {
                       } else {
                         return this.y;
                       }
-                    },
+                    }
                   },
-                  enableMouseTracking: false,
+                  enableMouseTracking: false
                 },
                 series: {
-                  label: {},
-                },
+                  label: {}
+                }
               },
 
               credits: {
-                enabled: false,
+                enabled: false
               },
 
               series: [
@@ -2428,9 +2492,9 @@ export default {
                   data: [
                     this.data[i].question[ii].goalCurrentYear[iii],
                     this.data[i].question[ii].goalCurrentYear[iii],
-                    this.data[i].question[ii].goalCurrentYear[iii],
+                    this.data[i].question[ii].goalCurrentYear[iii]
                   ],
-                  color: "#E84C93",
+                  color: "#E84C93"
                 },
                 {
                   name: "ค่าที่ทำได้",
@@ -2443,20 +2507,33 @@ export default {
                     ],
                     this.data[i].question[ii].result[iii][
                       this_.$q.sessionStorage.getItem("y") + 543
-                    ],
+                    ]
                   ],
-                  color: "#13579A",
-                },
-              ],
+                  color: "#13579A"
+                }
+              ]
             });
           }
         }
       }
     },
+    checkStatus() {
+      let mapData = this.data.map(x => x.a_avgScore);
+      if (mapData.every(x => x == "-1")) {
+        // ยังไม่เคยประเมินสักข้อ
+        this.$emit("statusForm", 0);
+      } else if (mapData.every(x => x != "-1")) {
+        // ประเมินครบทุกข้อ
+        this.$emit("statusForm", 1);
+      } else {
+        // ประเมินไปบางข้อ
+        this.$emit("statusForm", 2);
+      }
+    }
   },
   created() {
     this.getCategory7();
-  },
+  }
 };
 </script>
 

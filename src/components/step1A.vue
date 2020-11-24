@@ -830,6 +830,7 @@ export default {
               this.inputPerformanceSystemS = inputPerformanceSystem[0].suggesstion;
          
         }
+        this.saveData()
       }
       this.loadingHide();
     },
@@ -954,6 +955,8 @@ export default {
         user_id: this.$q.sessionStorage.getItem("aid")
       };
 
+      this.checkStatus(sendData)
+
       const url = this.apiPath + "assessorUpdateCategory0.php";
       let post = await Axios.post(url, finalData);
       this.isSaveData = true;
@@ -961,7 +964,6 @@ export default {
       setTimeout(() => {
         this.isSaveData = false;
 
-        this.$emit("statusForm", true);
       }, 1000);
     },
 
@@ -986,7 +988,22 @@ export default {
       }
       let link = this.apiPath + "uploadcategory0/" + fileName;
       window.open(link);
-    }
+    },
+    checkStatus(data){
+      let mapData = data.map(x => x.suggesstion)
+
+      if(mapData.every(x => x.length == 0)){
+        // มีข้อยังไม่ประเมิน
+        console.log("ยังไม่ประเมิน")
+        this.$emit("statusForm",0)
+      }else if(mapData.every(x => x.length != 0)){
+        console.log("ประเมินครบทุกข้อ")
+        this.$emit("statusForm",1)
+      }else{
+        console.log("ประเมินบางข้อ")
+        this.$emit("statusForm",2)
+      }
+    },
   },
   created() {
     this.getData();
