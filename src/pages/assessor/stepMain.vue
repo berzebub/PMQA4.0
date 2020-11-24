@@ -456,8 +456,12 @@
               <span class="text-pink-4">yyy</span>
             </div>
           </div>
-          <div class="absolute-bottom q-pa-lg " align="left" style="left:150px;width:350px">
-            <div>คะแนนที่ทางหน่วยงานประเมิน xxx คะแนน </div>
+          <div
+            class="absolute-bottom q-pa-lg "
+            align="left"
+            style="left:150px;width:350px"
+          >
+            <div>คะแนนที่ทางหน่วยงานประเมิน xxx คะแนน</div>
             <div>คะแนนที่ทางคณะกรรมการประเมิน yyy คะแนน</div>
           </div>
         </div>
@@ -472,7 +476,7 @@ export default {
   data() {
     return {
       assessmentLog: "",
-    
+
       currentStep: "",
       isShowStepper: false,
       endDate: "",
@@ -485,9 +489,7 @@ export default {
     printAll() {
       let route = this.$router.resolve({ name: "printAll" });
       window.open(route.href);
-      setTimeout(() => {
-        
-      }, delayInms);
+      setTimeout(() => {}, delayInms);
     },
     printData(step) {
       let route = this.$router.resolve({
@@ -553,7 +555,7 @@ export default {
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
         dataList[i].score = score.map(x => Number(x.a_score));
       }
-      console.log(dataList)
+      console.log(dataList);
 
       const url1 = this.apiPath + "user/getCategory7.php";
       let getCategory7 = await Axios.post(url1, postData1);
@@ -595,13 +597,11 @@ export default {
       return result;
     },
     async sendAssessment() {
-
-
       let avgScore = await this.getScore();
 
-      console.log(avgScore)
+      console.log(avgScore);
 
-      return
+      return;
 
       const sendAPI = this.apiPath + "user/sendAssessment.php";
       let postSendData = {
@@ -639,41 +639,35 @@ export default {
       let data = await Axios.post(url, postData);
       let dataFilter = data.data.filter(
         x => x.user_id == this.$route.params.userId
-      )
-      console.log(dataFilter)
-      let isOpenSendBtn = false
+      );
 
+      console.log(dataFilter);
+      let isOpenSendBtn = false;
 
-if(dataFilter.length){
-  console.log(123)
-      this.assessmentLog =dataFilter[0]
-       let assessorScore  = [-1,-1,-1,-1,-1,-1,-1]
+      if (dataFilter.length) {
+        this.assessmentLog = dataFilter[0];
+        let assessorScore = [-1, -1, -1, -1, -1, -1, -1];
         assessorScore = dataFilter.map(x => {
-        return [
-          Number(x.a_category1_score),
-          Number(x.a_category2_score),
-          Number(x.a_category3_score),
-          Number(x.a_category4_score),
-          Number(x.a_category5_score),
-          Number(x.a_category6_score),
-          Number(x.a_category7_score)
-          ]
-      })
+          return [
+            Number(x.a_category1_score),
+            Number(x.a_category2_score),
+            Number(x.a_category3_score),
+            Number(x.a_category4_score),
+            Number(x.a_category5_score),
+            Number(x.a_category6_score),
+            Number(x.a_category7_score)
+          ];
+        });
 
-    
-      assessorScore = assessorScore[0]
+        assessorScore = assessorScore[0];
 
-      if(assessorScore.every(x => x != -1 )){
-        console.log("enable send btn")
-      }else{
-        console.log("disable send status")
+        if (assessorScore.every(x => x != -1)) {
+          console.log("enable send btn");
+        } else {
+          console.log("disable send status");
+        }
       }
-}
       this.isShowStepper = true;
-
-
-
-      
 
       this.loadingHide();
     }
