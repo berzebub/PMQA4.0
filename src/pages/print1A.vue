@@ -163,7 +163,7 @@
                   <th style="width: 23%">ระดับ</th>
                   <th style="width: 23%">แนวทางดำเนินการ</th>
                   <th>คำอธิบาย</th>
-                  <th style="width: 20%">คำอธิบาย</th>
+                  <th style="width: 20%">ข้อเสนอแนะ</th>
                 </tr>
               </thead>
               <tbody>
