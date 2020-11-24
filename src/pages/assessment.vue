@@ -147,7 +147,6 @@ export default {
       }
 
       this.totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
-
       let setPrintData = {
         data: this.dataList,
         avgScore: avgScoreLst,

@@ -1,9 +1,6 @@
 <template>
   <q-page class="row justify-center">
-    <div
-      class="col-10 row self-center q-pa-md"
-      style="width: 850px"
-    >
+    <div class="col-10 row self-center q-pa-md" style="width: 850px">
       <div class="col">
         <!-- Set Top -->
         <div style="padding: 65px 0px 129px 0px">
@@ -32,7 +29,7 @@
                 style="bottom: -120px; width: 145px"
                 align="center"
               >
-                <div class="font-18 " >
+                <div class="font-18 ">
                   <div class="row items-center ">
                     <div class="col-12">
                       <span
@@ -79,14 +76,14 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category1_score }}/<span v-if="assessmentLog.a_category1_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category1_score }}
-                     </span>
+                      {{ assessmentLog.category1_score }} /<span
+                        v-if="assessmentLog.a_category1_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category1_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
+                    <div class="q-pl-sm"></div>
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
@@ -124,7 +121,7 @@
               >
                 <div class="font-18">
                   <div class="row items-center">
-                     <div
+                    <div
                       class="col q-pa-xs"
                       :class="
                         assessmentLog.a_category2_score != '-1'
@@ -132,14 +129,14 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category2_score }}/<span v-if="assessmentLog.a_category2_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category2_score }}
-                     </span>
+                      {{ assessmentLog.category2_score }} /<span
+                        v-if="assessmentLog.a_category2_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category2_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
+                    <div class="q-pl-sm"></div>
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
@@ -177,7 +174,7 @@
               >
                 <div class="font-18">
                   <div class="row items-center">
-                     <div
+                    <div
                       class="col q-pa-xs"
                       :class="
                         assessmentLog.a_category3_score != '-1'
@@ -185,15 +182,15 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category3_score }}/<span v-if="assessmentLog.a_category3_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category3_score }}
-                     </span>
+                      {{ assessmentLog.category3_score }} /<span
+                        v-if="assessmentLog.a_category3_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category3_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
-                    <div class="col-12 " >
+                    <div class="q-pl-sm"></div>
+                    <div class="col-12 ">
                       <span
                         class="text-no-wrap"
                         style="position: relative; left: 0px"
@@ -237,7 +234,7 @@
               >
                 <div class="font-18">
                   <div class="row items-center">
-                     <div
+                    <div
                       class="col q-pa-xs"
                       :class="
                         assessmentLog.a_category4_score != '-1'
@@ -245,14 +242,14 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category4_score }}/<span v-if="assessmentLog.a_category4_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category4_score }}
-                     </span>
+                      {{ assessmentLog.category4_score }} /<span
+                        v-if="assessmentLog.a_category4_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category4_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
+                    <div class="q-pl-sm"></div>
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
@@ -283,14 +280,14 @@
                 </q-btn>
               </div>
 
-             <div
+              <div
                 class="absolute-bottom"
                 style="bottom: -150px; width: 120px"
                 align="center"
               >
                 <div class="font-18">
                   <div class="row items-center">
-                     <div
+                    <div
                       class="col q-pa-xs"
                       :class="
                         assessmentLog.a_category5_score != '-1'
@@ -298,14 +295,14 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category5_score }}/<span v-if="assessmentLog.a_category5_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category5_score }}
-                     </span>
+                      {{ assessmentLog.category5_score }} /<span
+                        v-if="assessmentLog.a_category5_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category5_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
+                    <div class="q-pl-sm"></div>
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
@@ -343,7 +340,7 @@
               >
                 <div class="font-18">
                   <div class="row items-center">
-                     <div
+                    <div
                       class="col q-pa-xs"
                       :class="
                         assessmentLog.a_category6_score != '-1'
@@ -351,14 +348,14 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category6_score }}/<span v-if="assessmentLog.a_category6_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category6_score }}
-                     </span>
+                      {{ assessmentLog.category6_score }} /<span
+                        v-if="assessmentLog.a_category6_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category6_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
+                    <div class="q-pl-sm"></div>
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
@@ -389,14 +386,14 @@
                 </q-btn>
               </div>
 
-             <div
+              <div
                 class="absolute-bottom"
                 style="bottom: -150px; width: 120px"
                 align="center"
               >
                 <div class="font-18">
                   <div class="row items-center">
-                     <div
+                    <div
                       class="col q-pa-xs"
                       :class="
                         assessmentLog.a_category7_score != '-1'
@@ -404,14 +401,14 @@
                           : 'border-grey'
                       "
                     >
-                     {{ assessmentLog.category7_score }}/<span v-if="assessmentLog.a_category7_score =='-1'">-</span>
-                     <span v-else>
-                         {{ assessmentLog.a_category7_score }}
-                     </span>
+                      {{ assessmentLog.category7_score }} /<span
+                        v-if="assessmentLog.a_category7_score == '-1'"
+                        >-</span
+                      ><span v-else class="text-pink-4">
+                        {{ assessmentLog.a_category7_score }}
+                      </span>
                     </div>
-                    <div class="q-pl-sm">
-                      
-                    </div>
+                    <div class="q-pl-sm"></div>
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
@@ -435,53 +432,39 @@
 
       <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
         <q-btn
-          :disable="!checkSteper"
           style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-white'"
-          @click="printAll()"
-        >
-          <q-icon
-            :class="!checkSteper ? 'color2' : ''"
-            name="fas fa-print"
-          ></q-icon>
-          <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
-            >พิมพ์การประเมิน</span
-          >
-        </q-btn>
-        <q-btn
-          :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px"
-          push
-          class="q-mx-md q-py-sm"
-          :class="!checkSteper ? 'bg3' : 'bg-white'"
-          to="/assessment"
-        >
-          <q-icon
-            :class="!checkSteper ? 'color2' : ''"
-            name="fas fa-print"
-          ></q-icon>
-          <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
-            >พิมพ์ผลการประเมิน</span
-          >
-        </q-btn>
-        <q-btn
-          :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px"
-          push
-          class="q-mx-md q-py-sm"
-          :class="!checkSteper ? 'bg3' : 'bg-teal text-white'"
           @click="sendAssessment()"
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
-            name="far fa-paper-plane"
+            name="fas fa-paper-plane"
           ></q-icon>
           <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
-            >ส่งแบบประเมิน</span
+            >เสร็จสิ้นการประเมิน</span
           >
         </q-btn>
+        <div class=" absolute-left">
+          <div class="absolute-bottom q-pa-lg ">
+            <div
+              style="border:2px solid teal;border-radius:5px;width:120px;font-size:16px"
+            >
+              <span class="text-teal">xxx</span>
+              /
+              <span class="text-pink-4">yyy</span>
+            </div>
+          </div>
+          <div
+            class="absolute-bottom q-pa-lg "
+            align="left"
+            style="left:150px;width:350px"
+          >
+            <div>คะแนนที่ทางหน่วยงานประเมิน xxx คะแนน</div>
+            <div>คะแนนที่ทางคณะกรรมการประเมิน yyy คะแนน</div>
+          </div>
+        </div>
       </div>
     </div>
   </q-page>
@@ -492,53 +475,47 @@ import Axios from "axios";
 export default {
   data() {
     return {
-        assessmentLog : "",
-      step1: false,
-      step2: false,
-      step3: false,
-      step4: false,
-      step5: false,
-      step6: false,
-      step7: false,
-      step8: false,
+      assessmentLog: "",
+
       currentStep: "",
       isShowStepper: false,
       endDate: "",
       assessmentStatus: "",
       endAssessmentDate: "",
-      checkSteper: false,
+      checkSteper: false
     };
   },
   methods: {
-    printAll(){
-      let route = this.$router.resolve({name : 'printAll'})
-      window.open(route.href)
+    printAll() {
+      let route = this.$router.resolve({ name: "printAll" });
+      window.open(route.href);
+      setTimeout(() => {}, delayInms);
     },
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step,
+        name: "printStep" + step
       });
       window.open(route.href);
     },
-    async sendAssessment() {
-      const url = this.apiPath + "user/setUserStepperLog.php";
-      let postData = {
-        category: "category1",
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
-        status: 1, // 1 = finish
-        send_status: 1,
-      };
-      let data = await Axios.post(url, postData);
-      this.$router.push("/waitingAssessment/0");
-    },
+    // async sendAssessment() {
+    //   const url = this.apiPath + "user/setUserStepperLog.php";
+    //   let postData = {
+    //     category: "category1",
+    //     user_id: this.$q.sessionStorage.getItem("uid"),
+    //     year: this.$q.sessionStorage.getItem("y"),
+    //     status: 1, // 1 = finish
+    //     send_status: 1
+    //   };
+    //   let data = await Axios.post(url, postData);
+    //   this.$router.push("/waitingAssessment/0");
+    // },
     async getScore() {
-      console.clear();
+      // console.clear();
       const url = this.apiPath + "user/getAllCategory1_6.php";
 
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("aid")
       };
 
       let getData = await Axios.post(url, postData);
@@ -546,38 +523,39 @@ export default {
 
       const postData1 = {
         year: this.$q.sessionStorage.getItem("y") + 543,
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("aid")
       };
 
       let dataList = [
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0, 0, 0],
-        },
+          score: [0, 0, 0, 0, 0, 0]
+        }
       ];
 
       for (let i = 0; i < dataList.length; i++) {
-        let score = getData.filter((x) => x.step == i + 1 && x.mode == "basic");
+        let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
-        dataList[i].score = score.map((x) => Number(x.score));
+        dataList[i].score = score.map(x => Number(x.a_score));
       }
+      console.log(dataList);
 
       const url1 = this.apiPath + "user/getCategory7.php";
       let getCategory7 = await Axios.post(url1, postData1);
@@ -586,17 +564,16 @@ export default {
         (a, b) => Number(a.q_number) - Number(b.q_number)
       );
 
-      let mapCat7 = cat7.map((x) => Number(x.avg_score));
+      let mapCat7 = cat7.map(x => Number(x.a_avg_score));
 
       for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
+        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
         if (checkExist.length) {
           dataList[6].score[i] = parseInt(mapCat7[i]);
         }
       }
 
       let avgScoreLst = [];
-      // let avgTemp2 = []
 
       for (let i = 0; i < dataList.length; i++) {
         let devine = 4;
@@ -606,7 +583,7 @@ export default {
         }
 
         avgScoreLst.push(
-          dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
+          dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / devine
         );
       }
 
@@ -614,13 +591,17 @@ export default {
 
       let result = {
         score: avgScoreLst,
-        totalAvgScore: totalAvgScore,
+        totalAvgScore: totalAvgScore
       };
 
       return result;
     },
     async sendAssessment() {
       let avgScore = await this.getScore();
+
+      console.log(avgScore);
+
+      return;
 
       const sendAPI = this.apiPath + "user/sendAssessment.php";
       let postSendData = {
@@ -633,7 +614,7 @@ export default {
         category4_score: Math.round(avgScore.score[3]),
         category5_score: Math.round(avgScore.score[4]),
         category6_score: Math.round(avgScore.score[5]),
-        category7_score: Math.round(avgScore.score[6]),
+        category7_score: Math.round(avgScore.score[6])
       };
 
       let send = Axios.post(sendAPI, postSendData);
@@ -644,65 +625,57 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y"),
         status: 1, // 1 = finish
-        send_status: 1,
+        send_status: 1
       };
       let data = await Axios.post(url, postData);
       this.$router.push("/waitingAssessment/0");
     },
-    async getStepperLog() {
-      this.loadingShow();
-      const url = this.apiPath + "user/getStepperLog.php";
+    async getAssessmentLog() {
       let postData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
+      const url = this.apiPath + "getAssessmentLog.php";
+
       let data = await Axios.post(url, postData);
-      let newData = data.data;
-      let checkStatus = [];
-      if (newData) {
-        checkStatus = [
-          newData.category0,
-          newData.category1,
-          newData.category2,
-          newData.category3,
-          newData.category4,
-          newData.category5,
-          newData.category6,
-          newData.category7,
-        ];
-      }
+      let dataFilter = data.data.filter(
+        x => x.user_id == this.$route.params.userId
+      );
 
-      if (checkStatus.every((x) => x == "1") && checkStatus.length) {
-        this.checkSteper = true;
-      } else {
-        this.checkSteper = false;
-      }
-      if (data.data) {
-        this.currentStep = data.data;
-      }
-      let currentDate = await this.getDate();
-    },
-    async getAssessmentLog(){
-        let postData = {
-            year : this.$q.sessionStorage.getItem("y")
+      console.log(dataFilter);
+      let isOpenSendBtn = false;
+
+      if (dataFilter.length) {
+        this.assessmentLog = dataFilter[0];
+        let assessorScore = [-1, -1, -1, -1, -1, -1, -1];
+        assessorScore = dataFilter.map(x => {
+          return [
+            Number(x.a_category1_score),
+            Number(x.a_category2_score),
+            Number(x.a_category3_score),
+            Number(x.a_category4_score),
+            Number(x.a_category5_score),
+            Number(x.a_category6_score),
+            Number(x.a_category7_score)
+          ];
+        });
+
+        assessorScore = assessorScore[0];
+
+        if (assessorScore.every(x => x != -1)) {
+          console.log("enable send btn");
+        } else {
+          console.log("disable send status");
         }
-        const url = this.apiPath + "getAssessmentLog.php"
+      }
+      this.isShowStepper = true;
 
-        let data = await Axios.post(url,postData)
-
-        this.assessmentLog = data.data.filter(x => x.user_id == this.$route.params.userId)[0]
-        this.isShowStepper = true
-
-        this.loadingHide()
-    },
-
-    
+      this.loadingHide();
+    }
   },
-  computed: {},
   created() {
-    this.getStepperLog();
-    this.getAssessmentLog()
-  },
+    // this.getStepperLog();
+    this.getAssessmentLog();
+  }
 };
 </script>
 

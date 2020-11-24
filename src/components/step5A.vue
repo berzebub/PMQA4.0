@@ -37,8 +37,8 @@
                     align="center"
                   >
                     {{ item.score }} /
-                    <span v-if="item.a_score != '-1'">{{ item.a_score }} </span>
-                    <span v-else>-</span>
+                    <span class="text-pink-4" v-if="item.a_score != '-1'">{{ item.a_score }} </span>
+                    <span class="text-pink-4" v-else>-</span>
                   </div>
                 </div>
               </div>
@@ -770,8 +770,7 @@ export default {
     },
 
     async saveData(no) {
-      console.clear();
-
+      this.loadingShow();
       let index = no - 1;
       let score = 0;
       const url = this.apiPath + "updateScoreAssessment.php";
@@ -815,6 +814,7 @@ export default {
       ) {
         score += scoreSigni;
       }
+      this.data[index].a_score = score;
       formData.append("user_id", userId);
       formData.append("q_number", no);
       formData.append("year", year);
@@ -832,9 +832,22 @@ export default {
       formData.append("basic_checkbox", basicCheckbox.join());
       formData.append("advance_checkbox", advanceCheckbox.join());
       formData.append("significance_checkbox", signiCheckbox.join());
+
+      let filtera_score = this.data.filter(x => x.a_score != -1);
+
+      let sum_filtera_score = filtera_score
+        .map(x => x.a_score)
+        .reduce((a, b) => Number(a) + Number(b), 0);
+      sum_filtera_score = sum_filtera_score / 4;
+
       formData.append("category", "a_category4_score");
+
+      formData.append("a_avg_score", sum_filtera_score);
       let data = await Axios.post(url, formData);
-      this.data[index].a_score = score;
+
+      setTimeout(() => {
+        this.loadingHide();
+      }, 1000);
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
