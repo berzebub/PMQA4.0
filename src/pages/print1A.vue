@@ -163,6 +163,7 @@
                   <th style="width: 23%">ระดับ</th>
                   <th style="width: 23%">แนวทางดำเนินการ</th>
                   <th>คำอธิบาย</th>
+                  <th style="width: 20%">คำอธิบาย</th>
                 </tr>
               </thead>
               <tbody>
@@ -192,7 +193,7 @@
                             color="pink-4"
                             keep-color=""
                             read-only
-                            :value="checkbox.status"
+                            :value="item.basic.checkBox_a[indexCheckbox]"
                           />
                         </div>
 
@@ -212,6 +213,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.basic.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.basic.suggesstion"></span>
                   </td>
                 </tr>
                 <!-- ADVANCE -->
@@ -235,9 +239,17 @@
                       :key="indexCheckbox"
                     >
                       <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.advance.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -251,6 +263,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.advance.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.advance.suggesstion"></span>
                   </td>
                 </tr>
 
@@ -279,9 +294,17 @@
                       :key="indexCheckbox"
                     >
                       <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.significance.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -295,6 +318,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.significance.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.significance.suggesstion"></span>
                   </td>
                 </tr>
               </tbody>
@@ -316,12 +342,14 @@ export default {
       data: [
         {
           score: 0,
+          a_score: -1,
           header:
             "1.1 ระบบการนำองค์การของส่วนราชการได้สร้างองค์การที่ยั่งยืน โดยการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์เชื่อมโยง สู่การบรรลุพันธกิจ การมุ่งเน้นประโยชน์สุขประชาชนและการบรรลุผลยุทธศาสตร์ชาติและความสามารถในการแข่งขัน",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 1,
           // 1.1 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืนโดยการกำหนดวิสัยทัศน์  และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจ และภาระหน้าที่ของส่วนราชการ (Mission based) 
             
@@ -340,6 +368,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -347,6 +376,7 @@ export default {
           // 1.1 advanec
           advance: {
             mode: "advance",
+            suggesstion: "",
             titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน โดยการกำหนดวิสัยทัศน์ และยุทธศาสตร์ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ และสอดรับกับยุทธศาสตร์ชาติ (Alignment with National Strategies)`,
             checkBox: [
               {
@@ -354,6 +384,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -361,6 +392,7 @@ export default {
           // 1.1 significance
           significance: {
             mode: "significance",
+            suggesstion: "",
             titleText: `- ผู้บริหารของส่วนราชการได้สร้างความยั่งยืน โดยการกำหนด ยุทธศาสตร์ ที่ตอบสนองต่อพันธกิจและภาระหน้าที่ของส่วนราชการ สอดรับกับทิศทางการพัฒนาและยุทธศาสตร์พื้นที่สร้างนวัตกรรมและ วัฒนธรรมในการมุ่งประโยชน์สุขประชาชน (Innovation, Citizen-centric)`,
             checkBox: [
               {
@@ -371,6 +403,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -382,9 +415,11 @@ export default {
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 2,
           score: 0,
+          a_score: -1,
           // 1.2 basic
           basic: {
             mode: "basic",
+            suggesstion: "",
             titleText: `- นโยบายและระบบการกำกับดูแลที่เสริมสร้างความโปร่งใสและการ
             ป้องกันทุจริต รวมทั้งระบบการตรวจสอบที่มีประสิทธิภาพ<br>
           - มีมาตรการที่ถ่ายทอดสู่การปฏิบัติและการติดตามรายงานผลอย่าง   
@@ -404,6 +439,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -411,6 +447,7 @@ export default {
           // 1.2 advance ******************************
           advance: {
             mode: "advance",
+            suggesstion: "",
             titleText: `- การประเมินประสิทธิผลและตัววัดการป้องกันทุจริตและการสร้างความโปร่งใสภายในส่วนราชการ และมีการปรับปรุงอย่างสม่ำเสมอ<br>
                       - การรายงานผลการดำเนินการของส่วนราชการต่อสาธารณะ   
                         และหน่วยงานบังคับบัญชา`,
@@ -429,6 +466,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -436,6 +474,7 @@ export default {
           // 1.2 significance
           significance: {
             mode: "significance",
+            suggesstion: "",
             titleText: `-ผลการประเมินความโปร่งใสในระดับองค์การโดยองค์การอิสระ<br>ระดับชาติหรือนานาชาติ<br>
             -เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส`,
             checkBox: [
@@ -452,6 +491,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -460,6 +500,7 @@ export default {
         // ***************************************1.3 *******************************************
         {
           score: 0,
+          a_score: -1,
           header:
             "1.3 การมุ่งเน้นการบรรลุผลสัมฤทธิ์ของส่วนราชการผ่านการสร้างการมีส่วนร่วมของบุคลากรภายในและภายนอก",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -467,6 +508,7 @@ export default {
           // 1.3 basic
           basic: {
             mode: "basic",
+            suggesstion: "",
             titleText: `- การสื่อสารและการสร้างสภาพแวดล้อมภายในเพื่อให้มุ่งเน้นผลสัมฤทธิ์<br>
             - การสร้างกลไกที่เอื้อให้ประชาชนและเครือข่ายภายนอกเข้ามามีส่วนร่วม
               ในการทำงาน`,
@@ -485,6 +527,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -492,6 +535,7 @@ export default {
           // 1.3 advance ******************************
           advance: {
             mode: "advance",
+            suggesstion: "",
             titleText: `- การตั้งเป้าหมาย ท้าทาย และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
             checkBox: [
               {
@@ -503,6 +547,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -510,6 +555,7 @@ export default {
           // 1.3 significance
           significance: {
             mode: "significance",
+            suggesstion: "",
             titleText: `- การสร้างนวัตกรรมที่มีผลกระทบสูงและเชิงนโยบายที่นำไปสู่การแก้
             ปัญหาที่มีความซับซ้อน`,
             checkBox: [
@@ -521,6 +567,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -529,6 +576,7 @@ export default {
         // ******************************************** 1.4 *****************************
         {
           score: 0,
+          a_score: -1,
           header:
             "1.4 การคำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์ที่นำไปสู่การพัฒนาประเทศตามทิศทางยุทธศาสตร์",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -536,6 +584,7 @@ export default {
           // 1.4 basic
           basic: {
             mode: "basic",
+            suggesstion: "",
             titleText: `- การประเมินและติดตามโครงการ กระบวนการ และยุทธศาสตร์ที่อาจมีผลกระทบเชิงลบต่อสังคม<br>
             - การติดตามตัวชี้วัดและผลการดำเนินการขององค์การอย่างต่อเนื่อง
             `,
@@ -557,6 +606,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -564,6 +614,7 @@ export default {
           // 1.4 advanec
           advance: {
             mode: "advance",
+            suggesstion: "",
             titleText: `- การติดตามรายงานผลกระทบ โดยผ่านกลไกการสื่อสารและเทคโนโลยี  
             ดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันการณ์ประชาชน ภาคเอกชน  
             และท้องถิ่น`,
@@ -577,6 +628,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -584,6 +636,7 @@ export default {
           // 1.4 significance
           significance: {
             mode: "significance",
+            suggesstion: "",
             titleText: `- การติดตามผลการดำเนินการและผลกระทบที่เกิดขึ้นทั้งในระยะสั้นและ 
             ระยะยาวและผลกระทบที่มีต่อเศรษฐกิจ สังคม สาธารณสุข  
             และสิ่งแวดล้อม`,
@@ -601,6 +654,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -615,7 +669,7 @@ export default {
       const url = this.apiPath + "user/getCategory1_6.php";
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("aid"),
+        user_id: this.$q.sessionStorage.getItem("uid"),
         step: 1
       };
       let data = await Axios.post(url, postData);
@@ -650,6 +704,15 @@ export default {
           }
 
           this.data[i - 1].score = getData[0].score;
+          this.data[i - 1].a_score = getData[0].a_score;
+
+          if (getData[0].a_check_box) {
+            this.data[i - 1].basic.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].basic.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -662,6 +725,7 @@ export default {
         let getDataBasic = data.filter(
           x => x.q_number == i && x.mode == "basic"
         );
+
         if (getData.length > 0) {
           this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
@@ -687,7 +751,13 @@ export default {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[i - 1].advance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].advance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -742,7 +812,15 @@ export default {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[
+              i - 1
+            ].significance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].significance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];

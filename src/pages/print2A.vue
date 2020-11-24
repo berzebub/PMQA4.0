@@ -134,13 +134,13 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape ">
+    <div class="a4-landscape  ">
       <div v-for="(item, index) in data" :key="index">
         <div class="q-pt-md">
           {{ item.header }}
 
           <div>
-            <table class="m-table">
+            <table>
               <thead>
                 <tr style="height: 20px; visibility: hidden">
                   <th colspan="3"></th>
@@ -149,6 +149,7 @@
                   <th style="width: 23%">ระดับ</th>
                   <th style="width: 23%">แนวทางดำเนินการ</th>
                   <th>คำอธิบาย</th>
+                  <th style="width: 20%">คำอธิบาย</th>
                 </tr>
               </thead>
               <tbody>
@@ -166,16 +167,25 @@
                       </div>
                     </div>
                   </td>
-                  <td class="q-pa-sm" style="vertical-align: top">
+                  <td class="q-pa-xs" style="vertical-align: top">
                     <div
                       class="q-mt-sm"
                       v-for="(checkbox, indexCheckbox) in item.basic.checkBox"
                       :key="indexCheckbox"
                     >
-                      <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                      <div class="row ">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.basic.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -189,6 +199,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.basic.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.basic.suggesstion"></span>
                   </td>
                 </tr>
                 <!-- ADVANCE -->
@@ -212,9 +225,17 @@
                       :key="indexCheckbox"
                     >
                       <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.advance.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -228,6 +249,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.advance.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.advance.suggesstion"></span>
                   </td>
                 </tr>
 
@@ -256,9 +280,17 @@
                       :key="indexCheckbox"
                     >
                       <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.significance.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -272,6 +304,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.significance.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.significance.suggesstion"></span>
                   </td>
                 </tr>
               </tbody>
@@ -292,11 +327,14 @@ export default {
       printDate: "",
       data: [
         {
+          score: 0,
+          a_score: -1,
           header: `2.1 กระบวนการวางแผนยุทธศาสตร์ที่ตอบสนองความท้าทาย สร้างนวัตกรรมเพื่อสร้างการเปลี่ยนแปลงและมุ่งเน้นประโยชน์สุขของประชาชน`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 1,
           // 2.1 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- กระบวนการวางแผนยุทธศาสตร์อย่างเป็นระบบทั้งระยะสั้นและระยะยาว ตอบสนองความต้องการของประชาชนและบรรลุพันธกิจส่วน
 ราชการ<br>
@@ -324,12 +362,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.1 advanec
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- แผนยุทธศาสตร์ตอบสนองความท้าท้ายของส่วนราชการมีการ คาดการณ์การเปลี่ยนแปลงที่กำลังจะเกิดในอนาคต และแผนรองรับเพื่อ
 ตอบสนองต่อการเปลี่ยนแปลง (รวมทั้งการเปลี่ยนแปลงที่เกิดจากการ
@@ -347,12 +387,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.1 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- สร้างขีดความสามารถในการแข่งขัน และสร้างโอกาสเชิงกลยุทธ์ใหม่ๆ ที่นำไปสู่ประโยชน์สุขของประชาชนและการพัฒนาเศรษฐกิจของประเทศทั้งในระยะสั้นและระยะยาว
 `,
@@ -367,6 +409,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -374,12 +417,15 @@ export default {
         },
         // ******************************************************************************************
         {
+          score: 0,
+          a_score: -1,
           header:
             "2.2 การกำหนดเป้าหมายเชิงยุทธศาสตร์ทั้งระยะสั้นและระยะยาวที่สอดคล้องกับพันธกิจของส่วนราชการและเชื่อมโยงกับยุทธศาสตร์ชาติ",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 2,
           // 2.2 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- การกำหนดเป้าประสงค์และตัวชี้วัดเชิงยุทธศาสตร์ที่ตอบสนองต่อ พันธกิจของส่วนราชการทั้งระยะสั้นและระยะยาว รวมทั้งการสร้างการ เปลี่ยนแปลง`,
             checkBox: [
@@ -392,12 +438,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.2 advance ******************************
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- มีการวิเคราะห์ผลกระทบของเป้าประสงค์และตัวชี้วัดเชิงยุทธศาสตร์ที่
 เกิดกับยุทธศาสตร์ชาติทั้งระยะสั้นและระยะยาว`,
@@ -407,12 +455,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.2 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- มีการวิเคราะห์ความเสี่ยงระดับองค์การและผลกระทบทั้งทางตรง ทางอ้อมที่ส่งผลต่อระบบเศรษฐกิจสังคม สาธารณสุข และสิ่งแวดล้อม ของประเทศ
 `,
@@ -426,6 +476,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -433,12 +484,15 @@ export default {
         },
         // ***************************************2.3 *******************************************
         {
+          score: 0,
+          a_score: -1,
           header:
             "2.3 แผนกฏิบัติการที่ขับเคลื่อนยุทธศาสตร์ของส่วนราชการลงไปทุกภาคส่วน โดยผ่านเครือข่ายทั้งภายในและภายนอก",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 3,
           // 2.3 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- แผนปฏิบัติการที่ครอบคลุมทุกส่วนงานชัดเจน และสื่อสารสู่การปฏิบัติ ไปยังทุกกลุ่มทั้งภายในและภายนอก`,
             checkBox: [
@@ -455,12 +509,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.3 advance ******************************
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- แผนปฏิบัติการที่สนับสนุนความสำเร็จของยุทธศาสตร์ของส่วน ราชการครอบคลุมทุกส่วนงานชัดเจน และเน้นการเกิดประสิทธิภาพ (การทำน้อยได้มาก) และการสร้างคุณค่าแก่ประชาชน (Public value)`,
             checkBox: [
@@ -473,12 +529,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.3 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- แผนปฏิบัติการที่สนับสนุนความสำเร็จของยุทธศาสตร์ของส่วน ราชการ บูรณาการกับแผนงานด้านบุคลากรและการใช้ทรัพยากรที่ รองรับการเปลี่ยนแปลงที่จะเกิดขึ้น และสื่อสารสู่การปฏิบัติผ่าน เครือข่ายทั้งภายในและภายนอกและการใช้ข้อมูลร่วมกันเพื่อการประสานงานให้เกิดความสำเร็จ
 
@@ -498,6 +556,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -505,11 +564,14 @@ export default {
         },
         // ******************************************** 2.4 *****************************
         {
+          score: 0,
+          a_score: -1,
           header: `2.4 การติดตามผลของการบรรลุเป้าหมายเชิงยุทธศาสตร์ การแก้ไขปัญหา  และการรายงานผลอย่างมีประสิทธิผล`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 4,
           // 2.4 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- การติดตามรายงานผลการดำเนินการตามแผนและการบรรลุเป้าหมาย
 เชิงยุทธศาสตร์ และการรายงานผลสู่สาธารณะ (Open by default)`,
@@ -522,12 +584,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.4 advanec
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- การคาดการณ์ของผลการดำเนินการตามแผน การแก้ปัญหา และการปรับแผนให้ทันต่อการเปลี่ยนแปลง (Projection)`,
             checkBox: [
@@ -548,12 +612,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 2.4 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- การเตรียมการเชิงรุกเพื่อตอบสนองต่อการเปลี่ยนแปลงที่อาจเกิดขึ้น
 จากภายในและภายนอกและการปรับแผนที่ตอบสนองทันเวลา เชิงรุก อย่างมีประสิทธิผล (Proactive and effective)`,
@@ -573,6 +639,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -623,6 +690,15 @@ export default {
           }
 
           this.data[i - 1].score = getData[0].score;
+          this.data[i - 1].a_score = getData[0].a_score;
+
+          if (getData[0].a_check_box) {
+            this.data[i - 1].basic.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].basic.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -635,6 +711,7 @@ export default {
         let getDataBasic = data.filter(
           x => x.q_number == i && x.mode == "basic"
         );
+
         if (getData.length > 0) {
           this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
@@ -660,7 +737,13 @@ export default {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[i - 1].advance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].advance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -715,7 +798,15 @@ export default {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[
+              i - 1
+            ].significance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].significance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];

@@ -142,7 +142,7 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape">
+    <div class="a4-landscape  ">
       <div v-for="(item, index) in data" :key="index">
         <div class="q-pt-md">
           {{ item.header }}
@@ -157,6 +157,7 @@
                   <th style="width: 23%">ระดับ</th>
                   <th style="width: 23%">แนวทางดำเนินการ</th>
                   <th>คำอธิบาย</th>
+                  <th style="width: 20%">คำอธิบาย</th>
                 </tr>
               </thead>
               <tbody>
@@ -174,16 +175,25 @@
                       </div>
                     </div>
                   </td>
-                  <td class="q-pa-sm" style="vertical-align: top">
+                  <td class="q-pa-xs" style="vertical-align: top">
                     <div
                       class="q-mt-sm"
                       v-for="(checkbox, indexCheckbox) in item.basic.checkBox"
                       :key="indexCheckbox"
                     >
-                      <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                      <div class="row ">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.basic.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -197,6 +207,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.basic.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.basic.suggesstion"></span>
                   </td>
                 </tr>
                 <!-- ADVANCE -->
@@ -220,9 +233,17 @@
                       :key="indexCheckbox"
                     >
                       <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.advance.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -236,6 +257,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.advance.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.advance.suggesstion"></span>
                   </td>
                 </tr>
 
@@ -264,9 +288,17 @@
                       :key="indexCheckbox"
                     >
                       <div class="row">
-                        <div class="col-1" style="width: 50px" align="center">
+                        <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
+                            keep-color=""
+                            read-only
+                            :value="item.significance.checkBox_a[indexCheckbox]"
+                          />
+                        </div>
+                        <div class="col-1 " style="width: 45px" align="center">
+                          <q-checkbox
+                            color="teal"
                             keep-color=""
                             read-only
                             :value="checkbox.status"
@@ -280,6 +312,9 @@
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <div v-html="item.significance.explain"></div>
+                  </td>
+                  <td class="q-pa-sm" style="vertical-align: top">
+                    <span v-html="item.significance.suggesstion"></span>
                   </td>
                 </tr>
               </tbody>
@@ -300,11 +335,14 @@ export default {
       printDate: "",
       data: [
         {
+          score: 0,
+          a_score: -1,
           header: `5.1 นโยบายและระบบการจัดการด้านบุคลากรที่มีประสิทธิภาพ ตอบสนองยุทธศาสตร์ และสร้างแรงจูงใจ`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 1,
           // 5.1 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- ระบบการสรรหา ว่าจ้างบรรจุ และการจัดวางคนไปยังตำแหน่งงานที่ตรงกับความถนัดและความต้องการเพื่อประโยชน์สูงสุดของระบบงาน ของราชการ โดยคำนึงถึงความต้องการที่หลากหลายของประชาชน`,
             checkBox: [
@@ -318,12 +356,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.1 advanec
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- การประเมินประสิทธิผลการทำงานและเส้นทางความก้าวหน้าของ บุคลากรทุกกลุ่มสามารถสร้างแรงจูงใจให้บุคลากรทุ่มเท และทำงานให้มีประสิทธิภาพสูงตอบสนองยุทธศาสตร์และมุ่งเน้นประโยชน์สุขแก่ ประชาชน (High Performance)`,
             checkBox: [
@@ -341,12 +381,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.1 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- นโยบายการจัดการด้านบุคลากรสนับสนุนการทำงานที่มีความคล่องตัวและปรับเปลี่ยนให้ทันต่อการเปลี่ยนแปลงของสภาพแวดล้อมการทำงาน`,
             checkBox: [
@@ -363,6 +405,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -370,12 +413,15 @@ export default {
         },
         // ******************************************************************************************
         {
+          score: 0,
+          a_score: -1,
           header:
             "5.2 ระบบการทำงานที่มีประสิทธิภาพ คล่องตัว และมุ่งเน้นผลสัมฤทธิ์",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 2,
           // 5.2 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `สภาพแวดล้อมในการทำงานที่
   <br>- ปลอดภัย
@@ -401,12 +447,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.2 advance ******************************
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- สภาพแวดล้อมที่เอื้อให้บุคลากรมีความรับผิดชอบ (Empower) กล้า ตัดสินใจเข้าถึงข้อมูลเพื่อใช้สนับสนุนการทำงานและการแก้ปัญหาเพื่อบรรลุแผนงานหลักขององค์การ`,
             checkBox: [
@@ -427,12 +475,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.2 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- การทำงานที่เป็นทีมที่มีสมรรถะสูง มีความคล่องตัวและสามารถทำงานร่วมกับเครือข่ายภายนอก เพื่อนำไปสู่แก้ไขปัญหาที่ซับซ้อนอย่างมีประสิทธิผล`,
             checkBox: [
@@ -445,6 +495,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -452,11 +503,14 @@ export default {
         },
         // ***************************************5.3 *******************************************
         {
+          score: 0,
+          a_score: -1,
           header: `5.3 การสร้างวัฒนธรรมการทำงานที่ดี มีประสิทธิภาพ และความร่วมมือ`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 3,
           // 2.3 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `- การสร้างวัฒนธรรมในการทำงานที่เป็นมืออาชีพ เปิดโอกาสในการนำเสนอความริเริ่มและสนับสนุนความคิดสร้างสรรค์`,
             checkBox: [
@@ -469,12 +523,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.3 advance ******************************
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- การค้นหาปัจจัยที่ทำให้บุคลากรมีความผูกพัน ทุ่มเทมีผลการปฏิบัติงานที่ดีและสร้างวัฒนธรรมการทำงานที่นำไปสู่ผลลัพธ์ขององค์การ
 `,
@@ -492,12 +548,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.3 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- การสร้างวัฒนธรรมการทำงานที่มีประสิทธิภาพสูง สร้างความภูมิใจ และความเป็นเจ้าของ ให้แก่บุคลากร (Public Entrepreneurship) และร่วมมือเพื่อนำพาองค์การไปสู่ความสำเร็จ และประโยชน์ที่เกิด กับสังคมและประชาชน`,
             checkBox: [
@@ -514,6 +572,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -521,11 +580,14 @@ export default {
         },
         // ******************************************** 5.4 *****************************
         {
+          score: 0,
+          a_score: -1,
           header: `5.4 ระบบการพัฒนาบุคลากรให้มีความรู้ ความสามารถ ก้าวทันเทคโนโลยีแก้ไขปัญหาสร้างความรอบรู้ และความมีจริยธรรม`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 4,
           // 4.4 basic
           basic: {
+            suggesstion: "",
             mode: "basic",
             titleText: `ระบบการพัฒนาบุคลากรที่สร้างคนให้มี
   <br>- คุณธรรม จริยธรรม
@@ -546,12 +608,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.4 advanec
           advance: {
+            suggesstion: "",
             mode: "advance",
             titleText: `- ระบบการพัฒนาบุคลากรเพื่อเพิ่มพูน สั่งสมทักษะความรู้ความ เชี่ยวชาญในด้านต่างๆที่มีความสำคัญต่อสมรรถะหลักและการบรรลุเป้าหมายยุทธศาสตร์ของส่วนราชการ`,
             checkBox: [
@@ -565,12 +629,14 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
           },
           // 5.4 significance
           significance: {
+            suggesstion: "",
             mode: "significance",
             titleText: `- ระบบการพัฒนาบุคลากรและผู้นำให้มีทักษะที่สามารถปฏิบัติงานได้ หลากหลายมีความรอบรู้ สามารถตัดสินใจและมีความคิดในเชิงวิกฤติ พร้อมรับปัญหาที่มีความซับซ้อนมากยิ่งขึ้น (Fluid Intelligence / Complex Problem Solving)`,
             checkBox: [
@@ -583,6 +649,7 @@ export default {
                 status: false
               }
             ],
+            checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
             img_file: null
@@ -633,6 +700,15 @@ export default {
           }
 
           this.data[i - 1].score = getData[0].score;
+          this.data[i - 1].a_score = getData[0].a_score;
+
+          if (getData[0].a_check_box) {
+            this.data[i - 1].basic.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].basic.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -645,6 +721,7 @@ export default {
         let getDataBasic = data.filter(
           x => x.q_number == i && x.mode == "basic"
         );
+
         if (getData.length > 0) {
           this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
@@ -670,7 +747,13 @@ export default {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[i - 1].advance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].advance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -725,7 +808,15 @@ export default {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          if (getData[0].a_check_box) {
+            this.data[
+              i - 1
+            ].significance.checkBox_a = getData[0].a_check_box
+              .split(",")
+              .map(x => (x == 1 ? true : false));
+          }
+
+          this.data[i - 1].significance.suggesstion = getData[0].suggesstion;
 
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];

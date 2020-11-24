@@ -27,7 +27,7 @@
           <div class=" font-24" align="left">
             <div>
               <span class="color1 text-bold">ผู้ประเมิน : </span>
-              <span class="q-ml-md"> ....</span>
+              <span class="q-ml-sm">{{ assessorName }}</span>
             </div>
             <div class="q-mt-lg">
               <span class="color8 text-bold">หน่วยงานประเมิน</span>
@@ -173,8 +173,7 @@
                     <div
                       class="col self-end "
                       style="border-bottom:2px solid;padding:0px 15px"
-                      v-for="(score, index2) in dataList[activeStep]
-                        .assessmentScore"
+                      v-for="(score, index2) in dataList[activeStep].a_score"
                       :key="index2"
                     >
                       <div
@@ -185,7 +184,7 @@
                         <span
                           class="absolute-center text-white "
                           style="font-size:24px;"
-                          >{{ score == 0 ? "" : score }}</span
+                          >{{ score == 0 || score == -1 ? "" : score }}</span
                         >
                         <span
                           class="absolute-bottom "
@@ -240,6 +239,8 @@ export default {
   },
   data() {
     return {
+      assessorName: "",
+      assessmentLog: "",
       activeStep: 0,
       yearList: [],
       yearSelected: this.$q.sessionStorage.getItem("y") + 543,
@@ -248,43 +249,43 @@ export default {
           title: `1. การนำองค์การ `,
           fontawesome: "fas fa-street-view",
           score: [400, 300, 300, 400],
-          assessmentScore: [200, 200, 200, 200]
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `2. การวางแผน เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
           score: [200, 100, 400, 200],
-          assessmentScore: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `3. การให้ความสำคัญ กับผู้รับบริการและ ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
           score: [200, 100, 400, 200],
-          assessmentScore: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `4. การวัด การวิเคราะห์ และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
           score: [200, 100, 400, 200],
-          assessmentScore: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `5. การมุ่งเน้นบุคลากร`,
           fontawesome: "fas fa-users-cog",
           score: [200, 100, 400, 200],
-          assessmentScore: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `6. การมุ่งเน้นระบบ ปฏิบัติการ`,
           fontawesome: "fas fa-project-diagram",
           score: [200, 100, 400, 200],
-          assessmentScore: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `7. ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
           score: [200, 100, 400, 200],
-          assessmentScore: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0]
         }
       ]
     };
@@ -453,6 +454,11 @@ export default {
       for (let i = 0; i < this.dataList.length; i++) {
         let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
+
+        for (i == 0; i < 4; i++) {
+          this.dataList[i].a_score[i] = score.map(x => Number(x.a_score));
+        }
+
         this.dataList[i].score.forEach((element, index) => {
           let filt = score.filter(x => x.q_number == index + 1);
           if (filt.length) {
@@ -461,6 +467,7 @@ export default {
             this.dataList[i].score[index] = "0";
           }
         });
+
         // this.dataList[i].score = score.map(x => Number(x.score))
       }
 
@@ -482,9 +489,33 @@ export default {
       }
 
       this.render();
+    },
+    async getAssessmentLog() {
+      let postData = {
+        year: this.$q.sessionStorage.getItem("y")
+      };
+
+      let url = this.apiPath + "getAssessmentLog.php";
+
+      let data = await Axios.post(url, postData);
+
+      this.assessmentLog = data.data.filter(
+        x => x.user_id == this.$q.sessionStorage.getItem("uid")
+      )[0];
+
+      postData = {
+        user_id: this.assessmentLog.assessor_id
+      };
+
+      url = this.apiPath + "getAssessorInfo.php";
+
+      let dataB = await Axios.post(url, postData);
+
+      this.assessorName = dataB.data[0].name;
     }
   },
   mounted() {
+    this.getAssessmentLog();
     this.getData();
   }
 };
