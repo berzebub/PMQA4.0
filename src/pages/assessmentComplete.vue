@@ -30,14 +30,14 @@
               <div class="q-mt-lg">
                 <span class="color8 text-bold">หน่วยงานประเมิน</span>
                 <div class="q-mt-xs">
-                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = {{ assessmentLog.office_score }} คะแนน</span>
+                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = <span style="font-size:48px">{{ assessmentLog.office_score }}</span> คะแนน</span>
                 </div>
               </div>
 
               <div class="q-mt-lg">
                 <span class="color9 text-bold">คณะกรรมการประเมิน</span>
                 <div class="q-mt-xs">
-                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = {{ assessmentLog.assessor_score }} คะแนน</span>
+                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = <span style="font-size:48px">{{ assessmentLog.assessor_score }}</span> คะแนน</span>
                 </div>
               </div>
             </div>
@@ -288,7 +288,7 @@ export default {
           title: `7. ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0]
+          a_score: [0, 0, 0, 0,0, 0]
         }
       ]
     };
@@ -463,9 +463,11 @@ export default {
 
       for (let i = 0; i < 6; i++) {
         let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
+        console.log(checkExist);
 
         if (checkExist.length) {
           this.dataList[6].score[i] = parseInt(checkExist[0].avg_score);
+          this.dataList[6].a_score[i] = parseInt(checkExist[0].a_avg_score);
         }
       }
 
