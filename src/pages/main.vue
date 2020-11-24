@@ -569,7 +569,7 @@
           push
           class="q-mx-md q-py-sm"
           :class="!checkSteper ? 'bg3' : 'bg-teal text-white'"
-          @click="sendAssessment()"
+          @click="uSendAssessment()"
         >
           <q-icon
             :class="!checkSteper ? 'color2' : ''"
@@ -616,123 +616,7 @@ export default {
       });
       window.open(route.href);
     },
-    async getScore() {
-      console.clear();
-      const url = this.apiPath + "user/getAllCategory1_6.php";
 
-      const postData = {
-        year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid"),
-      };
-
-      let getData = await Axios.post(url, postData);
-      getData = getData.data;
-
-      const postData1 = {
-        year: this.$q.sessionStorage.getItem("y") + 543,
-        user_id: this.$q.sessionStorage.getItem("uid"),
-      };
-
-      let dataList = [
-        {
-          score: [0, 0, 0, 0],
-        },
-        {
-          score: [0, 0, 0, 0],
-        },
-        {
-          score: [0, 0, 0, 0],
-        },
-        {
-          score: [0, 0, 0, 0],
-        },
-        {
-          score: [0, 0, 0, 0],
-        },
-        {
-          score: [0, 0, 0, 0],
-        },
-        {
-          score: [0, 0, 0, 0, 0, 0],
-        },
-      ];
-
-      for (let i = 0; i < dataList.length; i++) {
-        let score = getData.filter((x) => x.step == i + 1 && x.mode == "basic");
-        score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
-        dataList[i].score = score.map((x) => Number(x.score));
-      }
-
-      const url1 = this.apiPath + "user/getCategory7.php";
-      let getCategory7 = await Axios.post(url1, postData1);
-
-      let cat7 = getCategory7.data.sort(
-        (a, b) => Number(a.q_number) - Number(b.q_number)
-      );
-
-      let mapCat7 = cat7.map((x) => Number(x.avg_score));
-
-      for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
-        if (checkExist.length) {
-          dataList[6].score[i] = parseInt(mapCat7[i]);
-        }
-      }
-
-      let avgScoreLst = [];
-      // let avgTemp2 = []
-
-      for (let i = 0; i < dataList.length; i++) {
-        let devine = 4;
-
-        if (i == 6) {
-          devine = 6;
-        }
-
-        avgScoreLst.push(
-          dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
-        );
-      }
-
-      let totalAvgScore = avgScoreLst.reduce((a, b) => a + b, 0) / 7;
-
-      let result = {
-        score: avgScoreLst,
-        totalAvgScore: totalAvgScore,
-      };
-
-      return result;
-    },
-    async sendAssessment() {
-      let avgScore = await this.getScore();
-
-      const sendAPI = this.apiPath + "user/sendAssessment.php";
-      let postSendData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        office_score: avgScore.totalAvgScore,
-        year: this.$q.sessionStorage.getItem("y"),
-        category1_score: Math.round(avgScore.score[0]),
-        category2_score: Math.round(avgScore.score[1]),
-        category3_score: Math.round(avgScore.score[2]),
-        category4_score: Math.round(avgScore.score[3]),
-        category5_score: Math.round(avgScore.score[4]),
-        category6_score: Math.round(avgScore.score[5]),
-        category7_score: Math.round(avgScore.score[6]),
-      };
-
-      let send = Axios.post(sendAPI, postSendData);
-
-      const url = this.apiPath + "user/setUserStepperLog.php";
-      let postData = {
-        category: "category1",
-        user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
-        status: 1, // 1 = finish
-        send_status: 1,
-      };
-      let data = await Axios.post(url, postData);
-      this.$router.push("/waitingAssessment/0");
-    },
     async getStepperLog() {
       this.loadingShow();
       const url = this.apiPath + "user/getStepperLog.php";
@@ -800,6 +684,9 @@ export default {
         currentDate[0].date
       ).getTime();
 
+      if(this.currentStep.send_status == '2'){
+        this.$router.push("/assessmentComplete")
+      }else{
       if (
         timeStampCurrentDate > timeStampEndDate ||
         this.assessmentStatus == "0"
@@ -829,6 +716,8 @@ export default {
           this.isShowStepper = true;
         }
       }
+      }
+
       this.loadingHide();
     },
   },
