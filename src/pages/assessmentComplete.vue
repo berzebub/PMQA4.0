@@ -10,223 +10,225 @@
             :options="yearList"
             label="ปีงบประมาณ"
             style="width:170px;"
+            @input="getAssessmentLog()"
             dense=""
           />
         </div>
-        <!-- <div class="self-center">
-          <q-btn round="" push="" class="bg-teal">
-            <q-icon class="text-white" size="18px" name="fas fa-print"></q-icon>
-          </q-btn>
-        </div> -->
       </div>
-      <div class="row relative-position" style>
-        <div class="col-6  q-pa-lg" style="margin-top:-70px;" align="left">
-          <div id="container"></div>
-        </div>
-        <div class="col q-mt-lg" align="center">
-          <div class=" font-24" align="left">
-            <div>
-              <span class="color1 text-bold">ผู้ประเมิน : </span>
-              <span class="q-ml-sm">{{ assessorName }}</span>
-            </div>
-            <div class="q-mt-lg">
-              <span class="color8 text-bold">หน่วยงานประเมิน</span>
-              <div class="q-mt-xs">
-                <span>ผลดำเนินการ PMQA4.0 ในภาพรวม = 400 คะแนน</span>
-              </div>
-            </div>
 
-            <div class="q-mt-lg">
-              <span class="color9 text-bold">คณะกรรมการประเมิน</span>
-              <div class="q-mt-xs">
-                <span>ผลดำเนินการ PMQA4.0 ในภาพรวม = 345 คะแนน</span>
+      <div v-show="isShowGraph">
+        <div class="row relative-position" style>
+          <div class="col-6  q-pa-lg" style="margin-top:-70px;" align="left">
+            <div id="container"></div>
+          </div>
+          <div class="col q-mt-lg" align="center">
+            <div class=" font-24" align="left">
+              <div>
+                <span class="color1 text-bold">ผู้ประเมิน : </span>
+                <span class="q-ml-sm">{{ assessorName }}</span>
+              </div>
+              <div class="q-mt-lg">
+                <span class="color8 text-bold">หน่วยงานประเมิน</span>
+                <div class="q-mt-xs">
+                  <span>ผลดำเนินการ PMQA4.0 ในภาพรวม = 400 คะแนน</span>
+                </div>
+              </div>
+
+              <div class="q-mt-lg">
+                <span class="color9 text-bold">คณะกรรมการประเมิน</span>
+                <div class="q-mt-xs">
+                  <span>ผลดำเนินการ PMQA4.0 ในภาพรวม = 345 คะแนน</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <q-separator class="bg-black" style="height:2px;"></q-separator>
+        <q-separator class="bg-black" style="height:2px;"></q-separator>
 
-      <div class=" q-mt-lg ">
-        <!-- 1 -->
-        <div class="row ">
-          <div
-            class="col-1 self-center  relative-position "
-            align="center"
-            style="width:70px;"
-            @click="activeStep >= 1 ? activeStep-- : null"
-          >
-            <span class="absolute-center" style="left:20px;"
-              ><q-icon
-                size="150px"
-                name="fas fa-caret-left"
-                :class="
-                  activeStep == 0
-                    ? 'color2 cursor-not-allowed'
-                    : 'color5 cursor-pointer'
-                "
-              ></q-icon
-            ></span>
-          </div>
-          <div class="col ">
-            <div class="row q-pb-lg q-pa-md ">
-              <div
-                class="col-3 self-center"
-                style="width:230px;"
-                align="center"
-              >
-                <div style="border:1px solid#000;">
-                  <div style="border-bottom:1px solid;padding:25px 0px">
-                    <q-icon
-                      size="70px"
-                      class="color1"
-                      :name="dataList[activeStep].fontawesome"
-                    ></q-icon>
+        <div class=" q-mt-lg ">
+          <!-- 1 -->
+          <div class="row ">
+            <div
+              class="col-1 self-center  relative-position "
+              align="center"
+              style="width:70px;"
+              @click="activeStep >= 1 ? activeStep-- : null"
+            >
+              <span class="absolute-center" style="left:20px;"
+                ><q-icon
+                  size="150px"
+                  name="fas fa-caret-left"
+                  :class="
+                    activeStep == 0
+                      ? 'color2 cursor-not-allowed'
+                      : 'color5 cursor-pointer'
+                  "
+                ></q-icon
+              ></span>
+            </div>
+            <div class="col ">
+              <div class="row q-pb-lg q-pa-md ">
+                <div
+                  class="col-3 self-center"
+                  style="width:230px;"
+                  align="center"
+                >
+                  <div style="border:1px solid#000;">
+                    <div style="border-bottom:1px solid;padding:25px 0px">
+                      <q-icon
+                        size="70px"
+                        class="color1"
+                        :name="dataList[activeStep].fontawesome"
+                      ></q-icon>
+                    </div>
+
+                    <div
+                      class="bg10 text-white"
+                      style="padding:40px 0px"
+                      align="center"
+                    >
+                      <span
+                        class=" block"
+                        style="width:200px;font-size:24px;"
+                        >{{ dataList[activeStep].title }}</span
+                      >
+                    </div>
                   </div>
 
                   <div
-                    class="bg10 text-white"
-                    style="padding:40px 0px"
-                    align="center"
+                    v-ripple
+                    class="relative-position shadow-1 q-pa-md q-mt-lg cursor-pointer"
+                    style="border:1px solid#000;"
+                    @click="printBtn(activeStep + 1)"
                   >
-                    <span class=" block" style="width:200px;font-size:24px;">{{
-                      dataList[activeStep].title
-                    }}</span>
+                    <q-icon
+                      size="25px"
+                      class="q-mr-md"
+                      name="fas fa-print"
+                    ></q-icon>
+                    <span>พิมพ์ผลการประเมิน</span>
                   </div>
                 </div>
 
-                <div
-                  v-ripple
-                  class="relative-position shadow-1 q-pa-md q-mt-lg cursor-pointer"
-                  style="border:1px solid#000;"
-                  @click="printBtn(activeStep + 1)"
-                >
-                  <q-icon
-                    size="25px"
-                    class="q-mr-md"
-                    name="fas fa-print"
-                  ></q-icon>
-                  <span>พิมพ์ผลการประเมิน</span>
-                </div>
-              </div>
-
-              <div style="width:40px;"></div>
-              <div class="col q-pb-xl self-end">
-                <div style="border:1px solid#000;" class="q-pt-md">
-                  <div class="row ">
-                    <div
-                      class="col-3 self-center "
-                      style="width:160px;"
-                      align="center"
-                    >
-                      <span class="font-18"
-                        >หน่วยงาน <br />
-                        ประเมิน</span
-                      >
-                    </div>
-                    <div style="width:40px;"></div>
-                    <div
-                      class="col self-end"
-                      style="border-bottom:2px solid;padding:0px 10px"
-                      v-for="(score, index2) in dataList[activeStep].score"
-                      :key="index2"
-                    >
+                <div style="width:40px;"></div>
+                <div class="col q-pb-xl self-end">
+                  <div style="border:1px solid#000;" class="q-pt-md">
+                    <div class="row ">
                       <div
-                        class="bg11 relative-position"
-                        :style="`height:${(130 / 650) * score || 2}px`"
+                        class="col-3 self-center "
+                        style="width:160px;"
                         align="center"
                       >
-                        <span
-                          class="absolute-center text-white "
-                          style="font-size:24px;"
-                          >{{ score == 0 ? "" : score }}</span
-                        >
-                        <span
-                          class="absolute-bottom"
-                          style="bottom:-45px;font-size:24px;"
-                          >{{ `${activeStep + 1}.${index2 + 1}` }}</span
+                        <span class="font-18"
+                          >หน่วยงาน <br />
+                          ประเมิน</span
                         >
                       </div>
-                    </div>
-                    <div style="width:20px;"></div>
-                  </div>
-
-                  <q-separator
-                    class="q-my-xl bg-black"
-                    style="height:2px;"
-                  ></q-separator>
-
-                  <div class="row ">
-                    <div
-                      class="col-3 self-center "
-                      style="width:160px;"
-                      align="center"
-                    >
-                      <span class="font-18"
-                        >คณะกรรมการ
-                        <br />
-                        ประเมิน</span
-                      >
-                    </div>
-                    <div style="width:40px;"></div>
-                    <div
-                      class="col self-end "
-                      style="border-bottom:2px solid;padding:0px 15px"
-                      v-for="(score, index2) in dataList[activeStep].a_score"
-                      :key="index2"
-                    >
+                      <div style="width:40px;"></div>
                       <div
-                        class="bg5 relative-position"
-                        :style="`height:${(130 / 650) * score || 2}px`"
+                        class="col self-end"
+                        style="border-bottom:2px solid;padding:0px 10px"
+                        v-for="(score, index2) in dataList[activeStep].score"
+                        :key="index2"
+                      >
+                        <div
+                          class="bg11 relative-position"
+                          :style="`height:${(130 / 650) * score || 2}px`"
+                          align="center"
+                        >
+                          <span
+                            class="absolute-center text-white "
+                            style="font-size:24px;"
+                            >{{ score == 0 ? "" : score }}</span
+                          >
+                          <span
+                            class="absolute-bottom"
+                            style="bottom:-45px;font-size:24px;"
+                            >{{ `${activeStep + 1}.${index2 + 1}` }}</span
+                          >
+                        </div>
+                      </div>
+                      <div style="width:20px;"></div>
+                    </div>
+
+                    <q-separator
+                      class="q-my-xl bg-black"
+                      style="height:2px;"
+                    ></q-separator>
+
+                    <div class="row ">
+                      <div
+                        class="col-3 self-center "
+                        style="width:160px;"
                         align="center"
                       >
-                        <span
-                          class="absolute-center text-white "
-                          style="font-size:24px;"
-                          >{{ score == 0 || score == -1 ? "" : score }}</span
-                        >
-                        <span
-                          class="absolute-bottom "
-                          style="bottom:-45px;font-size:24px;"
-                          >{{ `${activeStep + 1}.${index2 + 1}` }}</span
+                        <span class="font-18"
+                          >คณะกรรมการ
+                          <br />
+                          ประเมิน</span
                         >
                       </div>
+                      <div style="width:40px;"></div>
+                      <div
+                        class="col self-end "
+                        style="border-bottom:2px solid;padding:0px 15px"
+                        v-for="(score, index2) in dataList[activeStep].a_score"
+                        :key="index2"
+                      >
+                        <div
+                          class="bg5 relative-position"
+                          :style="`height:${(130 / 650) * score || 2}px`"
+                          align="center"
+                        >
+                          <span
+                            class="absolute-center text-white "
+                            style="font-size:24px;"
+                            >{{ score == 0 || score == -1 ? "" : score }}</span
+                          >
+                          <span
+                            class="absolute-bottom "
+                            style="bottom:-45px;font-size:24px;"
+                            >{{ `${activeStep + 1}.${index2 + 1}` }}</span
+                          >
+                        </div>
+                      </div>
+                      <div style="width:20px;"></div>
                     </div>
-                    <div style="width:20px;"></div>
-                  </div>
 
-                  <q-separator
-                    class="q-mt-xl transparent"
-                    style="height:2px;"
-                  ></q-separator>
+                    <q-separator
+                      class="q-mt-xl transparent"
+                      style="height:2px;"
+                    ></q-separator>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div
-            class="col-1 self-center relative-position"
-            align="center"
-            style="width:70px;"
-            @click="activeStep <= 5 ? activeStep++ : null"
-          >
-            <span class="absolute-center " style="right:-85px;"
-              ><q-icon
-                size="150px"
-                name="fas fa-caret-right"
-                :class="
-                  activeStep == 6
-                    ? 'color2 cursor-not-allowed'
-                    : 'color5 cursor-pointer'
-                "
-              ></q-icon
-            ></span>
+            <div
+              class="col-1 self-center relative-position"
+              align="center"
+              style="width:70px;"
+              @click="activeStep <= 5 ? activeStep++ : null"
+            >
+              <span class="absolute-center " style="right:-85px;"
+                ><q-icon
+                  size="150px"
+                  name="fas fa-caret-right"
+                  :class="
+                    activeStep == 6
+                      ? 'color2 cursor-not-allowed'
+                      : 'color5 cursor-pointer'
+                  "
+                ></q-icon
+              ></span>
+            </div>
           </div>
         </div>
+    <step-footer></step-footer>
+
       </div>
     </div>
-    <step-footer></step-footer>
   </q-page>
 </template>
 
@@ -239,6 +241,7 @@ export default {
   },
   data() {
     return {
+      isShowGraph: false,
       assessorName: "",
       assessmentLog: "",
       activeStep: 0,
@@ -248,43 +251,43 @@ export default {
         {
           title: `1. การนำองค์การ `,
           fontawesome: "fas fa-street-view",
-          score: [400, 300, 300, 400],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
           title: `2. การวางแผน เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
-          score: [200, 100, 400, 200],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
           title: `3. การให้ความสำคัญ กับผู้รับบริการและ ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
-          score: [200, 100, 400, 200],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
           title: `4. การวัด การวิเคราะห์ และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
-          score: [200, 100, 400, 200],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
           title: `5. การมุ่งเน้นบุคลากร`,
           fontawesome: "fas fa-users-cog",
-          score: [200, 100, 400, 200],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
           title: `6. การมุ่งเน้นระบบ ปฏิบัติการ`,
           fontawesome: "fas fa-project-diagram",
-          score: [200, 100, 400, 200],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
           title: `7. ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
-          score: [200, 100, 400, 200],
+          score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         }
       ]
@@ -298,6 +301,7 @@ export default {
       window.open(route.href);
     },
     render() {
+      this.isShowGraph = true;
       let year = [
         this.$q.sessionStorage.getItem("y") + 541,
         this.$q.sessionStorage.getItem("y") + 542,
@@ -306,46 +310,28 @@ export default {
 
       this.yearList = year;
 
-      let dataScoreA = [];
+      let dataScoreA = [
+        this.assessmentLog.category1_score,
+        this.assessmentLog.category2_score,
+        this.assessmentLog.category3_score,
+        this.assessmentLog.category4_score,
+        this.assessmentLog.category5_score,
+        this.assessmentLog.category6_score,
+        this.assessmentLog.category7_score
+      ];
+      dataScoreA = dataScoreA.map(x => Number(x));
 
-      let dataScoreB = [];
+      let dataScoreB = [
+        this.assessmentLog.a_category1_score,
+        this.assessmentLog.a_category2_score,
+        this.assessmentLog.a_category3_score,
+        this.assessmentLog.a_category4_score,
+        this.assessmentLog.a_category5_score,
+        this.assessmentLog.a_category6_score,
+        this.assessmentLog.a_category7_score
+      ];
 
-      for (let i = 0; i < this.dataList.length; i++) {
-        let scoreA = this.dataList[i].score;
-        let newScoresA = [];
-
-        let scoreB = this.dataList[i].assessmentScore;
-        let newScoresB = [];
-
-        if (i != 6) {
-          newScoresA = (
-            scoreA.reduce((a, b) => {
-              return Number(a) + Number(b);
-            }, 0) / 4
-          ).toFixed(0);
-
-          newScoresB = (
-            scoreB.reduce((a, b) => {
-              return Number(a) + Number(b);
-            }, 0) / 4
-          ).toFixed(0);
-        } else {
-          newScoresA = (
-            scoreA.reduce((a, b) => {
-              return Number(a) + Number(b);
-            }, 0) / 6
-          ).toFixed(0);
-
-          newScoresB = (
-            scoreB.reduce((a, b) => {
-              return Number(a) + Number(b);
-            }, 0) / 6
-          ).toFixed(0);
-        }
-
-        dataScoreA.push(Number(newScoresA));
-        dataScoreB.push(Number(newScoresB));
-      }
+      dataScoreB = dataScoreB.map(x => Number(x));
 
       let newData = Highcharts.chart("container", {
         chart: {
@@ -447,7 +433,7 @@ export default {
       getData = getData.data;
 
       const postData1 = {
-        year: this.$q.sessionStorage.getItem("y") + 543,
+        year: this.yearSelected,
         user_id: this.$q.sessionStorage.getItem("uid")
       };
 
@@ -455,20 +441,15 @@ export default {
         let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
 
-        for (i == 0; i < 4; i++) {
-          this.dataList[i].a_score[i] = score.map(x => Number(x.a_score));
-        }
-
-        this.dataList[i].score.forEach((element, index) => {
-          let filt = score.filter(x => x.q_number == index + 1);
-          if (filt.length) {
-            this.dataList[i].score[index] = filt[0].score;
-          } else {
-            this.dataList[i].score[index] = "0";
+        for (let j = 0; j < 4; j++) {
+          let checkScore = score.filter(x => x.q_number == (j + 1).toString());
+          if (checkScore.length) {
+            this.dataList[i].score[j] =
+              checkScore[0].score == "-1" ? 0 : checkScore[0].score;
+            this.dataList[i].a_score[j] =
+              checkScore[0].a_score == "-1" ? 0 : checkScore[0].a_score;
           }
-        });
-
-        // this.dataList[i].score = score.map(x => Number(x.score))
+        }
       }
 
       const url1 = this.apiPath + "user/getCategory7.php";
@@ -488,11 +469,11 @@ export default {
         }
       }
 
-      this.render();
+      this.getAssessmentLog();
     },
     async getAssessmentLog() {
       let postData = {
-        year: this.$q.sessionStorage.getItem("y")
+        year: this.yearSelected - 543
       };
 
       let url = this.apiPath + "getAssessmentLog.php";
@@ -503,19 +484,23 @@ export default {
         x => x.user_id == this.$q.sessionStorage.getItem("uid")
       )[0];
 
-      postData = {
-        user_id: this.assessmentLog.assessor_id
-      };
+      if (this.assessmentLog) {
+        postData = {
+          user_id: this.assessmentLog.assessor_id
+        };
 
-      url = this.apiPath + "getAssessorInfo.php";
+        url = this.apiPath + "getAssessorInfo.php";
 
-      let dataB = await Axios.post(url, postData);
+        let dataB = await Axios.post(url, postData);
 
-      this.assessorName = dataB.data[0].name;
+        this.assessorName = dataB.data[0].name;
+        this.render();
+      } else {
+        this.isShowGraph = false;
+      }
     }
   },
   mounted() {
-    this.getAssessmentLog();
     this.getData();
   }
 };
