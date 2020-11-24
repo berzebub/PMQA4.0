@@ -21,7 +21,7 @@
           <div class="col-6  q-pa-lg" style="margin-top:-70px;" align="left">
             <div id="container"></div>
           </div>
-          <div class="col q-mt-lg" align="center">
+          <div class="col q-mt-lg" align="center" v-if="assessmentLog">
             <div class=" font-24" align="left">
               <div>
                 <span class="color1 text-bold">ผู้ประเมิน : </span>
@@ -30,14 +30,14 @@
               <div class="q-mt-lg">
                 <span class="color8 text-bold">หน่วยงานประเมิน</span>
                 <div class="q-mt-xs">
-                  <span>ผลดำเนินการ PMQA4.0 ในภาพรวม = 400 คะแนน</span>
+                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = {{ assessmentLog.office_score }} คะแนน</span>
                 </div>
               </div>
 
               <div class="q-mt-lg">
                 <span class="color9 text-bold">คณะกรรมการประเมิน</span>
                 <div class="q-mt-xs">
-                  <span>ผลดำเนินการ PMQA4.0 ในภาพรวม = 345 คะแนน</span>
+                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = {{ assessmentLog.assessor_score }} คะแนน</span>
                 </div>
               </div>
             </div>
@@ -336,8 +336,7 @@ export default {
       let newData = Highcharts.chart("container", {
         chart: {
           polar: true,
-          width: "500",
-          height: "450",
+      
           style: {
             fontFamily: "PROMPT-R"
           }
@@ -377,7 +376,8 @@ export default {
         yAxis: {
           gridLineInterpolation: "polygon",
           lineWidth: 0,
-          gridLineColor: "#000000"
+          gridLineColor: "#000000",
+          max : 500
         },
 
         tooltip: {
