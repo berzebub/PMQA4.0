@@ -660,9 +660,11 @@ export default {
       let endDate = assessmentDate.data.end_date;
       this.endAssessmentDate = endDate;
 
+      console.log(this.endAssessmentDate);
+
       endDate = endDate.split("-");
 
-      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year));
+      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year) - 543);
 
       endDate =
         Number(endDate[2]) +

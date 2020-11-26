@@ -346,7 +346,8 @@ export default {
       let endDate = assessmentDate.data.end_date;
 
       endDate = endDate.split("-");
-      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year));
+
+      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year) - 543);
 
       this.endDateSelected = endDate[2];
       this.endMonthSelected = this.endMonthOptions[endDate[1] - 1];

@@ -9,7 +9,7 @@
     <div class="q-mt-sm font-18" v-for="(item, index) in data" :key="index">
       <q-list bordered>
         <q-expansion-item
-          group="dataFormStep4"
+          group="dataFormStep7"
           header-class="bg-white "
           dense-toggle
           dense
@@ -549,11 +549,11 @@ export default {
           no: 1,
           status: -1, //-1 ยังไม่ประเมิน
           avgScore: -1,
-          a_avgScore : -1,
+          a_avgScore: -1,
           question: [
             {
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               subNo: 1,
               headerTextUpper: "1. ตัววัดตามภารกิจ <b>(จำเป็น)</b> ",
               headerTextLower:
@@ -562,8 +562,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -606,7 +606,7 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `2. ตัววัดตามนโยบายและแผนรัฐบาล`,
               headerTextLower:
                 "ตัวชี้วัดของการบรรลุผลลัพธ์ตามนโยบายและแผนรัฐบาล (Agenda base)",
@@ -614,8 +614,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -658,15 +658,15 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `3. การดำเนินการด้านกฏหมาย`,
               headerTextLower: "ตัวชี้วัดของการดำเนินการด้านกฏหมาย",
               numberOfIndicators: 1,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -709,15 +709,15 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `4. ตัววัดของการบรรลุตามแผนยุทธศาสตร์ <b>(จำเป็น)</b>`,
               headerTextLower: "ตัวชี้วัดของการบรรลุผลตามแผนยุทธศาสตร์",
               numberOfIndicators: 1,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -760,7 +760,7 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `5. การบรรลุตามยุทธศาสตร์อื่นๆ เช่น การบรรลุตัววัดร่วม การจัดอันดับต่างๆ`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -768,8 +768,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -815,21 +815,21 @@ export default {
           title: "7.2 การบรรลุผลลัพธ์ตามตัวชี้วัดด้านผู้รับบริการ และประชาชน",
           no: 2,
           avgScore: -1,
-          a_avgScore : -1,
+          a_avgScore: -1,
           status: -1, //-1 ยังไม่ประเมิน
           question: [
             {
               subNo: 1,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `1. ความพึงพอใจของผู้รับบริการและผู้มีส่วนได้ส่วนเสีย <b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดของการบรรลุผลลัพธ์ของความพึงพอใจของผู้รับบริการและผู้มีส่วนได้ส่วนเสียจากการใช้บริการของส่วนราชการ`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -872,15 +872,15 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `2. ผลของความผูกพันและการให้ความร่วมมือ <b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่แสดงออกถึงความผูกพันและการให้ความร่วมมือจากประชาชนและผู้เข้ามารับการบริการจากส่วนราชการ`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -923,15 +923,15 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `3. ผลการดำเนินการด้านโครงการประชารัฐ`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่แสดงการบรรลุผลหรือความสำเร็จของการดำเนินการด้านโครงการประชารัฐ เช่น ยอดการ<br>จำหน่ายสินค้าภายใต้โครงการประชารัฐ`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -974,15 +974,15 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `4. ผลจากการปรับเปลี่ยนด้านการบริการที่เกิดประโยชน์ต่อผู้รับบริการที่สามารถวัดผลได้`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่สะท้อนถึงผลจากการปรับเปลี่ยนด้านการบริการ และนวัตกรรมการบริการที่เกิดประโยชน์ต่อผู้รับบริการที่สามารถวัดผลได้`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1025,7 +1025,7 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `5. การแก้ไขเรื่องร้องเรียน`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -1033,8 +1033,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1081,12 +1081,12 @@ export default {
           no: 3,
           status: -1, //-1 ยังไม่ประเมิน
           avgScore: -1,
-          a_avgScore : -1,
+          a_avgScore: -1,
           question: [
             {
               subNo: 1,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `1. จำนวนนวัตกรรมต่อบุคลากร <b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -1094,8 +1094,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1138,7 +1138,7 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `2. การเรียนรู้และผลการพัฒนา <b>(จำเป็น) </b>
 `,
               numberOfIndicators: 1,
@@ -1147,8 +1147,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1191,7 +1191,7 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `3. ความก้าวหน้าและการก้าวขึ้นสู่ตำแหน่งตามแผน`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -1199,8 +1199,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1243,15 +1243,15 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `4. จำนวนบุคลากรที่ได้รับการแต่งตั้งให้ไปร่วมในภาคีเครือข่ายภายนอกทั้งระดับชาติและนานาชาติ`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่แสดงถึงบุคลากรของส่วนราชการที่ได้รับการแต่งตั้งให้ไปร่วมในภาคีเครือข่ายภายนอกทั้งระดับชาติและนานาชาติ`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1294,15 +1294,15 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `5. จำนวนบุคลากรที่อาสาสมัครในโครงการที่ตอบสนองนโยบายหน่วยงาน`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่แสดงถึงบุคลากรของส่วนราชการไปเป็นอาสาสมัครในโครงการที่ตอบสนองนโยบายหน่วยงาน`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1349,20 +1349,20 @@ export default {
           no: 4,
           status: -1, //-1 ยังไม่ประเมิน
           avgScore: -1,
-          a_avgScore : -1,
+          a_avgScore: -1,
           question: [
             {
               subNo: 1,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `1. จำนวนรางวัลที่ได้รับจากภายนอก <b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่แสดงถึงสำเร็จของการเป็นต้นแบบของส่วนราชการที่ได้รับรางวัลจากหน่วยงานภายนอกที่แสดงถึงความสำเร็จในการปรับปรุงกระบวนการ`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1405,7 +1405,7 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `2. จำนวน Best practice <b>(จำเป็น) </b>`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -1413,8 +1413,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1457,7 +1457,7 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `3. จำนวนรางวัลที่ได้รับจากหน่วยงานระดับกรม / ระดับกระทรวง`,
               numberOfIndicators: 1,
               headerTextLower: `
@@ -1467,8 +1467,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1511,7 +1511,7 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `4. การจัดอันดับในระดับนานาชาติ`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -1519,8 +1519,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1563,15 +1563,15 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `5. จำนวนบุคลากรที่ได้รับการยกย่องจากภายนอก`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่แสดงถึงสำเร็จของการเป็นต้นแบบของส่วนราชการ โดยมีบุคลากรของตนเองได้รับการยกย่องจากภายนอก`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1619,20 +1619,20 @@ export default {
           no: 5,
           status: -1, //-1 ยังไม่ประเมิน
           avgScore: -1,
-          a_avgScore : -1,
+          a_avgScore: -1,
           question: [
             {
               subNo: 1,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `1. การบรรลุผลของตัววัดร่วม (กระบวนการที่ดำเนินการร่วมกันหลายหน่วยงาน)<b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดของการบรรลุผลลัพธ์การบรรลุผลของตัววัดร่วม ในการมีกระบวนการที่ดำเนินการข้ามหลายหน่วยงานของส่วนราชการ (Area base)`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1675,7 +1675,7 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `2. ตัววัดผลกระทบจากการดำเนินการที่มีต่อด้านเศรษฐกิจ
 ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านเศรษฐกิจ
 `,
@@ -1684,8 +1684,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1728,15 +1728,15 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `3. ตัววัดผลกระทบจากการดำเนินการที่มีต่อสังคม`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อสังคม`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1779,15 +1779,15 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `4. ตัววัดผลกระทบจากการดำเนินการด้านสาธารณสุข`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านสาธารณสุข`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1830,15 +1830,15 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `5. ตัววัดผลกระทบจากการดำเนินการที่มีต่อด้านสิ่งแวดล้อม`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดที่สะท้อนถึงผลกระทบจากการดำเนินการที่มีต่อด้านสิ่งแวดล้อม`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1885,21 +1885,21 @@ export default {
             "7.6 การบรรลุผลลัพธตามตัวชี้วัดด้านการลดต้นทุน การสร้างนวัตกรรม และการจัดการกระบวนการ",
           no: 6,
           avgScore: -1,
-          a_avgScore : -1,
+          a_avgScore: -1,
           status: -1, //-1 ยังไม่ประเมิน
           question: [
             {
               subNo: 1,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `1. การลดต้นทุน (ทั้งในระดับกระบวนการที่เกิดจากการปรับปรุงงาน และการนำเทคโนโลยีดิจิทัลมาใช้) <b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดของการลดต้นทุนทั้งในระดับกระบวนการอันเกิดจากการปรับปรุงงาน และการนำเทคโนโลยีดิจิทัลมาใช้เพื่อลดต้นทุนในการทำงาน`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1942,15 +1942,15 @@ export default {
             {
               subNo: 2,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `2. จำนวนนวัตกรรมของการปรับปรุงกระบวนการ`,
               numberOfIndicators: 1,
               headerTextLower: "ตัวชี้วัดของนวัตกรรมการปรับปรุงกระบวนการ",
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -1993,7 +1993,7 @@ export default {
             {
               subNo: 3,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `3. ผลการปรับปรุงจากการใช้เทคโนโลยีดิจิทัล <b>(จำเป็น)</b>`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -2001,8 +2001,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -2045,7 +2045,7 @@ export default {
             {
               subNo: 4,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `4. ประสิทธิผลของการบรรเทาผลกระทบด้านภัยพิบัติต่างๆ`,
               numberOfIndicators: 1,
               headerTextLower:
@@ -2053,8 +2053,8 @@ export default {
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -2097,15 +2097,15 @@ export default {
             {
               subNo: 5,
               avgScore: -1,
-              a_avgScore : -1,
+              a_avgScore: -1,
               headerTextUpper: `5. นวัตกรรมการปรับปรุงด้านนโยบาย กฏระเบียบและกฏหมาย`,
               numberOfIndicators: 1,
               headerTextLower: `ตัวชี้วัดของนวัตกรรมการปรับปรุงด้านนโยบาย กฏระเบียบ และกฏหมาย`,
               indicators: [],
               a_successpercent: [],
               a_suggestion: [],
-              a_assesment: [-1,-1,-1,-1,-1],
-              a_score : [-1,-1,-1,-1,-1],
+              a_assesment: [-1, -1, -1, -1, -1],
+              a_score: [-1, -1, -1, -1, -1],
               goalCurrentYear: [],
               unit: [],
               result: [
@@ -2269,7 +2269,7 @@ export default {
         json: JSON.stringify(this.data[index].question),
         year: this.currentYear,
         avg_score: Number(this.data[index].avgScore),
-        a_avg_score : -1
+        a_avg_score: -1
       };
 
       let data = await Axios.post(url, postData);
