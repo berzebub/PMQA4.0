@@ -22,20 +22,22 @@
           </div>
         </div>
         <div class="row bg2 justify-end container-header relative-position">
-          <div class='col offset-3 self-center  font-24 text-black ' align="center">
+          <div
+            class="col offset-3 self-center  font-24 text-black "
+            align="center"
+          >
             {{ $q.sessionStorage.getItem("off") }}
           </div>
-          <div
-            class="col-1 self-center "
-            align="right"
-          >
+          <div class="col-1 self-center " align="right">
             <q-btn
               dense
               outline
               padding="0"
               flat
               class="text-black relative-position z-top font-18"
-              @click="$router.push('/assessor/main'),$q.sessionStorage.remove('off')"
+              @click="
+                $router.push('/assessor/main'), $q.sessionStorage.remove('off')
+              "
             >
               <q-icon size="30px" name="fas fa-home"></q-icon>
             </q-btn>
@@ -136,10 +138,12 @@ export default {
       let assessmentDate = await Axios.get(url);
       this.assessmentStatus = assessmentDate.data.status;
 
+      console.log(assessmentDate.data);
+
       let endDate = assessmentDate.data.end_date;
 
       endDate = endDate.split("-");
-      this.$q.sessionStorage.set("y", Number(endDate[0]));
+      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year));
       endDate =
         Number(endDate[2]) +
         " " +
