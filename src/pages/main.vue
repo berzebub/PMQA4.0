@@ -602,17 +602,17 @@ export default {
       endDate: "",
       assessmentStatus: "",
       endAssessmentDate: "",
-      checkSteper: false,
+      checkSteper: false
     };
   },
   methods: {
-    printAll(){
-      let route = this.$router.resolve({name : 'printAll'})
-      window.open(route.href)
+    printAll() {
+      let route = this.$router.resolve({ name: "printAll" });
+      window.open(route.href);
     },
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step,
+        name: "printStep" + step
       });
       window.open(route.href);
     },
@@ -622,7 +622,7 @@ export default {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
       let data = await Axios.post(url, postData);
       let newData = data.data;
@@ -636,11 +636,11 @@ export default {
           newData.category4,
           newData.category5,
           newData.category6,
-          newData.category7,
+          newData.category7
         ];
       }
 
-      if (checkStatus.every((x) => x == "1") && checkStatus.length) {
+      if (checkStatus.every(x => x == "1") && checkStatus.length) {
         this.checkSteper = true;
       } else {
         this.checkSteper = false;
@@ -662,7 +662,7 @@ export default {
 
       endDate = endDate.split("-");
 
-      this.$q.sessionStorage.set("y", Number(endDate[0]));
+      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year));
 
       endDate =
         Number(endDate[2]) +
@@ -684,47 +684,47 @@ export default {
         currentDate[0].date
       ).getTime();
 
-      if(this.currentStep.send_status == '2'){
-        this.$router.push("/assessmentComplete")
-      }else{
-      if (
-        timeStampCurrentDate > timeStampEndDate ||
-        this.assessmentStatus == "0"
-      ) {
-        // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลา
-        if (this.currentStep.send_status == "1") {
-          // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
-          this.$router.push("/waitingAssessment/2");
-        } else {
-          // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
-          this.$router.push("/waitingAssessment/1");
-        }
+      if (this.currentStep.send_status == "2") {
+        this.$router.push("/assessmentComplete");
       } else {
-        if (this.currentStep.send_status == "1") {
-          // ส่งแบบประเมินแล้ว
-          // console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
-          this.$router.push("/waitingAssessment/0");
-        } else if (this.currentStep.send_status == "0") {
-          if (this.assessmentStatus == "0") {
-            // console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
-            this.$router.push("/waitingAssessment/1");
+        if (
+          timeStampCurrentDate > timeStampEndDate ||
+          this.assessmentStatus == "0"
+        ) {
+          // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลา
+          if (this.currentStep.send_status == "1") {
+            // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
+            this.$router.push("/waitingAssessment/2");
           } else {
-            // console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
-            this.isShowStepper = true;
+            // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
+            this.$router.push("/waitingAssessment/1");
           }
         } else {
-          this.isShowStepper = true;
+          if (this.currentStep.send_status == "1") {
+            // ส่งแบบประเมินแล้ว
+            // console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
+            this.$router.push("/waitingAssessment/0");
+          } else if (this.currentStep.send_status == "0") {
+            if (this.assessmentStatus == "0") {
+              // console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
+              this.$router.push("/waitingAssessment/1");
+            } else {
+              // console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
+              this.isShowStepper = true;
+            }
+          } else {
+            this.isShowStepper = true;
+          }
         }
-      }
       }
 
       this.loadingHide();
-    },
+    }
   },
   computed: {},
   created() {
     this.getAssessmentDate();
-  },
+  }
 };
 </script>
 

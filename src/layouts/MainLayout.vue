@@ -45,13 +45,12 @@
               @click="isShowEditAdminPassword = true"
             ></q-btn>
           </div>
-              <div
-              v-if="$route.name == 'assessment'"
+          <div
+            v-if="$route.name == 'assessment'"
             class="col-1 self-center q-px-md"
             align="right"
             style="width: 170px;"
           >
-          
             <q-btn
               style="width: 163px;"
               dense
@@ -60,7 +59,7 @@
               class="text-black bg-white relative-position z-top font-18 "
               @click="$router.push('/main')"
             >
-            หน้าหลัก</q-btn
+              หน้าหลัก</q-btn
             >
           </div>
           <div
@@ -68,7 +67,6 @@
             align="right"
             style="width: 200px;"
           >
-          
             <q-btn
               style="width: 163px;"
               dense
@@ -348,7 +346,7 @@ export default {
       let endDate = assessmentDate.data.end_date;
 
       endDate = endDate.split("-");
-      this.$q.sessionStorage.set("y", Number(endDate[0]));
+      this.$q.sessionStorage.set("y", Number(assessmentDate.data.year));
 
       this.endDateSelected = endDate[2];
       this.endMonthSelected = this.endMonthOptions[endDate[1] - 1];

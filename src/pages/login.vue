@@ -193,7 +193,7 @@ export default {
       this.assessmentStatus = assessmentDate.data.status
       let endDate = assessmentDate.data.end_date;
       endDate = endDate.split("-");
-      this.$q.sessionStorage.set("y", Number(endDate[0]));
+     this.$q.sessionStorage.set("y", Number(assessmentDate.data.year));
 
       endDate =
         Number(endDate[2]) +
