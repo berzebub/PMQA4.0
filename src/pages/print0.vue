@@ -49,6 +49,7 @@
         style="width: 80%; font-size: 18px;background-color:#757575"
       >
         1. ลักษณะองค์การ: คุณลักษณะสำคัญของส่วนราชการคืออะไร
+
       </div>
       <!-- ก -->
 
@@ -88,9 +89,11 @@
                   >
                       &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
                 </div>
+
+               
               
-                <div class="q-px-lg">
-                  {{ item.text }}
+                <div class="q-px-lg" v-html="item.text">
+               
                 </div>
               </div>
             </td>
@@ -134,8 +137,7 @@
                   >
                      &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
                 </div>
-                <div class="q-px-lg">
-                  {{ item.text }}
+                <div class="q-px-lg" v-html="item.text">
                 </div>
               </div>
             </td>
@@ -189,8 +191,7 @@
                   >
                      &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
                 </div>
-                <div class="q-px-lg">
-                  {{ item.text }}
+                <div class="q-px-lg" v-html="item.text">
                 </div>
               </div>
             </td>
@@ -235,8 +236,7 @@
                   >
                      &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
                 </div>
-                <div class="q-px-lg">
-                  {{ item.text }}
+                <div class="q-px-lg" v-html="item.text">
                 </div>
               </div>
             </td>
@@ -276,8 +276,7 @@
                     ความท้าทายเชิงยุทธศาสตร์และความได้เปรียบเชิงยุทธศาสตร์</span
                   >
                 </div>
-                <div class="q-px-lg">
-                  {{ item.text }}
+                <div class="q-px-lg" v-html="item.text">
                 </div>
               </div>
             </td>
@@ -297,6 +296,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      text : "hello world \n how are you",
       q1A: "",
       q1B: "",
        q2A: "",
@@ -801,7 +801,7 @@ export default {
 
           category: "ก.",
           category_q_number: 1,
-          text: this.inputEnvironment1,
+          text: this.inputEnvironment1.replace(/\n/g,"<br>"),
           pdf_file: this.inputEnvironmentPDF1,
           img_file: this.inputEnvironmentIMG1
         },
@@ -810,7 +810,7 @@ export default {
 
           category: "ก.",
           category_q_number: 2,
-          text: this.inputEnvironment2,
+          text: this.inputEnvironment2.replace(/\n/g,"<br>"),
           pdf_file: this.inputEnvironmentPDF2,
           img_file: this.inputEnvironmentIMG2
         },
@@ -819,7 +819,7 @@ export default {
 
           category: "ก.",
           category_q_number: 3,
-          text: this.inputEnvironment3,
+          text: this.inputEnvironment3.replace(/\n/g,"<br>"),
           pdf_file: this.inputEnvironmentPDF3,
           img_file: this.inputEnvironmentIMG3
         },
@@ -828,7 +828,7 @@ export default {
 
           category: "ก.",
           category_q_number: 4,
-          text: this.inputEnvironment4,
+          text: this.inputEnvironment4.replace(/\n/g,"<br>"),
           pdf_file: this.inputEnvironmentPDF4,
           img_file: this.inputEnvironmentIMG4
         },
@@ -837,7 +837,7 @@ export default {
 
           category: "ก.",
           category_q_number: 5,
-          text: this.inputEnvironment5,
+          text: this.inputEnvironment5.replace(/\n/g,"<br>"),
           pdf_file: this.inputEnvironmentPDF5,
           img_file: this.inputEnvironmentIMG5
         },
@@ -847,7 +847,7 @@ export default {
 
           category: "ข.",
           category_q_number: 1,
-          text: this.inputRelation1,
+          text: this.inputRelation1.replace(/\n/g,"<br>"),
           pdf_file: this.inputRelationPDF1,
           img_file: this.inputRelationIMG1
         },
@@ -856,7 +856,7 @@ export default {
 
           category: "ข.",
           category_q_number: 2,
-          text: this.inputRelation2,
+          text: this.inputRelation2.replace(/\n/g,"<br>"),
           pdf_file: this.inputRelationPDF2,
           img_file: this.inputRelationIMG2
         },
@@ -865,7 +865,7 @@ export default {
 
           category: "ข.",
           category_q_number: 3,
-          text: this.inputRelation3,
+          text: this.inputRelation3.replace(/\n/g,"<br>"),
           pdf_file: this.inputRelationPDF3,
           img_file: this.inputRelationIMG3
         },
@@ -875,7 +875,7 @@ export default {
 
           category: "ก.",
           category_q_number: 1,
-          text: this.inputCompetitionEnvironment1,
+          text: this.inputCompetitionEnvironment1.replace(/\n/g,"<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF1,
           img_file: this.inputCompetitionEnvironmentIMG1
         },
@@ -884,7 +884,7 @@ export default {
 
           category: "ก.",
           category_q_number: 2,
-          text: this.inputCompetitionEnvironment2,
+          text: this.inputCompetitionEnvironment2.replace(/\n/g,"<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF2,
           img_file: this.inputCompetitionEnvironmentIMG2
         },
@@ -893,7 +893,7 @@ export default {
 
           category: "ก.",
           category_q_number: 3,
-          text: this.inputCompetitionEnvironment3,
+          text: this.inputCompetitionEnvironment3.replace(/\n/g,"<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF3,
           img_file: this.inputCompetitionEnvironmentIMG3
         },
@@ -903,7 +903,7 @@ export default {
 
           category: "ข.",
           category_q_number: 1,
-          text: this.inputStategy,
+          text: this.inputStategy.replace(/\n/g,"<br>"),
           pdf_file: this.inputStategyPDF1,
           img_file: this.inputStategyIMG1
         },
@@ -913,7 +913,7 @@ export default {
 
           category: "ค.",
           category_q_number: 1,
-          text: this.inputPerformanceSystem,
+          text: this.inputPerformanceSystem.replace(/\n/g,"<br>"),
           pdf_file: this.inputPerformanceSystemPDF1,
           img_file: this.inputPerformanceSystemIMG1
         }

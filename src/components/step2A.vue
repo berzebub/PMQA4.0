@@ -139,7 +139,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.basic.explain"
+                        v-html="repaceN(item.basic.explain)"
                       ></div>
                     </div>
                   </div>
@@ -240,7 +240,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.advance.explain"
+                        v-html="replaceN(item.advance.explain)"
                       ></div>
                     </div>
                   </div>
@@ -345,7 +345,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.significance.explain"
+                        v-html="replaceN(item.significance.explain)"
                       ></div>
                     </div>
                   </div>
@@ -1077,15 +1077,15 @@ export default {
       if (checkStatus.every(x => x == "-1")) {
         //  กรณียังไม่เคยประเมิน
         // console.log("ไม่เคยประเมิน");
-        this.$emit("statusForm",0)
+        this.$emit("statusForm", 0);
       } else if (checkStatus.every(x => x != "-1")) {
         // ประเมินครบทุกข้
         // console.log("ประเมินครบ");
-           this.$emit("statusForm",1)
+        this.$emit("statusForm", 1);
       } else if (checkStatus.some(x => x != "-1")) {
         // กรณีเคยประเมินบางข้
         // console.log("ประเมินบางข้อ");
-           this.$emit("statusForm",2)
+        this.$emit("statusForm", 2);
       }
     }
   },

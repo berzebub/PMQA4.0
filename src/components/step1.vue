@@ -628,14 +628,6 @@
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               5. กฏหมาย กฏระเบียบ
-                              <div class="q-pl-lg">
-                                - ส่วนราชการมีอาคารสถานที่ เทคโนโลยี และอุปกรณ์
-                                ที่สำคัญอะไรบ้าง
-                                <span class="text-red">
-                                  รวมทั้งเทคโนโลยี
-                                  การสื่อสารและการให้บริการ?</span
-                                >
-                              </div>
                             </div>
                              <div class="font-16 font-prompt-r">
                               <div class="q-pl-lg">

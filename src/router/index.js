@@ -55,7 +55,7 @@ Vue.mixin({
 
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("uid")
       };
 
       let getData = await Axios.post(url, postData);
@@ -63,37 +63,37 @@ Vue.mixin({
 
       const postData1 = {
         year: this.$q.sessionStorage.getItem("y") + 543,
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("uid")
       };
 
       let dataList = [
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0]
         },
         {
-          score: [0, 0, 0, 0, 0, 0],
-        },
+          score: [0, 0, 0, 0, 0, 0]
+        }
       ];
 
       for (let i = 0; i < dataList.length; i++) {
-        let score = getData.filter((x) => x.step == i + 1 && x.mode == "basic");
+        let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
-        dataList[i].score = score.map((x) => Number(x.score));
+        dataList[i].score = score.map(x => Number(x.score));
       }
 
       const url1 = this.apiPath + "user/getCategory7.php";
@@ -103,10 +103,10 @@ Vue.mixin({
         (a, b) => Number(a.q_number) - Number(b.q_number)
       );
 
-      let mapCat7 = cat7.map((x) => Number(x.avg_score));
+      let mapCat7 = cat7.map(x => Number(x.avg_score));
 
       for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
+        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
         if (checkExist.length) {
           dataList[6].score[i] = parseInt(mapCat7[i]);
         }
@@ -123,7 +123,7 @@ Vue.mixin({
         }
 
         avgScoreLst.push(
-          dataList[i].score.map((x) => x).reduce((a, b) => a + b, 0) / devine
+          dataList[i].score.map(x => x).reduce((a, b) => a + b, 0) / devine
         );
       }
 
@@ -131,7 +131,7 @@ Vue.mixin({
 
       let result = {
         score: avgScoreLst,
-        totalAvgScore: totalAvgScore,
+        totalAvgScore: totalAvgScore
       };
 
       return result;
@@ -150,7 +150,7 @@ Vue.mixin({
         category4_score: Math.round(avgScore.score[3]),
         category5_score: Math.round(avgScore.score[4]),
         category6_score: Math.round(avgScore.score[5]),
-        category7_score: Math.round(avgScore.score[6]),
+        category7_score: Math.round(avgScore.score[6])
       };
 
       let send = Axios.post(sendAPI, postSendData);
@@ -161,7 +161,7 @@ Vue.mixin({
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y"),
         status: 1, // 1 = finish
-        send_status: 1,
+        send_status: 1
       };
       let data = await Axios.post(url, postData);
       this.$router.push("/waitingAssessment/0");
@@ -218,6 +218,14 @@ Vue.mixin({
         return "พ.ย.";
       } else if (month == 12) {
         return "ธ.ค.";
+      }
+    },
+    replaceN(str) {
+      if (str) {
+        let res = str.replace(/\n/g, "<br>");
+        return res;
+      } else {
+        return str;
       }
     }
   }

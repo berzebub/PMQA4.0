@@ -131,10 +131,6 @@
           </div>
         </div>
       </div>
-
-      <div align="center" class="q-mt-lg">
-        หมวด 3 การให้ความสำคัญกับผู้รับบริการและผู้มีส่วนได้ส่วนเสีย
-      </div>
     </div>
     <!-- end page1 -->
 
@@ -203,10 +199,10 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="item.basic.explain"></div>
+                    <div v-html="replaceN(item.basic.explain)"></div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <span v-html="item.basic.suggesstion"></span>
+                    <span v-html="replaceN(item.basic.suggesstion)"></span>
                   </td>
                 </tr>
                 <!-- ADVANCE -->
@@ -253,10 +249,10 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="item.advance.explain"></div>
+                    <div v-html="replaceN(item.advance.explain)"></div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <span v-html="item.advance.suggesstion"></span>
+                    <span v-html="replaceN(item.advance.suggesstion)"></span>
                   </td>
                 </tr>
 
@@ -308,10 +304,12 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="item.significance.explain"></div>
+                    <div v-html="replaceN(item.significance.explain)"></div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <span v-html="item.significance.suggesstion"></span>
+                    <span
+                      v-html="replaceN(item.significance.suggesstion)"
+                    ></span>
                   </td>
                 </tr>
               </tbody>

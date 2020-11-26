@@ -35,7 +35,9 @@
                     align="center"
                   >
                     {{ parseInt(item.score) }} /
-                    <span class="text-pink-4" v-if="item.a_score != '-1'">{{ parseInt(item.a_score) }} </span>
+                    <span class="text-pink-4" v-if="item.a_score != '-1'"
+                      >{{ parseInt(item.a_score) }}
+                    </span>
                     <span class="text-pink-4" v-else>-</span>
                   </div>
                 </div>
@@ -100,35 +102,33 @@
                     <div class="q-pa-sm font-18 row fit">
                       <div class="q-mt-sm row col-12">
                         <div
-                          class="row"
+                          class="row col-12"
                           v-for="(checkbox, index3) in item.basic.checkBox"
                           :class="index3 != 0 ? 'q-mt-md' : null"
                         >
                           <div
-                            class="col-1 relative-position "
-                            style="width:50px;"
+                            class="col-1  relative-position  "
+                            style="width:30px;"
                             align="center"
                           >
+                            <q-checkbox
+                              color="pink-4"
+                              keep-color=""
+                              v-model="data[index].basic.checkBox_a[index3]"
+                              value
+                            />
+                          </div>
+                          <div class="col-1" style="width:45px;" align="center">
                             <q-checkbox
                               color="teal"
                               keep-color=""
                               v-model="checkbox.status"
                               value
                               disable=""
-                              class="absolute"
-                              style="left:15px"
-                            />
-                            <q-checkbox
-                              color="pink-4"
-                              keep-color=""
-                              v-model="data[index].basic.checkBox_a[index3]"
-                              value
-                              class="absolute"
-                              style="left:-15px"
                             />
                           </div>
                           <div
-                            class="col  q-py-xs"
+                            class="col  q-py-xs "
                             v-html="checkbox.text"
                           ></div>
                         </div>
@@ -136,7 +136,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.basic.explain"
+                        v-html="repaceN(item.basic.explain)"
                       ></div>
                     </div>
                   </div>
@@ -200,31 +200,30 @@
                     <div class="q-pa-sm font-18 row  fit">
                       <div class="q-mt-sm col-12">
                         <div
-                          class="row"
+                          class="row col-12"
                           v-for="(checkbox, index3) in item.advance.checkBox"
                           :class="index3 != 0 ? 'q-mt-md' : null"
                         >
                           <div
                             class="col-1 relative-position "
-                            style="width:50px;"
+                            style="width:30px;"
                             align="center"
                           >
+                            <q-checkbox
+                              color="pink-4"
+                              keep-color=""
+                              v-model="data[index].advance.checkBox_a[index3]"
+                              value
+                            />
+                          </div>
+
+                          <div class="col-1" style="width:45px;" align="center">
                             <q-checkbox
                               color="teal"
                               keep-color=""
                               v-model="checkbox.status"
                               value
                               disable=""
-                              class="absolute"
-                              style="left:15px"
-                            />
-                            <q-checkbox
-                              color="pink-4"
-                              keep-color=""
-                              v-model="data[index].advance.checkBox_a[index3]"
-                              value
-                              class="absolute"
-                              style="left:-15px"
                             />
                           </div>
                           <div
@@ -236,7 +235,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.advance.explain"
+                        v-html="replaceN(item.advance.explain)"
                       ></div>
                     </div>
                   </div>
@@ -301,25 +300,16 @@
                     <div class="q-pa-sm font-18 row fit">
                       <div class="q-mt-sm col-12">
                         <div
-                          class="row"
+                          class="row col-12"
                           v-for="(checkbox, index3) in item.significance
                             .checkBox"
                           :class="index3 != 0 ? 'q-mt-md' : null"
                         >
                           <div
                             class="col-1 relative-position "
-                            style="width:50px;"
+                            style="width:30px;"
                             align="center"
                           >
-                            <q-checkbox
-                              color="teal"
-                              keep-color=""
-                              v-model="checkbox.status"
-                              value
-                              disable=""
-                              class="absolute"
-                              style="left:15px"
-                            />
                             <q-checkbox
                               color="pink-4"
                               keep-color=""
@@ -327,10 +317,19 @@
                                 data[index].significance.checkBox_a[index3]
                               "
                               value
-                              class="absolute"
-                              style="left:-15px"
                             />
                           </div>
+
+                          <div class="col-1" style="width:45px;" align="center">
+                            <q-checkbox
+                              color="teal"
+                              keep-color=""
+                              v-model="checkbox.status"
+                              value
+                              disable=""
+                            />
+                          </div>
+
                           <div
                             class="col  q-py-xs"
                             v-html="checkbox.text"
@@ -340,7 +339,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.significance.explain"
+                        v-html="replaceN(item.significance.explain)"
                       ></div>
                     </div>
                   </div>
@@ -866,7 +865,7 @@ export default {
 
       formData.append("a_avg_score", sum_filtera_score);
       let data = await Axios.post(url, formData);
-      this.emitStatus()
+      this.emitStatus();
       setTimeout(() => {
         this.loadingHide();
       }, 1000);
@@ -1034,7 +1033,7 @@ export default {
       }
 
       this.isLoadAssessmentFinish = true;
-      this.emitStatus()
+      this.emitStatus();
       this.loadingHide();
     },
     async getAssessmentLog() {
@@ -1068,18 +1067,17 @@ export default {
       );
     },
     emitStatus() {
-  
       let checkStatus = this.data.map(x => x.a_score);
 
       if (checkStatus.every(x => x == "-1")) {
         //  กรณียังไม่เคยประเมิน
-        this.$emit("statusForm",0)
+        this.$emit("statusForm", 0);
       } else if (checkStatus.every(x => x != "-1")) {
         // ประเมินครบทุกข้
-           this.$emit("statusForm",1)
+        this.$emit("statusForm", 1);
       } else if (checkStatus.some(x => x != "-1")) {
         // กรณีเคยประเมินบางข้
-           this.$emit("statusForm",2)
+        this.$emit("statusForm", 2);
       }
     }
   },

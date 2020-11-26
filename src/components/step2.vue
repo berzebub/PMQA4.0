@@ -1209,6 +1209,7 @@ export default {
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
+
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -1232,7 +1233,6 @@ export default {
           x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
-             this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
@@ -1242,6 +1242,9 @@ export default {
           );
 
           if (getDataBasic.length) {
+            if (!checkBoxBasic.includes(false) && !checkBox.includes(false)) {
+              this.data[i - 1].status = 2;
+            }
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
               .map(x => (x == 1 ? true : false));
@@ -1276,13 +1279,12 @@ export default {
         );
 
         if (getData.length > 0) {
-             this.data[i - 1].status = 0;
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
 
-           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+          let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
             x => x.status
           );
           if (getDataBasic.length) {
@@ -1297,6 +1299,14 @@ export default {
             checkBoxAdvance = getDataAdvance[0].check_box
               .split(",")
               .map(x => (x == 1 ? true : false));
+          }
+
+          if (
+            !checkBoxBasic.includes(false) &&
+            !checkBoxAdvance.includes(false) &&
+            !checkBox.includes(false)
+          ) {
+            this.data[i - 1].status = 3;
           }
 
           if (

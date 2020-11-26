@@ -203,7 +203,7 @@
                           }}
                         </span>
                         <br />
-                        <span v-html="res"></span>
+                        <span v-html="replaceN(res)"></span>
                       </div>
                     </div>
                     <div

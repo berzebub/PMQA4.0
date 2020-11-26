@@ -187,14 +187,10 @@
                             }}
                           </span>
                           <br />
-                          <span v-html="res"></span>
+                          <span v-html="replaceN(res)"></span>
                         </div>
                       </div>
-                      <div class="col-12 self-end">
-
-                          
-
-                      </div>
+                      <div class="col-12 self-end"></div>
                     </div>
                     <div
                       class="col-1 border-right "

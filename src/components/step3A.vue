@@ -35,7 +35,9 @@
                     align="center"
                   >
                     {{ parseInt(item.score) }} /
-                    <span class="text-pink-4" v-if="item.a_score != '-1'">{{ parseInt(item.a_score) }} </span>
+                    <span class="text-pink-4" v-if="item.a_score != '-1'"
+                      >{{ parseInt(item.a_score) }}
+                    </span>
                     <span class="text-pink-4" v-else>-</span>
                   </div>
                 </div>
@@ -136,7 +138,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.basic.explain"
+                        v-html="repaceN(item.basic.explain)"
                       ></div>
                     </div>
                   </div>
@@ -236,7 +238,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.advance.explain"
+                        v-html="replaceN(item.advance.explain)"
                       ></div>
                     </div>
                   </div>
@@ -340,7 +342,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="item.significance.explain"
+                        v-html="replaceN(item.significance.explain)"
                       ></div>
                     </div>
                   </div>
@@ -864,7 +866,7 @@ export default {
 
       formData.append("a_avg_score", sum_filtera_score);
       let data = await Axios.post(url, formData);
-       this.emitStatus()
+      this.emitStatus();
 
       setTimeout(() => {
         this.loadingHide();
@@ -1032,7 +1034,7 @@ export default {
         this.getSignificance(data.data);
       }
 
- this.emitStatus()
+      this.emitStatus();
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
     },
@@ -1047,7 +1049,6 @@ export default {
       this.assessmentLog = data.data.filter(
         x => x.user_id == this.$q.sessionStorage.getItem("aid")
       )[0];
-     
 
       this.loadingHide();
     },
@@ -1068,18 +1069,17 @@ export default {
       );
     },
     emitStatus() {
-  
       let checkStatus = this.data.map(x => x.a_score);
 
       if (checkStatus.every(x => x == "-1")) {
         //  กรณียังไม่เคยประเมิน
-        this.$emit("statusForm",0)
+        this.$emit("statusForm", 0);
       } else if (checkStatus.every(x => x != "-1")) {
         // ประเมินครบทุกข้
-           this.$emit("statusForm",1)
+        this.$emit("statusForm", 1);
       } else if (checkStatus.some(x => x != "-1")) {
         // กรณีเคยประเมินบางข้
-           this.$emit("statusForm",2)
+        this.$emit("statusForm", 2);
       }
     }
   },

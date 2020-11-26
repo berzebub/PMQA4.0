@@ -75,7 +75,7 @@
                 {{ item.collaborator }}
               </td>
               <td class="q-py-sm q-px-md" align="center">
-                {{ telFormatter(item.tel) }}
+                {{ item.tel }}
               </td>
               <td class="q-py-sm q-px-md" align="center">
                 <q-btn
@@ -292,7 +292,7 @@
             @click="confirmDeleteAssessor()"
             style="width:150px"
             color="secondary"
-            label="บันทึก"
+            label="ลบผู้ประเมิน"
           ></q-btn>
         </q-card-actions>
       </q-card>
@@ -449,6 +449,7 @@ export default {
       this.assessorDialogMode = "edit";
       this.isShowAssessorDataDialog = true;
       this.assessorData = { ...item };
+      this.assessorData.oldUsername = item.username
     },
     async confirmEditAssessorData() {
       const url = this.apiPath + "updateAssessor.php";

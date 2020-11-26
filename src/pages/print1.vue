@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="float-right q-pa-md"  v-show="$route.name != 'printAll'">
+    <div class="float-right q-pa-md" v-show="$route.name != 'printAll'">
       <q-btn
         class="printBtn"
         icon="fas fa-print"
@@ -11,10 +11,17 @@
     </div>
     <!-- page1 -->
     <div class="a4-landscape-flip ">
-      <div class="absolute-right text-h7 printDate"  v-show="$route.name != 'printAll'">
+      <div
+        class="absolute-right text-h7 printDate"
+        v-show="$route.name != 'printAll'"
+      >
         {{ printDate }}
       </div>
-      <div align="center" class="q-py-sm relative-position"  v-show="$route.name != 'printAll'">
+      <div
+        align="center"
+        class="q-py-sm relative-position"
+        v-show="$route.name != 'printAll'"
+      >
         <div class="text-h6">
           {{ $q.sessionStorage.getItem("office") }}
         </div>
@@ -135,8 +142,6 @@
           </div>
         </div>
       </div>
-
-      <div align="center" class="q-mt-lg">หมวด 1 การนำองค์การ</div>
     </div>
     <!-- end page1 -->
 
@@ -195,7 +200,7 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="item.basic.explain"></div>
+                    <div v-html="replaceN(item.basic.explain)"></div>
                   </td>
                 </tr>
                 <!-- ADVANCE -->
@@ -234,7 +239,7 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="item.advance.explain"></div>
+                    <div v-html="replaceN(item.advance.explain)"></div>
                   </td>
                 </tr>
 
@@ -278,7 +283,7 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="item.significance.explain"></div>
+                    <div v-html="replaceN(item.significance.explain)"></div>
                   </td>
                 </tr>
               </tbody>
@@ -612,7 +617,7 @@ export default {
       this.isLoadAssessmentFinish = true;
       this.loadingHide();
     },
-   getBasic(data) {
+    getBasic(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
@@ -647,7 +652,7 @@ export default {
           x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
-             this.data[i - 1].status = 0;
+          this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
@@ -691,13 +696,13 @@ export default {
         );
 
         if (getData.length > 0) {
-             this.data[i - 1].status = 0;
+          this.data[i - 1].status = 0;
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
 
-           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+          let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
             x => x.status
           );
           if (getDataBasic.length) {

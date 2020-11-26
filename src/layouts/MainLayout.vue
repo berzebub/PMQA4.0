@@ -387,7 +387,7 @@ export default {
       } else if (data.data == "error password length") {
         this.notify("รหัสผ่านอย่างน้อย 4 ตัวอักษร", "red");
       } else {
-        this.notify("บันทึกสำเร็จ", "green");
+        this.notify("บันทึกสำเร็จ", "secondary");
         this.isShowEditAdminPassword = false;
         this.oldPassword = "";
         this.newPassword = "";

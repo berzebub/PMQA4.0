@@ -1168,7 +1168,7 @@ this.data.pop()
       this.isDelete = false;
            this.checkPassStatus()
     },
-    getBasic(data) {
+   getBasic(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
@@ -1180,6 +1180,7 @@ this.data.pop()
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
+
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -1189,9 +1190,8 @@ this.data.pop()
             this.data[i - 1].basic.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score
+          this.data[i - 1].score = getData[0].score;
 
-       
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
@@ -1204,7 +1204,6 @@ this.data.pop()
           x => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
-             this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
@@ -1214,6 +1213,9 @@ this.data.pop()
           );
 
           if (getDataBasic.length) {
+            if (!checkBoxBasic.includes(false) && !checkBox.includes(false)) {
+              this.data[i - 1].status = 2;
+            }
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
               .map(x => (x == 1 ? true : false));
@@ -1248,13 +1250,12 @@ this.data.pop()
         );
 
         if (getData.length > 0) {
-             this.data[i - 1].status = 0;
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
             .map(x => (x == 1 ? true : false));
 
-           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
+          let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
             x => x.status
           );
           if (getDataBasic.length) {
@@ -1269,6 +1270,14 @@ this.data.pop()
             checkBoxAdvance = getDataAdvance[0].check_box
               .split(",")
               .map(x => (x == 1 ? true : false));
+          }
+
+          if (
+            !checkBoxBasic.includes(false) &&
+            !checkBoxAdvance.includes(false) &&
+            !checkBox.includes(false)
+          ) {
+            this.data[i - 1].status = 3;
           }
 
           if (

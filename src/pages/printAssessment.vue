@@ -98,10 +98,10 @@
                   <span>
                     <span class="block" style="font-size:24px">
                       <span v-if="index != 6">   {{
-                      parseInt(item.score.reduce((a, b) => a + b, 0) / 4)
+                      parseInt(item.score.reduce((a, b) => Number(a) + Number(b), 0) / 4)
                     }}</span>
                       <span v-else>   {{
-                      parseInt(item.score.reduce((a, b) => a + b, 0) / 6)
+                      parseInt(item.score.reduce((a, b) => Number(a) + Number(b), 0) / 6)
                     }}</span>
                    
                     </span>
