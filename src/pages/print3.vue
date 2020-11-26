@@ -791,7 +791,7 @@ th {
   }
 
   .a4-landscape-flip {
-    width: 210nm;
+    width: 210mm;
     height: 210mm;
     background-color: white;
     transform: rotate(270deg) translate(-210mm, 0);
