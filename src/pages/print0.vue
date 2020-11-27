@@ -12,7 +12,7 @@
       ></q-btn>
     </div>
     <!-- page1 -->
-    <div  :class="$route.name == 'printAll' ? 'a4-portrait-all' : 'a4-portrait'">
+    <div :class="$route.name == 'printAll' ? 'a4-portrait-all' : 'a4-portrait'">
       <div class="absolute-right text-h7 printDate">
         {{ printDate }}
       </div>
@@ -49,7 +49,6 @@
         style="width: 80%; font-size: 18px;background-color:#757575"
       >
         1. ลักษณะองค์การ: คุณลักษณะสำคัญของส่วนราชการคืออะไร
-
       </div>
       <!-- ก -->
 
@@ -63,7 +62,7 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in q1A" :key="index">
-            <td >
+            <td>
               <div
                 v-if="index == 0"
                 style="margin-left:40px;margin-top:20px"
@@ -79,7 +78,8 @@
               </div>
               <div style="margin-left:50px" class="q-pb-lg">
                 <div class="q-px-lg ">
-                  <span v-if="index == 0">(1) พันธกิจหรือหน้าที่ตามกฏหมาย
+                  <span v-if="index == 0"
+                    >(1) พันธกิจหรือหน้าที่ตามกฏหมาย
                   </span>
                   <span v-else-if="index == 1">(2) วิสัยทัศน์และค่านิยม</span>
                   <span v-else-if="index == 2">(3) ลักษณะโดยรวมของบุคลากร</span>
@@ -87,14 +87,16 @@
                   <span v-else-if="index == 4"
                     >(5) กฏหมาย กฏระเบียบและข้อบังคับ</span
                   >
-                      &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                  &nbsp;
+                  <span
+                    style="border:1px solid"
+                    class="q-px-sm"
+                    v-if="item.pdf_file"
+                    >มีเอกสารแนบ</span
+                  >
                 </div>
 
-               
-              
-                <div class="q-px-lg" v-html="item.text">
-               
-                </div>
+                <div class="q-px-lg" v-html="item.text"></div>
               </div>
             </td>
           </tr>
@@ -135,10 +137,15 @@
                     >(3)
                     ส่วนราชการหรือองค์การที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
                   >
-                     &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                  &nbsp;
+                  <span
+                    style="border:1px solid"
+                    class="q-px-sm"
+                    v-if="item.pdf_file"
+                    >มีเอกสารแนบ</span
+                  >
                 </div>
-                <div class="q-px-lg" v-html="item.text">
-                </div>
+                <div class="q-px-lg" v-html="item.text"></div>
               </div>
             </td>
           </tr>
@@ -189,10 +196,15 @@
                   <span v-else-if="index == 4"
                     >(5) กฏหมาย กฏระเบียบและข้อบังคับ</span
                   >
-                     &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                  &nbsp;
+                  <span
+                    style="border:1px solid"
+                    class="q-px-sm"
+                    v-if="item.pdf_file"
+                    >มีเอกสารแนบ</span
+                  >
                 </div>
-                <div class="q-px-lg" v-html="item.text">
-                </div>
+                <div class="q-px-lg" v-html="item.text"></div>
               </div>
             </td>
           </tr>
@@ -234,10 +246,15 @@
                     >(3)
                     ส่วนราชการหรือองค์การที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
                   >
-                     &nbsp; <span style="border:1px solid" class="q-px-sm" v-if="item.pdf_file">มีเอกสารแนบ</span>
+                  &nbsp;
+                  <span
+                    style="border:1px solid"
+                    class="q-px-sm"
+                    v-if="item.pdf_file"
+                    >มีเอกสารแนบ</span
+                  >
                 </div>
-                <div class="q-px-lg" v-html="item.text">
-                </div>
+                <div class="q-px-lg" v-html="item.text"></div>
               </div>
             </td>
           </tr>
@@ -276,14 +293,13 @@
                     ความท้าทายเชิงยุทธศาสตร์และความได้เปรียบเชิงยุทธศาสตร์</span
                   >
                 </div>
-                <div class="q-px-lg" v-html="item.text">
-                </div>
+                <div class="q-px-lg" v-html="item.text"></div>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
-       <div class="break"></div>
+      <div class="break"></div>
     </div>
     <!-- end page1 -->
 
@@ -296,10 +312,10 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      text : "hello world \n how are you",
+      text: "hello world \n how are you",
       q1A: "",
       q1B: "",
-       q2A: "",
+      q2A: "",
       q2B: "",
       q2C: "",
       printDate: "",
@@ -801,7 +817,7 @@ export default {
 
           category: "ก.",
           category_q_number: 1,
-          text: this.inputEnvironment1.replace(/\n/g,"<br>"),
+          text: this.inputEnvironment1.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF1,
           img_file: this.inputEnvironmentIMG1
         },
@@ -810,7 +826,7 @@ export default {
 
           category: "ก.",
           category_q_number: 2,
-          text: this.inputEnvironment2.replace(/\n/g,"<br>"),
+          text: this.inputEnvironment2.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF2,
           img_file: this.inputEnvironmentIMG2
         },
@@ -819,7 +835,7 @@ export default {
 
           category: "ก.",
           category_q_number: 3,
-          text: this.inputEnvironment3.replace(/\n/g,"<br>"),
+          text: this.inputEnvironment3.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF3,
           img_file: this.inputEnvironmentIMG3
         },
@@ -828,7 +844,7 @@ export default {
 
           category: "ก.",
           category_q_number: 4,
-          text: this.inputEnvironment4.replace(/\n/g,"<br>"),
+          text: this.inputEnvironment4.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF4,
           img_file: this.inputEnvironmentIMG4
         },
@@ -837,7 +853,7 @@ export default {
 
           category: "ก.",
           category_q_number: 5,
-          text: this.inputEnvironment5.replace(/\n/g,"<br>"),
+          text: this.inputEnvironment5.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF5,
           img_file: this.inputEnvironmentIMG5
         },
@@ -847,7 +863,7 @@ export default {
 
           category: "ข.",
           category_q_number: 1,
-          text: this.inputRelation1.replace(/\n/g,"<br>"),
+          text: this.inputRelation1.replace(/\n/g, "<br>"),
           pdf_file: this.inputRelationPDF1,
           img_file: this.inputRelationIMG1
         },
@@ -856,7 +872,7 @@ export default {
 
           category: "ข.",
           category_q_number: 2,
-          text: this.inputRelation2.replace(/\n/g,"<br>"),
+          text: this.inputRelation2.replace(/\n/g, "<br>"),
           pdf_file: this.inputRelationPDF2,
           img_file: this.inputRelationIMG2
         },
@@ -865,7 +881,7 @@ export default {
 
           category: "ข.",
           category_q_number: 3,
-          text: this.inputRelation3.replace(/\n/g,"<br>"),
+          text: this.inputRelation3.replace(/\n/g, "<br>"),
           pdf_file: this.inputRelationPDF3,
           img_file: this.inputRelationIMG3
         },
@@ -875,7 +891,7 @@ export default {
 
           category: "ก.",
           category_q_number: 1,
-          text: this.inputCompetitionEnvironment1.replace(/\n/g,"<br>"),
+          text: this.inputCompetitionEnvironment1.replace(/\n/g, "<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF1,
           img_file: this.inputCompetitionEnvironmentIMG1
         },
@@ -884,7 +900,7 @@ export default {
 
           category: "ก.",
           category_q_number: 2,
-          text: this.inputCompetitionEnvironment2.replace(/\n/g,"<br>"),
+          text: this.inputCompetitionEnvironment2.replace(/\n/g, "<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF2,
           img_file: this.inputCompetitionEnvironmentIMG2
         },
@@ -893,7 +909,7 @@ export default {
 
           category: "ก.",
           category_q_number: 3,
-          text: this.inputCompetitionEnvironment3.replace(/\n/g,"<br>"),
+          text: this.inputCompetitionEnvironment3.replace(/\n/g, "<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF3,
           img_file: this.inputCompetitionEnvironmentIMG3
         },
@@ -903,7 +919,7 @@ export default {
 
           category: "ข.",
           category_q_number: 1,
-          text: this.inputStategy.replace(/\n/g,"<br>"),
+          text: this.inputStategy.replace(/\n/g, "<br>"),
           pdf_file: this.inputStategyPDF1,
           img_file: this.inputStategyIMG1
         },
@@ -913,7 +929,7 @@ export default {
 
           category: "ค.",
           category_q_number: 1,
-          text: this.inputPerformanceSystem.replace(/\n/g,"<br>"),
+          text: this.inputPerformanceSystem.replace(/\n/g, "<br>"),
           pdf_file: this.inputPerformanceSystemPDF1,
           img_file: this.inputPerformanceSystemIMG1
         }
@@ -975,7 +991,10 @@ table {
   background-color: white;
   padding: 0;
 }
-
+.a4-portrait-all {
+  width: 210mm;
+  margin: auto;
+}
 
 .bg {
   background-color: #f1f1f1;
@@ -994,15 +1013,15 @@ table {
   }
   .printDate {
     right: 50px;
-    top:20px
+    top: 20px;
   }
   .a4-portrait-all {
     width: 297mm;
     padding: 1.5cm;
   }
 
-  .a4-portrait{
-    width : 210nm;
+  .a4-portrait {
+    width: 210mm;
   }
 
   .bg {
