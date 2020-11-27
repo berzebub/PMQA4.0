@@ -103,7 +103,7 @@
                 อีเมล
               </td>
               <td class="q-py-sm q-px-md" style="width:120px" align="center">
-                ลบ
+                สถานะ
               </td>
               <td class="q-py-sm q-px-md" align="center" style="width:70px">
                 แก้ไข
@@ -123,12 +123,24 @@
               </td>
               <td class="q-py-sm q-px-md" align="center">{{ item.tel }}</td>
               <td class="q-py-sm q-px-md" align="center">
-                <q-btn
+                <!-- <q-btn
                   @click="deleteAssessor(item)"
                   size="sm"
                   flat
                   icon="far fa-trash-alt"
-                ></q-btn>
+                ></q-btn> -->
+
+                <q-btn-toggle
+                  v-model="assessorList[index].status"
+                  @click="confirmDeleteAssessor(item)"
+                  push
+                  rounded=""
+                  :toggle-color="item.status == '0' ? 'secondary' : 'pink-4'"
+                  :options="[
+                    { label: 'เปิด', value: '0' },
+                    { label: 'ปิด', value: '1' }
+                  ]"
+                />
               </td>
               <td class="q-py-sm q-px-md" align="center">
                 <q-btn
@@ -274,29 +286,7 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-    <q-dialog v-model="isShowAssessorDeleteDialog">
-      <q-card style="width:430px">
-        <div class="font-24 q-pt-sm q-pl-lg">ลบผู้ประเมิน</div>
-        <q-card-section align="center"
-          >คุณต้องการลบ "{{ assessorData.name }}" ใช่หรือไม่</q-card-section
-        >
-        <q-card-actions align="center" class="q-pb-lg">
-          <q-btn
-            style="width:150px"
-            @click="clearTempForm()"
-            v-close-popup
-            outline
-            label="ยกเลิก"
-          ></q-btn>
-          <q-btn
-            @click="confirmDeleteAssessor()"
-            style="width:150px"
-            color="secondary"
-            label="ลบผู้ประเมิน"
-          ></q-btn>
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+
     <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
@@ -332,14 +322,15 @@ export default {
     };
   },
   methods: {
-    async confirmDeleteAssessor() {
+    async confirmDeleteAssessor(item) {
       const url = this.apiPath + "deleteAssessor.php";
       let postData = {
-        id: this.assessorData.id
+        id: item.id,
+        status: item.status
       };
+
       let data = await Axios.post(url, postData);
-      this.notify("ลบข้อมูลสำเร็จ", "secondary");
-      this.isShowAssessorDeleteDialog = false;
+
       this.loadAssessor();
     },
     deleteAssessor(item) {
@@ -449,7 +440,7 @@ export default {
       this.assessorDialogMode = "edit";
       this.isShowAssessorDataDialog = true;
       this.assessorData = { ...item };
-      this.assessorData.oldUsername = item.username
+      this.assessorData.oldUsername = item.username;
     },
     async confirmEditAssessorData() {
       const url = this.apiPath + "updateAssessor.php";
@@ -469,6 +460,9 @@ export default {
     },
     telFormatter(tel) {
       return tel.substr(0, 3) + "-" + tel.substr(4, 3) + "-" + tel.substr(7);
+    },
+    test() {
+      console.log("123");
     }
   },
   created() {
