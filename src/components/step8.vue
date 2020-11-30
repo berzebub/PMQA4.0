@@ -2299,6 +2299,7 @@ export default {
           });
 
           this.data[index].question[i].score[j] = score;
+           this.data[index].question[i].successRate[j] = success_rate;
         }
       }
 

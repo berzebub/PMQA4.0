@@ -66,7 +66,7 @@
           <span style="font-size:30px">ยกเลิกการส่ง</span>
 
           <div class="font-18 q-py-md">
-            คุณต้องการยกเลิกการส่งของ {{ officeNameTemp }} ใช่หรือไม่?
+            คุณต้องการยกเลิกการส่งของ<span class='text-black text-weight-bolder'>{{ officeNameTemp }}</span>ใช่หรือไม่?
           </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-md">
@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     routeToDetails(item) {
-      console.log(item)
+      
       if (item.send_assessment_date == "-") {
         this.$q.notify({
           message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
@@ -133,11 +133,20 @@ export default {
         color: "secondary"
       });
       this.isShowDialogConfirmReset = false;
+      this.getAssessmentData()
     },
     resetAssessment(item) {
-      this.isShowDialogConfirmReset = true;
+      if (item.send_assessment_date == "-") {
+        this.$q.notify({
+          message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
+          color: "red"
+        });
+      }else{
+         this.isShowDialogConfirmReset = true;
       this.officeNameTemp = item.office;
       this.activeUserId = item.userId;
+      }
+     
     },
 
     async getAssessmentData() {
@@ -161,13 +170,15 @@ export default {
       data.forEach((element, index) => {
         let filterData = assessmentLog.filter(x => x.user_id == element.id)[0];
 
+        
+
         let officeScore = "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
         let assessorScore =
           "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
         let assessmentDate = "-";
         if (filterData) {
-          officeScore = filterData.office_score;
-          assessorScore = filterData.assessor_score;
+          officeScore = filterData.office_score == "-1" ?  "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>" :  filterData.office_score;
+          assessorScore = filterData.assessor_score == "-1" ?  "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>" : filterData.assessor_score; 
           let getAssessmentDate = filterData.send_assessment_date.split(" ");
           getAssessmentDate = getAssessmentDate[0].split("-");
           assessmentDate =
@@ -176,10 +187,11 @@ export default {
             getAssessmentDate[1] +
             "/" +
             getAssessmentDate[0];
-          if (assessorScore == "-1") {
-            assessorScore =
-              "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
-          }
+
+            if(filterData.office_score == "-1"){
+              assessmentDate = "-"
+            }
+          
         }
         temp.push({
           userId: element.id,

@@ -136,7 +136,7 @@
                       <div
                         class="q-pa-md col self-end"
                         style="border:1px solid #9E9E9E;border-radius:5px;margin-top:20px;font-size:14px;max-height:150px;min-height:100px;overflow:auto"
-                        v-html="repaceN(item.basic.explain)"
+                        v-html="replaceN(item.basic.explain)"
                       ></div>
                     </div>
                   </div>

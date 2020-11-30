@@ -203,7 +203,7 @@
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <div v-html="repaceN(item.basic.explain)"></div>
+                    <div v-html="replaceN(item.basic.explain)"></div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
                     <span v-html="item.basic.suggesstion"></span>

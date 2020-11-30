@@ -83,15 +83,7 @@
                   align="center"
                   style="width:300px;"
                 >
-                  <q-btn
-                    v-show="indexResult != 0"
-                    class="cursor-pointer relative-position"
-                    round
-                    icon="fas fa-trash-alt"
-                    color="teal"
-                    size="12px"
-                    @click="deleteIndicator(index, indexSub, indexResult)"
-                  ></q-btn>
+                 
                   <div class="col-10" align="center">ตัวชี้วัด</div>
                 </div>
                 <div class="q-pa-md border col" align="center">ผลดำเนินการ</div>
@@ -2195,10 +2187,13 @@ export default {
   },
   methods: {
     assesment(no, subNo, index) {
-      // this.data[no].question[subNo].a_assesment[index] = !this.data[no]
-      //   .question[subNo].a_assesment[index];
 
-      let current = this.data[no].question[subNo].a_assesment[index];
+
+      console.log(this.data[no].question[subNo].avgScore)
+
+      if(this.data[no].question[subNo].avgScore != -1)
+      {
+         let current = this.data[no].question[subNo].a_assesment[index];
       if (current == -1) {
         // เหมาะสม
         this.data[no].question[subNo].a_assesment[index] = 1;
@@ -2228,8 +2223,9 @@ export default {
           index
         );
         this.data[no].question[subNo].a_successpercent[index] = successRate;
-        let newScore = this.data[no].question[subNo].score[index];
 
+        
+        let newScore = this.data[no].question[subNo].score[index];
         this.data[no].question[subNo].a_score[index] = this.data[no].question[
           subNo
         ].score[index];
@@ -2240,6 +2236,17 @@ export default {
 
       this.data[no].question[subNo].a_assesment.push("");
       this.data[no].question[subNo].a_assesment.pop();
+      }else{
+        this.$q.notify(
+          {
+            message : "ไม่สามารถประเมินได้เนื่องจากไม่มีข้อมูลตัวชี้วัด",
+            color : "red"
+          }
+        )
+      }
+
+
+     
     },
     showDialog(index) {
       console.log(index);
@@ -2325,7 +2332,8 @@ export default {
         x => x.avgScore != -1
       ).length;
 
-      let finalAvg = this.data[index].question.map(x => {
+
+   let finalAvg = this.data[index].question.map(x => {
         if (x.a_avgScore != -1) {
           return x.a_avgScore;
         }
@@ -2333,6 +2341,74 @@ export default {
 
       finalAvg = finalAvg.reduce((a, b) => a + b, 0) / countIndicator;
       finalAvg = parseInt(finalAvg);
+
+
+       if (q_number == 5) {
+          // ข้อ1 ย่อยจำเป็น
+          // if (this.data[no].question[0].a_assesment[index] == 1) {
+          //   newScore = this.data[no].question[subNo].score[index];
+          // }
+            let temp = []
+          for (let x = 0; x < this.data[index].question[0].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[0].a_assesment[x])
+          }
+          if(temp.includes(-1)){
+            finalAvg = -1
+          }
+        } else if (q_number == 3 || q_number == 4 || q_number == 2) {
+         
+          // if (
+          //   this.data[no].question[0].a_assesment[index] == 1 &&
+          //   this.data[no].question[1].a_assesment[index] == 1
+          // ) {
+          //   newScore = this.data[no].question[subNo].score[index];
+          // }
+
+            let temp = []
+          for (let x = 0; x < this.data[index].question[0].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[0].a_assesment[x])
+          }
+          for (let x = 0; x < this.data[index].question[1].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[1].a_assesment[x])
+          }
+          if(temp.includes(-1)){
+            finalAvg = -1
+          }
+
+        } else if (q_number == 6) {
+          // if (
+          //   this.data[no].question[0].a_assesment[index] == 1 &&
+          //   this.data[no].question[2].a_assesment[index] == 1
+          // ) {
+          //   newScore = this.data[no].question[subNo].score[index];
+          // }
+            let temp = []
+          for (let x = 0; x < this.data[index].question[0].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[0].a_assesment[x])
+          }
+          for (let x = 0; x < this.data[index].question[2].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[2].a_assesment[x])
+          }
+          if(temp.includes(-1)){
+            finalAvg = -1
+          }
+        } else if (q_number == 1) {
+          // 7.1
+          // ข้อ 1 กับ 4 จำเป็น
+          let temp = []
+          for (let x = 0; x < this.data[index].question[0].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[0].a_assesment[x])
+          }
+          for (let x = 0; x < this.data[index].question[3].numberOfIndicators; x++) {
+            temp.push(this.data[index].question[3].a_assesment[x])
+          }
+          if(temp.includes(-1)){
+            finalAvg = -1
+          }
+         
+        }
+
+   
       this.data[index].a_avgScore = finalAvg;
     },
 
@@ -2359,7 +2435,7 @@ export default {
     },
 
     async saveCategory7(q_number) {
-      // this.loadingShow()
+      this.loadingShow()
       this.calAvgScore(q_number);
       let index = q_number - 1;
       const url = this.apiPath + "user/addUpdateCategory7.php";
@@ -2385,7 +2461,10 @@ export default {
 
       let data = await Axios.post(url, postData);
       this.checkStatus();
+      setTimeout(() => {
+        
       this.loadingHide();
+      }, 900);
     },
     async getCategory7() {
       const url = this.apiPath + "user/getCategory7.php";

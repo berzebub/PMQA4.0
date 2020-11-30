@@ -1192,6 +1192,7 @@ this.data[index].status = 0
            this.checkPassStatus()
     },
   getBasic(data) {
+
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
@@ -1219,6 +1220,7 @@ this.data[index].status = 0
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
+
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
@@ -1259,6 +1261,7 @@ this.data[index].status = 0
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
+
     },
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
@@ -1333,6 +1336,7 @@ this.data[index].status = 0
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
+
       if (data.data) {
         this.getBasic(data.data);
         this.getAdvance(data.data);

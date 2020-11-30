@@ -684,6 +684,7 @@ export default {
       // restructure
       data: [
         {
+          score : 0,
           header: `4.1 การใช้ข้อมูลและสารสนเทศ มากำหนดตัววัดที่สามารถใช้ติดตามงานทั้งในระดับปฏิบัติการและระดับยุทธศาสตร์ได้อย่างมีประสิทธิผล 
        รวมทั้งการสื่อสารสู่ผู้ใช้งานทั้งภายในและภายนอก`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -750,6 +751,7 @@ export default {
         },
         // ******************************************************************************************
         {
+          score : 0,
           header:
             "4.2 การวิเคราะห์ผลจากข้อมูล และตัววัดเพื่อการแก้ปัญหาและตอบสนองได้อย่างมีประสิทธิภาพ ทันเวลา และเชิงรุก",
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
@@ -814,6 +816,7 @@ export default {
         },
         // ***************************************4.3 *******************************************
         {
+          score : 0,
           header: `4.3 การจัดการความรู้ และการสร้างองค์ความรู้ของส่วนราชการในการแก้ปัญหา เรียนรู้และมีเหตุผล`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 3,
@@ -880,6 +883,7 @@ export default {
         },
         // ******************************************** 4.4 *****************************
         {
+          score : 0,
           header: `4.4 การบริหารจัดการข้อมูล สารสนเทศ และระบบการทำงานที่ปรับเป็นดิจิทัลเต็มรูปแบบ มีประสิทธิภาพ และใช้งานได้`,
           status: -1, //สถานะของข้อ 0 = ยังไม่ผ่าน, 1 = ผ่าน Basic, 2 = ผ่าน Advance, 3 = ผ่าน Signi
           no: 4,
@@ -1171,6 +1175,7 @@ this.data.pop()
    getBasic(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -1190,12 +1195,15 @@ this.data.pop()
             this.data[i - 1].basic.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          // this.data[i - 1].score = getData[0].score;
+          // console.log(getData[0].score)
+          // console.log(this.data[i-1])
 
           this.data[i - 1].basic.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
         }
       }
+
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
@@ -1230,7 +1238,7 @@ this.data.pop()
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          // this.data[i - 1].score = getData[0].score;
 
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -1293,6 +1301,7 @@ this.data.pop()
           }
 
           this.data[i - 1].score = getData[0].score;
+          
 
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];

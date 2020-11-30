@@ -24,9 +24,6 @@
         <span class="text-h6">ตัวชี้วัดหมวด 7</span>
       </div>
 
-      <div>
-        <span>ชื่อผู้สมัครรางวัล : กรมควบคุมโรค</span>
-      </div>
 
       <div
         class="q-mt-md"
@@ -195,12 +192,10 @@
                   >
                     <div class="col border-right">
                       <div class="q-pa-xs">
-                        <span>
-                          {{
-                            `${index2 + 1}.${index3 + 1} [${
+                        <span v-html="`${index2 + 1}.${index3 + 1} ${item2.headerTextUpper} [${
                               item2.scoreStandard[index3]
-                            }]`
-                          }}
+                            }]`">
+                         
                         </span>
                         <br />
                         <span v-html="replaceN(res)"></span>

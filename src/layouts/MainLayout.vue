@@ -421,6 +421,10 @@ export default {
     }
   },
   created() {
+
+    if(!this.$q.sessionStorage.has("uid")){
+      this.$router.push("/")
+    }
     this.getAssessmentDate();
     let date = new Date();
     let month = date.getMonth();

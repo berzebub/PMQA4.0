@@ -648,6 +648,16 @@ export default {
       if (data.data) {
         this.currentStep = data.data;
       }
+
+
+      if(this.currentStep.send_status =="1" || this.currentStep.send_status == "2"){
+        // ป้องกันการเข้า หน้า stepper
+        console.log("1")
+        this.$q.sessionStorage.set("nstpr",false)
+      }else{
+        console.log("2")
+        this.$q.sessionStorage.set("nstpr",true)
+      }
       let currentDate = await this.getDate();
       this.checkAssessmentStatus();
     },

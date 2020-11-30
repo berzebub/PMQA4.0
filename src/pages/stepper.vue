@@ -4,12 +4,7 @@
       <div class="row justify-between container-stepper q-my-xl">
         <div class="relative-position" style="width: 55px;">
           <div class="absolute-center">
-            <q-btn
-              round
-              push
-              class="q-pa-sm bg3"
-              @click="$router.push('/main')"
-            >
+            <q-btn round push class="q-pa-sm bg3" @click="$router.push('/main')">
               <q-icon name="fas fa-home" color="teal"></q-icon>
             </q-btn>
           </div>
@@ -254,89 +249,49 @@
 
     <!-- Input Details -->
     <div class="q-pa-md container-content">
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div v-show="active == 1">
           <step-one @statusForm="getStepperLog()"></step-one>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div v-show="active == 2">
           <step-two @statusForm="getStepperLog()"></step-two>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div v-show="active == 3">
           <step-three @statusForm="getStepperLog()"></step-three>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div v-show="active == 4">
           <step-four @statusForm="getStepperLog()"></step-four>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div v-show="active == 5">
           <step-five @statusForm="getStepperLog()"></step-five>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
-        <div
-          v-show="active == 6"
-          transition-show="jump-down"
-          transition-hide="jump-up"
-        >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <div v-show="active == 6" transition-show="jump-down" transition-hide="jump-up">
           <step-six @statusForm="getStepperLog()"></step-six>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
-        <div
-          v-show="active == 7"
-          transition-show="jump-down"
-          transition-hide="jump-up"
-        >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <div v-show="active == 7" transition-show="jump-down" transition-hide="jump-up">
           <step-seven @statusForm="getStepperLog()"></step-seven>
         </div>
       </transition>
 
-      <transition
-        appear
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-      >
+      <transition appear enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div v-show="active == 8">
           <step-eight @statusForm="getStepperLog()"></step-eight>
         </div>
@@ -368,7 +323,7 @@ export default {
     stepSix,
     stepSeven,
     stepEight,
-    stepFooter
+    stepFooter,
   },
   data() {
     return {
@@ -381,7 +336,7 @@ export default {
       statusForm6: "none",
       statusForm7: "none",
       statusForm8: "none",
-      currentStep: ""
+      currentStep: "",
     };
   },
   methods: {
@@ -394,17 +349,27 @@ export default {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y")
+        year: this.$q.sessionStorage.getItem("y"),
       };
       let data = await Axios.post(url, postData);
       if (data.data) {
         this.currentStep = data.data;
       }
-    }
+    },
   },
   created() {
+    if (this.$q.sessionStorage.has("nstpr")) {
+      let nstpr = this.$q.sessionStorage.getItem("nstpr");
+      if (!nstpr) {
+        this.$router.push("/");
+      }
+    } else {
+      if (!nstpr) {
+        this.$router.push("/");
+      }
+    }
     this.getStepperLog();
-  }
+  },
 };
 </script>
 

@@ -305,7 +305,10 @@ export default {
       let year = [
         this.$q.sessionStorage.getItem("y") + 541,
         this.$q.sessionStorage.getItem("y") + 542,
-        this.$q.sessionStorage.getItem("y") + 543
+        this.$q.sessionStorage.getItem("y") + 543,
+        this.$q.sessionStorage.getItem("y") + 544,
+        this.$q.sessionStorage.getItem("y") + 545,
+        this.$q.sessionStorage.getItem("y") + 546
       ];
 
       this.yearList = year;
