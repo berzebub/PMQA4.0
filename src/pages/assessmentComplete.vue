@@ -30,14 +30,26 @@
               <div class="q-mt-lg">
                 <span class="color8 text-bold">หน่วยงานประเมิน</span>
                 <div class="q-mt-xs">
-                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = <span style="font-size:48px">{{ assessmentLog.office_score }}</span> คะแนน</span>
+                  <span
+                    >ผลดำเนินการ PMQA4.0 ในภาพรวม =
+                    <span style="font-size:48px">{{
+                      assessmentLog.office_score
+                    }}</span>
+                    คะแนน</span
+                  >
                 </div>
               </div>
 
               <div class="q-mt-lg">
                 <span class="color9 text-bold">คณะกรรมการประเมิน</span>
                 <div class="q-mt-xs">
-                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = <span style="font-size:48px">{{ assessmentLog.assessor_score }}</span> คะแนน</span>
+                  <span
+                    >ผลดำเนินการ PMQA4.0 ในภาพรวม =
+                    <span style="font-size:48px">{{
+                      assessmentLog.assessor_score
+                    }}</span>
+                    คะแนน</span
+                  >
                 </div>
               </div>
             </div>
@@ -100,7 +112,7 @@
                     v-ripple
                     class="relative-position shadow-1 q-pa-md q-mt-lg cursor-pointer"
                     style="border:1px solid#000;"
-                    @click="printBtn(activeStep + 1)"
+                    @click="printBtn(activeStep)"
                   >
                     <q-icon
                       size="25px"
@@ -112,9 +124,9 @@
                 </div>
 
                 <div style="width:40px;"></div>
-                <div class="col q-pb-xl self-end">
-                  <div style="border:1px solid#000;" class="q-pt-md">
-                    <div class="row ">
+                <div class="col">
+                  <div style="border:1px solid#000;">
+                    <div class="row q-py-lg q-mt-md">
                       <div
                         class="col-3 self-center "
                         style="width:160px;"
@@ -127,10 +139,11 @@
                       </div>
                       <div style="width:40px;"></div>
                       <div
-                        class="col self-end"
+                        class="col self-end q-mb-md"
                         style="border-bottom:2px solid;padding:0px 10px"
                         v-for="(score, index2) in dataList[activeStep].score"
                         :key="index2"
+                        v-if="activeStep != 0"
                       >
                         <div
                           class="bg11 relative-position"
@@ -149,15 +162,24 @@
                           >
                         </div>
                       </div>
-                      <div style="width:20px;"></div>
+                      <div
+                        class="col self-center "
+                        align="center"
+                        v-if="activeStep == 0"
+                      >
+                        <span>
+                          ไม่มีการาคิดคะแนน
+                        </span>
+                      </div>
+                      <div style="width:40px;"></div>
                     </div>
 
                     <q-separator
-                      class="q-my-xl bg-black"
+                      class="bg-black q-my-md"
                       style="height:2px;"
                     ></q-separator>
 
-                    <div class="row ">
+                    <div class="row q-py-lg">
                       <div
                         class="col-3 self-center "
                         style="width:160px;"
@@ -171,10 +193,11 @@
                       </div>
                       <div style="width:40px;"></div>
                       <div
-                        class="col self-end "
+                        class="col self-end q-mb-md"
                         style="border-bottom:2px solid;padding:0px 15px"
                         v-for="(score, index2) in dataList[activeStep].a_score"
                         :key="index2"
+                        v-if="activeStep != 0"
                       >
                         <div
                           class="bg5 relative-position"
@@ -193,11 +216,20 @@
                           >
                         </div>
                       </div>
-                      <div style="width:20px;"></div>
+                      <div
+                        class="col  self-center "
+                        align="center"
+                        v-if="activeStep == 0"
+                      >
+                        <span>
+                          ไม่มีการาคิดคะแนน
+                        </span>
+                      </div>
+                      <div style="width:40px;"></div>
                     </div>
 
                     <q-separator
-                      class="q-mt-xl transparent"
+                      class="q-mt-md transparent"
                       style="height:2px;"
                     ></q-separator>
                   </div>
@@ -225,8 +257,7 @@
             </div>
           </div>
         </div>
-    <step-footer></step-footer>
-
+        <step-footer></step-footer>
       </div>
     </div>
   </q-page>
@@ -249,56 +280,69 @@ export default {
       yearSelected: this.$q.sessionStorage.getItem("y") + 543,
       dataList: [
         {
-          title: `1. การนำองค์การ `,
+          title: `ลักษณะสำคัญองค์การ `,
           fontawesome: "fas fa-street-view",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `2. การวางแผน เชิงยุทธศาสตร์`,
+          title: `การนำองค์การ `,
+          fontawesome: "fas fa-street-view",
+          score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
+        },
+        {
+          title: `การวางแผน เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `3. การให้ความสำคัญ กับผู้รับบริการและ ผู้มีส่วนได้ส่วนเสีย`,
+          title: `การให้ความสำคัญ กับผู้รับบริการและ ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `4. การวัด การวิเคราะห์ และการจัดการความรู้`,
+          title: `การวัด การวิเคราะห์ และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `5. การมุ่งเน้นบุคลากร`,
+          title: `การมุ่งเน้นบุคลากร`,
           fontawesome: "fas fa-users-cog",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `6. การมุ่งเน้นระบบ ปฏิบัติการ`,
+          title: `การมุ่งเน้นระบบ ปฏิบัติการ`,
           fontawesome: "fas fa-project-diagram",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `7. ผลลัพธ์การดำเนินการ`,
+          title: `ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0,0, 0]
+          a_score: [0, 0, 0, 0, 0, 0]
         }
       ]
     };
   },
   methods: {
     printBtn(step) {
-      let route = this.$router.resolve({
-        name: "printStep" + step + "A"
-      });
-      window.open(route.href);
+      if (step == 0) {
+        let route = this.$router.resolve({
+          name: "printStep0"
+        });
+        window.open(route.href);
+      } else {
+        let route = this.$router.resolve({
+          name: "printStep" + step + "A"
+        });
+        window.open(route.href);
+      }
     },
     render() {
       this.isShowGraph = true;
@@ -339,7 +383,7 @@ export default {
       let newData = Highcharts.chart("container", {
         chart: {
           polar: true,
-      
+
           style: {
             fontFamily: "PROMPT-R"
           }
@@ -380,7 +424,7 @@ export default {
           gridLineInterpolation: "polygon",
           lineWidth: 0,
           gridLineColor: "#000000",
-          max : 500
+          max: 500
         },
 
         tooltip: {
