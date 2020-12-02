@@ -257,9 +257,9 @@
             </div>
           </div>
         </div>
-        <step-footer></step-footer>
       </div>
     </div>
+    <step-footer></step-footer>
   </q-page>
 </template>
 
