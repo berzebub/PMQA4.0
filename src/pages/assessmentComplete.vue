@@ -30,14 +30,26 @@
               <div class="q-mt-lg">
                 <span class="color8 text-bold">หน่วยงานประเมิน</span>
                 <div class="q-mt-xs">
-                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = <span style="font-size:48px">{{ assessmentLog.office_score }}</span> คะแนน</span>
+                  <span
+                    >ผลดำเนินการ PMQA4.0 ในภาพรวม =
+                    <span style="font-size:48px">{{
+                      assessmentLog.office_score
+                    }}</span>
+                    คะแนน</span
+                  >
                 </div>
               </div>
 
               <div class="q-mt-lg">
                 <span class="color9 text-bold">คณะกรรมการประเมิน</span>
                 <div class="q-mt-xs">
-                  <span >ผลดำเนินการ PMQA4.0 ในภาพรวม = <span style="font-size:48px">{{ assessmentLog.assessor_score }}</span> คะแนน</span>
+                  <span
+                    >ผลดำเนินการ PMQA4.0 ในภาพรวม =
+                    <span style="font-size:48px">{{
+                      assessmentLog.assessor_score
+                    }}</span>
+                    คะแนน</span
+                  >
                 </div>
               </div>
             </div>
@@ -225,10 +237,9 @@
             </div>
           </div>
         </div>
-    <step-footer></step-footer>
-
       </div>
     </div>
+    <step-footer></step-footer>
   </q-page>
 </template>
 
@@ -288,7 +299,7 @@ export default {
           title: `7. ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0,0, 0]
+          a_score: [0, 0, 0, 0, 0, 0]
         }
       ]
     };
@@ -339,7 +350,7 @@ export default {
       let newData = Highcharts.chart("container", {
         chart: {
           polar: true,
-      
+
           style: {
             fontFamily: "PROMPT-R"
           }
@@ -380,7 +391,7 @@ export default {
           gridLineInterpolation: "polygon",
           lineWidth: 0,
           gridLineColor: "#000000",
-          max : 500
+          max: 500
         },
 
         tooltip: {
