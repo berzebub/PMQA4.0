@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header class="">
+  <q-layout view="lHh Lpr lFf" class="">
+    <q-header>
       <div class="relative-position  ">
         <div class="row  bg1 container-header">
           <div class="col q-pr-lg self-center" align="right">
@@ -24,7 +24,6 @@
         <div class="row bg2 container-header relative-position">
           <div class="col-1" style="width: 280px;"></div>
           <div class="col self-center font-18 text-black" align="center">
-            <!-- TODO หัวข้อต้อง fetch มา -->
             <span v-if="$q.sessionStorage.getItem('p') == '0'">{{
               userData.office
             }}</span>
@@ -86,7 +85,7 @@
       </div>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="">
       <router-view />
 
       <!-- Edit admin password dialog -->
@@ -421,9 +420,8 @@ export default {
     }
   },
   created() {
-
-    if(!this.$q.sessionStorage.has("uid")){
-      this.$router.push("/")
+    if (!this.$q.sessionStorage.has("uid")) {
+      this.$router.push("/");
     }
     this.getAssessmentDate();
     let date = new Date();

@@ -1,9 +1,9 @@
 <template>
   <q-page class="row justify-center">
     <div
-      class="col-10 row self-center q-pa-md"
+      class="col-10 row self-center q-pa-md "
       v-if="isShowStepper"
-      style="width: 850px"
+      style="width: 850px;overflow:hidden"
     >
       <div class="col">
         <!-- Set Top -->
@@ -649,14 +649,16 @@ export default {
         this.currentStep = data.data;
       }
 
-
-      if(this.currentStep.send_status =="1" || this.currentStep.send_status == "2"){
+      if (
+        this.currentStep.send_status == "1" ||
+        this.currentStep.send_status == "2"
+      ) {
         // ป้องกันการเข้า หน้า stepper
-        console.log("1")
-        this.$q.sessionStorage.set("nstpr",false)
-      }else{
-        console.log("2")
-        this.$q.sessionStorage.set("nstpr",true)
+        console.log("1");
+        this.$q.sessionStorage.set("nstpr", false);
+      } else {
+        console.log("2");
+        this.$q.sessionStorage.set("nstpr", true);
       }
       let currentDate = await this.getDate();
       this.checkAssessmentStatus();
