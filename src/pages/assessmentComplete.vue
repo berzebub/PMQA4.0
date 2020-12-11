@@ -17,7 +17,7 @@
       </div>
 
       <div v-show="isShowGraph">
-        <div class="row relative-position" style>
+        <div class="row relative-position q-py-md" >
           <div class="col-6  q-pa-lg" style="margin-top:-70px;" align="left">
             <div id="container"></div>
           </div>
@@ -51,6 +51,10 @@
                     คะแนน</span
                   >
                 </div>
+              </div>
+
+              <div class=" q-pa-md" style="border:1px solid;width:320px;margin:auto">
+                หน่วยงานระบบราชการ {{ (assessmentLog.assessor_score / 500 *4).toFixed(1) }}
               </div>
             </div>
           </div>
@@ -280,13 +284,13 @@ export default {
       yearSelected: this.$q.sessionStorage.getItem("y") + 543,
       dataList: [
         {
-          title: `ลักษณะสำคัญองค์การ `,
+          title: `ลักษณะสำคัญองค์กร `,
           fontawesome: "fas fa-street-view",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
         {
-          title: `การนำองค์การ `,
+          title: `การนำองค์กร `,
           fontawesome: "fas fa-street-view",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]

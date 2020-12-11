@@ -2,7 +2,7 @@
   <div class="">
     <div class="bg3 q-pa-md q-px-lg" style="border-radius: 10px;">
       <div>
-        <span class="font-24">ลักษณะองค์การ</span>
+        <span class="font-24">ลักษณะองค์กร</span>
       </div>
       <div class="q-pa-sm">
         <span class="font-16"
@@ -20,7 +20,7 @@
       <!-- Start BOX 1 -->
       <div>
         <span>
-          1. ลักษณะองค์การ: คุณลักษณะสำคัญของส่วนราชการคืออะไร
+          1. ลักษณะองค์กร: คุณลักษณะสำคัญของส่วนราชการคืออะไร
         </span>
         <div class="q-py-sm q-px-lg">
           <!-- Environment Content -->
@@ -35,6 +35,20 @@
               <template v-slot:header>
                 <span>ก. สภาพแวดล้อมของส่วนราชการ</span>
                 <q-space></q-space>
+                 <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish1A != 5"
+                ></q-icon>
+                <q-icon
+                  v-else
+                  name="fas fa-check-circle"
+                  size="22px"
+                  color="secondary"
+                ></q-icon>
+                <span class="q-ml-sm q-mr-md">
+                {{ `เสร็จสิ้น ${checkFinish1A}/5` }}</span>
               </template>
               <q-card class="bg3">
                 <q-separator
@@ -204,8 +218,22 @@
               expand-icon-class="text-grey-10"
             >
               <template v-slot:header>
-                <span>ข. ความสัมพันธ์ระดับองค์การ</span>
+                <span>ข. ความสัมพันธ์ระดับองค์กร</span>
                 <q-space></q-space>
+                 <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish1B != 3"
+                ></q-icon>
+                <q-icon
+                  v-else
+                  name="fas fa-check-circle"
+                  size="22px"
+                  color="secondary"
+                ></q-icon>
+                <span class="q-ml-sm q-mr-md">
+                {{ `เสร็จสิ้น ${checkFinish1B}/3` }}</span>
               </template>
 
               <q-card class="bg3">
@@ -217,7 +245,7 @@
                   <div class="q-px-lg font-16">
                     <!-- Input Content 1 -->
                     <div>
-                      <span>1. โครงสร้างองค์การ</span>
+                      <span>1. โครงสร้างองค์กร</span>
 
                       <div class="q-mt-sm row">
                         <div class="col-8">
@@ -277,7 +305,7 @@
                     <div class="q-mt-lg">
                       <span
                         >3.
-                        ส่วนราชการหรือองค์การที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
+                        ส่วนราชการหรือองค์กรที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
                       >
 
                       <div class="q-mt-sm row">
@@ -317,7 +345,7 @@
       <!-- Start BOX 2 -->
       <div class="q-mt-lg">
         <span>
-          2. สภาวการณ์ขององค์การ:
+          2. สภาวการณ์ขององค์กร:
           สภาวการณ์เชิงยุทธศาสตร์ของส่วนราชการเป็นเช่นใด?
         </span>
         <div class="q-py-sm q-px-lg">
@@ -332,6 +360,20 @@
               <template v-slot:header>
                 <span>ก. สภาพแวดล้อมด้านการแข่งขัน</span>
                 <q-space></q-space>
+                 <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish2A != 3"
+                ></q-icon>
+                <q-icon
+                  v-else
+                  name="fas fa-check-circle"
+                  size="22px"
+                  color="secondary"
+                ></q-icon>
+                <span class="q-ml-sm q-mr-md">
+                {{ `เสร็จสิ้น ${checkFinish2A}/3` }}</span>
               </template>
 
               <q-card class="bg3">
@@ -447,6 +489,20 @@
               <template v-slot:header>
                 <span>ข. บริบทเชิงยุทธศาสตร์</span>
                 <q-space></q-space>
+                 <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish2B != 1"
+                ></q-icon>
+                <q-icon
+                  v-else
+                  name="fas fa-check-circle"
+                  size="22px"
+                  color="secondary"
+                ></q-icon>
+                <span class="q-ml-sm q-mr-md">
+                {{ `เสร็จสิ้น ${checkFinish2B}/1` }}</span>
               </template>
 
               <q-card class="bg3">
@@ -504,6 +560,20 @@
               <template v-slot:header>
                 <span>ค. ระบบการปรับปรุงผลการดำเนินการ</span>
                 <q-space></q-space>
+                 <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish2C != 1"
+                ></q-icon>
+                <q-icon
+                  v-else
+                  name="fas fa-check-circle"
+                  size="22px"
+                  color="secondary"
+                ></q-icon>
+                <span class="q-ml-sm q-mr-md">
+                {{ `เสร็จสิ้น ${checkFinish2C}/1` }}</span>
               </template>
               <q-card class="bg3">
                 <q-separator
@@ -1007,7 +1077,92 @@ export default {
   },
   created() {
     this.getData();
-  }
+  },
+  computed: {
+    checkFinish1A() {
+      let counter = 0
+       if (this.inputEnvironment1S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment2S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment3S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment4S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment5S) {
+        counter++;
+      }
+             return counter
+    },
+    checkFinish1B(){
+      
+      let counter = 0
+       if (this.inputRelation1S) {
+        counter++;
+      }
+
+      if (this.inputRelation2S) {
+        counter++;
+      }
+
+      if (this.inputRelation3S) {
+        counter++;
+      }
+
+      
+             return counter
+    
+    },
+   checkFinish2A(){
+      
+      let counter = 0
+       if (this.inputCompetitionEnvironment1S) {
+        counter++;
+      }
+
+      if (this.inputCompetitionEnvironment2S) {
+        counter++;
+      }
+
+      if (this.inputCompetitionEnvironment3S) {
+        counter++;
+      }
+
+      
+             return counter
+    
+    },
+    checkFinish2B(){
+        let counter = 0
+       if (this.inputStategyS) {
+        counter++;
+      }
+
+     
+
+      
+             return counter
+    },
+    checkFinish2C(){
+        let counter = 0
+       if (this.inputPerformanceSystemS) {
+        counter++;
+      }
+
+     
+
+      
+             return counter
+    },
+  },
 };
 </script>
 

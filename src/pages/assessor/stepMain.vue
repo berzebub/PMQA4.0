@@ -6,7 +6,7 @@
               ผู้ประเมิน : {{ assessorName }}
             </div>
           </div>
-    <div class="col-10 row self-center q-pa-md" style="width: 850px">
+    <div class="col-10 row self-center q-pa-md" style="width: 1025px;overflow:hidden">
       <div class="col">
 
   
@@ -16,7 +16,7 @@
           <div
             class="container-border-lock row justify-between relative-position"
           >
-            <!-- ลักษณะองค์การ -->
+            <!-- ลักษณะองค์กร -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
                 <q-btn
@@ -44,7 +44,7 @@
                       <span
                         class="text-no-wrap"
                         style="position: relative; left: -20px"
-                        >ลักษณะสำคัญองค์การ</span
+                        >ลักษณะสำคัญองค์กร</span
                       >
                     </div>
                   </div>
@@ -433,11 +433,71 @@
         </div>
       </div>
 
-      <div class="col-2 self-center">
+      <!-- <div class="col-2 self-center">
         <div class="q-py-xl">
           <div class="container-border-right"></div>
         </div>
+      </div> -->
+
+        <div class="col-2 self-center relative-position">
+        <div class="q-py-xl">
+          <div class="container-border-right"></div>
+        </div>
+
+
+        <div
+          class="absolute"
+          style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:190px;right:40px"
+        >
+          <div style="width:100%">
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+            <div
+              class="bg-white q-pa-xs text-black cursor-pointer"
+              @click="openFile(1)"
+              style="width:100%;text-decoration:underline"
+              align="center"
+            >
+              แผนปฏิบัติการเพื่อยกระดับ
+              <br />การพัฒนาสู่ระบบราชการ 4.0
+              <br />
+              ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}
+            </div>
+            <div
+              align="center"
+              style="width:100%;border-radius:0px"
+              class="bg1 text-white font-12 q-py-sm cursor-pointer"
+              @click="deleteFile(1)"
+            >ลบไฟล์</div>
+          </div>
+        </div>
+
+
+        <div
+          class="absolute"
+          style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:40px;right:40px"
+        >
+          <div style="width:100%">
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+            <div
+              class="bg-white q-pa-xs text-black cursor-pointer"
+              @click="openFile(2)"
+              style="width:100%;text-decoration:underline"
+              align="center"
+            >
+              แผนยกระดับการพัฒนา
+              <br />สู่ระบบราชการ 4.0 ระยะ 3 ปี
+            </div>
+            <div
+              align="center"
+              style="width:100%;border-radius:0px"
+              class="bg1 text-white font-12 q-py-sm cursor-pointer"
+              @click="deleteFile(2)"
+            >ลบไฟล์</div>
+          </div>
+        </div>
       </div>
+
+
 
       <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
         <q-btn
@@ -483,10 +543,24 @@ export default {
       assessmentLog: "",
       isShowStepper: false,
       isShowSendBtn: false,
-      assessorName : ""
+      assessorName : "",
+      path1 : "",
+      path2 : "",
+      file1 : null,
+      file2 : null
     };
   },
   methods: {
+        openFile(type) {
+    let link
+    if(type == 1){
+      link = this.apiPath  + this.path1
+    }else{
+      link = this.apiPath  + this.path2
+    }
+    window.open(link)
+     
+    },
     printAll() {
       let route = this.$router.resolve({ name: "printAll" });
       window.open(route.href);
@@ -588,10 +662,29 @@ export default {
 
       this.assessorName = data.data[0].name
     },
+     async getFile(){
+        let uid = this.$q.sessionStorage.getItem("aid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+        formData.append("user_id", uid);
+      formData.append("year", year);
+   const url = this.apiPath + "getFileMain.php";
+      let response = await Axios.post(url,formData)
+
+      if(response.data != 'no files'){
+        
+        let data = response.data[0]
+        this.file1 = data.file1 != 0 ?[] : null
+        this.file2 =  data.file2 != 0 ?[] : null
+        this.path1 = data.path1 != "" ? data.path1 : ""
+        this.path2 = data.path2 != "" ? data.path2 : ""
+      }
+    }
   },
   created() {
  this.getAssessorInfo()
     this.getAssessmentLog();
+    this.getFile()
   }
 };
 </script>
@@ -607,12 +700,12 @@ export default {
 
 .container-border-right {
   position: relative;
-  left: -130px;
+  left: -380px;
   border: 6px solid #e0e0e0;
   border-radius: 0%;
   padding: 130px;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
   border-left-color: transparent;
   z-index: 1;
 }

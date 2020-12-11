@@ -43,7 +43,7 @@
             </q-btn>
           </div>
           <div class="absolute-center" align="center" style="top: 50px;">
-            <span class="text-no-wrap">ลักษณะสำคัญองค์การ</span>
+            <span class="text-no-wrap">ลักษณะสำคัญองค์กร</span>
           </div>
         </div>
         <div class="relative-position" style="width: 55px;">

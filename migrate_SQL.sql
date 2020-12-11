@@ -30,7 +30,7 @@ CREATE TABLE `user_stepper_log`
   `user_id` INT NOT NULL,
   `year` INT NOT NULL COMMENT 'ปี หรือครั้ง ที่ประเมิน เพื่อทำให้โปรแกรมสามารถใช้ รายปีได้
 อ้างอิงจาก assessment_status.year',
-  `category0` INT NOT NULL COMMENT 'ลักษณะองค์การ 0 = false , 1 = true',
+  `category0` INT NOT NULL COMMENT 'ลักษณะองค์กร 0 = false , 1 = true',
   `category1` INT NOT NULL COMMENT '0 = false , 1 = true',
   `category2` INT NOT NULL COMMENT '0 = false , 1 = true',
   `category3` INT NOT NULL COMMENT '0 = false , 1 = true',
@@ -50,7 +50,7 @@ CREATE TABLE `category0_log`
   `category_q_number` INT NOT NULL COMMENT 'ข้อย่อยในหมวดหมู่',
   `text` TEXT NOT NULL,
   `year` INT NOT NULL
-) ENGINE=InnoDB COLLATE=utf8_bin COMMENT='ตารางเก็บข้อมูลการประเมินลักษณะองค์การ';
+) ENGINE=InnoDB COLLATE=utf8_bin COMMENT='ตารางเก็บข้อมูลการประเมินลักษณะองค์กร';
 
 CREATE TABLE `category1_6_log`
 (

@@ -84,7 +84,7 @@ export default {
     return {
       dataList: [
         {
-          title: `1. การนำองค์การ `,
+          title: `1. การนำองค์กร `,
           fontawesome: "fas fa-street-view",
           score: [0, 0, 0, 0]
         },

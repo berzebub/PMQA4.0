@@ -138,7 +138,6 @@ export default {
       let assessmentDate = await Axios.get(url);
       this.assessmentStatus = assessmentDate.data.status;
 
-      console.log(assessmentDate.data);
 
       let endDate = assessmentDate.data.end_date;
 
