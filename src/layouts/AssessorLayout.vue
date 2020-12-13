@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class>
+    <q-header class v-if="isShowRouterView">
       <div class="relative-position">
         <div class="row bg1 container-header">
           <div class="col q-pr-lg self-center" align="right">
@@ -89,7 +89,25 @@
     </q-header>
 
     <q-page-container>
-      <router-view />
+        <q-resize-observer @resize="onResize" />
+      <router-view v-if="isShowRouterView" />
+
+       <div class="relative-position bg-pink-4" style="height:100vh" v-else>
+        <div
+          class="absolute-center bg-grey-5 text-black q-pa-md"
+          style="width:70%;max-width:500px;margin:auto;border-radius:10px"
+        >
+          <div align="center">
+            <q-img style="width:300px" src="../../public/error-logo.png"></q-img>
+          </div>
+          <div align="center" class="font-24 q-py-xl">ความละเอียดของหน้าจอน้อยเกินไป</div>
+
+          <div align="center" class="font-18 q-pa-md">
+            เราเสียใจที่จะต้องบอกคุณว่า คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มี
+            ความละเอียดสูงกว่านี้ ในการทำงานกับโปรแกรม pmqa เนื่องจากโปรแกรม pmqa มีข้อมูล ในแต่ละหน้าค่อนข้างเยอะ จึงทำให้ไม่สามารถใช้กับจอภาพที่มีความละเอียดต่ำได้
+          </div>
+        </div>
+      </div>
       <q-dialog v-model="isShowLogoutDialog">
         <q-card class="q-pa-sm" style="width:450px">
           <q-card-section class="font-24" align="center"
@@ -129,10 +147,19 @@ export default {
       isShowLogoutDialog: false,
       leftDrawerOpen: false,
       endDate: "",
-      assessmentStatus: false
+      assessmentStatus: false,
+       isShowRouterView: true,
     };
   },
   methods: {
+   onResize(size) {
+      
+      if (size.width < 1000) {
+        this.isShowRouterView = false;
+      } else {
+        this.isShowRouterView = true;
+      }
+    },
     async getAssessmentDate() {
       const url = this.apiPath + "getAssessmentDate.php";
       let assessmentDate = await Axios.get(url);

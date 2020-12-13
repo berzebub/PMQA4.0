@@ -162,7 +162,7 @@
                           <span
                             class="absolute-bottom"
                             style="bottom:-45px;font-size:24px;"
-                            >{{ `${activeStep + 1}.${index2 + 1}` }}</span
+                            >{{ `${activeStep }.${index2 + 1}` }}</span
                           >
                         </div>
                       </div>
@@ -172,7 +172,7 @@
                         v-if="activeStep == 0"
                       >
                         <span>
-                          ไม่มีการาคิดคะแนน
+                          ไม่มีการคิดคะแนน
                         </span>
                       </div>
                       <div style="width:40px;"></div>
@@ -216,7 +216,7 @@
                           <span
                             class="absolute-bottom "
                             style="bottom:-45px;font-size:24px;"
-                            >{{ `${activeStep + 1}.${index2 + 1}` }}</span
+                            >{{ `${activeStep }.${index2 + 1}` }}</span
                           >
                         </div>
                       </div>
@@ -226,7 +226,7 @@
                         v-if="activeStep == 0"
                       >
                         <span>
-                          ไม่มีการาคิดคะแนน
+                          ไม่มีการคิดคะแนน
                         </span>
                       </div>
                       <div style="width:40px;"></div>
@@ -245,14 +245,14 @@
               class="col-1 self-center relative-position"
               align="center"
               style="width:70px;"
-              @click="activeStep <= 5 ? activeStep++ : null"
+              @click="activeStep <= 6  ? activeStep++ : null"
             >
               <span class="absolute-center " style="right:-85px;"
                 ><q-icon
                   size="150px"
                   name="fas fa-caret-right"
                   :class="
-                    activeStep == 6
+                    activeStep == 7
                       ? 'color2 cursor-not-allowed'
                       : 'color5 cursor-pointer'
                   "
@@ -284,8 +284,8 @@ export default {
       yearSelected: this.$q.sessionStorage.getItem("y") + 543,
       dataList: [
         {
-          title: `ลักษณะสำคัญองค์กร `,
-          fontawesome: "fas fa-street-view",
+          title: `ลักษณะสำคัญองค์กร`,
+          fontawesome: "fas fa-flag",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
         },
@@ -488,8 +488,8 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid")
       };
 
-      for (let i = 0; i < this.dataList.length; i++) {
-        let score = getData.filter(x => x.step == i + 1 && x.mode == "basic");
+      for (let i = 1; i < this.dataList.length; i++) {
+        let score = getData.filter(x => x.step == i  && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
 
         for (let j = 0; j < 4; j++) {
@@ -517,8 +517,8 @@ export default {
         console.log(checkExist);
 
         if (checkExist.length) {
-          this.dataList[6].score[i] = parseInt(checkExist[0].avg_score);
-          this.dataList[6].a_score[i] = parseInt(checkExist[0].a_avg_score);
+          this.dataList[7].score[i] = parseInt(checkExist[0].avg_score);
+          this.dataList[7].a_score[i] = parseInt(checkExist[0].a_avg_score);
         }
       }
 

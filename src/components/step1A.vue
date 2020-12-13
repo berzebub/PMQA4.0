@@ -73,7 +73,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                          <div align="right" class='absolute-right' v-if="inputEnvironmentPDF1" style='top:-40px'>
+                          <q-btn     @click="openFile('pdf', 1, 'ก.', 1)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -102,7 +105,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                            <div align="right" class='absolute-right' v-if="inputEnvironmentPDF2" style='top:-40px'>
+                          <q-btn  @click="openFile('pdf', 1, 'ก.', 2)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -131,7 +137,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                            <div align="right" class='absolute-right' v-if="inputEnvironmentPDF3" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 1, 'ก.', 3)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -160,7 +169,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                            <div align="right" class='absolute-right' v-if="inputEnvironmentPDF4" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 1, 'ก.', 4)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -189,7 +201,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                            <div align="right" class='absolute-right' v-if="inputEnvironmentPDF5" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 1, 'ก.', 5)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -259,7 +274,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                            <div align="right" class='absolute-right' v-if="inputRelationPDF1" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 1, 'ข.', 1)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -288,7 +306,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                           <div align="right" class='absolute-right' v-if="inputRelationPDF2" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 1, 'ข.', 2)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -320,7 +341,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                           <div align="right" class='absolute-right' v-if="inputRelationPDF3" style='top:-40px'>
+                          <q-btn  @click="openFile('pdf', 1, 'ข.', 3)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -402,7 +426,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                           <div align="right" class='absolute-right' v-if="inputCompetitionEnvironmentPDF1" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 2, 'ก.', 1)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -431,8 +458,11 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
-                          <textarea
+                        <div class="col relative-position">
+                           <div align="right" class='absolute-right' v-if="inputCompetitionEnvironmentPDF2" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 2, 'ก.', 2)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
+                          <textarea 
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
                             v-model.lazy="inputCompetitionEnvironment2S"
@@ -460,7 +490,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                           <div align="right" class='absolute-right' v-if="inputCompetitionEnvironmentPDF3" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 2, 'ก.', 3)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -531,7 +564,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                           <div align="right" class='absolute-right' v-if="inputStategyPDF1" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 2, 'ข.', 1)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -598,7 +634,10 @@
                           />
                         </div>
                         <div style="width:20px"></div>
-                        <div class="col">
+                        <div class="col relative-position">
+                          <div align="right" class='absolute-right' v-if="inputPerformanceSystemPDF1" style='top:-40px'>
+                          <q-btn @click="openFile('pdf', 2, 'ค.', 1)" label="PDF" color="teal" icon="fas fa-file-pdf"></q-btn>
+                          </div>
                           <textarea
                             placeholder="ข้อเสนอแนะ"
                             class="q-pa-sm"
@@ -725,9 +764,14 @@ export default {
             x.category_q_number == "1"
         );
 
+        
+
         if (inputEnvironment1.length) {
           this.inputEnvironment1 = inputEnvironment1[0].text;
           this.inputEnvironment1S = inputEnvironment1[0].suggesstion;
+          if(inputEnvironment1[0].is_pdf == '1'){
+            this.inputEnvironmentPDF1 = true
+          }
          
         }
 
@@ -742,6 +786,9 @@ export default {
         if (inputEnvironment2.length) {
           this.inputEnvironment2 = inputEnvironment2[0].text;
           this.inputEnvironment2S = inputEnvironment2[0].suggesstion;
+           if(inputEnvironment2[0].is_pdf == '1'){
+            this.inputEnvironmentPDF2 = true
+          }
         
         }
 
@@ -756,6 +803,9 @@ export default {
         if (inputEnvironment3.length) {
           this.inputEnvironment3 = inputEnvironment3[0].text;
             this.inputEnvironment3S = inputEnvironment3[0].suggesstion;
+             if(inputEnvironment3[0].is_pdf == '1'){
+            this.inputEnvironmentPDF3 = true
+          }
          
         }
 
@@ -769,6 +819,9 @@ export default {
         if (inputEnvironment4.length) {
           this.inputEnvironment4 = inputEnvironment4[0].text;
             this.inputEnvironment4S = inputEnvironment4[0].suggesstion;
+             if(inputEnvironment4[0].is_pdf == '1'){
+            this.inputEnvironmentPDF4 = true
+          }
          
         }
 
@@ -783,6 +836,9 @@ export default {
           this.inputEnvironment5 = inputEnvironment5[0].text;
 
             this.inputEnvironment5S = inputEnvironment5[0].suggesstion;
+             if(inputEnvironment5[0].is_pdf == '1'){
+            this.inputEnvironmentPDF5 = true
+          }
         
         }
 
@@ -797,6 +853,9 @@ export default {
           this.inputRelation1 = inputRelation1[0].text;
 
            this.inputRelation1S = inputRelation1[0].suggesstion;
+            if(inputRelation1[0].is_pdf == '1'){
+            this.inputRelationPDF1 = true
+          }
         
         }
 
@@ -811,6 +870,9 @@ export default {
         if (inputRelation2.length) {
           this.inputRelation2 = inputRelation2[0].text;
              this.inputRelation2S = inputRelation2[0].suggesstion;
+                if(inputRelation2[0].is_pdf == '1'){
+            this.inputRelationPDF2 = true
+          }
           
         }
 
@@ -825,6 +887,9 @@ export default {
         if (inputRelation3.length) {
           this.inputRelation3 = inputRelation3[0].text;
             this.inputRelation3S = inputRelation3[0].suggesstion;
+               if(inputRelation3[0].is_pdf == '1'){
+            this.inputRelationPDF3 = true
+          }
         
         }
 
@@ -840,6 +905,10 @@ export default {
             inputCompetitionEnvironment1[0].text;
 
             this.inputCompetitionEnvironment1S = inputCompetitionEnvironment1[0].suggesstion;
+
+               if(inputCompetitionEnvironment1[0].is_pdf == '1'){
+            this.inputCompetitionEnvironmentPDF1 = true
+          }
          
         }
 
@@ -856,6 +925,9 @@ export default {
             inputCompetitionEnvironment2[0].text;
 
             this.inputCompetitionEnvironment2S = inputCompetitionEnvironment2[0].suggesstion;
+                   if(inputCompetitionEnvironment2[0].is_pdf == '1'){
+            this.inputCompetitionEnvironmentPDF2 = true
+          }
 
          
         }
@@ -872,6 +944,10 @@ export default {
             inputCompetitionEnvironment3[0].text;
 
               this.inputCompetitionEnvironment3S = inputCompetitionEnvironment3[0].suggesstion;
+
+                       if(inputCompetitionEnvironment3[0].is_pdf == '1'){
+            this.inputCompetitionEnvironmentPDF3 = true
+          }
          
         }
 
@@ -885,6 +961,12 @@ export default {
         if (inputStategy.length) {
           this.inputStategy = inputStategy[0].text;
               this.inputStategyS = inputStategy[0].suggesstion;
+
+                   if(inputStategy[0].is_pdf == '1'){
+            this.inputStategyPDF1 = true
+          }
+
+
          
         }
 
@@ -898,6 +980,11 @@ export default {
         if (inputPerformanceSystem.length) {
           this.inputPerformanceSystem = inputPerformanceSystem[0].text;
               this.inputPerformanceSystemS = inputPerformanceSystem[0].suggesstion;
+
+                        if(inputPerformanceSystem[0].is_pdf == '1'){
+            this.inputPerformanceSystemPDF1 = true
+          }
+
          
         }
         this.saveData()
@@ -1038,7 +1125,7 @@ export default {
     },
 
     openFile(type, q_number, category, category_q_number) {
-      let uid = this.$q.sessionStorage.getItem("uid");
+      let uid = this.$q.sessionStorage.getItem("aid");
       let year = this.$q.sessionStorage.getItem("y");
       if (category == "ก.") {
         category = "a";
@@ -1064,13 +1151,10 @@ export default {
 
       if(mapData.every(x => x.length == 0)){
         // มีข้อยังไม่ประเมิน
-        console.log("ยังไม่ประเมิน")
         this.$emit("statusForm",0)
       }else if(mapData.every(x => x.length != 0)){
-        console.log("ประเมินครบทุกข้อ")
         this.$emit("statusForm",1)
       }else{
-        console.log("ประเมินบางข้อ")
         this.$emit("statusForm",2)
       }
     },

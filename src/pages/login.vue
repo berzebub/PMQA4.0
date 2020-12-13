@@ -1,5 +1,8 @@
 <template>
   <div>
+   <q-resize-observer @resize="onResize" />
+
+  <div v-if="isShowLogin">
     <div class="relative-position">
       <div class="row bg1 container-bg">
         <div class="col q-pr-lg self-center" align="right">
@@ -104,6 +107,24 @@
       </div align="right">
     </div>
   </div>
+
+ <div class="relative-position bg-pink-4" style="height:100vh" v-if="!isShowLogin">
+        <div
+          class="absolute-center bg-grey-5 text-black q-pa-md"
+          style="width:70%;max-width:500px;margin:auto;border-radius:10px"
+        >
+          <div align="center">
+            <q-img style="width:300px" src="../../public/error-logo.png"></q-img>
+          </div>
+          <div align="center" class="font-24 q-py-xl">ความละเอียดของหน้าจอน้อยเกินไป</div>
+
+          <div align="center" class="font-18 q-pa-md">
+            เราเสียใจที่จะต้องบอกคุณว่า คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มี
+            ความละเอียดสูงกว่านี้ ในการทำงานกับโปรแกรม pmqa เนื่องจากโปรแกรม pmqa มีข้อมูล ในแต่ละหน้าค่อนข้างเยอะ จึงทำให้ไม่สามารถใช้กับจอภาพที่มีความละเอียดต่ำได้
+          </div>
+        </div>
+      </div>
+</div>
 </template>
 
 <script>
@@ -117,10 +138,20 @@ export default {
       departmentOptions: ["ผู้ใช้แต่ละหน่วยงาน", "ผู้ประเมิน", "ผู้ดูแลระบบ"],
       isShowPassword: false,
       endDate: "",
-      assessmentStatus : 0
+      assessmentStatus : 0,
+      isShowLogin : "",
     };
   },
   methods: {
+     onResize(size) {
+      // this.report = size
+      console.log(size)
+      if (size.width < 1000) {
+        this.isShowLogin = false;
+      } else {
+        this.isShowLogin = true;
+      }
+    },
     checkLogin() {
       return new Promise(async (a, b) => {
         let postData = {

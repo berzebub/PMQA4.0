@@ -16,9 +16,11 @@
             dense-toggle=""
             dense=""
             expand-icon-class="text-grey-10"
-            :default-opened="index == 0"
             header-style="height:70px;"
+            :default-opened="index == 0"
+
           >
+
             <template v-slot:header>
               <div class="row full-width q-pa-sm">
                 <div class="col self-center">

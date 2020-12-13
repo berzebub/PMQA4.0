@@ -29,7 +29,6 @@ body {
 
 .container-content {
   width: 1280px;
-  width: 100%;
   min-height: calc(100vh - 320px);
   max-height: fit-content;
   margin: auto;

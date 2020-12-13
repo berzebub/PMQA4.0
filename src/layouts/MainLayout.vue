@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="">
-    <q-header>
-      <div class="relative-position  ">
-        <div class="row  bg1 container-header">
+  <q-layout view="lHh Lpr lFf" class>
+    <q-header v-if="isShowRouterView">
+      <div class="relative-position">
+        <div class="row bg1 container-header">
           <div class="col q-pr-lg self-center" align="right">
             <span
               @click="setAssessmentDate()"
@@ -13,20 +13,20 @@
               }"
             >
               <span v-if="assessmentStatus == '0'">
-                <span v-show="$q.sessionStorage.getItem('p') == 2">
-                  ปิดการประเมิน</span
-                >
+                <span v-show="$q.sessionStorage.getItem('p') == 2">ปิดการประเมิน</span>
               </span>
-              <span v-else> วันสิ้นสุดการประเมิน : {{ endDate }}</span>
+              <span v-else>วันสิ้นสุดการประเมิน : {{ endDate }}</span>
             </span>
           </div>
         </div>
         <div class="row bg2 container-header relative-position">
           <div class="col-1" style="width: 280px;"></div>
           <div class="col self-center font-18 text-black" align="center">
-            <span v-if="$q.sessionStorage.getItem('p') == '0'">{{
+            <span v-if="$q.sessionStorage.getItem('p') == '0'">
+              {{
               userData.office
-            }}</span>
+              }}
+            </span>
           </div>
           <div
             v-if="$q.sessionStorage.getItem('p') == '2'"
@@ -39,7 +39,7 @@
               dense
               outline
               padding="0"
-              class="text-black bg-white relative-position z-top font-18 "
+              class="text-black bg-white relative-position z-top font-18"
               label="เปลี่ยนรหัสผ่าน"
               @click="isShowEditAdminPassword = true"
             ></q-btn>
@@ -55,28 +55,21 @@
               dense
               outline
               padding="0"
-              class="text-black bg-white relative-position z-top font-18 "
+              class="text-black bg-white relative-position z-top font-18"
               @click="$router.push('/main')"
-            >
-              หน้าหลัก</q-btn
-            >
+            >หน้าหลัก</q-btn>
           </div>
-          <div
-            class="col-1 self-center q-px-md"
-            align="right"
-            style="width: 200px;"
-          >
+          <div class="col-1 self-center q-px-md" align="right" style="width: 200px;">
             <q-btn
               style="width: 163px;"
               dense
               outline
               padding="0"
-              class="text-black bg-white relative-position z-top font-18 "
+              class="text-black bg-white relative-position z-top font-18"
               @click="isShowLogoutDialog = true"
             >
-              <q-icon name="fas fa-sign-out-alt" size="sm"></q-icon>
-              &nbsp;ออกจากระบบ</q-btn
-            >
+              <q-icon name="fas fa-sign-out-alt" size="sm"></q-icon>&nbsp;ออกจากระบบ
+            </q-btn>
           </div>
         </div>
         <div class="absolute-bottom" style="left: 20px; bottom: -10px;">
@@ -85,8 +78,25 @@
       </div>
     </q-header>
 
-    <q-page-container class="">
-      <router-view />
+    <q-page-container class>
+      <q-resize-observer @resize="onResize" />
+      <router-view v-if="isShowRouterView" />
+      <div class="relative-position bg-pink-4" style="height:100vh" v-else>
+        <div
+          class="absolute-center bg-grey-5 text-black q-pa-md"
+          style="width:70%;max-width:500px;margin:auto;border-radius:10px"
+        >
+          <div align="center">
+            <q-img style="width:300px" src="../../public/error-logo.png"></q-img>
+          </div>
+          <div align="center" class="font-24 q-py-xl">ความละเอียดของหน้าจอน้อยเกินไป</div>
+
+          <div align="center" class="font-18 q-pa-md">
+            เราเสียใจที่จะต้องบอกคุณว่า คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มี
+            ความละเอียดสูงกว่านี้ ในการทำงานกับโปรแกรม pmqa เนื่องจากโปรแกรม pmqa มีข้อมูล ในแต่ละหน้าค่อนข้างเยอะ จึงทำให้ไม่สามารถใช้กับจอภาพที่มีความละเอียดต่ำได้
+          </div>
+        </div>
+      </div>
 
       <!-- Edit admin password dialog -->
       <q-dialog v-model="isShowEditAdminPassword">
@@ -94,29 +104,18 @@
           <q-card-section>
             <div class="font-24 q-pl-md">เปลี่ยนรหัสผ่าน</div>
 
-            <div
-              class="row items-center q-pt-md font-18"
-              style="width:85%;margin:auto"
-            >
+            <div class="row items-center q-pt-md font-18" style="width:85%;margin:auto">
               <div class="col-6">รหัสผ่านเดิม</div>
               <div class="col-6">
-                <q-input v-model="oldPassword" dense outlined type="password">
-                </q-input>
+                <q-input v-model="oldPassword" dense outlined type="password"></q-input>
               </div>
               <div class="col-6 q-py-sm">รหัสผ่านใหม่</div>
               <div class="col-6 q-py-sm">
-                <q-input v-model="newPassword" dense outlined type="password">
-                </q-input>
+                <q-input v-model="newPassword" dense outlined type="password"></q-input>
               </div>
               <div class="col-6">รหัสผ่านใหม่อีกครั้ง</div>
               <div class="col-6">
-                <q-input
-                  v-model="repeatNewPassword"
-                  dense
-                  outlined
-                  type="password"
-                >
-                </q-input>
+                <q-input v-model="repeatNewPassword" dense outlined type="password"></q-input>
               </div>
             </div>
           </q-card-section>
@@ -139,12 +138,8 @@
       </q-dialog>
       <q-dialog v-model="isShowLogoutDialog">
         <q-card class="q-pa-sm" style="width:450px">
-          <q-card-section class="font-24" align="center">
-            ออกจากระบบ
-          </q-card-section>
-          <q-card-section class="font-18" align="center">
-            คุณต้องการออกจากระบบใช่หรือไหม?
-          </q-card-section>
+          <q-card-section class="font-24" align="center">ออกจากระบบ</q-card-section>
+          <q-card-section class="font-18" align="center">คุณต้องการออกจากระบบใช่หรือไหม?</q-card-section>
           <q-card-actions align="center" class="q-mt-md q-mb-md">
             <q-btn
               label="ยกเลิก"
@@ -162,18 +157,11 @@
         </q-card>
       </q-dialog>
       <!-- set assessment date -->
-      <q-dialog v-model="isShowAssessmentDate" persistent="" class="z-top">
+      <q-dialog v-model="isShowAssessmentDate" persistent class="z-top">
         <q-card style="width:450px">
-          <div class="font-24" style="padding-left:40px;padding-top:20px">
-            สถานะ
-          </div>
+          <div class="font-24" style="padding-left:40px;padding-top:20px">สถานะ</div>
           <q-card-section style="padding-left:75px">
-            <q-radio
-              color="pink"
-              label="ปิดการประเมิน"
-              val="0"
-              v-model="assessmentStatusTemp"
-            ></q-radio>
+            <q-radio color="pink" label="ปิดการประเมิน" val="0" v-model="assessmentStatusTemp"></q-radio>
             <q-radio
               class="q-pl-lg"
               color="pink"
@@ -191,9 +179,9 @@
               <div class="q-pl-md">
                 <q-select
                   :disable="assessmentStatusTemp == '0'"
-                  outlined=""
+                  outlined
                   :options="endYearOptions"
-                  dense=""
+                  dense
                   style="width:90px"
                   class="font-18"
                   v-model="yearSelected"
@@ -209,7 +197,7 @@
                 <q-select
                   :disable="assessmentStatusTemp == '0'"
                   style="width:100px"
-                  outlined=""
+                  outlined
                   dense
                   v-model="endDateSelected"
                   label="วันที่"
@@ -220,7 +208,7 @@
                 <q-select
                   :disable="assessmentStatusTemp == '0'"
                   style="width:130px"
-                  outlined=""
+                  outlined
                   dense
                   :options="endMonthOptions"
                   v-model="endMonthSelected"
@@ -232,7 +220,7 @@
                 <q-select
                   :disable="assessmentStatusTemp == '0'"
                   style="width:100px"
-                  outlined=""
+                  outlined
                   dense
                   v-model="endYearSelected"
                   :options="endYearOptions"
@@ -242,12 +230,7 @@
             </div>
           </div>
           <q-card-actions align="center" class="q-py-lg">
-            <q-btn
-              style="width:150px"
-              v-close-popup
-              outline
-              label="ยกเลิก"
-            ></q-btn>
+            <q-btn style="width:150px" v-close-popup outline label="ยกเลิก"></q-btn>
             <q-btn
               @click="confirmSetAssessmentDate()"
               style="width:150px"
@@ -300,12 +283,21 @@ export default {
         "กันยายน",
         "ตุลาคม",
         "พฤศจิกายน",
-        "ธันวาคม"
+        "ธันวาคม",
       ],
-      endYearOptions: []
+      endYearOptions: [],
+      isShowRouterView: true,
     };
   },
   methods: {
+    onResize(size) {
+      // this.report = size
+      if (size.width < 1000) {
+        this.isShowRouterView = false;
+      } else {
+        this.isShowRouterView = true;
+      }
+    },
     cancelEditPassword() {
       this.oldPassword = "";
       this.newPassword = "";
@@ -324,7 +316,7 @@ export default {
       let postData = {
         year: this.yearSelected,
         end_date: endDate,
-        status: this.assessmentStatusTemp
+        status: this.assessmentStatusTemp,
       };
       let data = await Axios.post(url, postData);
       this.isShowAssessmentDate = false;
@@ -372,7 +364,7 @@ export default {
         id: this.$q.sessionStorage.getItem("uid"),
         newPassword: this.newPassword,
         oldPassword: this.oldPassword,
-        repeatNewPassword: this.repeatNewPassword
+        repeatNewPassword: this.repeatNewPassword,
       });
 
       if (data.data == "error old password") {
@@ -411,13 +403,13 @@ export default {
     async getUserData() {
       const url = this.apiPath + "user/getUserData.php";
       let postData = {
-        id: this.$q.sessionStorage.getItem("uid")
+        id: this.$q.sessionStorage.getItem("uid"),
       };
       let data = await Axios.post(url, postData);
       this.userData = data.data;
 
       this.$q.sessionStorage.set("office", data.data.office);
-    }
+    },
   },
   created() {
     if (!this.$q.sessionStorage.has("uid")) {
@@ -436,7 +428,7 @@ export default {
     if (this.$q.sessionStorage.getItem("p") == "0") {
       this.getUserData();
     }
-  }
+  },
 };
 </script>
 

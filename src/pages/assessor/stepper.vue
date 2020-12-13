@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page >
     <div class="q-pa-md" style="width: 1000px; margin: auto;" align="center">
       <div class="row justify-between container-stepper q-my-xl">
         <div class="relative-position" style="width: 55px;">
