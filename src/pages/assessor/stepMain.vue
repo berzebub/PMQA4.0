@@ -341,12 +341,7 @@
               <br />
               ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}
             </div>
-            <div
-              align="center"
-              style="width:100%;border-radius:0px"
-              class="bg1 text-white font-12 q-py-sm cursor-pointer"
-              @click="deleteFile(1)"
-            >ลบไฟล์</div>
+          
           </div>
         </div>
 
@@ -365,12 +360,7 @@
               แผนยกระดับการพัฒนา
               <br />สู่ระบบราชการ 4.0 ระยะ 3 ปี
             </div>
-            <div
-              align="center"
-              style="width:100%;border-radius:0px"
-              class="bg1 text-white font-12 q-py-sm cursor-pointer"
-              @click="deleteFile(2)"
-            >ลบไฟล์</div>
+            
           </div>
         </div>
       </div>
@@ -526,6 +516,7 @@ export default {
       this.assessorName = data.data[0].name;
     },
     async getFile() {
+      this.loadingShow()
       let uid = this.$q.sessionStorage.getItem("aid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -541,6 +532,8 @@ export default {
         this.path1 = data.path1 != "" ? data.path1 : "";
         this.path2 = data.path2 != "" ? data.path2 : "";
       }
+      
+      this.loadingHide()
     },
   },
   created() {
