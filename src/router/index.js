@@ -144,13 +144,13 @@ Vue.mixin({
         user_id: this.$q.sessionStorage.getItem("uid"),
         office_score: avgScore.totalAvgScore,
         year: this.$q.sessionStorage.getItem("y"),
-        category1_score: Math.round(avgScore.score[0]),
-        category2_score: Math.round(avgScore.score[1]),
-        category3_score: Math.round(avgScore.score[2]),
-        category4_score: Math.round(avgScore.score[3]),
-        category5_score: Math.round(avgScore.score[4]),
-        category6_score: Math.round(avgScore.score[5]),
-        category7_score: Math.round(avgScore.score[6])
+        category1_score: parseInt(avgScore.score[0]),
+        category2_score: parseInt(avgScore.score[1]),
+        category3_score: parseInt(avgScore.score[2]),
+        category4_score: parseInt(avgScore.score[3]),
+        category5_score: parseInt(avgScore.score[4]),
+        category6_score: parseInt(avgScore.score[5]),
+        category7_score: parseInt(avgScore.score[6])
       };
 
       let send = Axios.post(sendAPI, postSendData);

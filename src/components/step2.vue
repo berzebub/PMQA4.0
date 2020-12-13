@@ -31,7 +31,7 @@
                       ยังไม่ทำการประเมิน
                     </span>
                     <span v-else>
-                      {{ Math.round(item.score) }}
+                      {{ parseInt(item.score) }}
                     </span>
                     <span v-else> Significance </span>
                   </div>
@@ -1259,7 +1259,7 @@ export default {
             this.data[i - 1].advance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          // this.data[i - 1].score = getData[0].score;
 
           this.data[i - 1].advance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];
@@ -1321,7 +1321,7 @@ export default {
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          // this.data[i - 1].score = getData[0].score;
 
           this.data[i - 1].significance.pdf_file =
             getData[0].is_pdf == 0 ? null : [getData[0].is_pdf];

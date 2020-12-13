@@ -36,7 +36,7 @@
                   >
                     {{ parseInt(item.score) }} /
                     <span class="text-pink-4" v-if="item.a_score != '-1'"
-                      >{{ parseInt(item.a_score) }}
+                      >{{ Math.round(item.a_score) }}
                     </span>
                     <span class="text-pink-4" v-else>-</span>
                   </div>

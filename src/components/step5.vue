@@ -34,7 +34,7 @@
                       ยังไม่ทำการประเมิน
                     </span>
                     <span v-else>
-                      {{ Math.round(item.score) }}
+                      {{ parseInt(item.score) }}
                     </span>
                     </span>
                     <span v-else> Significance </span>
@@ -1195,7 +1195,7 @@ this.data.pop()
             this.data[i - 1].basic.checkBox[j].status = checkBox[j];
           }
 
-          // this.data[i - 1].score = getData[0].score;
+          this.data[i - 1].score = getData[0].score;
           // console.log(getData[0].score)
           // console.log(this.data[i-1])
 
@@ -1300,7 +1300,7 @@ this.data.pop()
             this.data[i - 1].significance.checkBox[j].status = checkBox[j];
           }
 
-          this.data[i - 1].score = getData[0].score;
+          // this.data[i - 1].score = getData[0].score;
           
 
           this.data[i - 1].significance.pdf_file =

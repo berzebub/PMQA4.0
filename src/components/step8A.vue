@@ -38,7 +38,7 @@
                     /
                     <span class="text-pink-4">
                       <span v-if="item.a_avgScore != -1">{{
-                        parseInt(item.a_avgScore) || 0
+                        Math.round(item.a_avgScore) || 0
                       }}</span>
                       <span v-else>-</span>
                     </span>
@@ -468,7 +468,7 @@ export default {
               a_avgScore: -1,
               subNo: 2,
               headerTextUpper:
-                "RM 7 ร้อยละความพึงพอใจของบุคลากรที่มีต่อการนำองค์การของผู้บริหาร",
+                "RM 7 ร้อยละความพึงพอใจของบุคลากรที่มีต่อการนำองค์กรของผู้บริหาร",
               numberOfIndicators: 1,
               indicators:
                 "หน่วยงานประเมินความพึงพอใจต่อการนำองค์กรของผู้บริหาร โดยใช้แบบสอบถามกลางจาก กพร. ",

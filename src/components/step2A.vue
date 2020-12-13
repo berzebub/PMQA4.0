@@ -36,7 +36,7 @@
                   >
                     {{ parseInt(item.score) }} /
                     <span class="text-pink-4" v-if="item.a_score != '-1'"
-                      >{{ parseInt(item.a_score) }}
+                      >{{ Math.round(item.a_score) }}
                     </span>
                     <span class="text-pink-4" v-else>-</span>
                   </div>
@@ -535,7 +535,7 @@ export default {
                 status: false
               },
               {
-                text: `ได้รับรางวัลด้านความโปร่งใสจากองค์กรภายนอก`,
+                text: `ได้รับรางวัลความโปร่งใสจากองค์กรภายนอก หรือ ได้รับรางวัลคุณธรรมและความโปร่งใสในระดับหน่วยงาน`,
                 status: false
               }
             ],

@@ -111,16 +111,15 @@
  <div class="relative-position bg-pink-4" style="height:100vh" v-if="!isShowLogin">
         <div
           class="absolute-center bg-grey-5 text-black q-pa-md"
-          style="width:70%;max-width:500px;margin:auto;border-radius:10px"
+          style="width:80%;max-width:500px;margin:auto;border-radius:10px;height:400px"
         >
           <div align="center">
-            <q-img style="width:300px" src="../../public/error-logo.png"></q-img>
+            <q-img style="width:100%" src="../../public/error-logo.png"></q-img>
           </div>
-          <div align="center" class="font-24 q-py-xl">ความละเอียดของหน้าจอน้อยเกินไป</div>
+          <div align="center" class="font-18 q-py-xl ">ความละเอียดของหน้าจอน้อยเกินไป</div>
 
-          <div align="center" class="font-18 q-pa-md">
-            เราเสียใจที่จะต้องบอกคุณว่า คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มี
-            ความละเอียดสูงกว่านี้ ในการทำงานกับโปรแกรม pmqa เนื่องจากโปรแกรม pmqa มีข้อมูล ในแต่ละหน้าค่อนข้างเยอะ จึงทำให้ไม่สามารถใช้กับจอภาพที่มีความละเอียดต่ำได้
+          <div align="center" class="font-16">
+           คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มีความละเอียดสูงกว่านี้ในการทำงานกับโปรแกรม DDC-PMQA 4.0
           </div>
         </div>
       </div>

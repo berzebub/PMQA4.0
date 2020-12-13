@@ -409,7 +409,7 @@ export default {
               a_avgScore: -1,
               subNo: 2,
               headerTextUpper:
-                "RM 7 ร้อยละความพึงพอใจของบุคลากรที่มีต่อการนำองค์การของผู้บริหาร",
+                "RM 7 ร้อยละความพึงพอใจของบุคลากรที่มีต่อการนำองค์กรของผู้บริหาร",
               numberOfIndicators: 1,
               indicators:
                 "หน่วยงานประเมินความพึงพอใจต่อการนำองค์กรของผู้บริหาร โดยใช้แบบสอบถามกลางจาก กพร. ",
@@ -536,65 +536,118 @@ export default {
       if (index == 0 || index == 1) {
         // คิดคะแนน 7.1 -- 7.2
 
-        calculatedScore = (score - 75) * 20 + 100;
-        if (calculatedScore < 75) {
-          calculatedScore = 0;
-        } else if (calculatedScore > 95) {
-          calculatedScore = 500;
+        // calculatedScore = (score - 75) * 20 + 100;
+        // if (calculatedScore < 75) {
+        //   calculatedScore = 0;
+        // } else if (calculatedScore > 95) {
+        //   calculatedScore = 500;
+        // }
+        if(score < 75){
+          calculatedScore = 0
+        }else if (score > 95){
+          calculatedScore = 500
+        }else{
+          calculatedScore = (score - 75) * 20 + 100;
         }
       } else if (index == 2) {
         // คิดคะแนน 7.3
 
+        // calculatedScore = (score - 80) * 20 + 100;
+        // if (calculatedScore < 80) {
+        //   calculatedScore = 0;
+        // } else if (calculatedScore > 100) {
+        //   calculatedScore = 500;
+        // }
+
+        if(score < 80){
+          calculatedScore = 0
+        }else if (score > 100){
+          calculatedScore = 500
+        }else{
         calculatedScore = (score - 80) * 20 + 100;
-        if (calculatedScore < 80) {
-          calculatedScore = 0;
-        } else if (calculatedScore > 100) {
-          calculatedScore = 500;
+
         }
+
+        
       } else if (index == 3) {
         // คิดคะแนน 7.4
         if (indexSub == 0) {
           // คะแนน 7.4 RM6
-          calculatedScore = (score - 20) * 5 + 100;
-          if (calculatedScore < 20) {
-            calculatedScore = 0;
-          } else if (calculatedScore > 100) {
-            calculatedScore = 500;
+          // calculatedScore = (score - 20) * 5 + 100;
+          // if (calculatedScore < 20) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 100) {
+          //   calculatedScore = 500;
+          // }
+          if(score < 20){
+            calculatedScore = 0
+          }else if (score > 100){
+            calculatedScore = 500
+          }else {
+            calculatedScore = (score - 20) * 5 + 100;
           }
         } else {
           // คะแนน 7.4 RM7
-          calculatedScore = (score - 75) * 20 + 100;
-          if (calculatedScore < 75) {
-            calculatedScore = 0;
-          } else if (calculatedScore > 95) {
-            calculatedScore = 500;
+          // calculatedScore = (score - 75) * 20 + 100;
+          // if (calculatedScore < 75) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 95) {
+          //   calculatedScore = 500;
+          // }
+          if(score < 75){
+            calculatedScore = 0
+          }else if (score > 95){
+            calculatedScore = 500
+          }else{
+            calculatedScore= (score - 75) * 20 + 100;
           }
         }
       } else if (index == 4) {
         // 7.5 คิดคะแนน RM8
-        calculatedScore = (score - 94) * 100 + 100;
-        if (calculatedScore < 94) {
-          calculatedScore = 0;
-        } else if (calculatedScore > 98) {
-          calculatedScore = 500;
+        // calculatedScore = (score - 94) * 100 + 100;
+        // if (calculatedScore < 94) {
+        //   calculatedScore = 0;
+        // } else if (calculatedScore > 98) {
+        //   calculatedScore = 500;
+        // }
+        if(score > 98){
+          calculatedScore = 500
+        }else if (score < 94){
+          calculatedScore = 0
+        }else{
+          calculatedScore = (score-94) * 100 +100
         }
       } else if (index == 5) {
         // 7.6 คิดคะแนน Rm9
         if (indexSub == 0) {
           // RM9
-          calculatedScore = (score - 60) * 10 + 100;
-          if (calculatedScore < 60) {
-            calculatedScore = 0;
-          } else if (calculatedScore > 100) {
-            calculatedScore = 500;
+          // calculatedScore = (score - 60) * 10 + 100;
+          // if (calculatedScore < 60) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 100) {
+          //   calculatedScore = 500;
+          // }
+          if(score < 60){
+            calculatedScore = 0
+          }else if (score > 100){
+            calculatedScore = 500
+          }else {
+            calculatedScore = (score - 60) * 10 + 100;
           }
         } else {
           // RM10
-          calculatedScore = (score - 70) * 20 + 100;
-          if (calculatedScore < 70) {
-            calculatedScore = 0;
-          } else if (calculatedScore > 90) {
-            calculatedScore = 500;
+          // calculatedScore = (score - 70) * 20 + 100;
+          // if (calculatedScore < 70) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 90) {
+          //   calculatedScore = 500;
+          // }
+          if(score < 70){
+            calculatedScore = 0
+          }else if (score > 90){
+            calculatedScore = 500
+          }else{
+            calculatedScore = (score-70) * 20 +100
           }
         }
       }
