@@ -1353,7 +1353,7 @@ this.data.pop()
       )}-5-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
       window.open(
-        "https://api.winner-english.com/pmqa4_0_api/upload/" +
+        this.apiPath + "upload/" +
           pdfFileName +
           "?" +
           random

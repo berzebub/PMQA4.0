@@ -2,16 +2,20 @@
   <q-page class="row justify-center">
     <div class="col-12" align="center">
       <div style="height:20px"></div>
-      <div
-        style="width:fit-content;border:1px solid"
-        class="q-pa-md font-24"
-      >ผู้ประเมิน : {{ assessorName }}</div>
+      <div style="width:fit-content;border:1px solid" class="q-pa-md font-24">
+        ผู้ประเมิน : {{ assessorName }}
+      </div>
     </div>
-    <div class="col-10 row self-center q-pa-md" style="width: 1025px;overflow:hidden">
+    <div
+      class="col-10 row self-center q-pa-md"
+      style="width: 1025px;overflow:hidden"
+    >
       <div class="col">
         <!-- Set Top -->
         <div style="padding: 65px 0px 129px 0px">
-          <div class="container-border-lock row justify-between relative-position">
+          <div
+            class="container-border-lock row justify-between relative-position"
+          >
             <!-- ลักษณะองค์กร -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
@@ -22,17 +26,26 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/0')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-flag"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-flag"
+                  ></q-icon>
                 </q-btn>
               </div>
-              <div class="absolute-bottom" style="bottom: -120px; width: 145px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -120px; width: 145px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div class="col-12">
                       <span
                         class="text-no-wrap"
                         style="position: relative; left: -20px"
-                      >ลักษณะสำคัญองค์กร</span>
+                        >ลักษณะสำคัญขององค์กร</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -49,11 +62,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/1')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-street-view"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-street-view"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -65,12 +86,20 @@
                       "
                     >
                       {{ assessmentLog.category1_score }} /
-                      <span v-if="assessmentLog.a_category1_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category1_score }}</span>
+                      <span v-if="assessmentLog.a_category1_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category1_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -10px">หมวด 1</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: -10px"
+                        >หมวด 1</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -87,11 +116,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/2')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-map-signs"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-map-signs"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -103,12 +140,20 @@
                       "
                     >
                       {{ assessmentLog.category2_score }} /
-                      <span v-if="assessmentLog.a_category2_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category2_score }}</span>
+                      <span v-if="assessmentLog.a_category2_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category2_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: 0px">หมวด 2</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: 0px"
+                        >หมวด 2</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -125,11 +170,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/3')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-users"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-users"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -141,12 +194,20 @@
                       "
                     >
                       {{ assessmentLog.category3_score }} /
-                      <span v-if="assessmentLog.a_category3_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category3_score }}</span>
+                      <span v-if="assessmentLog.a_category3_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category3_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: 0px">หมวด 3</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: 0px"
+                        >หมวด 3</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -157,7 +218,9 @@
 
         <!-- Set Bottom -->
         <div style="padding: 129px 0px 65px 0px">
-          <div class="container-border-lock row reverse justify-between relative-position">
+          <div
+            class="container-border-lock row reverse justify-between relative-position"
+          >
             <!-- หมวด 4 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
@@ -168,11 +231,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/4')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-chart-line"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-chart-line"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -184,12 +255,20 @@
                       "
                     >
                       {{ assessmentLog.category4_score }} /
-                      <span v-if="assessmentLog.a_category4_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category4_score }}</span>
+                      <span v-if="assessmentLog.a_category4_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category4_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: 0px">หมวด 4</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: 0px"
+                        >หมวด 4</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -206,11 +285,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/5')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-users-cog"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-users-cog"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -222,12 +309,20 @@
                       "
                     >
                       {{ assessmentLog.category5_score }} /
-                      <span v-if="assessmentLog.a_category5_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category5_score }}</span>
+                      <span v-if="assessmentLog.a_category5_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category5_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: 0px">หมวด 5</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: 0px"
+                        >หมวด 5</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -244,11 +339,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/6')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-project-diagram"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-project-diagram"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -260,12 +363,20 @@
                       "
                     >
                       {{ assessmentLog.category6_score }} /
-                      <span v-if="assessmentLog.a_category6_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category6_score }}</span>
+                      <span v-if="assessmentLog.a_category6_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category6_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: 0px">หมวด 6</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: 0px"
+                        >หมวด 6</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -282,11 +393,19 @@
                   class="bg3"
                   @click="$router.push('/assessor/stepper/7')"
                 >
-                  <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+                  <q-icon
+                    size="50px"
+                    class="color1"
+                    name="fas fa-trophy"
+                  ></q-icon>
                 </q-btn>
               </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 120px" align="center">
+              <div
+                class="absolute-bottom"
+                style="bottom: -150px; width: 120px"
+                align="center"
+              >
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -298,12 +417,20 @@
                       "
                     >
                       {{ assessmentLog.category7_score }} /
-                      <span v-if="assessmentLog.a_category7_score == '-1'">-</span>
-                      <span v-else class="text-pink-4">{{ assessmentLog.a_category7_score }}</span>
+                      <span v-if="assessmentLog.a_category7_score == '-1'"
+                        >-</span
+                      >
+                      <span v-else class="text-pink-4">{{
+                        assessmentLog.a_category7_score
+                      }}</span>
                     </div>
                     <div class="q-pl-sm"></div>
                     <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: 0px">หมวด 7</span>
+                      <span
+                        class="text-no-wrap"
+                        style="position: relative; left: 0px"
+                        >หมวด 7</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -329,7 +456,9 @@
           style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:190px;right:40px"
         >
           <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">
+              word / pdf
+            </div>
             <div
               class="bg-white q-pa-xs text-black cursor-pointer"
               @click="openFile(1)"
@@ -339,9 +468,8 @@
               แผนปฏิบัติการเพื่อยกระดับ
               <br />การพัฒนาสู่ระบบราชการ 4.0
               <br />
-              ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}
+              ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
             </div>
-          
           </div>
         </div>
 
@@ -350,7 +478,9 @@
           style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:40px;right:40px"
         >
           <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">
+              word / pdf
+            </div>
             <div
               class="bg-white q-pa-xs text-black cursor-pointer"
               @click="openFile(2)"
@@ -360,7 +490,6 @@
               แผนยกระดับการพัฒนา
               <br />สู่ระบบราชการ 4.0 ระยะ 3 ปี
             </div>
-            
           </div>
         </div>
       </div>
@@ -379,13 +508,19 @@
         </q-btn>
         <div class="absolute-left">
           <div class="absolute-bottom q-pa-lg">
-            <div style="border:2px solid teal;border-radius:5px;width:120px;font-size:16px">
+            <div
+              style="border:2px solid teal;border-radius:5px;width:120px;font-size:16px"
+            >
               <span class="text-teal">xxx</span>
               /
               <span class="text-pink-4">yyy</span>
             </div>
           </div>
-          <div class="absolute-bottom q-pa-lg" align="left" style="left:150px;width:350px">
+          <div
+            class="absolute-bottom q-pa-lg"
+            align="left"
+            style="left:150px;width:350px"
+          >
             <div>คะแนนที่ทางหน่วยงานประเมิน xxx คะแนน</div>
             <div>คะแนนที่ทางคณะกรรมการประเมิน yyy คะแนน</div>
           </div>
@@ -407,7 +542,7 @@ export default {
       path1: "",
       path2: "",
       file1: null,
-      file2: null,
+      file2: null
     };
   },
   methods: {
@@ -427,7 +562,7 @@ export default {
     },
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step,
+        name: "printStep" + step
       });
       window.open(route.href);
     },
@@ -448,31 +583,31 @@ export default {
         user_id: this.$q.sessionStorage.getItem("aid"),
         year: this.$q.sessionStorage.getItem("y"),
         avg_score: avg_a_score,
-        assessor_id: this.$q.sessionStorage.getItem("uid"),
+        assessor_id: this.$q.sessionStorage.getItem("uid")
       };
       let data = await Axios.post(url, postData);
 
       const url1 = this.apiPath + "updateSendStatus.php";
       let postData1 = {
         user_id: this.$q.sessionStorage.getItem("aid"),
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
 
       let data1 = await Axios.post(url1, postData1);
       this.$q.notify({
         color: "secondary",
-        message: "บันทึกผลการประเมินสำเร็จ",
+        message: "บันทึกผลการประเมินสำเร็จ"
       });
     },
     async getAssessmentLog() {
       let postData = {
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
       const url = this.apiPath + "getAssessmentLog.php";
 
       let data = await Axios.post(url, postData);
       let dataFilter = data.data.filter(
-        (x) => x.user_id == this.$route.params.userId
+        x => x.user_id == this.$route.params.userId
       );
 
       let isOpenSendBtn = false;
@@ -480,7 +615,7 @@ export default {
       if (dataFilter.length) {
         this.assessmentLog = dataFilter[0];
         let assessorScore = [-1, -1, -1, -1, -1, -1, -1];
-        assessorScore = dataFilter.map((x) => {
+        assessorScore = dataFilter.map(x => {
           return [
             Number(x.a_category1_score),
             Number(x.a_category2_score),
@@ -488,13 +623,13 @@ export default {
             Number(x.a_category4_score),
             Number(x.a_category5_score),
             Number(x.a_category6_score),
-            Number(x.a_category7_score),
+            Number(x.a_category7_score)
           ];
         });
 
         assessorScore = assessorScore[0];
 
-        if (assessorScore.every((x) => x != -1)) {
+        if (assessorScore.every(x => x != -1)) {
           this.isShowSendBtn = true;
         } else {
           this.isShowSendBtn = false;
@@ -506,7 +641,7 @@ export default {
     },
     async getAssessorInfo() {
       let postData = {
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("uid")
       };
 
       const url = this.apiPath + "getAssessorInfo.php";
@@ -516,7 +651,7 @@ export default {
       this.assessorName = data.data[0].name;
     },
     async getFile() {
-      this.loadingShow()
+      this.loadingShow();
       let uid = this.$q.sessionStorage.getItem("aid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -532,15 +667,15 @@ export default {
         this.path1 = data.path1 != "" ? data.path1 : "";
         this.path2 = data.path2 != "" ? data.path2 : "";
       }
-      
-      this.loadingHide()
-    },
+
+      this.loadingHide();
+    }
   },
   created() {
     this.getAssessorInfo();
     this.getAssessmentLog();
     this.getFile();
-  },
+  }
 };
 </script>
 

@@ -792,9 +792,7 @@ export default {
     },
     async getDate() {
       return new Promise(async (a, b) => {
-        let date = await Axios.get(
-          "https://api.winner-english.com/pmqa4_0_api/getDate.php"
-        );
+        let date = await Axios.get(this.apiPath + "/getDate.php");
         a(date.data);
       });
     }

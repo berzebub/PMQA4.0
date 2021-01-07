@@ -73,6 +73,11 @@ const routes = [
 
   // PRINT ASSESSOR PAPER
   {
+    path: "/print/0A",
+    component: () => import("pages/print0A.vue"),
+    name: "printStep0A"
+  },
+  {
     path: "/print/1A",
     component: () => import("pages/print1A.vue"),
     name: "printStep1A"

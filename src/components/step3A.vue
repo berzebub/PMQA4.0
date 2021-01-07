@@ -837,8 +837,6 @@ export default {
         score += scoreSigni;
       }
 
-     
-
       this.data[index].a_score = score;
       formData.append("user_id", userId);
       formData.append("q_number", no);
@@ -1064,12 +1062,7 @@ export default {
         "aid"
       )}-2-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
-      window.open(
-        "https://api.winner-english.com/pmqa4_0_api/upload/" +
-          pdfFileName +
-          "?" +
-          random
-      );
+      window.open(this.apiPath + "upload/" + pdfFileName + "?" + random);
     },
     emitStatus() {
       let checkStatus = this.data.map(x => x.a_score);

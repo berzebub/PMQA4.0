@@ -17,7 +17,7 @@
       </div>
 
       <div v-show="isShowGraph">
-        <div class="row relative-position q-py-md" >
+        <div class="row relative-position q-py-md">
           <div class="col-6  q-pa-lg" style="margin-top:-70px;" align="left">
             <div id="container"></div>
           </div>
@@ -53,8 +53,12 @@
                 </div>
               </div>
 
-              <div class=" q-pa-md" style="border:1px solid;width:320px;margin:auto">
-                หน่วยงานระบบราชการ {{ (assessmentLog.assessor_score / 500 *4).toFixed(1) }}
+              <div
+                class=" q-pa-md"
+                style="border:1px solid;width:320px;margin:auto"
+              >
+                หน่วยงานระบบราชการ
+                {{ ((assessmentLog.assessor_score / 500) * 4).toFixed(1) }}
               </div>
             </div>
           </div>
@@ -162,7 +166,7 @@
                           <span
                             class="absolute-bottom"
                             style="bottom:-45px;font-size:24px;"
-                            >{{ `${activeStep }.${index2 + 1}` }}</span
+                            >{{ `${activeStep}.${index2 + 1}` }}</span
                           >
                         </div>
                       </div>
@@ -216,7 +220,7 @@
                           <span
                             class="absolute-bottom "
                             style="bottom:-45px;font-size:24px;"
-                            >{{ `${activeStep }.${index2 + 1}` }}</span
+                            >{{ `${activeStep}.${index2 + 1}` }}</span
                           >
                         </div>
                       </div>
@@ -245,7 +249,7 @@
               class="col-1 self-center relative-position"
               align="center"
               style="width:70px;"
-              @click="activeStep <= 6  ? activeStep++ : null"
+              @click="activeStep <= 6 ? activeStep++ : null"
             >
               <span class="absolute-center " style="right:-85px;"
                 ><q-icon
@@ -284,7 +288,7 @@ export default {
       yearSelected: this.$q.sessionStorage.getItem("y") + 543,
       dataList: [
         {
-          title: `ลักษณะสำคัญองค์กร`,
+          title: `ลักษณะสำคัญขององค์กร`,
           fontawesome: "fas fa-flag",
           score: [0, 0, 0, 0],
           a_score: [0, 0, 0, 0]
@@ -338,7 +342,7 @@ export default {
     printBtn(step) {
       if (step == 0) {
         let route = this.$router.resolve({
-          name: "printStep0"
+          name: "printStep0A"
         });
         window.open(route.href);
       } else {
@@ -489,7 +493,7 @@ export default {
       };
 
       for (let i = 1; i < this.dataList.length; i++) {
-        let score = getData.filter(x => x.step == i  && x.mode == "basic");
+        let score = getData.filter(x => x.step == i && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
 
         for (let j = 0; j < 4; j++) {

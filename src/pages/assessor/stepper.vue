@@ -1,5 +1,5 @@
 <template>
-  <q-page >
+  <q-page>
     <div class="q-pa-md" style="width: 1000px; margin: auto;" align="center">
       <div class="row justify-between container-stepper q-my-xl">
         <div class="relative-position" style="width: 55px;">
@@ -43,7 +43,7 @@
             </q-btn>
           </div>
           <div class="absolute-center" align="center" style="top: 50px;">
-            <span class="text-no-wrap">ลักษณะสำคัญองค์กร</span>
+            <span class="text-no-wrap">ลักษณะสำคัญขององค์กร</span>
           </div>
         </div>
         <div class="relative-position" style="width: 55px;">
@@ -176,11 +176,11 @@
                 :class="
                   active == 6
                     ? 'text-white'
-                    : step5Status== '0'
+                    : step5Status == '0'
                     ? 'text-black'
-                    : step5Status== '2'
+                    : step5Status == '2'
                     ? 'text-amber-9'
-                    : step5Status== '1'
+                    : step5Status == '1'
                     ? 'text-teal'
                     : ''
                 "
@@ -383,16 +383,16 @@ export default {
       statusForm7: "none",
       statusForm8: "none",
       currentStep: "",
-      
-      stepStatus : "",
-         step0Status : "",
-      step1Status : "",
-      step2Status : "",
-      step3Status : "",
-      step4Status : "",
-      step5Status : "",
-      step6Status : "",
-      step7Status : ""
+
+      stepStatus: "",
+      step0Status: "",
+      step1Status: "",
+      step2Status: "",
+      step3Status: "",
+      step4Status: "",
+      step5Status: "",
+      step6Status: "",
+      step7Status: ""
     };
   },
   methods: {
@@ -401,55 +401,53 @@ export default {
       newRoute = newRoute.toString();
       this.$router.push("/assessor/stepper/" + newRoute);
     },
-    getStep0Status(val){
-
-           this.step0Status = val
+    getStep0Status(val) {
+      this.step0Status = val;
     },
     getStep1Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step1Status = val
+      this.step1Status = val;
     },
     getStep2Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step2Status = val
+      this.step2Status = val;
     },
     getStep3Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step3Status = val
+      this.step3Status = val;
     },
     getStep4Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step4Status = val
+      this.step4Status = val;
     },
     getStep5Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step5Status = val
+      this.step5Status = val;
     },
     getStep6Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step6Status = val
+      this.step6Status = val;
     },
     getStep7Status(val) {
       // 0 = ไม่เคยประเมิน
       // 1 = ประเมินเสร็จ
       // 2 = ประเมินบางข้อ
-      this.step7Status = val
+      this.step7Status = val;
     },
-    getStepperLog(){},
-  },
-
+    getStepperLog() {}
+  }
 };
 </script>
 

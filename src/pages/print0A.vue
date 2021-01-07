@@ -97,6 +97,13 @@
                 </div>
 
                 <div class="q-px-lg" v-html="item.text"></div>
+                <div class="q-px-lg q-py-xs">
+                  <q-separator></q-separator>
+                </div>
+                <div
+                  class="q-px-lg"
+                  v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
+                ></div>
               </div>
             </td>
           </tr>
@@ -146,6 +153,13 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
+                <div class="q-px-lg q-py-xs">
+                  <q-separator></q-separator>
+                </div>
+                <div
+                  class="q-px-lg"
+                  v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
+                ></div>
               </div>
             </td>
           </tr>
@@ -205,6 +219,13 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
+                <div class="q-px-lg q-py-xs">
+                  <q-separator></q-separator>
+                </div>
+                <div
+                  class="q-px-lg"
+                  v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
+                ></div>
               </div>
             </td>
           </tr>
@@ -255,6 +276,13 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
+                <div class="q-px-lg q-py-xs">
+                  <q-separator></q-separator>
+                </div>
+                <div
+                  class="q-px-lg"
+                  v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
+                ></div>
               </div>
             </td>
           </tr>
@@ -294,6 +322,13 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
+                <div class="q-px-lg q-py-xs">
+                  <q-separator></q-separator>
+                </div>
+                <div
+                  class="q-px-lg"
+                  v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
+                ></div>
               </div>
             </td>
           </tr>
@@ -328,72 +363,72 @@ export default {
       environmentCount: 0,
       isEnvironmentDialog1: false,
       inputEnvironment1: "",
+      inputEnvironment1S: "",
       inputEnvironmentPDF1: null,
-      inputEnvironmentIMG1: null,
 
       isEnvironmentDialog2: false,
       inputEnvironment2: "",
+      inputEnvironment2S: "",
       inputEnvironmentPDF2: null,
-      inputEnvironmentIMG2: null,
 
       isEnvironmentDialog3: false,
       inputEnvironment3: "",
+      inputEnvironment3S: "",
       inputEnvironmentPDF3: null,
-      inputEnvironmentIMG3: null,
 
       isEnvironmentDialog4: false,
       inputEnvironment4: "",
+      inputEnvironment4S: "",
       inputEnvironmentPDF4: null,
-      inputEnvironmentIMG4: null,
 
       isEnvironmentDialog5: false,
       inputEnvironment5: "",
+      inputEnvironment5S: "",
       inputEnvironmentPDF5: null,
-      inputEnvironmentIMG5: null,
 
       // Relation
       isRelationDialog1: false,
       inputRelation1: "",
+      inputRelation1S: "",
       inputRelationPDF1: null,
-      inputRelationIMG1: null,
 
       isRelationDialog2: false,
       inputRelation2: "",
+      inputRelation2S: "",
       inputRelationPDF2: null,
-      inputRelationIMG2: null,
 
       isRelationDialog3: false,
       inputRelation3: "",
+      inputRelation3S: "",
       inputRelationPDF3: null,
-      inputRelationIMG3: null,
 
       // Competition Environment
       isCompetitionEnvironmentDialog1: false,
       inputCompetitionEnvironment1: "",
+      inputCompetitionEnvironment1S: "",
       inputCompetitionEnvironmentPDF1: null,
-      inputCompetitionEnvironmentIMG1: null,
 
       isCompetitionEnvironmentDialog2: false,
       inputCompetitionEnvironment2: "",
+      inputCompetitionEnvironment2S: "",
       inputCompetitionEnvironmentPDF2: null,
-      inputCompetitionEnvironmentIMG2: null,
 
       isCompetitionEnvironmentDialog3: false,
       inputCompetitionEnvironment3: "",
+      inputCompetitionEnvironment3S: "",
       inputCompetitionEnvironmentPDF3: null,
-      inputCompetitionEnvironmentIMG3: null,
 
       // Stategy
       isStategyDialog: false,
       inputStategy: "",
+      inputStategyS: "",
       inputStategyPDF1: null,
-      inputStategyIMG1: null,
 
       // Performance improvement system
       isPerformanceSystemDialog: false,
       inputPerformanceSystem: "",
+      inputPerformanceSystemS: "",
       inputPerformanceSystemPDF1: null,
-      inputPerformanceSystemIMG1: null,
 
       // Save Data
       isSaveData: false
@@ -421,6 +456,7 @@ export default {
 
         if (inputEnvironment1.length) {
           this.inputEnvironment1 = inputEnvironment1[0].text;
+          this.inputEnvironment1S = inputEnvironment1[0].suggesstion;
           let checkFile1 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -428,12 +464,6 @@ export default {
               x.category_q_number == "1"
           )[0];
 
-          if (checkFile1.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputEnvironmentIMG1 = null;
-          } else {
-            this.inputEnvironmentIMG1 = [1];
-          }
           if (checkFile1.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputEnvironmentPDF1 = null;
@@ -452,6 +482,7 @@ export default {
 
         if (inputEnvironment2.length) {
           this.inputEnvironment2 = inputEnvironment2[0].text;
+          this.inputEnvironment2S = inputEnvironment2[0].suggesstion;
           let checkFile2 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -459,12 +490,6 @@ export default {
               x.category_q_number == "2"
           )[0];
 
-          if (checkFile2.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputEnvironmentIMG2 = null;
-          } else {
-            this.inputEnvironmentIMG2 = [1];
-          }
           if (checkFile2.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputEnvironmentPDF2 = null;
@@ -483,6 +508,7 @@ export default {
 
         if (inputEnvironment3.length) {
           this.inputEnvironment3 = inputEnvironment3[0].text;
+          this.inputEnvironment3S = inputEnvironment3[0].suggesstion;
           let checkFile3 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -490,12 +516,6 @@ export default {
               x.category_q_number == "3"
           )[0];
 
-          if (checkFile3.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputEnvironmentIMG3 = null;
-          } else {
-            this.inputEnvironmentIMG3 = [1];
-          }
           if (checkFile3.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputEnvironmentPDF3 = null;
@@ -513,6 +533,7 @@ export default {
         );
         if (inputEnvironment4.length) {
           this.inputEnvironment4 = inputEnvironment4[0].text;
+          this.inputEnvironment4S = inputEnvironment4[0].suggesstion;
           let checkFile4 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -520,12 +541,6 @@ export default {
               x.category_q_number == "4"
           )[0];
 
-          if (checkFile4.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputEnvironmentIMG4 = null;
-          } else {
-            this.inputEnvironmentIMG4 = [1];
-          }
           if (checkFile4.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputEnvironmentPDF4 = null;
@@ -543,6 +558,7 @@ export default {
         );
         if (inputEnvironment5.length) {
           this.inputEnvironment5 = inputEnvironment5[0].text;
+          this.inputEnvironment5S = inputEnvironment5[0].suggesstion;
           let checkFile5 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -550,12 +566,6 @@ export default {
               x.category_q_number == "5"
           )[0];
 
-          if (checkFile5.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputEnvironmentIMG5 = null;
-          } else {
-            this.inputEnvironmentIMG5 = [1];
-          }
           if (checkFile5.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputEnvironmentPDF5 = null;
@@ -573,6 +583,7 @@ export default {
         );
         if (inputRelation1.length) {
           this.inputRelation1 = inputRelation1[0].text;
+          this.inputRelation1S = inputRelation1[0].suggesstion;
           let checkFile6 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -580,12 +591,6 @@ export default {
               x.category_q_number == "1"
           )[0];
 
-          if (checkFile6.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputRelationIMG1 = null;
-          } else {
-            this.inputRelationIMG1 = [1];
-          }
           if (checkFile6.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputRelationPDF1 = null;
@@ -604,6 +609,7 @@ export default {
 
         if (inputRelation2.length) {
           this.inputRelation2 = inputRelation2[0].text;
+          this.inputRelation2S = inputRelation2[0].suggesstion;
           let checkFile7 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -611,12 +617,6 @@ export default {
               x.category_q_number == "2"
           )[0];
 
-          if (checkFile7.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputRelationIMG2 = null;
-          } else {
-            this.inputRelationIMG2 = [1];
-          }
           if (checkFile7.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputRelationPDF2 = null;
@@ -635,6 +635,7 @@ export default {
 
         if (inputRelation3.length) {
           this.inputRelation3 = inputRelation3[0].text;
+          this.inputRelation3S = inputRelation3[0].suggesstion;
           let checkFile8 = getData.filter(
             x =>
               x.q_number == "1" &&
@@ -642,12 +643,6 @@ export default {
               x.category_q_number == "3"
           )[0];
 
-          if (checkFile8.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputRelationIMG3 = null;
-          } else {
-            this.inputRelationIMG3 = [1];
-          }
           if (checkFile8.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputRelationPDF3 = null;
@@ -666,6 +661,8 @@ export default {
         if (inputCompetitionEnvironment1.length) {
           this.inputCompetitionEnvironment1 =
             inputCompetitionEnvironment1[0].text;
+          this.inputCompetitionEnvironment1S =
+            inputCompetitionEnvironment1[0].suggesstion;
           let checkFile9 = getData.filter(
             x =>
               x.q_number == "2" &&
@@ -673,12 +670,6 @@ export default {
               x.category_q_number == "1"
           )[0];
 
-          if (checkFile9.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputCompetitionEnvironmentIMG1 = null;
-          } else {
-            this.inputCompetitionEnvironmentIMG1 = [1];
-          }
           if (checkFile9.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputCompetitionEnvironmentPDF1 = null;
@@ -698,6 +689,8 @@ export default {
         if (inputCompetitionEnvironment2.length) {
           this.inputCompetitionEnvironment2 =
             inputCompetitionEnvironment2[0].text;
+          this.inputCompetitionEnvironment2S =
+            inputCompetitionEnvironment2[0].suggesstion;
           let checkFile10 = getData.filter(
             x =>
               x.q_number == "2" &&
@@ -705,12 +698,6 @@ export default {
               x.category_q_number == "2"
           )[0];
 
-          if (checkFile10.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputCompetitionEnvironmentIMG2 = null;
-          } else {
-            this.inputCompetitionEnvironmentIMG2 = [1];
-          }
           if (checkFile10.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputCompetitionEnvironmentPDF2 = null;
@@ -729,6 +716,8 @@ export default {
         if (inputCompetitionEnvironment3.length) {
           this.inputCompetitionEnvironment3 =
             inputCompetitionEnvironment3[0].text;
+          this.inputCompetitionEnvironment3S =
+            inputCompetitionEnvironment3[0].suggesstion;
           let checkFile11 = getData.filter(
             x =>
               x.q_number == "2" &&
@@ -736,12 +725,6 @@ export default {
               x.category_q_number == "3"
           )[0];
 
-          if (checkFile11.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputCompetitionEnvironmentIMG3 = null;
-          } else {
-            this.inputCompetitionEnvironmentIMG3 = [1];
-          }
           if (checkFile11.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputCompetitionEnvironmentPDF3 = null;
@@ -759,6 +742,7 @@ export default {
         );
         if (inputStategy.length) {
           this.inputStategy = inputStategy[0].text;
+          this.inputStategyS = inputStategy[0].suggesstion;
           let checkFile12 = getData.filter(
             x =>
               x.q_number == "2" &&
@@ -766,12 +750,6 @@ export default {
               x.category_q_number == "1"
           )[0];
 
-          if (checkFile12.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputStategyIMG1 = null;
-          } else {
-            this.inputStategyIMG1 = [1];
-          }
           if (checkFile12.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputStategyPDF1 = null;
@@ -789,6 +767,7 @@ export default {
         );
         if (inputPerformanceSystem.length) {
           this.inputPerformanceSystem = inputPerformanceSystem[0].text;
+          this.inputPerformanceSystemS = inputPerformanceSystem[0].suggesstion;
           let checkFile13 = getData.filter(
             x =>
               x.q_number == "2" &&
@@ -796,12 +775,6 @@ export default {
               x.category_q_number == "1"
           )[0];
 
-          if (checkFile13.is_img == 0) {
-            // กรณีไม่มีรูปภาพ
-            this.inputPerformanceSystemIMG1 = null;
-          } else {
-            this.inputPerformanceSystemIMG1 = [1];
-          }
           if (checkFile13.is_pdf == 0) {
             // กรณีไม่มีรูปภาพ
             this.inputPerformanceSystemPDF1 = null;
@@ -819,7 +792,7 @@ export default {
           category_q_number: 1,
           text: this.inputEnvironment1.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF1,
-          img_file: this.inputEnvironmentIMG1
+          suggesstion: this.inputEnvironment1S.replace(/\n/g, "<br>")
         },
         {
           q_number: 1,
@@ -828,7 +801,7 @@ export default {
           category_q_number: 2,
           text: this.inputEnvironment2.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF2,
-          img_file: this.inputEnvironmentIMG2
+          suggesstion: this.inputEnvironment2S.replace(/\n/g, "<br>")
         },
         {
           q_number: 1,
@@ -837,7 +810,7 @@ export default {
           category_q_number: 3,
           text: this.inputEnvironment3.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF3,
-          img_file: this.inputEnvironmentIMG3
+          suggesstion: this.inputEnvironment3S.replace(/\n/g, "<br>")
         },
         {
           q_number: 1,
@@ -846,7 +819,7 @@ export default {
           category_q_number: 4,
           text: this.inputEnvironment4.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF4,
-          img_file: this.inputEnvironmentIMG4
+          suggesstion: this.inputEnvironment4S.replace(/\n/g, "<br>")
         },
         {
           q_number: 1,
@@ -855,7 +828,7 @@ export default {
           category_q_number: 5,
           text: this.inputEnvironment5.replace(/\n/g, "<br>"),
           pdf_file: this.inputEnvironmentPDF5,
-          img_file: this.inputEnvironmentIMG5
+          suggesstion: this.inputEnvironment5S.replace(/\n/g, "<br>")
         },
         // หมวด ข
         {
@@ -865,7 +838,7 @@ export default {
           category_q_number: 1,
           text: this.inputRelation1.replace(/\n/g, "<br>"),
           pdf_file: this.inputRelationPDF1,
-          img_file: this.inputRelationIMG1
+          suggesstion: this.inputRelation1S.replace(/\n/g, "<br>")
         },
         {
           q_number: 1,
@@ -874,7 +847,7 @@ export default {
           category_q_number: 2,
           text: this.inputRelation2.replace(/\n/g, "<br>"),
           pdf_file: this.inputRelationPDF2,
-          img_file: this.inputRelationIMG2
+          suggesstion: this.inputRelation2S.replace(/\n/g, "<br>")
         },
         {
           q_number: 1,
@@ -883,7 +856,7 @@ export default {
           category_q_number: 3,
           text: this.inputRelation3.replace(/\n/g, "<br>"),
           pdf_file: this.inputRelationPDF3,
-          img_file: this.inputRelationIMG3
+          suggesstion: this.inputRelation3S.replace(/\n/g, "<br>")
         },
         // เริ่มข้อ2 หมวด ก.
         {
@@ -893,7 +866,7 @@ export default {
           category_q_number: 1,
           text: this.inputCompetitionEnvironment1.replace(/\n/g, "<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF1,
-          img_file: this.inputCompetitionEnvironmentIMG1
+          suggesstion: this.inputCompetitionEnvironment1S.replace(/\n/g, "<br>")
         },
         {
           q_number: 2,
@@ -902,7 +875,7 @@ export default {
           category_q_number: 2,
           text: this.inputCompetitionEnvironment2.replace(/\n/g, "<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF2,
-          img_file: this.inputCompetitionEnvironmentIMG2
+          suggesstion: this.inputCompetitionEnvironment2S.replace(/\n/g, "<br>")
         },
         {
           q_number: 2,
@@ -911,7 +884,7 @@ export default {
           category_q_number: 3,
           text: this.inputCompetitionEnvironment3.replace(/\n/g, "<br>"),
           pdf_file: this.inputCompetitionEnvironmentPDF3,
-          img_file: this.inputCompetitionEnvironmentIMG3
+          suggesstion: this.inputCompetitionEnvironment3S.replace(/\n/g, "<br>")
         },
         // เริ่มข้อ2 หมวด ข.
         {
@@ -921,7 +894,7 @@ export default {
           category_q_number: 1,
           text: this.inputStategy.replace(/\n/g, "<br>"),
           pdf_file: this.inputStategyPDF1,
-          img_file: this.inputStategyIMG1
+          suggesstion: this.inputStategyS.replace(/\n/g, "<br>")
         },
         // เริ่มข้อ2 หมวด ค.
         {
@@ -931,7 +904,7 @@ export default {
           category_q_number: 1,
           text: this.inputPerformanceSystem.replace(/\n/g, "<br>"),
           pdf_file: this.inputPerformanceSystemPDF1,
-          img_file: this.inputPerformanceSystemIMG1
+          suggesstion: this.inputPerformanceSystemS.replace(/\n/g, "<br>")
         }
       ];
 
