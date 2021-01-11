@@ -1065,12 +1065,7 @@ export default {
         "aid"
       )}-1-${no}-${mode}-${this.$q.sessionStorage.getItem("y")}.pdf`;
 
-      window.open(
-        "https://api.winner-english.com/pmqa4_0_api/upload/" +
-          pdfFileName +
-          "?" +
-          random
-      );
+      window.open(this.apiPath + "upload/" + pdfFileName + "?" + random);
     },
     emitStatus() {
       let checkStatus = this.data.map(x => x.a_score);

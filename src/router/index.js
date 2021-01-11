@@ -18,8 +18,8 @@ Vue.use(VueRouter);
 Vue.mixin({
   data() {
     return {
-      apiPath: "https://api.winner-english.com/pmqa4_0_api/"
-      // apiPath : "http://localhost/pmqa4.0_api/"
+      // apiPath: this.apiPath + "/"
+      apiPath: "http://203.157.41.91/pmqa4_0_api/"
     };
   },
   methods: {
@@ -40,9 +40,7 @@ Vue.mixin({
     },
     async getDate() {
       return new Promise(async (a, b) => {
-        let date = await Axios.get(
-          "https://api.winner-english.com/pmqa4_0_api/getDate.php"
-        );
+        let date = await Axios.get(this.apiPath + "/getDate.php");
         a(date.data);
       });
     },

@@ -24,7 +24,6 @@
         <span class="text-h6">ตัวชี้วัดหมวด 7</span>
       </div>
 
-
       <div
         class="q-mt-md"
         :class="index == 0 ? 'q-mt-lg' : 'q-mt-md'"
@@ -172,17 +171,9 @@
                     </div>
                   </div>
 
-                  <!-- <div
-                    v-if="item2.indicators.length == 0"
-                    class="q-pa-sm border-top-lr border-bottom"
-                  >
-                    <div class="q-pa-xs"></div>
-                  </div> -->
-
                   <div
                     class="row border-top-lr "
                     style="border-bottom:1px solid"
-                   
                   >
                     <div class="col border-right">
                       <div class="q-pa-xs">
@@ -197,8 +188,7 @@
                       <div class="q-pa-xs">
                         <span>
                           {{
-                            `${item2.goalCurrentYear || ""} ${item2
-                              .unit || ""}`
+                            `${item2.goalCurrentYear || ""} ${item2.unit || ""}`
                           }}
                         </span>
                       </div>
@@ -242,8 +232,34 @@
                     </div>
                     <div class="col-1 " style="width:50px;" align="center">
                       <div class="q-pa-xs"></div>
-                      <span>{{ `${item2.a_score }` }}</span>
+                      <span>{{ `${item2.a_score}` }}</span>
                     </div>
+                  </div>
+                  <!-- ข้อเสนอแนะ -->
+                  <div
+                    class="q-pa-sm row items-center"
+                    style="border-left:1px solid;border-right:1px solid;border-bottom:1px solid"
+                  >
+                    <div
+                      v-if="item2.a_assesment == 1"
+                      style="border:1px solid teal;width:100px;"
+                      align="center"
+                      class="q-px-md text-teal"
+                    >
+                      เหมาะสม
+                    </div>
+                    <div
+                      v-if="item2.a_assesment == 0"
+                      style="border:1px solid red;width:100px;"
+                      align="center"
+                      class="q-px-md text-red"
+                    >
+                      ไม่เหมาะสม
+                    </div>
+                    <div
+                      class="q-pl-md"
+                      v-html="'ข้อเสนอแนะ : ' + replaceN(item2.a_suggestion)"
+                    ></div>
                   </div>
                 </div>
               </td>
@@ -288,12 +304,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -316,14 +332,14 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.2 ด้านผู้รับบริการและผู้มีส่วนได้ส่วนเสีย",
@@ -351,14 +367,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.3 ด้านการพัฒนาบุคลากร",
@@ -386,12 +402,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -413,14 +429,14 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.4 ด้านการเป็นต้นแบบ",
@@ -448,12 +464,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -475,14 +491,14 @@ export default {
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
+                  [this.$q.sessionStorage.getItem("y") + 541]: null
+                }
               ],
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.5 ด้านผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม",
@@ -508,14 +524,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.6 ด้านการลดต้นทุน สร้างนวัตกรรม และการจัดการกระบวนการ",
@@ -542,12 +558,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -568,15 +584,15 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
-        },
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
+        }
       ]
     };
   },

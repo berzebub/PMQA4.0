@@ -32,7 +32,7 @@
       </q-tabs>
     </div>
 
-    <div class="q-px-xl q-pt-xs">
+    <div class="q-px-xl q-pt-xs q-pb-xl">
       <!-- USER LIST -->
       <q-tab-panels v-model="tab" class>
         <q-tab-panel name="ผู้ใช้งาน">
@@ -332,6 +332,7 @@ export default {
       this.loadingShow();
       const url = this.apiPath + "getUser.php";
       let userList = await Axios.get(url);
+      console.log(userList.data);
       if (userList.data) {
         // console.log(userList.data);
         let result = userList.data.sort((a, b) =>
@@ -409,10 +410,7 @@ export default {
     },
     telFormatter(tel) {
       return tel.substr(0, 3) + "-" + tel.substr(4, 3) + "-" + tel.substr(7);
-    },
-    test() {
-      console.log("123");
-    },
+    }
   },
   created() {
     this.loadInitialData();
@@ -428,7 +426,4 @@ export default {
 .bg-cblue {
   background-color: #020b3b;
 }
-// td {
-//   border: 1px solid red;
-// }
 </style>
