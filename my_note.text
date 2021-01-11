@@ -1,0 +1,6 @@
+1. เพิ่ม field ผู้ประเมิน ใน uesr_accounts 
+2. ดู API ที่ส่ง user accounts กลับมาว่า support หรือไม่ // เช็ค api การ เพิ่ม ลบ แก้ไข
+3. ผู้ประเมิน 1 คน สามารถ ประเมินได้กี่กอง
+4. เพิ่ม field ใน assessment_status field สำหรับเก็บว่า เปิด Mode อะไรอยู่
+5. check api บันทึก / แก้ไขสถานะการเปิด / ปิด assessment_status
+

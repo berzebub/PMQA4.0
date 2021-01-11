@@ -7,7 +7,7 @@
         style="right:65px;width:180px"
         label="เพิ่มผู้ประเมิน"
         v-show="tab == 'ผู้ประเมิน'"
-        outline=""
+        outline
       ></q-btn>
       <q-tabs
         v-model="tab"
@@ -21,17 +21,13 @@
       >
         <q-tab name="ผู้ใช้งาน">
           <template slot="default">
-            <span class="font-24 text-black">
-              ผู้ใช้งาน
-            </span>
+            <span class="font-24 text-black">ผู้ใช้งาน</span>
           </template>
         </q-tab>
         <q-tab name="ผู้ประเมิน">
           <template slot="default">
-            <span class="font-24 text-black">
-              ผู้ประเมิน
-            </span></template
-          >
+            <span class="font-24 text-black">ผู้ประเมิน</span>
+          </template>
         </q-tab>
       </q-tabs>
     </div>
@@ -43,21 +39,12 @@
           <table class="table-style">
             <tr class="bg-cblue text-white">
               <td class="q-py-sm q-px-md" align="left">กอง / สำนัก</td>
-              <td class="q-py-sm q-px-md" style="width:150px" align="center">
-                ชื่อผู้ใช้งาน
-              </td>
-              <td class="q-py-sm q-px-md" style="width:150px" align="center">
-                รหัสผ่าน
-              </td>
-              <td class="q-py-sm q-px-md" style="width:200px" align="center">
-                ผู้ประสานงาน
-              </td>
-              <td class="q-py-sm q-px-md" style="width:250px" align="center">
-                อีเมล
-              </td>
-              <td class="q-py-sm q-px-md" align="center" style="width:70px">
-                แก้ไข
-              </td>
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">ชื่อผู้ใช้งาน</td>
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">รหัสผ่าน</td>
+              <td class="q-py-sm q-px-md" style="width:200px" align="center">ผู้ประสานงาน</td>
+              <td class="q-py-sm q-px-md" style="width:250px" align="center">อีเมล</td>
+              <td class="q-py-sm q-px-md" style="width:200px" align="center">ผู้ประเมิน</td>
+              <td class="q-py-sm q-px-md" align="center" style="width:70px">แก้ไข</td>
             </tr>
             <tr
               v-for="(item, index) in userList"
@@ -65,25 +52,13 @@
               :class="index % 2 != 0 ? 'bg-grey-3' : 'bg-white'"
             >
               <td class="q-py-sm q-px-md">{{ item.office }}</td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.username }}</td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.password }}</td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.collaborator }}</td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.tel }}</td>
+              <td class="q-py-sm q-px-md" align="center">ชื่อ ผู้ประเมิน</td>
               <td class="q-py-sm q-px-md" align="center">
-                {{ item.username }}
-              </td>
-              <td class="q-py-sm q-px-md" align="center">
-                {{ item.password }}
-              </td>
-              <td class="q-py-sm q-px-md" align="center">
-                {{ item.collaborator }}
-              </td>
-              <td class="q-py-sm q-px-md" align="center">
-                {{ item.tel }}
-              </td>
-              <td class="q-py-sm q-px-md" align="center">
-                <q-btn
-                  @click="editUser(item)"
-                  size="sm"
-                  flat
-                  icon="fas fa-edit"
-                ></q-btn>
+                <q-btn @click="editUser(item)" size="sm" flat icon="fas fa-edit"></q-btn>
               </td>
             </tr>
           </table>
@@ -93,21 +68,11 @@
           <table class="table-style">
             <tr class="bg-cblue text-white">
               <td class="q-py-sm q-px-md" align="left">ชื่อ-นามสกุล</td>
-              <td class="q-py-sm q-px-md" style="width:150px" align="center">
-                ชื่อผู้ใช้งาน
-              </td>
-              <td class="q-py-sm q-px-md" style="width:150px" align="center">
-                รหัสผ่าน
-              </td>
-              <td class="q-py-sm q-px-md" style="width:180px" align="center">
-                อีเมล
-              </td>
-              <td class="q-py-sm q-px-md" style="width:120px" align="center">
-                สถานะ
-              </td>
-              <td class="q-py-sm q-px-md" align="center" style="width:70px">
-                แก้ไข
-              </td>
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">ชื่อผู้ใช้งาน</td>
+              <td class="q-py-sm q-px-md" style="width:150px" align="center">รหัสผ่าน</td>
+              <td class="q-py-sm q-px-md" style="width:180px" align="center">อีเมล</td>
+              <td class="q-py-sm q-px-md" style="width:120px" align="center">สถานะ</td>
+              <td class="q-py-sm q-px-md" align="center" style="width:70px">แก้ไข</td>
             </tr>
             <tr
               v-for="(item, index) in assessorList"
@@ -115,12 +80,8 @@
               :class="index % 2 != 0 ? 'bg-grey-3' : 'bg-white'"
             >
               <td class="q-py-sm q-px-md">{{ item.name }}</td>
-              <td class="q-py-sm q-px-md" align="center">
-                {{ item.username }}
-              </td>
-              <td class="q-py-sm q-px-md" align="center">
-                {{ item.password }}
-              </td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.username }}</td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.password }}</td>
               <td class="q-py-sm q-px-md" align="center">{{ item.tel }}</td>
               <td class="q-py-sm q-px-md" align="center">
                 <!-- <q-btn
@@ -128,13 +89,13 @@
                   size="sm"
                   flat
                   icon="far fa-trash-alt"
-                ></q-btn> -->
+                ></q-btn>-->
 
                 <q-btn-toggle
                   v-model="assessorList[index].status"
                   @click="confirmDeleteAssessor(item)"
                   push
-                  rounded=""
+                  rounded
                   :toggle-color="item.status == '0' ? 'secondary' : 'pink-4'"
                   :options="[
                     { label: 'เปิด', value: '0' },
@@ -143,12 +104,7 @@
                 />
               </td>
               <td class="q-py-sm q-px-md" align="center">
-                <q-btn
-                  @click="editAssessor(item)"
-                  size="sm"
-                  flat
-                  icon="fas fa-edit"
-                ></q-btn>
+                <q-btn @click="editAssessor(item)" size="sm" flat icon="fas fa-edit"></q-btn>
               </td>
             </tr>
           </table>
@@ -173,7 +129,7 @@
                 v-model="activeUserDataTemp.username"
                 :rules="[val => val.length > 0]"
                 ref="username"
-                hide-bottom-space=""
+                hide-bottom-space
               ></q-input>
             </div>
             <div class="col-3 q-py-sm">รหัสผ่าน</div>
@@ -184,34 +140,30 @@
                 v-model="activeUserDataTemp.password"
                 ref="password"
                 :rules="[val => val.length > 0]"
-                hide-bottom-space=""
+                hide-bottom-space
               ></q-input>
             </div>
             <div class="col-3 q-pb-sm">ผู้ประสานงาน</div>
             <div class="col-8 q-pb-sm">
-              <q-input
-                dense
-                outlined
-                v-model="activeUserDataTemp.collaborator"
-              ></q-input>
+              <q-input dense outlined v-model="activeUserDataTemp.collaborator"></q-input>
             </div>
             <div class="col-3">อีเมล</div>
             <div class="col-8">
-              <q-input
+              <q-input dense outlined v-model="activeUserDataTemp.tel"></q-input>
+            </div>
+            <div class="col-3">ผู้ประเมิน</div>
+            <div class="col-8">
+              <q-select
+                :options="assessorList"
                 dense
                 outlined
-                v-model="activeUserDataTemp.tel"
-              ></q-input>
+                v-model="activeUserDataTemp.assessor"
+              ></q-select>
             </div>
           </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-lg">
-          <q-btn
-            style="width:150px"
-            v-close-popup
-            outline
-            label="ยกเลิก"
-          ></q-btn>
+          <q-btn style="width:150px" v-close-popup outline label="ยกเลิก"></q-btn>
           <q-btn
             @click="confirmEditUserData()"
             style="width:150px"
@@ -236,7 +188,7 @@
                 :rules="[val => val.length > 0]"
                 dense
                 outlined
-                hide-bottom-space=""
+                hide-bottom-space
                 v-model="assessorData.name"
                 ref="assessorName"
               ></q-input>
@@ -247,7 +199,7 @@
                 :rules="[val => val.length > 0]"
                 dense
                 outlined
-                hide-bottom-space=""
+                hide-bottom-space
                 v-model="assessorData.username"
                 ref="assessorUsername"
               ></q-input>
@@ -258,7 +210,7 @@
                 :rules="[val => val.length > 0]"
                 dense
                 outlined
-                hide-bottom-space=""
+                hide-bottom-space
                 v-model="assessorData.password"
                 ref="assessorPassword"
               ></q-input>
@@ -270,13 +222,7 @@
           </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-lg">
-          <q-btn
-            style="width:150px"
-            @click="clearTempForm()"
-            v-close-popup
-            outline
-            label="ยกเลิก"
-          ></q-btn>
+          <q-btn style="width:150px" @click="clearTempForm()" v-close-popup outline label="ยกเลิก"></q-btn>
           <q-btn
             @click="confirmAddEditAssessor()"
             style="width:150px"
@@ -296,7 +242,7 @@ import Axios from "axios";
 import myFooter from "../../components/footer";
 export default {
   components: {
-    myFooter
+    myFooter,
   },
   data() {
     return {
@@ -312,8 +258,8 @@ export default {
         name: "",
         username: "",
         password: "",
-        tel: ""
-      }
+        tel: "",
+      },
 
       //   DIALOG EDIT ADMIN PASSWORD
       //   oldPassword: "",
@@ -326,7 +272,7 @@ export default {
       const url = this.apiPath + "deleteAssessor.php";
       let postData = {
         id: item.id,
-        status: item.status
+        status: item.status,
       };
 
       let data = await Axios.post(url, postData);
@@ -378,7 +324,7 @@ export default {
         name: "",
         username: "",
         password: "",
-        tel: ""
+        tel: "",
       };
       this.isShowAssessorDataDialog = true;
     },
@@ -400,6 +346,9 @@ export default {
       let assessorList = await Axios.get(url);
       if (assessorList.data) {
         let result = assessorList.data.sort((a, b) => a.id - b.id);
+        result.forEach((element) => {
+          (element.value = element.id), (element.label = element.name);
+        });
         this.assessorList = result;
       }
       this.loadingHide();
@@ -433,7 +382,7 @@ export default {
         name: "",
         username: "",
         password: "",
-        tel: ""
+        tel: "",
       };
     },
     editAssessor(item) {
@@ -463,11 +412,11 @@ export default {
     },
     test() {
       console.log("123");
-    }
+    },
   },
   created() {
     this.loadInitialData();
-  }
+  },
 };
 </script>
 

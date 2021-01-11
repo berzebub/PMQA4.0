@@ -89,11 +89,12 @@
           <div align="center">
             <q-img style="width:100%" src="../../public/error-logo.png"></q-img>
           </div>
-          <div align="center" class="font-18 q-py-xl ">ความละเอียดของหน้าจอน้อยเกินไป</div>
+          <div align="center" class="font-18 q-py-xl">ความละเอียดของหน้าจอน้อยเกินไป</div>
 
-          <div align="center" class="font-16">
-           คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มีความละเอียดสูงกว่านี้ในการทำงานกับโปรแกรม DDC-PMQA 4.0
-          </div>
+          <div
+            align="center"
+            class="font-16"
+          >คุณจำเป็นต้องใช้จอคอมพิวเตอร์ที่มีความละเอียดสูงกว่านี้ในการทำงานกับโปรแกรม DDC-PMQA 4.0</div>
         </div>
       </div>
 
@@ -135,6 +136,7 @@
           </q-card-actions>
         </q-card>
       </q-dialog>
+      <!-- logout -->
       <q-dialog v-model="isShowLogoutDialog">
         <q-card class="q-pa-sm" style="width:450px">
           <q-card-section class="font-24" align="center">ออกจากระบบ</q-card-section>
@@ -157,17 +159,24 @@
       </q-dialog>
       <!-- set assessment date -->
       <q-dialog v-model="isShowAssessmentDate" persistent class="z-top">
-        <q-card style="width:450px">
+        <q-card style="width:650px">
           <div class="font-24" style="padding-left:40px;padding-top:20px">สถานะ</div>
-          <q-card-section style="padding-left:75px">
-            <q-radio color="pink" label="ปิดการประเมิน" val="0" v-model="assessmentStatusTemp"></q-radio>
-            <q-radio
-              class="q-pl-lg"
-              color="pink"
-              label="เปิดการประเมิน"
-              val="1"
-              v-model="assessmentStatusTemp"
-            ></q-radio>
+          <q-card-section style="padding-left:50px">
+            <div>
+              <q-radio color="pink" label="ปิดการประเมิน" val="0" v-model="assessmentStatusTemp"></q-radio>
+            </div>
+            <div class="row">
+              <q-radio color="pink" label="เปิดการประเมิน" val="1" v-model="assessmentStatusTemp"></q-radio>
+
+              <div class="col q-pl-sm">
+                <q-select
+                  outlined
+                  dense
+                  v-model="assessmentModSelected"
+                  :options="assessmentOptions"
+                ></q-select>
+              </div>
+            </div>
           </q-card-section>
           <div class="q-px-lg">
             <hr />
@@ -249,6 +258,13 @@ export default {
   name: "MainLayout",
   data() {
     return {
+      assessmentOptions: [
+        "ลักษณะสำคัญองค์กร + หมวด 1-6",
+        "หมวด 7 (GAP) + แผน 1/3 ปี",
+        "รายงานติดตามรอบ  6 เดือน",
+        "หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน",
+      ],
+      assessmentModSelected: "",
       userData: "",
       yearOptions: [],
       endDateSelected: "1",
@@ -257,7 +273,7 @@ export default {
       yearSelected: "2563",
       assessmentStatus: "0",
       assessmentStatusTemp: "0",
-      isShowAssessmentDate: false,
+      isShowAssessmentDate: true,
       isShowLogoutDialog: false,
       isPwd: true,
       isPwdNew: true,

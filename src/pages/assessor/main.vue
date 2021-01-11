@@ -21,8 +21,134 @@
         </div>
       </div>
 
+      <!-- Content -->
       <div class="q-py-md">
-        <table>
+        <div
+          style="background-color:#020b3b;border-radius:5px 5px 0px 00px"
+          class="text-white q-pa-sm text-body1"
+        >กอง / สำนัก</div>
+
+        <div
+          class="q-pa-md"
+          v-for="(office,indexOffice) in officeData"
+          :key="indexOffice"
+          :class="{'bg-grey-4' : indexOffice%2 == 0}"
+        >
+          <div>{{ office.office }}</div>
+          <div class="row justify-center">
+            <div
+              style="width:11%"
+              class="q-pa-xs"
+              v-for="(item,index) in office.categoryGroup"
+              :key="index"
+            >
+              <div class="row" style="border:1px solid">
+                <div align="center" class="col-12 q-py-sm">{{ item.name }}</div>
+                <div
+                  class="col-12 text-white"
+                  align="center"
+                  :class="item.status == 'ยังไม่ประเมิน' ?'my-red' : item.status == 'ประเมินแล้ว' ? 'my-green' : 'my-yellow'"
+                >{{ item.status }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="width:22%" align="center" class="q-pa-xs">
+              <div class="q-px-sm relative-position">
+                <!-- left line -->
+                <div
+                  class="absolute-left"
+                  style="border-bottom:1px solid;width:70px;bottom:10px;left:10px"
+                >
+                  <div
+                    class="absolute-left"
+                    style="width:5px;height:5px;background-color:black;top:8px"
+                  ></div>
+                </div>
+                <span
+                  style="border:1px solid;text-decoration:underline"
+                  class="q-px-sm cursor-pointer"
+                >ยกเลิกการส่ง</span>
+                <!-- right line -->
+                <div
+                  class="absolute-right"
+                  style="border-bottom:1px solid;width:85px;bottom:10px;right:-5px"
+                >
+                  <div
+                    class="absolute-right"
+                    style="width:5px;height:5px;background-color:black;top:8px"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div style="width:33%" align="center" class="q-pa-xs">
+              <div class="q-px-sm relative-position">
+                <!-- left line -->
+                <div
+                  class="absolute-left"
+                  style="border-bottom:1px solid;width:135px;bottom:10px;left:10px"
+                >
+                  <div
+                    class="absolute-left"
+                    style="width:5px;height:5px;background-color:black;top:8px"
+                  ></div>
+                </div>
+                <span
+                  style="border:1px solid;text-decoration:underline"
+                  class="q-px-sm cursor-pointer"
+                >ยกเลิกการส่ง</span>
+                <!-- right line -->
+                <div
+                  class="absolute-right"
+                  style="border-bottom:1px solid;width:150px;bottom:10px;right:-5px"
+                >
+                  <div
+                    class="absolute-right"
+                    style="width:5px;height:5px;background-color:black;top:8px"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div style="width:12%" align="center" class="q-pa-xs relative-position">
+              <div class="q-px-sm">
+                <span
+                  style="border:1px solid;text-decoration:underline"
+                  class="q-px-sm cursor-pointer"
+                >ยกเลิกการส่ง</span>
+              </div>
+            </div>
+            <div style="width:33%" align="center" class="q-pa-xs relative-position">
+              <div class="q-px-sm relative-position">
+                <!-- left line -->
+                <div
+                  class="absolute-left"
+                  style="border-bottom:1px solid;width:145px;bottom:10px;left:-3px"
+                >
+                  <div
+                    class="absolute-left"
+                    style="width:5px;height:5px;background-color:black;top:8px"
+                  ></div>
+                </div>
+                <span
+                  style="border:1px solid;text-decoration:underline"
+                  class="q-px-sm cursor-pointer"
+                >ยกเลิกการส่ง</span>
+                <!-- right line -->
+                <div
+                  class="absolute-right"
+                  style="border-bottom:1px solid;width:140px;bottom:10px;right:3px"
+                >
+                  <div
+                    class="absolute-right"
+                    style="width:5px;height:5px;background-color:black;top:8px"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <table>
           <tr class="tr-color">
             <td align="left" class="q-pa-sm">
               <div class="q-pl-lg">กอง / สำนัก</div>
@@ -57,7 +183,7 @@
               >
             </td>
           </tr>
-        </table>
+        </table>-->
       </div>
     </div>
     <q-dialog v-model="isShowDialogConfirmReset">
@@ -66,17 +192,15 @@
           <span style="font-size:30px">ยกเลิกการส่ง</span>
 
           <div class="font-18 q-py-md">
-            คุณต้องการยกเลิกการส่งของ<span class='text-black text-weight-bolder'>{{ officeNameTemp }}</span>ใช่หรือไม่?
+            คุณต้องการยกเลิกการส่งของ
+            <span
+              class="text-black text-weight-bolder"
+            >{{ officeNameTemp }}</span>ใช่หรือไม่?
           </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-md">
           <q-btn style="width:150px" v-close-popup label="ยกเลิก"></q-btn>
-          <q-btn
-            style="width:150px"
-            color="teal"
-            label="ตกลง"
-            @click="confirmReset()"
-          ></q-btn>
+          <q-btn style="width:150px" color="teal" label="ตกลง" @click="confirmReset()"></q-btn>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -90,7 +214,7 @@ import Axios from "axios";
 import myFooter from "../../components/footer";
 export default {
   components: {
-    myFooter
+    myFooter,
   },
   data() {
     return {
@@ -99,20 +223,19 @@ export default {
       officeData: "",
       isShowDialogConfirmReset: false,
       officeNameTemp: "",
-      activeUserId: ""
+      activeUserId: "",
     };
   },
   methods: {
     routeToDetails(item) {
-      
       if (item.send_assessment_date == "-") {
         this.$q.notify({
           message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
-          color: "red"
+          color: "red",
         });
       } else {
         this.$q.sessionStorage.set("aid", item.userId);
-        this.$q.sessionStorage.set('off',item.office)
+        this.$q.sessionStorage.set("off", item.office);
         this.$router.push("/assessor/stepMain/" + item.userId);
       }
     },
@@ -122,7 +245,7 @@ export default {
     async confirmReset() {
       let postData = {
         user_id: this.activeUserId,
-        year: this.$q.sessionStorage.getItem("y")
+        year: this.$q.sessionStorage.getItem("y"),
       };
       const url = this.apiPath + "/resetAssessment.php";
       let data = await Axios.post(url, postData);
@@ -130,23 +253,22 @@ export default {
       this.$q.notify({
         message: "ยกเลิกการส่งสำเร็จ",
         position: "bottom",
-        color: "secondary"
+        color: "secondary",
       });
       this.isShowDialogConfirmReset = false;
-      this.getAssessmentData()
+      this.getAssessmentData();
     },
     resetAssessment(item) {
       if (item.send_assessment_date == "-") {
         this.$q.notify({
           message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
-          color: "red"
+          color: "red",
         });
-      }else{
-         this.isShowDialogConfirmReset = true;
-      this.officeNameTemp = item.office;
-      this.activeUserId = item.userId;
+      } else {
+        this.isShowDialogConfirmReset = true;
+        this.officeNameTemp = item.office;
+        this.activeUserId = item.userId;
       }
-     
     },
 
     async getAssessmentData() {
@@ -157,7 +279,7 @@ export default {
 
       const getAssessmentAPI = this.apiPath + "getAssessmentLog.php";
       let postAssessmentData = {
-        year: this.yearSelected - 543
+        year: this.yearSelected - 543,
       };
       let assessmentLog = await Axios.post(
         getAssessmentAPI,
@@ -168,17 +290,23 @@ export default {
 
       let temp = [];
       data.forEach((element, index) => {
-        let filterData = assessmentLog.filter(x => x.user_id == element.id)[0];
-
-        
+        let filterData = assessmentLog.filter(
+          (x) => x.user_id == element.id
+        )[0];
 
         let officeScore = "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
         let assessorScore =
           "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>";
         let assessmentDate = "-";
         if (filterData) {
-          officeScore = filterData.office_score == "-1" ?  "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>" :  filterData.office_score;
-          assessorScore = filterData.assessor_score == "-1" ?  "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>" : filterData.assessor_score; 
+          officeScore =
+            filterData.office_score == "-1"
+              ? "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>"
+              : filterData.office_score;
+          assessorScore =
+            filterData.assessor_score == "-1"
+              ? "<span style='color:#E84C93'>ยังไม่ได้ประเมิน</span>"
+              : filterData.assessor_score;
           let getAssessmentDate = filterData.send_assessment_date.split(" ");
           getAssessmentDate = getAssessmentDate[0].split("-");
           assessmentDate =
@@ -188,25 +316,35 @@ export default {
             "/" +
             getAssessmentDate[0];
 
-            if(filterData.office_score == "-1"){
-              assessmentDate = "-"
-            }
-          
+          if (filterData.office_score == "-1") {
+            assessmentDate = "-";
+          }
         }
         temp.push({
           userId: element.id,
           office: element.office,
           send_assessment_date: assessmentDate,
           office_score: officeScore,
-          assessor_score: assessorScore
+          assessor_score: assessorScore,
+          categoryGroup: [
+            { name: "OP", status: "ประเมินแล้ว" },
+            { name: "หมวด 1-6", status: "รอประเมิน" },
+            { name: "หมวด 7 GAP", status: "รอประเมิน" },
+            { name: "แผน 1 ปี", status: "ยังไม่ประเมิน" },
+            { name: "แผน 3 ปี", status: "ยังไม่ประเมิน" },
+            { name: "ติดตาม 6 เดือน", status: "ยังไม่ประเมิน" },
+            { name: "หมวด7", status: "ยังไม่ประเมิน" },
+            { name: "ติดตาม 12 เดือน", status: "ยังไม่ประเมิน" },
+            { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" },
+          ],
         });
       });
       this.officeData = temp;
       this.loadingHide();
-    }
+    },
   },
   created() {
-       this.$q.sessionStorage.remove("off")
+    this.$q.sessionStorage.remove("off");
     let assessmentYear = this.$q.sessionStorage.getItem("y") + 543;
     this.yearSelected = assessmentYear;
     let tempYear = [];
@@ -215,11 +353,14 @@ export default {
     }
     this.yearOptions = tempYear;
     this.getAssessmentData();
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.loop-grey {
+  background-color: #eeeeee;
+}
 table {
   border-collapse: collapse;
   width: 100%;
@@ -227,5 +368,14 @@ table {
 .tr-color {
   background-color: #020b3b;
   color: white;
+}
+.my-red {
+  background-color: #c92a07;
+}
+.my-yellow {
+  background-color: #bb950d;
+}
+.my-green {
+  background-color: #138c6f;
 }
 </style>
