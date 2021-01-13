@@ -177,6 +177,16 @@ const routes = [
         path: "assessor/stepMain/:userId",
         component: () => import("pages/assessor/stepMain.vue"),
         name: "assessorStepMain"
+      },
+      {
+        path: "assessor/plan1y/:userId",
+        component: () => import("pages/assessor/plan1y.vue"),
+        name: "plan1y"
+      },
+      {
+        path: "assessor/plan3y/:userId",
+        component: () => import("pages/assessor/plan3y.vue"),
+        name: "plan3y"
       }
     ]
   },

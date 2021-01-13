@@ -147,13 +147,15 @@
             <div class="col-8 q-pb-sm">
               <q-input dense outlined v-model="activeUserDataTemp.collaborator"></q-input>
             </div>
-            <div class="col-3">อีเมล</div>
-            <div class="col-8">
+            <div class="col-3 q-pb-sm">อีเมล</div>
+            <div class="col-8 q-pb-sm">
               <q-input dense outlined v-model="activeUserDataTemp.tel"></q-input>
             </div>
             <div class="col-3">ผู้ประเมิน</div>
             <div class="col-8">
               <q-select
+                map-options
+                emit-value
                 :options="assessorList"
                 dense
                 outlined
@@ -332,7 +334,6 @@ export default {
       this.loadingShow();
       const url = this.apiPath + "getUser.php";
       let userList = await Axios.get(url);
-      console.log(userList.data);
       if (userList.data) {
         // console.log(userList.data);
         let result = userList.data.sort((a, b) =>
@@ -367,6 +368,7 @@ export default {
       }
       this.loadingShow();
       let postData = this.activeUserDataTemp;
+
       const url = this.apiPath + "updateUser.php";
       await Axios.post(url, postData);
       this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
@@ -410,7 +412,7 @@ export default {
     },
     telFormatter(tel) {
       return tel.substr(0, 3) + "-" + tel.substr(4, 3) + "-" + tel.substr(7);
-    }
+    },
   },
   created() {
     this.loadInitialData();

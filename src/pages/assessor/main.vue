@@ -42,7 +42,12 @@
               v-for="(item,index) in office.categoryGroup"
               :key="index"
             >
-              <div class="row" style="border:1px solid">
+              <div
+                @click="toPage(office,index)"
+                class="row relative-position cursor-pointer"
+                v-ripple
+                style="border:1px solid"
+              >
                 <div align="center" class="col-12 q-py-sm">{{ item.name }}</div>
                 <div
                   class="col-12 text-white"
@@ -227,6 +232,31 @@ export default {
     };
   },
   methods: {
+    toPage(officeData, mode) {
+      console.log(mode);
+      if (mode == 0) {
+        // OP
+      } else if (mode == 1) {
+        // หมวด1-6
+      } else if (mode == 2) {
+        // หมวด7 GAP
+        // this.$router.push("/assessor/plan1y/" + officeData.userId);
+      } else if (mode == 3) {
+        // แผน 1 ปี
+        this.$router.push("/assessor/plan1y/" + officeData.userId);
+      } else if (mode == 4) {
+        // แผน 3 ปี
+        this.$router.push("/assessor/plan3y/" + officeData.userId);
+      }  else if (mode == 6) {
+        // ติดตาม 6 เดือน
+      } else if (mode == 7) {
+        // หมวด 7
+      } else if (mode == 8) {
+        // ติดตาม 12 เดือน
+      } else if (mode == 9) {
+        // สรุป 12 เดือน
+      }
+    },
     routeToDetails(item) {
       if (item.send_assessment_date == "-") {
         this.$q.notify({

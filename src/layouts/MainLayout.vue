@@ -259,12 +259,24 @@ export default {
   data() {
     return {
       assessmentOptions: [
-        "ลักษณะสำคัญองค์กร + หมวด 1-6",
-        "หมวด 7 (GAP) + แผน 1/3 ปี",
-        "รายงานติดตามรอบ  6 เดือน",
-        "หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน",
+        {
+          label: "ลักษณะสำคัญองค์กร + หมวด 1-6",
+          value: 1,
+        },
+        {
+          label: "หมวด 7 (GAP) + แผน 1/3 ปี",
+          value: 2,
+        },
+        {
+          label: "รายงานติดตามรอบ  6 เดือน",
+          value: 3,
+        },
+        {
+          label: "หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน",
+          value: 4,
+        },
       ],
-      assessmentModSelected: "",
+      assessmentModSelected: "กรุณาเลือก",
       userData: "",
       yearOptions: [],
       endDateSelected: "1",
@@ -273,7 +285,7 @@ export default {
       yearSelected: "2563",
       assessmentStatus: "0",
       assessmentStatusTemp: "0",
-      isShowAssessmentDate: true,
+      isShowAssessmentDate: false,
       isShowLogoutDialog: false,
       isPwd: true,
       isPwdNew: true,
@@ -332,8 +344,10 @@ export default {
         year: this.yearSelected,
         end_date: endDate,
         status: this.assessmentStatusTemp,
+        mode: this.assessmentModSelected.value,
       };
       let data = await Axios.post(url, postData);
+
       this.isShowAssessmentDate = false;
       this.getAssessmentDate();
     },
@@ -366,6 +380,10 @@ export default {
         this.convertMonth(Number(endDate[1])) +
         " " +
         (Number(endDate[0]) + 543);
+
+      this.assessmentModSelected = this.assessmentOptions.filter(
+        (x) => x.value == assessmentDate.data.mode
+      )[0];
 
       this.endDate = endDate;
     },
