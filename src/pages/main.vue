@@ -1,38 +1,23 @@
 <template>
-  <q-page class="row justify-center">
+  <q-page class style="max-width:1280px;margin:auto">
+    <!-- v-if="isShowStepper" -->
     <div
       class="col-10 row self-center q-pa-md"
-      v-if="isShowStepper"
+      v-show="false"
       style="width: 1025px;overflow:hidden"
     >
       <div class="col">
         <!-- Set Top -->
         <div style="padding: 65px 0px 129px 0px">
-          <div
-            class="container-border-lock row justify-between relative-position"
-          >
+          <div class="container-border-lock row justify-between relative-position">
             <!-- ลักษณะองค์กร -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/0')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-flag"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/0')">
+                  <q-icon size="50px" class="color1" name="fas fa-flag"></q-icon>
                 </q-btn>
               </div>
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -48,8 +33,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -65,8 +49,7 @@
                       <span
                         class="text-no-wrap"
                         style="position: relative; left: -20px"
-                        >ลักษณะสำคัญขององค์กร</span
-                      >
+                      >ลักษณะสำคัญขององค์กร</span>
                     </div>
                   </div>
                 </div>
@@ -76,26 +59,12 @@
             <!-- หมวด 1 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/1')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-street-view"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/1')">
+                  <q-icon size="50px" class="color1" name="fas fa-street-view"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -111,8 +80,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -125,11 +93,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 1</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 1</span>
                     </div>
                   </div>
                 </div>
@@ -139,26 +103,12 @@
             <!-- หมวด 2  -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/2')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-map-signs"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/2')">
+                  <q-icon size="50px" class="color1" name="fas fa-map-signs"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -174,8 +124,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -188,11 +137,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 2</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 2</span>
                     </div>
                   </div>
                 </div>
@@ -202,26 +147,12 @@
             <!-- หมวด 3 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/3')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-users"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/3')">
+                  <q-icon size="50px" class="color1" name="fas fa-users"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -237,8 +168,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -251,11 +181,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 3</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 3</span>
                     </div>
                   </div>
                 </div>
@@ -266,32 +192,16 @@
 
         <!-- Set Bottom -->
         <div style="padding: 129px 0px 65px 0px">
-          <div
-            class="container-border-lock row reverse justify-between relative-position"
-          >
+          <div class="container-border-lock row reverse justify-between relative-position">
             <!-- หมวด 4 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/4')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-chart-line"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/4')">
+                  <q-icon size="50px" class="color1" name="fas fa-chart-line"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -307,8 +217,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -321,11 +230,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 4</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 4</span>
                     </div>
                   </div>
                 </div>
@@ -335,26 +240,12 @@
             <!-- หมวด 5 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/5')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-users-cog"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/5')">
+                  <q-icon size="50px" class="color1" name="fas fa-users-cog"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -370,8 +261,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -384,11 +274,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 5</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 5</span>
                     </div>
                   </div>
                 </div>
@@ -398,26 +284,12 @@
             <!-- หมวด 6 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/6')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-project-diagram"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/6')">
+                  <q-icon size="50px" class="color1" name="fas fa-project-diagram"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -433,8 +305,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -447,11 +318,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 6</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 6</span>
                     </div>
                   </div>
                 </div>
@@ -461,26 +328,12 @@
             <!-- หมวด 7 -->
             <div class="col-2 relative-position" style="z-index: 5">
               <div class="absolute-center">
-                <q-btn
-                  round
-                  size="45px"
-                  push
-                  class="bg3"
-                  @click="$router.push('/stepper/7')"
-                >
-                  <q-icon
-                    size="50px"
-                    class="color1"
-                    name="fas fa-trophy"
-                  ></q-icon>
+                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
+                  <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
                 </q-btn>
               </div>
 
-              <div
-                class="absolute-bottom"
-                style="bottom: -150px; width: 145px"
-                align="center"
-              >
+              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
                     <div
@@ -496,8 +349,7 @@
                         name="fas fa-check-circle"
                         class="q-mr-xs"
                         size="18px"
-                      ></q-icon
-                      >เสร็จสิ้น
+                      ></q-icon>เสร็จสิ้น
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
@@ -510,11 +362,7 @@
                       ></q-btn>
                     </div>
                     <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                        >หมวด 7</span
-                      >
+                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 7</span>
                     </div>
                   </div>
                 </div>
@@ -539,14 +387,8 @@
         >
           <template v-slot:default>
             <div style="width:10000px">
-              <div class="bg-grey-5 q-pa-xs text-black" align="center">
-                word / pdf
-              </div>
-              <div
-                class="bg-white q-pa-xs text-black"
-                style="width:192px"
-                align="center"
-              >
+              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+              <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
                 แผนปฏิบัติการเพื่อยกระดับ
                 <br />การพัฒนาสู่ระบบราชการ 4.0
                 <br />
@@ -562,9 +404,7 @@
           style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:190px;right:40px"
         >
           <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">
-              word / pdf
-            </div>
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
             <div
               class="bg-white q-pa-xs text-black cursor-pointer"
               @click="openFile(1)"
@@ -581,9 +421,7 @@
               style="width:100%;border-radius:0px"
               class="bg1 text-white font-12 q-py-sm cursor-pointer"
               @click="deleteFile(1)"
-            >
-              ลบไฟล์
-            </div>
+            >ลบไฟล์</div>
           </div>
         </div>
 
@@ -597,14 +435,8 @@
         >
           <template v-slot:default>
             <div style="width:10000px">
-              <div class="bg-grey-5 q-pa-xs text-black" align="center">
-                word / pdf
-              </div>
-              <div
-                class="bg-white q-pa-xs text-black"
-                style="width:192px"
-                align="center"
-              >
+              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+              <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
                 แผนยกระดับการพัฒนา
                 <br />สู่ระบบราชการ 4.0 ระยะ 3 ปี
               </div>
@@ -617,9 +449,7 @@
           style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:40px;right:40px"
         >
           <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">
-              word / pdf
-            </div>
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
             <div
               class="bg-white q-pa-xs text-black cursor-pointer"
               @click="openFile(2)"
@@ -634,9 +464,7 @@
               style="width:100%;border-radius:0px"
               class="bg1 text-white font-12 q-py-sm cursor-pointer"
               @click="deleteFile(2)"
-            >
-              ลบไฟล์
-            </div>
+            >ลบไฟล์</div>
           </div>
         </div>
       </div>
@@ -663,8 +491,7 @@
               !checkSteper || file1 == null || file2 == null ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
-            >พิมพ์การประเมิน</span
-          >
+          >พิมพ์การประเมิน</span>
         </q-btn>
         <q-btn
           :disable="!checkSteper || file1 == null || file2 == null"
@@ -687,8 +514,7 @@
               !checkSteper || file1 == null || file2 == null ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
-            >พิมพ์ผลการประเมิน</span
-          >
+          >พิมพ์ผลการประเมิน</span>
         </q-btn>
         <q-btn
           :disable="!checkSteper || file1 == null || file2 == null"
@@ -713,11 +539,216 @@
               !checkSteper || file1 == null || file2 == null ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
-            >ส่งแบบประเมิน</span
-          >
+          >ส่งแบบประเมิน</span>
         </q-btn>
       </div>
     </div>
+
+    <div v-if="assessmentMode == '1'">ลักษณะสำคัญองค์กร + หมวด 1-6</div>
+
+    <div v-else-if="assessmentMode == '2'" class="">
+      <!-- หมวด 7 (GAP) + แผน 1/3 ปี -->
+
+      <div class="row justify-center items-center" style="max-width:800px;margin:auto;padding-top:100px">
+        <div class="relative-position col">
+          <div align="center">
+            <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
+              <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+            </q-btn>
+          </div>
+          <div class="row justify-center q-pt-md font-18">
+            <div
+              class="q-pa-xs"
+              :class="
+                        currentStep.category7 == '1'
+                          ? 'border-teal'
+                          : 'border-grey'
+                      "
+              style="width:100px"
+            >
+              <q-icon
+                :color="currentStep.category7 == '1' ? 'teal' : ''"
+                name="fas fa-check-circle"
+                size="18px"
+              ></q-icon>เสร็จสิ้น
+            </div>
+            <!-- print btn -->
+            <div class="q-pl-sm">
+              <q-btn
+                :disable="currentStep.category7 != '1'"
+                size="12px"
+                icon="fas fa-print"
+                @click="printData(7)"
+                round
+                :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
+              ></q-btn>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- มีไฟล์ -->
+          <div
+            v-if="filePdf1 != null"
+            style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+          >
+            <div style="width:100%">
+              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+              <div
+                class="bg-white q-pa-xs text-black cursor-pointer"
+                style="width:100%;text-decoration:underline"
+                align="center"
+              >
+                แผนปฏิบัติการเพื่อยกระดับ
+                <br />การพัฒนาสู่ระบบราชการ 4.0
+                <br />
+                ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+              </div>
+            </div>
+          </div>
+
+          <!-- ไม่มีไฟล์ -->
+          <q-file
+            v-if="!filePdf1"
+            v-model="filePdf1"
+            class="bg-grey-5"
+            style="width:200px;border:4px solid #e84c93;border-radius:5px"
+            accept=".doc, .pdf, .docx"
+            @input="val => uploadFile(val, '1')"
+          >
+            <template v-slot:default>
+              <div style="width:100%">
+                <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
+                  แผนปฏิบัติการเพื่อยกระดับ
+                  <br />การพัฒนาสู่ระบบราชการ 4.0
+                  <br />
+                  ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+                </div>
+              </div>
+            </template>
+          </q-file>
+        </div>
+
+        <div class="col">
+          <!-- มีไฟล์ -->
+          <div
+            v-if="filePdf2 != null"
+            style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+          >
+            <div style="width:100%">
+              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+              <div
+                class="bg-white q-pa-xs text-black cursor-pointer"
+                style="width:100%;text-decoration:underline"
+                align="center"
+              >
+                แผนปฏิบัติการเพื่อยกระดับ
+                <br />การพัฒนาสู่ระบบราชการ 4.0
+                <br />
+                ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+              </div>
+            </div>
+          </div>
+
+          <!-- ไม่มีไฟล์ -->
+          <q-file
+            v-if="!filePdf2"
+            v-model="filePdf2"
+            class="bg-grey-5"
+            style="width:200px;border:4px solid #e84c93;border-radius:5px"
+            accept=".doc, .pdf, .docx"
+            @input="val => uploadFile(val, '1')"
+          >
+            <template v-slot:default>
+              <div style="width:100%">
+                <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
+                  แผนปฏิบัติการเพื่อยกระดับ
+                  <br />การพัฒนาสู่ระบบราชการ 4.0
+                  <br />
+                  ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+                </div>
+              </div>
+            </template>
+          </q-file>
+        </div>
+
+     
+      </div>
+         <div align="center">
+             <q-btn
+          :disable="!checkSteper || file1 == null || file2 == null"
+          style="width: 180px; border-radius: 0px;margin-top:50px"
+          push
+          class="q-mx-md q-py-sm"
+          :class="
+            !checkSteper || file1 == null || file2 == null
+              ? 'bg3'
+              : 'bg-teal text-white'
+          "
+          @click="uSendAssessment()"
+        >
+          <q-icon
+            :class="
+              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+            "
+            name="far fa-paper-plane"
+          ></q-icon>
+          <span
+            :class="
+              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+            "
+            class="font-14 q-ml-sm"
+          >ส่งแบบประเมิน</span>
+        </q-btn>
+        </div>
+      <!-- <div class="relative-position ">
+        <div class="absolute-center">
+          <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
+            <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+          </q-btn>
+        </div>
+        <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+          <div class="font-18">
+            <div class="row items-center">
+              <div
+                class="col q-pa-xs"
+                :class="
+                        currentStep.category7 == '1'
+                          ? 'border-teal'
+                          : 'border-grey'
+                      "
+              >
+                <q-icon
+                  :color="currentStep.category7 == '1' ? 'teal' : ''"
+                  name="fas fa-check-circle"
+                  class="q-mr-xs"
+                  size="18px"
+                ></q-icon>เสร็จสิ้น
+              </div>
+              <div class="q-pl-sm">
+                <q-btn
+                  :disable="currentStep.category7 != '1'"
+                  size="12px"
+                  icon="fas fa-print"
+                  @click="printData(7)"
+                  round
+                  :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
+                ></q-btn>
+              </div>
+              <div class="col-12">
+                <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+    </div>
+
+    <div v-else-if="assessmentMode == '3'">รายงานติดตามรอบ 6 เดือน</div>
+
+    <div v-else-if="assessmentMode == '4'">หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน</div>
   </q-page>
 </template>
 
@@ -726,6 +757,10 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      // new
+      filePdf1: null,
+      filePdf2: null,
+      // end new
       file1: null,
       file2: null,
       step1: false,
@@ -743,7 +778,8 @@ export default {
       endAssessmentDate: "",
       checkSteper: false,
       path1: "",
-      path2: ""
+      path2: "",
+      assessmentMode: "",
     };
   },
   methods: {
@@ -761,9 +797,7 @@ export default {
       this.getFile();
     },
     openFile(type) {
-      let random = Math.random()
-        .toString(36)
-        .substring(7);
+      let random = Math.random().toString(36).substring(7);
       let link;
       if (type == 1) {
         link = this.apiPath + this.path1 + "?" + random;
@@ -793,7 +827,7 @@ export default {
     },
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step
+        name: "printStep" + step,
       });
       window.open(route.href);
     },
@@ -803,7 +837,7 @@ export default {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y")
+        year: this.$q.sessionStorage.getItem("y"),
       };
       let data = await Axios.post(url, postData);
       let newData = data.data;
@@ -817,11 +851,11 @@ export default {
           newData.category4,
           newData.category5,
           newData.category6,
-          newData.category7
+          newData.category7,
         ];
       }
 
-      if (checkStatus.every(x => x == "1") && checkStatus.length) {
+      if (checkStatus.every((x) => x == "1") && checkStatus.length) {
         this.checkSteper = true;
       } else {
         this.checkSteper = false;
@@ -850,6 +884,7 @@ export default {
       this.assessmentStatus = assessmentDate.data.status;
       let endDate = assessmentDate.data.end_date;
       this.endAssessmentDate = endDate;
+      this.assessmentMode = assessmentDate.data.mode;
 
       endDate = endDate.split("-");
 
@@ -927,12 +962,12 @@ export default {
         this.path1 = data.path1 != "" ? data.path1 : "";
         this.path2 = data.path2 != "" ? data.path2 : "";
       }
-    }
+    },
   },
   created() {
     this.getFile();
     this.getAssessmentDate();
-  }
+  },
 };
 </script>
 

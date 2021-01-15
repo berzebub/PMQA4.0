@@ -42,7 +42,7 @@
               @click="openFile()"
             >pdf เอกสารเพิ่มเติม</div>
             <div
-              class="bg1 text-white font-12 q-py-sm cursor-pointer"
+              class="bg1 text-white font-12 q-py-sm curqsor-pointer"
               @click="deleteFile()"
             >ลบไฟล์</div>
           </div>
