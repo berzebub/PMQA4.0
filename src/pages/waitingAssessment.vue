@@ -19,14 +19,14 @@
         </span>
       </div>
       <div class="q-pt-xl" v-if="activeShow != 2">
-        <q-btn
+        <!-- <q-btn
           class="font-18 q-mx-xs shadow-2"
           outline=""
           style="width:200px;border-radius:0px;"
           label="ผลการประเมิน"
           v-close-popup
           @click="$router.push('/assessment')"
-        ></q-btn>
+        ></q-btn> -->
       </div>
     </div>
   </q-page>

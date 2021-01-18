@@ -4,3 +4,14 @@
 4. เพิ่ม field ใน assessment_status field สำหรับเก็บว่า เปิด Mode อะไรอยู่
 5. check api บันทึก / แก้ไขสถานะการเปิด / ปิด assessment_status
 
+
+
+
+API FILES CHANGED
+
+1.upload file main
+2.delete file main
+3.user/update_assessment_stepper_log.php
+4.get assessment log
+5.add update category7
+6.update mode status

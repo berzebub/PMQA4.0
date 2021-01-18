@@ -228,11 +228,11 @@
                       align="center"
                     >
                       <div class="q-pa-xs"></div>
-                      <span>{{ `${item2.successRate || ""}` }}</span>
+                      <!-- <span>{{ `${item2.successRate || ""}` }}</span> -->
                     </div>
                     <div class="col-1 " style="width:50px;" align="center">
                       <div class="q-pa-xs"></div>
-                      <span>{{ `${item2.a_score}` }}</span>
+                      <!-- <span>{{ `${item2.a_score}` }}</span> -->
                     </div>
                   </div>
                   <!-- ข้อเสนอแนะ -->
@@ -256,10 +256,22 @@
                     >
                       ไม่เหมาะสม
                     </div>
+
+                    <div class=''>
+                      <div v-if="item2.a_assesment_GAP" :class='item2.a_assesment_GAP == 1 ? "text-teal" : "text-red"' style='width:100px;border:1px solid' align="center">
+                        <span v-if="item2.a_assesment_GAP == '1'">
+                          เหมาะสม
+                        </span>
+                        <span v-else>
+                          ไม่เหมาะสม
+                        </span>
+
+                      </div>
                     <div
                       class="q-pl-md"
-                      v-html="'ข้อเสนอแนะ : ' + replaceN(item2.a_suggestion)"
+                      v-html="'ข้อเสนอแนะ : ' + replaceN(item2.a_suggestion_GAP || '-')"
                     ></div>
+                    </div>
                   </div>
                 </div>
               </td>

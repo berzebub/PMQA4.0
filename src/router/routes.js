@@ -71,6 +71,19 @@ const routes = [
     name: "printStep7"
   },
 
+  // print plan 1y
+
+  {
+    path: "/printPlan1",
+    component: () => import("pages/printPlan1Y.vue"),
+    name: "printPlan1"
+  },
+  {
+    path: "/printPlan3",
+    component: () => import("pages/printPlan3Y.vue"),
+    name: "printPlan3"
+  },
+
   // PRINT ASSESSOR PAPER
   {
     path: "/print/0A",
@@ -150,6 +163,17 @@ const routes = [
         path: "/admin/main",
         component: () => import("pages/admin/main.vue"),
         name: "adminMain"
+      },
+
+      {
+        path: "/cat7",
+        component: () => import("pages/category7.vue"),
+        name: "cat7"
+      },
+      {
+        path: "/assessmentResult",
+        component: () => import("pages/assessmentResult.vue"),
+        name: "assessmentResult"
       }
     ]
   },
@@ -187,6 +211,11 @@ const routes = [
         path: "assessor/plan3y/:userId",
         component: () => import("pages/assessor/plan3y.vue"),
         name: "plan3y"
+      },
+      {
+        path: "assessor/category7GAP/:userId",
+        component: () => import("pages/assessor/category7GAP.vue"),
+        name: "assessorCategory7GAP"
       }
     ]
   },

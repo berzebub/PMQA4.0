@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="row bg2 container-header relative-position">
-          <div class="col-1" style="width: 280px;"></div>
+          <div class="col-1" style="width: 350px;"></div>
           <div class="col self-center font-18 text-black" align="center">
             <span v-if="$q.sessionStorage.getItem('p') == '0'">
               {{
@@ -45,21 +45,36 @@
             ></q-btn>
           </div>
           <div
-            v-if="$route.name == 'assessment'"
-            class="col-1 self-center q-px-md"
+            v-if="$route.name == 'assessment' || $route.name == 'assessmentComplete'"
+            class="self-center q-pl-md"
+            style="width:fit-content"
+            align="right"
+          >
+            <q-btn
+              dense
+              flat
+              padding="0"
+              class="text-black relative-position z-top font-18"
+              @click="$router.push('/main')"
+              icon="fas fa-home"
+            ></q-btn>
+          </div>
+          <div
+            class="col-1 self-center"
+            v-if="$q.sessionStorage.getItem('p') != '2'"
             align="right"
             style="width: 170px;"
           >
             <q-btn
-              style="width: 163px;"
+              style="width: 163px;border:1px solid black"
               dense
-              outline
               padding="0"
-              class="text-black bg-white relative-position z-top font-18"
-              @click="$router.push('/main')"
-            >หน้าหลัก</q-btn>
+              class="relative-position z-top font-18"
+              :class="$route.name == 'assessmentComplete' ? 'bg-secondary text-white' : 'bg-white text-black'"
+              @click="$router.push('/assessmentComplete')"
+            >ผลการประเมิน</q-btn>
           </div>
-          <div class="col-1 self-center q-px-md" align="right" style="width: 200px;">
+          <div class="col-1 self-center q-pr-md" align="right" style="width: 190px;">
             <q-btn
               style="width: 163px;"
               dense
@@ -67,9 +82,7 @@
               padding="0"
               class="text-black bg-white relative-position z-top font-18"
               @click="isShowLogoutDialog = true"
-            >
-              <q-icon name="fas fa-sign-out-alt" size="sm"></q-icon>&nbsp;ออกจากระบบ
-            </q-btn>
+            >ออกจากระบบ</q-btn>
           </div>
         </div>
         <div class="absolute-bottom" style="left: 20px; bottom: -10px;">
@@ -350,6 +363,7 @@ export default {
 
       this.isShowAssessmentDate = false;
       this.getAssessmentDate();
+      this.notify("บันทึกสำเร็จ", "secondary");
     },
     setAssessmentDate() {
       this.getAssessmentDate();
@@ -452,7 +466,13 @@ export default {
     let date = new Date();
     let month = date.getMonth();
     let year = date.getFullYear();
-    this.endYearOptions = [year + 543, year + 544, year + 545];
+    this.endYearOptions = [
+      year + 541,
+      year + 542,
+      year + 543,
+      year + 544,
+      year + 545,
+    ];
     let days = this.getDaysInMonth(month + 1, year);
     for (let i = 1; i <= days; i++) {
       this.endDateOptions.push(i);

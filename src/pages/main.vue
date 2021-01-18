@@ -3,8 +3,8 @@
     <!-- v-if="isShowStepper" -->
     <div
       class="col-10 row self-center q-pa-md"
-      v-show="false"
-      style="width: 1025px;overflow:hidden"
+      v-if="assessmentMode == '1'"
+      style="width: 825px;overflow:hidden;margin:auto;padding-top:80px"
     >
       <div class="col">
         <!-- Set Top -->
@@ -376,97 +376,6 @@
         <div class="q-py-xl">
           <div class="container-border-right"></div>
         </div>
-
-        <q-file
-          v-if="!file1"
-          v-model="file1"
-          class="absolute bg-grey-5"
-          style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:190px;right:40px"
-          accept=".doc, .pdf, .docx"
-          @input="val => uploadFile(val, '1')"
-        >
-          <template v-slot:default>
-            <div style="width:10000px">
-              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-              <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
-                แผนปฏิบัติการเพื่อยกระดับ
-                <br />การพัฒนาสู่ระบบราชการ 4.0
-                <br />
-                ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
-              </div>
-            </div>
-          </template>
-        </q-file>
-
-        <div
-          v-else
-          class="absolute"
-          style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:190px;right:40px"
-        >
-          <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-            <div
-              class="bg-white q-pa-xs text-black cursor-pointer"
-              @click="openFile(1)"
-              style="width:100%;text-decoration:underline"
-              align="center"
-            >
-              แผนปฏิบัติการเพื่อยกระดับ
-              <br />การพัฒนาสู่ระบบราชการ 4.0
-              <br />
-              ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
-            </div>
-            <div
-              align="center"
-              style="width:100%;border-radius:0px"
-              class="bg1 text-white font-12 q-py-sm cursor-pointer"
-              @click="deleteFile(1)"
-            >ลบไฟล์</div>
-          </div>
-        </div>
-
-        <q-file
-          v-if="!file2"
-          v-model="file2"
-          class="absolute bg-grey-5"
-          style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:60px;right:40px"
-          accept=".doc, .pdf, .docx"
-          @input="val => uploadFile(val, '2')"
-        >
-          <template v-slot:default>
-            <div style="width:10000px">
-              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-              <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
-                แผนยกระดับการพัฒนา
-                <br />สู่ระบบราชการ 4.0 ระยะ 3 ปี
-              </div>
-            </div>
-          </template>
-        </q-file>
-        <div
-          v-else
-          class="absolute"
-          style="width:200px;border:4px solid #e84c93;border-radius:5px;bottom:40px;right:40px"
-        >
-          <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-            <div
-              class="bg-white q-pa-xs text-black cursor-pointer"
-              @click="openFile(2)"
-              style="width:100%;text-decoration:underline"
-              align="center"
-            >
-              แผนยกระดับการพัฒนา
-              <br />สู่ระบบราชการ 4.0 ระยะ 3 ปี
-            </div>
-            <div
-              align="center"
-              style="width:100%;border-radius:0px"
-              class="bg1 text-white font-12 q-py-sm cursor-pointer"
-              @click="deleteFile(2)"
-            >ลบไฟล์</div>
-          </div>
-        </div>
       </div>
 
       <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
@@ -544,45 +453,50 @@
       </div>
     </div>
 
-    <div v-if="assessmentMode == '1'">ลักษณะสำคัญองค์กร + หมวด 1-6</div>
-
-    <div v-else-if="assessmentMode == '2'" class="">
+    <div v-else-if="assessmentMode == '2'">
       <!-- หมวด 7 (GAP) + แผน 1/3 ปี -->
 
-      <div class="row justify-center items-center" style="max-width:800px;margin:auto;padding-top:100px">
+      <div
+        class="row justify-center items-center"
+        style="max-width:800px;margin:auto;padding-top:100px"
+      >
         <div class="relative-position col">
           <div align="center">
-            <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
+            <q-btn round size="45px" push class="bg3" @click="$router.push('/cat7')">
               <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
             </q-btn>
           </div>
-          <div class="row justify-center q-pt-md font-18">
+          <div class="row justify-center relative-position q-pt-md font-18">
             <div
               class="q-pa-xs"
+              style="width:100px"
+              align="center"
               :class="
-                        currentStep.category7 == '1'
+                        isCategory7GAP
                           ? 'border-teal'
                           : 'border-grey'
                       "
-              style="width:100px"
             >
               <q-icon
-                :color="currentStep.category7 == '1' ? 'teal' : ''"
+                :color="isCategory7GAP ? 'teal' : ''"
                 name="fas fa-check-circle"
+                class="q-mr-xs"
                 size="18px"
               ></q-icon>เสร็จสิ้น
             </div>
             <!-- print btn -->
-            <div class="q-pl-sm">
+            <div class="q-pl-md">
               <q-btn
-                :disable="currentStep.category7 != '1'"
+                :disable="!isCategory7GAP"
+                :color="isCategory7GAP ? 'teal' : 'grey'"
                 size="12px"
                 icon="fas fa-print"
                 @click="printData(7)"
                 round
-                :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
               ></q-btn>
             </div>
+
+            <div align="center" class="font-18 col-12 absolute" style="top:60px">หมวด7</div>
           </div>
         </div>
 
@@ -593,17 +507,22 @@
             style="width:200px;border:3px solid #e84c93;border-radius:5px;"
           >
             <div style="width:100%">
-              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
               <div
                 class="bg-white q-pa-xs text-black cursor-pointer"
                 style="width:100%;text-decoration:underline"
                 align="center"
+                @click="openFile(1)"
               >
                 แผนปฏิบัติการเพื่อยกระดับ
                 <br />การพัฒนาสู่ระบบราชการ 4.0
                 <br />
                 ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
               </div>
+              <div
+                @click="showDeleteDialog(1)"
+                class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                align="center"
+              >ลบไฟล์</div>
             </div>
           </div>
 
@@ -637,17 +556,20 @@
             style="width:200px;border:3px solid #e84c93;border-radius:5px;"
           >
             <div style="width:100%">
-              <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
               <div
-                class="bg-white q-pa-xs text-black cursor-pointer"
-                style="width:100%;text-decoration:underline"
+                class="bg-white q-pa-xs text-black cursor-pointer row items-center"
+                style="width:100%;text-decoration:underline;height:70px"
                 align="center"
+                @click="openFile(2)"
               >
-                แผนปฏิบัติการเพื่อยกระดับ
-                <br />การพัฒนาสู่ระบบราชการ 4.0
-                <br />
-                ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+                แผนยกระดับการพัฒนา
+                สู่ระบบราชการ 4.0 ระยะ 3 ปี
               </div>
+              <div
+                @click="showDeleteDialog(2)"
+                class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                align="center"
+              >ลบไฟล์</div>
             </div>
           </div>
 
@@ -656,99 +578,79 @@
             v-if="!filePdf2"
             v-model="filePdf2"
             class="bg-grey-5"
-            style="width:200px;border:4px solid #e84c93;border-radius:5px"
+            style="width:200px;border:4px solid #e84c93;border-radius:5px;"
             accept=".doc, .pdf, .docx"
-            @input="val => uploadFile(val, '1')"
+            @input="val => uploadFile(val, '2')"
           >
             <template v-slot:default>
               <div style="width:100%">
                 <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-                <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
-                  แผนปฏิบัติการเพื่อยกระดับ
-                  <br />การพัฒนาสู่ระบบราชการ 4.0
-                  <br />
-                  ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+                <div
+                  class="bg-white q-pa-xs text-black row items-center"
+                  style="width:192px;height:70px"
+                  align="center"
+                >
+                  แผนยกระดับการพัฒนา
+                  สู่ระบบราชการ 4.0 ระยะ 3 ปี
                 </div>
               </div>
             </template>
           </q-file>
         </div>
-
-     
       </div>
-         <div align="center">
-             <q-btn
-          :disable="!checkSteper || file1 == null || file2 == null"
+      <div align="center">
+        <q-btn
+          :disable="!isEnableSendMode2"
           style="width: 180px; border-radius: 0px;margin-top:50px"
           push
           class="q-mx-md q-py-sm"
           :class="
-            !checkSteper || file1 == null || file2 == null
+            !isEnableSendMode2
               ? 'bg3'
               : 'bg-teal text-white'
           "
-          @click="uSendAssessment()"
+          @click="sendStatus(2)"
         >
           <q-icon
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !isEnableSendMode2 ? 'color2' : ''
             "
             name="far fa-paper-plane"
           ></q-icon>
           <span
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !isEnableSendMode2 ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
           >ส่งแบบประเมิน</span>
         </q-btn>
-        </div>
-      <!-- <div class="relative-position ">
-        <div class="absolute-center">
-          <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
-            <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
-          </q-btn>
-        </div>
-        <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-          <div class="font-18">
-            <div class="row items-center">
-              <div
-                class="col q-pa-xs"
-                :class="
-                        currentStep.category7 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
-              >
-                <q-icon
-                  :color="currentStep.category7 == '1' ? 'teal' : ''"
-                  name="fas fa-check-circle"
-                  class="q-mr-xs"
-                  size="18px"
-                ></q-icon>เสร็จสิ้น
-              </div>
-              <div class="q-pl-sm">
-                <q-btn
-                  :disable="currentStep.category7 != '1'"
-                  size="12px"
-                  icon="fas fa-print"
-                  @click="printData(7)"
-                  round
-                  :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
-                ></q-btn>
-              </div>
-              <div class="col-12">
-                <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 7</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
+      </div>
     </div>
 
     <div v-else-if="assessmentMode == '3'">รายงานติดตามรอบ 6 เดือน</div>
 
     <div v-else-if="assessmentMode == '4'">หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน</div>
+
+    <q-dialog persistent v-model="isShowConfirmDeleteFileDialog">
+      <q-card style="width:450px;">
+        <q-card-section>
+          <div style="font-size:30px" align="center">ลบไฟล์</div>
+
+          <div class="font-18 q-py-md" align="center">คุณต้องการลบไฟล์ใช่หรือไม่?</div>
+        </q-card-section>
+        <q-card-actions align="center" class="q-pb-md">
+          <q-btn style="width:180px" class="font-18" label="ยกเลิก" v-close-popup outline dense></q-btn>
+          <q-btn
+            color="teal"
+            style="width:180px"
+            class="font-18"
+            label="ตกลง"
+            @click="deleteFile()"
+            dense
+          ></q-btn>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -760,6 +662,9 @@ export default {
       // new
       filePdf1: null,
       filePdf2: null,
+      isShowConfirmDeleteFileDialog: false,
+      isCategory7GAP: false,
+      isEnableSendMode2: false,
       // end new
       file1: null,
       file2: null,
@@ -780,10 +685,55 @@ export default {
       path1: "",
       path2: "",
       assessmentMode: "",
+      deleteType: "",
     };
   },
   methods: {
+    async sendStatus(mode) {
+      // ส่งแบบประเมิน mode2 หมวด7 GAP + plan1y + plan3y
+      if (mode == 2) {
+        const url = this.apiPath + "user/updateModeStatus.php";
+        let postData = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          mode: 2,
+        };
+
+        let response = await Axios.post(url, postData);
+
+        // update สถานะการทำ cat7_gap
+        const urlUpdateStepper =
+          this.apiPath + "user/update_assessment_stepper_log.php";
+
+        const stepperData1 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "cat7_gap",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+        const stepperData2 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "plan_1y",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+        const stepperData3 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "plan_3y",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+
+        response = await Axios.post(urlUpdateStepper, stepperData1);
+        response = await Axios.post(urlUpdateStepper, stepperData2);
+        response = await Axios.post(urlUpdateStepper, stepperData3);
+
+        this.notify("ส่งแบบประเมินสำเร็จ", 'secondary')
+        this.$router.push("/waitingAssessment/0");
+      }
+    },
     async uploadFile(file, type) {
+      // Upload pan1y / plan3y
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -794,11 +744,13 @@ export default {
 
       const url = this.apiPath + "uploadFileMain.php";
       let data = await Axios.post(url, formData);
+       this.checkMode2SendStatus()
       this.getFile();
     },
     openFile(type) {
       let random = Math.random().toString(36).substring(7);
       let link;
+
       if (type == 1) {
         link = this.apiPath + this.path1 + "?" + random;
       } else {
@@ -806,20 +758,28 @@ export default {
       }
       window.open(link);
     },
-    async deleteFile(type) {
+    async deleteFile() {
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
       formData.append("user_id", uid);
       formData.append("year", year);
-      formData.append("type", type);
+      formData.append("type", this.deleteType);
       const url = this.apiPath + "deleteFileMain.php";
       let data = await Axios.post(url, formData);
-      if (type == 1) {
-        this.file1 = null;
+      if (this.deleteType == 1) {
+        this.filePdf1 = null;
       } else {
-        this.file2 = null;
+        this.filePdf2 = null;
       }
+      this.checkMode2SendStatus()
+      this.isShowConfirmDeleteFileDialog = false;
+    },
+    showDeleteDialog(type) {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      this.deleteType = type;
+      this.isShowConfirmDeleteFileDialog = true;
     },
     printAll() {
       let route = this.$router.resolve({ name: "printAll" });
@@ -876,6 +836,26 @@ export default {
       let currentDate = await this.getDate();
       this.checkAssessmentStatus();
     },
+
+    async getCategory7GAP() {
+      const url = this.apiPath + "user/getCategory7.php";
+      let getData;
+      let data;
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y") + 543,
+      };
+      data = await Axios.post(url, postData);
+      getData = data.data;
+
+      if (!getData.length) {
+        // กรณียังไม่เคยมีการเข้าไปประเมิน หมวด7 GAP
+        return false;
+      } else {
+        // กรณีเคยมีการบันทึกหมวด7 GAP แล้ว
+        return true;
+      }
+    },
     async getAssessmentDate() {
       this.loadingShow();
       let currentDate = await this.getDate();
@@ -885,6 +865,11 @@ export default {
       let endDate = assessmentDate.data.end_date;
       this.endAssessmentDate = endDate;
       this.assessmentMode = assessmentDate.data.mode;
+
+      if (assessmentDate.data.mode == "2") {
+        let checkCate7GAP = await this.getCategory7GAP();
+        this.isCategory7GAP = checkCate7GAP;
+      }
 
       endDate = endDate.split("-");
 
@@ -900,6 +885,13 @@ export default {
       this.endDate = endDate;
       this.getStepperLog();
     },
+    checkMode2SendStatus(){
+        if(this.filePdf1 != null && this.filePdf2 != null && this.isCategory7GAP){
+          this.isEnableSendMode2 = true;
+        }else{
+this.isEnableSendMode2 = false;
+        }
+    },
     async checkAssessmentStatus() {
       let currentDate = await this.getDate();
       let endDate = this.endAssessmentDate;
@@ -909,6 +901,35 @@ export default {
         Number(currentDate[0].month) - 1,
         currentDate[0].date
       ).getTime();
+
+      if (this.assessmentMode == "2") {
+        // Mode 2
+        // หมวด7 GAP + plan1y + plan3Y
+
+        const apiCheckStatus =
+          this.apiPath + "user/getAssessmentStepperLog.php";
+        let postCheckStatusData = {
+          user_id: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+        };
+
+        let responseCheck = await Axios.post(
+          apiCheckStatus,
+          postCheckStatusData
+        );
+        let responseData = responseCheck.data[0];
+
+        this.checkMode2SendStatus()
+
+        // เช็คหากกดส่งแบบประเมิน mode2ไปแล้ว ไปหน้ารอ
+        if(responseData){
+        if(responseData.mode2_status == '1'){
+          this.$router.push("/waitingAssessment/0");
+        }
+
+}
+        // console.log(responseData)
+      }
 
       if (this.currentStep.send_status == "2") {
         this.$router.push("/assessmentComplete");
@@ -955,10 +976,12 @@ export default {
       const url = this.apiPath + "getFileMain.php";
       let response = await Axios.post(url, formData);
 
+      console.log(response.data);
+
       if (response.data != "no files") {
         let data = response.data[0];
-        this.file1 = data.file1 != 0 ? [] : null;
-        this.file2 = data.file2 != 0 ? [] : null;
+        this.filePdf1 = data.file1 != 0 ? [] : null;
+        this.filePdf2 = data.file2 != 0 ? [] : null;
         this.path1 = data.path1 != "" ? data.path1 : "";
         this.path2 = data.path2 != "" ? data.path2 : "";
       }
@@ -982,7 +1005,7 @@ export default {
 
 .container-border-right {
   position: relative;
-  left: -380px;
+  left: -180px;
   border: 6px solid #e0e0e0;
   border-radius: 0%;
   padding: 130px;

@@ -5,7 +5,7 @@
       style="width: 100%;min-width:1000px; margin: auto;"
       align="center"
     >
-      <div class="row justify-between container-stepper q-my-xl">
+      <div class="row justify-between container-stepper  q-my-xl">
         <div class="relative-position" style="width: 55px;">
           <div class="absolute-center">
             <q-btn
