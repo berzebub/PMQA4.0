@@ -4,7 +4,9 @@
       <div class="bg-red"></div>
 
       <q-btn class="printBtn" icon="fas fa-print" color="pink-4" round @click="printBtn()"></q-btn>
+
     </div>
+
 
     <div class="a4-portrait">
       <div align="center" class="q-py-sm relative-position">
@@ -18,7 +20,10 @@
       >แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0 ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}</div>
 
       <div class="q-pa-lg">
-        <u>แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0 ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}</u>
+        <a :href="apiPath + path1" style="text-decoration:none;color:black">
+        <u>
+          แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0 ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}</u>
+          </a>
 
         <div class="q-pt-md">ข้อเสนอแนะ</div>
         <div class="q-pt-md">{{ suggestion }}</div>
@@ -33,9 +38,27 @@ export default {
   data() {
     return {
       suggestion: "",
+      path1 : "",
+      printDate : ""
     };
   },
   methods: {
+    async getFile() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      const url = this.apiPath + "getFileMain.php";
+      let response = await Axios.post(url, formData);
+
+
+      if (response.data != "no files") {
+        let data = response.data[0];
+        this.path1 = data.path1 != "" ? data.path1 : "";
+      }
+    },
+
     async getPlan1Y() {
       let url = this.apiPath + "getPlan1Y.php";
       let postData = {
@@ -50,8 +73,18 @@ export default {
       }
     },
   },
-  created() {
+  async created() {
     this.getPlan1Y();
+    this.getFile()
+
+      let printDate = await this.getDate();
+    printDate = printDate[0];
+    printDate = `${printDate.date} ${this.showMonth(printDate.month)} ${
+      printDate.year
+    }`;
+    this.printDate = printDate;
+
+
   },
 };
 </script>

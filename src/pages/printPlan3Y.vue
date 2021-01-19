@@ -15,11 +15,13 @@
         align="left"
         class="b-color text-white q-py-sm q-pl-md"
         style="width: 80%; font-size: 18px"
-      >แผนยกระดับการพัฒนาสู่ระบบราชการ 4.0 ระยะ 3 ปี</div>
+      >
+      แผนยกระดับการพัฒนาสู่ระบบราชการ 4.0 ระยะ 3 ปี</div>
 
       <div class="q-pa-lg">
+             <a :href="apiPath + path1" style="text-decoration:none;color:black">
         <u>แผนยกระดับการพัฒนาสู่ระบบราชการ 4.0 ระยะ 3 ปี</u>
-
+</a>
         <div class="q-pt-md">ข้อเสนอแนะ</div>
         <div class="q-pt-md">{{ suggestion }}</div>
       </div>
@@ -33,9 +35,26 @@ export default {
   data() {
     return {
       suggestion: "",
+      path1 : "",
     };
   },
   methods: {
+     async getFile() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      const url = this.apiPath + "getFileMain.php";
+      let response = await Axios.post(url, formData);
+
+
+      if (response.data != "no files") {
+        let data = response.data[0];
+        this.path1 = data.path2 != "" ? data.path2 : "";
+      }
+    },
+
     async getPlan3Y() {
       let url = this.apiPath + "getPlan3Y.php";
       let postData = {
@@ -52,6 +71,7 @@ export default {
   },
   created() {
     this.getPlan3Y();
+    this.getFile()
   },
 };
 </script>

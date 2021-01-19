@@ -476,7 +476,7 @@ export default {
       const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
       let postCheckStatusData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.yearSelected - 543,
       };
 
       let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
@@ -494,29 +494,55 @@ export default {
         return result;
       };
 
-      this.categoryGroup = [
-        { name: "ลักษณะองค์กร", status: convertStatusToText(responseData.op) },
-        { name: "หมวด 1-6", status: convertStatusToText(responseData.cat1_6) },
-        {
-          name: "หมวด 7 GAP",
-          status: convertStatusToText(responseData.cat7_gap),
-        },
-        { name: "แผน 1 ปี", status: convertStatusToText(responseData.plan_1y) },
-        { name: "แผน 3 ปี", status: convertStatusToText(responseData.plan_3y) },
-        {
-          name: "ติดตาม 6 เดือน",
-          status: convertStatusToText(responseData.month_6),
-        },
-        { name: "หมวด7", status: convertStatusToText(responseData.cat7) },
-        {
-          name: "ติดตาม 12 เดือน",
-          status: convertStatusToText(responseData.month_12),
-        },
-        {
-          name: "สรุป 12 เดือน",
-          status: convertStatusToText(responseData.sum_month_12),
-        },
-      ];
+      if (responseCheck.data.length) {
+        this.categoryGroup = [
+          {
+            name: "ลักษณะองค์กร",
+            status: convertStatusToText(responseData.op),
+          },
+          {
+            name: "หมวด 1-6",
+            status: convertStatusToText(responseData.cat1_6),
+          },
+          {
+            name: "หมวด 7 GAP",
+            status: convertStatusToText(responseData.cat7_gap),
+          },
+          {
+            name: "แผน 1 ปี",
+            status: convertStatusToText(responseData.plan_1y),
+          },
+          {
+            name: "แผน 3 ปี",
+            status: convertStatusToText(responseData.plan_3y),
+          },
+          {
+            name: "ติดตาม 6 เดือน",
+            status: convertStatusToText(responseData.month_6),
+          },
+          { name: "หมวด7", status: convertStatusToText(responseData.cat7) },
+          {
+            name: "ติดตาม 12 เดือน",
+            status: convertStatusToText(responseData.month_12),
+          },
+          {
+            name: "สรุป 12 เดือน",
+            status: convertStatusToText(responseData.sum_month_12),
+          },
+        ];
+      }else{
+         this.categoryGroup = [
+        { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },
+        { name: "หมวด 1-6", status: "ยังไม่ประเมิน" },
+        { name: "หมวด 7 GAP", status: "ยังไม่ประเมิน" },
+        { name: "แผน 1 ปี", status: "ยังไม่ประเมิน" },
+        { name: "แผน 3 ปี", status: "ยังไม่ประเมิน" },
+        { name: "ติดตาม 6 เดือน", status: "ยังไม่ประเมิน" },
+        { name: "หมวด7", status: "ยังไม่ประเมิน" },
+        { name: "ติดตาม 12 เดือน", status: "ยังไม่ประเมิน" },
+        { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" },
+      ]
+      }
     },
     async getFilePlan() {
       let uid = this.$q.sessionStorage.getItem("uid");

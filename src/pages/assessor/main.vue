@@ -147,7 +147,7 @@
             </div>
           </div>
         </div>
-        <table>
+        <!-- <table>
           <tr class="tr-color">
             <td align="left" class="q-pa-sm">
               <div class="q-pl-lg">กอง / สำนัก</div>
@@ -172,7 +172,7 @@
               <u @click="routeToDetails(item)" class="cursor-pointer">รายละเอียด</u>
             </td>
           </tr>
-        </table>
+        </table>-->
       </div>
     </div>
     <q-dialog v-model="isShowDialogConfirmReset">
@@ -226,7 +226,7 @@ export default {
       let url = this.apiPath + "resetAssessmentStepper.php";
       let response = await Axios.post(url, postData);
 
-          this.$q.notify({
+      this.$q.notify({
         message: "ยกเลิกการส่งสำเร็จ",
         position: "bottom",
         color: "secondary",
@@ -235,6 +235,19 @@ export default {
       this.getAssessmentData();
     },
     toPage(officeData, mode) {
+
+
+
+ 
+
+      if(officeData.categoryGroup[mode].status == "ยังไม่ประเมิน")
+      {
+        this.notify("ยังไม่มีการประเมิน","red")
+return
+      }
+      
+
+
       this.$q.sessionStorage.set("aid", officeData.userId);
       if (mode == 0) {
         // OP
@@ -242,7 +255,7 @@ export default {
         // หมวด1-6
       } else if (mode == 2) {
         // หมวด7 GAP
-        
+
         // this.$router.push("/assessor/plan1y/" + officeData.userId);
 
         this.$router.push("/assessor/category7GAP/" + officeData.userId);
@@ -311,7 +324,6 @@ export default {
       this.loadingShow();
       const url = this.apiPath + "user/getAllUser.php";
       let data = await Axios.get(url);
-      data = data.data.sort((a, b) => (a.username > b.username ? 1 : -1));
 
       const getAssessmentAPI = this.apiPath + "getAssessmentLog.php";
       let postAssessmentData = {
@@ -324,22 +336,23 @@ export default {
 
       assessmentLog = assessmentLog.data;
 
-      let temp = [];
-      data.forEach(async (element, index) => {
-        // console.log(element)
+      data = data.data;
 
+      let temp = [];
+      let counter = 0;
+      data.forEach(async (element, index) => {
         const apiCheckStatus =
           this.apiPath + "user/getAssessmentStepperLog.php";
         let postCheckStatusData = {
           user_id: element.id,
-          year: this.$q.sessionStorage.getItem("y"),
+          year: this.yearSelected - 543,
         };
         let responseCheck = await Axios.post(
           apiCheckStatus,
           postCheckStatusData
         );
         let responseData = responseCheck.data[0];
-
+        counter++;
 
         const convertStatusToText = (status) => {
           let result;
@@ -366,30 +379,41 @@ export default {
         ];
 
         if (responseData) {
-
           categoryGroup = [
-        { name: "ลักษณะองค์กร", status: convertStatusToText(responseData.op) },
-        { name: "หมวด 1-6", status: convertStatusToText(responseData.cat1_6) },
-        {
-          name: "หมวด 7 GAP",
-          status: convertStatusToText(responseData.cat7_gap),
-        },
-        { name: "แผน 1 ปี", status: convertStatusToText(responseData.plan_1y) },
-        { name: "แผน 3 ปี", status: convertStatusToText(responseData.plan_3y) },
-        {
-          name: "ติดตาม 6 เดือน",
-          status: convertStatusToText(responseData.month_6),
-        },
-        { name: "หมวด7", status: convertStatusToText(responseData.cat7) },
-        {
-          name: "ติดตาม 12 เดือน",
-          status: convertStatusToText(responseData.month_12),
-        },
-        {
-          name: "สรุป 12 เดือน",
-          status: convertStatusToText(responseData.sum_month_12),
-        },
-      ]
+            {
+              name: "ลักษณะองค์กร",
+              status: convertStatusToText(responseData.op),
+            },
+            {
+              name: "หมวด 1-6",
+              status: convertStatusToText(responseData.cat1_6),
+            },
+            {
+              name: "หมวด 7 GAP",
+              status: convertStatusToText(responseData.cat7_gap),
+            },
+            {
+              name: "แผน 1 ปี",
+              status: convertStatusToText(responseData.plan_1y),
+            },
+            {
+              name: "แผน 3 ปี",
+              status: convertStatusToText(responseData.plan_3y),
+            },
+            {
+              name: "ติดตาม 6 เดือน",
+              status: convertStatusToText(responseData.month_6),
+            },
+            { name: "หมวด7", status: convertStatusToText(responseData.cat7) },
+            {
+              name: "ติดตาม 12 เดือน",
+              status: convertStatusToText(responseData.month_12),
+            },
+            {
+              name: "สรุป 12 เดือน",
+              status: convertStatusToText(responseData.sum_month_12),
+            },
+          ];
         }
 
         let filterData = assessmentLog.filter(
@@ -422,6 +446,7 @@ export default {
             assessmentDate = "-";
           }
         }
+
         temp.push({
           userId: element.id,
           office: element.office,
@@ -429,10 +454,15 @@ export default {
           office_score: officeScore,
           assessor_score: assessorScore,
           categoryGroup: categoryGroup,
+          username: element.username,
         });
+
+        if (counter == data.length) {
+          temp.sort((a, b) => (a.username > b.username ? 1 : -1));
+          this.officeData = temp;
+          this.loadingHide();
+        }
       });
-      this.officeData = temp;
-      this.loadingHide();
     },
   },
   created() {

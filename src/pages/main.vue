@@ -728,7 +728,7 @@ export default {
         response = await Axios.post(urlUpdateStepper, stepperData2);
         response = await Axios.post(urlUpdateStepper, stepperData3);
 
-        this.notify("ส่งแบบประเมินสำเร็จ", 'secondary')
+        this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
       }
     },
@@ -744,7 +744,7 @@ export default {
 
       const url = this.apiPath + "uploadFileMain.php";
       let data = await Axios.post(url, formData);
-       this.checkMode2SendStatus()
+      this.checkMode2SendStatus();
       this.getFile();
     },
     openFile(type) {
@@ -772,7 +772,7 @@ export default {
       } else {
         this.filePdf2 = null;
       }
-      this.checkMode2SendStatus()
+      this.checkMode2SendStatus();
       this.isShowConfirmDeleteFileDialog = false;
     },
     showDeleteDialog(type) {
@@ -885,12 +885,16 @@ export default {
       this.endDate = endDate;
       this.getStepperLog();
     },
-    checkMode2SendStatus(){
-        if(this.filePdf1 != null && this.filePdf2 != null && this.isCategory7GAP){
-          this.isEnableSendMode2 = true;
-        }else{
-this.isEnableSendMode2 = false;
-        }
+    checkMode2SendStatus() {
+      if (
+        this.filePdf1 != null &&
+        this.filePdf2 != null &&
+        this.isCategory7GAP
+      ) {
+        this.isEnableSendMode2 = true;
+      } else {
+        this.isEnableSendMode2 = false;
+      }
     },
     async checkAssessmentStatus() {
       let currentDate = await this.getDate();
@@ -919,15 +923,14 @@ this.isEnableSendMode2 = false;
         );
         let responseData = responseCheck.data[0];
 
-        this.checkMode2SendStatus()
+        this.checkMode2SendStatus();
 
         // เช็คหากกดส่งแบบประเมิน mode2ไปแล้ว ไปหน้ารอ
-        if(responseData){
-        if(responseData.mode2_status == '1'){
-          this.$router.push("/waitingAssessment/0");
+        if (responseData) {
+          if (responseData.mode2_status == "1") {
+            this.$router.push("/waitingAssessment/0");
+          }
         }
-
-}
         // console.log(responseData)
       }
 
@@ -976,7 +979,6 @@ this.isEnableSendMode2 = false;
       const url = this.apiPath + "getFileMain.php";
       let response = await Axios.post(url, formData);
 
-      console.log(response.data);
 
       if (response.data != "no files") {
         let data = response.data[0];

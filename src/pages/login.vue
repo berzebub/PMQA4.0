@@ -97,6 +97,10 @@
               @click="login()"
             ></q-btn>
           </div>
+
+          <div align="right" class='q-px-md'>
+            test mode
+          </div>
         </div>
       </div>
     </div>
@@ -144,7 +148,6 @@ export default {
   methods: {
      onResize(size) {
       // this.report = size
-      console.log(size)
       if (size.width < 1000) {
         this.isShowLogin = false;
       } else {

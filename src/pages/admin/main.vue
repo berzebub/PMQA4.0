@@ -56,7 +56,7 @@
               <td class="q-py-sm q-px-md" align="center">{{ item.password }}</td>
               <td class="q-py-sm q-px-md" align="center">{{ item.collaborator }}</td>
               <td class="q-py-sm q-px-md" align="center">{{ item.tel }}</td>
-              <td class="q-py-sm q-px-md" align="center">ชื่อ ผู้ประเมิน</td>
+              <td class="q-py-sm q-px-md" align="center">{{ item.assessorName }}</td>
               <td class="q-py-sm q-px-md" align="center">
                 <q-btn @click="editUser(item)" size="sm" flat icon="fas fa-edit"></q-btn>
               </td>
@@ -340,6 +340,19 @@ export default {
           a.username > b.username ? 1 : -1
         );
         this.userList = userList.data;
+
+        this.userList.forEach((element) => {
+          let getName = this.assessorList.filter(
+            (x) => x.id == element.assessor
+          );
+
+          if (getName.length) {
+            element.assessorName = getName[0].name;
+          }
+          // element.assessorName = this.assessorList.filter(
+          //   (x) => x.id == element.assessor
+          // )[0].name;
+        });
       }
       this.loadingHide();
     },
@@ -353,6 +366,8 @@ export default {
         });
         this.assessorList = result;
       }
+
+      this.loadUser();
       this.loadingHide();
     },
     editUser(item) {
@@ -407,7 +422,6 @@ export default {
       }
     },
     loadInitialData() {
-      this.loadUser();
       this.loadAssessor();
     },
     telFormatter(tel) {
