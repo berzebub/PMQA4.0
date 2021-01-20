@@ -262,7 +262,7 @@ export default {
 
               numberOfIndicators: 1,
               indicators:
-                "ร้อยละความสำเร็จของร้อยละเฉลี่ยถ่วงน้ำหนักในการบรรลุเป้าหมายตามแผนปฏิบัติราชการขององค์กร",
+                "ร้อยละเฉลี่ยความสำเร็จถ่วงน้ำหนักในการบรรลุเป้าหมายตัวชี้วัดคำรับรองการปฏิบัติราชการของหน่วยงานประจำปีงบประมาณ",
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
@@ -295,7 +295,7 @@ export default {
               a_avgScore: -1,
               subNo: 1,
               headerTextUpper:
-                "RM 3 ร้อยละความสำเร็จของร้อยละเฉลี่ยถ่วงน้ำหนักในการบรรลุเป้าหมายตามแผนปฏิบัติราชการขององค์กร",
+                "RM 3 ร้อยละความพึงพอใจของผู้รับบริการ และผู้มีส่วนได้ส่วนเสีย",
               numberOfIndicators: 1,
               indicators:
                 "ร้อยละความพึงพอใจของผู้รับบริการและผู้มีส่วนได้ส่วนเสียต่อการพัฒนางานบริการของหน่วยงาน",
@@ -359,7 +359,7 @@ export default {
                 "RM 5 ร้อยละความสำเร็จของการดำเนินการตามแผนสร้างความผูกพันของบุคลากร",
               numberOfIndicators: 1,
               indicators:
-                "ร้อยละความสำเร็จของร้อยละเฉลี่ยถ่วงน้ำหนักในการบรรลุเป้าหมายตามแผนปฏิบัติราชการขององค์กร",
+                "ร้อยละความสำเร็จของการดำเนินการตามแผนสร้างความผูกพันของบุคลากร",
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
@@ -460,7 +460,7 @@ export default {
               a_suggestion: "",
               a_assesment_GAP: -1,
               a_score: -1,
-              goalCurrentYear: 96,
+              goalCurrentYear: 85,
               unit: "%",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -794,6 +794,7 @@ export default {
       data = await Axios.post(url, postData);
       getData = data.data;
 
+
       if (!getData.length) {
         // กรณีไม่มีข้อมูลปีปัจจุบัน ดึงข้อมูลปีก่อนหน้ามาแสดง
         let postOldData = {
@@ -805,6 +806,12 @@ export default {
 
       getData = data.data;
       getData = getData.sort((a, b) => Number(a.number) - Number(b.number));
+
+
+// RM2
+      getData[0].question[1].indicators = 'ร้อยละเฉลี่ยความสำเร็จถ่วงน้ำหนักในการบรรลุเป้าหมายตัวชี้วัดคำรับรองการปฏิบัติราชการของหน่วยงานประจำปีงบประมาณ'
+
+
 
       for (let i = 0; i < 6; i++) {
         if (getData[i]) {
@@ -819,6 +826,7 @@ export default {
   },
   created() {
     this.getCategory7();
+    
   },
 };
 </script>

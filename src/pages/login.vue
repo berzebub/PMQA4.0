@@ -98,9 +98,7 @@
             ></q-btn>
           </div>
 
-          <div align="right" class='q-px-md'>
-            test mode
-          </div>
+        
         </div>
       </div>
     </div>

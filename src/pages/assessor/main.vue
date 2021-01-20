@@ -48,7 +48,7 @@
                 v-ripple
                 style="border:1px solid"
               >
-                <div align="center" class="col-12 q-py-sm">{{ item.name }}</div>
+                <div align="center" class="col-12 q-py-sm">{{ item.name }} </div>
                 <div
                   class="col-12 text-white"
                   align="center"
@@ -248,6 +248,7 @@ return
       
 
 
+
       this.$q.sessionStorage.set("aid", officeData.userId);
       if (mode == 0) {
         // OP
@@ -365,6 +366,8 @@ return
           }
           return result;
         };
+
+        console.log(responseData)
 
         let categoryGroup = [
           { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },

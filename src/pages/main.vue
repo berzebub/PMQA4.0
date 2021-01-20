@@ -848,6 +848,8 @@ export default {
       data = await Axios.post(url, postData);
       getData = data.data;
 
+      console.log(getData)
+
       if (!getData.length) {
         // กรณียังไม่เคยมีการเข้าไปประเมิน หมวด7 GAP
         return false;
@@ -934,9 +936,9 @@ export default {
         // console.log(responseData)
       }
 
-      if (this.currentStep.send_status == "2") {
-        this.$router.push("/assessmentComplete");
-      } else {
+      // if (this.currentStep.send_status == "2") {
+      //   this.$router.push("/assessmentComplete");
+      // } else {
         if (
           timeStampCurrentDate > timeStampEndDate ||
           this.assessmentStatus == "0"
@@ -949,24 +951,25 @@ export default {
             // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
             this.$router.push("/waitingAssessment/1");
           }
-        } else {
-          if (this.currentStep.send_status == "1") {
-            // ส่งแบบประเมินแล้ว
-            // console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
-            this.$router.push("/waitingAssessment/0");
-          } else if (this.currentStep.send_status == "0") {
-            if (this.assessmentStatus == "0") {
-              // console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
-              this.$router.push("/waitingAssessment/1");
-            } else {
-              // console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
-              this.isShowStepper = true;
-            }
-          } else {
-            this.isShowStepper = true;
-          }
-        }
-      }
+        } 
+      //else {
+      //     if (this.currentStep.send_status == "1") {
+      //       // ส่งแบบประเมินแล้ว
+      //       // console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
+      //       this.$router.push("/waitingAssessment/0");
+      //     } else if (this.currentStep.send_status == "0") {
+      //       if (this.assessmentStatus == "0") {
+      //         // console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
+      //         this.$router.push("/waitingAssessment/1");
+      //       } else {
+      //         // console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
+      //         this.isShowStepper = true;
+      //       }
+      //     } else {
+      //       this.isShowStepper = true;
+      //     }
+      //   }
+      // }
 
       this.loadingHide();
     },
