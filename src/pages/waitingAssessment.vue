@@ -29,11 +29,16 @@
         ></q-btn> -->
       </div>
     </div>
+     <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
 
 <script>
+import myFooter from "../components/footer";
 export default {
+  components: {
+    myFooter,
+  },
   data() {
     return {
       activeShow: this.$route.params.type

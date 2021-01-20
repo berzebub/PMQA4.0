@@ -20,10 +20,18 @@
       >แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0 ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}</div>
 
       <div class="q-pa-lg">
-        <a :href="apiPath + path1" style="text-decoration:none;color:black">
+        <a target="_blank" :href="apiPath + path1" style="text-decoration:none;color:black">
         <u>
           แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0 ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") +543 }}</u>
           </a>
+
+
+<div v-if="file1Y" class='q-pt-md'>
+            <a target="_blank" :href="apiPath + file1Y" style="text-decoration:none;color:black">
+        <u>
+         เอกสารแนบเพิ่มเติม</u>
+          </a>
+          </div>
 
         <div class="q-pt-md">ข้อเสนอแนะ</div>
         <div class="q-pt-md">{{ suggestion }}</div>
@@ -39,10 +47,32 @@ export default {
     return {
       suggestion: "",
       path1 : "",
-      printDate : ""
+      printDate : "",
+      file1Y : ""
     };
   },
   methods: {
+        async getFilePlan() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+
+      let formData = {
+        user_id : uid,
+        year : year,
+        plan : 1
+      }
+      const url = this.apiPath + "getFilePlan.php";
+      let response = await Axios.post(url, formData);
+
+
+      
+
+      if (response.data.length) {
+        let data = response.data[0];
+        this.file1Y = data.path != "" ? data.path : "";
+      }
+    },
+
     async getFile() {
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
@@ -76,6 +106,7 @@ export default {
   async created() {
     this.getPlan1Y();
     this.getFile()
+    this.getFilePlan()
 
       let printDate = await this.getDate();
     printDate = printDate[0];

@@ -204,6 +204,7 @@ export default {
 
     async uploadFile() {
       // Upload pan1y / plan3y
+      this.loadingShow()
       let uid = this.$route.params.userId;
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -213,6 +214,7 @@ export default {
       formData.append("plan", 2);
       const url = this.apiPath + "uploadFilePlan_a.php";
       let data = await Axios.post(url, formData);
+      this.loadingHide()
     },
 
     async changeStatus() {

@@ -651,12 +651,17 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+     <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
 
 <script>
+import myFooter from "../components/footer";
 import Axios from "axios";
 export default {
+  components: {
+    myFooter,
+  },
   data() {
     return {
       // new
@@ -734,6 +739,7 @@ export default {
     },
     async uploadFile(file, type) {
       // Upload pan1y / plan3y
+      this.loadingShow()
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -744,8 +750,11 @@ export default {
 
       const url = this.apiPath + "uploadFileMain.php";
       let data = await Axios.post(url, formData);
+
       this.checkMode2SendStatus();
       this.getFile();
+
+      this.loadingHide()
     },
     openFile(type) {
       let random = Math.random().toString(36).substring(7);
@@ -848,7 +857,6 @@ export default {
       data = await Axios.post(url, postData);
       getData = data.data;
 
-      console.log(getData)
 
       if (!getData.length) {
         // กรณียังไม่เคยมีการเข้าไปประเมิน หมวด7 GAP
@@ -908,6 +916,8 @@ export default {
         currentDate[0].date
       ).getTime();
 
+
+
       if (this.assessmentMode == "2") {
         // Mode 2
         // หมวด7 GAP + plan1y + plan3Y
@@ -924,6 +934,7 @@ export default {
           postCheckStatusData
         );
         let responseData = responseCheck.data[0];
+
 
         this.checkMode2SendStatus();
 
@@ -981,6 +992,9 @@ export default {
       formData.append("year", year);
       const url = this.apiPath + "getFileMain.php";
       let response = await Axios.post(url, formData);
+
+  
+    
 
 
       if (response.data != "no files") {

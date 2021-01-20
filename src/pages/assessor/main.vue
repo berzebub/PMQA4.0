@@ -238,7 +238,7 @@ export default {
 
 
 
- 
+
 
       if(officeData.categoryGroup[mode].status == "ยังไม่ประเมิน")
       {
@@ -308,17 +308,17 @@ return
       this.getAssessmentData();
     },
     resetAssessment(item, mode) {
-      if (item.send_assessment_date == "-") {
-        this.$q.notify({
-          message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
-          color: "red",
-        });
-      } else {
+      // if (item.send_assessment_date == "-") {
+      //   this.$q.notify({
+      //     message: "ยังไม่มีการส่งแบบประเมินเข้ามาในระบบ",
+      //     color: "red",
+      //   });
+      // } else {
         this.isShowDialogConfirmReset = true;
         this.officeNameTemp = item.office;
         this.tempDeleteMode = mode;
         this.activeUserId = item.userId;
-      }
+      // }
     },
 
     async getAssessmentData() {
@@ -353,6 +353,7 @@ return
           postCheckStatusData
         );
         let responseData = responseCheck.data[0];
+
         counter++;
 
         const convertStatusToText = (status) => {
@@ -367,7 +368,6 @@ return
           return result;
         };
 
-        console.log(responseData)
 
         let categoryGroup = [
           { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },

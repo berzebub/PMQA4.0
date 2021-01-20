@@ -238,11 +238,11 @@
                       align="center"
                     >
                       <div class="q-pa-xs"></div>
-                      <span>{{ `${item2.successRate || ""}` }}</span>
+                      <!-- <span>{{ `${item2.successRate || ""}` }}</span> -->
                     </div>
                     <div class="col-1 " style="width:50px;" align="center">
                       <div class="q-pa-xs"></div>
-                      <span>{{ `${item2.score || ""}` }}</span>
+                      <!-- <span>{{ `${item2.score || ""}` }}</span> -->
                     </div>
                   </div>
                 </div>
@@ -601,6 +601,18 @@ export default {
           this.data[index].question = json;
         }
       }
+
+        // RM2
+      this.data[0].question[1].indicators =
+        "ร้อยละเฉลี่ยความสำเร็จถ่วงน้ำหนักในการบรรลุเป้าหมายตัวชี้วัดคำรับรองการปฏิบัติราชการของหน่วยงานประจำปีงบประมาณ";
+      this.data[1].question[0].headerTextUpper =
+        "RM 3 ร้อยละความพึงพอใจของผู้รับบริการ และผู้มีส่วนได้ส่วนเสีย";
+      this.data[2].question[1].indicators =
+        "ร้อยละความสำเร็จของการดำเนินการตามแผนสร้างความผูกพันของบุคลากร";
+
+      this.data[4].question[0].goalCurrentYear = 85;
+
+      
     }
   },
   async mounted() {

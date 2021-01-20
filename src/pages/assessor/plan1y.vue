@@ -171,6 +171,7 @@ export default {
     },
     async saveData() {
       if (this.suggestion) {
+        this.loadingShow()
         this.isErrorTextarea = false;
         let url = this.apiPath + "updatePlan1Y.php";
         let postData = {
@@ -185,6 +186,7 @@ export default {
       } else {
         this.isErrorTextarea = true;
       }
+      this.loadingHide()
     },
 
     async deleteFilePlan() {
@@ -204,6 +206,7 @@ export default {
 
     async uploadFile() {
       // Upload pan1y / plan3y
+      this.loadingShow()
       let uid = this.$route.params.userId;
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -213,6 +216,8 @@ export default {
       formData.append("plan", 1);
       const url = this.apiPath + "uploadFilePlan_a.php";
       let data = await Axios.post(url, formData);
+
+      this.loadingHide()
     },
 
     async changeStatus() {

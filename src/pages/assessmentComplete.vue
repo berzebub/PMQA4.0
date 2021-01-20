@@ -91,7 +91,7 @@
         </div>
       </div>
     </div>
-    <step-footer></step-footer>
+    <step-footer class="absolute-bottom"></step-footer>
   </q-page>
 </template>
 

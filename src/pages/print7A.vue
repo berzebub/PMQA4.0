@@ -240,7 +240,7 @@
                     class="q-pa-sm row items-center"
                     style="border-left:1px solid;border-right:1px solid;border-bottom:1px solid"
                   >
-                    <div
+                    <!-- <div
                       v-if="item2.a_assesment == 1"
                       style="border:1px solid teal;width:100px;"
                       align="center"
@@ -255,15 +255,15 @@
                       class="q-px-md text-red"
                     >
                       ไม่เหมาะสม
-                    </div>
+                    </div> -->
 
                     <div class=''>
-                      <div v-if="item2.a_assesment_GAP" :class='item2.a_assesment_GAP == 1 ? "text-teal" : "text-red"' style='width:100px;border:1px solid' align="center">
+                      <div v-if="item2.a_assesment_GAP != '-1' && item2.a_assesment_GAP" :class='item2.a_assesment_GAP == 1 ? "text-teal" : "text-red"' style='width:100px;border:1px solid' align="center">
                         <span v-if="item2.a_assesment_GAP == '1'">
                           เหมาะสม
                         </span>
-                        <span v-else>
-                          ไม่เหมาะสม
+                        <span v-else-if="item2.a_assesment_GAP == '0'">
+                          ไม่เหมาะสม 
                         </span>
 
                       </div>

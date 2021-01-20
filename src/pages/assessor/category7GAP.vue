@@ -125,7 +125,9 @@
                         ค่าเป้าหมาย
                         <br />ปีล่าสุด (ตัวเลข)
                       </div>
-                      <div class="col-4">90</div>
+                      <div class="col-4">
+                        {{  item.question[indexSub].goalCurrentYear }}
+                      </div>
                       <div class="col-4">%</div>
 
                       <div class="col-12 q-py-md">
