@@ -2,7 +2,7 @@
   <q-page style="padding:30px 75px;max-width:1400px;margin:auto">
     <div align="center" class="font-36 q-pt-md q-pb-sm relative-position">
       <div class="row">
-        <div class="col-10" align="center">แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0</div>
+        <div class="col-10" align="center">แผนยกระดับการพัฒนาสู่ระบบราชการ 4.0 ระยะ 3 ปี</div>
         <div class="col">
           <q-btn
             @click="changeStatus()"
@@ -27,10 +27,7 @@
               align="center"
               @click="openFile(1)"
             >
-              แผนปฏิบัติการเพื่อยกระดับ
-              <br />การพัฒนาสู่ระบบราชการ 4.0
-              <br />
-              ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+           แผนยกระดับการพัฒนาสู่ระบบราชการ 4.0 ระยะ 3 ปี
             </div>
           </div>
         </div>
