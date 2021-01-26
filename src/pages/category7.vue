@@ -239,7 +239,6 @@
                 align="center"
                 style="text-decoration:underline"
                 @click="addInidcator(index)"
-                v-if="item.question.filter(x => x.extend).length < 3"
                 >เพิ่มตัวชี้วัดที่สอดคล้องกับ GAP ตามแผนปรับปรุง
                 ที่หน่วยงานเลือกเพิ่มเติม</q-btn
               >
