@@ -337,12 +337,8 @@
                 <div class="font-18">
                   <div class="row items-center">
                     <div
-                      class="col q-pa-xs"
-                      :class="
-                        currentStep.category7 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                      class="col q-pa-xs border-teal"
+                     
                     >
                       <q-icon
                         :color="currentStep.category7 == '1' ? 'teal' : ''"
@@ -353,12 +349,11 @@
                     </div>
                     <div class="q-pl-sm">
                       <q-btn
-                        :disable="currentStep.category7 != '1'"
                         size="12px"
                         icon="fas fa-print"
                         @click="printData(7)"
                         round
-                        :color="currentStep.category7 == '1' ? 'teal' : 'grey'"
+                        color="teal"
                       ></q-btn>
                     </div>
                     <div class="col-12">
