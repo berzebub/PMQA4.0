@@ -216,6 +216,11 @@ const routes = [
         path: "assessor/category7GAP/:userId",
         component: () => import("pages/assessor/category7GAP.vue"),
         name: "assessorCategory7GAP"
+      },
+      {
+        path: "assessor/op",
+        component: () => import("pages/assessor/step0.vue"),
+        name: "step0"
       }
     ]
   },

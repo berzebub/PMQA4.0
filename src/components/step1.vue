@@ -1,35 +1,33 @@
 <template>
-  <div class="">
+  <div class>
     <div class="bg3 q-pa-md q-px-lg" style="border-radius: 10px;">
       <div>
         <span class="font-24">ลักษณะองค์กร</span>
       </div>
       <div class="q-pa-sm">
-        <span class="font-16"
-          >ลักษณะสำคัญขององค์กร คือ ภาพรวมของส่วนราชการ
+        <span class="font-16">
+          ลักษณะสำคัญขององค์กร คือ ภาพรวมของส่วนราชการ
           สิ่งสำคัญที่มีอิทธิผลต่อวิธีการดำเนินงาน
           และความท้าทายสำคัญที่ส่วนราชการเผชิญอยู่
           สำหรับการดำเนินการของส่วนราชการที่ต้องการ ตอบสนอง
           การบริหารจัดการเพื่อนำไปสู่การเป็นระบบราชการ 4.0
-          ควรพิจารณาในรายละเอียดดังนี้</span
-        >
+          ควรพิจารณาในรายละเอียดดังนี้
+        </span>
       </div>
     </div>
 
     <div class="q-mt-lg font-18">
       <!-- Start BOX 1 -->
       <div>
-        <span>
-          1. ลักษณะองค์กร: คุณลักษณะสำคัญของส่วนราชการคืออะไร
-        </span>
+        <span>1. ลักษณะองค์กร: คุณลักษณะสำคัญของส่วนราชการคืออะไร</span>
         <div class="q-py-sm q-px-lg">
           <!-- Environment Content -->
           <div>
             <q-expansion-item
               group="boxInputOne"
               header-class="bg3 text-black q-py-sm"
-              dense-toggle=""
-              dense=""
+              dense-toggle
+              dense
               expand-icon-class="text-grey-10"
             >
               <template v-slot:header>
@@ -41,55 +39,40 @@
                   color="negative"
                   v-if="checkEnvironment != 5"
                 ></q-icon>
-                <q-icon
-                  v-else
-                  name="fas fa-check-circle"
-                  size="22px"
-                  color="secondary"
-                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
                 <div style="width:125px;" align="right">
-                  <span class="q-ml-sm q-mr-md">
-                    {{ `เสร็จสิ้น ${checkEnvironment}/5` }}</span
-                  >
+                  <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkEnvironment}/5` }}</span>
                 </div>
               </template>
               <q-card class="bg3">
-                <q-separator
-                  class="bg-grey-7"
-                  style="height: 2px;"
-                ></q-separator>
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
                 <q-card-section>
                   <div class="q-px-lg font-16">
                     <!-- Input Content 1 -->
                     <div>
                       <span>1. พันธกิจหรือหน้าที่ตามกฏหมาย</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isEnvironmentDialog1 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isEnvironmentDialog1">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               1. พันธกิจหรือหน้าที่ตามกฏหมาย
                               <div class="q-pl-lg">
                                 -
                                 พันธกิจหรือหน้าที่หลักตามกฏหมายของส่วนราชการคืออะไรบ้าง?
-                                <br />
-                                -
+                                <br />-
                                 ความสำคัญเชิงเปรียบเทียบของพันธกิจหรือหน้าที่ต่อความสำเร็จของส่วนราชการและ
-
-                                <span class="text-red"
-                                  >การเพิ่มขีดความสามารถในการแข่งขันของประเทศคืออะไร?</span
-                                >
+                                <span
+                                  class="text-red"
+                                >การเพิ่มขีดความสามารถในการแข่งขันของประเทศคืออะไร?</span>
                                 <br />-
                                 กลไกที่ส่วนราชการใช้ในการส่งมอบผลผลิตและบริการตามพันธกิจคืออะไร
                               </div>
@@ -101,28 +84,24 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputEnvironment1"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF1"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputEnvironmentPDF1
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
-                            class="bg-white"
+                            
                             @input="val => uploadFile(val, 'pdf', 1, 'ก.', 1)"
                             v-if="!inputEnvironmentPDF1"
                           >
@@ -132,61 +111,58 @@
                                 align="center"
                                 v-if="!inputEnvironmentPDF1"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
+                            class="relative-position row items-center"
                             align="center"
                             v-if="inputEnvironmentPDF1"
+                            
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
+                          <div style='width:190px'>
+                            <q-btn
+                              class="q-py-sm"
                               align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
                               @click="openFile('pdf', 1, 'ก.', 1)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                            </q-btn>
                             </div>
-                            <div
+                            <!-- <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ก.', 1)"
                             >
                               ลบไฟล์
-                            </div>
+                            </div>-->
+
+                             <div style="width:50px">
+                                  <q-btn
+                                     @click="deleteFile('pdf', 1, 'ก.', 1)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -195,36 +171,33 @@
                     <!-- Input Content 2 -->
                     <div class="q-mt-lg">
                       <span>2. วิสัยทัศน์และค่านิยม</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isEnvironmentDialog2 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isEnvironmentDialog2">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               2. วิสัยทัศน์และค่านิยม
                               <div class="q-pl-lg">
                                 - เป้าประสงค์ วิสัยทัศน์ และค่านิยม
                                 ของส่วนราชการที่ได้ประกาศไว้คืออะไร?
-                                <br />
-                                - สมรรถนะหลักของส่วนราชการคืออะไร
+                                <br />- สมรรถนะหลักของส่วนราชการคืออะไร
                                 และมีความเกี่ยวข้องอย่างไรกับพันธกิจของส่วน
                                 ราชการ?
-
-                                <span class="text-red"
-                                  >ความสำคัญของสมรรถะหลักของส่วนราชการที่มีต่อการพัฒนาเศรษฐกิจ
-                                  สังคม สาธารณสุข และสิ่งแวดล้อมของประเทศคืออะไร
-                                  ทั้งทางตรงและทางอ้อม</span
+                                <span
+                                  class="text-red"
                                 >
+                                  ความสำคัญของสมรรถะหลักของส่วนราชการที่มีต่อการพัฒนาเศรษฐกิจ
+                                  สังคม สาธารณสุข และสิ่งแวดล้อมของประเทศคืออะไร
+                                  ทั้งทางตรงและทางอ้อม
+                                </span>
                               </div>
                             </div>
                           </q-card-section>
@@ -235,30 +208,26 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputEnvironment2"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF2"
                             v-if="!inputEnvironmentPDF2"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputEnvironmentPDF2
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ก.', 2)"
-                            class="bg-white"
+                            
                           >
                             <template v-slot:prepend>
                               <div
@@ -266,61 +235,54 @@
                                 align="center"
                                 v-if="!inputEnvironmentPDF2"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputEnvironmentPDF2"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ก.', 2)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ก.', 2)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                     @click="deleteFile('pdf', 1, 'ก.', 2)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -329,46 +291,39 @@
                     <!-- Input Content 3 -->
                     <div class="q-mt-lg">
                       <span>3. ลักษณะโดยรวมของบุคลากร</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isEnvironmentDialog3 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isEnvironmentDialog3">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               3. ลักษณะโดยรวมของบุคลากร
                               <div class="q-pl-lg">
                                 - ลักษณะโดยรวมของบุคลากรในส่วนราชการเป็นอย่างไร?
-                                <br />
-                                -
+                                <br />-
                                 มีการจำแนกบุคลากรหรือพนักงานออกเป็นกลุ่มและประเภทอะไรบ้าง?
-                                <br />
-                                -
+                                <br />-
                                 อะไรคือข้อกำหนดพื้นฐานด้านการศึกษาสำหรับกลุ่มบุคลากรและพนักงานประเภทต่างๆ?
-                                <br />
-                                -
+                                <br />-
                                 องค์ประกอบสำคัญที่ทำให้บุคลากรเหล่านี้มีส่วนรวมในการทำงานเพื่อบรรลุพันธกิจและ
                                 วิสัยทัศน์ของส่วนราชการคืออะไร?
-                                <br />
-                                - ในการทำงานจำเป็นต้องมีข้อกำหนดด้านสุขภาพ
+                                <br />- ในการทำงานจำเป็นต้องมีข้อกำหนดด้านสุขภาพ
                                 ความปลอดภัยและความเสี่ยงภัยของ ส่วนราชการ
                                 อะไรบ้าง
-                                <br />
-                                -<span class="text-red">
+                                <br />-
+                                <span class="text-red">
                                   ประเด็นการเปลี่ยนแปลงด้านบุคลากรที่สำคัญคืออะไร?
                                   พื้นฐานของบุคลากรที่มีผลต่อ
                                   การวางแผนพัฒนาและการสร้างขีดความสามารถในการเป็นองค์กรสมรรถนะสูงมี
-                                  อะไรบ้าง</span
-                                >
+                                  อะไรบ้าง
+                                </span>
                               </div>
                             </div>
                           </q-card-section>
@@ -379,30 +334,26 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputEnvironment3"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF3"
                             v-if="!inputEnvironmentPDF3"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputEnvironmentPDF3
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ก.', 3)"
-                            class="bg-white"
+                            
                           >
                             <template v-slot:prepend>
                               <div
@@ -410,62 +361,55 @@
                                 align="center"
                                 v-if="!inputEnvironmentPDF3"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputEnvironmentPDF3"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ก.', 3)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ก.', 3)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                     @click="deleteFile('pdf', 1, 'ก.', 3)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -474,30 +418,29 @@
                     <!-- Input Content 4 -->
                     <div class="q-mt-lg">
                       <span>4. สินทรัพย์</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isEnvironmentDialog4 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isEnvironmentDialog4">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               4. สินทรัพย์
                               <div class="q-pl-lg">
                                 - ส่วนราชการมีอาคารสถานที่ เทคโนโลยี และอุปกรณ์
                                 ที่สำคัญอะไรบ้าง
-                                <span class="text-red">
-                                  รวมทั้งเทคโนโลยี
-                                  การสื่อสารและการให้บริการ?</span
+                                <span
+                                  class="text-red"
                                 >
+                                  รวมทั้งเทคโนโลยี
+                                  การสื่อสารและการให้บริการ?
+                                </span>
                               </div>
                             </div>
                           </q-card-section>
@@ -508,30 +451,26 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputEnvironment4"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF4"
                             v-if="!inputEnvironmentPDF4"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputEnvironmentPDF4
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ก.', 4)"
-                            class="bg-white"
+                            
                           >
                             <template v-slot:prepend>
                               <div
@@ -539,62 +478,55 @@
                                 align="center"
                                 v-if="!inputEnvironmentPDF4"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputEnvironmentPDF4"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ก.', 4)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
-                            <div
+                              <div class="row items-center fit">
+                                <div >
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                            <!-- <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ก.', 4)"
                             >
                               ลบไฟล์
-                            </div>
+                              </div> -->
+                              </q-btn>
+
+                               <div style="width:50px">
+                                  <q-btn
+                                    @click="deleteFile('pdf', 1, 'ก.', 4)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -603,24 +535,19 @@
                     <!-- Input Content 5 -->
                     <div class="q-mt-lg">
                       <span>5. กฏหมาย กฏระเบียบและข้อบังคับ</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isEnvironmentDialog5 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isEnvironmentDialog5">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
-                            <div class="font-16 font-prompt-r">
-                              5. กฏหมาย กฏระเบียบ
-                            </div>
+                            <div class="font-16 font-prompt-r">5. กฏหมาย กฏระเบียบ</div>
                             <div class="font-16 font-prompt-r">
                               <div class="q-pl-lg">
                                 -
@@ -635,29 +562,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputEnvironment5"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputEnvironmentPDF5"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputEnvironmentPDF5
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ก.', 5)"
-                            class="bg-white"
+                            
                             v-if="!inputEnvironmentPDF5"
                           >
                             <template v-slot:prepend>
@@ -666,62 +589,55 @@
                                 align="center"
                                 v-if="!inputEnvironmentPDF5"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputEnvironmentPDF5"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ก.', 5)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ก.', 5)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                    @click="deleteFile('pdf', 1, 'ก.', 5)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -738,8 +654,8 @@
             <q-expansion-item
               group="boxInputOne"
               header-class="bg3 text-black q-py-sm"
-              dense-toggle=""
-              dense=""
+              dense-toggle
+              dense
               expand-icon-class="text-grey-10"
             >
               <template v-slot:header>
@@ -751,51 +667,37 @@
                   color="negative"
                   v-if="checkRelation != 3"
                 ></q-icon>
-                <q-icon
-                  v-else
-                  name="fas fa-check-circle"
-                  size="22px"
-                  color="secondary"
-                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
                 <div style="width:125px;" align="right">
-                  <span class="q-ml-sm q-mr-md">
-                    {{ `เสร็จสิ้น ${checkRelation}/3` }}</span
-                  >
+                  <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkRelation}/3` }}</span>
                 </div>
               </template>
 
               <q-card class="bg3">
-                <q-separator
-                  class="bg-grey-7"
-                  style="height: 2px;"
-                ></q-separator>
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
                 <q-card-section>
                   <div class="q-px-lg font-16">
                     <!-- Input Content 1 -->
                     <div>
                       <span>1. โครงสร้างองค์กร</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isRelationDialog1 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isRelationDialog1">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               1. โครงสร้างองค์กร
                               <div class="q-pl-lg">
                                 -
                                 โครงสร้างและระบบการกำกับดูแลของส่วนราชการมีลักษณะอย่างไร?
-                                <br />
-                                -
+                                <br />-
                                 ระบบการรายงานระหว่างคณะกรรมการกำกับดูแลส่วนราชการ
                                 ผู้บริหารส่วนราชการ
                                 และส่วนราชการที่กำกับมีลักษณะเช่นใด?
@@ -809,29 +711,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputRelation1"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputRelationPDF1"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputRelationPDF1
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ข.', 1)"
-                            class="bg-white"
+                            
                             v-if="!inputRelationPDF1"
                           >
                             <template v-slot:prepend>
@@ -840,62 +738,55 @@
                                 align="center"
                                 v-if="!inputRelationPDF1"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputRelationPDF1"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ข.', 1)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ข.', 1)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                   @click="deleteFile('pdf', 1, 'ข.', 1)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -904,33 +795,28 @@
                     <!-- Input Content 2 -->
                     <div class="q-mt-lg">
                       <span>2. ผู้รับบริการและผู้มีส่วนได้ส่วนเสีย</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isRelationDialog2 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isRelationDialog2">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               2. ผู้รับบริการและผู้มีส่วนได้ส่วนเสีย
                               <div class="q-pl-lg">
                                 - ระดับของกลุ่มเป้าหมาย กลุ่มผู้รับบริหาร
                                 และกลุ่มผู้มีส่วนได้ส่วนเสียที่สำคัญของส่วนราชการมีอะไรบ้าง?
-                                <br />
-                                -
+                                <br />-
                                 กลุ่มตัวอย่างมีความต้องการและความคาดหวังที่สำคัญต่อผลผลิต
                                 ต่อการบริหารที่มีให้
                                 และต่อการปฏิบัติการของส่วนราชการอย่างไร?
-                                <br />
-                                -
+                                <br />-
                                 ความต้องการและความคาดหวังของแต่ละกลุ่มมีความแตกต่างกันอย่างไร?
                               </div>
                             </div>
@@ -942,29 +828,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputRelation2"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputRelationPDF2"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputRelationPDF2
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ข.', 2)"
-                            class="bg-white"
+                            
                             v-if="!inputRelationPDF2"
                           >
                             <template v-slot:prepend>
@@ -973,62 +855,55 @@
                                 align="center"
                                 v-if="!inputRelationPDF2"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputRelationPDF2"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ข.', 2)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ข.', 2)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                  @click="deleteFile('pdf', 1, 'ข.', 2)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1036,24 +911,21 @@
 
                     <!-- Input Content 3 -->
                     <div class="q-mt-lg">
-                      <span
-                        >3.
-                        ส่วนราชการหรือองค์กรที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน</span
-                      >
-                      <q-btn
+                      <span>
+                        3.
+                        ส่วนราชการหรือองค์กรที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน
+                      </span>
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isRelationDialog3 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isRelationDialog3">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               3.
@@ -1066,11 +938,9 @@
                                 โดยเฉพาะอย่างยิ่งในการปฏิบัติตามภาระหน้าที่ของ
                                 ส่วนราชการ และยกระดับความสามารถในการแข่งขัน
                                 ของประเทศ?
-                                <br />
-                                -
+                                <br />-
                                 กลุ่มเหล่านี้มีส่วนร่วมอะไรในการสร้างนวัตกรรมให้แก่ส่วนราชการ?
-                                <br />
-                                - กลไกที่สำคัญในการสื่อสาร
+                                <br />- กลไกที่สำคัญในการสื่อสาร
                                 และข้อกำหนดสำคัญในการปฏิบัติงานร่วมกันมีอะไรบ้าง?
                               </div>
                             </div>
@@ -1082,29 +952,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputRelation3"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputRelationPDF3"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputRelationPDF3
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 1, 'ข.', 3)"
-                            class="bg-white"
+                            
                             v-if="!inputRelationPDF3"
                           >
                             <template v-slot:prepend>
@@ -1113,62 +979,55 @@
                                 align="center"
                                 v-if="!inputRelationPDF3"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputRelationPDF3"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 1, 'ข.', 3)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 1, 'ข.', 3)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                    @click="deleteFile('pdf', 1, 'ข.', 3)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1185,16 +1044,14 @@
 
       <!-- Start BOX 2 -->
       <div class="q-mt-lg">
-        <span>
-          2. สภาวการณ์ขององค์กร: สภาวการณ์เชิงยุทธศาสตร์ของส่วนราชการเป็นเช่นใด?
-        </span>
+        <span>2. สภาวการณ์ขององค์กร: สภาวการณ์เชิงยุทธศาสตร์ของส่วนราชการเป็นเช่นใด?</span>
         <div class="q-py-sm q-px-lg">
-          <div class="">
+          <div class>
             <q-expansion-item
               group="boxInputTwo"
               header-class="bg3 text-black q-py-sm"
-              dense-toggle=""
-              dense=""
+              dense-toggle
+              dense
               expand-icon-class="text-grey-10"
             >
               <template v-slot:header>
@@ -1206,46 +1063,33 @@
                   color="negative"
                   v-if="checkCompetition != 3"
                 ></q-icon>
-                <q-icon
-                  v-else
-                  name="fas fa-check-circle"
-                  size="22px"
-                  color="secondary"
-                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
                 <div style="width:125px;" align="right">
-                  <span class="q-ml-sm q-mr-md">
-                    {{ `เสร็จสิ้น ${checkCompetition}/3` }}</span
-                  >
+                  <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkCompetition}/3` }}</span>
                 </div>
               </template>
 
               <q-card class="bg3">
-                <q-separator
-                  class="bg-grey-7"
-                  style="height: 2px;"
-                ></q-separator>
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
                 <q-card-section>
                   <div class="q-px-lg font-16">
                     <!-- Input Content 1 -->
                     <div>
-                      <span
-                        >1.
-                        สภาพแวดล้อมด้านการแข่งขันทั้งภายในและภายนอกประเทศ</span
-                      >
-                      <q-btn
+                      <span>
+                        1.
+                        สภาพแวดล้อมด้านการแข่งขันทั้งภายในและภายนอกประเทศ
+                      </span>
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isCompetitionEnvironmentDialog1 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isCompetitionEnvironmentDialog1">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               1.
@@ -1253,9 +1097,10 @@
                               <div class="q-pl-lg">
                                 -
                                 สภาพแวดล้อมด้านการแข่งขันทั้งภายในและภายนอกประเทศของส่วนราชการเป็นเช่นใด?
-                                ประเด็นการแข่งขันคืออะไร<span class="text-red"
-                                  >และผลต่อ การดำเนินการของส่วนราชการ?</span
-                                >
+                                ประเด็นการแข่งขันคืออะไร
+                                <span
+                                  class="text-red"
+                                >และผลต่อ การดำเนินการของส่วนราชการ?</span>
                               </div>
                             </div>
                           </q-card-section>
@@ -1266,29 +1111,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputCompetitionEnvironment1"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputCompetitionEnvironmentPDF1"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputCompetitionEnvironmentPDF1
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 2, 'ก.', 1)"
-                            class="bg-white"
+                            
                             v-if="!inputCompetitionEnvironmentPDF1"
                           >
                             <template v-slot:prepend>
@@ -1297,62 +1138,55 @@
                                 align="center"
                                 v-if="!inputCompetitionEnvironmentPDF1"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputCompetitionEnvironmentPDF1"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 2, 'ก.', 1)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 2, 'ก.', 1)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                   @click="deleteFile('pdf', 2, 'ก.', 1)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1361,27 +1195,26 @@
                     <!-- Input Content 2 -->
                     <div class="q-mt-lg">
                       <span>2. การเปลี่ยนแปลงความสามารถในการแข่งขัน</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isCompetitionEnvironmentDialog2 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isCompetitionEnvironmentDialog2">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               2. การเปลี่ยนแปลงความสามารถในการแข่งขัน
                               <div class="q-pl-lg">
                                 - การเปลี่ยนแปลงที่สำคัญ (ถ้ามี)
                                 ซึ่งมีผลต่อสถานะการแข่งขันของส่วนราชการ
-                                <span class="text-red">และของประเทศ</span>
+                                <span
+                                  class="text-red"
+                                >และของประเทศ</span>
                                 รวมถึงการเปลี่ยนแปลงที่สร้างโอกาส
                                 สำหรับการสร้างนวัตกรรมและความร่วมมือคืออะไร?
                               </div>
@@ -1394,29 +1227,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputCompetitionEnvironment2"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputCompetitionEnvironmentPDF2"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputCompetitionEnvironmentPDF2
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 2, 'ก.', 2)"
-                            class="bg-white"
+                            
                             v-if="!inputCompetitionEnvironmentPDF2"
                           >
                             <template v-slot:prepend>
@@ -1425,62 +1254,55 @@
                                 align="center"
                                 v-if="!inputCompetitionEnvironmentPDF2"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputCompetitionEnvironmentPDF2"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 2, 'ก.', 2)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 2, 'ก.', 2)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                    @click="deleteFile('pdf', 2, 'ก.', 2)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1489,33 +1311,28 @@
                     <!-- Input Content 3 -->
                     <div class="q-mt-lg">
                       <span>3. แหล่งข้อมูลเชิงเปรียบเทียบ</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isCompetitionEnvironmentDialog3 = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isCompetitionEnvironmentDialog3">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               3. แหล่งข้อมูลเชิงเปรียบเทียบ
                               <div class="q-pl-lg">
                                 - แหล่งข้อมูลสำคัญสำหรับข้อมูลเชิงเปรียบเทียบ
                                 และเชิงแข่งขันในภารกิจที่คล้ายคลึงกันมีอะไรบ้าง?
-                                <br />
-                                -
+                                <br />-
                                 แหล่งข้อมูลสำคัญสำหรับข้อมูลเชิงเปรียบเทียบจากหน่วยงานอื่นๆ
                                 ทั้งในส่วนราชการ นอกส่วนราชการ
                                 และจากต่างประเภทกันมีอะไรบ้าง?
-                                <br />
-                                - มีข้อจำกัดอะไร (ถ้ามี)
+                                <br />- มีข้อจำกัดอะไร (ถ้ามี)
                                 ในการได้มาซึ่งข้อมูลเหล่านี้?
                               </div>
                             </div>
@@ -1527,28 +1344,24 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputCompetitionEnvironment3"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputCompetitionEnvironmentPDF3"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputCompetitionEnvironmentPDF3
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
-                            class="bg-white"
+                            
                             @input="val => uploadFile(val, 'pdf', 2, 'ก.', 3)"
                             v-if="!inputCompetitionEnvironmentPDF3"
                           >
@@ -1558,62 +1371,55 @@
                                 align="center"
                                 v-if="!inputCompetitionEnvironmentPDF3"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputCompetitionEnvironmentPDF3"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 2, 'ก.', 3)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 2, 'ก.', 3)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                    @click="deleteFile('pdf', 2, 'ก.', 3)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1628,8 +1434,8 @@
             <q-expansion-item
               group="boxInputTwo"
               header-class="bg3 text-black q-py-sm"
-              dense-toggle=""
-              dense=""
+              dense-toggle
+              dense
               expand-icon-class="text-grey-10"
             >
               <template v-slot:header>
@@ -1641,46 +1447,33 @@
                   color="negative"
                   v-if="checkStategy != 1"
                 ></q-icon>
-                <q-icon
-                  v-else
-                  name="fas fa-check-circle"
-                  size="22px"
-                  color="secondary"
-                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
                 <div style="width:125px;" align="right">
-                  <span class="q-ml-sm q-mr-md ">
-                    {{ `เสร็จสิ้น ${checkStategy}/1` }}</span
-                  >
+                  <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkStategy}/1` }}</span>
                 </div>
               </template>
 
               <q-card class="bg3">
-                <q-separator
-                  class="bg-grey-7"
-                  style="height: 2px;"
-                ></q-separator>
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
                 <q-card-section>
                   <div class="q-px-lg font-16">
                     <!-- Input Content 1 -->
                     <div>
-                      <span
-                        >1.
-                        ความท้าทายเชิงยุทธศาสตร์และความได้เปรียบเชิงยุทธศาสตร์</span
-                      >
-                      <q-btn
+                      <span>
+                        1.
+                        ความท้าทายเชิงยุทธศาสตร์และความได้เปรียบเชิงยุทธศาสตร์
+                      </span>
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isStategyDialog = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isStategyDialog">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               1.
@@ -1700,29 +1493,25 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputStategy"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputStategyPDF1"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputStategyPDF1
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
                             @input="val => uploadFile(val, 'pdf', 2, 'ข.', 1)"
-                            class="bg-white"
+                            
                             v-if="!inputStategyPDF1"
                           >
                             <template v-slot:prepend>
@@ -1731,62 +1520,55 @@
                                 align="center"
                                 v-if="!inputStategyPDF1"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputStategyPDF1"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 2, 'ข.', 1)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 2, 'ข.', 1)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                     @click="deleteFile('pdf', 2, 'ข.', 1)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1801,8 +1583,8 @@
             <q-expansion-item
               group="boxInputTwo"
               header-class="bg3 text-black q-py-sm"
-              dense-toggle=""
-              dense=""
+              dense-toggle
+              dense
               expand-icon-class="text-grey-10"
             >
               <template v-slot:header>
@@ -1814,42 +1596,29 @@
                   color="negative"
                   v-if="checkPerformance != 1"
                 ></q-icon>
-                <q-icon
-                  v-else
-                  name="fas fa-check-circle"
-                  size="22px"
-                  color="secondary"
-                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
                 <div style="width:125px;" align="right">
-                  <span class="q-ml-sm q-mr-md">
-                    {{ `เสร็จสิ้น ${checkPerformance}/1` }}</span
-                  >
+                  <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkPerformance}/1` }}</span>
                 </div>
               </template>
               <q-card class="bg3">
-                <q-separator
-                  class="bg-grey-7"
-                  style="height: 2px;"
-                ></q-separator>
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
                 <q-card-section>
                   <div class="q-px-lg font-16">
                     <!-- Input Content 1 -->
                     <div>
                       <span>1. ระบบการปรับปรุงผลการดำเนินการ</span>
-                      <q-btn
+                      <!-- <q-btn
                         class="q-mx-md bg-teal text-white"
                         dense=""
                         flat
                         round
                         @click="isPerformanceSystemDialog = true"
                         ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>
+                      </q-btn>-->
 
                       <q-dialog v-model="isPerformanceSystemDialog">
-                        <q-card
-                          class="q-pl-lg q-py-sm"
-                          style="max-width: 700px; width: 100%;"
-                        >
+                        <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>
                             <div class="font-16 font-prompt-r">
                               1. ระบบการปรับปรุงผลการดำเนินการ
@@ -1869,28 +1638,24 @@
                         <textarea
                           style="width:100%;border-radius:5px"
                           rows="5"
-                          outlined=""
+                          outlined
                           bg-color="white"
                           v-model.lazy="inputPerformanceSystem"
                         />
                       </div>
 
-                      <div class=" row ">
+                      <div class="row">
                         <div></div>
                         <q-space></q-space>
                         <div class="q-ml-lg">
                           <q-file
                             v-model="inputPerformanceSystemPDF1"
-                            dense=""
+                            dense
                             style="width:160px;overflow:hidden;"
-                            :style="
-                              !inputPerformanceSystemPDF1
-                                ? 'border:2px solid #e84c93;border-radius:10px;'
-                                : 'border:2px solid #000000;border-radius:0px;'
-                            "
+                            
                             borderless
                             accept=".pdf"
-                            class="bg-white"
+                            
                             v-if="!inputPerformanceSystemPDF1"
                             @input="val => uploadFile(val, 'pdf', 2, 'ค.', 1)"
                           >
@@ -1900,62 +1665,55 @@
                                 align="center"
                                 v-if="!inputPerformanceSystemPDF1"
                               >
-                                <span class="font-16 text-black"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                <span class="font-16 text-black" style='text-decoration:underline'>pdf เอกสารเพิ่มเติม</span>
                               </div>
 
-                              <div
-                                class="absolute-center full-width"
-                                align="center"
-                                v-else
-                              >
-                                <q-icon
-                                  name="fas fa-file-pdf"
-                                  class="color1 q-px-xs"
-                                  size="25px"
-                                ></q-icon>
+                              <div class="absolute-center full-width" align="center" v-else>
+                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
                                 <span
                                   class="font-14 text-black"
                                   style="text-decoration:underline"
-                                  >pdf เอกสารเพิ่มเติม</span
-                                >
+                                >pdf เอกสารเพิ่มเติม</span>
                               </div>
                             </template>
 
-                            <template v-slot:file> </template>
+                            <template v-slot:file></template>
                           </q-file>
 
                           <div
-                            class="relative-position cursor-pointer"
-                            style="width:160px"
+                            class="relative-position row items-center"
+                            
                             align="center"
                             v-if="inputPerformanceSystemPDF1"
                           >
-                            <div
-                              class="full-width q-py-sm bg-white"
-                              align="center"
-                              style="border:2px solid #000000;border-radius:0px;"
+                            <q-btn
+                              class="q-py-sm"
                               @click="openFile('pdf', 2, 'ค.', 1)"
+                              color="teal"
+                              style="width:180px"
+                              dense
                             >
-                              <q-icon
-                                name="fas fa-file-pdf"
-                                class="color1 q-px-xs"
-                                size="20px"
-                              ></q-icon>
-                              <span
-                                class="font-14 text-black"
-                                style="text-decoration:underline"
-                              >
-                                pdf เอกสารเพิ่มเติม
-                              </span>
-                            </div>
+                              <div class="row items-center fit">
+                                <div style>
+                                  <q-icon name="fas fa-file-pdf"></q-icon>
+                                </div>
+                                <div class="col font-18">PDF</div>
+                              </div>
+                              <!-- </div>
                             <div
                               class="bg1 text-white font-12 q-py-sm"
                               @click="deleteFile('pdf', 2, 'ค.', 1)"
                             >
-                              ลบไฟล์
-                            </div>
+                              ลบไฟล์-->
+                            </q-btn>
+
+                             <div style="width:50px">
+                                  <q-btn
+                                  @click="deleteFile('pdf', 2, 'ค.', 1)"
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
+                                </div>
                           </div>
                         </div>
                       </div>
@@ -1981,7 +1739,7 @@
       ></q-btn>
     </div>
 
-    <q-dialog v-model="isDelete" persistent="">
+    <q-dialog v-model="isDelete" persistent>
       <q-card style="max-width:400px;width:100%;">
         <q-card-section align="center">
           <div class="q-pb-md">
@@ -1995,8 +1753,8 @@
           <div align="center">
             <q-btn
               class="font-14 q-mx-xs"
-              dense=""
-              outline=""
+              dense
+              outline
               style="width:130px;border-radius:0px;"
               label="ยกเลิก"
               v-close-popup
@@ -2004,7 +1762,7 @@
             <q-btn
               class="bg-teal text-white font-14 q-mx-xs"
               push
-              dense=""
+              dense
               style="width:130px;border-radius:0px;"
               label="ตกลง"
               :disable="isSaveData"
@@ -2099,7 +1857,7 @@ export default {
       inputPerformanceSystemIMG1: null,
 
       // Save Data
-      isSaveData: false
+      isSaveData: false,
     };
   },
   methods: {
@@ -2191,7 +1949,7 @@ export default {
         category: data.category,
         category_q_number: data.category_q_number,
         year: this.$q.sessionStorage.getItem("y"),
-        type: data.type
+        type: data.type,
       };
 
       const url = this.apiPath + "user/deleteFileCategory0.php";
@@ -2204,7 +1962,7 @@ export default {
       const url = this.apiPath + "user/getCategory0.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y")
+        year: this.$q.sessionStorage.getItem("y"),
       };
       let data = await Axios.post(url, postData);
       let getData = data.data;
@@ -2212,7 +1970,7 @@ export default {
       if (getData) {
         // ข้อ 1 ก 1
         let inputEnvironment1 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "1"
@@ -2221,7 +1979,7 @@ export default {
         if (inputEnvironment1.length) {
           this.inputEnvironment1 = inputEnvironment1[0].text;
           let checkFile1 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ก." &&
               x.category_q_number == "1"
@@ -2243,7 +2001,7 @@ export default {
 
         // ข้อ1 ก2
         let inputEnvironment2 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "2"
@@ -2252,7 +2010,7 @@ export default {
         if (inputEnvironment2.length) {
           this.inputEnvironment2 = inputEnvironment2[0].text;
           let checkFile2 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ก." &&
               x.category_q_number == "2"
@@ -2274,7 +2032,7 @@ export default {
 
         // ข้อ1 ก3
         let inputEnvironment3 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "3"
@@ -2283,7 +2041,7 @@ export default {
         if (inputEnvironment3.length) {
           this.inputEnvironment3 = inputEnvironment3[0].text;
           let checkFile3 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ก." &&
               x.category_q_number == "3"
@@ -2305,7 +2063,7 @@ export default {
 
         // ข้อ1 ก4
         let inputEnvironment4 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "4"
@@ -2313,7 +2071,7 @@ export default {
         if (inputEnvironment4.length) {
           this.inputEnvironment4 = inputEnvironment4[0].text;
           let checkFile4 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ก." &&
               x.category_q_number == "4"
@@ -2335,7 +2093,7 @@ export default {
 
         // ข้อ1 ก5
         let inputEnvironment5 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ก." &&
             x.category_q_number == "5"
@@ -2343,7 +2101,7 @@ export default {
         if (inputEnvironment5.length) {
           this.inputEnvironment5 = inputEnvironment5[0].text;
           let checkFile5 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ก." &&
               x.category_q_number == "5"
@@ -2365,7 +2123,7 @@ export default {
 
         // ข้อ1 ข1
         let inputRelation1 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ข." &&
             x.category_q_number == "1"
@@ -2373,7 +2131,7 @@ export default {
         if (inputRelation1.length) {
           this.inputRelation1 = inputRelation1[0].text;
           let checkFile6 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ข." &&
               x.category_q_number == "1"
@@ -2395,7 +2153,7 @@ export default {
 
         // ข้อ1 ข2
         let inputRelation2 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ข." &&
             x.category_q_number == "2"
@@ -2404,7 +2162,7 @@ export default {
         if (inputRelation2.length) {
           this.inputRelation2 = inputRelation2[0].text;
           let checkFile7 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ข." &&
               x.category_q_number == "2"
@@ -2426,7 +2184,7 @@ export default {
 
         // ข้อ1 ข3
         let inputRelation3 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "1" &&
             x.category == "ข." &&
             x.category_q_number == "3"
@@ -2435,7 +2193,7 @@ export default {
         if (inputRelation3.length) {
           this.inputRelation3 = inputRelation3[0].text;
           let checkFile8 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "1" &&
               x.category == "ข." &&
               x.category_q_number == "3"
@@ -2457,7 +2215,7 @@ export default {
 
         // ข้อ2 ก1
         let inputCompetitionEnvironment1 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "2" &&
             x.category == "ก." &&
             x.category_q_number == "1"
@@ -2466,7 +2224,7 @@ export default {
           this.inputCompetitionEnvironment1 =
             inputCompetitionEnvironment1[0].text;
           let checkFile9 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "2" &&
               x.category == "ก." &&
               x.category_q_number == "1"
@@ -2488,7 +2246,7 @@ export default {
 
         // ข้อ2 ก2
         let inputCompetitionEnvironment2 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "2" &&
             x.category == "ก." &&
             x.category_q_number == "2"
@@ -2498,7 +2256,7 @@ export default {
           this.inputCompetitionEnvironment2 =
             inputCompetitionEnvironment2[0].text;
           let checkFile10 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "2" &&
               x.category == "ก." &&
               x.category_q_number == "2"
@@ -2520,7 +2278,7 @@ export default {
 
         // ข้อ2 ก3
         let inputCompetitionEnvironment3 = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "2" &&
             x.category == "ก." &&
             x.category_q_number == "3"
@@ -2529,7 +2287,7 @@ export default {
           this.inputCompetitionEnvironment3 =
             inputCompetitionEnvironment3[0].text;
           let checkFile11 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "2" &&
               x.category == "ก." &&
               x.category_q_number == "3"
@@ -2551,7 +2309,7 @@ export default {
 
         // ข้อ2 ข1
         let inputStategy = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "2" &&
             x.category == "ข." &&
             x.category_q_number == "1"
@@ -2559,7 +2317,7 @@ export default {
         if (inputStategy.length) {
           this.inputStategy = inputStategy[0].text;
           let checkFile12 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "2" &&
               x.category == "ข." &&
               x.category_q_number == "1"
@@ -2581,7 +2339,7 @@ export default {
 
         // ข้อ2 ค1
         let inputPerformanceSystem = getData.filter(
-          x =>
+          (x) =>
             x.q_number == "2" &&
             x.category == "ค." &&
             x.category_q_number == "1"
@@ -2589,7 +2347,7 @@ export default {
         if (inputPerformanceSystem.length) {
           this.inputPerformanceSystem = inputPerformanceSystem[0].text;
           let checkFile13 = getData.filter(
-            x =>
+            (x) =>
               x.q_number == "2" &&
               x.category == "ค." &&
               x.category_q_number == "1"
@@ -2627,7 +2385,7 @@ export default {
           category: "category0",
           user_id: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          status: 1 // 1 = finish
+          status: 1, // 1 = finish
         };
         let data = await Axios.post(url, postData);
         // console.log(data);
@@ -2642,7 +2400,7 @@ export default {
           category: "category0",
           user_id: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          status: 2 // 1 = not finish all
+          status: 2, // 1 = not finish all
         };
         let data = await Axios.post(url, postData);
         // console.log(data);
@@ -2651,7 +2409,7 @@ export default {
           category: "category0",
           user_id: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          status: 0 // 1 = not finish all
+          status: 0, // 1 = not finish all
         };
         let data = await Axios.post(url, postData);
         // console.log(data);
@@ -2670,7 +2428,7 @@ export default {
           category_q_number: 1,
           text: this.inputEnvironment1,
           pdf_file: this.inputEnvironmentPDF1,
-          img_file: this.inputEnvironmentIMG1
+          img_file: this.inputEnvironmentIMG1,
         },
         {
           q_number: 1,
@@ -2679,7 +2437,7 @@ export default {
           category_q_number: 2,
           text: this.inputEnvironment2,
           pdf_file: this.inputEnvironmentPDF2,
-          img_file: this.inputEnvironmentIMG2
+          img_file: this.inputEnvironmentIMG2,
         },
         {
           q_number: 1,
@@ -2688,7 +2446,7 @@ export default {
           category_q_number: 3,
           text: this.inputEnvironment3,
           pdf_file: this.inputEnvironmentPDF3,
-          img_file: this.inputEnvironmentIMG3
+          img_file: this.inputEnvironmentIMG3,
         },
         {
           q_number: 1,
@@ -2697,7 +2455,7 @@ export default {
           category_q_number: 4,
           text: this.inputEnvironment4,
           pdf_file: this.inputEnvironmentPDF4,
-          img_file: this.inputEnvironmentIMG4
+          img_file: this.inputEnvironmentIMG4,
         },
         {
           q_number: 1,
@@ -2706,7 +2464,7 @@ export default {
           category_q_number: 5,
           text: this.inputEnvironment5,
           pdf_file: this.inputEnvironmentPDF5,
-          img_file: this.inputEnvironmentIMG5
+          img_file: this.inputEnvironmentIMG5,
         },
         // หมวด ข
         {
@@ -2716,7 +2474,7 @@ export default {
           category_q_number: 1,
           text: this.inputRelation1,
           pdf_file: this.inputRelationPDF1,
-          img_file: this.inputRelationIMG1
+          img_file: this.inputRelationIMG1,
         },
         {
           q_number: 1,
@@ -2725,7 +2483,7 @@ export default {
           category_q_number: 2,
           text: this.inputRelation2,
           pdf_file: this.inputRelationPDF2,
-          img_file: this.inputRelationIMG2
+          img_file: this.inputRelationIMG2,
         },
         {
           q_number: 1,
@@ -2734,7 +2492,7 @@ export default {
           category_q_number: 3,
           text: this.inputRelation3,
           pdf_file: this.inputRelationPDF3,
-          img_file: this.inputRelationIMG3
+          img_file: this.inputRelationIMG3,
         },
         // เริ่มข้อ2 หมวด ก.
         {
@@ -2744,7 +2502,7 @@ export default {
           category_q_number: 1,
           text: this.inputCompetitionEnvironment1,
           pdf_file: this.inputCompetitionEnvironmentPDF1,
-          img_file: this.inputCompetitionEnvironmentIMG1
+          img_file: this.inputCompetitionEnvironmentIMG1,
         },
         {
           q_number: 2,
@@ -2753,7 +2511,7 @@ export default {
           category_q_number: 2,
           text: this.inputCompetitionEnvironment2,
           pdf_file: this.inputCompetitionEnvironmentPDF2,
-          img_file: this.inputCompetitionEnvironmentIMG2
+          img_file: this.inputCompetitionEnvironmentIMG2,
         },
         {
           q_number: 2,
@@ -2762,7 +2520,7 @@ export default {
           category_q_number: 3,
           text: this.inputCompetitionEnvironment3,
           pdf_file: this.inputCompetitionEnvironmentPDF3,
-          img_file: this.inputCompetitionEnvironmentIMG3
+          img_file: this.inputCompetitionEnvironmentIMG3,
         },
         // เริ่มข้อ2 หมวด ข.
         {
@@ -2772,7 +2530,7 @@ export default {
           category_q_number: 1,
           text: this.inputStategy,
           pdf_file: this.inputStategyPDF1,
-          img_file: this.inputStategyIMG1
+          img_file: this.inputStategyIMG1,
         },
         // เริ่มข้อ2 หมวด ค.
         {
@@ -2782,14 +2540,14 @@ export default {
           category_q_number: 1,
           text: this.inputPerformanceSystem,
           pdf_file: this.inputPerformanceSystemPDF1,
-          img_file: this.inputPerformanceSystemIMG1
-        }
+          img_file: this.inputPerformanceSystemIMG1,
+        },
       ];
       let finalData = {
         postData: sendData,
         mode: 0,
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid")
+        user_id: this.$q.sessionStorage.getItem("uid"),
       };
       const url = this.apiPath + "user/addUpdateCategory0.php";
       let post = await Axios.post(url, finalData);
@@ -2802,6 +2560,7 @@ export default {
       }, 1000);
     },
     async uploadFile(file, type, q_number, category, category_q_number) {
+      this.loadingShow();
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -2814,13 +2573,14 @@ export default {
       formData.append("type", type);
       const url = this.apiPath + "user/uploadFileCategory0.php";
       let data = await Axios.post(url, formData);
+      this.loadingHide();
     },
     deleteFile(type, q_number, category, category_q_number) {
       let postData = {
         type: type,
         q_number: q_number,
         category: category,
-        category_q_number: category_q_number
+        category_q_number: category_q_number,
       };
       this.temp = postData;
       this.isDelete = true;
@@ -2837,9 +2597,7 @@ export default {
       } else {
         category = "c";
       }
-      let r = Math.random()
-        .toString(36)
-        .substring(7);
+      let r = Math.random().toString(36).substring(7);
       let fileName;
       if (type == "pdf") {
         fileName = `${uid}-${q_number}-${category}-${category_q_number}-${year}.pdf?${r}`;
@@ -2848,7 +2606,7 @@ export default {
       }
       let link = this.apiPath + "uploadcategory0/" + fileName;
       window.open(link);
-    }
+    },
   },
   computed: {
     checkEnvironment() {
@@ -2968,11 +2726,11 @@ export default {
         this.status = "success";
       }
       return performanceCount;
-    }
+    },
   },
   created() {
     this.getData();
-  }
+  },
 };
 </script>
 

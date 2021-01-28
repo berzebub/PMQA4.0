@@ -1,0 +1,1367 @@
+<template>
+  <div class style="max-width:1280px;margin:auto">
+    <div class="relative-position">
+      <h4>ลักษณะสำคัญขององค์กร ปี {{ $q.sessionStorage.getItem("y") +543 }}</h4>
+
+      <div class="absolute-right full-height flex flex-center">
+        <q-btn
+          style="width:160px"
+          dense
+          class="font-24"
+          :color="OPStatus ? 'teal' : null"
+          :outline="!OPStatus"
+          :label="OPStatus ? 'ประเมินแล้ว' : 'ยังไม่ประเมิน'"
+          @click="finishOP()"
+        ></q-btn>
+      </div>
+    </div>
+
+    <div align="right" class="relative-position" style="top:-20px">วันที่รับข้อมูล 25/12/63</div>
+
+    <div class="q-pa-md q-px-lg" style="border-radius: 10px;">
+      <div>
+        <span class="font-24">ลักษณะองค์กร</span>
+      </div>
+      <div class="q-pa-sm">
+        <span class="font-16">
+          ลักษณะสำคัญขององค์กร คือ ภาพรวมของส่วนราชการ
+          สิ่งสำคัญที่มีอิทธิผลต่อวิธีการดำเนินงาน
+          และความท้าทายสำคัญที่ส่วนราชการเผชิญอยู่
+          สำหรับการดำเนินการของส่วนราชการที่ต้องการ ตอบสนอง
+          การบริหาจัดการเพื่อนำไปสู่การเป็นระบบราชการ 4.0
+          ควรพิจารณาในรายละเอียดดังนี้
+        </span>
+      </div>
+    </div>
+
+    <div class="q-mt-lg font-18">
+      <!-- Start BOX 1 -->
+      <div>
+        <span>1. ลักษณะองค์กร: คุณลักษณะสำคัญของส่วนราชการคืออะไร</span>
+        <div class="q-py-sm q-px-lg">
+          <!-- Environment Content -->
+          <div>
+            <q-expansion-item
+              group="boxInputOne"
+              header-class="bg3 text-black q-py-sm"
+              dense-toggle
+              dense
+              expand-icon-class="text-grey-10"
+            >
+              <template v-slot:header>
+                <span>ก. สภาพแวดล้อมของส่วนราชการ</span>
+                <q-space></q-space>
+                <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish1A != 5"
+                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
+                <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkFinish1A}/5` }}</span>
+              </template>
+              <q-card class="bg3">
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
+                <q-card-section>
+                  <div class="q-px-lg font-16">
+                    <!-- Input Content 1 -->
+                    <div>
+                      <span>1. พันธกิจหรือหน้าที่ตามกฏหมาย</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px;"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputEnvironment1"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputEnvironmentPDF1"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ก.', 1)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model="inputEnvironment1S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 2 -->
+                    <div class="q-mt-lg">
+                      <span>2. วิสัยทัศน์และค่านิยม</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputEnvironment2"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputEnvironmentPDF2"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ก.', 2)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputEnvironment2S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 3 -->
+                    <div class="q-mt-lg">
+                      <span>3. ลักษณะโดยรวมของบุคลากร</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputEnvironment3"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputEnvironmentPDF3"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ก.', 3)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputEnvironment3S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 4 -->
+                    <div class="q-mt-lg">
+                      <span>4. สินทรัพย์</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputEnvironment4"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputEnvironmentPDF4"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ก.', 4)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputEnvironment4S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 5 -->
+                    <div class="q-mt-lg">
+                      <span>5. กฏหมาย กฏระเบียบและข้อบังคับ</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputEnvironment5"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputEnvironmentPDF5"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ก.', 5)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputEnvironment5S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </div>
+          <!-- Environment Content -->
+
+          <!-- Relation Content -->
+          <div class="q-mt-xs">
+            <q-expansion-item
+              group="boxInputOne"
+              header-class="bg3 text-black q-py-sm"
+              dense-toggle
+              dense
+              expand-icon-class="text-grey-10"
+            >
+              <template v-slot:header>
+                <span>ข. ความสัมพันธ์ระดับองค์กร</span>
+                <q-space></q-space>
+                <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish1B != 3"
+                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
+                <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkFinish1B}/3` }}</span>
+              </template>
+
+              <q-card class="bg3">
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
+                <q-card-section>
+                  <div class="q-px-lg font-16">
+                    <!-- Input Content 1 -->
+                    <div>
+                      <span>1. โครงสร้างองค์กร</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputRelation1"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputRelationPDF1"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ข.', 1)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputRelation1S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 2 -->
+                    <div class="q-mt-lg">
+                      <span>2. ผู้รับบริการและผู้มีส่วนได้ส่วนเสีย</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputRelation2"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputRelationPDF2"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ข.', 2)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputRelation2S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 3 -->
+                    <div class="q-mt-lg">
+                      <span>
+                        3.
+                        ส่วนราชการหรือองค์กรที่เกี่ยวข้องกันในการให้บริการหรือส่งมอบงานต่อกัน
+                      </span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputRelation3"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputRelationPDF3"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 1, 'ข.', 3)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputRelation3S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </div>
+          <!-- Relation Content -->
+        </div>
+      </div>
+      <!-- End BOX 1 -->
+
+      <!-- Start BOX 2 -->
+      <div class="q-mt-lg">
+        <span>2. สภาวการณ์ขององค์กร: สภาวการณ์เชิงยุทธศาสตร์ของส่วนราชการเป็นเช่นใด?</span>
+        <div class="q-py-sm q-px-lg">
+          <div class>
+            <q-expansion-item
+              group="boxInputTwo"
+              header-class="bg3 text-black q-py-sm"
+              dense-toggle
+              dense
+              expand-icon-class="text-grey-10"
+            >
+              <template v-slot:header>
+                <span>ก. สภาพแวดล้อมด้านการแข่งขัน</span>
+                <q-space></q-space>
+                <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish2A != 3"
+                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
+                <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkFinish2A}/3` }}</span>
+              </template>
+
+              <q-card class="bg3">
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
+                <q-card-section>
+                  <div class="q-px-lg font-16">
+                    <!-- Input Content 1 -->
+                    <div>
+                      <span>
+                        1.
+                        สภาพแวดล้อมด้านการแข่งขันทั้งภายในและภายนอกประเทศ
+                      </span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputCompetitionEnvironment1"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputCompetitionEnvironmentPDF1"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 2, 'ก.', 1)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputCompetitionEnvironment1S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 2 -->
+                    <div class="q-mt-lg">
+                      <span>2. การเปลี่ยนแปลงความสามารถในการแข่งขัน</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputCompetitionEnvironment2"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputCompetitionEnvironmentPDF2"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 2, 'ก.', 2)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputCompetitionEnvironment2S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Input Content 3 -->
+                    <div class="q-mt-lg">
+                      <span>3. แหล่งข้อมูลเชิงเปรียบเทียบ</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputCompetitionEnvironment3"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputCompetitionEnvironmentPDF3"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 2, 'ก.', 3)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputCompetitionEnvironment3S"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </div>
+
+          <div class="q-mt-xs">
+            <q-expansion-item
+              group="boxInputTwo"
+              header-class="bg3 text-black q-py-sm"
+              dense-toggle
+              dense
+              expand-icon-class="text-grey-10"
+            >
+              <template v-slot:header>
+                <span>ข. บริบทเชิงยุทธศาสตร์</span>
+                <q-space></q-space>
+                <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish2B != 1"
+                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
+                <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkFinish2B}/1` }}</span>
+              </template>
+
+              <q-card class="bg3">
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
+                <q-card-section>
+                  <div class="q-px-lg font-16">
+                    <!-- Input Content 1 -->
+                    <div>
+                      <span>
+                        1.
+                        ความท้าทายเชิงยุทธศาสตร์และความได้เปรียบเชิงยุทธศาสตร์
+                      </span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputStategy"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputStategyPDF1"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 2, 'ข.', 1)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputStategyS"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </div>
+
+          <div class="q-mt-xs">
+            <q-expansion-item
+              group="boxInputTwo"
+              header-class="bg3 text-black q-py-sm"
+              dense-toggle
+              dense
+              expand-icon-class="text-grey-10"
+            >
+              <template v-slot:header>
+                <span>ค. ระบบการปรับปรุงผลการดำเนินการ</span>
+                <q-space></q-space>
+                <q-icon
+                  name="fas fa-exclamation-circle"
+                  size="22px"
+                  color="negative"
+                  v-if="checkFinish2C != 1"
+                ></q-icon>
+                <q-icon v-else name="fas fa-check-circle" size="22px" color="secondary"></q-icon>
+                <span class="q-ml-sm q-mr-md">{{ `เสร็จสิ้น ${checkFinish2C}/1` }}</span>
+              </template>
+              <q-card class="bg3">
+                <q-separator class="bg-grey-7" style="height: 2px;"></q-separator>
+                <q-card-section>
+                  <div class="q-px-lg font-16">
+                    <!-- Input Content 1 -->
+                    <div>
+                      <span>1. ระบบการปรับปรุงผลการดำเนินการ</span>
+
+                      <div class="q-mt-sm row">
+                        <div class="col-8">
+                          <textarea
+                            readonly
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:750px"
+                            outlined
+                            bg-color="white"
+                            v-model.lazy="inputPerformanceSystem"
+                            class="q-pa-sm"
+                          />
+                        </div>
+                        <div style="width:20px"></div>
+                        <div class="col relative-position">
+                          <div
+                            align="right"
+                            class="absolute-right"
+                            v-if="inputPerformanceSystemPDF1"
+                            style="top:-40px"
+                          >
+                            <q-btn
+                              @click="openFile('pdf', 2, 'ค.', 1)"
+                              label="PDF"
+                              color="teal"
+                              icon="fas fa-file-pdf"
+                            ></q-btn>
+                          </div>
+                          <textarea
+                            placeholder="ข้อเสนอแนะ"
+                            class="q-pa-sm"
+                            v-model.lazy="inputPerformanceSystemS"
+                            style="width:100%;border-radius:5px;height:180px;overflow:auto;max-width:360px"
+                            outlined
+                            bg-color="white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-expansion-item>
+          </div>
+        </div>
+      </div>
+      <!-- End BOX 2 -->
+    </div>
+
+    <div style="padding: 70px 0px 30px 0px;" align="center">
+      <q-btn
+        class="bg-teal text-white font-18"
+        label="บันทึกข้อมูล"
+        :disable="isSaveData"
+        style="width: 220px; border-radius: 0px;"
+        push
+        @click="saveData()"
+      ></q-btn>
+    </div>
+  </div>
+</template>
+
+<script>
+import Axios from "axios";
+export default {
+  data() {
+    return {
+      temp: "",
+      // Emit Data Status
+      status: "none",
+      isDelete: false,
+
+      // Environment
+      environmentCount: 0,
+      inputEnvironment1: "",
+      inputEnvironment1S: "",
+      inputEnvironmentPDF1: null,
+
+      inputEnvironment2: "",
+      inputEnvironment2S: "",
+      inputEnvironmentPDF2: null,
+
+      inputEnvironment3: "",
+      inputEnvironment3S: "",
+      inputEnvironmentPDF3: null,
+
+      inputEnvironment4: "",
+      inputEnvironment4S: "",
+      inputEnvironmentPDF4: null,
+
+      inputEnvironment5: "",
+      inputEnvironment5S: "",
+      inputEnvironmentPDF5: null,
+
+      // Relation
+      inputRelation1: "",
+      inputRelation1S: "",
+      inputRelationPDF1: null,
+
+      inputRelation2: "",
+      inputRelation2S: "",
+      inputRelationPDF2: null,
+
+      inputRelation3: "",
+      inputRelation3S: "",
+      inputRelationPDF3: null,
+
+      // Competition Environment
+      inputCompetitionEnvironment1: "",
+      inputCompetitionEnvironment1S: "",
+      inputCompetitionEnvironmentPDF1: null,
+
+      inputCompetitionEnvironment2: "",
+      inputCompetitionEnvironment2S: "",
+      inputCompetitionEnvironmentPDF2: null,
+
+      inputCompetitionEnvironment3: "",
+      inputCompetitionEnvironment3S: "",
+      inputCompetitionEnvironmentPDF3: null,
+
+      // Stategy
+      inputStategy: "",
+      inputStategyS: "",
+      inputStategyPDF1: null,
+
+      // Performance improvement system
+      inputPerformanceSystem: "",
+      inputPerformanceSystemS: "",
+      inputPerformanceSystemPDF1: null,
+
+      // Save Data
+      isSaveData: false,
+      OPStatus: false,
+    };
+  },
+  methods: {
+    async finishOP() {
+      const urlUpdateStepper =
+        this.apiPath + "user/update_assessment_stepper_log.php";
+
+
+
+        if(this.checkFinish1A==5 && this.checkFinish1B == 3 && this.checkFinish2A == 3 && this.checkFinish2B == 1 && this.checkFinish2C == 1){
+ this.OPStatus = !this.OPStatus
+
+
+      const stepperData = {
+        uid: this.$q.sessionStorage.getItem("aid"),
+        step: "op",
+        year: this.$q.sessionStorage.getItem("y"),
+        stepValue: this.OPStatus ? 2 : 1,
+      };
+
+   
+
+      let response = await Axios.post(urlUpdateStepper, stepperData);
+        }else{
+            this.$q.notify(
+                {
+                    message : "กรุณาประเมินให้ครบทุกหัวข้อ",
+                    color : "red",
+                    position : "top"
+                }
+            )
+        }
+
+  
+    },
+    async getData() {
+      this.loadingShow();
+      const url = this.apiPath + "user/getCategory0.php";
+      let postData = {
+        user_id: this.$q.sessionStorage.getItem("aid"),
+        year: this.$q.sessionStorage.getItem("y"),
+      };
+      let data = await Axios.post(url, postData);
+      let getData = data.data;
+
+      if (getData) {
+        // ข้อ 1 ก 1
+        let inputEnvironment1 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        );
+
+        if (inputEnvironment1.length) {
+          this.inputEnvironment1 = inputEnvironment1[0].text;
+          this.inputEnvironment1S = inputEnvironment1[0].suggesstion;
+          if (inputEnvironment1[0].is_pdf == "1") {
+            this.inputEnvironmentPDF1 = true;
+          }
+        }
+
+        // ข้อ1 ก2
+        let inputEnvironment2 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        );
+
+        if (inputEnvironment2.length) {
+          this.inputEnvironment2 = inputEnvironment2[0].text;
+          this.inputEnvironment2S = inputEnvironment2[0].suggesstion;
+          if (inputEnvironment2[0].is_pdf == "1") {
+            this.inputEnvironmentPDF2 = true;
+          }
+        }
+
+        // ข้อ1 ก3
+        let inputEnvironment3 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "3"
+        );
+
+        if (inputEnvironment3.length) {
+          this.inputEnvironment3 = inputEnvironment3[0].text;
+          this.inputEnvironment3S = inputEnvironment3[0].suggesstion;
+          if (inputEnvironment3[0].is_pdf == "1") {
+            this.inputEnvironmentPDF3 = true;
+          }
+        }
+
+        // ข้อ1 ก4
+        let inputEnvironment4 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "4"
+        );
+        if (inputEnvironment4.length) {
+          this.inputEnvironment4 = inputEnvironment4[0].text;
+          this.inputEnvironment4S = inputEnvironment4[0].suggesstion;
+          if (inputEnvironment4[0].is_pdf == "1") {
+            this.inputEnvironmentPDF4 = true;
+          }
+        }
+
+        // ข้อ1 ก5
+        let inputEnvironment5 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ก." &&
+            x.category_q_number == "5"
+        );
+        if (inputEnvironment5.length) {
+          this.inputEnvironment5 = inputEnvironment5[0].text;
+
+          this.inputEnvironment5S = inputEnvironment5[0].suggesstion;
+          if (inputEnvironment5[0].is_pdf == "1") {
+            this.inputEnvironmentPDF5 = true;
+          }
+        }
+
+        // ข้อ1 ข1
+        let inputRelation1 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "1"
+        );
+        if (inputRelation1.length) {
+          this.inputRelation1 = inputRelation1[0].text;
+
+          this.inputRelation1S = inputRelation1[0].suggesstion;
+          if (inputRelation1[0].is_pdf == "1") {
+            this.inputRelationPDF1 = true;
+          }
+        }
+
+        // ข้อ1 ข2
+        let inputRelation2 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "2"
+        );
+
+        if (inputRelation2.length) {
+          this.inputRelation2 = inputRelation2[0].text;
+          this.inputRelation2S = inputRelation2[0].suggesstion;
+          if (inputRelation2[0].is_pdf == "1") {
+            this.inputRelationPDF2 = true;
+          }
+        }
+
+        // ข้อ1 ข3
+        let inputRelation3 = getData.filter(
+          (x) =>
+            x.q_number == "1" &&
+            x.category == "ข." &&
+            x.category_q_number == "3"
+        );
+
+        if (inputRelation3.length) {
+          this.inputRelation3 = inputRelation3[0].text;
+          this.inputRelation3S = inputRelation3[0].suggesstion;
+          if (inputRelation3[0].is_pdf == "1") {
+            this.inputRelationPDF3 = true;
+          }
+        }
+
+        // ข้อ2 ก1
+        let inputCompetitionEnvironment1 = getData.filter(
+          (x) =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "1"
+        );
+        if (inputCompetitionEnvironment1.length) {
+          this.inputCompetitionEnvironment1 =
+            inputCompetitionEnvironment1[0].text;
+
+          this.inputCompetitionEnvironment1S =
+            inputCompetitionEnvironment1[0].suggesstion;
+
+          if (inputCompetitionEnvironment1[0].is_pdf == "1") {
+            this.inputCompetitionEnvironmentPDF1 = true;
+          }
+        }
+
+        // ข้อ2 ก2
+        let inputCompetitionEnvironment2 = getData.filter(
+          (x) =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "2"
+        );
+
+        if (inputCompetitionEnvironment2.length) {
+          this.inputCompetitionEnvironment2 =
+            inputCompetitionEnvironment2[0].text;
+
+          this.inputCompetitionEnvironment2S =
+            inputCompetitionEnvironment2[0].suggesstion;
+          if (inputCompetitionEnvironment2[0].is_pdf == "1") {
+            this.inputCompetitionEnvironmentPDF2 = true;
+          }
+        }
+
+        // ข้อ2 ก3
+        let inputCompetitionEnvironment3 = getData.filter(
+          (x) =>
+            x.q_number == "2" &&
+            x.category == "ก." &&
+            x.category_q_number == "3"
+        );
+        if (inputCompetitionEnvironment3.length) {
+          this.inputCompetitionEnvironment3 =
+            inputCompetitionEnvironment3[0].text;
+
+          this.inputCompetitionEnvironment3S =
+            inputCompetitionEnvironment3[0].suggesstion;
+
+          if (inputCompetitionEnvironment3[0].is_pdf == "1") {
+            this.inputCompetitionEnvironmentPDF3 = true;
+          }
+        }
+
+        // ข้อ2 ข1
+        let inputStategy = getData.filter(
+          (x) =>
+            x.q_number == "2" &&
+            x.category == "ข." &&
+            x.category_q_number == "1"
+        );
+        if (inputStategy.length) {
+          this.inputStategy = inputStategy[0].text;
+          this.inputStategyS = inputStategy[0].suggesstion;
+
+          if (inputStategy[0].is_pdf == "1") {
+            this.inputStategyPDF1 = true;
+          }
+        }
+
+        // ข้อ2 ค1
+        let inputPerformanceSystem = getData.filter(
+          (x) =>
+            x.q_number == "2" &&
+            x.category == "ค." &&
+            x.category_q_number == "1"
+        );
+        if (inputPerformanceSystem.length) {
+          this.inputPerformanceSystem = inputPerformanceSystem[0].text;
+          this.inputPerformanceSystemS = inputPerformanceSystem[0].suggesstion;
+
+          if (inputPerformanceSystem[0].is_pdf == "1") {
+            this.inputPerformanceSystemPDF1 = true;
+          }
+        }
+        // this.saveData();
+      }
+      this.getAssessmentStepperLog();
+      this.loadingHide();
+    },
+
+    async saveData() {
+      this.loadingShow();
+
+      let uid = this.$q.sessionStorage.getItem("aid");
+      // ข้อ1 หมวด ก ข้อที่1
+      let sendData = [
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 1,
+          text: this.inputEnvironment1,
+          suggesstion: this.inputEnvironment1S,
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 2,
+          text: this.inputEnvironment2,
+          suggesstion: this.inputEnvironment2S,
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 3,
+          text: this.inputEnvironment3,
+          suggesstion: this.inputEnvironment3S,
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 4,
+          text: this.inputEnvironment4,
+          suggesstion: this.inputEnvironment4S,
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 5,
+          text: this.inputEnvironment5,
+          suggesstion: this.inputEnvironment5S,
+        },
+        // หมวด ข
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 1,
+          text: this.inputRelation1,
+          suggesstion: this.inputRelation1S,
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 2,
+          text: this.inputRelation2,
+          suggesstion: this.inputRelation2S,
+        },
+        {
+          q_number: 1,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 3,
+          text: this.inputRelation3,
+          suggesstion: this.inputRelation3S,
+        },
+        // เริ่มข้อ2 หมวด ก.
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 1,
+          text: this.inputCompetitionEnvironment1,
+          suggesstion: this.inputCompetitionEnvironment1S,
+        },
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 2,
+          text: this.inputCompetitionEnvironment2,
+          suggesstion: this.inputCompetitionEnvironment2S,
+        },
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ก.",
+          category_q_number: 3,
+          text: this.inputCompetitionEnvironment3,
+          suggesstion: this.inputCompetitionEnvironment3S,
+        },
+        // เริ่มข้อ2 หมวด ข.
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ข.",
+          category_q_number: 1,
+          text: this.inputStategy,
+          suggesstion: this.inputStategyS,
+        },
+        // เริ่มข้อ2 หมวด ค.
+        {
+          q_number: 2,
+          user_id: uid,
+          category: "ค.",
+          category_q_number: 1,
+          text: this.inputPerformanceSystem,
+          suggesstion: this.inputPerformanceSystemS,
+        },
+      ];
+      let finalData = {
+        postData: sendData,
+        mode: 0,
+        year: this.$q.sessionStorage.getItem("y"),
+        user_id: this.$q.sessionStorage.getItem("aid"),
+      };
+
+      //   this.checkStatus(sendData);
+
+      const url = this.apiPath + "assessorUpdateCategory0.php";
+      let post = await Axios.post(url, finalData);
+      this.loadingHide();
+      this.isSaveData = true;
+            this.$q.notify(
+          {
+              message : "บันทึกข้อมูลสำเร็จ",
+              color : "teal"
+          }
+      )
+
+
+      setTimeout(() => {
+        this.isSaveData = false;
+      }, 1000);
+    },
+
+    openFile(type, q_number, category, category_q_number) {
+      let uid = this.$q.sessionStorage.getItem("aid");
+      let year = this.$q.sessionStorage.getItem("y");
+      if (category == "ก.") {
+        category = "a";
+      } else if (category == "ข.") {
+        category = "b";
+      } else {
+        category = "c";
+      }
+      let r = Math.random().toString(36).substring(7);
+      let fileName;
+      if (type == "pdf") {
+        fileName = `${uid}-${q_number}-${category}-${category_q_number}-${year}.pdf?${r}`;
+      } else {
+        fileName = `${uid}-${q_number}-${category}-${category_q_number}-${year}.jpg?${r}`;
+      }
+      let link = this.apiPath + "uploadcategory0/" + fileName;
+      window.open(link);
+    },
+    async getAssessmentStepperLog() {
+      const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
+      let postCheckStatusData = {
+        user_id: this.$q.sessionStorage.getItem("aid"),
+        year: this.$q.sessionStorage.getItem("y"),
+      };
+
+      let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
+      let responseData = responseCheck.data[0];
+      if (responseData.op == "2") {
+        this.OPStatus = true;
+      } else {
+        this.OPStatus = false;
+      }
+    },
+  },
+  created() {
+    this.getData();
+  },
+  computed: {
+    checkFinish1A() {
+      let counter = 0;
+      if (this.inputEnvironment1S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment2S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment3S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment4S) {
+        counter++;
+      }
+
+      if (this.inputEnvironment5S) {
+        counter++;
+      }
+      return counter;
+    },
+    checkFinish1B() {
+      let counter = 0;
+      if (this.inputRelation1S) {
+        counter++;
+      }
+
+      if (this.inputRelation2S) {
+        counter++;
+      }
+
+      if (this.inputRelation3S) {
+        counter++;
+      }
+
+      return counter;
+    },
+    checkFinish2A() {
+      let counter = 0;
+      if (this.inputCompetitionEnvironment1S) {
+        counter++;
+      }
+
+      if (this.inputCompetitionEnvironment2S) {
+        counter++;
+      }
+
+      if (this.inputCompetitionEnvironment3S) {
+        counter++;
+      }
+
+      return counter;
+    },
+    checkFinish2B() {
+      let counter = 0;
+      if (this.inputStategyS) {
+        counter++;
+      }
+
+      return counter;
+    },
+    checkFinish2C() {
+      let counter = 0;
+      if (this.inputPerformanceSystemS) {
+        counter++;
+      }
+
+      return counter;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>

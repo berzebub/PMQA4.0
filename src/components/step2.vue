@@ -28,7 +28,11 @@
                 <div class="col-3 self-center q-px-xl" style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
                     <span class="font-18" v-if="item.status == -1">ยังไม่ทำการประเมิน</span>
-                    <span v-else>{{ parseInt(item.score) }}</span>
+                    <span v-else>
+                      <!-- {{ parseInt(item.score) }} -->
+
+                   {{ checkModeStatus(item.basic.checkBox,item.advance.checkBox,item.significance.checkBox) }}
+                      </span>
                     <span v-else>Significance</span>
                   </div>
                 </div>
@@ -37,68 +41,7 @@
 
             <q-card>
               <q-separator class="bg-grey-7" style="height: 1px;"></q-separator>
-
               <div>
-                <!-- <div class="bg4 row">
-                  <div class="col-6" style="width:530px;">
-                    <q-tabs
-                      v-model="tabs[index]"
-                      dense
-                      align="justify"
-                      class="text-black"
-                      active-color="black"
-                      indicator-color="pink-5"
-                      narrow-indicator
-                    >
-                      <q-tab content-class="q-pa-sm" no-caps="" name="Basic">
-                        <template v-slot:default>
-                          <div>
-                            <q-icon
-                              class="q-mr-xs"
-                              name="fas fa-check-circle"
-                              color="teal"
-                              size="16px"
-                              v-show="item.status >= 1"
-                            ></q-icon>
-                            <span>Basic</span>
-                          </div>
-                        </template>
-                      </q-tab>
-                      <q-tab content-class="q-pa-sm" no-caps="" name="Advance">
-                        <template v-slot:default>
-                          <div>
-                            <q-icon
-                              class="q-mr-xs"
-                              name="fas fa-check-circle"
-                              color="teal"
-                              size="16px"
-                              v-if="item.status >= 2"
-                            ></q-icon>
-                            <span>Advance </span>
-                          </div>
-                        </template></q-tab
-                      >
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Significance"
-                      >
-                        <template v-slot:default>
-                          <div>
-                            <q-icon
-                              class="q-mr-xs"
-                              name="fas fa-check-circle"
-                              color="teal"
-                              size="16px"
-                              v-if="item.status == 3"
-                            ></q-icon>
-                            <span>Significance</span>
-                          </div>
-                        </template></q-tab
-                      >
-                    </q-tabs>
-                  </div>
-                </div>-->
                 <div class>
                   <!-- Basic -->
                   <div class="row bg-grey-4 q-py-sm">
@@ -379,152 +322,7 @@
                   </div>
                   <!-- </q-tab-panel> -->
 
-                  <!-- SIGNIFICANCE -->
-                  <!-- <q-tab-panel name="Significance" class="no-padding"> -->
-                  <!-- <div class="row">
-                    <div class="col-5" style="width:530px;border-right:1px solid #e0e0e0">
-                      <div class="q-pa-md font-18 q-mb-xl">
-                        <div>
-                          <span class="font-18b">ระดับดำเนินการ</span>
-                        </div>
-                        <div class="q-mt-md">
-                          <span v-html="item.significance.titleText"></span>
-                        </div>
-                      </div>
-
-                      <q-separator></q-separator>
-                      <div class="q-pa-md font-18">
-                        <div>
-                          <span class="font-18b">แนวทางดำเนินการ</span>
-                        </div>
-                        <div
-                          class="q-mt-sm"
-                          v-for="(checkbox, signiCheckboxIndex) in item
-                                .significance.checkBox"
-                          :key="signiCheckboxIndex"
-                        >
-                          <div class="row">
-                            <div class="col-1" style="width:50px;" align="center">
-                              <q-checkbox
-                                color="pink-4"
-                                keep-color
-                                v-model="
-                                      data[index].significance.checkBox[
-                                        signiCheckboxIndex
-                                      ].status
-                                    "
-                                value
-                              />
-                            </div>
-                            <div class="col q-py-xs">
-                              <span v-html="checkbox.text"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col q-pl-lg q-pr-sm">
-                      <div>
-                        <div>
-                          <span class="font-18b">คำอธิบายผลการประเมิน</span>
-                        </div>
-                        <div class="q-my-md">
-                          <q-input
-                            v-model="item.significance.explain"
-                            outlined
-                            placeholder="คำอธิบายผลการประเมิน"
-                            type="textarea"
-                            rows="17"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <div class="q-mt-lg">
-                          <span class="font-18b">อัพโหลด pdf เอกสารเพิ่มเติม</span>
-                        </div>
-                        <div class="row justify-between q-my-sm">
-                          <div class="col-4 q-pa-md self-start" style="width:205px;">
-                            <q-file
-                              v-model="item.significance.pdf_file"
-                              v-if="!item.significance.pdf_file"
-                              dense
-                              style="overflow:hidden;"
-                              :style="
-                                    !item.significance.pdf_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                              borderless
-                              accept=".pdf"
-                              @input="saveData(item.no, 'significance')"
-                            >
-                              <template v-slot:prepend>
-                                <div
-                                  class="absolute-center fit"
-                                  align="center"
-                                  v-if="!item.significance.pdf_file"
-                                >
-                                  <span class="font-16 text-black">pdf เอกสารเพิ่มเติม</span>
-                                </div>
-
-                                <div class="absolute-center full-width" align="center" v-else>
-                                  <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
-                                  <span
-                                    class="font-14 text-black"
-                                    style="text-decoration:underline"
-                                    @click="getPDF(item.no, 'significance')"
-                                  >pdf เอกสารเพิ่มเติม</span>
-                                </div>
-                              </template>
-
-                              <template v-slot:file></template>
-                            </q-file>
-
-                            <div
-                              class="relative-position cursor-pointer"
-                              align="center"
-                              v-if="item.significance.pdf_file"
-                            >
-                              <div
-                                class="full-width q-py-xs"
-                                align="center"
-                                style="border:2px solid #000000;border-radius:0px"
-                                @click="getPDF(item.no, 'significance')"
-                              >
-                                <q-icon name="fas fa-file-pdf" class="color1 q-px-xs"></q-icon>
-                                <span
-                                  class="font-14 text-black"
-                                  style="text-decoration:underline"
-                                >pdf เอกสารเพิ่มเติม</span>
-                              </div>
-                              <div
-                                @click="
-                                      (typeFile = 'PDF'),
-                                        (typeNo = item.no),
-                                        (typeMode = 'significance'),
-                                        (isDelete = true)
-                                    "
-                                class="text-white font-12 bg1 q-py-sm"
-                              >ลบไฟล์</div>
-                            </div>
-                          </div>
-
-                          <div class="col q-py-md" align="right">
-                            <q-btn
-                              class="bg-teal text-white font-18"
-                              label="บันทึกข้อมูล"
-                              :disable="isSaveData"
-                              :loading="isSaveData"
-                              style="width: 220px; border-radius: 0px;"
-                              push
-                              @click="saveData(item.no, 'significance')"
-                            ></q-btn>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
+                  
 
                     <div>
                     <div class="row bg-grey-4 q-py-sm">
@@ -670,6 +468,11 @@
           </q-expansion-item>
         </q-list>
       </div>
+    </div>
+
+
+    <div align="center" class='q-pt-lg'>
+      <q-btn @click='sendData()' label="บันทึกข้อมูล" style='width:220px' color="teal"></q-btn>
     </div>
 
     <q-dialog v-model="isDelete" persistent>
@@ -1021,6 +824,24 @@ export default {
     };
   },
   methods: {
+    checkModeStatus(basic,advance,significance){
+
+      let checkBasic = !basic.map(x => x.status).includes(false)
+      let checkAdvance = !advance.map(x => x.status).includes(false)
+      let checkSigni = !significance.map(x => x.status).includes(false)
+
+      if(checkSigni && checkAdvance && checkBasic){
+        return "Significance"
+      }else if (checkBasic && checkAdvance){
+        return "Advance"
+      }else if(checkBasic) {
+        return "Basic"
+      }else{
+        return "ไม่ผ่านการประเมิน"
+      }
+
+
+    },
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {
         this.data[this.typeNo - 1][this.typeMode].pdf_file = null;
@@ -1088,6 +909,26 @@ export default {
       };
       let data = await Axios.post(url, postData);
       this.$emit("statusForm");
+    },
+
+    async sendData(){
+      this.loadingShow()
+      await this.saveData(1,'basic')
+      await this.saveData(1,'advance')
+      await this.saveData(1,'significance')
+
+      await this.saveData(2,'basic')
+      await this.saveData(2,'advance')
+      await this.saveData(2,'significance')
+
+      await this.saveData(3,'basic')
+      await this.saveData(3,'advance')
+      await this.saveData(3,'significance')
+
+      await this.saveData(4,'basic')
+      await this.saveData(4,'advance')
+      await this.saveData(4,'significance')
+      this.loadingHide()
     },
 
     async saveData(no, mode) {

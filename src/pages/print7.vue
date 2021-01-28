@@ -172,13 +172,6 @@
                     </div>
                   </div>
 
-                  <!-- <div
-                    v-if="item2.indicators.length == 0"
-                    class="q-pa-sm border-top-lr border-bottom"
-                  >
-                    <div class="q-pa-xs"></div>
-                  </div> -->
-
                   <div
                     class="row border-top-lr "
                     style="border-bottom:1px solid"

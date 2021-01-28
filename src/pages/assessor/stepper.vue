@@ -7,50 +7,6 @@
             <q-btn
               round
               push
-              class="q-pa-sm bg3"
-              @click="$router.push('/assessor/stepMain/' + aid)"
-            >
-              <q-icon name="fas fa-home" color="teal"></q-icon>
-            </q-btn>
-          </div>
-          <div class="absolute-center" align="center" style="top: 50px;">
-            <span class="text-no-wrap">หน้าหลัก</span>
-          </div>
-        </div>
-        <div class="relative-position" style="width: 55px;">
-          <div class="absolute-center">
-            <q-btn
-              round
-              push
-              class="q-pa-sm"
-              :class="active == 1 ? 'bg1' : 'bg3'"
-              @click="(active = 1), route('-1')"
-            >
-              <q-icon
-                name="fas fa-flag"
-                :class="
-                  active == 1
-                    ? 'text-white'
-                    : step0Status == '0'
-                    ? 'text-black'
-                    : step0Status == '2'
-                    ? 'text-amber-9'
-                    : step0Status == '1'
-                    ? 'text-teal'
-                    : ''
-                "
-              ></q-icon>
-            </q-btn>
-          </div>
-          <div class="absolute-center" align="center" style="top: 50px;">
-            <span class="text-no-wrap">ลักษณะสำคัญขององค์กร</span>
-          </div>
-        </div>
-        <div class="relative-position" style="width: 55px;">
-          <div class="absolute-center">
-            <q-btn
-              round
-              push
               class="q-pa-sm"
               :class="active == 2 ? 'bg1' : 'bg3'"
               @click="(active = 2), route('0')"
@@ -220,7 +176,7 @@
             <span class="text-no-wrap">หมวด 6</span>
           </div>
         </div>
-        <div class="relative-position" style="width: 55px;">
+        <!-- <div class="relative-position" style="width: 55px;">
           <div class="absolute-center">
             <q-btn
               round
@@ -248,7 +204,7 @@
           <div class="absolute-center" align="center" style="top: 50px;">
             <span class="text-no-wrap">หมวด 7</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 

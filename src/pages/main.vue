@@ -336,10 +336,7 @@
               <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
                 <div class="font-18">
                   <div class="row items-center">
-                    <div
-                      class="col q-pa-xs border-teal"
-                     
-                    >
+                    <div class="col q-pa-xs border-teal">
                       <q-icon
                         :color="currentStep.category7 == '1' ? 'teal' : ''"
                         name="fas fa-check-circle"
@@ -375,72 +372,72 @@
 
       <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
         <q-btn
-          :disable="!checkSteper || file1 == null || file2 == null"
+          :disable="!checkSteper"
           style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="
-            !checkSteper || file1 == null || file2 == null ? 'bg3' : 'bg-white'
+            !checkSteper ? 'bg3' : 'bg-white'
           "
           @click="printAll()"
         >
           <q-icon
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !checkSteper ? 'color2' : ''
             "
             name="fas fa-print"
           ></q-icon>
           <span
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !checkSteper ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
           >พิมพ์การประเมิน</span>
         </q-btn>
         <q-btn
-          :disable="!checkSteper || file1 == null || file2 == null"
+          :disable="!checkSteper"
           style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="
-            !checkSteper || file1 == null || file2 == null ? 'bg3' : 'bg-white'
+            !checkSteper ? 'bg3' : 'bg-white'
           "
           to="/assessment"
         >
           <q-icon
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !checkSteper ? 'color2' : ''
             "
             name="fas fa-print"
           ></q-icon>
           <span
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !checkSteper ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
           >พิมพ์ผลการประเมิน</span>
         </q-btn>
         <q-btn
-          :disable="!checkSteper || file1 == null || file2 == null"
+          :disable="!checkSteper"
           style="width: 180px; border-radius: 0px"
           push
           class="q-mx-md q-py-sm"
           :class="
-            !checkSteper || file1 == null || file2 == null
+            !checkSteper
               ? 'bg3'
               : 'bg-teal text-white'
           "
-          @click="uSendAssessment()"
+          @click="sendStatus(1)"
         >
           <q-icon
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !checkSteper ? 'color2' : ''
             "
             name="far fa-paper-plane"
           ></q-icon>
           <span
             :class="
-              !checkSteper || file1 == null || file2 == null ? 'color2' : ''
+              !checkSteper ? 'color2' : ''
             "
             class="font-14 q-ml-sm"
           >ส่งแบบประเมิน</span>
@@ -646,7 +643,7 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-     <my-footer class="absolute-bottom"></my-footer>
+    <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
 
@@ -691,16 +688,38 @@ export default {
   methods: {
     async sendStatus(mode) {
       // ส่งแบบประเมิน mode2 หมวด7 GAP + plan1y + plan3y
-      if (mode == 2) {
+      if (mode == 1) {
+        const urlUpdateStepper =
+          this.apiPath + "user/update_assessment_stepper_log.php";
+
+        const stepperData1 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "cat1_6",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+        const stepperData2 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "op",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+
+        let response = await Axios.post(urlUpdateStepper, stepperData1);
+        response = await Axios.post(urlUpdateStepper, stepperData2);
+
         const url = this.apiPath + "user/updateModeStatus.php";
         let postData = {
           uid: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          mode: 2,
+          mode: 1,
         };
 
-        let response = await Axios.post(url, postData);
+        response = await Axios.post(url, postData);
+        this.$router.push("/waitingAssessment/0");
 
+        this.uSendAssessment();
+      } else if (mode == 2) {
         // update สถานะการทำ cat7_gap
         const urlUpdateStepper =
           this.apiPath + "user/update_assessment_stepper_log.php";
@@ -728,13 +747,22 @@ export default {
         response = await Axios.post(urlUpdateStepper, stepperData2);
         response = await Axios.post(urlUpdateStepper, stepperData3);
 
+        const url = this.apiPath + "user/updateModeStatus.php";
+        let postData = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          mode: 2,
+        };
+
+        let response = await Axios.post(url, postData);
+
         this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
       }
     },
     async uploadFile(file, type) {
       // Upload pan1y / plan3y
-      this.loadingShow()
+      this.loadingShow();
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -749,7 +777,7 @@ export default {
       this.checkMode2SendStatus();
       this.getFile();
 
-      this.loadingHide()
+      this.loadingHide();
     },
     openFile(type) {
       let random = Math.random().toString(36).substring(7);
@@ -815,7 +843,7 @@ export default {
           newData.category4,
           newData.category5,
           newData.category6,
-          newData.category7,
+          // newData.category7,
         ];
       }
 
@@ -851,7 +879,6 @@ export default {
       };
       data = await Axios.post(url, postData);
       getData = data.data;
-
 
       if (!getData.length) {
         // กรณียังไม่เคยมีการเข้าไปประเมิน หมวด7 GAP
@@ -911,53 +938,51 @@ export default {
         currentDate[0].date
       ).getTime();
 
+      // if (this.assessmentMode == "2") {
+      // Mode 2
+      // หมวด7 GAP + plan1y + plan3Y
 
+      const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
+      let postCheckStatusData = {
+        user_id: this.$q.sessionStorage.getItem("uid"),
+        year: this.$q.sessionStorage.getItem("y"),
+      };
+
+      let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
+      let responseData = responseCheck.data[0];
 
       if (this.assessmentMode == "2") {
-        // Mode 2
-        // หมวด7 GAP + plan1y + plan3Y
-
-        const apiCheckStatus =
-          this.apiPath + "user/getAssessmentStepperLog.php";
-        let postCheckStatusData = {
-          user_id: this.$q.sessionStorage.getItem("uid"),
-          year: this.$q.sessionStorage.getItem("y"),
-        };
-
-        let responseCheck = await Axios.post(
-          apiCheckStatus,
-          postCheckStatusData
-        );
-        let responseData = responseCheck.data[0];
-
-
         this.checkMode2SendStatus();
-
-        // เช็คหากกดส่งแบบประเมิน mode2ไปแล้ว ไปหน้ารอ
-        if (responseData) {
-          if (responseData.mode2_status == "1") {
-            this.$router.push("/waitingAssessment/0");
-          }
-        }
-        // console.log(responseData)
       }
+
+      // เช็คหากกดส่งแบบประเมิน mode2ไปแล้ว ไปหน้ารอ
+      if (responseData) {
+        if (
+          responseData.mode2_status == "1" ||
+          responseData.mode1_status == "1"
+        ) {
+          this.$router.push("/waitingAssessment/0");
+        }
+      }
+      // console.log(responseData)
+      // }
 
       // if (this.currentStep.send_status == "2") {
       //   this.$router.push("/assessmentComplete");
       // } else {
-        if (
-          timeStampCurrentDate > timeStampEndDate ||
-          this.assessmentStatus == "0"
-        ) {
-          // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลาf
-          if (this.currentStep.send_status == "1") {
-            // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
-            this.$router.push("/waitingAssessment/2");
-          } else {
-            // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
-            this.$router.push("/waitingAssessment/1");
-          }
-        } 
+      if (
+        timeStampCurrentDate > timeStampEndDate ||
+        this.assessmentStatus == "0"
+      ) {
+        // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลาf
+        if (this.currentStep.send_status == "1") {
+          // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
+          this.$router.push("/waitingAssessment/2");
+        } else {
+          // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
+          this.$router.push("/waitingAssessment/1");
+        }
+      }
       //else {
       //     if (this.currentStep.send_status == "1") {
       //       // ส่งแบบประเมินแล้ว
@@ -987,10 +1012,6 @@ export default {
       formData.append("year", year);
       const url = this.apiPath + "getFileMain.php";
       let response = await Axios.post(url, formData);
-
-  
-    
-
 
       if (response.data != "no files") {
         let data = response.data[0];
