@@ -75,6 +75,7 @@
                       type="textarea"
                       outlined
                       rows="5"
+                      readonly=""
                     ></q-input>
                   </div>
                   <div v-else>
@@ -130,6 +131,7 @@
                             type="number"
                             dense
                             outlined
+                            readonly=""
                           ></q-input>
                         </div>
                       </div>
@@ -172,7 +174,7 @@
               </div>
             </div>
           </div>
-          <div align="center" class="q-pt-md">
+          <!-- <div align="center" class="q-pt-md">
             <q-btn
               flat
               class="text-teal font-18"
@@ -181,9 +183,9 @@
               @click="addInidcator(index)"
               v-if="item.question.filter((x) => x.extend).length < 3"
             >เพิ่มตัวชี้วัดที่สอดคล้องกับ GAP ตามแผนปรับปรุง ที่หน่วยงานเลือกเพิ่มเติม</q-btn>
-          </div>
+          </div> -->
 
-          <div class="q-py-md" align="center">
+          <!-- <div class="q-py-md" align="center">
             <q-btn
               class="bg-teal text-white font-18"
               label="บันทึกข้อมูล"
@@ -191,7 +193,7 @@
               push
               @click="saveCategory7(item.no)"
             ></q-btn>
-          </div>
+          </div> -->
         </q-expansion-item>
       </q-list>
     </div>
@@ -206,7 +208,7 @@ export default {
       // 7.1
       dialogMessage: "",
 
-      currentYear: this.$q.sessionStorage.getItem("y") + 543,
+      currentYear: this.$q.sessionStorage.getItem("y") + (543-1),
       score: "ยิ่งมากยิ่งดี",
       scoreStandardOptions: ["ยิ่งมากยิ่งดี", "ยิ่งน้อยยิ่งดี"],
       data: [
@@ -807,7 +809,7 @@ export default {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + 543,
+        year: this.$q.sessionStorage.getItem("y") + (543-1),
       };
       let data = await Axios.post(url, postData);
       let getData = data.data;

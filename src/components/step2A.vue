@@ -60,10 +60,10 @@
                     ผลการประเมิน
                   </div>
                 </div>
-                <div class="row">
+                <div class="row ">
                   <!-- ระดับดำเนินการ -->
                   <div
-                    class="col-3 relative-position"
+                    class="col-3 relative-position row justify-center"
                     style="border-right:1px solid #e0e0e0"
                   >
                     <div class="q-pa-md font-18 q-mb-sm">
@@ -84,9 +84,8 @@
                     </div>
 
                     <div
-                      class="absolute-bottom"
+                      class="q-pb-md self-end"
                       v-if="item.basic.pdf_file != null"
-                      style="bottom:10px"
                       align="center"
                     >
                       <q-btn
@@ -164,7 +163,7 @@
                 <div class="row">
                   <!-- ระดับดำเนินการ -->
                   <div
-                    class="col-3 relative-position"
+                    class="col-3 relative-position row justify-center"
                     style="border-right:1px solid #e0e0e0"
                   >
                     <div class="q-pa-md font-18 q-mb-sm">
@@ -185,9 +184,8 @@
                     </div>
 
                     <div
-                      class="absolute-bottom"
+                      class="q-pb-md self-end"
                       v-if="item.advance.pdf_file != null"
-                      style="bottom:10px"
                       align="center"
                     >
                       <q-btn
@@ -266,7 +264,7 @@
                 <div class="row">
                   <!-- ระดับดำเนินการ -->
                   <div
-                    class="col-3 relative-position"
+                    class="col-3 relative-position row justify-center"
                     style="border-right:1px solid #e0e0e0"
                   >
                     <div class="q-pa-md font-18 q-mb-sm ">
@@ -287,9 +285,8 @@
                     </div>
 
                     <div
-                      class="absolute-bottom"
+                      class="self-end q-pb-md"
                       v-if="item.significance.pdf_file != null"
-                      style="bottom:10px"
                       align="center"
                     >
                       <q-btn

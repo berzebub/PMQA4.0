@@ -9,14 +9,15 @@
     </div>
 
     <!-- Start BOX 1 -->
-     <div class="q-mt-sm font-18" v-for="(item, index) in data" :key="index">
+  
+    <div class="q-mt-sm font-18" v-for="(item, index) in data" :key="index">
       <div>
         <q-list bordered>
           <q-expansion-item
             group="dataFormStep2"
             header-class="bg-white "
-            dense-toggle=""
-            dense=""
+            dense-toggle
+            dense
             expand-icon-class="text-grey-10"
             :default-opened="index == 0"
             header-style="height:70px;"
@@ -27,17 +28,14 @@
                   <span>{{ item.header }}</span>
                 </div>
                 <q-space></q-space>
-                <div class="col-3 self-center q-px-xl " style="width:250px;">
+                <div class="col-3 self-center q-px-xl" style="width:250px;">
                   <div style="width:180px;border:1px solid" align="center">
-                    
-                    <span class="font-18" v-if="item.status == -1">
-                      ยังไม่ทำการประเมิน
-                    </span>
+                    <span class="font-18" v-if="item.status == -1">ยังไม่ทำการประเมิน</span>
                     <span v-else>
-                      {{ parseInt(item.score) }}
+                      <!-- {{ parseInt(item.score) }} -->
+                      {{ checkModeStatus(item.basic.checkBox,item.advance.checkBox,item.significance.checkBox) }}
                     </span>
-                    </span>
-                    <span v-else> Significance </span>
+                    <span v-else>Significance</span>
                   </div>
                 </div>
               </div>
@@ -45,593 +43,423 @@
 
             <q-card>
               <q-separator class="bg-grey-7" style="height: 1px;"></q-separator>
-
               <div>
-                <div class="bg4 row">
-                  <div class="col-6" style="width:530px;">
-                    <q-tabs
-                      v-model="tabs[index]"
-                      dense
-                      align="justify"
-                      class="text-black"
-                      active-color="black"
-                      indicator-color="pink-5"
-                      narrow-indicator
-                    >
-                      <q-tab content-class="q-pa-sm" no-caps="" name="Basic">
-                        <template v-slot:default>
-                          <div>
-                            <q-icon
-                              class="q-mr-xs"
-                              name="fas fa-check-circle"
-                              color="teal"
-                              size="16px"
-                              v-show="item.status >= 1"
-                            ></q-icon>
-                            <span>Basic</span>
-                          </div>
-                        </template>
-                      </q-tab>
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Advance"
-                        
-                      >
-                        <template v-slot:default>
-                          <div>
-                            <q-icon
-                              class="q-mr-xs"
-                              name="fas fa-check-circle"
-                              color="teal"
-                              size="16px"
-                              v-if="item.status >= 2"
-                            ></q-icon>
-                            <span>Advance </span>
-                          </div>
-                        </template></q-tab
-                      >
-                      <q-tab
-                        content-class="q-pa-sm"
-                        no-caps=""
-                        name="Significance"
-                      >
-                        <template v-slot:default>
-                          <div>
-                            <q-icon
-                              class="q-mr-xs"
-                              name="fas fa-check-circle"
-                              color="teal"
-                              size="16px"
-                              v-if="item.status == 3"
-                            ></q-icon>
-                            <span>Significance</span>
-                          </div>
-                        </template></q-tab
-                      >
-                    </q-tabs>
+                <div class>
+                  <!-- Basic -->
+                  <div class="row bg-grey-4 q-py-sm">
+                    <div style="width:370px" align="center">
+                      <span class="font-18b">ระดับดำเนินการ</span>
+                    </div>
+                    <div class="col" align="center">
+                      <span class="font-18b">แนวทางดำเนินการ</span>
+                    </div>
+                    <div class="col" align="center">
+                      <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                    </div>
                   </div>
-                </div>
-                <div class=" q-pa-md">
-                  <q-tab-panels v-model="tabs[index]" animated>
-                    <!-- Basic -->
-                    <q-tab-panel name="Basic" class="no-padding">
-                      <div class="row">
+                  <div class="row q-px-md">
+                    <div class="col-5" style="width:370px;border-right:1px solid #e0e0e0">
+                      <div class="q-pa-md font-18 q-mb-sm">
                         <div
-                          class="col-5"
-                          style="width:530px;border-right:1px solid #e0e0e0"
-                        >
-                          <div class="q-pa-md font-18 q-mb-sm">
-                            <div>
-                              <span class="font-18b">ระดับดำเนินการ</span>
-                            </div>
-                            <div class="q-mt-md">
-                              <span v-html="item.basic.titleText"></span>
-                            </div>
-                          </div>
-
-                          <q-separator></q-separator>
-
-                          <!-- Check Box Basic -->
-                          <div class="q-pa-md font-18">
-                            <div>
-                              <span class="font-18b">แนวทางดำเนินการ</span>
-                            </div>
-                            <div class="q-mt-sm">
-                              <div
-                                class="row"
-                                v-for="(checkbox, index3) in item.basic
-                                  .checkBox"
-                                :class="index3 != 0 ? 'q-mt-md' : null"
-                              >
-                                <div
-                                  class="col-1 "
-                                  style="width:50px;"
-                                  align="center"
-                                >
-                                  <q-checkbox color="pink-4" keep-color="" v-model="checkbox.status" value />
-                                </div>
-                                <div
-                                  class="col  q-py-xs"
-                                  v-html="checkbox.text"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
+                          align="center"
+                          style="border:1px solid black;border-radius:5px;width:100px;font-size:18px"
+                        >Basic</div>
+                        <div class="q-mt-md">
+                          <span v-html="item.basic.titleText"></span>
                         </div>
+                      </div>
+                    </div>
 
-                        <div class="col q-pl-lg q-pr-sm ">
-                          <!-- Explain Basic -->
-                          <div>
-                            <div>
-                              <span class="font-18b"
-                                >คำอธิบายผลการประเมิน
-                              </span>
-                            </div>
-                            <div class="q-my-md">
-                              <q-input
-                                v-model="item.basic.explain"
-                                outlined=""
-                                placeholder="คำอธิบายผลการประเมิน"
-                                type="textarea"
-                                rows="17"
+                    <div class="col" style="border-right:1px solid #e0e0e0">
+                      <!-- Check Box Basic -->
+                      <div class="q-pa-md font-18">
+                        <div class="q-mt-sm">
+                          <div
+                            class="row"
+                            v-for="(checkbox, index3) in item.basic
+                                  .checkBox"
+                            :class="index3 != 0 ? 'q-mt-md' : null"
+                          >
+                            <div class="col-1" style="width:50px;" align="center">
+                              <q-checkbox
+                                color="pink-4"
+                                keep-color
+                                v-model="checkbox.status"
+                                value
                               />
                             </div>
+                            <div class="col q-py-xs" v-html="checkbox.text"></div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
 
-                          <!-- Upload File Basic -->
-                          <div class="q-px-md ">
-                            <div class="q-mt-lg">
-                              <span class="font-18b"
-                                >อัพโหลดข้อมูลเพิ่มเติม
-                              </span>
-                            </div>
-                            <div class="row  q-my-sm">
-                              <div
-                                class="col-4  q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.basic.pdf_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.basic.pdf_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".pdf"
-                                  v-if="!item.basic.pdf_file"
-                                  @input="saveData(item.no, 'basic')"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.basic.pdf_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม
-                                      </span>
-                                    </div>
+                    <div class="col q-pl-lg q-pt-md q-pr-sm">
+                      <!-- Explain Basic -->
+                      <div class>
+                        <!-- <div>
+                          <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                        </div>-->
+                        <div class="q-my-md">
+                          <q-input
+                            v-model="item.basic.explain"
+                            outlined
+                            placeholder="คำอธิบายผลการประเมิน"
+                            type="textarea"
+                            rows="17"
+                          />
+                        </div>
+                      </div>
 
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-pdf"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                      >
-                                        pdf เอกสารเพิ่มเติม
-                                      </span>
-                                    </div>
-                                  </template>
-                                  <template v-slot:file> </template>
-                                </q-file>
+                      <!-- Upload File Basic -->
+                      <div class="q-pb-sm">
+                        <div class="row">
+                          <div class="col-12 q-py-md self-start">
+                            <q-file
+                              v-model="item.basic.pdf_file"
+                              dense
+                              style="overflow:hidden;"
+                              borderless
+                              accept=".pdf"
+                              v-if="!item.basic.pdf_file"
+                              @input="saveData(item.no, 'basic')"
+                            >
+                              <template v-slot:prepend>
                                 <div
-                                  class="relative-position cursor-pointer"
+                                  class="absolute-center fit"
                                   align="center"
-                                  v-if="item.basic.pdf_file"
+                                  v-if="!item.basic.pdf_file"
                                 >
-                                  <div
-                                    class="full-width q-py-xs"
-                                    align="center"
-                                    style="border:2px solid #000000;border-radius:0px;"
-                                    @click="getPDF(item.no, 'basic')"
-                                  >
-                                    <q-icon
-                                      name="fas fa-file-pdf"
-                                      class="color1 q-px-xs"
-                                      size="20px"
-                                    ></q-icon>
-                                    <span
-                                      class="font-14 text-black"
-                                      style="text-decoration:underline"
-                                    >
-                                      pdf เอกสารเพิ่มเติม
-                                    </span>
+                                  <span class="font-16 text-black">
+                                    <u>อัพโหลด pdf เอกสารเพิ่มเติม</u>
+                                  </span>
+                                </div>
+
+                                <div class="absolute-center full-width" align="center" v-else>
+                                  <q-icon name="fas fa-file-pdf" class="color1 q-px-xs" size="25px"></q-icon>
+                                  <span
+                                    class="font-14 text-black"
+                                    style="text-decoration:underline"
+                                  >pdf เอกสารเพิ่มเติม</span>
+                                </div>
+                              </template>
+                              <template v-slot:file></template>
+                            </q-file>
+                            <div
+                              class="relative-position justify-center row"
+                              align="center"
+                              v-if="item.basic.pdf_file"
+                            >
+                              <div style="width:190px">
+                                <q-btn style="width:180px" color="teal">
+                                  <div class="row items-center fit">
+                                    <div style>
+                                      <q-icon name="fas fa-file-pdf"></q-icon>
+                                    </div>
+                                    <div class="col font-18">PDF</div>
                                   </div>
-                                  <div
-                                    class="bg1 text-white font-12 q-py-sm"
-                                    @click="
+                                </q-btn>
+                              </div>
+                              <div style="width:50px">
+                                <q-btn
+                                  @click="
                                       (typeFile = 'PDF'),
                                         (typeNo = item.no),
                                         (typeMode = 'basic'),
                                         (isDelete = true)
                                     "
-                                  >
-                                    ลบไฟล์
-                                  </div>
-                                </div>
-                              </div>
-                            
-                              <div class="col  q-py-md " align="right">
-                                <q-btn
-                                  class="bg-teal text-white font-18"
-                                  label="บันทึกข้อมูล"
-                                  :disable="isSaveData"
-                                  :loading="isSaveData"
-                                  style="width: 220px; border-radius: 0px;"
-                                  push
-                                  @click="saveData(item.no, 'basic')"
+                                  icon="fas fa-trash-alt"
+                                  flat
                                 ></q-btn>
+                              </div>
+                            </div>
+                            <p
+                              style="font-size:14px;color:#757575"
+                              class="q-pt-sm"
+                            >model หรือ workflow เฉพาะไฟล์ pdf ไม่เกิน 2 หน้า เพียง 1 ไฟล์</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- </q-tab-panel> -->
+
+                  <!-- ADVANCE -->
+
+                  <div>
+                    <div class="row bg-grey-4 q-py-sm">
+                      <div style="width:370px" align="center">
+                        <span class="font-18b">ระดับดำเนินการ</span>
+                      </div>
+                      <div class="col" align="center">
+                        <span class="font-18b">แนวทางดำเนินการ</span>
+                      </div>
+                      <div class="col" align="center">
+                        <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                      </div>
+                    </div>
+
+                    <div class="row q-px-md">
+                      <div class="col-5" style="width:370px;border-right:1px solid #e0e0e0">
+                        <div class="q-pa-md font-18 q-mb-sm">
+                          <div
+                            align="center"
+                            style="border:1px solid black;border-radius:5px;width:100px;font-size:18px"
+                          >Advance</div>
+                          <div class="q-mt-md">
+                            <span v-html="item.advance.titleText"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col" style="border-right:1px solid #e0e0e0">
+                        <div class="q-pa-md font-18">
+                          <div
+                            class="q-mt-sm"
+                            v-for="(checkbox, advanceCheckboxIndex) in item
+                                .advance.checkBox"
+                            :key="advanceCheckboxIndex"
+                          >
+                            <div class="row">
+                              <div class="col-1" style="width:50px;" align="center">
+                                <q-checkbox
+                                  color="pink-4"
+                                  keep-color
+                                  v-model="checkbox.status"
+                                  value
+                                />
+                              </div>
+                              <div class="col q-py-xs">
+                                <span v-html="checkbox.text"></span>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </q-tab-panel>
-
-                    <!-- ADVANCE -->
-                    <q-tab-panel name="Advance" class="no-padding">
-                      <div class="row">
-                        <div
-                          class="col-5"
-                          style="width:530px;border-right:1px solid #e0e0e0"
-                        >
-                          <div class="q-pa-md font-18 q-mb-xl">
-                            <div>
-                              <span class="font-18b">ระดับดำเนินการ</span>
-                            </div>
-                            <div class="q-mt-md">
-                              <span v-html="item.advance.titleText"></span>
-                            </div>
-                          </div>
-
-                          <q-separator></q-separator>
-                          <div class="q-pa-md font-18">
-                            <div>
-                              <span class="font-18b">แนวทางดำเนินการ</span>
-                            </div>
-                            <div
-                              class="q-mt-sm"
-                              v-for="(checkbox, advanceCheckboxIndex) in item
-                                .advance.checkBox"
-                              :key="advanceCheckboxIndex"
-                            >
-                              <div class="row">
-                                <div
-                                  class="col-1 "
-                                  style="width:50px;"
-                                  align="center"
-                                >
-                                  <q-checkbox color="pink-4" keep-color="" v-model="checkbox.status" value />
-                                </div>
-                                <div class="col  q-py-xs">
-                                  <span v-html="checkbox.text"></span>
-                                </div>
-                              </div>
-                            </div>
+                      <div class="col q-pl-lg q-pr-sm">
+                        <div>
+                          <div class="q-my-md">
+                            <q-input
+                              v-model="item.advance.explain"
+                              outlined
+                              placeholder="คำอธิบายผลการประเมิน"
+                              type="textarea"
+                              rows="17"
+                            />
                           </div>
                         </div>
-                        <div class="col q-pl-lg q-pr-sm">
-                          <div>
-                            <div>
-                              <span class="font-18b">คำอธิบายผลการประเมิน</span>
-                            </div>
-                            <div class="q-my-md">
-                              <q-input
-                                v-model="item.advance.explain"
-                                outlined=""
-                                placeholder="คำอธิบายผลการประเมิน"
-                                type="textarea"
-                                rows="17"
-                              />
-                            </div>
-                          </div>
-
-                          <div>
-                            <div class="q-mt-lg">
-                              <span class="font-18b"
-                                >อัพโหลดข้อมูลเพิ่มเติม</span
+                        <div class="q-pb-sm">
+                          <div class="row">
+                            <div class="col-12 q-py-md self-start">
+                              <q-file
+                                v-model="item.advance.pdf_file"
+                                dense
+                                style="overflow:hidden;"
+                                borderless
+                                accept=".pdf"
+                                v-if="!item.advance.pdf_file"
+                                @input="saveData(item.no, 'advance')"
                               >
-                            </div>
-                            <div class="row justify-between q-my-sm">
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.advance.pdf_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.advance.pdf_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".pdf"
-                                  @input="saveData(item.no, 'advance')"
-                                  v-if="!item.advance.pdf_file"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.advance.pdf_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
-                                      >
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-pdf"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                        >pdf เอกสารเพิ่มเติม</span
-                                      >
-                                    </div>
-                                  </template>
-
-                                  <template v-slot:file> </template>
-                                </q-file>
-                                <div
-                                  class=" relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.advance.pdf_file"
-                                >
+                                <template v-slot:prepend>
                                   <div
-                                    class="full-width q-py-xs"
+                                    class="absolute-center fit"
                                     align="center"
-                                    style="border:2px solid #000000;border-radius:0px"
-                                    @click="getPDF(item.no, 'advance')"
+                                    v-if="!item.advance.pdf_file"
                                   >
+                                    <span class="font-16 text-black">
+                                      <u>อัพโหลด pdf เอกสารเพิ่มเติม</u>
+                                    </span>
+                                  </div>
+
+                                  <div class="absolute-center full-width" align="center" v-else>
                                     <q-icon
                                       name="fas fa-file-pdf"
                                       class="color1 q-px-xs"
+                                      size="25px"
                                     ></q-icon>
                                     <span
                                       class="font-14 text-black"
                                       style="text-decoration:underline"
-                                      >pdf เอกสารเพิ่มเติม</span
-                                    >
+                                    >pdf เอกสารเพิ่มเติม</span>
                                   </div>
-                                  <div
+                                </template>
+                                <template v-slot:file></template>
+                              </q-file>
+                              <div
+                                class="relative-position justify-center row"
+                                align="center"
+                                v-if="item.advance.pdf_file"
+                              >
+                                <div style="width:190px">
+                                  <q-btn style="width:180px" color="teal">
+                                    <div class="row items-center fit">
+                                      <div style>
+                                        <q-icon name="fas fa-file-pdf"></q-icon>
+                                      </div>
+                                      <div class="col font-18">PDF</div>
+                                    </div>
+                                  </q-btn>
+                                </div>
+                                <div style="width:50px">
+                                  <q-btn
                                     @click="
                                       (typeFile = 'PDF'),
                                         (typeNo = item.no),
                                         (typeMode = 'advance'),
                                         (isDelete = true)
                                     "
-                                    class="text-white font-12 bg1 q-py-sm"
-                                  >
-                                    ลบไฟล์
-                                  </div>
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
                                 </div>
                               </div>
-                         
-                              <div class="col q-py-md " align="right">
-                                <q-btn
-                                  class="bg-teal text-white font-18"
-                                  label="บันทึกข้อมูล"
-                                  :disable="isSaveData"
-                                  :loading="isSaveData"
-                                  style="width: 220px; border-radius: 0px;"
-                                  push
-                                  @click="saveData(item.no, 'advance')"
-                                ></q-btn>
+                              <p
+                                style="font-size:14px;color:#757575"
+                                class="q-pt-sm"
+                              >model หรือ workflow เฉพาะไฟล์ pdf ไม่เกิน 2 หน้า เพียง 1 ไฟล์</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="row bg-grey-4 q-py-sm">
+                      <div style="width:370px" align="center">
+                        <span class="font-18b">ระดับดำเนินการ</span>
+                      </div>
+                      <div class="col" align="center">
+                        <span class="font-18b">แนวทางดำเนินการ</span>
+                      </div>
+                      <div class="col" align="center">
+                        <span class="font-18b">คำอธิบายผลการประเมิน</span>
+                      </div>
+                    </div>
+
+                    <div class="row q-px-md">
+                      <div class="col-5" style="width:370px;border-right:1px solid #e0e0e0">
+                        <div class="q-pa-md font-18 q-mb-sm">
+                          <div
+                            align="center"
+                            style="border:1px solid black;border-radius:5px;width:130px;font-size:18px"
+                          >Significance</div>
+                          <div class="q-mt-md">
+                            <span v-html="item.significance.titleText"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col" style="border-right:1px solid #e0e0e0">
+                        <div class="q-pa-md font-18">
+                          <div
+                            class="q-mt-sm"
+                            v-for="(checkbox, significanceCheckboxIndex) in item
+                                .significance.checkBox"
+                            :key="significanceCheckboxIndex"
+                          >
+                            <div class="row">
+                              <div class="col-1" style="width:50px;" align="center">
+                                <q-checkbox
+                                  color="pink-4"
+                                  keep-color
+                                  v-model="checkbox.status"
+                                  value
+                                />
+                              </div>
+                              <div class="col q-py-xs">
+                                <span v-html="checkbox.text"></span>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </q-tab-panel>
-
-                    <!-- SIGNIFICANCE -->
-                    <q-tab-panel name="Significance" class="no-padding">
-                      <div class="row">
-                        <div
-                          class="col-5"
-                          style="width:530px;border-right:1px solid #e0e0e0"
-                        >
-                          <div class="q-pa-md font-18 q-mb-xl">
-                            <div>
-                              <span class="font-18b">ระดับดำเนินการ</span>
-                            </div>
-                            <div class="q-mt-md">
-                              <span v-html="item.significance.titleText">
-                              </span>
-                            </div>
-                          </div>
-
-                          <q-separator></q-separator>
-                          <div class="q-pa-md font-18">
-                            <div>
-                              <span class="font-18b">แนวทางดำเนินการ</span>
-                            </div>
-                            <div
-                              class="q-mt-sm"
-                              v-for="(checkbox, signiCheckboxIndex) in item
-                                .significance.checkBox"
-                              :key="signiCheckboxIndex"
-                            >
-                              <div class="row">
-                                <div
-                                  class="col-1 "
-                                  style="width:50px;"
-                                  align="center"
-                                >
-                                  <q-checkbox color="pink-4" keep-color=""
-                                    v-model="
-                                      data[index].significance.checkBox[
-                                        signiCheckboxIndex
-                                      ].status
-                                    "
-                                    value=""
-                                  />
-                                </div>
-                                <div class="col  q-py-xs">
-                                  <span v-html="checkbox.text"> </span>
-                                </div>
-                              </div>
-                            </div>
+                      <div class="col q-pl-lg q-pr-sm">
+                        <div>
+                          <div class="q-my-md">
+                            <q-input
+                              v-model="item.significance.explain"
+                              outlined
+                              placeholder="คำอธิบายผลการประเมิน"
+                              type="textarea"
+                              rows="17"
+                            />
                           </div>
                         </div>
-                        <div class="col q-pl-lg q-pr-sm">
-                          <div>
-                            <div>
-                              <span class="font-18b">คำอธิบายผลการประเมิน</span>
-                            </div>
-                            <div class="q-my-md">
-                              <q-input
-                                v-model="item.significance.explain"
-                                outlined=""
-                                placeholder="คำอธิบายผลการประเมิน"
-                                type="textarea"
-                                rows="17"
-                              />
-                            </div>
-                          </div>
-
-                          <div>
-                            <div class="q-mt-lg">
-                              <span class="font-18b"
-                                >อัพโหลดข้อมูลเพิ่มเติม</span
+                        <div class="q-pb-sm">
+                          <div class="row">
+                            <div class="col-12 q-py-md self-start">
+                              <q-file
+                                v-model="item.significance.pdf_file"
+                                dense
+                                style="overflow:hidden;"
+                                borderless
+                                accept=".pdf"
+                                v-if="!item.significance.pdf_file"
+                                @input="saveData(item.no, 'significance')"
                               >
-                            </div>
-                            <div class="row justify-between q-my-sm">
-                              <div
-                                class="col-4 q-pa-md self-start"
-                                style="width:205px;"
-                              >
-                                <q-file
-                                  v-model="item.significance.pdf_file"
-                                  v-if="!item.significance.pdf_file"
-                                  dense=""
-                                  style="overflow:hidden;"
-                                  :style="
-                                    !item.significance.pdf_file
-                                      ? 'border:2px solid #e84c93;border-radius:10px;'
-                                      : 'border:2px solid #000000;border-radius:0px;'
-                                  "
-                                  borderless
-                                  accept=".pdf"
-                                  @input="saveData(item.no, 'significance')"
-                                >
-                                  <template v-slot:prepend>
-                                    <div
-                                      class="absolute-center fit"
-                                      align="center"
-                                      v-if="!item.significance.pdf_file"
-                                    >
-                                      <span class="font-16 text-black"
-                                        >pdf เอกสารเพิ่มเติม</span
-                                      >
-                                    </div>
-
-                                    <div
-                                      class="absolute-center full-width"
-                                      align="center"
-                                      v-else
-                                    >
-                                      <q-icon
-                                        name="fas fa-file-pdf"
-                                        class="color1 q-px-xs"
-                                        size="25px"
-                                      ></q-icon>
-                                      <span
-                                        class="font-14 text-black"
-                                        style="text-decoration:underline"
-                                        @click="getPDF(item.no, 'significance')"
-                                        >pdf เอกสารเพิ่มเติม</span
-                                      >
-                                    </div>
-                                  </template>
-
-                                  <template v-slot:file> </template>
-                                </q-file>
-
-                                <div
-                                  class=" relative-position cursor-pointer"
-                                  align="center"
-                                  v-if="item.significance.pdf_file"
-                                >
+                                <template v-slot:prepend>
                                   <div
-                                    class="full-width q-py-xs"
+                                    class="absolute-center fit"
                                     align="center"
-                                    style="border:2px solid #000000;border-radius:0px"
-                                    @click="getPDF(item.no, 'significance')"
+                                    v-if="!item.significance.pdf_file"
                                   >
+                                    <span class="font-16 text-black">
+                                      <u>อัพโหลด pdf เอกสารเพิ่มเติม</u>
+                                    </span>
+                                  </div>
+
+                                  <div class="absolute-center full-width" align="center" v-else>
                                     <q-icon
                                       name="fas fa-file-pdf"
                                       class="color1 q-px-xs"
+                                      size="25px"
                                     ></q-icon>
                                     <span
                                       class="font-14 text-black"
                                       style="text-decoration:underline"
-                                      >pdf เอกสารเพิ่มเติม</span
-                                    >
+                                    >pdf เอกสารเพิ่มเติม</span>
                                   </div>
-                                  <div
+                                </template>
+                                <template v-slot:file></template>
+                              </q-file>
+                              <div
+                                class="relative-position justify-center row"
+                                align="center"
+                                v-if="item.significance.pdf_file"
+                              >
+                                <div style="width:190px">
+                                  <q-btn style="width:180px" color="teal">
+                                    <div class="row items-center fit">
+                                      <div style>
+                                        <q-icon name="fas fa-file-pdf"></q-icon>
+                                      </div>
+                                      <div class="col font-18">PDF</div>
+                                    </div>
+                                  </q-btn>
+                                </div>
+                                <div style="width:50px">
+                                  <q-btn
                                     @click="
                                       (typeFile = 'PDF'),
                                         (typeNo = item.no),
                                         (typeMode = 'significance'),
                                         (isDelete = true)
                                     "
-                                    class="text-white font-12 bg1 q-py-sm"
-                                  >
-                                    ลบไฟล์
-                                  </div>
+                                    icon="fas fa-trash-alt"
+                                    flat
+                                  ></q-btn>
                                 </div>
                               </div>
-                          
-                              <div class="col q-py-md " align="right">
-                                <q-btn
-                                  class="bg-teal text-white font-18"
-                                  label="บันทึกข้อมูล"
-                                  :disable="isSaveData"
-                                  :loading="isSaveData"
-                                  style="width: 220px; border-radius: 0px;"
-                                  push
-                                  @click="saveData(item.no, 'significance')"
-                                ></q-btn>
-                              </div>
+                              <p
+                                style="font-size:14px;color:#757575"
+                                class="q-pt-sm"
+                              >model หรือ workflow เฉพาะไฟล์ pdf ไม่เกิน 2 หน้า เพียง 1 ไฟล์</p>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </q-tab-panel>
-                  </q-tab-panels>
+                    </div>
+                  </div>
+                  <!-- </q-tab-panel> -->
+                  <!-- </q-tab-panels> -->
                 </div>
               </div>
             </q-card>
@@ -639,6 +467,13 @@
         </q-list>
       </div>
     </div>
+
+     <div align="center" class="q-pt-lg">
+      <q-btn @click="sendData()" label="บันทึกข้อมูล" style="width:220px" color="teal"></q-btn>
+    </div>
+
+
+
     <q-dialog v-model="isDelete" persistent="">
       <q-card style="max-width:400px;width:100%;">
         <q-card-section align="center">
@@ -952,6 +787,43 @@ export default {
     };
   },
   methods: {
+
+      checkModeStatus(basic, advance, significance) {
+      let checkBasic = !basic.map((x) => x.status).includes(false);
+      let checkAdvance = !advance.map((x) => x.status).includes(false);
+      let checkSigni = !significance.map((x) => x.status).includes(false);
+
+      if (checkSigni && checkAdvance && checkBasic) {
+        return "Significance";
+      } else if (checkBasic && checkAdvance) {
+        return "Advance";
+      } else if (checkBasic) {
+        return "Basic";
+      } else {
+        return "ไม่ผ่านการประเมิน";
+      }
+    },
+
+    
+    async sendData() {
+      this.loadingShow();
+      await this.saveData(1, "basic");
+      await this.saveData(1, "advance");
+      await this.saveData(1, "significance");
+
+      await this.saveData(2, "basic");
+      await this.saveData(2, "advance");
+      await this.saveData(2, "significance");
+
+      await this.saveData(3, "basic");
+      await this.saveData(3, "advance");
+      await this.saveData(3, "significance");
+
+      await this.saveData(4, "basic");
+      await this.saveData(4, "advance");
+      await this.saveData(4, "significance");
+      this.loadingHide();
+    },
    
     deleteFile(no, mode) {
       if (this.typeFile == "PDF") {

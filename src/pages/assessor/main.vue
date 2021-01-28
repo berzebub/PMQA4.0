@@ -48,7 +48,7 @@
                 v-ripple
                 style="border:1px solid"
               >
-                <div align="center" class="col-12 q-py-sm">{{ item.name }} </div>
+                <div align="center" class="col-12 q-py-sm">{{ item.name }}</div>
                 <div
                   class="col-12 text-white"
                   align="center"
@@ -235,25 +235,19 @@ export default {
       this.getAssessmentData();
     },
     toPage(officeData, mode) {
-
-
-
-
-
-      if(officeData.categoryGroup[mode].status == "ยังไม่ประเมิน")
-      {
-        this.notify("ยังไม่มีการประเมิน","red")
-return
+      if (officeData.categoryGroup[mode].status == "ยังไม่ประเมิน") {
+        this.notify("ยังไม่มีการประเมิน", "red");
+        return;
       }
-      
-
-
 
       this.$q.sessionStorage.set("aid", officeData.userId);
       if (mode == 0) {
+        // assessor/stepper/:step
+        this.$router.push("/assessor/op")
         // OP
       } else if (mode == 1) {
         // หมวด1-6
+        this.$router.push("/assessor/stepper/1")
       } else if (mode == 2) {
         // หมวด7 GAP
 
@@ -314,10 +308,10 @@ return
       //     color: "red",
       //   });
       // } else {
-        this.isShowDialogConfirmReset = true;
-        this.officeNameTemp = item.office;
-        this.tempDeleteMode = mode;
-        this.activeUserId = item.userId;
+      this.isShowDialogConfirmReset = true;
+      this.officeNameTemp = item.office;
+      this.tempDeleteMode = mode;
+      this.activeUserId = item.userId;
       // }
     },
 
@@ -367,7 +361,6 @@ return
           }
           return result;
         };
-
 
         let categoryGroup = [
           { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },
