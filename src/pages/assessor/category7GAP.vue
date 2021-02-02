@@ -128,7 +128,7 @@
                       <div class="col-4">
                         {{  item.question[indexSub].goalCurrentYear }}
                       </div>
-                      <div class="col-4">%</div>
+                      <div class="col-4">{{  item.question[indexSub].unit }}</div>
 
                       <div class="col-12 q-py-md">
                         <q-separator color="black" />
@@ -252,7 +252,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 85,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
@@ -280,7 +280,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 85,
-              unit: "%",
+              unit: "",
               result: [
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -317,7 +317,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 85,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
@@ -353,7 +353,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 90,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
@@ -380,7 +380,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 90,
-              unit: "%",
+              unit: "",
               result: [
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -417,7 +417,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 60,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
@@ -444,7 +444,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 85,
-              unit: "%",
+              unit: "",
               result: [
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
@@ -479,7 +479,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 96,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
@@ -514,7 +514,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 80,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
@@ -541,7 +541,7 @@ export default {
               a_assesment_GAP: -1,
               a_score: -1,
               goalCurrentYear: 80,
-              unit: "%",
+              unit: "",
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
