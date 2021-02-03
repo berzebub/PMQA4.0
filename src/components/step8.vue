@@ -655,7 +655,7 @@ export default {
       }
 
       this.data[index].question[indexSub].score = calculatedScore;
-      return isNaN(calculatedScore) ? 0 : calculatedScore;
+      return isNaN(calculatedScore) ? 0 : parseInt(calculatedScore);
     },
     // ปุ่มเพิ่มตัวชี้วัด
     addInidcator(index) {
@@ -811,6 +811,7 @@ export default {
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y") + (543-1),
       };
+
       let data = await Axios.post(url, postData);
       let getData = data.data;
 

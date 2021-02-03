@@ -55,7 +55,7 @@
                     ผลดำเนินการ PMQA4.0 ในภาพรวม =
                     <span style="font-size:48px">
                       {{
-                      assessmentLog.office_score
+                      showAvgScore
                       }}
                     </span>
                     คะแนน
@@ -104,6 +104,7 @@ export default {
   },
   data() {
     return {
+      showAvgScore : "",
       file1Y: "",
       file3Y: "",
       categoryGroup: [
@@ -170,7 +171,7 @@ export default {
         {
           title: `ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
-          score: [0, 0, 0, 0],
+          score: [0, 0, 0, 0,0,0],
           a_score: [0, 0, 0, 0, 0, 0],
         },
       ],
@@ -422,6 +423,8 @@ export default {
         }
       }
 
+      
+
       const url1 = this.apiPath + "user/getCategory7.php";
       let getCategory7 = await Axios.post(url1, postData1);
 
@@ -439,6 +442,31 @@ export default {
           this.dataList[7].a_score[i] = parseInt(checkExist[0].a_avg_score);
         }
       }
+
+      // console.log(this.dataList);
+
+let avgScoreLst = []
+
+       for (let i = 1; i < this.dataList.length; i++) {
+        let devine = 4;
+
+        if (i == 7) {
+          devine = 6;
+        }
+
+        avgScoreLst.push(
+          this.dataList[i].score.map(x => x).reduce((a, b) => Number(a) + Number(b), 0) / devine
+        );
+      }
+
+      // console.log(avgScoreLst);
+      let avgScoreList = avgScoreLst.reduce((a, b) => Number(a) + Number(b), 0) / 7;
+
+      this.showAvgScore = parseInt(avgScoreList)
+
+
+
+
 
       this.getAssessmentLog();
     },

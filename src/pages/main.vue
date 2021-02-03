@@ -1,8 +1,10 @@
 <template>
-  <q-page class style="max-width:1280px;margin:auto">
+  <q-page >
     <!-- v-if="isShowStepper" -->
+
+    <div style="max-width:1280px;margin:auto">
     <div
-      class="col-10 row self-center q-pa-md"
+      class=" row self-center q-pa-md"
       v-if="assessmentMode == '1'"
       style="width: 825px;overflow:hidden;margin:auto;padding-top:80px"
     >
@@ -643,7 +645,9 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-    <my-footer class="absolute-bottom"></my-footer>
+
+    </div>
+        <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
 

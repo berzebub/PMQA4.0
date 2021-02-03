@@ -21,7 +21,7 @@
       </div>
 
       <div align="center" class="q-pa-md">
-        <span class="text-h6">ตัวชี้วัดหมวด 7</span>
+        <span class="text-h6">ตัวชี้วัดหมวด 7 </span>
       </div>
 
 
@@ -137,21 +137,21 @@
                       <div class="col border-right" align="center">
                         <div class="q-pa-xs">
                           <span>{{
-                            `${$q.sessionStorage.getItem("y") + 541}`
+                            `${$q.sessionStorage.getItem("y") + 540}`
                           }}</span>
                         </div>
                       </div>
                       <div class="col border-right" align="center">
                         <div class="q-pa-xs">
                           <span>{{
-                            `${$q.sessionStorage.getItem("y") + 542}`
+                            `${$q.sessionStorage.getItem("y") + 541}`
                           }}</span>
                         </div>
                       </div>
                       <div class="col" align="center">
                         <div class="q-pa-xs">
                           <span>{{
-                            `${$q.sessionStorage.getItem("y") + 543}`
+                            `${$q.sessionStorage.getItem("y") + 542}`
                           }}</span>
                         </div>
                       </div>
@@ -201,7 +201,7 @@
                         <div class="q-pa-xs">
                           <span>{{
                             `${item2.result[
-                              $q.sessionStorage.getItem("y") + 541
+                              $q.sessionStorage.getItem("y") + 540
                             ] || ""}`
                           }}</span>
                         </div>
@@ -210,7 +210,7 @@
                         <div class="q-pa-xs">
                           <span>{{
                             `${item2.result[
-                              $q.sessionStorage.getItem("y") + 542
+                              $q.sessionStorage.getItem("y") + 541
                             ] || ""}`
                           }}</span>
                         </div>
@@ -219,7 +219,7 @@
                         <div class="q-pa-xs">
                           <span>{{
                             `${item2.result[
-                              $q.sessionStorage.getItem("y") + 543
+                              $q.sessionStorage.getItem("y") + 542
                             ] || ""}`
                           }}</span>
                         </div>
@@ -578,8 +578,10 @@ export default {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + 543
+        year: this.$q.sessionStorage.getItem("y") + (543-1)
       };
+
+      console.log(postData);
       let data = await Axios.post(url, postData);
       let getData = data.data;
 

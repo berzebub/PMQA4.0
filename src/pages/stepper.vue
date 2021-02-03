@@ -345,6 +345,7 @@ export default {
   },
   created() {
     if (this.$q.sessionStorage.has("nstpr")) {
+
       let nstpr = this.$q.sessionStorage.getItem("nstpr");
       if (!nstpr) {
         this.$router.push("/");

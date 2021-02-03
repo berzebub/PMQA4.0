@@ -1,5 +1,5 @@
 <template>
-  <div class style="max-width:1280px;margin:auto">
+  <div class="q-px-lg" style="max-width:1280px;margin:auto">
     <div class="relative-position">
       <h4>ลักษณะสำคัญขององค์กร ปี {{ $q.sessionStorage.getItem("y") +543 }}</h4>
 
