@@ -185,8 +185,17 @@ export default {
         // OP
         if (item.status == "รอผลประเมิน") {
           // ปริ้น ลักษณะองค์กร แบบไม่มีผู้ประเมิน
+
+              let route = this.$router.resolve({
+            name : "printStep0"
+          })
+          window.open(route.href)
         } else if (item.status == "ประเมินแล้ว") {
           // ปริ้นลักษณะองค์กรแบบมีผู้ประเมิน
+          let route = this.$router.resolve({
+            name : "printStep0A"
+          })
+          window.open(route.href)
         }
       } else if (index == 1) {
         // หมวด1-6
@@ -482,6 +491,14 @@ let avgScoreLst = []
       this.assessmentLog = data.data.filter(
         (x) => x.user_id == this.$q.sessionStorage.getItem("uid")
       )[0];
+
+      if(this.assessmentLog.a_category1_score != '-1'&&this.assessmentLog.a_category2_score != '-1'&&this.assessmentLog.a_category3_score != '-1'&&this.assessmentLog.a_category4_score != '-1'&&this.assessmentLog.a_category5_score != '-1'&&this.assessmentLog.a_category6_score != '-1' && this.assessmentLog.a_category7_score)
+      {
+        let avgScore = Number(this.assessmentLog.a_category1_score) +Number(this.assessmentLog.a_category2_score) + Number(this.assessmentLog.a_category3_score) +Number(this.assessmentLog.a_category4_score) + Number(this.assessmentLog.a_category5_score) + Number(this.assessmentLog.a_category6_score) + Number(this.assessmentLog.a_category7_score)
+
+        console.log(avgScore);
+        this.assessmentLog.assessor_score = parseInt(avgScore / 7)
+      }
 
       if (this.assessmentLog) {
         postData = {

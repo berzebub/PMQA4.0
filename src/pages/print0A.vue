@@ -60,7 +60,7 @@
             </td>
           </tr>
         </thead>
-        <tbody>
+        <tbody class=''>
           <tr v-for="(item, index) in q1A" :key="index">
             <td>
               <div
@@ -166,11 +166,13 @@
         </tbody>
       </table>
 
+      <div class='break'></div>
+
       <!-- ข้อ2 -->
 
       <div
         align="left"
-        class="text-white q-py-sm q-pl-md"
+        class="text-white q-py-sm q-pl-md q-mt-lg"
         style="width: 80%; font-size: 18px;background-color:#757575"
       >
         2. สภาวการณ์ขององค์กร: สภาวการณ์เชิงยุทธศาสตร์ของส่วนราชการเป็นเช่นใด?

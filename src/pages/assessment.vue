@@ -267,7 +267,7 @@ export default {
       getData = getData.data;
 
       const postData1 = {
-        year: this.$q.sessionStorage.getItem("y") + 543,
+        year: this.$q.sessionStorage.getItem("y") + (543-1),
         user_id: this.$q.sessionStorage.getItem("uid")
       };
 
