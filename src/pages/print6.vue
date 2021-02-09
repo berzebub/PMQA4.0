@@ -1,30 +1,16 @@
 <template>
-  <div class="">
+  <div class>
     <div class="float-right q-pa-md" v-show="$route.name != 'printAll'">
-      <q-btn
-        class="printBtn"
-        icon="fas fa-print"
-        color="pink-4"
-        round
-        @click="printBtn()"
-      ></q-btn>
+      <q-btn class="printBtn" icon="fas fa-print" color="pink-4" round @click="printBtn()"></q-btn>
     </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div
         class="absolute-right text-h7 printDate"
         v-show="$route.name != 'printAll'"
-      >
-        {{ printDate }}
-      </div>
-      <div
-        align="center"
-        class="q-py-sm relative-position"
-        v-show="$route.name != 'printAll'"
-      >
-        <div class="text-h6">
-          {{ $q.sessionStorage.getItem("office") }}
-        </div>
+      >{{ printDate }}</div>
+      <div align="center" class="q-py-sm relative-position" v-show="$route.name != 'printAll'">
+        <div class="text-h6">{{ $q.sessionStorage.getItem("office") }}</div>
       </div>
       <div style="height: 15px"></div>
 
@@ -32,12 +18,11 @@
         align="left"
         class="b-color q-py-sm text-white q-pl-md"
         style="width: 80%; font-size: 18px"
-      >
-        หมวด 6 การมุ่งเน้นระบบปฏิบัติการ
-      </div>
+      >หมวด 6 การมุ่งเน้นระบบปฏิบัติการ</div>
       <div class="q-pt-md">
         <p>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="t-color">เป้าหมาย : </b>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <b class="t-color">เป้าหมาย :</b>
           เพื่อให้ส่วนราชการมีการบริหารจัดการกระบวนการที่มีประสิทธิภาพ
           เกิดประสิทธิผล เชื่อมโยงตั้งแต่ต้นจนจบ และนำไปสู่ผลลัพธ์ที่ต้องการ
           มีการสร้างนวัตกรรมในการปรับปรุงผลผลิต กระบวนการ และการให้บริการ
@@ -51,36 +36,42 @@
         <div class="row" style="background-color: #F2F2F2">
           <div class="col-3 q-pa-md brr"></div>
           <div class="col-3 q-pa-md brr" align="center">
-            <div>Basic<br />(A&D)</div>
+            <div>
+              Basic
+              <br />(A&D)
+            </div>
           </div>
           <div class="col-3 q-pa-md brr" align="center">
-            Advance<br />(Alignment)
+            Advance
+            <br />(Alignment)
           </div>
           <div class="col-3 q-pa-md" align="center">
-            Significance<br />(Integration)
+            Significance
+            <br />(Integration)
           </div>
         </div>
         <!-- 6.1 -->
         <div class="row" style="background-color: #D9DADC; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            6.1 กระบวนการทำงานเชื่อมโยงตั้งแต่ต้นจนจบ
-          </div>
+          <div align="center" class="col-3 q-pa-md brr">6.1 กระบวนการทำงานเชื่อมโยงตั้งแต่ต้นจนจบ</div>
           <div align="center" class="col-3 q-pa-md brr">
             ออกแบบกระบวนการที่เชื่อมโยงตั้งแต่ต้นจนจบทั้งงานภายใน
             และงานที่ข้ามส่วนราชการเพื่อให้เกิดประสิทธิภาพสูงสุด
           </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            ติดตามควบคุมกระบวนการโดยใช้ตัววัดและเทคโนโลยีดิจิทัล
-          </div>
-          <div align="center" class="col-3 q-pa-md">
-            การใช้เทคโนโลยีดิจิทัลในการจัดการกระบวนการและการบูรณการที่มุ่งสูความเป็นเลิศ
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >ติดตามควบคุมกระบวนการโดยใช้ตัววัดและเทคโนโลยีดิจิทัล</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md"
+          >การใช้เทคโนโลยีดิจิทัลในการจัดการกระบวนการและการบูรณการที่มุ่งสูความเป็นเลิศ</div>
         </div>
         <!--6.2 -->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            6.2 การสร้างนวัตกรรมในการปรับปรุงผลผลิตกระบวนการ การให้บริการ
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >6.2 การสร้างนวัตกรรมในการปรับปรุงผลผลิตกระบวนการ การให้บริการ</div>
           <div align="center" class="col-3 q-pa-md brr">
             บริหารจัดการและปรับปรุงอย่างเป็นระบบ
             ทั้งกระบวนการหลักและกระบวนการสนับสนุน
@@ -100,12 +91,14 @@
             6.3
             การลดต้นทุนการใช้ทรัพยากรเพื่อเพิ่มประสิทธิภาพและความสามารถในการแข่งขัน
           </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วิเคราะห์ต้นทุนและลงทุนในทรัพยากรที่ใช้ในกระบวนการหลักและกระบวนการสนับสนุน
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            กำหนดนโยบายการลดต้นทุน ใช้เทคโนโลยีและใช้ทรัพยากรร่วมกัน
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >วิเคราะห์ต้นทุนและลงทุนในทรัพยากรที่ใช้ในกระบวนการหลักและกระบวนการสนับสนุน</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >กำหนดนโยบายการลดต้นทุน ใช้เทคโนโลยีและใช้ทรัพยากรร่วมกัน</div>
           <div align="center" class="col-3 q-pa-md">
             ใช้ข้อมูลเทียบเคียงเพื่อสร้างนวัตกรรม ลดต้นทุน
             เพิ่มขีดความสามารถในการแข่งขัน
@@ -119,15 +112,18 @@
         </div>
         <!-- 6.4-->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            6.4 การมุ่งเน้นประสิทธิผล ทั้งองค์กร และผลกระทบต่อยุทธศาสตร์ประเทศ
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            ติดตามควบคุมประสิทธิผลกระบวนการหลัก และตัววัดเชิงยุทธศาสตร์
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            การเตรียมการเชิงรุกเพื่อลดผลกระทบจากความเสี่ยงการเตรียมพร้อมเพื่อรับมือกับเหตุการณ์
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >6.4 การมุ่งเน้นประสิทธิผล ทั้งองค์กร และผลกระทบต่อยุทธศาสตร์ประเทศ</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >ติดตามควบคุมประสิทธิผลกระบวนการหลัก และตัววัดเชิงยุทธศาสตร์</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >การเตรียมการเชิงรุกเพื่อลดผลกระทบจากความเสี่ยงการเตรียมพร้อมเพื่อรับมือกับเหตุการณ์</div>
           <div align="center" class="col-3 q-pa-md">
             บูรณาการกระบวนการต่าง ๆ
             ทั้งภายในและภายนอกเพื่อตอบสนองยุทธศาสตร์และส่งผลต่อเศรษฐกิจ สังคม
@@ -143,7 +139,6 @@
       <div v-for="(item, index) in data" :key="index">
         <div class="q-pt-md">
           {{ item.header }}
-
           <div>
             <table>
               <thead>
@@ -159,16 +154,12 @@
               <tbody>
                 <!-- BASIC -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Basic</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Basic</u>
+                    <br />
                     <div v-html="item.basic.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.basic.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.basic.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -179,15 +170,10 @@
                     >
                       <div class="row">
                         <div class="col-1" style="width: 50px" align="center">
-                          <q-checkbox
-                            color="pink-4"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                          <q-checkbox color="pink-4" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -198,16 +184,12 @@
                 </tr>
                 <!-- ADVANCE -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Advance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Advance</u>
+                    <br />
                     <div v-html="item.advance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.advance.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.advance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -218,15 +200,10 @@
                     >
                       <div class="row">
                         <div class="col-1" style="width: 50px" align="center">
-                          <q-checkbox
-                            color="pink-4"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                          <q-checkbox color="pink-4" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -238,19 +215,12 @@
 
                 <!-- SIGNI -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Significance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Significance</u>
+                    <br />
                     <div v-html="item.significance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div
-                        class="border-black"
-                        v-if="item.significance.pdf_file"
-                      >
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.significance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -262,15 +232,10 @@
                     >
                       <div class="row">
                         <div class="col-1" style="width: 50px" align="center">
-                          <q-checkbox
-                            color="pink-4"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                          <q-checkbox color="pink-4" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -308,16 +273,16 @@ export default {
             checkBox: [
               {
                 text: `แนวคิดการออกแบบกระบวนการทำงานที่เชื่อมโยงตั้งแต่ต้นจน (End-to-end process design)เพื่อให้เกิดผลลัพธ์ที่มีคุณค่าแก่ประชาชน และไม่เกิดผลกระทบเชิงลบต่อสิ่งแวดล้อม`,
-                status: false
+                status: false,
               },
               {
                 text: `การประสานงานในกระบวนการที่ต้องผ่านหลายส่วนราชการ เพื่อให้เกิดประสิทธิผล`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.1 advanec
           advance: {
@@ -326,16 +291,16 @@ export default {
             checkBox: [
               {
                 text: `การติดตามควมคุมกระบวนการโดยใช้ตัวชี้วัดและใช้ประโยชน์จากเทคโนโลยีที่ทันสมัย`,
-                status: false
+                status: false,
               },
               {
                 text: `การติดตามควบคุมกระบวนการโดยการใช้ข้อมูลร่วมกับเครือข่าย จากภายนอก`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.1 significance
           significance: {
@@ -344,17 +309,17 @@ export default {
             checkBox: [
               {
                 text: `การใช้เทคโนโลยีดิจิทัลในการจัดการกระบวนการและการติดตาม รายงานผลอย่างรวดเร็ว`,
-                status: false
+                status: false,
               },
               {
                 text: `การวิเคราะห์อุปสรรคปัญหาที่เกิดขึ้น หรือการใช้ข้อมูลเทียบเคียง(Benchmarks) ผลการดำเนินงานเพื่อออกแบบกระบวนการทำงานให้ตอบสนองการบูรณาการที่มุ่งสู่ความเป็นเลิศ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************************************************************
         {
@@ -369,20 +334,20 @@ export default {
             checkBox: [
               {
                 text: `มีการบริหารจัดการกระบวนหลักและกระบวนการสนับสนุนอย่างเป็นระบบ`,
-                status: false
+                status: false,
               },
               {
                 text: `กำหนดตัวชี้วัดที่ใช้ในการติดตามควบคุมการดำเนินการ`,
-                status: false
+                status: false,
               },
               {
                 text: `มีแนวทางและเครื่องมือในการปรับปรุงผลผลิต กระบวนการ และการบริการให้ดีขึ้น`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 6.2 advance ******************************
           advance: {
@@ -391,24 +356,24 @@ export default {
             checkBox: [
               {
                 text: `กระบวนหลัก`,
-                status: false
+                status: false,
               },
               {
                 text: `กระบวนการสนับสนุน`,
-                status: false
+                status: false,
               },
               {
                 text: `การบริการประชาชน`,
-                status: false
+                status: false,
               },
               {
                 text: `ความสะดวกในการรับข้อมูลข่าวสาร`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.2 significance
           significance: {
@@ -417,17 +382,17 @@ export default {
             checkBox: [
               {
                 text: `การสร้างความร่วมมือกับทุกภาคส่วนในการแก้ปัญหาเชิง บูรณาการ`,
-                status: false
+                status: false,
               },
               {
                 text: `การสร้างนวัตกรรมการปรับปรุงที่มีผลกระทบสูงจากการมีส่วนร่วมของผู้ที่เกี่ยวข้อง อาจดำเนินการผ่าน Government Innovation Lab โดยอาศัยกระบวนการคิดเชิงออกแบบ (Design Thinking)`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ***************************************1.3 *******************************************
         {
@@ -442,16 +407,16 @@ export default {
             checkBox: [
               {
                 text: `การวิเคราะห์ต้นทุน และการลงทุนในทรัพยากรต่างๆที่ใช้ในกระบวนการหลักและกระบวนการสนับสนุน เช่น การวิเคราะห์ต้นทุนรวม ต้นทุนโครงการ ต้นทุนด้านการบริหารจัดการทั้งทางตรงทางอ้อม ค่าใช้สอย และค่าวัสดุ จำแนกเป็นสัดส่วนเพื่อนำไปใช้ในการติดตามควบคุม`,
-                status: false
+                status: false,
               },
               {
                 text: `การวางแผนการลดต้นทุนทั้งระยะสั้นและระยะยาว`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 6.3 advance ******************************
           advance: {
@@ -460,16 +425,16 @@ export default {
             checkBox: [
               {
                 text: `การลดต้นทุนและเพิ่มประสิทธิภาพในการทำงานจากการใช้เทคโนโลยีและการแบ่งปันทรัพยากรในการทำงานร่วมกัน`,
-                status: false
+                status: false,
               },
               {
                 text: `การติดตามผลการลดต้นทุนและเพิ่มประสิทธิภาพ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 6.2 significance
           significance: {
@@ -478,17 +443,17 @@ export default {
             checkBox: [
               {
                 text: `การใช้เทคโนโลยีดิจิทัลเพื่อสร้างนวัตกรรมในการลดต้นทุน`,
-                status: false
+                status: false,
               },
               {
                 text: `การใช้ข้อมูลเทียลเคียง (Benchmarks) ทั้งในระดับประเทศและ นานาชาติ เพื่อการลดต้นทุนและเพิ่มขีดความสามารถในการ แข่งขัน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************** 1.4 *****************************
         {
@@ -503,16 +468,16 @@ export default {
             checkBox: [
               {
                 text: `การติดตามควบคุมกระบวนการหลักโดยใช้ข้อมูลและตัวชี้วัดของกระบวนการหลักในมิติต่างๆ เช่น ตัวชี้วัดด้านคุณภาพ ต้นทุน ความปลอดภัย สิ่งแวดล้อม เศรษฐกิจ สังคม การดูแลสาธารณสุข และ สาธารณภัย เป็นต้น`,
-                status: false
+                status: false,
               },
               {
                 text: `มีการติดตามควบคุมกระบวนการสนับสนุนโดยใช้ข้อมูล และตัวชี้วัดของกระบวนการสนับสนุน ในมิติต่างๆ เพื่อให้เกิด ประสิทธิภาพและประสิทธิผลของกระบวนการ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 6.4 advanec
           advance: {
@@ -521,20 +486,20 @@ export default {
             checkBox: [
               {
                 text: `การติดตามควบคุมตัวชี้วัดนำ (Leading Indicators) ทั้งเชิงป้องกันและเชิงรุก ซึ่งจะส่งผลต่อประสิทธิผลของกระบวนการ และนำมาแก้ปัญหาได้อย่างทันท่วงที`,
-                status: false
+                status: false,
               },
               {
                 text: `การจัดการความเสี่ยงอย่างมีประสิทธิภาพ`,
-                status: false
+                status: false,
               },
               {
                 text: `การเตรียมพร้อมเพื่อรับมือกับภัยพิบัติและภาวะฉุกเฉิน ตลอดจนการเตรียมตัวล่วงหน้าเพื่อลดความเสียหาย`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.4 significance
           significance: {
@@ -543,19 +508,19 @@ export default {
             checkBox: [
               {
                 text: `มีการวิเคราะห์ผลกระทบที่เกิดขึ้นทั้งกระบวนการหลักและกระบวนการสนับสนุนที่อาจส่งผลกระทบต่อการบรรลุยุทธศาสตร์`,
-                status: false
+                status: false,
               },
               {
                 text: `การประสานงานและบูรณาการทั้งภายในและภายนอกเพื่อการบรรลุยุทธศาสตร์และผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข และสิ่งแวดล้อม`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
-        }
-      ]
+            img_file: null,
+          },
+        },
+      ],
     };
   },
   methods: {
@@ -565,7 +530,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 6
+        step: 6,
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -580,7 +545,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -589,7 +554,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -608,24 +573,26 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        let getData = data.filter(
+          (x) => x.q_number == i && x.mode == "advance"
+        );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
 
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
@@ -647,13 +614,13 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          x => x.q_number == i && x.mode == "significance"
+          (x) => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          x => x.q_number == i && x.mode == "advance"
+          (x) => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
@@ -661,23 +628,23 @@ export default {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
 
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
           let checkBoxAdvance = this.data[i - 1].advance.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataAdvance.length) {
             checkBoxAdvance = getDataAdvance[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (
@@ -704,7 +671,7 @@ export default {
         let date = await Axios.get(this.apiPath + "/getDate.php");
         a(date.data);
       });
-    }
+    },
   },
   async created() {
     this.getAssessmentData();
@@ -714,7 +681,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  }
+  },
 };
 </script>
 
@@ -790,9 +757,11 @@ th {
   .a4-portrait {
     width: 210mm;
     height: 297mm;
+    -webkit-print-color-adjust: exact;
   }
   .a4-landscape {
     width: 297mm;
+    -webkit-print-color-adjust: exact;
   }
 
   .a4-landscape-flip {
@@ -804,10 +773,12 @@ th {
     padding: 0cm 1cm;
     position: relative;
     left: -70px;
+    -webkit-print-color-adjust: exact;
   }
 
   .bg {
     background-color: white;
+    -webkit-print-color-adjust: exact;
   }
   /* ... the rest of the rules ... */
 }

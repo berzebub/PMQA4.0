@@ -1,30 +1,16 @@
 <template>
-  <div class="">
+  <div class>
     <div class="float-right q-pa-md" v-show="$route.name != 'printAll'">
-      <q-btn
-        class="printBtn"
-        icon="fas fa-print"
-        color="pink-4"
-        round
-        @click="printBtn()"
-      ></q-btn>
+      <q-btn class="printBtn" icon="fas fa-print" color="pink-4" round @click="printBtn()"></q-btn>
     </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div
         class="absolute-right text-h7 printDate"
         v-show="$route.name != 'printAll'"
-      >
-        {{ printDate }}
-      </div>
-      <div
-        align="center"
-        class="q-py-sm relative-position"
-        v-show="$route.name != 'printAll'"
-      >
-        <div class="text-h6">
-          {{ $q.sessionStorage.getItem("office") }}
-        </div>
+      >{{ printDate }}</div>
+      <div align="center" class="q-py-sm relative-position" v-show="$route.name != 'printAll'">
+        <div class="text-h6">{{ $q.sessionStorage.getItem("office") }}</div>
       </div>
       <div style="height: 15px"></div>
 
@@ -32,12 +18,11 @@
         align="left"
         class="b-color q-py-sm text-white q-pl-md"
         style="width: 80%; font-size: 18px"
-      >
-        หมวด 4 การวัด การวิเคราะห์ และการจัดการความรู้
-      </div>
+      >หมวด 4 การวัด การวิเคราะห์ และการจัดการความรู้</div>
       <div class="q-pt-md">
         <p>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="t-color">เป้าหมาย : </b>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <b class="t-color">เป้าหมาย :</b>
           เพื่อให้ส่วนราชการมีการใช้ข้อมูลและสารสนเทศ
           มากำหนดตัววัดที่สามารถใช้ติดตามงานทั้งในระดับปฏิบัติการและระดับยุทธศาสตร์ได้อย่างมีประสิทธิผลทั่วทั้งองค์กร
           รวมทั้งการสื่อสารและเปิดเผยข้อมูลสู่ผู้ใช้งานทั้งภายในและภายนอก
@@ -53,45 +38,57 @@
         <div class="row" style="background-color: #F2F2F2">
           <div class="col-3 q-pa-md brr"></div>
           <div class="col-3 q-pa-md brr" align="center">
-            <div>Basic<br />(A&D)</div>
+            <div>
+              Basic
+              <br />(A&D)
+            </div>
           </div>
           <div class="col-3 q-pa-md brr" align="center">
-            Advance<br />(Alignment)
+            Advance
+            <br />(Alignment)
           </div>
           <div class="col-3 q-pa-md" align="center">
-            Significance<br />(Integration)
+            Significance
+            <br />(Integration)
           </div>
         </div>
         <!-- 4.1 -->
         <div class="row" style="background-color: #E8F5FB; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            4.1 การกำหนดตัววัดเพื่อการติดตามงานอย่างมีประสิทธิผล
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            การวางแผนและรวบรวมข้อมูลและตัววัดทุกระดับโดยใช้เทคโนโลยีสารสนเทศ
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >4.1 การกำหนดตัววัดเพื่อการติดตามงานอย่างมีประสิทธิผล</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >การวางแผนและรวบรวมข้อมูลและตัววัดทุกระดับโดยใช้เทคโนโลยีสารสนเทศ</div>
           <div align="center" class="col-3 q-pa-md brr">
             ระบบจัดการข้อมูลมีประสิทธิภาพ ปลอดภัย น่าเชื่อถือ พร้อมใช้
             เข้าถึงง่าย
           </div>
-          <div align="center" class="col-3 q-pa-md">
-            การจัดให้มีข้อมูลและสารสนเทศที่มีประโยชน์ต่อประชาชนโดยไม่ต้องร้องขอ
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md"
+          >การจัดให้มีข้อมูลและสารสนเทศที่มีประโยชน์ต่อประชาชนโดยไม่ต้องร้องขอ</div>
         </div>
         <!-- 4.2 -->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            4.2 การวิเคราะห์ผลจากข้อมูลและตัววัดในทุกระดับเพื่อการแก้ปัญหา
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            การวิเคราะห์ผลจากข้อมูลและตัววัดเพื่อแก้ปัญหาในกระบวนการที่สำคัญ
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            เพื่อค้นหาสาเหตุของปัญหาและแก้ไขในเชิงนโยบานและการปรับยุทธศาสตร์
-          </div>
-          <div align="center" class="col-3 q-pa-md">
-            เชื่อมโยงผลในทุกระดับเพื่อคาดการณ์ผลลัพธ์ที่อาจเกิดขึ้น
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >4.2 การวิเคราะห์ผลจากข้อมูลและตัววัดในทุกระดับเพื่อการแก้ปัญหา</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >การวิเคราะห์ผลจากข้อมูลและตัววัดเพื่อแก้ปัญหาในกระบวนการที่สำคัญ</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >เพื่อค้นหาสาเหตุของปัญหาและแก้ไขในเชิงนโยบานและการปรับยุทธศาสตร์</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md"
+          >เชื่อมโยงผลในทุกระดับเพื่อคาดการณ์ผลลัพธ์ที่อาจเกิดขึ้น</div>
         </div>
         <!-- 4.3 -->
         <div class="row" style="background-color: #E8F5FB; color: #4D4C4E">
@@ -103,9 +100,10 @@
             การรวบรวมองค์ความรู้ อย่างเป็นระบบเพื่อใช้ในการเรียนรู้ พัฒนา
             และต่อยอด
           </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วิเคราะห์เชื่อมโยงข้อมูลและองค์ความรู้จากภายนอกเพื่อแก้ปัญหาและสร้างนวัตกรรม
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >วิเคราะห์เชื่อมโยงข้อมูลและองค์ความรู้จากภายนอกเพื่อแก้ปัญหาและสร้างนวัตกรรม</div>
           <div align="center" class="col-3 q-pa-md">
             นำองค์ความรู้ไปใช้ปรับปรุงจนเกิดกระบวนการที่เป็นเลิศ
             บรรลุยุทธศาสตร์และการสร้างมูลค่าเพิ่มสู่ประชาชน
@@ -123,12 +121,14 @@
             4.4 การบริหารจัดการข้อมูล สารสนเทศ
             และการปรับระบบการทำงานเป็นดิจิทัลเต็มรูปแบบ
           </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วางแผนปรับรูปแบบการทำงานและการรวบรวมข้อมูลเป็นระบบดิจิทัลอย่างมีประสิทธิภาพ
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            มีระบบความมั่นคงทางไซเบอร์ และการเตรียมพร้อมในภาวะฉุกเฉิน
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >วางแผนปรับรูปแบบการทำงานและการรวบรวมข้อมูลเป็นระบบดิจิทัลอย่างมีประสิทธิภาพ</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >มีระบบความมั่นคงทางไซเบอร์ และการเตรียมพร้อมในภาวะฉุกเฉิน</div>
           <div align="center" class="col-3 q-pa-md">
             ใช้ดิจิทัลเพื่อเพิ่มประสิทธิภาพกระบวนการ ลดต้นทุน
             และรวบรวมข้อมูลได้อย่างมีประสิทธิผล
@@ -139,11 +139,10 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape  ">
+    <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
         <div class="q-pt-md">
           {{ item.header }}
-
           <div>
             <table>
               <thead>
@@ -160,16 +159,12 @@
               <tbody>
                 <!-- BASIC -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Basic</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Basic</u>
+                    <br />
                     <div v-html="item.basic.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.basic.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.basic.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-xs" style="vertical-align: top">
@@ -178,26 +173,21 @@
                       v-for="(checkbox, indexCheckbox) in item.basic.checkBox"
                       :key="indexCheckbox"
                     >
-                      <div class="row ">
+                      <div class="row">
                         <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
-                            keep-color=""
+                            keep-color
                             read-only
                             :value="item.basic.checkBox_a[indexCheckbox]"
                           />
                         </div>
 
-                        <div class="col-1 " style="width: 45px" align="center">
-                          <q-checkbox
-                            color="teal"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                        <div class="col-1" style="width: 45px" align="center">
+                          <q-checkbox color="teal" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -211,16 +201,12 @@
                 </tr>
                 <!-- ADVANCE -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Advance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Advance</u>
+                    <br />
                     <div v-html="item.advance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.advance.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.advance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -233,21 +219,16 @@
                         <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
-                            keep-color=""
+                            keep-color
                             read-only
                             :value="item.advance.checkBox_a[indexCheckbox]"
                           />
                         </div>
-                        <div class="col-1 " style="width: 45px" align="center">
-                          <q-checkbox
-                            color="teal"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                        <div class="col-1" style="width: 45px" align="center">
+                          <q-checkbox color="teal" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -262,19 +243,12 @@
 
                 <!-- SIGNI -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Significance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Significance</u>
+                    <br />
                     <div v-html="item.significance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div
-                        class="border-black"
-                        v-if="item.significance.pdf_file"
-                      >
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.significance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -288,21 +262,16 @@
                         <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
-                            keep-color=""
+                            keep-color
                             read-only
                             :value="item.significance.checkBox_a[indexCheckbox]"
                           />
                         </div>
-                        <div class="col-1 " style="width: 45px" align="center">
-                          <q-checkbox
-                            color="teal"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                        <div class="col-1" style="width: 45px" align="center">
+                          <q-checkbox color="teal" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -347,21 +316,21 @@ export default {
             checkBox: [
               {
                 text: `มีการวางแผนและรวบรวมข้อมูลตัววัดในระดับปฏิบัติการและยุทธศาสตร์`,
-                status: false
+                status: false,
               },
               {
                 text: `นำข้อมูลมาใช้ในการติดตามการปฏิบัติงานและใช้สนับสนุน การทำงานให้มีประสิทธิภาพดีขึ้น`,
-                status: false
+                status: false,
               },
               {
                 text: `มีการพัฒนาเทคโนโลยีดิจิทัลมาใช้ในการบูรณาการข้อมูล`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.1 advanec
           advance: {
@@ -371,17 +340,17 @@ export default {
             checkBox: [
               {
                 text: `ระบบการจัดการข้อมูลและสารสนเทศที่มีประสิทธิภาพ ปลอดภัยน่าเชื่อถือ และพร้อมใช้`,
-                status: false
+                status: false,
               },
               {
                 text: `คำนึงถึงผู้ใช้งานทั้งภายในและภายนอกที่เกี่ยวข้องสามารถเข้าถึงได้อย่างมีประสิทธิผล`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.1 significance
           significance: {
@@ -391,18 +360,18 @@ export default {
             checkBox: [
               {
                 text: `มีการรายงานผลการดำเนินการของส่วนราชการและนำเสนอข้อมูลและสารสนเทศที่มีประโยชน์ต่อสาธารณะโดยไม่ต้องร้องขอ และอยู่ในรูปแบบที่เข้าใจง่าย`,
-                status: false
+                status: false,
               },
               {
                 text: `การดำเนินการอยู่บนพื้นฐานการสำรวจความต้องการและ ข้อเสนอแนะจากภาคประชาชนอย่างสม่ำเสมอ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************************************************************
         {
@@ -420,17 +389,17 @@ export default {
             checkBox: [
               {
                 text: `มีกลไกในการวิเคราะห์ข้อมูลและตัววัดในทุกระดับเพื่อใช้ในการติดตามและแก้ไขปัญหา`,
-                status: false
+                status: false,
               },
               {
                 text: `มีการวิเคราะห์เปรียบเทียบผลการดำเนินการกับค่าเป้าหมายเพื่อนำไปแก้ไขปรับปรุงกระบวนการทำงาน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.2 advance ******************************
           advance: {
@@ -440,17 +409,17 @@ export default {
             checkBox: [
               {
                 text: `การนำผลการวิเคราะห์มาค้นหาสาเหตุของปัญหา และคาดการณ์ผลที่จะเกิดขึ้น`,
-                status: false
+                status: false,
               },
               {
                 text: `นำไปแก้ปัญหาในเชิงนโยบายและการปรับปรุงยุทธศาสตร์`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.2 significance
           significance: {
@@ -463,18 +432,18 @@ export default {
                 text: `การวิเคราะห์ผลจากข้อมูลและตัววัดที่รวบรวมในส่วนราชการเพื่อ
 เชื่อมโยงค้นหาสาเหตุของปัญหา แก้ปัญหาได้อย่างทันการณ์
 `,
-                status: false
+                status: false,
               },
               {
                 text: `การนำเทคโนโลยีมาใช้เพื่อตอบสนองต่อสถานการณ์อย่างทันท่วงทีและสามารถคาดการณ์ผลลัพธ์ตามที่วางแผนไว้ `,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ***************************************4.3 *******************************************
         {
@@ -495,18 +464,18 @@ export default {
                 text: `กระบวนการรวบรวมข้อมูลสารสนเทศและองค์ความรู้ที่เกี่ยวข้อง
 กับการทำงานอย่างเป็นระบบ
 `,
-                status: false
+                status: false,
               },
               {
                 text: `นำข้อมูลมาวิเคราะห์และรวบรวมไว้เพื่อนำไปใช้ประโยชน์และต่อ
 ยอดการเรียนรู้ภายในหน่วนงาน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.3 advance ******************************
           advance: {
@@ -517,17 +486,17 @@ export default {
               {
                 text: `กระบวนการรวบรวมและวิเคราะห์ข้อมูล สารสนเทศ และองค์ความรู้เชื่อมโยงกับข้อมูล สารสนเทศ และองค์ความรู้จากภายนอกองค์กร
 `,
-                status: false
+                status: false,
               },
               {
                 text: `นำองค์ความรู้มาใช้เพื่อสร้างนวัตกรรม`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.3 significance
           significance: {
@@ -537,18 +506,18 @@ export default {
             checkBox: [
               {
                 text: `การนำองค์ความรู้ไปใช้ในการแก้ไขปัญหาจนเกิดเป็นแนวปฏิบัติที่ดี (Best Practices)`,
-                status: false
+                status: false,
               },
               {
                 text: `การพัฒนาองค์ความรู้จนเกิดการสร้างมาตรฐานใหม่หรือรูปแบบการบริการที่สร้างมูลค่าเพิ่มแก่ประชาชน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************** 4.4 *****************************
         {
@@ -568,17 +537,17 @@ export default {
               {
                 text: `การจัดทำแผนการปรับเปลี่ยนรูปแบบการทำงานและการรวบรวมข้อมูลมาเป็นระบบดิจิทัล
 `,
-                status: false
+                status: false,
               },
               {
                 text: `มีตัววัดเพื่อใช้ติดตามการบรรลุตามแผนการปรับเปลี่ยนสู่ระบบดิจิทัลอย่างมีประสิทธิภาพ (รวมทั้งการพัฒนาระบบการจัดการข้อมูลเพื่อรองรับการเชื่อมต่อของข้อมูลกับส่วนราชการอื่นตาม ภาระหน้าที่)`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.4 advanec
           advance: {
@@ -589,22 +558,22 @@ export default {
               {
                 text: `การวิเคราะห์ความเสี่ยงของระบบเทคโนโลยีดิจิทัล
 `,
-                status: false
+                status: false,
               },
               {
                 text: `การวางแผนการป้องกันการโจมตีทางไซเบอร์`,
-                status: false
+                status: false,
               },
               {
                 text: `การเตรียมพร้อมต่อภัยพิบัติและภาวะฉุกเฉินที่อาจมีต่อระบบ
 ฐานข้อมูลและการปฏิบัติการบนไซเบอร์ พร้อมทั้งแผนรองรับ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 4.4 significance
           significance: {
@@ -619,16 +588,16 @@ export default {
 <br>- ติดตามงานอย่างรวดเร็ว
 <br>- การสร้างนวัตกรรมการให้บริการ
 <br>- การเชื่อมโยงเครือข่ายและข้อมูล`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
-        }
-      ]
+            img_file: null,
+          },
+        },
+      ],
     };
   },
   methods: {
@@ -638,7 +607,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 4
+        step: 4,
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -653,7 +622,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -662,7 +631,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -678,7 +647,7 @@ export default {
           if (getData[0].a_check_box) {
             this.data[i - 1].basic.checkBox_a = getData[0].a_check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           this.data[i - 1].basic.suggesstion = getData[0].suggesstion;
@@ -690,9 +659,11 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        let getData = data.filter(
+          (x) => x.q_number == i && x.mode == "advance"
+        );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
 
         if (getData.length > 0) {
@@ -700,15 +671,15 @@ export default {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
 
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
@@ -723,7 +694,7 @@ export default {
           if (getData[0].a_check_box) {
             this.data[i - 1].advance.checkBox_a = getData[0].a_check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           this.data[i - 1].advance.suggesstion = getData[0].suggesstion;
@@ -736,13 +707,13 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          x => x.q_number == i && x.mode == "significance"
+          (x) => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          x => x.q_number == i && x.mode == "advance"
+          (x) => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
@@ -750,23 +721,23 @@ export default {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
 
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
           let checkBoxAdvance = this.data[i - 1].advance.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataAdvance.length) {
             checkBoxAdvance = getDataAdvance[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (
@@ -786,7 +757,7 @@ export default {
               i - 1
             ].significance.checkBox_a = getData[0].a_check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           this.data[i - 1].significance.suggesstion = getData[0].suggesstion;
@@ -801,7 +772,7 @@ export default {
         let date = await Axios.get(this.apiPath + "/getDate.php");
         a(date.data);
       });
-    }
+    },
   },
   async created() {
     this.getAssessmentData();
@@ -811,7 +782,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  }
+  },
 };
 </script>
 
@@ -887,9 +858,11 @@ th {
   .a4-portrait {
     width: 210mm;
     height: 297mm;
+    -webkit-print-color-adjust: exact;
   }
   .a4-landscape {
     width: 297mm;
+    -webkit-print-color-adjust: exact;
   }
 
   .a4-landscape-flip {
@@ -901,10 +874,12 @@ th {
     padding: 0cm 1cm;
     position: relative;
     left: -70px;
+    -webkit-print-color-adjust: exact;
   }
 
   .bg {
     background-color: white;
+    -webkit-print-color-adjust: exact;
   }
   /* ... the rest of the rules ... */
 }

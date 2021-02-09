@@ -1,30 +1,16 @@
 <template>
-  <div class="">
+  <div class>
     <div class="float-right q-pa-md" v-show="$route.name != 'printAll'">
-      <q-btn
-        class="printBtn"
-        icon="fas fa-print"
-        color="pink-4"
-        round
-        @click="printBtn()"
-      ></q-btn>
+      <q-btn class="printBtn" icon="fas fa-print" color="pink-4" round @click="printBtn()"></q-btn>
     </div>
     <!-- page1 -->
-    <div class="a4-landscape-flip ">
+    <div class="a4-landscape-flip">
       <div
         class="absolute-right text-h7 printDate"
         v-show="$route.name != 'printAll'"
-      >
-        {{ printDate }}
-      </div>
-      <div
-        align="center"
-        class="q-py-sm relative-position"
-        v-show="$route.name != 'printAll'"
-      >
-        <div class="text-h6">
-          {{ $q.sessionStorage.getItem("office") }}
-        </div>
+      >{{ printDate }}</div>
+      <div align="center" class="q-py-sm relative-position" v-show="$route.name != 'printAll'">
+        <div class="text-h6">{{ $q.sessionStorage.getItem("office") }}</div>
       </div>
       <div style="height: 15px"></div>
 
@@ -32,15 +18,11 @@
         align="left"
         class="b-color text-white q-py-sm q-pl-md"
         style="width: 80%; font-size: 18px"
-      >
-        หมวด 1 การนำองค์กร
-      </div>
+      >หมวด 1 การนำองค์กร</div>
 
       <div class="q-pt-md">
         <p>
-          <b class="t-color">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เป้าหมาย :
-          </b>
+          <b class="t-color">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เป้าหมาย :</b>
           เพื่อให้ระบบการนำองค์กรของส่วนราชการมุ่งเน้นสัมฤทธิผลและสร้างความยั่งยืนให้กับองค์กร
           โดยส่วนราชการกำหนดวิสัยทัศน์และแผนยุทธศาสตร์ที่นำไปสู่การบรรลุพันธกิจและสอดรับกับยุทธศาสตร์ชาติ
           กำหนดนโยบายในการกำกับดูแลที่มีประสิทธิผลในเรื่องการป้องกันทุจริตและการสร้างความโปร่งใส
@@ -57,41 +39,41 @@
         <div class="row" style="background-color: #F2F2F2">
           <div class="col-3 q-pa-md brr"></div>
           <div class="col-3 q-pa-md brr" align="center">
-            <div>Basic<br />(A&D)</div>
+            <div>
+              Basic
+              <br />(A&D)
+            </div>
           </div>
           <div class="col-3 q-pa-md brr" align="center">
-            Advance<br />(Alignment)
+            Advance
+            <br />(Alignment)
           </div>
           <div class="col-3 q-pa-md" align="center">
-            Significance<br />(Integration)
+            Significance
+            <br />(Integration)
           </div>
         </div>
         <!-- 2.1 -->
         <div class="row bg-green-1" style="color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            1.1 ระบบการนำองค์กรที่สร้างความยั่งยืน
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วิสัยทัศน์/ยุทธศาสตร์ตอบสนองพันธกิจ
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วิสัยทัศน์/ยุทธศาสตร์สอดรับกับยุทธศาสตร์ประเทศ
-          </div>
-          <div align="center" class="col-3 q-pa-md">
-            สร้างนวตกรรม/วัฒนธรรมที่มุ่งประโยชน์สุขประชาชน
-          </div>
+          <div align="center" class="col-3 q-pa-md brr">1.1 ระบบการนำองค์กรที่สร้างความยั่งยืน</div>
+          <div align="center" class="col-3 q-pa-md brr">วิสัยทัศน์/ยุทธศาสตร์ตอบสนองพันธกิจ</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >วิสัยทัศน์/ยุทธศาสตร์สอดรับกับยุทธศาสตร์ประเทศ</div>
+          <div align="center" class="col-3 q-pa-md">สร้างนวตกรรม/วัฒนธรรมที่มุ่งประโยชน์สุขประชาชน</div>
         </div>
         <!-- 2.2 -->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            1.2 ป้องกันทุจริตและ สร้างความโปร่งใส
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            นโยบายการป้องกันทุจริต และระบบกำกับดูแลที่มีประสิทธิภาพ
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            การติดตาม ปรับปรุง และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา
-          </div>
+          <div align="center" class="col-3 q-pa-md brr">1.2 ป้องกันทุจริตและ สร้างความโปร่งใส</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >นโยบายการป้องกันทุจริต และระบบกำกับดูแลที่มีประสิทธิภาพ</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >การติดตาม ปรับปรุง และรายงานผลต่อสาธารณะและหน่วยงานบังคับบัญชา</div>
           <div align="center" class="col-3 q-pa-md">
             ผลการประเมินในระดับดีโดยหน่วยงานภายนอก
             เป็นแบบอย่างที่ดีและการสร้างต้นแบบด้านความโปร่งใส
@@ -103,22 +85,24 @@
             1.3
             การมุ่งเน้นผลสัมฤทธิ์ผ่านการสร้างการมีส่วนร่วมจากเครือข่ายทั้งภายในและภายนอก
           </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >สร้างสภาพแวดล้อมที่มุ่งเน้นผลสัมฤทธิ์ผ่านการมีส่วนร่วมของบุคลากรภายในและการสร้างเครือข่ายภายนอก</div>
           <div align="center" class="col-3 q-pa-md brr">
             การตั้งเป้าหมายท้าทาย
             และการส่งเสริมให้เกิดนวัตกรรมของกระบวนการและการบริการ
           </div>
-          <div align="center" class="col-3 q-pa-md">
-            สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md"
+          >สร้างนวัตกรรมเชิงนโยบายที่มีผลกระทบสูงที่สามารถแก้ปัญหาที่ซับซ้อน</div>
         </div>
         <!-- 2.4 -->
         <!-- <div
           class="row"
           style="background-color:#F2F2F2;color:#4D4C4E;visibility:hidden;height:20px"
-        ></div> -->
+        ></div>-->
         <div style="height: 35px; background-color: #f2f2f2" class="row">
           <div class="col-3 brr"></div>
           <div class="col-3 brr"></div>
@@ -127,15 +111,18 @@
         </div>
         <!-- 2.4 -->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >1.4 คำนึงถึงผลกระทบต่อสังคมและการมุ่งเน้นให้เกิดผลลัพธ์</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >ติดตามตัวชี้วัดและผลการดำเนินงานอย่างต่อเนื่อง</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >การใช้กลไกการสื่อสารและเทคโนโลยีดิจิทัลเพื่อนำไปสู่การแก้ไขปัญหาอย่างทันกาล</div>
           <div align="center" class="col-3 q-pa-md">
             ติดตามผลดำเนินการและผลกระทบระยะสั้น และระยะยาวที่มีต่อเศรษฐกิจ สังคม
             สาธารณสุข และสิ่งแวดล้อม
@@ -146,11 +133,10 @@
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape  ">
+    <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
         <div class="q-pt-md">
           {{ item.header }}
-
           <div>
             <table>
               <thead>
@@ -166,16 +152,12 @@
               <tbody>
                 <!-- BASIC -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Basic</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Basic</u>
+                    <br />
                     <div v-html="item.basic.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.basic.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.basic.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -186,15 +168,10 @@
                     >
                       <div class="row">
                         <div class="col-1" style="width: 50px" align="center">
-                          <q-checkbox
-                            color="pink-4"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                          <q-checkbox color="pink-4" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -205,16 +182,12 @@
                 </tr>
                 <!-- ADVANCE -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Advance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Advance</u>
+                    <br />
                     <div v-html="item.advance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.advance.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.advance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -225,15 +198,10 @@
                     >
                       <div class="row">
                         <div class="col-1" style="width: 50px" align="center">
-                          <q-checkbox
-                            color="pink-4"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                          <q-checkbox color="pink-4" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -245,19 +213,12 @@
 
                 <!-- SIGNI -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Significance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Significance</u>
+                    <br />
                     <div v-html="item.significance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div
-                        class="border-black"
-                        v-if="item.significance.pdf_file"
-                      >
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.significance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -269,15 +230,10 @@
                     >
                       <div class="row">
                         <div class="col-1" style="width: 50px" align="center">
-                          <q-checkbox
-                            color="pink-4"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                          <q-checkbox color="pink-4" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -318,20 +274,20 @@ export default {
             checkBox: [
               {
                 text: `ผู้บริหารกำหนดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมายและตัวชี้วัด ชัดเจนตอบสนอง ต่อพันธกิจและภาระหน้าที่ของส่วนราชการ`,
-                status: false
+                status: false,
               },
               {
                 text: `ผู้บริหารสื่อสารถ่ายทอดวิสัยทัศน์ ยุทธศาสตร์ เป้าหมาย และตัวชี้วัดไปสู่ทุกระดับ ขององค์กรอย่างทั่วถึง`,
-                status: false
+                status: false,
               },
               {
                 text: `ส่วนราชการมีระบบการสื่อสารภายในองค์กรทั่วถึง รวดเร็ว ทันการณ์`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.1 advanec
           advance: {
@@ -340,12 +296,12 @@ export default {
             checkBox: [
               {
                 text: `การกำหนดวิสัยทัศน์และยุทธศาสตร์ของส่วนราชการ <br>- สนับสนุนการบรรลุยุทธศาสตร์และสร้างขีดความสามารถใน การแข่งขันของประเทศ <br>- พิจารณาและคำนึงถึงผลกระทบต่อสังคมทั้งเชิงบวกและเชิงลบ ทั้งทางตรงและทางอ้อม`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.1 significance
           significance: {
@@ -357,13 +313,13 @@ export default {
             <br>- บูรณาการยุทธศาสตร์ชาติ / ยุทธศาสตร์พื้นที่ (ถ้ามี)
             <br>- สร้างการเปลี่ยนแปลงในเกิดวัฒนธรรมที่มุ่งเน้นประชาชน เช่น มีนโยบายการสร้างนวัตกรรมการให้บริการเพื่ออำนวยความสะดวก
               และตอบสนองความต้องการของประชาชน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************************************************************
         {
@@ -382,20 +338,20 @@ export default {
               {
                 text: `แนวทางและระบบการตรวจสอบกำกับดูแลที่เสริมสร้างความ
               โปร่งใสและป้องกันทุจริต`,
-                status: false
+                status: false,
               },
               {
                 text: `มาตรการที่ถ่ายทอดสู่การปฏิบัติและติดตามรายงานผล อย่างชัดเจน`,
-                status: false
+                status: false,
               },
               {
                 text: `การบริหารงานตามหลักธรรมภิบาล`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.2 advance ******************************
           advance: {
@@ -407,20 +363,20 @@ export default {
               {
                 text: `มีตัววัดในการตรวจติดตามป้องกันทุจริต และมีการปรับปรุง
             สม่ำเสมอ`,
-                status: false
+                status: false,
               },
               {
                 text: `มีมาตรการป้องกันการทุจริตในเชิงรุก (Pro-active) เช่น พัฒนากระบวนการทำงานให้โปร่งใส มีระบบร้องเรียน/ร้องทุกข์ สร้างกระบวนการติดตามตรวจสอบการทุจริต และการปกป้องผู้ร้องเรียน`,
-                status: false
+                status: false,
               },
               {
                 text: `เปิดเผยผลการดำเนินงานสู่สาธารณะ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.2 significance
           significance: {
@@ -430,21 +386,21 @@ export default {
             checkBox: [
               {
                 text: `มีดัชนีความโปร่งใสจากการประเมินโดยองค์กรอิสระและมี ผลลัพธ์ที่ดี`,
-                status: false
+                status: false,
               },
               {
                 text: `มีการส่งเสริมการเป็นองค์กรด้านความโปร่งใส เช่น มีการ ค้นหาความเป็นเลิศ (Best Practice:BP) ด้านความโปร่งใส มีการสร้างต้นแบบ (Role Model) ด้านความโปร่งใส`,
-                status: false
+                status: false,
               },
               {
                 text: `ได้รับรางวัลความโปร่งใสจากองค์กรภายนอก หรือ ได้รับรางวัลคุณธรรมและความโปร่งใสในระดับหน่วยงาน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ***************************************1.3 *******************************************
         {
@@ -463,20 +419,20 @@ export default {
               {
                 text: `ส่วนราชการมีแนวทางสื่อสารและสร้างสภาพแวดล้อมภายใน
               องค์กรให้มุ่งผลสัมฤทธิ์ในการทำงาน`,
-                status: false
+                status: false,
               },
               {
                 text: `ปรับปรุงกฏระเบียบที่เอื้อให้ประชาชนเข้ามามีส่วนร่วม`,
-                status: false
+                status: false,
               },
               {
                 text: `มีแนวทางในการสร้างเครือข่ายให้ ภาคประชาชน ภาคเอกชน และท้องถิ่นจากองค์กรภายนอกเข้ามามีส่วนร่วมกันในการทำงาน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.3 advance ******************************
           advance: {
@@ -485,16 +441,16 @@ export default {
             checkBox: [
               {
                 text: `มีการตั้งเป้าหมายที่ท้าทายรองรับการเปลี่ยนแปลง`,
-                status: false
+                status: false,
               },
               {
                 text: `มีแนวทางการส่งเสริมให้เกิดนวัตกรรมของกระบวนการทำงานและการให้บริการผ่านเครือข่ายภาคประชาชน ภาคเอกชน และท้องถิ่น`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.3 significance
           significance: {
@@ -507,13 +463,13 @@ export default {
                 ประเทศและนำไปสู่การแก้ปัญหาที่มีความซับซ้อน เช่น การสร้าง
                 ความร่วมมือจากหลายหน่วยงาน หรือการใช้กลไกห้องปฏิบัติการ นวัตกรรมภาครัฐ (Government Innovation Lab) โดยการนำ กระบวนการคิดเชิงออกแบบ (Design Thinking) ในลักษณะที่ให้
                 ประชาชน/ผู้มีส่วนได้ส่วนเสียเข้ามามีส่วนร่วมในทุกกระบวนการ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************** 1.4 *****************************
         {
@@ -531,24 +487,24 @@ export default {
             checkBox: [
               {
                 text: `ประเมินความเสี่ยงโครงการ กระบวนการ และยุทธศาสตร์ที่อาจมีผลกระทบเชิงลบต่อสังคมอย่างต่อเนื่อง`,
-                status: false
+                status: false,
               },
               {
                 text: `เตรียมมาตรการป้องกันและแก้ไขปัญหาต่างๆ เช่น การทำประชาพิจารณ์ เพื่อรับฟังความคิดเห็นทั้งก่อน / ระหว่าง / หลังดำเนินโครงการ`,
-                status: false
+                status: false,
               },
               {
                 text: `กำหนดตัวชี้วัดและติดตามผลการดำเนินการอย่างต่อเนื่อง`,
-                status: false
+                status: false,
               },
               {
                 text: `รวบรวมข้อมูล / สถิติ / ผลการดำเนินการที่เกี่ยวข้อง ให้พร้อมต่อการถูกติดตาม / ตรวจสอบจากทุกภาคส่วน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.4 advanec
           advance: {
@@ -559,16 +515,16 @@ export default {
             checkBox: [
               {
                 text: `ใช้เทคโนโลยีการสื่อสารและดิจิทับที่ทันสมัยเพื่อติดตามชี้วัดและ ผลการดำเนินการเพื่อรายงานผลได้อย่างรวดเร็วและทัน เหตุการณ์`,
-                status: false
+                status: false,
               },
               {
                 text: `สร้างเครือข่ายเฝ้าระวังเพื่อการแก้ไขปัญหาได้อย่างรวดเร็วและทันเหตุการณ์`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 1.4 significance
           significance: {
@@ -583,19 +539,19 @@ export default {
               - ยุทธศาสตร์พื้นที่ (ถ้ามี)<br>
               - ยุทธศาสตร์ชาติ<br>
               - ผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
-                status: false
+                status: false,
               },
               {
                 text: `ส่วนราชการมีการติดตามตัววัด โดยมีการวิเคราะห์เพื่อรู้เท่าทัน สถานการณ์และกำหนดมาตรการ / แนวทางเพื่อป้องกัน / ส่งเสริมการดำเนินการเพื่อผลลัพธ์ ที่ดีต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม`,
-                status: false
-              }
+                status: false,
+              },
             ],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
-        }
-      ]
+            img_file: null,
+          },
+        },
+      ],
     };
   },
   methods: {
@@ -605,7 +561,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 1
+        step: 1,
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -619,7 +575,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -628,7 +584,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -647,24 +603,26 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        let getData = data.filter(
+          (x) => x.q_number == i && x.mode == "advance"
+        );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
         if (getData.length > 0) {
           this.data[i - 1].status = 0;
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
 
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
@@ -686,13 +644,13 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          x => x.q_number == i && x.mode == "significance"
+          (x) => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          x => x.q_number == i && x.mode == "advance"
+          (x) => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
@@ -700,23 +658,23 @@ export default {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
 
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
           let checkBoxAdvance = this.data[i - 1].advance.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataAdvance.length) {
             checkBoxAdvance = getDataAdvance[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (
@@ -743,7 +701,7 @@ export default {
         let date = await Axios.get(this.apiPath + "/getDate.php");
         a(date.data);
       });
-    }
+    },
   },
   async created() {
     this.getAssessmentData();
@@ -753,7 +711,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  }
+  },
 };
 </script>
 
@@ -831,9 +789,11 @@ th {
   .a4-portrait {
     width: 210mm;
     height: 297mm;
+    -webkit-print-color-adjust: exact;
   }
   .a4-landscape {
     width: 297mm;
+    -webkit-print-color-adjust: exact;
   }
 
   .a4-landscape-flip {
@@ -845,10 +805,12 @@ th {
     padding: 0cm 1cm;
     position: relative;
     left: -70px;
+    -webkit-print-color-adjust: exact;
   }
 
   .bg {
     background-color: white;
+    -webkit-print-color-adjust: exact;
   }
   /* ... the rest of the rules ... */
 }

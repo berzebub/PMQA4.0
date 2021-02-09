@@ -860,15 +860,15 @@ export default {
         this.currentStep = data.data;
       }
 
-      if (
-        this.currentStep.send_status == "1" ||
-        this.currentStep.send_status == "2"
-      ) {
-        // ป้องกันการเข้า หน้า stepper
-        this.$q.sessionStorage.set("nstpr", false);
-      } else {
-        this.$q.sessionStorage.set("nstpr", true);
-      }
+      // if (
+      //   this.currentStep.send_status == "1" ||
+      //   this.currentStep.send_status == "2"
+      // ) {
+      //   // ป้องกันการเข้า หน้า stepper
+      //   this.$q.sessionStorage.set("nstpr", false);
+      // } else {
+      //   this.$q.sessionStorage.set("nstpr", true);
+      // }
       let currentDate = await this.getDate();
       this.checkAssessmentStatus();
     },
@@ -967,45 +967,33 @@ export default {
         ) {
           this.$router.push("/waitingAssessment/0");
         }
-      }
-      // console.log(responseData)
-      // }
 
-      // if (this.currentStep.send_status == "2") {
-      //   this.$router.push("/assessmentComplete");
-      // } else {
+        if(responseData.mode1_status == '1')
+        {
+        // ป้องกันการเข้า หน้า stepper
+        this.$q.sessionStorage.set("nstpr", false);
+      
+        } else {
+        this.$q.sessionStorage.set("nstpr", true);
+      
+      }
+
       if (
         timeStampCurrentDate > timeStampEndDate ||
         this.assessmentStatus == "0"
       ) {
-        // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลาf
-        if (this.currentStep.send_status == "1") {
-          // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
-          this.$router.push("/waitingAssessment/2");
-        } else {
-          // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
-          this.$router.push("/waitingAssessment/1");
-        }
+        // // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลาf
+        // if (this.currentStep.send_status == "1") {
+        //   // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
+        //   this.$router.push("/waitingAssessment/2");
+        // } else {
+        //   // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
+        //   this.$router.push("/waitingAssessment/1");
+        // }
+        this.$router.push("/waitingAssessment/0");
       }
-      //else {
-      //     if (this.currentStep.send_status == "1") {
-      //       // ส่งแบบประเมินแล้ว
-      //       // console.log("ส่งแบบประเมินแล้ว ยังไม่หมดเวลา");
-      //       this.$router.push("/waitingAssessment/0");
-      //     } else if (this.currentStep.send_status == "0") {
-      //       if (this.assessmentStatus == "0") {
-      //         // console.log("ยังไม่หมดเวลา ยังไม่ส่ง ปิดประเมิน");
-      //         this.$router.push("/waitingAssessment/1");
-      //       } else {
-      //         // console.log("ยังไม่หมดเวลา ยังไม่ส่ง เปิดประเมิน");
-      //         this.isShowStepper = true;
-      //       }
-      //     } else {
-      //       this.isShowStepper = true;
-      //     }
-      //   }
-      // }
-
+      }
+    
       this.loadingHide();
     },
     async getFile() {

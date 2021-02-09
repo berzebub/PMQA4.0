@@ -31,6 +31,16 @@ const routes = [
     name: "printAll"
   },
   {
+    path: "/print1-6",
+    component: () => import("pages/print1-6.vue"),
+    name: "print1-6"
+  },
+  {
+    path: "/print1-6a",
+    component: () => import("pages/print1-6a.vue"),
+    name: "print1-6a"
+  },
+  {
     path: "/print/0",
     component: () => import("pages/print0.vue"),
     name: "printStep0"

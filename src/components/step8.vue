@@ -75,7 +75,7 @@
                       type="textarea"
                       outlined
                       rows="5"
-                      readonly=""
+                      readonly
                     ></q-input>
                   </div>
                   <div v-else>
@@ -130,8 +130,8 @@
                             "
                             type="number"
                             dense
+                            readonly
                             outlined
-                            readonly=""
                           ></q-input>
                         </div>
                       </div>
@@ -183,7 +183,7 @@
               @click="addInidcator(index)"
               v-if="item.question.filter((x) => x.extend).length < 3"
             >เพิ่มตัวชี้วัดที่สอดคล้องกับ GAP ตามแผนปรับปรุง ที่หน่วยงานเลือกเพิ่มเติม</q-btn>
-          </div> -->
+          </div>-->
 
           <!-- <div class="q-py-md" align="center">
             <q-btn
@@ -193,7 +193,7 @@
               push
               @click="saveCategory7(item.no)"
             ></q-btn>
-          </div> -->
+          </div>-->
         </q-expansion-item>
       </q-list>
     </div>
@@ -208,7 +208,7 @@ export default {
       // 7.1
       dialogMessage: "",
 
-      currentYear: this.$q.sessionStorage.getItem("y") + (543-1),
+      currentYear: this.$q.sessionStorage.getItem("y") + (543 - 1),
       score: "ยิ่งมากยิ่งดี",
       scoreStandardOptions: ["ยิ่งมากยิ่งดี", "ยิ่งน้อยยิ่งดี"],
       data: [
@@ -262,13 +262,12 @@ export default {
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
-              result: [
-                {
-                  [this.$q.sessionStorage.getItem("y") + 543]: null,
-                  [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
-              ],
+              result: {
+                [this.$q.sessionStorage.getItem("y") + 543]: null,
+                [this.$q.sessionStorage.getItem("y") + 542]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
+              },
+
               successRate: null,
               score: null,
               scoreStandard: "ยิ่งมากยิ่งดี",
@@ -359,13 +358,12 @@ export default {
               a_score: -1,
               goalCurrentYear: 90,
               unit: "%",
-              result: [
-                {
-                  [this.$q.sessionStorage.getItem("y") + 543]: null,
-                  [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
-              ],
+              result: {
+                [this.$q.sessionStorage.getItem("y") + 543]: null,
+                [this.$q.sessionStorage.getItem("y") + 542]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
+              },
+
               successRate: null,
               score: null,
               scoreStandard: "ยิ่งมากยิ่งดี",
@@ -421,13 +419,12 @@ export default {
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
-              result: [
-                {
-                  [this.$q.sessionStorage.getItem("y") + 543]: null,
-                  [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null,
-                },
-              ],
+              result: {
+                [this.$q.sessionStorage.getItem("y") + 543]: null,
+                [this.$q.sessionStorage.getItem("y") + 542]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
+              },
+
               successRate: null,
               score: null,
               scoreStandard: "ยิ่งมากยิ่งดี",
@@ -544,11 +541,11 @@ export default {
         // } else if (calculatedScore > 95) {
         //   calculatedScore = 500;
         // }
-        if(score < 75){
-          calculatedScore = 0
-        }else if (score > 95){
-          calculatedScore = 500
-        }else{
+        if (score < 75) {
+          calculatedScore = 0;
+        } else if (score > 95) {
+          calculatedScore = 500;
+        } else {
           calculatedScore = (score - 75) * 20 + 100;
         }
       } else if (index == 2) {
@@ -561,16 +558,13 @@ export default {
         //   calculatedScore = 500;
         // }
 
-        if(score < 80){
-          calculatedScore = 0
-        }else if (score > 100){
-          calculatedScore = 500
-        }else{
-        calculatedScore = (score - 80) * 20 + 100;
-
+        if (score < 80) {
+          calculatedScore = 0;
+        } else if (score > 100) {
+          calculatedScore = 500;
+        } else {
+          calculatedScore = (score - 80) * 20 + 100;
         }
-
-        
       } else if (index == 3) {
         // คิดคะแนน 7.4
         if (indexSub == 0) {
@@ -581,11 +575,11 @@ export default {
           // } else if (calculatedScore > 100) {
           //   calculatedScore = 500;
           // }
-          if(score < 20){
-            calculatedScore = 0
-          }else if (score > 100){
-            calculatedScore = 500
-          }else {
+          if (score < 20) {
+            calculatedScore = 0;
+          } else if (score > 100) {
+            calculatedScore = 500;
+          } else {
             calculatedScore = (score - 20) * 5 + 100;
           }
         } else {
@@ -596,12 +590,12 @@ export default {
           // } else if (calculatedScore > 95) {
           //   calculatedScore = 500;
           // }
-          if(score < 75){
-            calculatedScore = 0
-          }else if (score > 95){
-            calculatedScore = 500
-          }else{
-            calculatedScore= (score - 75) * 20 + 100;
+          if (score < 75) {
+            calculatedScore = 0;
+          } else if (score > 95) {
+            calculatedScore = 500;
+          } else {
+            calculatedScore = (score - 75) * 20 + 100;
           }
         }
       } else if (index == 4) {
@@ -612,12 +606,12 @@ export default {
         // } else if (calculatedScore > 98) {
         //   calculatedScore = 500;
         // }
-        if(score > 98){
-          calculatedScore = 500
-        }else if (score < 94){
-          calculatedScore = 0
-        }else{
-          calculatedScore = (score-94) * 100 +100
+        if (score > 98) {
+          calculatedScore = 500;
+        } else if (score < 94) {
+          calculatedScore = 0;
+        } else {
+          calculatedScore = (score - 94) * 100 + 100;
         }
       } else if (index == 5) {
         // 7.6 คิดคะแนน Rm9
@@ -629,11 +623,11 @@ export default {
           // } else if (calculatedScore > 100) {
           //   calculatedScore = 500;
           // }
-          if(score < 60){
-            calculatedScore = 0
-          }else if (score > 100){
-            calculatedScore = 500
-          }else {
+          if (score < 60) {
+            calculatedScore = 0;
+          } else if (score > 100) {
+            calculatedScore = 500;
+          } else {
             calculatedScore = (score - 60) * 10 + 100;
           }
         } else {
@@ -644,12 +638,12 @@ export default {
           // } else if (calculatedScore > 90) {
           //   calculatedScore = 500;
           // }
-          if(score < 70){
-            calculatedScore = 0
-          }else if (score > 90){
-            calculatedScore = 500
-          }else{
-            calculatedScore = (score-70) * 20 +100
+          if (score < 70) {
+            calculatedScore = 0;
+          } else if (score > 90) {
+            calculatedScore = 500;
+          } else {
+            calculatedScore = (score - 70) * 20 + 100;
           }
         }
       }
@@ -809,7 +803,7 @@ export default {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + (543-1),
+        year: this.$q.sessionStorage.getItem("y") + (543 - 1),
       };
 
       let data = await Axios.post(url, postData);

@@ -1,24 +1,16 @@
 <template>
   <div>
     <div class="float-right q-pa-md" v-if="$route.name != 'printAll'">
-      <q-btn
-        class="printBtn"
-        icon="fas fa-print"
-        color="pink-4"
-        round
-        @click="printBtn()"
-      ></q-btn>
+      <q-btn class="printBtn" icon="fas fa-print" color="pink-4" round @click="printBtn()"></q-btn>
     </div>
 
     <!-- Page A4 -->
-    <div class="page-A4 relative-position q-pa-md">
+    <div class="a4-portrait relative-position q-pa-md">
       <div
         v-if="$route.name != 'printAll'"
         class="absolute-right text-h7 printDate"
         style="right:15px;top:10px;"
-      >
-        {{ printDate }}
-      </div>
+      >{{ printDate }}</div>
 
       <div align="center" class="q-pa-md">
         <span class="text-h6">ตัวชี้วัดหมวด 7</span>
@@ -31,25 +23,21 @@
         :key="index"
       >
         <div class="q-pa-xs">
-          <div class="">
-            <span style="font-size:16px;"
-              ><b>{{ item.title }}</b></span
-            >
+          <div class>
+            <span style="font-size:16px;">
+              <b>{{ item.title }}</b>
+            </span>
           </div>
           <div v-if="index == 0">
+            <span>เป็นการวัดความสำเร็จของการดำเนินการบรรลุเป้าหมามตามแผนปฏิบัติราชการของส่วนราชการ</span>
+            <br />
+            <span>ซึ่งตัวชี้วัดดังกล่าวต้องมีความสัมพันธ์กับพันธกิจหลักและยุธทศาสตร์ของส่วนราชการ</span>
+            <br />
             <span>
-              เป็นการวัดความสำเร็จของการดำเนินการบรรลุเป้าหมามตามแผนปฏิบัติราชการของส่วนราชการ
-            </span>
-            <br />
-            <span
-              >ซึ่งตัวชี้วัดดังกล่าวต้องมีความสัมพันธ์กับพันธกิจหลักและยุธทศาสตร์ของส่วนราชการ</span
-            >
-            <br />
-            <span
-              >รวมทั้งตัววัดที่ดำเนินการตามนโยบายและแผนของรัฐบาลที่กำหนดไว้ประจำปี
+              รวมทั้งตัววัดที่ดำเนินการตามนโยบายและแผนของรัฐบาลที่กำหนดไว้ประจำปี
               และตัววัดร่วม ตัววัดด้านการดำเนินการตามกฏหมาย
-              และการบรรลุตามแผนยุทธศาสตร์ของส่วนราชการ</span
-            >
+              และการบรรลุตามแผนยุทธศาสตร์ของส่วนราชการ
+            </span>
           </div>
           <div v-if="index == 1">
             <span>
@@ -70,9 +58,7 @@
           </div>
 
           <div v-if="index == 3 || index == 4">
-            <span>
-              เป็นการวัดความสำเร็จของการดำเนินการบรรลุเป้าหมายด้านการเป็นแบบอย่างที่ดีหรือการเป็นต้นแบบของผู้บริหารและบุคลากรของส่วนราชการ
-            </span>
+            <span>เป็นการวัดความสำเร็จของการดำเนินการบรรลุเป้าหมายด้านการเป็นแบบอย่างที่ดีหรือการเป็นต้นแบบของผู้บริหารและบุคลากรของส่วนราชการ</span>
           </div>
 
           <div v-if="index == 5">
@@ -94,101 +80,83 @@
           <tbody>
             <tr v-for="(item2, index2) in item.question" :key="index2">
               <td>
-                <div class="q-pb-lg ">
+                <div class="q-pb-lg">
                   <div class="q-pa-xs border-top-lr">
-                    <span
-                      style="font-size:16px;"
-                      v-html="item2.headerTextUpper"
-                    ></span>
+                    <span style="font-size:16px;" v-html="item2.headerTextUpper"></span>
                     <br />
-                    <span
-                      class="block q-mt-xs"
-                      v-html="item2.headerTextLower"
-                    ></span>
+                    <span class="block q-mt-xs" v-html="item2.headerTextLower"></span>
                   </div>
 
-                  <div
-                    class="row border-top-lr"
-                    style="background-color:#e5e5e5;"
-                  >
+                  <div class="row border-top-lr" style="background-color:#e5e5e5;">
                     <div class="col border-right" align="center">
                       <div class="q-pa-xs">
                         <span>ตัวชี้วัด</span>
                       </div>
                     </div>
-                    <div
-                      class="col-1 border-right"
-                      style="width:100px;"
-                      align="center"
-                    >
+                    <div class="col-1 border-right" style="width:100px;" align="center">
                       <div class="q-pa-xs">
-                        <span>ค่าเป้าหมาย <br />ปีล่าสุด</span>
+                        <span>
+                          ค่าเป้าหมาย
+                          <br />ปีล่าสุด
+                        </span>
                       </div>
                     </div>
                     <div class="col row border-right">
                       <div class="col-12 border-bottom" align="center">
                         <div class="q-pa-xs">
+                          <span>ผลการดำเนินงาน</span>
+                        </div>
+                      </div>
+                      <div class="col border-right" align="center">
+                        <div class="q-pa-xs">
                           <span>
-                            ผลการดำเนินงาน
+                            {{
+                            `${$q.sessionStorage.getItem("y") + 541}`
+                            }}
                           </span>
                         </div>
                       </div>
                       <div class="col border-right" align="center">
                         <div class="q-pa-xs">
-                          <span>{{
-                            `${$q.sessionStorage.getItem("y") + 541}`
-                          }}</span>
-                        </div>
-                      </div>
-                      <div class="col border-right" align="center">
-                        <div class="q-pa-xs">
-                          <span>{{
+                          <span>
+                            {{
                             `${$q.sessionStorage.getItem("y") + 542}`
-                          }}</span>
+                            }}
+                          </span>
                         </div>
                       </div>
                       <div class="col" align="center">
                         <div class="q-pa-xs">
-                          <span>{{
+                          <span>
+                            {{
                             `${$q.sessionStorage.getItem("y") + 543}`
-                          }}</span>
+                            }}
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <div
-                      class="col-1 border-right"
-                      style="width:90px;"
-                      align="center"
-                    >
-                      <span
-                        >%
-                        <br />
-                        ความสำเร็จ</span
-                      >
+                    <div class="col-1 border-right" style="width:90px;" align="center">
+                      <span>
+                        %
+                        <br />ความสำเร็จ
+                      </span>
                     </div>
-                    <div class="col-1 " style="width:50px;" align="center">
+                    <div class="col-1" style="width:50px;" align="center">
                       <span>คะแนน</span>
                     </div>
                   </div>
 
-                  <div
-                    class="row border-top-lr "
-                    style="border-bottom:1px solid"
-                  >
+                  <div class="row border-top-lr" style="border-bottom:1px solid">
                     <div class="col border-right">
                       <div class="q-pa-xs">
                         <span v-html="replaceN(item2.indicators)"></span>
                       </div>
                     </div>
-                    <div
-                      class="col-1 border-right "
-                      style="width:100px;"
-                      align="center"
-                    >
+                    <div class="col-1 border-right" style="width:100px;" align="center">
                       <div class="q-pa-xs">
                         <span>
                           {{
-                            `${item2.goalCurrentYear || ""} ${item2.unit || ""}`
+                          `${item2.goalCurrentYear || ""} ${item2.unit || ""}`
                           }}
                         </span>
                       </div>
@@ -196,43 +164,43 @@
                     <div class="col row border-right">
                       <div class="col border-right" align="center">
                         <div class="q-pa-xs">
-                          <span>{{
+                          <span>
+                            {{
                             `${item2.result[
-                              $q.sessionStorage.getItem("y") + 541
+                            $q.sessionStorage.getItem("y") + 541
                             ] || ""}`
-                          }}</span>
+                            }}
+                          </span>
                         </div>
                       </div>
                       <div class="col border-right" align="center">
                         <div class="q-pa-xs">
-                          <span>{{
+                          <span>
+                            {{
                             `${item2.result[
-                              $q.sessionStorage.getItem("y") + 542
+                            $q.sessionStorage.getItem("y") + 542
                             ] || ""}`
-                          }}</span>
+                            }}
+                          </span>
                         </div>
                       </div>
-                      <div class="col " align="center">
+                      <div class="col" align="center">
                         <div class="q-pa-xs">
-                          <span>{{
+                          <span>
+                            {{
                             `${item2.result[
-                              $q.sessionStorage.getItem("y") + 543
+                            $q.sessionStorage.getItem("y") + 543
                             ] || ""}`
-                          }}</span>
+                            }}
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <div
-                      class="col-1 border-right"
-                      style="width:90px;"
-                      align="center"
-                    >
+                    <div class="col-1 border-right" style="width:90px;" align="center">
                       <div class="q-pa-xs"></div>
-                      <!-- <span>{{ `${item2.successRate || ""}` }}</span> -->
                     </div>
-                    <div class="col-1 " style="width:50px;" align="center">
+                    <div class="col-1" style="width:50px;" align="center">
                       <div class="q-pa-xs"></div>
-                      <!-- <span>{{ `${item2.a_score}` }}</span> -->
                     </div>
                   </div>
                   <!-- ข้อเสนอแนะ -->
@@ -240,45 +208,32 @@
                     class="q-pa-sm row items-center"
                     style="border-left:1px solid;border-right:1px solid;border-bottom:1px solid"
                   >
-                    <!-- <div
-                      v-if="item2.a_assesment == 1"
-                      style="border:1px solid teal;width:100px;"
-                      align="center"
-                      class="q-px-md text-teal"
-                    >
-                      เหมาะสม
-                    </div>
-                    <div
-                      v-if="item2.a_assesment == 0"
-                      style="border:1px solid red;width:100px;"
-                      align="center"
-                      class="q-px-md text-red"
-                    >
-                      ไม่เหมาะสม
-                    </div> -->
-
-                    <div class=''>
-                      <div v-if="item2.a_assesment_GAP != '-1' && item2.a_assesment_GAP" :class='item2.a_assesment_GAP == 1 ? "text-teal" : "text-red"' style='width:100px;border:1px solid' align="center">
-                        <span v-if="item2.a_assesment_GAP == '1'">
-                          เหมาะสม
-                        </span>
-                        <span v-else-if="item2.a_assesment_GAP == '0'">
-                          ไม่เหมาะสม 
-                        </span>
-
+                      <div
+                        v-if="item2.a_assesment_GAP != '-1' && item2.a_assesment_GAP"
+                        :class="item2.a_assesment_GAP == 1 ? 'text-teal' : 'text-red'"
+                        style="width:100px;border:1px solid"
+                        align="center"
+                      >
+                        <span v-if="item2.a_assesment_GAP == '1'">เหมาะสม</span>
+                        <span v-else-if="item2.a_assesment_GAP == '0'">ไม่เหมาะสม</span>
                       </div>
-                    <div
-                      class="q-pl-md"
-                      v-html="'ข้อเสนอแนะ : ' + replaceN(item2.a_suggestion_GAP || '-')"
-                    ></div>
-                    </div>
+                      <div
+                        class="q-pl-md"
+                        v-html="'ข้อเสนอแนะ : ' + replaceN(item2.a_suggestion_GAP || '-')"
+                      ></div>
                   </div>
                 </div>
+
+           
+         
               </td>
             </tr>
+
           </tbody>
         </table>
+              <div class='break'></div>
       </div>
+
     </div>
   </div>
 </template>
@@ -316,12 +271,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -340,18 +295,18 @@ export default {
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
-              result: [
+              result: 
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null
-                }
-              ],
+                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                },
+              
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.2 ด้านผู้รับบริการและผู้มีส่วนได้ส่วนเสีย",
@@ -379,14 +334,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.3 ด้านการพัฒนาบุคลากร",
@@ -414,12 +369,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -437,18 +392,18 @@ export default {
               a_score: -1,
               goalCurrentYear: 90,
               unit: "%",
-              result: [
+              result: 
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null
-                }
-              ],
+                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                },
+              
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.4 ด้านการเป็นต้นแบบ",
@@ -476,12 +431,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -499,18 +454,18 @@ export default {
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
-              result: [
+              result: 
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
-                  [this.$q.sessionStorage.getItem("y") + 541]: null
-                }
-              ],
+                  [this.$q.sessionStorage.getItem("y") + 541]: null,
+                },
+              
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.5 ด้านผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม",
@@ -536,14 +491,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.6 ด้านการลดต้นทุน สร้างนวัตกรรม และการจัดการกระบวนการ",
@@ -570,12 +525,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -596,16 +551,16 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
-        }
-      ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
+        },
+      ],
     };
   },
   methods: {
@@ -613,7 +568,7 @@ export default {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + 543
+        year: this.$q.sessionStorage.getItem("y") + 543,
       };
       let data = await Axios.post(url, postData);
       let getData = data.data;
@@ -629,7 +584,7 @@ export default {
           this.data[index].question = json;
         }
       }
-    }
+    },
   },
   async mounted() {
     this.getCategory7();
@@ -640,7 +595,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  }
+  },
 };
 </script>
 
@@ -666,6 +621,10 @@ export default {
   padding-top: 0px;
 }
 
+.break{
+  break-after: page;
+}
+
 .border-top-lr {
   border-top: 1px solid;
   border-left: 1px solid;
@@ -679,14 +638,51 @@ export default {
 .border-right {
   border-right: 1px solid;
 }
+.a4-portrait {
+  width: 210mm;
+  height: 297mm;
+  margin: auto;
+  background-color: white;
+  padding: 1cm 2cm;
+}
 
 @media print {
+  @page {
+    size: portrait;
+  }
   .printBtn {
-    display: none;
+    visibility: hidden;
+  }
+  .printDate {
+    top: -20px;
+    right: 80px;
+  }
+  .a4-portrait {
+    width: 210mm;
+    height: 297mm;
+    -webkit-print-color-adjust: exact;
+  }
+  .a4-landscape {
+    width: 297mm;
+    -webkit-print-color-adjust: exact;
   }
 
-  .space-top {
-    padding-top: 20px;
+  .a4-landscape-flip {
+    width: 210mm;
+    height: 210mm;
+    background-color: white;
+    transform: rotate(270deg) translate(-210mm, 0);
+    transform-origin: 0 0;
+    padding: 0cm 1cm;
+    position: relative;
+    left: -70px;
+    -webkit-print-color-adjust: exact;
   }
+
+  .bg {
+    background-color: white;
+    -webkit-print-color-adjust: exact;
+  }
+  /* ... the rest of the rules ... */
 }
 </style>

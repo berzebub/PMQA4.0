@@ -1,30 +1,16 @@
 <template>
-  <div class="">
+  <div class>
     <div class="float-right q-pa-md" v-show="$route.name != 'printAll'">
-      <q-btn
-        class="printBtn"
-        icon="fas fa-print"
-        color="pink-4"
-        round
-        @click="printBtn()"
-      ></q-btn>
+      <q-btn class="printBtn" icon="fas fa-print" color="pink-4" round @click="printBtn()"></q-btn>
     </div>
     <!-- page1 -->
     <div class="a4-landscape-flip">
       <div
         class="absolute-right text-h7 printDate"
         v-show="$route.name != 'printAll'"
-      >
-        {{ printDate }}
-      </div>
-      <div
-        align="center"
-        class="q-py-sm relative-position"
-        v-show="$route.name != 'printAll'"
-      >
-        <div class="text-h6">
-          {{ $q.sessionStorage.getItem("office") }}
-        </div>
+      >{{ printDate }}</div>
+      <div align="center" class="q-py-sm relative-position" v-show="$route.name != 'printAll'">
+        <div class="text-h6">{{ $q.sessionStorage.getItem("office") }}</div>
       </div>
       <div style="height: 15px"></div>
 
@@ -32,12 +18,11 @@
         align="left"
         class="b-color q-py-sm text-white q-pl-md"
         style="width: 80%; font-size: 18px"
-      >
-        หมวด 3 การให้ความสำคัญกับผู้รับบริการและผู้มีส่วนได้ส่วนเสีย
-      </div>
+      >หมวด 3 การให้ความสำคัญกับผู้รับบริการและผู้มีส่วนได้ส่วนเสีย</div>
       <div class="q-pt-md">
         <p>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b class="t-color">เป้าหมาย : </b>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <b class="t-color">เป้าหมาย :</b>
           เพื่อให้ส่วนราชการพัฒนาระบบข้อมูลและสารสนเทศด้านการบริการประชาชนที่ทันสมัยรวดเร็วและเข้าถึงในทุกระดับ
           เพื่อนำมาใช้ประโยชน์ในการสร้างนวัตกรรมการบริการที่สร้างความแตกต่างและตอบสนองความต้องการเฉพาะกลุ่ม
           และความต้องการเฉพาะบุคคลซึ่งสามารถออกแบบได้ (Personalized Service)
@@ -53,42 +38,47 @@
         <div class="row" style="background-color: #F2F2F2">
           <div class="col-3 q-pa-md brr"></div>
           <div class="col-3 q-pa-md brr" align="center">
-            <div>Basic<br />(A&D)</div>
+            <div>
+              Basic
+              <br />(A&D)
+            </div>
           </div>
           <div class="col-3 q-pa-md brr" align="center">
-            Advance<br />(Alignment)
+            Advance
+            <br />(Alignment)
           </div>
           <div class="col-3 q-pa-md" align="center">
-            Significance<br />(Integration)
+            Significance
+            <br />(Integration)
           </div>
         </div>
         <!-- 3.1 -->
         <div class="row" style="background-color: #FCEDD6; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            3.1 ระบบข้อมูลและสารสนเทศที่ทันสมัยเพื่อการบริการและการเข้าถึง
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            ใช้ข้อมูลเพื่อตอบสนองความต้องการที่แตกต่าง
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วิเคราะห์เพื่อค้นหาความต้องการและความคาดหวังใหม่
-          </div>
-          <div align="center" class="col-3 q-pa-md">
-            ใช้ข้อมูลทั้งภายในและภายนอกเพื่อวางนโยบายเชิงรุกทั้งปัจจุบันและอนาคต
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >3.1 ระบบข้อมูลและสารสนเทศที่ทันสมัยเพื่อการบริการและการเข้าถึง</div>
+          <div align="center" class="col-3 q-pa-md brr">ใช้ข้อมูลเพื่อตอบสนองความต้องการที่แตกต่าง</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >วิเคราะห์เพื่อค้นหาความต้องการและความคาดหวังใหม่</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md"
+          >ใช้ข้อมูลทั้งภายในและภายนอกเพื่อวางนโยบายเชิงรุกทั้งปัจจุบันและอนาคต</div>
         </div>
         <!-- 3.2 -->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            3.2 การประเมินความพึงพอใจและความผูกพัน
-          </div>
+          <div align="center" class="col-3 q-pa-md brr">3.2 การประเมินความพึงพอใจและความผูกพัน</div>
           <div align="center" class="col-3 q-pa-md brr">
             การประเมินความพึงพอใจ และความผูกพัน ของกลุ่มผู้รับบริการ
             และผู้มีส่วนได้ส่วนเสียหลัก
           </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            วิเคราะห์ผลเพื่อตอบสนองความต้องการ และแก้ปัญหาเชิงรุก
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >วิเคราะห์ผลเพื่อตอบสนองความต้องการ และแก้ปัญหาเชิงรุก</div>
           <div align="center" class="col-3 q-pa-md">
             บูรณาการกับฐานข้อมูลแหล่งอื่น
             เพื่อการวางแผนและการสร้างนวัตกรรมในการให้บริการ
@@ -96,18 +86,22 @@
         </div>
         <!-- 3.3 -->
         <div class="row" style="background-color: #FCEDD6; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            3.3 การสร้างนวัตกรรมการบริการและตอบสนองความต้องการเฉพาะกลุ่ม
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            การปรับปรุงบริการที่ตอบสนองความต้องการและความคาดหวังของกลุ่มผู้รับบริการและผู้มีส่วนได้ส่วนเสียหลัก
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            ปรับปรุงกระบวนการและสร้างนวัตกรรมที่ตอบสนองความต้องการในภาพรวมและเฉพาะกลุ่ม
-          </div>
-          <div align="center" class="col-3 q-pa-md">
-            สร้างนวัตกรรมที่สามารถออกแบบการให้บริการเฉพาะบุคคล
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >3.3 การสร้างนวัตกรรมการบริการและตอบสนองความต้องการเฉพาะกลุ่ม</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >การปรับปรุงบริการที่ตอบสนองความต้องการและความคาดหวังของกลุ่มผู้รับบริการและผู้มีส่วนได้ส่วนเสียหลัก</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >ปรับปรุงกระบวนการและสร้างนวัตกรรมที่ตอบสนองความต้องการในภาพรวมและเฉพาะกลุ่ม</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md"
+          >สร้างนวัตกรรมที่สามารถออกแบบการให้บริการเฉพาะบุคคล</div>
         </div>
         <div style="height: 35px; background-color: #f2f2f2" class="row">
           <div class="col-3 brr"></div>
@@ -117,29 +111,29 @@
         </div>
         <!-- 3.4 -->
         <div class="row" style="background-color: #F2F2F2; color: #4D4C4E">
-          <div align="center" class="col-3 q-pa-md brr">
-            3.4 กระบวนการแก้ไขข้อร้องเรียนที่รวดเร็วและสร้างสรรค์
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            กระบวนการรับข้อร้องเรียนอย่างเป็นระบบ และมีมาตรฐาน
-          </div>
-          <div align="center" class="col-3 q-pa-md brr">
-            กระบวนการจัดการข้อร้องเรียนเป็นระบบ ตอบสนองรวดเร็ว ทันการณ์
-          </div>
-          <div align="center" class="col-3 q-pa-md">
-            ใช้เทคโนโลยีเพื่อตอบสนองและสร้างความพึงพอใจ
-          </div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >3.4 กระบวนการแก้ไขข้อร้องเรียนที่รวดเร็วและสร้างสรรค์</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >กระบวนการรับข้อร้องเรียนอย่างเป็นระบบ และมีมาตรฐาน</div>
+          <div
+            align="center"
+            class="col-3 q-pa-md brr"
+          >กระบวนการจัดการข้อร้องเรียนเป็นระบบ ตอบสนองรวดเร็ว ทันการณ์</div>
+          <div align="center" class="col-3 q-pa-md">ใช้เทคโนโลยีเพื่อตอบสนองและสร้างความพึงพอใจ</div>
         </div>
       </div>
     </div>
     <!-- end page1 -->
 
     <!-- start next -->
-    <div class="a4-landscape  ">
+    <div class="a4-landscape">
       <div v-for="(item, index) in data" :key="index">
         <div class="q-pt-md">
           {{ item.header }}
-
           <div>
             <table>
               <thead>
@@ -156,16 +150,12 @@
               <tbody>
                 <!-- BASIC -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Basic</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Basic</u>
+                    <br />
                     <div v-html="item.basic.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.basic.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.basic.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-xs" style="vertical-align: top">
@@ -174,26 +164,21 @@
                       v-for="(checkbox, indexCheckbox) in item.basic.checkBox"
                       :key="indexCheckbox"
                     >
-                      <div class="row ">
+                      <div class="row">
                         <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
-                            keep-color=""
+                            keep-color
                             read-only
                             :value="item.basic.checkBox_a[indexCheckbox]"
                           />
                         </div>
 
-                        <div class="col-1 " style="width: 45px" align="center">
-                          <q-checkbox
-                            color="teal"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                        <div class="col-1" style="width: 45px" align="center">
+                          <q-checkbox color="teal" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -207,16 +192,12 @@
                 </tr>
                 <!-- ADVANCE -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Advance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Advance</u>
+                    <br />
                     <div v-html="item.advance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div class="border-black" v-if="item.advance.pdf_file">
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.advance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -229,21 +210,16 @@
                         <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
-                            keep-color=""
+                            keep-color
                             read-only
                             :value="item.advance.checkBox_a[indexCheckbox]"
                           />
                         </div>
-                        <div class="col-1 " style="width: 45px" align="center">
-                          <q-checkbox
-                            color="teal"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                        <div class="col-1" style="width: 45px" align="center">
+                          <q-checkbox color="teal" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -258,19 +234,12 @@
 
                 <!-- SIGNI -->
                 <tr>
-                  <td
-                    class="q-pa-sm relative-position"
-                    style="vertical-align: top"
-                  >
-                    <u>Significance</u><br />
+                  <td class="q-pa-sm relative-position" style="vertical-align: top">
+                    <u>Significance</u>
+                    <br />
                     <div v-html="item.significance.titleText"></div>
                     <div class="absolute-bottom q-pa-md" align="center">
-                      <div
-                        class="border-black"
-                        v-if="item.significance.pdf_file"
-                      >
-                        มีเอกสารแนบ
-                      </div>
+                      <div class="border-black" v-if="item.significance.pdf_file">มีเอกสารแนบ</div>
                     </div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
@@ -284,21 +253,16 @@
                         <div class="col-1" style="width: 30px" align="center">
                           <q-checkbox
                             color="pink-4"
-                            keep-color=""
+                            keep-color
                             read-only
                             :value="item.significance.checkBox_a[indexCheckbox]"
                           />
                         </div>
-                        <div class="col-1 " style="width: 45px" align="center">
-                          <q-checkbox
-                            color="teal"
-                            keep-color=""
-                            read-only
-                            :value="checkbox.status"
-                          />
+                        <div class="col-1" style="width: 45px" align="center">
+                          <q-checkbox color="teal" keep-color read-only :value="checkbox.status" />
                         </div>
                         <div class="col q-py-xs">
-                          <span v-html="checkbox.text"> </span>
+                          <span v-html="checkbox.text"></span>
                         </div>
                       </div>
                     </div>
@@ -307,9 +271,7 @@
                     <div v-html="replaceN(item.significance.explain)"></div>
                   </td>
                   <td class="q-pa-sm" style="vertical-align: top">
-                    <span
-                      v-html="replaceN(item.significance.suggesstion)"
-                    ></span>
+                    <span v-html="replaceN(item.significance.suggesstion)"></span>
                   </td>
                 </tr>
               </tbody>
@@ -348,13 +310,13 @@ export default {
 กันโดยรวบรวมข้อมูลจาก<br>
 - ช่องทางต่างๆ เช่น ผลสำรวจความพึงพอใจ แบบสอบถามความ
 คิดเห็นการประชุมรวบรวมความคิดเห็นจากภายในองค์กร / ภายนอกองค์กร / เครือข่าย เป็นต้น<br>- ฐานข้อมูลของส่วนราชการ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.1 advanec
           advance: {
@@ -369,13 +331,13 @@ export default {
 ส่วนเสียในรูปแบบต่างๆ เช่น รูปแบบ Big Data เสียง ภาพ และ ข้อความ<br>
 - ค้นหาความต้องการ ความคาดหวังของกลุ่มผู้รับบริการ<br> ผู้มีส่วนได้ส่วนเสียนำไปสู่การตอบสนองที่ดียิ่งขึ้น
 `,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.1 significance
           significance: {
@@ -392,14 +354,14 @@ export default {
 - วิเคราะห์แนวโน้มการเปลี่ยนแปลงที่กำลังจะเกิดขึ้น<br>
 - กำหนดนโยบายเชิงรุกในการตอบสนองความต้องการและความคาดหวังของผู้รับบริการและผู้มีส่วนได้ส่วนเสียทั้งปัจจุบันและ อนาคต
 `,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************************************************************
         {
@@ -419,13 +381,13 @@ export default {
               {
                 text: `ประเมินความพึงพอใจและความผูกพันในรูปแบบที่เหมาะสมเพื่อ
 ให้ได้ข้อมูลที่สามารถนำมาใช้ประโยชน์ในการวิเคราะห์และปรับปรุงกระบวนการทำงาน เช่น การให้บริการทันการณ์การสำรวจ พฤติกรรมที่ตอบสนองต่อนโยบายบริการต่างๆ เป็นต้น`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.2 advance ******************************
           advance: {
@@ -436,13 +398,13 @@ export default {
               {
                 text: `นำผลการประเมินความพึงพอใจ และความผูกพันมาวิเคราะห์เพื่อ
 ค้นหาโอกาสในการปรับปรุงและแก้ไขปัญหาเชิงรุก`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.2 significance
           significance: {
@@ -455,14 +417,14 @@ export default {
 และผู้มีส่วนได้ส่วนเสียจากแหล่งอื่นๆ เพื่อ <br>
 - แก้ปัญหาความไม่พึงพอใจในการให้บริการที่ดีขึ้น<br>
 - เป็นแนวทางในการวางแผนยุทธศาสตร์และการสร้างนวัตกรรม`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ***************************************3.3 *******************************************
         {
@@ -479,21 +441,21 @@ export default {
             checkBox: [
               {
                 text: `มีกระบวนการในการทบทวนและการปรับปรุงการบริการอย่างต่อเนื่อง`,
-                status: false
+                status: false,
               },
               {
                 text: `มีช่องทางการสื่อสารที่สามารถเข้าถึงผู้รับบริการ และผู้มีส่วนได้ส่วนเสียหลัก`,
-                status: false
+                status: false,
               },
               {
                 text: `มีการถ่ายทอดไปยังหน่วยงานที่เกี่ยวข้องในทุกพื้นที่เพื่อให้เกิด การปฏิบัติอย่างจริงจัง`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.3 advance ******************************
           advance: {
@@ -507,13 +469,13 @@ export default {
 - ความต้องการภาพรวม<br>
 - ความต้องการเฉพาะกลุ่ม เช่น กลุ่มที่มีความต้องการเฉพาะให้
 สามารถเข้าถึงการบริการได้`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.3 significance
           significance: {
@@ -525,18 +487,18 @@ export default {
                 text: `การสร้างนวัตกรรมการให้บริการที่<br>
 - มีความคล่องตัวในการให้บริการตามความแตกต่างของผู้รับ บริการ<br>
 - เอื้อให้ผู้รับบริการสามารถออกแบบตามความต้องการเฉพาะ บุคคล (Customized Service)`,
-                status: false
+                status: false,
               },
               {
                 text: `การเชื่อมโยงข้อมูลเพื่อความสะดวกในการเข้าถึงบริการ`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
+            img_file: null,
+          },
         },
         // ******************************************** 3.4 *****************************
         {
@@ -553,23 +515,23 @@ export default {
             checkBox: [
               {
                 text: `มีช่องทางการรับเรื่องร้องเรียนที่สามารถเข้าถึงได้`,
-                status: false
+                status: false,
               },
               {
                 text: `มีกระบวนการรับข้อร้องเรียนที่ให้ความสะดวกในการร้องเรียน
 ของผู้รับบริการและผู้มีส่วนได้ส่วนเสีย`,
-                status: false
+                status: false,
               },
               {
                 text: `มีมาตรฐานการจัดการข้อร้องเรียน และการตอบสนองกลับต่อ
 ข้อร้องเรียน (Response)`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.4 advanec
           advance: {
@@ -579,18 +541,18 @@ export default {
             checkBox: [
               {
                 text: `มีการตอบสนองกลับต่อข้อร้องเรียนอย่างรวดเร็ว`,
-                status: false
+                status: false,
               },
               {
                 text: `ใช้เทคโนโลยีดิจิทัลมาช่วยในการทำงานและการแก้ปัญหาในเชิงรุก
 (Response and React)`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
+            img_file: null,
           },
           // 3.4 significance
           significance: {
@@ -602,21 +564,21 @@ export default {
                 text: `มีการตอบสนองกลับต่อข้อร้องเรียนอย่างรวดเร็ว แก้ปัญหาได้
 อย่างทันการณ์
 `,
-                status: false
+                status: false,
               },
               {
                 text: `ใช้เทคโนโลยีดิจิทัล และพัฒนาระบบการสื่อสารเพื่อสร้างความ
 เชื่อมั่นและความพึงพอใจในการจัดการข้อร้องเรียน`,
-                status: false
-              }
+                status: false,
+              },
             ],
             checkBox_a: [false, false],
             explain: "",
             pdf_file: null,
-            img_file: null
-          }
-        }
-      ]
+            img_file: null,
+          },
+        },
+      ],
     };
   },
   methods: {
@@ -626,7 +588,7 @@ export default {
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
         user_id: this.$q.sessionStorage.getItem("uid"),
-        step: 3
+        step: 3,
       };
       let data = await Axios.post(url, postData);
       this.assessmentData = data.data;
@@ -641,7 +603,7 @@ export default {
     },
     getBasic(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "basic");
+        let getData = data.filter((x) => x.q_number == i && x.mode == "basic");
         if (getData.length > 0) {
           if (getData[0].text != "undefined") {
             this.data[i - 1].basic.explain = getData[0].text;
@@ -650,7 +612,7 @@ export default {
           }
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           this.data[i - 1].status = 0;
           if (!checkBox.includes(false)) {
             this.data[i - 1].status = 1;
@@ -666,7 +628,7 @@ export default {
           if (getData[0].a_check_box) {
             this.data[i - 1].basic.checkBox_a = getData[0].a_check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           this.data[i - 1].basic.suggesstion = getData[0].suggesstion;
@@ -678,9 +640,11 @@ export default {
     },
     getAdvance(data) {
       for (let i = 1; i <= 4; i++) {
-        let getData = data.filter(x => x.q_number == i && x.mode == "advance");
+        let getData = data.filter(
+          (x) => x.q_number == i && x.mode == "advance"
+        );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
 
         if (getData.length > 0) {
@@ -688,15 +652,15 @@ export default {
           this.data[i - 1].advance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
 
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (!checkBox.includes(false) && !checkBoxBasic.includes(false)) {
@@ -711,7 +675,7 @@ export default {
           if (getData[0].a_check_box) {
             this.data[i - 1].advance.checkBox_a = getData[0].a_check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           this.data[i - 1].advance.suggesstion = getData[0].suggesstion;
@@ -724,13 +688,13 @@ export default {
     getSignificance(data) {
       for (let i = 1; i <= 4; i++) {
         let getData = data.filter(
-          x => x.q_number == i && x.mode == "significance"
+          (x) => x.q_number == i && x.mode == "significance"
         );
         let getDataBasic = data.filter(
-          x => x.q_number == i && x.mode == "basic"
+          (x) => x.q_number == i && x.mode == "basic"
         );
         let getDataAdvance = data.filter(
-          x => x.q_number == i && x.mode == "advance"
+          (x) => x.q_number == i && x.mode == "advance"
         );
 
         if (getData.length > 0) {
@@ -738,23 +702,23 @@ export default {
           this.data[i - 1].significance.explain = getData[0].text;
           let checkBox = getData[0].check_box
             .split(",")
-            .map(x => (x == 1 ? true : false));
+            .map((x) => (x == 1 ? true : false));
 
           let checkBoxBasic = this.data[i - 1].basic.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataBasic.length) {
             checkBoxBasic = getDataBasic[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
           let checkBoxAdvance = this.data[i - 1].advance.checkBox.map(
-            x => x.status
+            (x) => x.status
           );
           if (getDataAdvance.length) {
             checkBoxAdvance = getDataAdvance[0].check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           if (
@@ -774,7 +738,7 @@ export default {
               i - 1
             ].significance.checkBox_a = getData[0].a_check_box
               .split(",")
-              .map(x => (x == 1 ? true : false));
+              .map((x) => (x == 1 ? true : false));
           }
 
           this.data[i - 1].significance.suggesstion = getData[0].suggesstion;
@@ -789,7 +753,7 @@ export default {
         let date = await Axios.get(this.apiPath + "/getDate.php");
         a(date.data);
       });
-    }
+    },
   },
   async created() {
     this.getAssessmentData();
@@ -799,7 +763,7 @@ export default {
       printDate.year
     }`;
     this.printDate = printDate;
-  }
+  },
 };
 </script>
 
@@ -875,10 +839,12 @@ th {
   .a4-portrait {
     width: 210mm;
     height: 297mm;
+    -webkit-print-color-adjust: exact;
   }
   .a4-landscape {
     width: 297mm;
     padding: 1cm 1cm;
+    -webkit-print-color-adjust: exact;
   }
 
   .a4-landscape-flip {
@@ -890,10 +856,12 @@ th {
     padding: 0cm 1cm;
     position: relative;
     left: -70px;
+    -webkit-print-color-adjust: exact;
   }
 
   .bg {
     background-color: white;
+    -webkit-print-color-adjust: exact;
   }
   /* ... the rest of the rules ... */
 }

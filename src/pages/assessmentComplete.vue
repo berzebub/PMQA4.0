@@ -104,7 +104,7 @@ export default {
   },
   data() {
     return {
-      showAvgScore : "",
+      showAvgScore: "",
       file1Y: "",
       file3Y: "",
       categoryGroup: [
@@ -171,7 +171,7 @@ export default {
         {
           title: `ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
-          score: [0, 0, 0, 0,0,0],
+          score: [0, 0, 0, 0, 0, 0],
           a_score: [0, 0, 0, 0, 0, 0],
         },
       ],
@@ -186,23 +186,31 @@ export default {
         if (item.status == "รอผลประเมิน") {
           // ปริ้น ลักษณะองค์กร แบบไม่มีผู้ประเมิน
 
-              let route = this.$router.resolve({
-            name : "printStep0"
-          })
-          window.open(route.href)
+          let route = this.$router.resolve({
+            name: "printStep0",
+          });
+          window.open(route.href);
         } else if (item.status == "ประเมินแล้ว") {
           // ปริ้นลักษณะองค์กรแบบมีผู้ประเมิน
           let route = this.$router.resolve({
-            name : "printStep0A"
-          })
-          window.open(route.href)
+            name: "printStep0A",
+          });
+          window.open(route.href);
         }
       } else if (index == 1) {
         // หมวด1-6
         if (item.status == "รอผลประเมิน") {
           // ปริ้น รวม 1-6 แบบไม่มีผู้ประเมิน
+          let route = this.$router.resolve({
+            name: "print1-6",
+          });
+          window.open(route.href);
         } else if (item.status == "ประเมินแล้ว") {
           // ปริ้นรวม 1-6 แบบมีผู้ประเมิน
+          let route = this.$router.resolve({
+            name: "print1-6a",
+          });
+          window.open(route.href);
         }
       } else if (index == 2) {
         // หมวด7 GAP
@@ -283,6 +291,20 @@ export default {
     render() {
       this.isShowGraph = true;
 
+      // คะแนนหมวด 7 ปีก่อนหน้า ของผู้ใช้ทั่วไป
+      let avgScoreCat7 = this.dataList[7];
+      avgScoreCat7 =
+        avgScoreCat7.score.reduce((a, b) => a + b, 0) /
+        avgScoreCat7.score.length;
+      avgScoreCat7 = parseInt(avgScoreCat7);
+
+      let avgScoreCat7a = this.dataList[7];
+      avgScoreCat7a =
+        avgScoreCat7a.a_score.reduce((a, b) => a + b, 0) /
+        avgScoreCat7a.a_score.length;
+      avgScoreCat7a =
+        parseInt(avgScoreCat7a) == -1 ? 0 : parseInt(avgScoreCat7a);
+
       let dataScoreA = [
         this.assessmentLog.category1_score,
         this.assessmentLog.category2_score,
@@ -290,7 +312,7 @@ export default {
         this.assessmentLog.category4_score,
         this.assessmentLog.category5_score,
         this.assessmentLog.category6_score,
-        this.assessmentLog.category7_score,
+        avgScoreCat7,
       ];
       dataScoreA = dataScoreA.map((x) => Number(x));
 
@@ -303,7 +325,7 @@ export default {
           this.assessmentLog.a_category4_score,
           this.assessmentLog.a_category5_score,
           this.assessmentLog.a_category6_score,
-          this.assessmentLog.a_category7_score,
+          avgScoreCat7a,
         ];
       } else {
         dataScoreB = [0, 0, 0, 0, 0, 0, 0];
@@ -411,7 +433,7 @@ export default {
       getData = getData.data;
 
       const postData1 = {
-        year: this.yearSelected,
+        year: this.yearSelected - 1,
         user_id: this.$q.sessionStorage.getItem("uid"),
       };
 
@@ -432,8 +454,6 @@ export default {
         }
       }
 
-      
-
       const url1 = this.apiPath + "user/getCategory7.php";
       let getCategory7 = await Axios.post(url1, postData1);
 
@@ -452,11 +472,9 @@ export default {
         }
       }
 
-      // console.log(this.dataList);
+      let avgScoreLst = [];
 
-let avgScoreLst = []
-
-       for (let i = 1; i < this.dataList.length; i++) {
+      for (let i = 1; i < this.dataList.length; i++) {
         let devine = 4;
 
         if (i == 7) {
@@ -464,18 +482,17 @@ let avgScoreLst = []
         }
 
         avgScoreLst.push(
-          this.dataList[i].score.map(x => x).reduce((a, b) => Number(a) + Number(b), 0) / devine
+          this.dataList[i].score
+            .map((x) => x)
+            .reduce((a, b) => Number(a) + Number(b), 0) / devine
         );
       }
 
       // console.log(avgScoreLst);
-      let avgScoreList = avgScoreLst.reduce((a, b) => Number(a) + Number(b), 0) / 7;
+      let avgScoreList =
+        avgScoreLst.reduce((a, b) => Number(a) + Number(b), 0) / 7;
 
-      this.showAvgScore = parseInt(avgScoreList)
-
-
-
-
+      this.showAvgScore = parseInt(avgScoreList);
 
       this.getAssessmentLog();
     },
@@ -492,12 +509,25 @@ let avgScoreLst = []
         (x) => x.user_id == this.$q.sessionStorage.getItem("uid")
       )[0];
 
-      if(this.assessmentLog.a_category1_score != '-1'&&this.assessmentLog.a_category2_score != '-1'&&this.assessmentLog.a_category3_score != '-1'&&this.assessmentLog.a_category4_score != '-1'&&this.assessmentLog.a_category5_score != '-1'&&this.assessmentLog.a_category6_score != '-1' && this.assessmentLog.a_category7_score)
-      {
-        let avgScore = Number(this.assessmentLog.a_category1_score) +Number(this.assessmentLog.a_category2_score) + Number(this.assessmentLog.a_category3_score) +Number(this.assessmentLog.a_category4_score) + Number(this.assessmentLog.a_category5_score) + Number(this.assessmentLog.a_category6_score) + Number(this.assessmentLog.a_category7_score)
+      if (
+        this.assessmentLog.a_category1_score != "-1" &&
+        this.assessmentLog.a_category2_score != "-1" &&
+        this.assessmentLog.a_category3_score != "-1" &&
+        this.assessmentLog.a_category4_score != "-1" &&
+        this.assessmentLog.a_category5_score != "-1" &&
+        this.assessmentLog.a_category6_score != "-1" &&
+        this.assessmentLog.a_category7_score
+      ) {
+        let avgScore =
+          Number(this.assessmentLog.a_category1_score) +
+          Number(this.assessmentLog.a_category2_score) +
+          Number(this.assessmentLog.a_category3_score) +
+          Number(this.assessmentLog.a_category4_score) +
+          Number(this.assessmentLog.a_category5_score) +
+          Number(this.assessmentLog.a_category6_score) +
+          Number(this.assessmentLog.a_category7_score);
 
-        console.log(avgScore);
-        this.assessmentLog.assessor_score = parseInt(avgScore / 7)
+        this.assessmentLog.assessor_score = parseInt(avgScore / 7);
       }
 
       if (this.assessmentLog) {
@@ -575,18 +605,18 @@ let avgScoreLst = []
             status: convertStatusToText(responseData.sum_month_12),
           },
         ];
-      }else{
-         this.categoryGroup = [
-        { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },
-        { name: "หมวด 1-6", status: "ยังไม่ประเมิน" },
-        { name: "หมวด 7 GAP", status: "ยังไม่ประเมิน" },
-        { name: "แผน 1 ปี", status: "ยังไม่ประเมิน" },
-        { name: "แผน 3 ปี", status: "ยังไม่ประเมิน" },
-        { name: "ติดตาม 6 เดือน", status: "ยังไม่ประเมิน" },
-        { name: "หมวด7", status: "ยังไม่ประเมิน" },
-        { name: "ติดตาม 12 เดือน", status: "ยังไม่ประเมิน" },
-        { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" },
-      ]
+      } else {
+        this.categoryGroup = [
+          { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },
+          { name: "หมวด 1-6", status: "ยังไม่ประเมิน" },
+          { name: "หมวด 7 GAP", status: "ยังไม่ประเมิน" },
+          { name: "แผน 1 ปี", status: "ยังไม่ประเมิน" },
+          { name: "แผน 3 ปี", status: "ยังไม่ประเมิน" },
+          { name: "ติดตาม 6 เดือน", status: "ยังไม่ประเมิน" },
+          { name: "หมวด7", status: "ยังไม่ประเมิน" },
+          { name: "ติดตาม 12 เดือน", status: "ยังไม่ประเมิน" },
+          { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" },
+        ];
       }
     },
     async getFilePlan() {

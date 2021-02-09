@@ -305,13 +305,13 @@ export default {
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
-              result: [
+              result: 
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
                   [this.$q.sessionStorage.getItem("y") + 541]: null,
                 },
-              ],
+              
               successRate: null,
               score: null,
               scoreStandard: "ยิ่งมากยิ่งดี",
@@ -402,13 +402,13 @@ export default {
               a_score: -1,
               goalCurrentYear: 90,
               unit: "%",
-              result: [
+              result: 
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
                   [this.$q.sessionStorage.getItem("y") + 541]: null,
                 },
-              ],
+              
               successRate: null,
               score: null,
               scoreStandard: "ยิ่งมากยิ่งดี",
@@ -464,13 +464,13 @@ export default {
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
-              result: [
+              result: 
                 {
                   [this.$q.sessionStorage.getItem("y") + 543]: null,
                   [this.$q.sessionStorage.getItem("y") + 542]: null,
                   [this.$q.sessionStorage.getItem("y") + 541]: null,
                 },
-              ],
+              
               successRate: null,
               score: null,
               scoreStandard: "ยิ่งมากยิ่งดี",
