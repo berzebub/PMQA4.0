@@ -218,6 +218,11 @@ const routes = [
         name: "plan1y"
       },
       {
+        path: "assessor/month6/:userId",
+        component: () => import("pages/assessor/month6.vue"),
+        name: "month6"
+      },
+      {
         path: "assessor/plan3y/:userId",
         component: () => import("pages/assessor/plan3y.vue"),
         name: "plan3y"

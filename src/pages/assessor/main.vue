@@ -239,7 +239,7 @@ export default {
         this.notify("ยังไม่มีการประเมิน", "red");
         return;
       }
-
+console.log(mode);
       this.$q.sessionStorage.set("aid", officeData.userId);
       if (mode == 0) {
         // assessor/stepper/:step
@@ -250,9 +250,7 @@ export default {
         this.$router.push("/assessor/stepper/1")
       } else if (mode == 2) {
         // หมวด7 GAP
-
         // this.$router.push("/assessor/plan1y/" + officeData.userId);
-
         this.$router.push("/assessor/category7GAP/" + officeData.userId);
       } else if (mode == 3) {
         // แผน 1 ปี
@@ -260,13 +258,15 @@ export default {
       } else if (mode == 4) {
         // แผน 3 ปี
         this.$router.push("/assessor/plan3y/" + officeData.userId);
-      } else if (mode == 6) {
+      } else if (mode == 5) {
         // ติดตาม 6 เดือน
-      } else if (mode == 7) {
+        this.$router.push("/assessor/month6/" + officeData.userId);
+
+      } else if (mode == 6) {
         // หมวด 7
-      } else if (mode == 8) {
+      } else if (mode == 7) {
         // ติดตาม 12 เดือน
-      } else if (mode == 9) {
+      } else if (mode == 8) {
         // สรุป 12 เดือน
       }
     },

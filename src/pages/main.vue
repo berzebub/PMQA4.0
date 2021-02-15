@@ -1,362 +1,363 @@
 <template>
-  <q-page >
+  <q-page>
     <!-- v-if="isShowStepper" -->
 
     <div style="max-width:1280px;margin:auto">
-    <div
-      class=" row self-center q-pa-md"
-      v-if="assessmentMode == '1'"
-      style="width: 825px;overflow:hidden;margin:auto;padding-top:80px"
-    >
-      <div class="col">
-        <!-- Set Top -->
-        <div style="padding: 65px 0px 129px 0px">
-          <div class="container-border-lock row justify-between relative-position">
-            <!-- ลักษณะองค์กร -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/0')">
-                  <q-icon size="50px" class="color1" name="fas fa-flag"></q-icon>
-                </q-btn>
-              </div>
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+      <div
+        class="row self-center q-pa-md"
+        v-if="assessmentMode == '1'"
+        style="width: 825px;overflow:hidden;margin:auto;padding-top:80px"
+      >
+        <div class="col">
+          <!-- Set Top -->
+          <div style="padding: 65px 0px 129px 0px">
+            <div class="container-border-lock row justify-between relative-position">
+              <!-- ลักษณะองค์กร -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/0')">
+                    <q-icon size="50px" class="color1" name="fas fa-flag"></q-icon>
+                  </q-btn>
+                </div>
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category0 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category0 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category0 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        round
-                        :color="currentStep.category0 == '1' ? 'teal' : 'grey'"
-                        @click="printData(0)"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span
-                        class="text-no-wrap"
-                        style="position: relative; left: -20px"
-                      >ลักษณะสำคัญขององค์กร</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category0 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category0 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          round
+                          :color="currentStep.category0 == '1' ? 'teal' : 'grey'"
+                          @click="printData(0)"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                        >ลักษณะสำคัญขององค์กร</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- หมวด 1 -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/1')">
-                  <q-icon size="50px" class="color1" name="fas fa-street-view"></q-icon>
-                </q-btn>
-              </div>
+              <!-- หมวด 1 -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/1')">
+                    <q-icon size="50px" class="color1" name="fas fa-street-view"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category1 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category1 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category1 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(1)"
-                        round
-                        :color="currentStep.category1 == '1' ? 'teal' : 'grey'"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 1</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category1 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category1 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(1)"
+                          round
+                          :color="currentStep.category1 == '1' ? 'teal' : 'grey'"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 1</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- หมวด 2  -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/2')">
-                  <q-icon size="50px" class="color1" name="fas fa-map-signs"></q-icon>
-                </q-btn>
-              </div>
+              <!-- หมวด 2  -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/2')">
+                    <q-icon size="50px" class="color1" name="fas fa-map-signs"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category2 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category2 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category2 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(2)"
-                        round
-                        :color="currentStep.category2 == '1' ? 'teal' : 'grey'"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 2</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category2 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category2 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(2)"
+                          round
+                          :color="currentStep.category2 == '1' ? 'teal' : 'grey'"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 2</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- หมวด 3 -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/3')">
-                  <q-icon size="50px" class="color1" name="fas fa-users"></q-icon>
-                </q-btn>
-              </div>
+              <!-- หมวด 3 -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/3')">
+                    <q-icon size="50px" class="color1" name="fas fa-users"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category3 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category3 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category3 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(3)"
-                        round
-                        :color="currentStep.category3 == '1' ? 'teal' : 'grey'"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 3</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category3 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category3 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(3)"
+                          round
+                          :color="currentStep.category3 == '1' ? 'teal' : 'grey'"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 3</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Set Bottom -->
-        <div style="padding: 129px 0px 65px 0px">
-          <div class="container-border-lock row reverse justify-between relative-position">
-            <!-- หมวด 4 -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/4')">
-                  <q-icon size="50px" class="color1" name="fas fa-chart-line"></q-icon>
-                </q-btn>
-              </div>
+          <!-- Set Bottom -->
+          <div style="padding: 129px 0px 65px 0px">
+            <div class="container-border-lock row reverse justify-between relative-position">
+              <!-- หมวด 4 -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/4')">
+                    <q-icon size="50px" class="color1" name="fas fa-chart-line"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category4 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category4 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category4 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(4)"
-                        round
-                        :color="currentStep.category4 == '1' ? 'teal' : 'grey'"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 4</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category4 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category4 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(4)"
+                          round
+                          :color="currentStep.category4 == '1' ? 'teal' : 'grey'"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 4</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- หมวด 5 -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/5')">
-                  <q-icon size="50px" class="color1" name="fas fa-users-cog"></q-icon>
-                </q-btn>
-              </div>
+              <!-- หมวด 5 -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/5')">
+                    <q-icon size="50px" class="color1" name="fas fa-users-cog"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category5 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category5 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category5 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(5)"
-                        round
-                        :color="currentStep.category5 == '1' ? 'teal' : 'grey'"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 5</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category5 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category5 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(5)"
+                          round
+                          :color="currentStep.category5 == '1' ? 'teal' : 'grey'"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 5</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- หมวด 6 -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/6')">
-                  <q-icon size="50px" class="color1" name="fas fa-project-diagram"></q-icon>
-                </q-btn>
-              </div>
+              <!-- หมวด 6 -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/6')">
+                    <q-icon size="50px" class="color1" name="fas fa-project-diagram"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div
-                      class="col q-pa-xs"
-                      :class="
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div
+                        class="col q-pa-xs"
+                        :class="
                         currentStep.category6 == '1'
                           ? 'border-teal'
                           : 'border-grey'
                       "
-                    >
-                      <q-icon
-                        :color="currentStep.category6 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        :disable="currentStep.category6 != '1'"
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(6)"
-                        round
-                        :color="currentStep.category6 == '1' ? 'teal' : 'grey'"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 6</span>
+                      >
+                        <q-icon
+                          :color="currentStep.category6 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          :disable="currentStep.category6 != '1'"
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(6)"
+                          round
+                          :color="currentStep.category6 == '1' ? 'teal' : 'grey'"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 6</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- หมวด 7 -->
-            <div class="col-2 relative-position" style="z-index: 5">
-              <div class="absolute-center">
-                <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
-                  <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
-                </q-btn>
-              </div>
+              <!-- หมวด 7 -->
+              <div class="col-2 relative-position" style="z-index: 5">
+                <div class="absolute-center">
+                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
+                    <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+                  </q-btn>
+                </div>
 
-              <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
-                <div class="font-18">
-                  <div class="row items-center">
-                    <div class="col q-pa-xs border-teal">
-                      <q-icon
-                        :color="currentStep.category7 == '1' ? 'teal' : ''"
-                        name="fas fa-check-circle"
-                        class="q-mr-xs"
-                        size="18px"
-                      ></q-icon>เสร็จสิ้น
-                    </div>
-                    <div class="q-pl-sm">
-                      <q-btn
-                        size="12px"
-                        icon="fas fa-print"
-                        @click="printData(7)"
-                        round
-                        color="teal"
-                      ></q-btn>
-                    </div>
-                    <div class="col-12">
-                      <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 7</span>
+                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                  <div class="font-18">
+                    <div class="row items-center">
+                      <div class="col q-pa-xs border-teal">
+                        <q-icon
+                          :color="currentStep.category7 == '1' ? 'teal' : ''"
+                          name="fas fa-check-circle"
+                          class="q-mr-xs"
+                          size="18px"
+                        ></q-icon>เสร็จสิ้น
+                      </div>
+                      <div class="q-pl-sm">
+                        <q-btn
+                          size="12px"
+                          icon="fas fa-print"
+                          @click="printData(7)"
+                          round
+                          color="teal"
+                        ></q-btn>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 7</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -364,290 +365,373 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-2 self-center relative-position">
-        <div class="q-py-xl">
-          <div class="container-border-right"></div>
+        <div class="col-2 self-center relative-position">
+          <div class="q-py-xl">
+            <div class="container-border-right"></div>
+          </div>
         </div>
-      </div>
 
-      <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
-        <q-btn
-          :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px"
-          push
-          class="q-mx-md q-py-sm"
-          :class="
+        <div class="col-12 q-py-xl" style="margin-top: 100px" align="center">
+          <q-btn
+            :disable="!checkSteper"
+            style="width: 180px; border-radius: 0px"
+            push
+            class="q-mx-md q-py-sm"
+            :class="
             !checkSteper ? 'bg3' : 'bg-white'
           "
-          @click="printAll()"
-        >
-          <q-icon
-            :class="
+            @click="printAll()"
+          >
+            <q-icon
+              :class="
               !checkSteper ? 'color2' : ''
             "
-            name="fas fa-print"
-          ></q-icon>
-          <span
-            :class="
+              name="fas fa-print"
+            ></q-icon>
+            <span
+              :class="
               !checkSteper ? 'color2' : ''
             "
-            class="font-14 q-ml-sm"
-          >พิมพ์การประเมิน</span>
-        </q-btn>
-        <q-btn
-          :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px"
-          push
-          class="q-mx-md q-py-sm"
-          :class="
+              class="font-14 q-ml-sm"
+            >พิมพ์การประเมิน</span>
+          </q-btn>
+          <q-btn
+            :disable="!checkSteper"
+            style="width: 180px; border-radius: 0px"
+            push
+            class="q-mx-md q-py-sm"
+            :class="
             !checkSteper ? 'bg3' : 'bg-white'
           "
-          to="/assessment"
-        >
-          <q-icon
-            :class="
+            to="/assessment"
+          >
+            <q-icon
+              :class="
               !checkSteper ? 'color2' : ''
             "
-            name="fas fa-print"
-          ></q-icon>
-          <span
-            :class="
+              name="fas fa-print"
+            ></q-icon>
+            <span
+              :class="
               !checkSteper ? 'color2' : ''
             "
-            class="font-14 q-ml-sm"
-          >พิมพ์ผลการประเมิน</span>
-        </q-btn>
-        <q-btn
-          :disable="!checkSteper"
-          style="width: 180px; border-radius: 0px"
-          push
-          class="q-mx-md q-py-sm"
-          :class="
+              class="font-14 q-ml-sm"
+            >พิมพ์ผลการประเมิน</span>
+          </q-btn>
+          <q-btn
+            :disable="!checkSteper"
+            style="width: 180px; border-radius: 0px"
+            push
+            class="q-mx-md q-py-sm"
+            :class="
             !checkSteper
               ? 'bg3'
               : 'bg-teal text-white'
           "
-          @click="sendStatus(1)"
-        >
-          <q-icon
-            :class="
-              !checkSteper ? 'color2' : ''
-            "
-            name="far fa-paper-plane"
-          ></q-icon>
-          <span
-            :class="
-              !checkSteper ? 'color2' : ''
-            "
-            class="font-14 q-ml-sm"
-          >ส่งแบบประเมิน</span>
-        </q-btn>
-      </div>
-    </div>
-
-    <div v-else-if="assessmentMode == '2'">
-      <!-- หมวด 7 (GAP) + แผน 1/3 ปี -->
-
-      <div
-        class="row justify-center items-center"
-        style="max-width:800px;margin:auto;padding-top:100px"
-      >
-        <div class="relative-position col">
-          <div align="center">
-            <q-btn round size="45px" push class="bg3" @click="$router.push('/cat7')">
-              <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
-            </q-btn>
-          </div>
-          <div class="row justify-center relative-position q-pt-md font-18">
-            <div
-              class="q-pa-xs"
-              style="width:100px"
-              align="center"
+            @click="sendStatus(1)"
+          >
+            <q-icon
               :class="
+              !checkSteper ? 'color2' : ''
+            "
+              name="far fa-paper-plane"
+            ></q-icon>
+            <span
+              :class="
+              !checkSteper ? 'color2' : ''
+            "
+              class="font-14 q-ml-sm"
+            >ส่งแบบประเมิน</span>
+          </q-btn>
+        </div>
+      </div>
+
+      <div v-else-if="assessmentMode == '2'">
+        <!-- หมวด 7 (GAP) + แผน 1/3 ปี -->
+
+        <div
+          class="row justify-center items-center"
+          style="max-width:800px;margin:auto;padding-top:100px"
+        >
+          <div class="relative-position col">
+            <div align="center">
+              <q-btn round size="45px" push class="bg3" @click="$router.push('/cat7')">
+                <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+              </q-btn>
+            </div>
+            <div class="row justify-center relative-position q-pt-md font-18">
+              <div
+                class="q-pa-xs"
+                style="width:100px"
+                align="center"
+                :class="
                         isCategory7GAP
                           ? 'border-teal'
                           : 'border-grey'
                       "
-            >
-              <q-icon
-                :color="isCategory7GAP ? 'teal' : ''"
-                name="fas fa-check-circle"
-                class="q-mr-xs"
-                size="18px"
-              ></q-icon>เสร็จสิ้น
-            </div>
-            <!-- print btn -->
-            <div class="q-pl-md">
-              <q-btn
-                :disable="!isCategory7GAP"
-                :color="isCategory7GAP ? 'teal' : 'grey'"
-                size="12px"
-                icon="fas fa-print"
-                @click="printData(7)"
-                round
-              ></q-btn>
-            </div>
-
-            <div align="center" class="font-18 col-12 absolute" style="top:60px">หมวด7</div>
-          </div>
-        </div>
-
-        <div class="col">
-          <!-- มีไฟล์ -->
-          <div
-            v-if="filePdf1 != null"
-            style="width:200px;border:3px solid #e84c93;border-radius:5px;"
-          >
-            <div style="width:100%">
-              <div
-                class="bg-white q-pa-xs text-black cursor-pointer"
-                style="width:100%;text-decoration:underline"
-                align="center"
-                @click="openFile(1)"
               >
-                แผนปฏิบัติการเพื่อยกระดับ
-                <br />การพัฒนาสู่ระบบราชการ 4.0
-                <br />
-                ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+                <q-icon
+                  :color="isCategory7GAP ? 'teal' : ''"
+                  name="fas fa-check-circle"
+                  class="q-mr-xs"
+                  size="18px"
+                ></q-icon>เสร็จสิ้น
               </div>
-              <div
-                @click="showDeleteDialog(1)"
-                class="bg1 text-white font-12 q-py-sm cursor-pointer"
-                align="center"
-              >ลบไฟล์</div>
+              <!-- print btn -->
+              <div class="q-pl-md">
+                <q-btn
+                  :disable="!isCategory7GAP"
+                  :color="isCategory7GAP ? 'teal' : 'grey'"
+                  size="12px"
+                  icon="fas fa-print"
+                  @click="printData(7)"
+                  round
+                ></q-btn>
+              </div>
+
+              <div align="center" class="font-18 col-12 absolute" style="top:60px">หมวด7</div>
             </div>
           </div>
 
-          <!-- ไม่มีไฟล์ -->
-          <q-file
-            v-if="!filePdf1"
-            v-model="filePdf1"
-            class="bg-grey-5"
-            style="width:200px;border:4px solid #e84c93;border-radius:5px"
-            accept=".doc, .pdf, .docx"
-            @input="val => uploadFile(val, '1')"
-          >
-            <template v-slot:default>
+          <div class="col">
+            <!-- มีไฟล์ -->
+            <div
+              v-if="filePdf1 != null"
+              style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+            >
               <div style="width:100%">
-                <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-                <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
+                <div
+                  class="bg-white q-pa-xs text-black cursor-pointer"
+                  style="width:100%;text-decoration:underline"
+                  align="center"
+                  @click="openFile(1)"
+                >
                   แผนปฏิบัติการเพื่อยกระดับ
                   <br />การพัฒนาสู่ระบบราชการ 4.0
                   <br />
                   ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
                 </div>
+                <div
+                  @click="showDeleteDialog(1)"
+                  class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                  align="center"
+                >ลบไฟล์</div>
               </div>
-            </template>
-          </q-file>
-        </div>
-
-        <div class="col">
-          <!-- มีไฟล์ -->
-          <div
-            v-if="filePdf2 != null"
-            style="width:200px;border:3px solid #e84c93;border-radius:5px;"
-          >
-            <div style="width:100%">
-              <div
-                class="bg-white q-pa-xs text-black cursor-pointer row items-center"
-                style="width:100%;text-decoration:underline;height:70px"
-                align="center"
-                @click="openFile(2)"
-              >
-                แผนยกระดับการพัฒนา
-                สู่ระบบราชการ 4.0 ระยะ 3 ปี
-              </div>
-              <div
-                @click="showDeleteDialog(2)"
-                class="bg1 text-white font-12 q-py-sm cursor-pointer"
-                align="center"
-              >ลบไฟล์</div>
             </div>
+
+            <!-- ไม่มีไฟล์ -->
+            <q-file
+              v-if="!filePdf1"
+              v-model="filePdf1"
+              class="bg-grey-5"
+              style="width:200px;border:4px solid #e84c93;border-radius:5px"
+              accept=".doc, .pdf, .docx"
+              @input="val => uploadFile(val, '1')"
+            >
+              <template v-slot:default>
+                <div style="width:100%">
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                  <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
+                    แผนปฏิบัติการเพื่อยกระดับ
+                    <br />การพัฒนาสู่ระบบราชการ 4.0
+                    <br />
+                    ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
+                  </div>
+                </div>
+              </template>
+            </q-file>
           </div>
 
-          <!-- ไม่มีไฟล์ -->
-          <q-file
-            v-if="!filePdf2"
-            v-model="filePdf2"
-            class="bg-grey-5"
-            style="width:200px;border:4px solid #e84c93;border-radius:5px;"
-            accept=".doc, .pdf, .docx"
-            @input="val => uploadFile(val, '2')"
-          >
-            <template v-slot:default>
+          <div class="col">
+            <!-- มีไฟล์ -->
+            <div
+              v-if="filePdf2 != null"
+              style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+            >
               <div style="width:100%">
-                <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
                 <div
-                  class="bg-white q-pa-xs text-black row items-center"
-                  style="width:192px;height:70px"
+                  class="bg-white q-pa-xs text-black cursor-pointer row items-center"
+                  style="width:100%;text-decoration:underline;height:70px"
                   align="center"
+                  @click="openFile(2)"
                 >
                   แผนยกระดับการพัฒนา
                   สู่ระบบราชการ 4.0 ระยะ 3 ปี
                 </div>
+                <div
+                  @click="showDeleteDialog(2)"
+                  class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                  align="center"
+                >ลบไฟล์</div>
               </div>
-            </template>
-          </q-file>
+            </div>
+
+            <!-- ไม่มีไฟล์ -->
+            <q-file
+              v-if="!filePdf2"
+              v-model="filePdf2"
+              class="bg-grey-5"
+              style="width:200px;border:4px solid #e84c93;border-radius:5px;"
+              accept=".doc, .pdf, .docx"
+              @input="val => uploadFile(val, '2')"
+            >
+              <template v-slot:default>
+                <div style="width:100%">
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                  <div
+                    class="bg-white q-pa-xs text-black row items-center"
+                    style="width:192px;height:70px"
+                    align="center"
+                  >
+                    แผนยกระดับการพัฒนา
+                    สู่ระบบราชการ 4.0 ระยะ 3 ปี
+                  </div>
+                </div>
+              </template>
+            </q-file>
+          </div>
         </div>
-      </div>
-      <div align="center">
-        <q-btn
-          :disable="!isEnableSendMode2"
-          style="width: 180px; border-radius: 0px;margin-top:50px"
-          push
-          class="q-mx-md q-py-sm"
-          :class="
+        <div align="center">
+          <q-btn
+            :disable="!isEnableSendMode2"
+            style="width: 180px; border-radius: 0px;margin-top:50px"
+            push
+            class="q-mx-md q-py-sm"
+            :class="
             !isEnableSendMode2
               ? 'bg3'
               : 'bg-teal text-white'
           "
-          @click="sendStatus(2)"
-        >
-          <q-icon
-            :class="
+            @click="sendStatus(2)"
+          >
+            <q-icon
+              :class="
               !isEnableSendMode2 ? 'color2' : ''
             "
-            name="far fa-paper-plane"
-          ></q-icon>
-          <span
-            :class="
+              name="far fa-paper-plane"
+            ></q-icon>
+            <span
+              :class="
               !isEnableSendMode2 ? 'color2' : ''
             "
-            class="font-14 q-ml-sm"
-          >ส่งแบบประเมิน</span>
-        </q-btn>
+              class="font-14 q-ml-sm"
+            >ส่งแบบประเมิน</span>
+          </q-btn>
+        </div>
       </div>
-    </div>
 
-    <div v-else-if="assessmentMode == '3'">รายงานติดตามรอบ 6 เดือน</div>
+      <div v-else-if="assessmentMode == '3'">
 
-    <div v-else-if="assessmentMode == '4'">หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน</div>
+        <div
+          class="row justify-center items-center"
+          style="max-width:800px;margin:auto;padding-top:100px"
+        >
+          <div class="col self-center" align="center">
+            <!-- มีไฟล์ -->
+            <div
+              v-if="file6Path"
+              style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+            >
+              <div style="width:100%">
+                <div
+                  class="bg-white q-pa-xs text-black cursor-pointer row items-center"
+                  style="width:100%;text-decoration:underline;height:70px"
+                  align="center"
+                  @click="openFile(6)"
+                >
+                <div style="width:100%">
+                  รายงานติดตาม 6 เดือน
+                  </div>
+                </div>
+                <div
+                  @click="showDeleteDialog(6)"
+                  class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                  align="center"
+                >ลบไฟล์</div>
+              </div>
+            </div>
 
-    <q-dialog persistent v-model="isShowConfirmDeleteFileDialog">
-      <q-card style="width:450px;">
-        <q-card-section>
-          <div style="font-size:30px" align="center">ลบไฟล์</div>
+            <!-- ไม่มีไฟล์ -->
+            <q-file
+              v-if="!file6Path"
+              v-model="file6"
+              class="bg-grey-5"
+              style="width:200px;border:4px solid #e84c93;border-radius:5px;"
+              accept=".doc, .pdf, .docx"
+              @input="val => uploadFile6(val)"
+            >
+              <template v-slot:default>
+                <div style="width:100%">
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                  <div
+                    class="bg-white q-pa-xs text-black row items-center"
+                    style="width:192px;height:70px"
+                    align="center"
+                  >
+                  <div style="width:100%;">
+                    รายงานติดตาม 6 เดือน
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </q-file>
+          </div>
+          </div>
 
-          <div class="font-18 q-py-md" align="center">คุณต้องการลบไฟล์ใช่หรือไม่?</div>
-        </q-card-section>
-        <q-card-actions align="center" class="q-pb-md">
-          <q-btn style="width:180px" class="font-18" label="ยกเลิก" v-close-popup outline dense></q-btn>
+           <div align="center">
           <q-btn
-            color="teal"
-            style="width:180px"
-            class="font-18"
-            label="ตกลง"
-            @click="deleteFile()"
-            dense
-          ></q-btn>
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+            :disable="!file6Path"
+            style="width: 180px; border-radius: 0px;margin-top:50px"
+            push
+            class="q-mx-md q-py-sm"
+            :class="
+            !file6Path
+              ? 'bg3'
+              : 'bg-teal text-white'
+          "
+            @click="sendStatus(3)"
+          >
+            <q-icon
+              :class="
+              !file6Path ? 'color2' : ''
+            "
+              name="far fa-paper-plane"
+            ></q-icon>
+            <span
+              :class="
+              !file6Path ? 'color2' : ''
+            "
+              class="font-14 q-ml-sm"
+            >ส่งแบบประเมิน</span>
+          </q-btn>
+        </div>
+      </div>
 
+      <div v-else-if="assessmentMode == '4'">หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน</div>
+
+      <q-dialog persistent v-model="isShowConfirmDeleteFileDialog">
+        <q-card style="width:450px;">
+          <q-card-section>
+            <div style="font-size:30px" align="center">ลบไฟล์</div>
+
+            <div class="font-18 q-py-md" align="center">คุณต้องการลบไฟล์ใช่หรือไม่?</div>
+          </q-card-section>
+          <q-card-actions align="center" class="q-pb-md">
+            <q-btn style="width:180px" class="font-18" label="ยกเลิก" v-close-popup outline dense></q-btn>
+            <q-btn
+              color="teal"
+              style="width:180px"
+              class="font-18"
+              label="ตกลง"
+              @click="deleteFile()"
+              dense
+            ></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
-        <my-footer class="absolute-bottom"></my-footer>
+    <my-footer class="absolute-bottom"></my-footer>
   </q-page>
 </template>
 
@@ -663,9 +747,11 @@ export default {
       // new
       filePdf1: null,
       filePdf2: null,
+      file6 : null, //รายงานติดตาม 6 เดือน
       isShowConfirmDeleteFileDialog: false,
       isCategory7GAP: false,
       isEnableSendMode2: false,
+      isEnableSendMode3 : false,
       // end new
       file1: null,
       file2: null,
@@ -687,6 +773,7 @@ export default {
       path2: "",
       assessmentMode: "",
       deleteType: "",
+      file6Path : ""
     };
   },
   methods: {
@@ -747,7 +834,7 @@ export default {
           stepValue: 1,
         };
 
-        response = await Axios.post(urlUpdateStepper, stepperData1);
+        let response = await Axios.post(urlUpdateStepper, stepperData1);
         response = await Axios.post(urlUpdateStepper, stepperData2);
         response = await Axios.post(urlUpdateStepper, stepperData3);
 
@@ -758,10 +845,33 @@ export default {
           mode: 2,
         };
 
-        let response = await Axios.post(url, postData);
+        response = await Axios.post(url, postData);
 
         this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
+      }else if (mode == 3){
+         const urlUpdateStepper =
+          this.apiPath + "user/update_assessment_stepper_log.php";
+
+            const stepperData1 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "month_6",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+         let response = await Axios.post(urlUpdateStepper, stepperData1);
+
+          const url = this.apiPath + "user/updateModeStatus.php";
+        let postData = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          mode: 3,
+        };
+
+        response = await Axios.post(url, postData);
+                this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
+        this.$router.push("/waitingAssessment/0");
+
       }
     },
     async uploadFile(file, type) {
@@ -783,6 +893,45 @@ export default {
 
       this.loadingHide();
     },
+
+    async uploadFile6(file) {
+      // Upload pan1y / plan3y
+      this.loadingShow();
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("file", file);
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      const url = this.apiPath + "uploadFile6Month.php";
+      let data = await Axios.post(url, formData);
+
+      console.log(data);
+
+
+      this.checkMode3SendStatus();
+      this.getFile6();
+
+
+      this.loadingHide();
+    },
+    checkMode3SendStatus(){},
+    async getFile6() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      const url = this.apiPath + "getFile6Month.php";
+      let response = await Axios.post(url, formData);
+      if (response.data != "no files") {
+        let data = response.data[0];
+        this.file6 = !data.path ? [] : null;
+        this.file6Path = data.path
+      }
+    },
+    openFile6(){},
+
     openFile(type) {
       let random = Math.random().toString(36).substring(7);
       let link;
@@ -955,45 +1104,48 @@ export default {
       let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
       let responseData = responseCheck.data[0];
 
-      if (this.assessmentMode == "2") {
-        this.checkMode2SendStatus();
-      }
-
       // เช็คหากกดส่งแบบประเมิน mode2ไปแล้ว ไปหน้ารอ
       if (responseData) {
-        if (
-          responseData.mode2_status == "1" ||
-          responseData.mode1_status == "1"
-        ) {
-          this.$router.push("/waitingAssessment/0");
+        if (this.assessmentMode == "2") {
+          if (responseData.mode2_status == "1") {
+            this.$router.push("/waitingAssessment/0");
+          }
+          this.checkMode2SendStatus();
+        } else if (this.assessmentMode == "1") {
+          if (responseData.mode1_status == "1") {
+            this.$router.push("/waitingAssessment/0");
+          }
+        }else if (this.assessmentMode == "3"){
+          if(responseData.mode3_status == "1"){
+            this.$router.push("/waitingAssessment/0");
+          }else{
+            this.getFile6()
+          }
         }
 
-        if(responseData.mode1_status == '1')
-        {
-        // ป้องกันการเข้า หน้า stepper
-        this.$q.sessionStorage.set("nstpr", false);
-      
+        if (responseData.mode1_status == "1") {
+          // ป้องกันการเข้า หน้า stepper
+          this.$q.sessionStorage.set("nstpr", false);
         } else {
-        this.$q.sessionStorage.set("nstpr", true);
-      
+          this.$q.sessionStorage.set("nstpr", true);
+        }
+
+        if (
+          timeStampCurrentDate > timeStampEndDate ||
+          this.assessmentStatus == "0"
+        ) {
+          // // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลาf
+          // if (this.currentStep.send_status == "1") {
+          //   // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
+          //   this.$router.push("/waitingAssessment/2");
+          // } else {
+          //   // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
+          //   this.$router.push("/waitingAssessment/1");
+          // }
+          this.$router.push("/waitingAssessment/0");
+        }
       }
 
-      if (
-        timeStampCurrentDate > timeStampEndDate ||
-        this.assessmentStatus == "0"
-      ) {
-        // // หมดเวลา หรือ ปิดประเมินแล้วก่อนเวลาf
-        // if (this.currentStep.send_status == "1") {
-        //   // console.log("หมดเวลา แต่ส่งประเมินแล้ว");
-        //   this.$router.push("/waitingAssessment/2");
-        // } else {
-        //   // console.log("หมดเวลา ยังไม่ส่งแบบประเมิน");
-        //   this.$router.push("/waitingAssessment/1");
-        // }
-        this.$router.push("/waitingAssessment/0");
-      }
-      }
-    
       this.loadingHide();
     },
     async getFile() {
@@ -1013,6 +1165,7 @@ export default {
         this.path2 = data.path2 != "" ? data.path2 : "";
       }
     },
+     
   },
   created() {
     this.getFile();

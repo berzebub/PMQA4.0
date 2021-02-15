@@ -14,7 +14,6 @@
         </div>
       </div>
     </div>
-    <div align="right">วันที่รับข้อมูล 27/1/2564 เวลา 17:30</div>
 
     <div class="row q-pt-md">
       <div class="col-3" align="center">

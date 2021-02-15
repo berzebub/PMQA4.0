@@ -1,8 +1,8 @@
 <template>
   <q-page style="padding:30px 75px;max-width:1400px;margin:auto">
     <div align="center" class="font-36 q-pt-md q-pb-sm relative-position">
-      <div class="row">
-        <div class="col-10" align="center">แผนปฏิบัติการเพื่อยกระดับการพัฒนาสู่ระบบราชการ 4.0</div>
+      <div class="row relative-position">
+        <div class="col-10 " align="center">รายงานติดตาม 6 เดือน</div>
         <div class="col">
           <q-btn
             @click="changeStatus()"
@@ -26,9 +26,7 @@
               align="center"
               @click="openFile(1)"
             >
-              แผนปฏิบัติการเพื่อยกระดับ
-              <br />การพัฒนาสู่ระบบราชการ 4.0
-              <br />
+              รายงานติดตาม 6 เดือน
               ประจำปี พ.ศ. {{ $q.sessionStorage.getItem("y") + 543 }}
             </div>
           </div>
@@ -113,7 +111,7 @@
             style="width:180px"
             class="font-18"
             label="ตกลง"
-            @click="deleteFilePlan()"
+            @click="deleteFile6MonthA()"
             v-close-popup
             dense
           ></q-btn>
@@ -134,45 +132,19 @@ export default {
       status: false,
       isErrorTextarea: false,
       path1: "",
-      path2 : ""
+      path2 : "",
+      file6: null,
+file6Path:null,
     };
   },
   methods: {
-    async getFilePlan() {
-      let uid = this.$route.params.userId;
-      let year = this.$q.sessionStorage.getItem("y");
-      let postData = {
-        user_id: uid,
-        year: year,
-        plan: 1,
-      };
-      const url = this.apiPath + "getFilePlan.php";
-      let response = await Axios.post(url, postData);
-
-      if (response.data.length) {
-        this.filePdf = []
-        this.path2 = response.data[0].path
-      }
-    },
-    async getPlan1Y(){
-      let url = this.apiPath + "getPlan1Y.php";
-      let postData = {
-        user_id : this.$route.params.userId,
-        year : this.$q.sessionStorage.getItem("y")
-      }
-
-      let response = await Axios.post(url,postData)
-
-      if(response.data.length){
-        this.suggestion = response.data[0].suggestion
-      }
-
-    },
     async saveData() {
       if (this.suggestion) {
         this.loadingShow()
         this.isErrorTextarea = false;
-        let url = this.apiPath + "updatePlan1Y.php";
+        let url = this.apiPath + "updateMonth6_a.php";
+
+        console.log(url);
         let postData = {
           user_id : this.$route.params.userId,
           year : this.$q.sessionStorage.getItem("y"),
@@ -188,10 +160,10 @@ export default {
       this.loadingHide()
     },
 
-    async deleteFilePlan() {
+    async deleteFile6MonthA() {
       let uid = this.$route.params.userId;
       let year = this.$q.sessionStorage.getItem("y");
-      const url = this.apiPath + "deleteFilePlan_a.php";
+      const url = this.apiPath + "deleteFile6Month_a.php";
       let postData = {
         user_id: uid,
         year: year,
@@ -212,10 +184,8 @@ export default {
       formData.append("file", this.filePdf);
       formData.append("user_id", uid);
       formData.append("year", year);
-      formData.append("plan", 1);
-      const url = this.apiPath + "uploadFilePlan_a.php";
+      const url = this.apiPath + "uploadFile6Month_a.php";
       let data = await Axios.post(url, formData);
-
       this.loadingHide()
     },
 
@@ -229,7 +199,7 @@ export default {
 
         let postData = {
           uid : this.$route.params.userId,
-          step : "plan_1y",
+          step : "month_6",
           year : this.$q.sessionStorage.getItem("y"),
           stepValue :  this.status ? 2 : 1
         }
@@ -244,29 +214,44 @@ export default {
       }
     },
 
-    async getFile() {
+   async getFile() {
       let uid = this.$route.params.userId;
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
       formData.append("user_id", uid);
       formData.append("year", year);
-      const url = this.apiPath + "getFileMain.php";
+      const url = this.apiPath + "getFile6Month.php";
       let response = await Axios.post(url, formData);
       if (response.data != "no files") {
         let data = response.data[0];
-        this.path1 = data.path1 != "" ? data.path1 : "";
+        this.file6 = !data.path ? [] : null;
+        this.file6Path = data.path
       }
+    },
+
+        async getMonth6(){
+      let url = this.apiPath + "getMonth6_a.php";
+      let postData = {
+        user_id : this.$route.params.userId,
+        year : this.$q.sessionStorage.getItem("y")
+      }
+
+      let response = await Axios.post(url,postData)
+
+      if(response.data.length){
+        this.suggestion = response.data[0].suggestion
+      }
+
     },
 
     openFile(file) {
       if (file == 1) {
         // userid-1-year
-        let filePath = this.apiPath + this.path1;
+        let filePath = this.apiPath + this.file6Path;
         window.open(filePath);
       } else {
         let filePath = this.apiPath + this.path2;
         window.open(filePath);
-
       }
     },
     async getAssessmentStepperLog(){
@@ -284,18 +269,33 @@ export default {
         let responseData = responseCheck.data[0];
 
         if(responseCheck.data.length){
-          if(responseData.plan_1y == '2'){
+          if(responseData.month_6 == '2'){
             this.status = true
           }
         }
 
     },
+    async getFile6MonthA() {
+      let uid = this.$route.params.userId;
+      let year = this.$q.sessionStorage.getItem("y");
+      let postData = {
+        user_id: uid,
+        year: year,
+      };
+      const url = this.apiPath + "getFile6Month_a.php";
+      let response = await Axios.post(url, postData);
+
+      if (response.data.length) {
+        this.filePdf = []
+        this.path2 = response.data[0].path
+      }
+    },
   },
   created() {
     this.getFile();
-    this.getFilePlan();
-    this.getPlan1Y()
     this.getAssessmentStepperLog()
+    this.getFile6MonthA()
+    this.getMonth6()
   },
 };
 </script>
