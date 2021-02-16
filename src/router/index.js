@@ -18,10 +18,11 @@ Vue.use(VueRouter);
 Vue.mixin({
   data() {
     return {
-      // apiPath : "https://api.winner-english.com/pmqa4_0_api/"
+      apiPath : "https://api.winner-english.com/pmqa4_0_api/"
 
 
-      apiPath: "http://localhost/pmqa4.0_api/", //local api path
+
+      // apiPath: "http://localhost/pmqa4.0_api/", //local api path
 
 
       // apiPath: "http://203.157.41.91/pmqa4_0_api/"// real api path

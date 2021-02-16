@@ -631,17 +631,19 @@
             <!-- มีไฟล์ -->
             <div
               v-if="file6Path"
-              style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+              style="width:270px;border:3px solid #e84c93;border-radius:5px;"
             >
               <div style="width:100%">
                 <div
                   class="bg-white q-pa-xs text-black cursor-pointer row items-center"
                   style="width:100%;text-decoration:underline;height:70px"
                   align="center"
-                  @click="openFile(6)"
+                  @click="openFile6()"
                 >
                 <div style="width:100%">
-                  รายงานติดตาม 6 เดือน
+                  สรุปการติดตามผลการดำเนินงาน <br>รอบ 6เดือน (แบบฟอร์ม3)
+                  พร้อมทั้งแนบเอกสารตัวชี้วัดตามแผน
+                  
                   </div>
                 </div>
                 <div
@@ -657,8 +659,8 @@
               v-if="!file6Path"
               v-model="file6"
               class="bg-grey-5"
-              style="width:200px;border:4px solid #e84c93;border-radius:5px;"
-              accept=".doc, .pdf, .docx"
+              style="width:270px;border:4px solid #e84c93;border-radius:5px;"
+              accept=".doc, .pdf, .docx,.zip,.rar"
               @input="val => uploadFile6(val)"
             >
               <template v-slot:default>
@@ -666,11 +668,13 @@
                   <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
                   <div
                     class="bg-white q-pa-xs text-black row items-center"
-                    style="width:192px;height:70px"
+                    style="width:262px;height:70px"
                     align="center"
                   >
                   <div style="width:100%;">
-                    รายงานติดตาม 6 เดือน
+                  สรุปการติดตามผลการดำเนินงาน <br>รอบ 6เดือน (แบบฟอร์ม3)
+                  พร้อมทั้งแนบเอกสารตัวชี้วัดตามแผน
+                  
                     </div>
                   </div>
                 </div>
@@ -930,7 +934,11 @@ export default {
         this.file6Path = data.path
       }
     },
-    openFile6(){},
+    openFile6(){
+       let random = Math.random().toString(36).substring(7);
+        let link = this.apiPath + this.file6Path + "?" + random;
+          window.open(link);
+    },
 
     openFile(type) {
       let random = Math.random().toString(36).substring(7);
@@ -950,14 +958,25 @@ export default {
       formData.append("user_id", uid);
       formData.append("year", year);
       formData.append("type", this.deleteType);
-      const url = this.apiPath + "deleteFileMain.php";
+
+      if(this.deleteType == 6){
+        // delete file  ติดตาม 6 เดือน
+  const url = this.apiPath + "deleteFile6Month.php";
+      let data = await Axios.post(url, formData);
+      this.file6 = null
+      this.file6Path = ""
+      }else{
+        const url = this.apiPath + "deleteFileMain.php";
       let data = await Axios.post(url, formData);
       if (this.deleteType == 1) {
         this.filePdf1 = null;
-      } else {
+      }
+       else {
         this.filePdf2 = null;
       }
       this.checkMode2SendStatus();
+      }
+      
       this.isShowConfirmDeleteFileDialog = false;
     },
     showDeleteDialog(type) {
@@ -965,6 +984,7 @@ export default {
       let year = this.$q.sessionStorage.getItem("y");
       this.deleteType = type;
       this.isShowConfirmDeleteFileDialog = true;
+
     },
     printAll() {
       let route = this.$router.resolve({ name: "printAll" });
