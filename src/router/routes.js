@@ -80,6 +80,11 @@ const routes = [
     component: () => import("pages/print7.vue"),
     name: "printStep7"
   },
+  {
+    path: "/print/7gap",
+    component: () => import("pages/print7gap.vue"),
+    name: "printStep7Gap"
+  },
 
   // print plan 1y
 

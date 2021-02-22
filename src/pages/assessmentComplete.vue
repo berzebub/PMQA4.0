@@ -217,11 +217,14 @@ export default {
 
         if (item.status == "รอผลประเมิน") {
           // ปริ้นหมวด7 GAP ไม่มีข้อเสนอแนะ
-          this.printData(7);
+           let route = this.$router.resolve({
+            name: "printStep7Gap",
+          });
+          window.open(route.href);
         } else {
           // ปริ้นหมวด7 GAP + ข้อเสนอแนะจากกรรมการ
 
-          let route = this.$router.resolve({
+           let route = this.$router.resolve({
             name: "printStep7A",
           });
           window.open(route.href);

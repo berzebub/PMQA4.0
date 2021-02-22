@@ -11,31 +11,48 @@
         <div class="col">
           <!-- Set Top -->
           <div style="padding: 65px 0px 129px 0px">
-            <div class="container-border-lock row justify-between relative-position">
+            <div
+              class="container-border-lock row justify-between relative-position"
+            >
               <!-- ลักษณะองค์กร -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/0')">
-                    <q-icon size="50px" class="color1" name="fas fa-flag"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/0')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-flag"
+                    ></q-icon>
                   </q-btn>
                 </div>
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category0 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category0 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category0 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -43,7 +60,9 @@
                           size="12px"
                           icon="fas fa-print"
                           round
-                          :color="currentStep.category0 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category0 == '1' ? 'teal' : 'grey'
+                          "
                           @click="printData(0)"
                         ></q-btn>
                       </div>
@@ -51,7 +70,8 @@
                         <span
                           class="text-no-wrap"
                           style="position: relative; left: -20px"
-                        >ลักษณะสำคัญขององค์กร</span>
+                          >ลักษณะสำคัญขององค์กร</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -61,28 +81,43 @@
               <!-- หมวด 1 -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/1')">
-                    <q-icon size="50px" class="color1" name="fas fa-street-view"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/1')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-street-view"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category1 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category1 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category1 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -91,11 +126,17 @@
                           icon="fas fa-print"
                           @click="printData(1)"
                           round
-                          :color="currentStep.category1 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category1 == '1' ? 'teal' : 'grey'
+                          "
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 1</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 1</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -105,28 +146,43 @@
               <!-- หมวด 2  -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/2')">
-                    <q-icon size="50px" class="color1" name="fas fa-map-signs"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/2')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-map-signs"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category2 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category2 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category2 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -135,11 +191,17 @@
                           icon="fas fa-print"
                           @click="printData(2)"
                           round
-                          :color="currentStep.category2 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category2 == '1' ? 'teal' : 'grey'
+                          "
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 2</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 2</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -149,28 +211,43 @@
               <!-- หมวด 3 -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/3')">
-                    <q-icon size="50px" class="color1" name="fas fa-users"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/3')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-users"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category3 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category3 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category3 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -179,11 +256,17 @@
                           icon="fas fa-print"
                           @click="printData(3)"
                           round
-                          :color="currentStep.category3 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category3 == '1' ? 'teal' : 'grey'
+                          "
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 3</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 3</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -194,32 +277,49 @@
 
           <!-- Set Bottom -->
           <div style="padding: 129px 0px 65px 0px">
-            <div class="container-border-lock row reverse justify-between relative-position">
+            <div
+              class="container-border-lock row reverse justify-between relative-position"
+            >
               <!-- หมวด 4 -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/4')">
-                    <q-icon size="50px" class="color1" name="fas fa-chart-line"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/4')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-chart-line"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category4 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category4 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category4 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -228,11 +328,17 @@
                           icon="fas fa-print"
                           @click="printData(4)"
                           round
-                          :color="currentStep.category4 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category4 == '1' ? 'teal' : 'grey'
+                          "
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 4</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 4</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -242,28 +348,43 @@
               <!-- หมวด 5 -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/5')">
-                    <q-icon size="50px" class="color1" name="fas fa-users-cog"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/5')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-users-cog"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category5 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category5 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category5 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -272,11 +393,17 @@
                           icon="fas fa-print"
                           @click="printData(5)"
                           round
-                          :color="currentStep.category5 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category5 == '1' ? 'teal' : 'grey'
+                          "
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 5</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 5</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -286,28 +413,43 @@
               <!-- หมวด 6 -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/6')">
-                    <q-icon size="50px" class="color1" name="fas fa-project-diagram"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/6')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-project-diagram"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div
                         class="col q-pa-xs"
                         :class="
-                        currentStep.category6 == '1'
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                          currentStep.category6 == '1'
+                            ? 'border-teal'
+                            : 'border-grey'
+                        "
                       >
                         <q-icon
                           :color="currentStep.category6 == '1' ? 'teal' : ''"
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -316,11 +458,17 @@
                           icon="fas fa-print"
                           @click="printData(6)"
                           round
-                          :color="currentStep.category6 == '1' ? 'teal' : 'grey'"
+                          :color="
+                            currentStep.category6 == '1' ? 'teal' : 'grey'
+                          "
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 6</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 6</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -330,12 +478,26 @@
               <!-- หมวด 7 -->
               <div class="col-2 relative-position" style="z-index: 5">
                 <div class="absolute-center">
-                  <q-btn round size="45px" push class="bg3" @click="$router.push('/stepper/7')">
-                    <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+                  <q-btn
+                    round
+                    size="45px"
+                    push
+                    class="bg3"
+                    @click="$router.push('/stepper/7')"
+                  >
+                    <q-icon
+                      size="50px"
+                      class="color1"
+                      name="fas fa-trophy"
+                    ></q-icon>
                   </q-btn>
                 </div>
 
-                <div class="absolute-bottom" style="bottom: -150px; width: 145px" align="center">
+                <div
+                  class="absolute-bottom"
+                  style="bottom: -150px; width: 145px"
+                  align="center"
+                >
                   <div class="font-18">
                     <div class="row items-center">
                       <div class="col q-pa-xs border-teal">
@@ -344,7 +506,8 @@
                           name="fas fa-check-circle"
                           class="q-mr-xs"
                           size="18px"
-                        ></q-icon>เสร็จสิ้น
+                        ></q-icon
+                        >เสร็จสิ้น
                       </div>
                       <div class="q-pl-sm">
                         <q-btn
@@ -356,7 +519,11 @@
                         ></q-btn>
                       </div>
                       <div class="col-12">
-                        <span class="text-no-wrap" style="position: relative; left: -20px">หมวด 7</span>
+                        <span
+                          class="text-no-wrap"
+                          style="position: relative; left: -20px"
+                          >หมวด 7</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -378,71 +545,48 @@
             style="width: 180px; border-radius: 0px"
             push
             class="q-mx-md q-py-sm"
-            :class="
-            !checkSteper ? 'bg3' : 'bg-white'
-          "
+            :class="!checkSteper ? 'bg3' : 'bg-white'"
             @click="printAll()"
           >
             <q-icon
-              :class="
-              !checkSteper ? 'color2' : ''
-            "
+              :class="!checkSteper ? 'color2' : ''"
               name="fas fa-print"
             ></q-icon>
-            <span
-              :class="
-              !checkSteper ? 'color2' : ''
-            "
-              class="font-14 q-ml-sm"
-            >พิมพ์การประเมิน</span>
+            <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
+              >พิมพ์การประเมิน</span
+            >
           </q-btn>
           <q-btn
             :disable="!checkSteper"
             style="width: 180px; border-radius: 0px"
             push
             class="q-mx-md q-py-sm"
-            :class="
-            !checkSteper ? 'bg3' : 'bg-white'
-          "
+            :class="!checkSteper ? 'bg3' : 'bg-white'"
             to="/assessment"
           >
             <q-icon
-              :class="
-              !checkSteper ? 'color2' : ''
-            "
+              :class="!checkSteper ? 'color2' : ''"
               name="fas fa-print"
             ></q-icon>
-            <span
-              :class="
-              !checkSteper ? 'color2' : ''
-            "
-              class="font-14 q-ml-sm"
-            >พิมพ์ผลการประเมิน</span>
+            <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
+              >พิมพ์ผลการประเมิน</span
+            >
           </q-btn>
           <q-btn
             :disable="!checkSteper"
             style="width: 180px; border-radius: 0px"
             push
             class="q-mx-md q-py-sm"
-            :class="
-            !checkSteper
-              ? 'bg3'
-              : 'bg-teal text-white'
-          "
+            :class="!checkSteper ? 'bg3' : 'bg-teal text-white'"
             @click="sendStatus(1)"
           >
             <q-icon
-              :class="
-              !checkSteper ? 'color2' : ''
-            "
+              :class="!checkSteper ? 'color2' : ''"
               name="far fa-paper-plane"
             ></q-icon>
-            <span
-              :class="
-              !checkSteper ? 'color2' : ''
-            "
-              class="font-14 q-ml-sm"
-            >ส่งแบบประเมิน</span>
+            <span :class="!checkSteper ? 'color2' : ''" class="font-14 q-ml-sm"
+              >ส่งแบบประเมิน</span
+            >
           </q-btn>
         </div>
       </div>
@@ -456,8 +600,18 @@
         >
           <div class="relative-position col">
             <div align="center">
-              <q-btn round size="45px" push class="bg3" @click="$router.push('/cat7')">
-                <q-icon size="50px" class="color1" name="fas fa-trophy"></q-icon>
+              <q-btn
+                round
+                size="45px"
+                push
+                class="bg3"
+                @click="$router.push('/cat7')"
+              >
+                <q-icon
+                  size="50px"
+                  class="color1"
+                  name="fas fa-trophy"
+                ></q-icon>
               </q-btn>
             </div>
             <div class="row justify-center relative-position q-pt-md font-18">
@@ -465,18 +619,15 @@
                 class="q-pa-xs"
                 style="width:100px"
                 align="center"
-                :class="
-                        isCategory7GAP
-                          ? 'border-teal'
-                          : 'border-grey'
-                      "
+                :class="isCategory7GAP ? 'border-teal' : 'border-grey'"
               >
                 <q-icon
                   :color="isCategory7GAP ? 'teal' : ''"
                   name="fas fa-check-circle"
                   class="q-mr-xs"
                   size="18px"
-                ></q-icon>เสร็จสิ้น
+                ></q-icon
+                >เสร็จสิ้น
               </div>
               <!-- print btn -->
               <div class="q-pl-md">
@@ -490,11 +641,17 @@
                 ></q-btn>
               </div>
 
-              <div align="center" class="font-18 col-12 absolute" style="top:60px">หมวด7</div>
+              <div
+                align="center"
+                class="font-18 col-12 absolute"
+                style="top:60px"
+              >
+                หมวด7
+              </div>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col ">
             <!-- มีไฟล์ -->
             <div
               v-if="filePdf1 != null"
@@ -516,7 +673,9 @@
                   @click="showDeleteDialog(1)"
                   class="bg1 text-white font-12 q-py-sm cursor-pointer"
                   align="center"
-                >ลบไฟล์</div>
+                >
+                  ลบไฟล์
+                </div>
               </div>
             </div>
 
@@ -531,8 +690,14 @@
             >
               <template v-slot:default>
                 <div style="width:100%">
-                  <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
-                  <div class="bg-white q-pa-xs text-black" style="width:192px" align="center">
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">
+                    แนบไฟล์
+                  </div>
+                  <div
+                    class="bg-white q-pa-xs text-black"
+                    style="width:192px"
+                    align="center"
+                  >
                     แผนปฏิบัติการเพื่อยกระดับ
                     <br />การพัฒนาสู่ระบบราชการ 4.0
                     <br />
@@ -556,14 +721,15 @@
                   align="center"
                   @click="openFile(2)"
                 >
-                  แผนยกระดับการพัฒนา
-                  สู่ระบบราชการ 4.0 ระยะ 3 ปี
+                  แผนยกระดับการพัฒนา สู่ระบบราชการ 4.0 ระยะ 3 ปี
                 </div>
                 <div
                   @click="showDeleteDialog(2)"
                   class="bg1 text-white font-12 q-py-sm cursor-pointer"
                   align="center"
-                >ลบไฟล์</div>
+                >
+                  ลบไฟล์
+                </div>
               </div>
             </div>
 
@@ -578,14 +744,15 @@
             >
               <template v-slot:default>
                 <div style="width:100%">
-                  <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">
+                    word / pdf
+                  </div>
                   <div
                     class="bg-white q-pa-xs text-black row items-center"
                     style="width:192px;height:70px"
                     align="center"
                   >
-                    แผนยกระดับการพัฒนา
-                    สู่ระบบราชการ 4.0 ระยะ 3 ปี
+                    แผนยกระดับการพัฒนา สู่ระบบราชการ 4.0 ระยะ 3 ปี
                   </div>
                 </div>
               </template>
@@ -598,33 +765,25 @@
             style="width: 180px; border-radius: 0px;margin-top:50px"
             push
             class="q-mx-md q-py-sm"
-            :class="
-            !isEnableSendMode2
-              ? 'bg3'
-              : 'bg-teal text-white'
-          "
+            :class="!isEnableSendMode2 ? 'bg3' : 'bg-teal text-white'"
             @click="sendStatus(2)"
           >
             <q-icon
-              :class="
-              !isEnableSendMode2 ? 'color2' : ''
-            "
+              :class="!isEnableSendMode2 ? 'color2' : ''"
               name="far fa-paper-plane"
             ></q-icon>
             <span
-              :class="
-              !isEnableSendMode2 ? 'color2' : ''
-            "
+              :class="!isEnableSendMode2 ? 'color2' : ''"
               class="font-14 q-ml-sm"
-            >ส่งแบบประเมิน</span>
+              >ส่งแบบประเมิน</span
+            >
           </q-btn>
         </div>
       </div>
 
-      <div v-else-if="assessmentMode == '3'">
-
+      <div v-else-if="assessmentMode == '3'" class="relative-position">
         <div
-          class="row justify-center items-center"
+          class="row justify-center items-center "
           style="max-width:800px;margin:auto;padding-top:100px"
         >
           <div class="col self-center" align="center">
@@ -640,17 +799,18 @@
                   align="center"
                   @click="openFile6()"
                 >
-                <div style="width:100%">
-                  สรุปการติดตามผลการดำเนินงาน <br>รอบ 6เดือน (แบบฟอร์ม3)
-                  พร้อมทั้งแนบเอกสารตัวชี้วัดตามแผน
-                  
+                  <div style="width:100%">
+                    สรุปการติดตามผลการดำเนินงาน <br />รอบ 6เดือน (แบบฟอร์ม3)
+                    พร้อมทั้งแนบเอกสารตามแผนกิจกรรมที่ดำเนินงาน
                   </div>
                 </div>
                 <div
                   @click="showDeleteDialog(6)"
                   class="bg1 text-white font-12 q-py-sm cursor-pointer"
                   align="center"
-                >ลบไฟล์</div>
+                >
+                  ลบไฟล์
+                </div>
               </div>
             </div>
 
@@ -665,64 +825,77 @@
             >
               <template v-slot:default>
                 <div style="width:100%">
-                  <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">
+                    word / pdf
+                  </div>
                   <div
                     class="bg-white q-pa-xs text-black row items-center"
                     style="width:262px;height:70px"
                     align="center"
                   >
-                  <div style="width:100%;">
-                  สรุปการติดตามผลการดำเนินงาน <br>รอบ 6เดือน (แบบฟอร์ม3)
-                  พร้อมทั้งแนบเอกสารตัวชี้วัดตามแผน
-                  
+                    <div style="width:100%;">
+                      สรุปการติดตามผลการดำเนินงาน <br />รอบ 6เดือน (แบบฟอร์ม3)
+                      พร้อมทั้งแนบเอกสารตัวชี้วัดตามแผน
                     </div>
                   </div>
                 </div>
               </template>
             </q-file>
           </div>
-          </div>
+        </div>
 
-           <div align="center">
+        <div align="center">
           <q-btn
             :disable="!file6Path"
             style="width: 180px; border-radius: 0px;margin-top:50px"
             push
             class="q-mx-md q-py-sm"
-            :class="
-            !file6Path
-              ? 'bg3'
-              : 'bg-teal text-white'
-          "
+            :class="!file6Path ? 'bg3' : 'bg-teal text-white'"
             @click="sendStatus(3)"
           >
             <q-icon
-              :class="
-              !file6Path ? 'color2' : ''
-            "
+              :class="!file6Path ? 'color2' : ''"
               name="far fa-paper-plane"
             ></q-icon>
-            <span
-              :class="
-              !file6Path ? 'color2' : ''
-            "
-              class="font-14 q-ml-sm"
-            >ส่งแบบประเมิน</span>
+            <span :class="!file6Path ? 'color2' : ''" class="font-14 q-ml-sm"
+              >ส่งแบบประเมิน</span
+            >
           </q-btn>
+        </div>
+
+        <div class="text-body1 q-pt-xl" align="left">
+          <div class="">*หมายเหตุ : การแนบไฟล์</div>
+          <div>
+            วิธีที่ 1 : แนบเอกสารทั้งหมดเป็นไฟล์ .pdf จำนวน 1 ไฟล์เท่านั้น
+          </div>
+          <div>
+            วิธีที่ 2 : แนบแบบ Zip ไฟล์ โดยภายในต้องเป็นไฟล์ .pdf ทั้งหมด
+          </div>
         </div>
       </div>
 
-      <div v-else-if="assessmentMode == '4'">หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน</div>
+      <div v-else-if="assessmentMode == '4'">
+        หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน
+      </div>
 
       <q-dialog persistent v-model="isShowConfirmDeleteFileDialog">
         <q-card style="width:450px;">
           <q-card-section>
             <div style="font-size:30px" align="center">ลบไฟล์</div>
 
-            <div class="font-18 q-py-md" align="center">คุณต้องการลบไฟล์ใช่หรือไม่?</div>
+            <div class="font-18 q-py-md" align="center">
+              คุณต้องการลบไฟล์ใช่หรือไม่?
+            </div>
           </q-card-section>
           <q-card-actions align="center" class="q-pb-md">
-            <q-btn style="width:180px" class="font-18" label="ยกเลิก" v-close-popup outline dense></q-btn>
+            <q-btn
+              style="width:180px"
+              class="font-18"
+              label="ยกเลิก"
+              v-close-popup
+              outline
+              dense
+            ></q-btn>
             <q-btn
               color="teal"
               style="width:180px"
@@ -744,18 +917,18 @@ import myFooter from "../components/footer";
 import Axios from "axios";
 export default {
   components: {
-    myFooter,
+    myFooter
   },
   data() {
     return {
       // new
       filePdf1: null,
       filePdf2: null,
-      file6 : null, //รายงานติดตาม 6 เดือน
+      file6: null, //รายงานติดตาม 6 เดือน
       isShowConfirmDeleteFileDialog: false,
       isCategory7GAP: false,
       isEnableSendMode2: false,
-      isEnableSendMode3 : false,
+      isEnableSendMode3: false,
       // end new
       file1: null,
       file2: null,
@@ -777,7 +950,7 @@ export default {
       path2: "",
       assessmentMode: "",
       deleteType: "",
-      file6Path : ""
+      file6Path: ""
     };
   },
   methods: {
@@ -791,13 +964,13 @@ export default {
           uid: this.$q.sessionStorage.getItem("uid"),
           step: "cat1_6",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: 1,
+          stepValue: 1
         };
         const stepperData2 = {
           uid: this.$q.sessionStorage.getItem("uid"),
           step: "op",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: 1,
+          stepValue: 1
         };
 
         let response = await Axios.post(urlUpdateStepper, stepperData1);
@@ -807,7 +980,7 @@ export default {
         let postData = {
           uid: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          mode: 1,
+          mode: 1
         };
 
         response = await Axios.post(url, postData);
@@ -823,19 +996,19 @@ export default {
           uid: this.$q.sessionStorage.getItem("uid"),
           step: "cat7_gap",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: 1,
+          stepValue: 1
         };
         const stepperData2 = {
           uid: this.$q.sessionStorage.getItem("uid"),
           step: "plan_1y",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: 1,
+          stepValue: 1
         };
         const stepperData3 = {
           uid: this.$q.sessionStorage.getItem("uid"),
           step: "plan_3y",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: 1,
+          stepValue: 1
         };
 
         let response = await Axios.post(urlUpdateStepper, stepperData1);
@@ -846,36 +1019,35 @@ export default {
         let postData = {
           uid: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          mode: 2,
+          mode: 2
         };
 
         response = await Axios.post(url, postData);
 
         this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
-      }else if (mode == 3){
-         const urlUpdateStepper =
+      } else if (mode == 3) {
+        const urlUpdateStepper =
           this.apiPath + "user/update_assessment_stepper_log.php";
 
-            const stepperData1 = {
+        const stepperData1 = {
           uid: this.$q.sessionStorage.getItem("uid"),
           step: "month_6",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: 1,
+          stepValue: 1
         };
-         let response = await Axios.post(urlUpdateStepper, stepperData1);
+        let response = await Axios.post(urlUpdateStepper, stepperData1);
 
-          const url = this.apiPath + "user/updateModeStatus.php";
+        const url = this.apiPath + "user/updateModeStatus.php";
         let postData = {
           uid: this.$q.sessionStorage.getItem("uid"),
           year: this.$q.sessionStorage.getItem("y"),
-          mode: 3,
+          mode: 3
         };
 
         response = await Axios.post(url, postData);
-                this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
+        this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
-
       }
     },
     async uploadFile(file, type) {
@@ -912,14 +1084,12 @@ export default {
 
       console.log(data);
 
-
       this.checkMode3SendStatus();
       this.getFile6();
 
-
       this.loadingHide();
     },
-    checkMode3SendStatus(){},
+    checkMode3SendStatus() {},
     async getFile6() {
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
@@ -931,17 +1101,21 @@ export default {
       if (response.data != "no files") {
         let data = response.data[0];
         this.file6 = !data.path ? [] : null;
-        this.file6Path = data.path
+        this.file6Path = data.path;
       }
     },
-    openFile6(){
-       let random = Math.random().toString(36).substring(7);
-        let link = this.apiPath + this.file6Path + "?" + random;
-          window.open(link);
+    openFile6() {
+      let random = Math.random()
+        .toString(36)
+        .substring(7);
+      let link = this.apiPath + this.file6Path + "?" + random;
+      window.open(link);
     },
 
     openFile(type) {
-      let random = Math.random().toString(36).substring(7);
+      let random = Math.random()
+        .toString(36)
+        .substring(7);
       let link;
 
       if (type == 1) {
@@ -959,24 +1133,23 @@ export default {
       formData.append("year", year);
       formData.append("type", this.deleteType);
 
-      if(this.deleteType == 6){
+      if (this.deleteType == 6) {
         // delete file  ติดตาม 6 เดือน
-  const url = this.apiPath + "deleteFile6Month.php";
-      let data = await Axios.post(url, formData);
-      this.file6 = null
-      this.file6Path = ""
-      }else{
+        const url = this.apiPath + "deleteFile6Month.php";
+        let data = await Axios.post(url, formData);
+        this.file6 = null;
+        this.file6Path = "";
+      } else {
         const url = this.apiPath + "deleteFileMain.php";
-      let data = await Axios.post(url, formData);
-      if (this.deleteType == 1) {
-        this.filePdf1 = null;
+        let data = await Axios.post(url, formData);
+        if (this.deleteType == 1) {
+          this.filePdf1 = null;
+        } else {
+          this.filePdf2 = null;
+        }
+        this.checkMode2SendStatus();
       }
-       else {
-        this.filePdf2 = null;
-      }
-      this.checkMode2SendStatus();
-      }
-      
+
       this.isShowConfirmDeleteFileDialog = false;
     },
     showDeleteDialog(type) {
@@ -984,7 +1157,6 @@ export default {
       let year = this.$q.sessionStorage.getItem("y");
       this.deleteType = type;
       this.isShowConfirmDeleteFileDialog = true;
-
     },
     printAll() {
       let route = this.$router.resolve({ name: "printAll" });
@@ -992,7 +1164,7 @@ export default {
     },
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step,
+        name: "printStep" + step
       });
       window.open(route.href);
     },
@@ -1002,7 +1174,7 @@ export default {
       const url = this.apiPath + "user/getStepperLog.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
       let data = await Axios.post(url, postData);
       let newData = data.data;
@@ -1015,12 +1187,12 @@ export default {
           newData.category3,
           newData.category4,
           newData.category5,
-          newData.category6,
+          newData.category6
           // newData.category7,
         ];
       }
 
-      if (checkStatus.every((x) => x == "1") && checkStatus.length) {
+      if (checkStatus.every(x => x == "1") && checkStatus.length) {
         this.checkSteper = true;
       } else {
         this.checkSteper = false;
@@ -1048,7 +1220,7 @@ export default {
       let data;
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + 543,
+        year: this.$q.sessionStorage.getItem("y") + 543
       };
       data = await Axios.post(url, postData);
       getData = data.data;
@@ -1118,7 +1290,7 @@ export default {
       const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
       let postCheckStatusData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
 
       let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
@@ -1135,11 +1307,11 @@ export default {
           if (responseData.mode1_status == "1") {
             this.$router.push("/waitingAssessment/0");
           }
-        }else if (this.assessmentMode == "3"){
-          if(responseData.mode3_status == "1"){
+        } else if (this.assessmentMode == "3") {
+          if (responseData.mode3_status == "1") {
             this.$router.push("/waitingAssessment/0");
-          }else{
-            this.getFile6()
+          } else {
+            this.getFile6();
           }
         }
 
@@ -1184,13 +1356,12 @@ export default {
         this.path1 = data.path1 != "" ? data.path1 : "";
         this.path2 = data.path2 != "" ? data.path2 : "";
       }
-    },
-     
+    }
   },
   created() {
     this.getFile();
     this.getAssessmentDate();
-  },
+  }
 };
 </script>
 

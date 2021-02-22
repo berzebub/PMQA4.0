@@ -578,7 +578,7 @@ export default {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + (543-1)
+        year: this.$q.sessionStorage.getItem("y") + (543)
       };
 
       console.log(postData);
