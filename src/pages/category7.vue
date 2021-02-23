@@ -1,15 +1,8 @@
 <template>
-  <q-page
-    class="q-pa-md"
-    style=" max-width: 1280px;width: 100%;
-  margin:auto"
-    align="center"
-  >
+  <q-page class="q-pa-md" style=" max-width: 1280px;width: 100%;
+  margin:auto" align="center">
     <div class="row justify-center relative-position">
-      <hr
-        class="absolute brx"
-        style="border:2px solid #e0e0e0; width:90px;z-index:1;bottom:35px"
-      />
+      <hr class="absolute brx" style="border:2px solid #e0e0e0; width:90px;z-index:1;bottom:35px" />
       <div class="relative-position" style="width: 150px;z-index:10">
         <div class>
           <q-btn round push class="q-pa-sm bg3" @click="$router.push('/main')">
@@ -70,10 +63,7 @@
               <!-- ROW HEADER -->
               <div>
                 <div class="row">
-                  <div
-                    class="q-pa-md border col-5 relative-position"
-                    align="center"
-                  >
+                  <div class="q-pa-md border col-5 relative-position" align="center">
                     <span
                       v-if="item.question[indexSub].extend"
                       class="absolute"
@@ -88,24 +78,10 @@
                     </span>
                     ตัวชี้วัด
                   </div>
-                  <div class="q-pa-md border col" align="center">
-                    ผลดำเนินการ
-                  </div>
+                  <div class="q-pa-md border col" align="center">ผลดำเนินการ</div>
 
-                  <div
-                    class="q-pa-md border"
-                    style="width: 150px"
-                    align="center"
-                  >
-                    %ความสำเร็จ
-                  </div>
-                  <div
-                    class="q-pa-md border"
-                    style="width: 150px"
-                    align="center"
-                  >
-                    คะแนน
-                  </div>
+                  <div class="q-pa-md border" style="width: 150px" align="center">%ความสำเร็จ</div>
+                  <div class="q-pa-md border" style="width: 150px" align="center">คะแนน</div>
                 </div>
                 <div class="row">
                   <div class="q-pa-sm border col-5" align="center">
@@ -118,10 +94,7 @@
                       ></q-input>
                     </div>
                     <div v-else>
-                      <div
-                        align="left"
-                        v-html="item.question[indexSub].indicators"
-                      ></div>
+                      <div align="left" v-html="item.question[indexSub].indicators"></div>
                     </div>
                   </div>
                   <!-- ผลการดำเนินการ -->
@@ -153,28 +126,17 @@
                       </div>
                     </div>
                     <div class="q-py-md">
-                      <q-separator
-                        class="bg-grey-7"
-                        style="height: 1px"
-                      ></q-separator>
+                      <q-separator class="bg-grey-7" style="height: 1px"></q-separator>
                     </div>
                     <div class="row">
                       <div style="width: 130px">ผลการดำเนินงาน</div>
-                      <div
-                        style="width: 250px; top: -14px"
-                        class="row relative-position"
-                      >
+                      <div style="width: 250px; top: -14px" class="row relative-position">
                         <div class="row q-pt-sm" v-for="i in 3">
                           <div
                             style="width: 130px; left: -10px"
                             class="self-center relative-position"
-                          >
-                            ปี {{ currentYear - i + 1 }}
-                          </div>
-                          <div
-                            style="width: 120px; left: 12px"
-                            class="relative-position"
-                          >
+                          >ปี {{ currentYear - i + 1 }}</div>
+                          <div style="width: 120px; left: 12px" class="relative-position">
                             <q-input
                               :readonly="
                                 !item.question[indexSub].editable ||
@@ -207,30 +169,22 @@
                     </div>
                   </div>
                   <!-- ความสำเร็จ % -->
-                  <div
-                    class="q-pa-md border"
-                    style="width: 150px"
-                    align="center"
-                  >
+                  <div class="q-pa-md border" style="width: 150px" align="center">
                     <span v-if="!item.question[indexSub].editable"></span>
                     <span v-else>
                       {{
-                        calculateSuccessRate(
-                          item.question[indexSub].result[currentYear],
-                          item.question[indexSub].goalCurrentYear,
-                          item.question[indexSub].scoreStandard,
-                          index,
-                          indexSub
-                        )
+                      calculateSuccessRate(
+                      item.question[indexSub].result[currentYear],
+                      item.question[indexSub].goalCurrentYear,
+                      item.question[indexSub].scoreStandard,
+                      index,
+                      indexSub
+                      )
                       }}
                     </span>
                   </div>
                   <!-- คะแนน -->
-                  <div
-                    class="q-pa-md border"
-                    style="width: 150px"
-                    align="center"
-                  ></div>
+                  <div class="q-pa-md border" style="width: 150px" align="center"></div>
                 </div>
               </div>
             </div>
@@ -268,6 +222,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      isOldYear: false,
       // 7.1
       dialogMessage: "",
 
@@ -301,12 +256,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -328,14 +283,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.2 ด้านผู้รับบริการและผู้มีส่วนได้ส่วนเสีย",
@@ -363,14 +318,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.3 ด้านการพัฒนาบุคลากร",
@@ -398,12 +353,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -424,14 +379,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.4 ด้านการเป็นต้นแบบ",
@@ -459,12 +414,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -485,14 +440,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.5 ด้านผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม",
@@ -518,14 +473,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
         },
         {
           title: "7.6 ด้านการลดต้นทุน สร้างนวัตกรรม และการจัดการกระบวนการ",
@@ -552,12 +507,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
+              scoreStandard: "ยิ่งมากยิ่งดี",
             },
             {
               editable: false,
@@ -578,16 +533,16 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null
+                [this.$q.sessionStorage.getItem("y") + 541]: null,
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี"
-            }
-          ]
-        }
-      ]
+              scoreStandard: "ยิ่งมากยิ่งดี",
+            },
+          ],
+        },
+      ],
     };
   },
   methods: {
@@ -736,11 +691,11 @@ export default {
         result: {
           [this.$q.sessionStorage.getItem("y") + 543]: null,
           [this.$q.sessionStorage.getItem("y") + 542]: null,
-          [this.$q.sessionStorage.getItem("y") + 541]: null
+          [this.$q.sessionStorage.getItem("y") + 541]: null,
         },
         successRate: null,
         score: 0,
-        scoreStandard: "ยิ่งมากยิ่งดี"
+        scoreStandard: "ยิ่งมากยิ่งดี",
       };
 
       this.data[index].question.push(data);
@@ -795,11 +750,11 @@ export default {
     },
     async checkPassStatus() {
       let status = 0;
-      let mapStatus = this.data.map(x => x.avgScore);
+      let mapStatus = this.data.map((x) => x.avgScore);
       if (!mapStatus.includes(-1)) {
         // ประเมินครบแล้วทุกข้อ
         status = 1;
-      } else if (mapStatus.every(x => x == -1)) {
+      } else if (mapStatus.every((x) => x == -1)) {
         // ยังไม่เคยทำสักข้อ
         status = 0;
       } else {
@@ -812,14 +767,36 @@ export default {
         category: "category7",
         user_id: this.$q.sessionStorage.getItem("uid"),
         year: this.$q.sessionStorage.getItem("y"),
-        status: status // 1 = finish
+        status: status, // 1 = finish
       };
       let data = await Axios.post(url, postData);
       this.$emit("statusForm");
     },
     async saveCategory7(q_number) {
-      // this.calAvgScore(q_number);
-      let index = q_number - 1;
+      this.$q.loading.show(
+        {
+          delay : 0
+        }
+      )
+      if (this.isOldYear) {
+        // กรณีเข้าครั้งแรก และเป็นการดึงข้อมูลปีก่อนหน้ามาแสดง ต้องทำการเซฟข้อมูลทั้งหมดลงปีใหม่
+        for (let i = 0; i < 6; i++) {
+          let apiURL = this.apiPath + "user/addUpdateCategory7.php";
+          let postDataOldYear = {
+            user_id: this.$q.sessionStorage.getItem("uid"),
+            q_number: i + 1,
+            status: this.data[i].status,
+            json: JSON.stringify(this.data[i].question),
+            year: this.currentYear,
+            avg_score: Number(this.data[i].avgScore) || -1,
+            a_avg_score: -1,
+          };
+
+          let data = await Axios.post(apiURL, postDataOldYear);
+        }
+        this.isOldYear = false;
+      }else{
+        let index = q_number - 1;
       const url = this.apiPath + "user/addUpdateCategory7.php";
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
@@ -828,30 +805,36 @@ export default {
         json: JSON.stringify(this.data[index].question),
         year: this.currentYear,
         avg_score: Number(this.data[index].avgScore) || -1,
-        a_avg_score: -1
+        a_avg_score: -1,
       };
 
       let data = await Axios.post(url, postData);
 
       this.checkPassStatus();
+    
+      }
+        this.$q.loading.hide()
+      
     },
     async getCategory7() {
       console.clear();
+      this.isOldYear = false;
       const url = this.apiPath + "user/getCategory7.php";
       let getData;
       let data;
       let postData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.$q.sessionStorage.getItem("y") + 543
+        year: this.$q.sessionStorage.getItem("y") + 543,
       };
       data = await Axios.post(url, postData);
       getData = data.data;
 
       if (!getData.length) {
         // กรณีไม่มีข้อมูลปีปัจจุบัน ดึงข้อมูลปีก่อนหน้ามาแสดง
+        this.isOldYear = true;
         let postOldData = {
           user_id: this.$q.sessionStorage.getItem("uid"),
-          year: this.$q.sessionStorage.getItem("y") + (543 - 1) //ดึงของปีก่อนหน้า 1 ปี
+          year: this.$q.sessionStorage.getItem("y") + (543 - 1), //ดึงของปีก่อนหน้า 1 ปี
         };
         data = await Axios.post(url, postOldData);
       }
@@ -865,7 +848,7 @@ export default {
           let index = Number(getData[i].q_number) - 1;
           let json = JSON.parse(getData[i].json);
           this.data[index].avgScore = getData[i].avg_score;
-          json.forEach(element => {
+          json.forEach((element) => {
             if (Array.isArray(element.result)) {
               element.result = {
                 [this.$q.sessionStorage.getItem("y") + 543]: element.result[
@@ -876,7 +859,7 @@ export default {
                 ],
                 [this.$q.sessionStorage.getItem("y") + 541]: element.result[
                   this.$q.sessionStorage.getItem("y") + 541
-                ]
+                ],
               };
             }
           });
@@ -896,11 +879,11 @@ export default {
       // this.data[2].question[1].indicators = 'ร้อยละความสำเร็จของร้อยละเฉลี่ยถ่วงน้ำหนักในการบรรลุเป้าหมายตามแผนปฏิบัติราชการขององค์กร'
 
       this.data[4].question[0].goalCurrentYear = 85;
-    }
+    },
   },
   created() {
     this.getCategory7();
-  }
+  },
 };
 </script>
 
