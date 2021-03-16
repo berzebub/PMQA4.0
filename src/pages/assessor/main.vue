@@ -239,7 +239,6 @@ export default {
         this.notify("ยังไม่มีการประเมิน", "red");
         return;
       }
-console.log(mode);
       this.$q.sessionStorage.set("aid", officeData.userId);
       if (mode == 0) {
         // assessor/stepper/:step
@@ -261,13 +260,16 @@ console.log(mode);
       } else if (mode == 5) {
         // ติดตาม 6 เดือน
         this.$router.push("/assessor/month6/" + officeData.userId);
-
       } else if (mode == 6) {
         // หมวด 7
+          this.$router.push("/assessor/category7finalA/" + officeData.userId);
+        
       } else if (mode == 7) {
         // ติดตาม 12 เดือน
+         this.$router.push("/assessor/month12/" + officeData.userId);
       } else if (mode == 8) {
         // สรุป 12 เดือน
+         this.$router.push("/assessor/sumMonth12/" + officeData.userId);
       }
     },
     routeToDetails(item) {

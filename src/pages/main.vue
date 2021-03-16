@@ -875,7 +875,189 @@
       </div>
 
       <div v-else-if="assessmentMode == '4'">
-        หมวด 7 + รายงานติดตาม 12 เดือน + รายงานสรุป 12 เดือน
+        <!-- หมวด 7 (GAP) + แผน 1/3 ปี -->
+
+        <div
+          class="row justify-center items-center"
+          style="max-width:800px;margin:auto;padding-top:100px"
+        >
+          <div class="relative-position col">
+            <div align="center">
+              <q-btn
+                round
+                size="45px"
+                push
+                class="bg3"
+                @click="$router.push('/cat7final')"
+              >
+                <q-icon
+                  size="50px"
+                  class="color1"
+                  name="fas fa-trophy"
+                ></q-icon>
+              </q-btn>
+            </div>
+            <div class="row justify-center relative-position q-pt-md font-18">
+              <div
+                class="q-pa-xs"
+                style="width:100px"
+                align="center"
+                :class="isCategory7GAPFinal ? 'border-teal' : 'border-grey'"
+              >
+                <q-icon
+                  :color="isCategory7GAPFinal ? 'teal' : ''"
+                  name="fas fa-check-circle"
+                  class="q-mr-xs"
+                  size="18px"
+                ></q-icon
+                >เสร็จสิ้น
+              </div>
+              <!-- print btn -->
+              <div class="q-pl-md">
+                <q-btn
+                  :disable="!isCategory7GAPFinal"
+                  :color="isCategory7GAPFinal ? 'teal' : 'grey'"
+                  size="12px"
+                  icon="fas fa-print"
+                  @click="printData(7)"
+                  round
+                ></q-btn>
+              </div>
+
+              <div
+                align="center"
+                class="font-18 col-12 absolute"
+                style="top:60px"
+              >
+                หมวด7
+              </div>
+            </div>
+          </div>
+
+          <div class="col ">
+            <!-- มีไฟล์ -->
+            <div
+              v-if="filePdf71 != null"
+              style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+            >
+              <div style="width:100%">
+                <div
+                  class="bg-white q-pa-xs text-black cursor-pointer row items-center justify-center"
+                  style="width:100%;text-decoration:underline;height:70px"
+                  align="center"
+                  @click="openFile(1)"
+                >
+                  รายงานติดตาม 12 เดือน
+                </div>
+                <div
+                  @click="showDeleteDialog(1)"
+                  class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                  align="center"
+                >
+                  ลบไฟล์
+                </div>
+              </div>
+            </div>
+
+            <!-- ไม่มีไฟล์ -->
+            <q-file
+              v-if="!filePdf71"
+              v-model="filePdf71"
+              class="bg-grey-5"
+              style="width:200px;border:4px solid #e84c93;border-radius:5px"
+              accept=".doc, .pdf, .docx"
+              @input="val => uploadFile7Final(val, 1)"
+            >
+              <template v-slot:default>
+                <div style="width:100%;">
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">
+                    แนบไฟล์
+                  </div>
+                  <div
+                    class="bg-white q-pa-xs text-black row items-center justify-center"
+                    style="width:192px;height:70px"
+                    align="center"
+                  >
+                    รายงานติดตาม 12 เดือน
+                  </div>
+                </div>
+              </template>
+            </q-file>
+          </div>
+
+          <div class="col">
+            <!-- มีไฟล์ -->
+            <div
+              v-if="filePdf72 != null"
+              style="width:200px;border:3px solid #e84c93;border-radius:5px;"
+            >
+              <div style="width:100%">
+                <div
+                  class="bg-white q-pa-xs text-black cursor-pointer row items-center justify-center"
+                  style="width:100%;text-decoration:underline;height:70px"
+                  align="center"
+                  @click="openFile(2)"
+                >
+                  สรุปผลดำเนินงาน <br />
+                  12 เดือน
+                </div>
+                <div
+                  @click="showDeleteDialog(2)"
+                  class="bg1 text-white font-12 q-py-sm cursor-pointer"
+                  align="center"
+                >
+                  ลบไฟล์
+                </div>
+              </div>
+            </div>
+
+            <!-- ไม่มีไฟล์ -->
+            <q-file
+              v-if="!filePdf72"
+              v-model="filePdf72"
+              class="bg-grey-5"
+              style="width:200px;border:4px solid #e84c93;border-radius:5px;"
+              accept=".doc, .pdf, .docx"
+              @input="val => uploadFile7Final(val, 2)"
+            >
+              <template v-slot:default>
+                <div style="width:100%">
+                  <div class="bg-grey-5 q-pa-xs text-black" align="center">
+                    word / pdf
+                  </div>
+                  <div
+                    class="bg-white q-pa-xs text-black row items-center justify-center"
+                    style="width:192px;height:70px"
+                    align="center"
+                  >
+                    สรุปผลดำเนินงาน <br />
+                    12 เดือน
+                  </div>
+                </div>
+              </template>
+            </q-file>
+          </div>
+        </div>
+        <div align="center">
+          <q-btn
+            :disable="!isEnableSendMode4"
+            style="width: 180px; border-radius: 0px;margin-top:50px"
+            push
+            class="q-mx-md q-py-sm"
+            :class="!isEnableSendMode4 ? 'bg3' : 'bg-teal text-white'"
+            @click="sendStatus(4)"
+          >
+            <q-icon
+              :class="!isEnableSendMode4 ? 'color2' : ''"
+              name="far fa-paper-plane"
+            ></q-icon>
+            <span
+              :class="!isEnableSendMode4 ? 'color2' : ''"
+              class="font-14 q-ml-sm"
+              >ส่งแบบประเมิน</span
+            >
+          </q-btn>
+        </div>
       </div>
 
       <q-dialog persistent v-model="isShowConfirmDeleteFileDialog">
@@ -924,9 +1106,12 @@ export default {
       // new
       filePdf1: null,
       filePdf2: null,
+      filePdf71: null,
+      filePdf72: null,
       file6: null, //รายงานติดตาม 6 เดือน
       isShowConfirmDeleteFileDialog: false,
       isCategory7GAP: false,
+      isCategory7GAPFinal: false,
       isEnableSendMode2: false,
       isEnableSendMode3: false,
       // end new
@@ -950,7 +1135,8 @@ export default {
       path2: "",
       assessmentMode: "",
       deleteType: "",
-      file6Path: ""
+      file6Path: "",
+      isEnableSendMode4: false
     };
   },
   methods: {
@@ -1048,6 +1234,47 @@ export default {
         response = await Axios.post(url, postData);
         this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
+      }else if (mode == 4){
+        
+        // update สถานะการทำ cat7_gap
+        const urlUpdateStepper =
+          this.apiPath + "user/update_assessment_stepper_log.php";
+
+        const stepperData1 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "cat7",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1
+        };
+        const stepperData2 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "month_12",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1
+        };
+        const stepperData3 = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          step: "sum_month_12",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1
+        };
+
+        let response = await Axios.post(urlUpdateStepper, stepperData1);
+        response = await Axios.post(urlUpdateStepper, stepperData2);
+        response = await Axios.post(urlUpdateStepper, stepperData3);
+
+        const url = this.apiPath + "user/updateModeStatus.php";
+        let postData = {
+          uid: this.$q.sessionStorage.getItem("uid"),
+          year: this.$q.sessionStorage.getItem("y"),
+          mode: 4
+        };
+
+        response = await Axios.post(url, postData);
+
+        this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
+        this.$router.push("/waitingAssessment/0");
+      
       }
     },
     async uploadFile(file, type) {
@@ -1069,6 +1296,25 @@ export default {
 
       this.loadingHide();
     },
+    async uploadFile7Final(file, type) {
+      // Upload pan1y / plan3y
+      this.loadingShow();
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("file", file);
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      formData.append("type", type);
+
+      const url = this.apiPath + "uploadFile7Final.php";
+      let data = await Axios.post(url, formData);
+
+      this.checkMode2SendStatus();
+      this.getFile();
+
+      this.loadingHide();
+    },
 
     async uploadFile6(file) {
       // Upload pan1y / plan3y
@@ -1081,8 +1327,6 @@ export default {
       formData.append("year", year);
       const url = this.apiPath + "uploadFile6Month.php";
       let data = await Axios.post(url, formData);
-
-      console.log(data);
 
       this.checkMode3SendStatus();
       this.getFile6();
@@ -1136,16 +1380,26 @@ export default {
       if (this.deleteType == 6) {
         // delete file  ติดตาม 6 เดือน
         const url = this.apiPath + "deleteFile6Month.php";
+
         let data = await Axios.post(url, formData);
+        this.filePdf71 = null;
         this.file6 = null;
         this.file6Path = "";
       } else {
-        const url = this.apiPath + "deleteFileMain.php";
+        let url;
+        if (this.assessmentMode != "4") {
+          url = this.apiPath + "deleteFileMain.php";
+        } else {
+          url = this.apiPath + "deleteFile7Final.php";
+        }
+
         let data = await Axios.post(url, formData);
         if (this.deleteType == 1) {
           this.filePdf1 = null;
+          this.filePdf71 = null;
         } else {
           this.filePdf2 = null;
+          this.filePdf72 = null;
         }
         this.checkMode2SendStatus();
       }
@@ -1201,15 +1455,6 @@ export default {
         this.currentStep = data.data;
       }
 
-      // if (
-      //   this.currentStep.send_status == "1" ||
-      //   this.currentStep.send_status == "2"
-      // ) {
-      //   // ป้องกันการเข้า หน้า stepper
-      //   this.$q.sessionStorage.set("nstpr", false);
-      // } else {
-      //   this.$q.sessionStorage.set("nstpr", true);
-      // }
       let currentDate = await this.getDate();
       this.checkAssessmentStatus();
     },
@@ -1225,12 +1470,20 @@ export default {
       data = await Axios.post(url, postData);
       getData = data.data;
 
-      if (!getData.length) {
-        // กรณียังไม่เคยมีการเข้าไปประเมิน หมวด7 GAP
-        return false;
+      if (this.assessmentMode != "4") {
+        if (!getData.length) {
+          // กรณียังไม่เคยมีการเข้าไปประเมิน หมวด7 GAP
+          return false;
+        } else {
+          // กรณีเคยมีการบันทึกหมวด7 GAP แล้ว
+          return true;
+        }
       } else {
-        // กรณีเคยมีการบันทึกหมวด7 GAP แล้ว
-        return true;
+        if (getData.length == 6) {
+          return true;
+        } else {
+          return false;
+        }
       }
     },
     async getAssessmentDate() {
@@ -1243,9 +1496,11 @@ export default {
       this.endAssessmentDate = endDate;
       this.assessmentMode = assessmentDate.data.mode;
 
-      if (assessmentDate.data.mode == "2") {
+      if (assessmentDate.data.mode == "2" || assessmentDate.data.mode == "4") {
         let checkCate7GAP = await this.getCategory7GAP();
+
         this.isCategory7GAP = checkCate7GAP;
+        this.isCategory7GAPFinal = checkCate7GAP;
       }
 
       endDate = endDate.split("-");
@@ -1260,17 +1515,30 @@ export default {
         (Number(endDate[0]) + 543);
 
       this.endDate = endDate;
+      this.getFile();
       this.getStepperLog();
     },
     checkMode2SendStatus() {
-      if (
-        this.filePdf1 != null &&
-        this.filePdf2 != null &&
-        this.isCategory7GAP
-      ) {
-        this.isEnableSendMode2 = true;
+      if (this.assessmentMode != "4") {
+        if (
+          this.filePdf1 != null &&
+          this.filePdf2 != null &&
+          this.isCategory7GAP
+        ) {
+          this.isEnableSendMode2 = true;
+        } else {
+          this.isEnableSendMode2 = false;
+        }
       } else {
-        this.isEnableSendMode2 = false;
+        if (
+          this.filePdf71 != null &&
+          this.filePdf72 != null &&
+          this.isCategory7GAPFinal
+        ) {
+          this.isEnableSendMode2 = true;
+        } else {
+          this.isEnableSendMode2 = false;
+        }
       }
     },
     async checkAssessmentStatus() {
@@ -1313,6 +1581,10 @@ export default {
           } else {
             this.getFile6();
           }
+        }else  if (this.assessmentMode == "4") {
+          if (responseData.mode4_status == "1") {
+            this.$router.push("/waitingAssessment/0");
+          }
         }
 
         if (responseData.mode1_status == "1") {
@@ -1346,20 +1618,44 @@ export default {
       let formData = new FormData();
       formData.append("user_id", uid);
       formData.append("year", year);
-      const url = this.apiPath + "getFileMain.php";
+
+      let url;
+
+      if (this.assessmentMode != "4") {
+        url = this.apiPath + "getFileMain.php";
+      } else {
+        url = this.apiPath + "getFile7Final.php";
+      }
+
       let response = await Axios.post(url, formData);
 
       if (response.data != "no files") {
         let data = response.data[0];
-        this.filePdf1 = data.file1 != 0 ? [] : null;
-        this.filePdf2 = data.file2 != 0 ? [] : null;
-        this.path1 = data.path1 != "" ? data.path1 : "";
-        this.path2 = data.path2 != "" ? data.path2 : "";
+        if (this.assessmentMode != "4") {
+          this.filePdf1 = data.file1 != 0 ? [] : null;
+          this.filePdf2 = data.file2 != 0 ? [] : null;
+          this.path1 = data.path1 != "" ? data.path1 : "";
+          this.path2 = data.path2 != "" ? data.path2 : "";
+        } else {
+          this.filePdf71 = data.file1 != 0 ? [] : null;
+          this.filePdf72 = data.file2 != 0 ? [] : null;
+          this.path1 = data.path1 != "" ? data.path1 : "";
+          this.path2 = data.path2 != "" ? data.path2 : "";
+
+          if (this.assessmentMode == "4") {
+            if (
+              this.isCategory7GAPFinal &&
+              this.filePdf71 != null &&
+              this.filePdf72 != null
+            ) {
+              this.isEnableSendMode4 = true;
+            }
+          }
+        }
       }
     }
   },
   created() {
-    this.getFile();
     this.getAssessmentDate();
   }
 };

@@ -99,6 +99,17 @@ const routes = [
     name: "printPlan3"
   },
 
+  {
+    path: "/printMonth12",
+    component: () => import("pages/printMonth12.vue"),
+    name: "printMonth12"
+  },
+  {
+    path: "/printMonth12Sum",
+    component: () => import("pages/printMonth12Sum.vue"),
+    name: "printMonth12Sum"
+  },
+
   // PRINT ASSESSOR PAPER
   {
     path: "/print/0A",
@@ -185,6 +196,12 @@ const routes = [
         component: () => import("pages/category7.vue"),
         name: "cat7"
       },
+
+      {
+        path: "/cat7final",
+        component: () => import("pages/category7Final.vue"),
+        name: "cat7final"
+      },
       {
         path: "/assessmentResult",
         component: () => import("pages/assessmentResult.vue"),
@@ -238,9 +255,25 @@ const routes = [
         name: "assessorCategory7GAP"
       },
       {
+        path: "assessor/category7finalA/:userId",
+        component: () => import("pages/assessor/category7finalA.vue"),
+        name: "assessorcategory7finalA"
+      },
+
+      {
         path: "assessor/op",
         component: () => import("pages/assessor/step0.vue"),
         name: "step0"
+      },
+      {
+        path: "assessor/month12/:userId",
+        component: () => import("pages/assessor/month12.vue"),
+        name: "month12"
+      },
+      {
+        path: "assessor/sumMonth12/:userId",
+        component: () => import("pages/assessor/sumMonth12.vue"),
+        name: "sumMonth12"
       }
     ]
   },

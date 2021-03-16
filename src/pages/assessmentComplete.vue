@@ -18,9 +18,14 @@
 
       <div class="q-pa-md">
         <div class="row justify-center">
-          <div style="width:11%" class="q-pa-xs" v-for="(item,index) in categoryGroup" :key="index">
+          <div
+            style="width:11%"
+            class="q-pa-xs"
+            v-for="(item, index) in categoryGroup"
+            :key="index"
+          >
             <div
-              @click="toPage(item,index)"
+              @click="toPage(item, index)"
               class="row relative-position cursor-pointer"
               v-ripple
               style="border:1px solid"
@@ -30,8 +35,16 @@
               <div
                 class="col-12 text-white"
                 align="center"
-                :class="item.status == 'ยังไม่ประเมิน' ?'my-red' : item.status == 'ประเมินแล้ว' ? 'my-green' : 'my-yellow'"
-              >{{ item.status }}</div>
+                :class="
+                  item.status == 'ยังไม่ประเมิน'
+                    ? 'my-red'
+                    : item.status == 'ประเมินแล้ว'
+                    ? 'my-green'
+                    : 'my-yellow'
+                "
+              >
+                {{ item.status }}
+              </div>
             </div>
           </div>
         </div>
@@ -54,9 +67,7 @@
                   <span>
                     ผลดำเนินการ PMQA4.0 ในภาพรวม =
                     <span style="font-size:48px">
-                      {{
-                      showAvgScore
-                      }}
+                      {{ showAvgScore }}
                     </span>
                     คะแนน
                   </span>
@@ -72,19 +83,22 @@
                       style="font-size:48px"
                       v-if="assessmentLog.assessor_score != '-1'"
                     >
-                      {{
-                      assessmentLog.assessor_score
-                      }} คะแนน
+                      {{ assessmentLog.assessor_score }} คะแนน
                     </span>
                     <span class="color1">ยังไม่ประเมิน</span>
                   </span>
                 </div>
               </div>
               <div style="height:30px"></div>
-              <div class="q-pa-md" style="border:1px solid;width:320px;margin:auto">
+              <div
+                class="q-pa-md"
+                style="border:1px solid;width:320px;margin:auto"
+              >
                 หน่วยงานระบบราชการ
                 <span v-if="assessmentLog.assessor_score == '-1'">-</span>
-                <span v-else>{{ ((assessmentLog.assessor_score / 500) * 4).toFixed(1) }}</span>
+                <span v-else>{{
+                  ((assessmentLog.assessor_score / 500) * 4).toFixed(1)
+                }}</span>
               </div>
             </div>
           </div>
@@ -100,13 +114,15 @@ import stepFooter from "../components/footer";
 import Axios from "axios";
 export default {
   components: {
-    stepFooter,
+    stepFooter
   },
   data() {
     return {
       showAvgScore: "",
       file1Y: "",
       file3Y: "",
+      file12Month: "",
+      file12MonthSum: "",
       categoryGroup: [
         { name: "ลักษณะองค์กร", status: "ยังไม่ประเมิน" },
         { name: "หมวด 1-6", status: "ยังไม่ประเมิน" },
@@ -116,7 +132,7 @@ export default {
         { name: "ติดตาม 6 เดือน", status: "ยังไม่ประเมิน" },
         { name: "หมวด7", status: "ยังไม่ประเมิน" },
         { name: "ติดตาม 12 เดือน", status: "ยังไม่ประเมิน" },
-        { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" },
+        { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" }
       ],
       isShowGraph: false,
       assessorName: "",
@@ -130,51 +146,51 @@ export default {
           title: `ลักษณะสำคัญขององค์กร`,
           fontawesome: "fas fa-flag",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `การนำองค์กร `,
           fontawesome: "fas fa-street-view",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `การวางแผน เชิงยุทธศาสตร์`,
           fontawesome: "fas fa-map-signs",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `การให้ความสำคัญ กับผู้รับบริการและ ผู้มีส่วนได้ส่วนเสีย`,
           fontawesome: "fas fa-users",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `การวัด การวิเคราะห์ และการจัดการความรู้`,
           fontawesome: "fas fa-chart-line",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `การมุ่งเน้นบุคลากร`,
           fontawesome: "fas fa-users-cog",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `การมุ่งเน้นระบบ ปฏิบัติการ`,
           fontawesome: "fas fa-project-diagram",
           score: [0, 0, 0, 0],
-          a_score: [0, 0, 0, 0],
+          a_score: [0, 0, 0, 0]
         },
         {
           title: `ผลลัพธ์การดำเนินการ`,
           fontawesome: "fas fa-trophy",
           score: [0, 0, 0, 0, 0, 0],
-          a_score: [0, 0, 0, 0, 0, 0],
-        },
-      ],
+          a_score: [0, 0, 0, 0, 0, 0]
+        }
+      ]
     };
   },
   methods: {
@@ -187,13 +203,13 @@ export default {
           // ปริ้น ลักษณะองค์กร แบบไม่มีผู้ประเมิน
 
           let route = this.$router.resolve({
-            name: "printStep0",
+            name: "printStep0"
           });
           window.open(route.href);
         } else if (item.status == "ประเมินแล้ว") {
           // ปริ้นลักษณะองค์กรแบบมีผู้ประเมิน
           let route = this.$router.resolve({
-            name: "printStep0A",
+            name: "printStep0A"
           });
           window.open(route.href);
         }
@@ -202,30 +218,30 @@ export default {
         if (item.status == "รอผลประเมิน") {
           // ปริ้น รวม 1-6 แบบไม่มีผู้ประเมิน
           let route = this.$router.resolve({
-            name: "print1-6",
+            name: "print1-6"
           });
           window.open(route.href);
         } else if (item.status == "ประเมินแล้ว") {
           // ปริ้นรวม 1-6 แบบมีผู้ประเมิน
           let route = this.$router.resolve({
-            name: "print1-6a",
+            name: "print1-6a"
           });
           window.open(route.href);
         }
-      } else if (index == 2) {
+      } else if (index == 2 ) {
         // หมวด7 GAP
 
         if (item.status == "รอผลประเมิน") {
           // ปริ้นหมวด7 GAP ไม่มีข้อเสนอแนะ
-           let route = this.$router.resolve({
-            name: "printStep7Gap",
+          let route = this.$router.resolve({
+            name: "printStep7Gap"
           });
           window.open(route.href);
         } else {
           // ปริ้นหมวด7 GAP + ข้อเสนอแนะจากกรรมการ
 
-           let route = this.$router.resolve({
-            name: "printStep7A",
+          let route = this.$router.resolve({
+            name: "printStep7A"
           });
           window.open(route.href);
         }
@@ -238,7 +254,7 @@ export default {
           // route to print plan1y พร้อมกับข้อเสนอแนะจากกรรมการ
 
           let route = this.$router.resolve({
-            name: "printPlan1",
+            name: "printPlan1"
           });
           window.open(route.href);
         }
@@ -250,44 +266,58 @@ export default {
         } else {
           // route to print plan3y พร้อมกับข้อเสนอแนะจากกรรมการ
           let route = this.$router.resolve({
-            name: "printPlan3",
+            name: "printPlan3"
           });
           window.open(route.href);
         }
-      } else if (index == 6) {
+      } else if (index == 5) {
         // ติดตาม 6 เดือน
         if (item.status == "รอผลประเมิน") {
           // download month_6
         } else {
           // route to print month_6 พร้อมกับข้อเสนอแนะจากกรรมการ
         }
-      } else if (index == 7) {
-        // หมวด 7
-        if (item.status == "รอผลประเมิน") {
-          // ปริ้นหมวด7  ไม่มีข้อเสนอแนะ
-        } else {
-          // ปริ้นหมวด7  + ข้อเสนอแนะจากกรรมการ
-        }
-      } else if (index == 8) {
+      }  else if (index == 7) {
         // ติดตาม 12 เดือน
-
         if (item.status == "รอผลประเมิน") {
-          // download month_12
+          // download plan1y
+          this.openFile(3);
         } else {
-          // route to print month_12 พร้อมกับข้อเสนอแนะจากกรรมการ
+          // route to print month12 พร้อมกับข้อเสนอแนะจากกรรมการ
+
+          let route = this.$router.resolve({
+            name: "printMonth12"
+          });
+          window.open(route.href);
         }
-      } else if (index == 9) {
+      } 
+      else if (index == 8) {
         // สรุป 12 เดือน
         if (item.status == "รอผลประเมิน") {
           // download summary_month_12
+          this.openFile(4);
         } else {
           // route to print summary_month_12 พร้อมกับข้อเสนอแนะจากกรรมการ
+            let route = this.$router.resolve({
+            name: "printMonth12Sum"
+          });
+          window.open(route.href);
         }
+      }else if (index == 6){
+
+          let route = this.$router.resolve({
+            name: "printStep7A"
+          });
+          window.open(route.href);
+
+        
+
+
       }
     },
     printData(step) {
       let route = this.$router.resolve({
-        name: "printStep" + step,
+        name: "printStep" + step
       });
       window.open(route.href);
     },
@@ -315,9 +345,9 @@ export default {
         this.assessmentLog.category4_score,
         this.assessmentLog.category5_score,
         this.assessmentLog.category6_score,
-        avgScoreCat7,
+        avgScoreCat7
       ];
-      dataScoreA = dataScoreA.map((x) => Number(x));
+      dataScoreA = dataScoreA.map(x => Number(x));
 
       let dataScoreB;
       if (this.assessmentLog.assessor_score != "-1") {
@@ -328,30 +358,30 @@ export default {
           this.assessmentLog.a_category4_score,
           this.assessmentLog.a_category5_score,
           this.assessmentLog.a_category6_score,
-          avgScoreCat7a,
+          avgScoreCat7a
         ];
       } else {
         dataScoreB = [0, 0, 0, 0, 0, 0, 0];
       }
 
-      dataScoreB = dataScoreB.map((x) => Number(x));
+      dataScoreB = dataScoreB.map(x => Number(x));
 
       let newData = Highcharts.chart("container", {
         chart: {
           polar: true,
 
           style: {
-            fontFamily: "PROMPT-R",
-          },
+            fontFamily: "PROMPT-R"
+          }
         },
 
         title: {
           text: "",
-          x: -80,
+          x: -80
         },
 
         pane: {
-          size: "85%",
+          size: "85%"
         },
 
         xAxis: {
@@ -363,29 +393,29 @@ export default {
             "หมวด 4",
             "หมวด 5",
             "หมวด 6",
-            "หมวด 7",
+            "หมวด 7"
           ],
           tickmarkPlacement: "on",
           lineWidth: 0,
           labels: {
             style: {
               fontSize: "16px",
-              color: "#000000",
-            },
+              color: "#000000"
+            }
           },
-          gridLineColor: "transparent",
+          gridLineColor: "transparent"
         },
 
         yAxis: {
           gridLineInterpolation: "polygon",
           lineWidth: 0,
           gridLineColor: "#000000",
-          max: 500,
+          max: 500
         },
 
         tooltip: {
           shared: true,
-          pointFormat: "",
+          pointFormat: ""
         },
         legend: {
           useHTML: true,
@@ -396,7 +426,7 @@ export default {
           symbolHeight: 0.1,
           labelFormatter() {
             return `<div style='display:inline-block;width:37px;height:37px;background-color:${this.color};border:.8mm solid ${this.options.borderColor};'></div> <span>${this.name}</span>`;
-          },
+          }
         },
 
         series: [
@@ -407,7 +437,7 @@ export default {
             showInLegend: true,
             type: "area",
             color: "#418ED9",
-            borderColor: "#1976D2",
+            borderColor: "#1976D2"
           },
           {
             name: "คณะกรรมการประเมิน",
@@ -416,12 +446,12 @@ export default {
             showInLegend: true,
             type: "area",
             color: "#79BDA3",
-            borderColor: "#009688",
-          },
+            borderColor: "#009688"
+          }
         ],
         credits: {
-          enabled: false,
-        },
+          enabled: false
+        }
       });
     },
     async getData() {
@@ -429,7 +459,7 @@ export default {
 
       const postData = {
         year: this.$q.sessionStorage.getItem("y"),
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("uid")
       };
 
       let getData = await Axios.post(url, postData);
@@ -437,17 +467,15 @@ export default {
 
       const postData1 = {
         year: this.yearSelected - 1,
-        user_id: this.$q.sessionStorage.getItem("uid"),
+        user_id: this.$q.sessionStorage.getItem("uid")
       };
 
       for (let i = 1; i < this.dataList.length; i++) {
-        let score = getData.filter((x) => x.step == i && x.mode == "basic");
+        let score = getData.filter(x => x.step == i && x.mode == "basic");
         score = score.sort((a, b) => Number(a.q_number) - Number(b.q_number));
 
         for (let j = 0; j < 4; j++) {
-          let checkScore = score.filter(
-            (x) => x.q_number == (j + 1).toString()
-          );
+          let checkScore = score.filter(x => x.q_number == (j + 1).toString());
           if (checkScore.length) {
             this.dataList[i].score[j] =
               checkScore[0].score == "-1" ? 0 : checkScore[0].score;
@@ -464,10 +492,10 @@ export default {
         (a, b) => Number(a.q_number) - Number(b.q_number)
       );
 
-      let mapCat7 = cat7.map((x) => Number(x.avg_score));
+      let mapCat7 = cat7.map(x => Number(x.avg_score));
 
       for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter((x) => x.q_number == (i + 1).toString());
+        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
 
         if (checkExist.length) {
           this.dataList[7].score[i] = parseInt(checkExist[0].avg_score);
@@ -486,7 +514,7 @@ export default {
 
         avgScoreLst.push(
           this.dataList[i].score
-            .map((x) => x)
+            .map(x => x)
             .reduce((a, b) => Number(a) + Number(b), 0) / devine
         );
       }
@@ -501,7 +529,7 @@ export default {
     },
     async getAssessmentLog() {
       let postData = {
-        year: this.yearSelected - 543,
+        year: this.yearSelected - 543
       };
 
       let url = this.apiPath + "getAssessmentLog.php";
@@ -509,7 +537,7 @@ export default {
       let data = await Axios.post(url, postData);
 
       this.assessmentLog = data.data.filter(
-        (x) => x.user_id == this.$q.sessionStorage.getItem("uid")
+        x => x.user_id == this.$q.sessionStorage.getItem("uid")
       )[0];
 
       if (
@@ -535,7 +563,7 @@ export default {
 
       if (this.assessmentLog) {
         postData = {
-          user_id: this.assessmentLog.assessor_id,
+          user_id: this.assessmentLog.assessor_id
         };
 
         url = this.apiPath + "getAssessorInfo.php";
@@ -554,13 +582,13 @@ export default {
       const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
       let postCheckStatusData = {
         user_id: this.$q.sessionStorage.getItem("uid"),
-        year: this.yearSelected - 543,
+        year: this.yearSelected - 543
       };
 
       let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
       let responseData = responseCheck.data[0];
 
-      const convertStatusToText = (status) => {
+      const convertStatusToText = status => {
         let result;
         if (status == "0") {
           result = "ยังไม่ประเมิน";
@@ -576,37 +604,37 @@ export default {
         this.categoryGroup = [
           {
             name: "ลักษณะองค์กร",
-            status: convertStatusToText(responseData.op),
+            status: convertStatusToText(responseData.op)
           },
           {
             name: "หมวด 1-6",
-            status: convertStatusToText(responseData.cat1_6),
+            status: convertStatusToText(responseData.cat1_6)
           },
           {
             name: "หมวด 7 GAP",
-            status: convertStatusToText(responseData.cat7_gap),
+            status: convertStatusToText(responseData.cat7_gap)
           },
           {
             name: "แผน 1 ปี",
-            status: convertStatusToText(responseData.plan_1y),
+            status: convertStatusToText(responseData.plan_1y)
           },
           {
             name: "แผน 3 ปี",
-            status: convertStatusToText(responseData.plan_3y),
+            status: convertStatusToText(responseData.plan_3y)
           },
           {
             name: "ติดตาม 6 เดือน",
-            status: convertStatusToText(responseData.month_6),
+            status: convertStatusToText(responseData.month_6)
           },
           { name: "หมวด7", status: convertStatusToText(responseData.cat7) },
           {
             name: "ติดตาม 12 เดือน",
-            status: convertStatusToText(responseData.month_12),
+            status: convertStatusToText(responseData.month_12)
           },
           {
             name: "สรุป 12 เดือน",
-            status: convertStatusToText(responseData.sum_month_12),
-          },
+            status: convertStatusToText(responseData.sum_month_12)
+          }
         ];
       } else {
         this.categoryGroup = [
@@ -618,7 +646,7 @@ export default {
           { name: "ติดตาม 6 เดือน", status: "ยังไม่ประเมิน" },
           { name: "หมวด7", status: "ยังไม่ประเมิน" },
           { name: "ติดตาม 12 เดือน", status: "ยังไม่ประเมิน" },
-          { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" },
+          { name: "สรุป 12 เดือน", status: "ยังไม่ประเมิน" }
         ];
       }
     },
@@ -638,14 +666,40 @@ export default {
       }
     },
 
+    async getFile7Final() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      const url = this.apiPath + "getFile7Final.php";
+      let response = await Axios.post(url, formData);
+
+      console.log(response);
+
+      if (response.data != "no files") {
+        let data = response.data[0];
+        this.file12Month = data.path1 != "" ? data.path1 : "";
+        this.file12MonthSum = data.path2 != "" ? data.path2 : "";
+      }
+    },
+
     openFile(file) {
+      console.log(file);
       if (file == 1) {
         // userid-1-year
         window.open(this.apiPath + this.file1Y);
-      } else {
+      } else if(file == 2) {
         window.open(this.apiPath + this.file3Y);
+      }else if (file == 3){
+        // file 12 month
+        window.open(this.apiPath + this.file12Month);
+      }else{
+        // file 12month sum
+        window.open(this.apiPath + this.file12MonthSum);
+
       }
-    },
+    }
   },
   mounted() {
     this.getData();
@@ -657,13 +711,14 @@ export default {
       this.$q.sessionStorage.getItem("y") + 543,
       this.$q.sessionStorage.getItem("y") + 544,
       this.$q.sessionStorage.getItem("y") + 545,
-      this.$q.sessionStorage.getItem("y") + 546,
+      this.$q.sessionStorage.getItem("y") + 546
     ];
 
     this.yearList = year;
     this.getAssessmentStepper();
     this.getFilePlan();
-  },
+    this.getFile7Final();
+  }
 };
 </script>
 
