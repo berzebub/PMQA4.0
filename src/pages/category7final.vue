@@ -224,11 +224,31 @@
                     style="width: 150px"
                     align="center"
                   >
-
                     {{
-                    calculateScore(calculateSuccessRate(item.question[indexSub].result[currentYear],item.question[indexSub].goalCurrentYear,item.question[indexSub].scoreStandard,index,indexSub),index,indexSub) != -1 ? calculateScore(calculateSuccessRate(item.question[indexSub].result[currentYear],item.question[indexSub].goalCurrentYear,item.question[indexSub].scoreStandard,index,indexSub),index,indexSub) : ''
+                      calculateScore(
+                        calculateSuccessRate(
+                          item.question[indexSub].result[currentYear],
+                          item.question[indexSub].goalCurrentYear,
+                          item.question[indexSub].scoreStandard,
+                          index,
+                          indexSub
+                        ),
+                        index,
+                        indexSub
+                      ) != -1
+                        ? calculateScore(
+                            calculateSuccessRate(
+                              item.question[indexSub].result[currentYear],
+                              item.question[indexSub].goalCurrentYear,
+                              item.question[indexSub].scoreStandard,
+                              index,
+                              indexSub
+                            ),
+                            index,
+                            indexSub
+                          )
+                        : ""
                     }}
-                  
                   </div>
                 </div>
               </div>
@@ -296,7 +316,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
@@ -324,7 +344,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
@@ -360,7 +380,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
@@ -396,7 +416,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 90,
               unit: "%",
@@ -423,7 +443,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 90,
               unit: "%",
@@ -459,7 +479,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 60,
               unit: "%",
@@ -486,7 +506,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
@@ -520,7 +540,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 85,
               unit: "%",
@@ -555,7 +575,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 80,
               unit: "%",
@@ -582,7 +602,7 @@ export default {
               a_successpercent: "",
               a_suggestion: "",
               a_assesment_GAP: -1,
-              a_assesment:-1,
+              a_assesment: -1,
               a_score: -1,
               goalCurrentYear: 80,
               unit: "%",
@@ -741,7 +761,7 @@ export default {
         a_successpercent: "",
         a_suggestion: "",
         a_assesment_GAP: -1,
-        a_assesment:-1,
+        a_assesment: -1,
         a_score: -1,
         goalCurrentYear: null,
         unit: "",
@@ -833,13 +853,11 @@ export default {
       this.$q.loading.show({
         delay: 0
       });
-  let index = q_number - 1;
+      let index = q_number - 1;
       for (let i = 0; i < this.data[index].question.length; i++) {
-        this.data[index].question[i].a_assesment = -1
+        this.data[index].question[i].a_assesment = -1;
       }
 
-
-    
       const url = this.apiPath + "user/addUpdateCategory7.php";
 
       let postData = {
