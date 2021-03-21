@@ -51,15 +51,6 @@
                     <!-- Input Content 1 -->
                     <div>
                       <span>1. พันธกิจหรือหน้าที่ตามกฏหมาย</span>
-                      <!-- <q-btn
-                        class="q-mx-md bg-teal text-white"
-                        dense=""
-                        flat
-                        round
-                        @click="isEnvironmentDialog1 = true"
-                        ><q-icon name="fas fa-question" size="16px"></q-icon>
-                      </q-btn>-->
-
                       <q-dialog v-model="isEnvironmentDialog1">
                         <q-card class="q-pl-lg q-py-sm" style="max-width: 700px; width: 100%;">
                           <q-card-section>

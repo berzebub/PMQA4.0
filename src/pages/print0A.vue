@@ -96,14 +96,19 @@
                   >
                 </div>
 
-                <div class="q-px-lg" v-html="item.text"></div>
-                <div class="q-px-lg q-py-xs">
-                  <q-separator></q-separator>
-                </div>
+                <div class="q-px-lg " v-html="item.text"></div>
+               
+               <div class='q-px-lg q-py-sm'>
                 <div
-                  class="q-px-lg"
+                 class='q-pa-md'
+                  style="border:1px solid"
                   v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
                 ></div>
+                </div>
+
+                <div class='q-px-lg'>
+                  <q-separator></q-separator>
+                </div>
               </div>
             </td>
           </tr>
@@ -153,13 +158,17 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
-                <div class="q-px-lg q-py-xs">
-                  <q-separator></q-separator>
-                </div>
+                <div class='q-px-lg q-py-sm'>
                 <div
-                  class="q-px-lg"
+                 class='q-pa-md'
+                  style="border:1px solid"
                   v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
                 ></div>
+                </div>
+
+                <div class='q-px-lg'>
+                  <q-separator></q-separator>
+                </div>
               </div>
             </td>
           </tr>
@@ -221,13 +230,18 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
-                <div class="q-px-lg q-py-xs">
-                  <q-separator></q-separator>
-                </div>
+           
+               <div class='q-px-lg q-py-sm'>
                 <div
-                  class="q-px-lg"
+                 class='q-pa-md'
+                  style="border:1px solid"
                   v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
                 ></div>
+                </div>
+
+                <div class='q-px-lg'>
+                  <q-separator></q-separator>
+                </div>
               </div>
             </td>
           </tr>
@@ -278,13 +292,17 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
-                <div class="q-px-lg q-py-xs">
-                  <q-separator></q-separator>
-                </div>
+                <div class='q-px-lg q-py-sm'>
                 <div
-                  class="q-px-lg"
+                 class='q-pa-md'
+                  style="border:1px solid"
                   v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
                 ></div>
+                </div>
+
+                <div class='q-px-lg'>
+                  <q-separator></q-separator>
+                </div>
               </div>
             </td>
           </tr>
@@ -324,13 +342,17 @@
                   >
                 </div>
                 <div class="q-px-lg" v-html="item.text"></div>
-                <div class="q-px-lg q-py-xs">
-                  <q-separator></q-separator>
-                </div>
+               <div class='q-px-lg q-py-sm'>
                 <div
-                  class="q-px-lg"
+                 class='q-pa-md'
+                  style="border:1px solid"
                   v-html="'ข้อเสนอแนะ : ' + item.suggesstion"
                 ></div>
+                </div>
+
+                <div class='q-px-lg'>
+                  <q-separator></q-separator>
+                </div>
               </div>
             </td>
           </tr>

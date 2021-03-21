@@ -38,6 +38,10 @@
                       <span v-else>
                         {{ parseInt(item.avgScore) }}
                       </span>
+
+                       <!-- {{
+                    scoreCalculator(item.question[indexSub].result[currentYear],index,indexSub) != -1 ? scoreCalculator(item.question[indexSub].result[currentYear],index,indexSub) : ''
+                    }} -->
                     </span>
                     /
                     <span class="text-pink-4">
@@ -109,7 +113,7 @@
                           <span>% ความสำเร็จ</span>
                           <q-space></q-space>
                           <span class="text-teal">
-                            {{ parseInt(item.question[indexSub].successRate) }}
+                            <!-- {{ parseInt(item.question[indexSub].successRate) }} -->
                           </span>
                         </div>
                       </div>
@@ -130,8 +134,10 @@
                 <div class="q-pa-md border col row items-center" align="center">
                   <div
                     style="width:90%;margin:auto"
-                    :id="`container${'' + item.no + sub.subNo}`"
-                  ></div>
+                    :id="`container${'' + item.no + indexSub}`"
+                  >
+                  
+                  </div>
                 </div>
                 <div
                   class="q-pa-md border col-2"
@@ -170,7 +176,55 @@
                   </div>
                 </div>
                 <div class="q-pa-md border" style="width: 120px" align="center">
-                  <span v-if="item.question[indexSub].a_assesment == -1">
+
+                  {{
+                      calculateScore(
+                        calculateSuccessRate(
+                          item.question[indexSub].result[currentYear],
+                          item.question[indexSub].goalCurrentYear,
+                          item.question[indexSub].scoreStandard,
+                          index,
+                          indexSub
+                        ),
+                        index,indexSub
+                     
+                      ) != -1
+                        ? calculateScore(
+                            calculateSuccessRate(
+                              item.question[indexSub].result[currentYear],
+                              item.question[indexSub].goalCurrentYear,
+                              item.question[indexSub].scoreStandard,
+                              index,
+                              indexSub
+                            ),
+                            index,indexSub
+                          
+                          )
+                        : ""
+                    }}
+
+                    
+
+                   <!-- {{
+                    scoreCalculator(item.question[indexSub].result[currentYear],index,indexSub) != -1 ? scoreCalculator(item.question[indexSub].result[currentYear],index,indexSub) : ''
+                    }} -->
+
+                    <!-- {{ item.question[indexSub].score }} -->
+
+                      <!-- {{
+                        calculateSuccessRate(
+                          item.question[indexSub].result[currentYear],
+                          item.question[indexSub].goalCurrentYear,
+                          item.question[indexSub].scoreStandard,
+                          index,
+                          indexSub
+                        )
+                      }} -->
+
+
+
+
+                  <!-- <span v-if="item.question[indexSub].a_assesment == -1">
                   </span>
                   <span v-else-if="item.question[indexSub].a_assesment == 0"
                     >0</span
@@ -181,7 +235,7 @@
                    
                   </span>
 
-                  <span v-else>0</span>
+                  <span v-else>0</span> -->
                 </div>
               </div>
             </div>
@@ -531,6 +585,132 @@ export default {
     };
   },
   methods: {
+    scoreCalculator(score, index, indexSub) {
+      let calculatedScore;
+
+     
+      if (index == 0 || index == 1) {
+        // คิดคะแนน 7.1 -- 7.2
+
+        // calculatedScore = (score - 75) * 20 + 100;
+        // if (calculatedScore < 75) {
+        //   calculatedScore = 0;
+        // } else if (calculatedScore > 95) {
+        //   calculatedScore = 500;
+        // }
+        if (score < 75) {
+          calculatedScore = 0;
+        } else if (score > 95) {
+          calculatedScore = 500;
+        } else {
+          calculatedScore = (score - 75) * 20 + 100;
+        }
+      } else if (index == 2) {
+        // คิดคะแนน 7.3
+
+        // calculatedScore = (score - 80) * 20 + 100;
+        // if (calculatedScore < 80) {
+        //   calculatedScore = 0;
+        // } else if (calculatedScore > 100) {
+        //   calculatedScore = 500;
+        // }
+
+        if (score < 80) {
+          calculatedScore = 0;
+        } else if (score > 100) {
+          calculatedScore = 500;
+        } else {
+          calculatedScore = (score - 80) * 20 + 100;
+        }
+      } else if (index == 3) {
+        // คิดคะแนน 7.4
+        if (indexSub == 0) {
+          // คะแนน 7.4 RM6
+          // calculatedScore = (score - 20) * 5 + 100;
+          // if (calculatedScore < 20) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 100) {
+          //   calculatedScore = 500;
+          // }
+          if (score < 20) {
+            calculatedScore = 0;
+          } else if (score > 100) {
+            calculatedScore = 500;
+          } else {
+            calculatedScore = (score - 20) * 5 + 100;
+          }
+        } else {
+          // คะแนน 7.4 RM7
+          // calculatedScore = (score - 75) * 20 + 100;
+          // if (calculatedScore < 75) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 95) {
+          //   calculatedScore = 500;
+          // }
+          if (score < 75) {
+            calculatedScore = 0;
+          } else if (score > 95) {
+            calculatedScore = 500;
+          } else {
+            calculatedScore = (score - 75) * 20 + 100;
+          }
+        }
+      } else if (index == 4) {
+        // 7.5 คิดคะแนน RM8
+        // calculatedScore = (score - 94) * 100 + 100;
+        // if (calculatedScore < 94) {
+        //   calculatedScore = 0;
+        // } else if (calculatedScore > 98) {
+        //   calculatedScore = 500;
+        // }
+        if (score > 98) {
+          calculatedScore = 500;
+        } else if (score < 94) {
+          calculatedScore = 0;
+        } else {
+          calculatedScore = (score - 94) * 100 + 100;
+        }
+      } else if (index == 5) {
+        // 7.6 คิดคะแนน Rm9
+        if (indexSub == 0) {
+          // RM9
+          // calculatedScore = (score - 60) * 10 + 100;
+          // if (calculatedScore < 60) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 100) {
+          //   calculatedScore = 500;
+          // }
+          if (score < 60) {
+            calculatedScore = 0;
+          } else if (score > 100) {
+            calculatedScore = 500;
+          } else {
+            calculatedScore = (score - 60) * 10 + 100;
+          }
+        } else {
+          // RM10
+          // calculatedScore = (score - 70) * 20 + 100;
+          // if (calculatedScore < 70) {
+          //   calculatedScore = 0;
+          // } else if (calculatedScore > 90) {
+          //   calculatedScore = 500;
+          // }
+          if (score < 70) {
+            calculatedScore = 0;
+          } else if (score > 90) {
+            calculatedScore = 500;
+          } else {
+            calculatedScore = (score - 70) * 20 + 100;
+          }
+        }
+      }
+
+ 
+
+      this.data[index].question[indexSub].score = calculatedScore;
+      let finalResult = isNaN(calculatedScore) ? 0 : calculatedScore;
+      return finalResult
+    },
     assesment(no, subNo) {
       if (this.data[no].question[subNo].score != -1) {
         let current = this.data[no].question[subNo].a_assesment;
@@ -562,9 +742,8 @@ export default {
           this.data[no].question[subNo].a_successpercent = null;
           this.data[no].question[subNo].a_score = -1;
         }
-
-        // this.data[no].question[subNo].a_assesment.push("");
-        // this.data[no].question[subNo].a_assesment.pop();
+        this.data[no].question.push("");
+        this.data[no].question.pop();
       } else {
         this.$q.notify({
           message: "ไม่สามารถประเมินได้เนื่องจากไม่มีข้อมูลตัวชี้วัด",
@@ -573,7 +752,6 @@ export default {
       }
     },
     showDialog(index) {
-      console.log(index);
       this.dialogMessage = this.dialogList[index];
       this.helpDialog = true;
     },
@@ -598,11 +776,24 @@ export default {
       let index = q_number - 1;
 
       let mapScore = this.data[index].question.map(x => x.a_score);
+
       mapScore = mapScore.filter(x => x > -1);
 
       let avgScore =
         mapScore.reduce((a, b) => a + b, 0) / this.data[index].question.length;
       avgScore = parseInt(avgScore);
+
+      console.log('a_score',avgScore);
+
+      let score = this.data[index].question.map(x => x.score)
+      score = score.filter(x => x > -1)
+      let scoreAvg = score.reduce((a, b) => a + b, 0) / this.data[index].question.length;
+       scoreAvg = parseInt(scoreAvg);
+
+       console.log('score',scoreAvg);
+
+
+      this.data[index].avgScore = scoreAvg
 
       // เช็คข้อที่จำเป็น
       if (q_number == 1 || q_number == 3 || q_number == 4 || q_number == 6) {
@@ -624,7 +815,7 @@ export default {
       }
     },
 
-    calculateScore(score) {
+    calculateScore(score,index,indexSub) {
       // การคำนวณคะแนนยิ่งน้อยยิ่งดี
       let result = 0;
       if (score) {
@@ -640,8 +831,10 @@ export default {
         } else if (score > 105) {
           result = 500;
         }
+        this.data[index].question[indexSub].score = result != 0 ? parseInt(result) : 0;
         return result != 0 ? parseInt(result) : 0;
       } else {
+         this.data[index].question[indexSub].score = -1
         return -1;
       }
     },
@@ -657,7 +850,10 @@ export default {
         .map(x => Number(x.a_avgScore))
         .reduce((a, b) => Number(a) + Number(b), 0);
 
+
       totala_avg_score = parseInt(totala_avg_score / 6);
+
+      
 
       let postData = {
         user_id: this.$route.params.userId,
@@ -683,10 +879,12 @@ export default {
         user_id: this.$route.params.userId,
         year: this.$q.sessionStorage.getItem("y") + 543
       };
+
       let data = await Axios.post(url, postData);
       let getData = data.data;
 
       getData = getData.sort((a, b) => Number(a.number) - Number(b.number));
+
 
       for (let i = 0; i < 6; i++) {
         if (getData[i]) {
@@ -697,6 +895,7 @@ export default {
           this.data[index].a_avgScore = getData[i].a_avg_score;
         }
       }
+
 
       this.isShowPage = true;
       this.checkStatus();
@@ -725,7 +924,7 @@ export default {
               // height: (3 / 4 * 100) + '%',
               height: 350,
               renderTo:
-                "container" + this.data[i].no + this.data[i].question[ii].subNo
+                "container" + this.data[i].no + ii
             },
             title: {
               text: ""

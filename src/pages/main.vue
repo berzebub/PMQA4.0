@@ -1568,7 +1568,7 @@ export default {
       if (responseData) {
         if (this.assessmentMode == "2") {
           if (responseData.mode2_status == "1") {
-            this.$router.push("/waitingAssessment/0");
+            // this.$router.push("/waitingAssessment/0");
           }
           this.checkMode2SendStatus();
         } else if (this.assessmentMode == "1") {
