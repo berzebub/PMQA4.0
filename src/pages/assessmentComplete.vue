@@ -85,7 +85,8 @@
                     >
                       {{ assessmentLog.assessor_score }} คะแนน
                     </span>
-                    <span class="color1">ยังไม่ประเมิน</span>
+                    <span class="color1" v-if="assessmentLog.assessor_score == '-1'">ยังไม่ประเมิน</span>
+                    <span class="color1" v-else>{{ assessmentLog.assessor_score }}</span>
                   </span>
                 </div>
               </div>
@@ -466,7 +467,7 @@ export default {
       getData = getData.data;
 
       const postData1 = {
-        year: this.yearSelected - 1,
+        year: this.yearSelected,
         user_id: this.$q.sessionStorage.getItem("uid")
       };
 
