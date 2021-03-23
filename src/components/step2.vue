@@ -935,6 +935,7 @@ export default {
       console.clear();
 
       // this.isSaveData = true;
+      this.loadingShow()
 
       let index = no - 1;
       let score = 0;
@@ -1061,6 +1062,7 @@ export default {
         let data = await Axios.post(url, formData);
       }
 
+this.loadingHide()
       this.isSaveData = false;
 
       this.isDelete = false;

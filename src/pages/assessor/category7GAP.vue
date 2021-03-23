@@ -691,6 +691,20 @@ this.cat7GAPStatus = false
 
 
       } else {
+
+         const urlUpdateStepper =
+          this.apiPath + "user/update_assessment_stepper_log.php";
+
+        const stepperData = {
+          uid: this.$route.params.userId,
+          step: "cat7_gap",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: 1,
+        };
+
+        let response = await Axios.post(urlUpdateStepper,stepperData)
+
+
         this.cat7GAPStatus = false
       }
     },

@@ -927,6 +927,7 @@ export default {
     },
 
     async saveData(no, mode) {
+      this.loadingShow()
       console.clear()
 
      
@@ -1059,6 +1060,7 @@ this.data.pop()
       this.isSaveData = false;
 
       this.isDelete = false;
+      this.loadingHide()
            this.checkPassStatus()
     },
    getBasic(data) {

@@ -79,14 +79,14 @@
                 <div class="q-mt-xs">
                   <span>
                     ผลดำเนินการ PMQA4.0 ในภาพรวม =
-                    <span
-                      style="font-size:48px"
+                    <!-- <span
+                      style="font-size:36px"
                       v-if="assessmentLog.assessor_score != '-1'"
                     >
                       {{ assessmentLog.assessor_score }} คะแนน
-                    </span>
+                    </span> -->
                     <span class="color1" v-if="assessmentLog.assessor_score == '-1'">ยังไม่ประเมิน</span>
-                    <span class="color1" v-else>{{ assessmentLog.assessor_score }}</span>
+                    <span class="color1" v-else><span style="font-size:48px">{{ assessmentLog.assessor_score }}</span> <span class='text-black q-pl-md'>คะแนน</span></span>
                   </span>
                 </div>
               </div>
