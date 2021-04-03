@@ -170,9 +170,13 @@ export default {
         delay: 400
       });
       let getData = await this.checkLogin();
-      this.$q.sessionStorage.set("uid", getData);
+
+console.log(getData);
+      // return
+      this.$q.sessionStorage.set("assessor_id",getData.assessor_id)
+      this.$q.sessionStorage.set("uid", getData.id);
       this.$q.loading.hide();
-      if (getData > 0) {
+      if (getData) {
         // LOGIN SUCCESS
         this.checkRouteAccess();
       } else {

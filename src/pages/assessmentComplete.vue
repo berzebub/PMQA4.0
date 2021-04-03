@@ -564,14 +564,14 @@ export default {
 
       if (this.assessmentLog) {
         postData = {
-          user_id: this.assessmentLog.assessor_id
+          user_id: this.$q.sessionStorage.getItem("assessor_id")
         };
 
         url = this.apiPath + "getAssessorInfo.php";
 
         let dataB = await Axios.post(url, postData);
 
-        // this.assessorName = dataB.data[0].name;
+        this.assessorName = dataB.data[0].name;
         this.render();
       } else {
         this.isShowGraph = false;
