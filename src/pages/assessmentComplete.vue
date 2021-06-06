@@ -85,8 +85,17 @@
                     >
                       {{ assessmentLog.assessor_score }} คะแนน
                     </span> -->
-                    <span class="color1" v-if="assessmentLog.assessor_score == '-1'">ยังไม่ประเมิน</span>
-                    <span class="color1" v-else><span style="font-size:48px">{{ assessmentLog.assessor_score }}</span> <span class='text-black q-pl-md'>คะแนน</span></span>
+                    <span
+                      class="color1"
+                      v-if="assessmentLog.assessor_score == '-1'"
+                      >ยังไม่ประเมิน</span
+                    >
+                    <span class="color1" v-else
+                      ><span style="font-size:48px">{{
+                        assessmentLog.assessor_score
+                      }}</span>
+                      <span class="text-black q-pl-md">คะแนน</span></span
+                    >
                   </span>
                 </div>
               </div>
@@ -119,6 +128,8 @@ export default {
   },
   data() {
     return {
+      file6: "",
+      file6Path: "",
       showAvgScore: "",
       file1Y: "",
       file3Y: "",
@@ -229,7 +240,7 @@ export default {
           });
           window.open(route.href);
         }
-      } else if (index == 2 ) {
+      } else if (index == 2) {
         // หมวด7 GAP
 
         if (item.status == "รอผลประเมิน") {
@@ -275,10 +286,15 @@ export default {
         // ติดตาม 6 เดือน
         if (item.status == "รอผลประเมิน") {
           // download month_6
+          this.openFile(4);
         } else {
           // route to print month_6 พร้อมกับข้อเสนอแนะจากกรรมการ
+          let route = this.$router.resolve({
+            name: "printPlan6"
+          });
+          window.open(route.href);
         }
-      }  else if (index == 7) {
+      } else if (index == 7) {
         // ติดตาม 12 เดือน
         if (item.status == "รอผลประเมิน") {
           // download plan1y
@@ -291,29 +307,23 @@ export default {
           });
           window.open(route.href);
         }
-      } 
-      else if (index == 8) {
+      } else if (index == 8) {
         // สรุป 12 เดือน
         if (item.status == "รอผลประเมิน") {
           // download summary_month_12
-          this.openFile(4);
+          this.openFile(5);
         } else {
           // route to print summary_month_12 พร้อมกับข้อเสนอแนะจากกรรมการ
-            let route = this.$router.resolve({
+          let route = this.$router.resolve({
             name: "printMonth12Sum"
           });
           window.open(route.href);
         }
-      }else if (index == 6){
-
-          let route = this.$router.resolve({
-            name: "printStep7A"
-          });
-          window.open(route.href);
-
-        
-
-
+      } else if (index == 6) {
+        let route = this.$router.resolve({
+          name: "printStep7A"
+        });
+        window.open(route.href);
       }
     },
     printData(step) {
@@ -495,12 +505,14 @@ export default {
 
       let mapCat7 = cat7.map(x => Number(x.avg_score));
 
-      for (let i = 0; i < 6; i++) {
-        let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
+      if (this.categoryGroup[6].status != "ยังไม่ประเมิน") {
+        for (let i = 0; i < 6; i++) {
+          let checkExist = cat7.filter(x => x.q_number == (i + 1).toString());
 
-        if (checkExist.length) {
-          this.dataList[7].score[i] = parseInt(checkExist[0].avg_score);
-          this.dataList[7].a_score[i] = parseInt(checkExist[0].a_avg_score);
+          if (checkExist.length) {
+            this.dataList[7].score[i] = parseInt(checkExist[0].avg_score);
+            this.dataList[7].a_score[i] = parseInt(checkExist[0].a_avg_score);
+          }
         }
       }
 
@@ -667,6 +679,21 @@ export default {
       }
     },
 
+    async getFileMonth6() {
+      let uid = this.$q.sessionStorage.getItem("uid");
+      let year = this.$q.sessionStorage.getItem("y");
+      let formData = new FormData();
+      formData.append("user_id", uid);
+      formData.append("year", year);
+      const url = this.apiPath + "getFile6Month.php";
+      let response = await Axios.post(url, formData);
+      if (response.data != "no files") {
+        let data = response.data[0];
+        this.file6 = !data.path ? [] : null;
+        this.file6Path = data.path;
+      }
+    },
+
     async getFile7Final() {
       let uid = this.$q.sessionStorage.getItem("uid");
       let year = this.$q.sessionStorage.getItem("y");
@@ -675,8 +702,6 @@ export default {
       formData.append("year", year);
       const url = this.apiPath + "getFile7Final.php";
       let response = await Axios.post(url, formData);
-
-      console.log(response);
 
       if (response.data != "no files") {
         let data = response.data[0];
@@ -690,15 +715,18 @@ export default {
       if (file == 1) {
         // userid-1-year
         window.open(this.apiPath + this.file1Y);
-      } else if(file == 2) {
+      } else if (file == 2) {
         window.open(this.apiPath + this.file3Y);
-      }else if (file == 3){
+      } else if (file == 3) {
         // file 12 month
         window.open(this.apiPath + this.file12Month);
-      }else{
+      }else if (file == 4)
+      {
+           window.open(this.apiPath + this.file6Path);
+      }
+       else {
         // file 12month sum
         window.open(this.apiPath + this.file12MonthSum);
-
       }
     }
   },
@@ -719,6 +747,7 @@ export default {
     this.getAssessmentStepper();
     this.getFilePlan();
     this.getFile7Final();
+    this.getFileMonth6();
   }
 };
 </script>

@@ -98,6 +98,11 @@ const routes = [
     component: () => import("pages/printPlan3Y.vue"),
     name: "printPlan3"
   },
+  {
+    path: "/printPlan6",
+    component: () => import("pages/printPlan6.vue"),
+    name: "printPlan6"
+  },
 
   {
     path: "/printMonth12",
