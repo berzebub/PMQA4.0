@@ -960,6 +960,7 @@
             </div>
 
             <!-- ไม่มีไฟล์ -->
+
             <q-file
               v-if="!filePdf71"
               v-model="filePdf71"
@@ -1234,8 +1235,7 @@ export default {
         response = await Axios.post(url, postData);
         this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
-      }else if (mode == 4){
-        
+      } else if (mode == 4) {
         // update สถานะการทำ cat7_gap
         const urlUpdateStepper =
           this.apiPath + "user/update_assessment_stepper_log.php";
@@ -1274,7 +1274,6 @@ export default {
 
         this.notify("ส่งแบบประเมินสำเร็จ", "secondary");
         this.$router.push("/waitingAssessment/0");
-      
       }
     },
     async uploadFile(file, type) {
@@ -1581,7 +1580,7 @@ export default {
           } else {
             this.getFile6();
           }
-        }else  if (this.assessmentMode == "4") {
+        } else if (this.assessmentMode == "4") {
           if (responseData.mode4_status == "1") {
             this.$router.push("/waitingAssessment/0");
           }
@@ -1643,6 +1642,7 @@ export default {
           this.path2 = data.path2 != "" ? data.path2 : "";
 
           if (this.assessmentMode == "4") {
+            console.log("x2");
             if (
               this.isCategory7GAPFinal &&
               this.filePdf71 != null &&
@@ -1651,6 +1651,16 @@ export default {
               this.isEnableSendMode4 = true;
             }
           }
+        }
+      }
+      if (this.assessmentMode == "4") {
+        console.log("x2");
+        if (
+          this.isCategory7GAPFinal &&
+          this.filePdf71 != null &&
+          this.filePdf72 != null
+        ) {
+          this.isEnableSendMode4 = true;
         }
       }
     }

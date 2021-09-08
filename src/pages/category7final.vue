@@ -115,6 +115,7 @@
                         type="textarea"
                         outlined
                         rows="5"
+                        disable=""
                       ></q-input>
                     </div>
                     <div v-else>
@@ -182,6 +183,7 @@
                               type="number"
                               dense
                               outlined
+                              :disable="i != 1"
                             ></q-input>
                           </div>
                         </div>
@@ -195,6 +197,7 @@
                           dense
                           outlined
                           :options="scoreStandardOptions"
+                          disable=""
                         ></q-select>
                       </div>
                     </div>
@@ -260,6 +263,7 @@
                 align="center"
                 style="text-decoration:underline"
                 @click="addInidcator(index)"
+                v-show="false"
               >
                 เพิ่มตัวชี้วัดที่สอดคล้องกับ GAP ตามแผนปรับปรุง
                 ที่หน่วยงานเลือกเพิ่มเติม
