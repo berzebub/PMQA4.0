@@ -966,7 +966,7 @@
               v-model="filePdf71"
               class="bg-grey-5"
               style="width:200px;border:4px solid #e84c93;border-radius:5px"
-              accept=".doc, .pdf, .docx"
+              accept=".doc, .pdf, .docx, .zip"
               @input="val => uploadFile7Final(val, 1)"
             >
               <template v-slot:default>
@@ -1018,13 +1018,13 @@
               v-model="filePdf72"
               class="bg-grey-5"
               style="width:200px;border:4px solid #e84c93;border-radius:5px;"
-              accept=".doc, .pdf, .docx"
+              accept=".doc, .pdf, .docx, .zip"
               @input="val => uploadFile7Final(val, 2)"
             >
               <template v-slot:default>
                 <div style="width:100%">
                   <div class="bg-grey-5 q-pa-xs text-black" align="center">
-                    word / pdf
+                    word / pdf / zip
                   </div>
                   <div
                     class="bg-white q-pa-xs text-black row items-center justify-center"
@@ -1058,6 +1058,16 @@
               >ส่งแบบประเมิน</span
             >
           </q-btn>
+        </div>
+
+        <div class="text-body1 q-pt-xl" align="left">
+          <div class="">*หมายเหตุ : การแนบไฟล์</div>
+          <div>
+            วิธีที่ 1 : แนบเอกสารทั้งหมดเป็นไฟล์ .pdf จำนวน 1 ไฟล์เท่านั้น
+          </div>
+          <div>
+            วิธีที่ 2 : แนบแบบ Zip ไฟล์ โดยภายในต้องเป็นไฟล์ .pdf ทั้งหมด
+          </div>
         </div>
       </div>
 

@@ -140,6 +140,7 @@
                           type="number"
                           outlined
                           dense
+                          disable
                         ></q-input>
                       </div>
                       <div class="col">
@@ -148,6 +149,7 @@
                           outlined
                           dense
                           label="หน่วย"
+                          disable
                         ></q-input>
                       </div>
                     </div>
