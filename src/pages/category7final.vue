@@ -84,6 +84,7 @@
                         icon="fas fa-trash-alt"
                         color="teal"
                         round
+                        disable
                       ></q-btn>
                     </span>
                     ตัวชี้วัด
