@@ -1,6 +1,9 @@
 <template>
-  <q-page class="q-pa-md" style=" max-width: 1280px;width: 100%;
-  margin:auto">
+  <q-page
+    class="q-pa-md"
+    style=" max-width: 1280px;width: 100%;
+  margin:auto"
+  >
     <div class="row justify-center q-pb-md relative-position">
       <div class="relative-position" style="width: 150px;z-index:10">
         <div align="center">
@@ -51,7 +54,9 @@
               <q-space></q-space>
               <div class="col-3 self-center q-px-xl" style="width: 250px">
                 <div style="width: 180px; border: 1px solid" align="center">
-                  <span class="font-18" v-if="item.a_avgScore == -1">ยังไม่ทำการประเมิน</span>
+                  <span class="font-18" v-if="item.a_avgScore == -1"
+                    >ยังไม่ทำการประเมิน</span
+                  >
                   <span v-else>
                     <span class="text-teal">
                       <span v-if="item.avgScore == -1">0</span>
@@ -64,9 +69,7 @@
                     /
                     <span class="text-pink-4">
                       <span v-if="item.a_avgScore != -1">
-                        {{
-                        Math.round(item.a_avgScore) || 0
-                        }}
+                        {{ Math.round(item.a_avgScore) || 0 }}
                       </span>
                       <span v-else>-</span>
                     </span>
@@ -78,7 +81,10 @@
 
           <div class v-for="(sub, indexSub) in item.question">
             <q-separator class="bg-grey-7" style="height: 1px"></q-separator>
-            <div class="bg-4 row q-py-sm" style="border-right:1px solid;border-left:1px solid">
+            <div
+              class="bg-4 row q-py-sm"
+              style="border-right:1px solid;border-left:1px solid"
+            >
               <div class="col" style="padding-left: 37px">
                 <span v-html="sub.headerTextUpper"></span>
               </div>
@@ -96,19 +102,37 @@
                   <div class="col-10" align="center">ตัวชี้วัด</div>
                 </div>
                 <div class="q-pa-md border col" align="center">ผลดำเนินการ</div>
-                <div class="q-pa-md border col-2" style="width:350px;" align="center">การประเมินผล</div>
+                <div
+                  class="q-pa-md border col-2"
+                  style="width:350px;"
+                  align="center"
+                >
+                  การประเมินผล
+                </div>
 
-                <div class="q-pa-md border" style="width: 120px" align="center">คะแนน</div>
+                <div class="q-pa-md border" style="width: 120px" align="center">
+                  คะแนน
+                </div>
               </div>
               <div class="row">
-                <div class="q-pa-sm border col-5 row q-py-md" align="center" style="width:300px;">
+                <div
+                  class="q-pa-sm border col-5 row q-py-md"
+                  align="center"
+                  style="width:300px;"
+                >
                   <div align="center" class="q-pa-sm col-12">
-                    <div align="left" v-html="data[index].question[indexSub].indicators"></div>
+                    <div
+                      align="left"
+                      v-html="data[index].question[indexSub].indicators"
+                    ></div>
                   </div>
                   <div class="col-12 self-end">
                     <div class="q-px-sm" v-if="item.question[indexSub].extend">
                       <div class="q-px-sm">
-                        <div style="border:1px solid" class="q-pa-sm q-px-md row">
+                        <div
+                          style="border:1px solid"
+                          class="q-pa-sm q-px-md row"
+                        >
                           <span>% ความสำเร็จ</span>
                           <q-space></q-space>
                           <span class="text-teal">
@@ -122,16 +146,25 @@
                         <div
                           class="self-center col center"
                           style="font-size:16px"
-                        >{{ item.question[indexSub].scoreStandard }}</div>
+                        >
+                          {{ item.question[indexSub].scoreStandard }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- ผลการดำเนินการ -->
                 <div class="q-pa-md border col row items-center" align="center">
-                  <div style="width:90%;margin:auto" :id="`container${'' + item.no + indexSub}`"></div>
+                  <div
+                    style="width:90%;margin:auto"
+                    :id="`container${'' + item.no + indexSub}`"
+                  ></div>
                 </div>
-                <div class="q-pa-md border col-2" style="width:350px;" align="center">
+                <div
+                  class="q-pa-md border col-2"
+                  style="width:350px;"
+                  align="center"
+                >
                   <div>
                     <q-btn
                       class="full-width"
@@ -165,27 +198,29 @@
                 </div>
                 <div class="q-pa-md border" style="width: 120px" align="center">
                   {{
-                  calculateScore(
-                  calculateSuccessRate(
-                  item.question[indexSub].result[currentYear],
-                  item.question[indexSub].goalCurrentYear,
-                  item.question[indexSub].scoreStandard,
-                  index,
-                  indexSub
-                  ),
-                  index,indexSub
-                  ) != -1
-                  ? calculateScore(
-                  calculateSuccessRate(
-                  item.question[indexSub].result[currentYear],
-                  item.question[indexSub].goalCurrentYear,
-                  item.question[indexSub].scoreStandard,
-                  index,
-                  indexSub
-                  ),
-                  index,indexSub
-                  )
-                  : ""
+                    calculateScore(
+                      calculateSuccessRate(
+                        item.question[indexSub].result[currentYear],
+                        item.question[indexSub].goalCurrentYear,
+                        item.question[indexSub].scoreStandard,
+                        index,
+                        indexSub
+                      ),
+                      index,
+                      indexSub
+                    ) != -1
+                      ? calculateScore(
+                          calculateSuccessRate(
+                            item.question[indexSub].result[currentYear],
+                            item.question[indexSub].goalCurrentYear,
+                            item.question[indexSub].scoreStandard,
+                            index,
+                            indexSub
+                          ),
+                          index,
+                          indexSub
+                        )
+                      : 0
                   }}
                   <!-- {{
                     scoreCalculator(item.question[indexSub].result[currentYear],index,indexSub) != -1 ? scoreCalculator(item.question[indexSub].result[currentYear],index,indexSub) : ''
@@ -274,12 +309,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -301,14 +336,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.2 ด้านผู้รับบริการและผู้มีส่วนได้ส่วนเสีย",
@@ -336,14 +371,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.3 ด้านการพัฒนาบุคลากร",
@@ -371,12 +406,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -397,14 +432,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.4 ด้านการเป็นต้นแบบ",
@@ -432,12 +467,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -458,14 +493,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.5 ด้านผลกระทบต่อเศรษฐกิจ สังคม สาธารณสุข สิ่งแวดล้อม",
@@ -491,14 +526,14 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
         },
         {
           title: "7.6 ด้านการลดต้นทุน สร้างนวัตกรรม และการจัดการกระบวนการ",
@@ -525,12 +560,12 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
+              scoreStandard: "ยิ่งมากยิ่งดี"
             },
             {
               editable: false,
@@ -551,16 +586,16 @@ export default {
               result: {
                 [this.$q.sessionStorage.getItem("y") + 543]: null,
                 [this.$q.sessionStorage.getItem("y") + 542]: null,
-                [this.$q.sessionStorage.getItem("y") + 541]: null,
+                [this.$q.sessionStorage.getItem("y") + 541]: null
               },
 
               successRate: null,
               score: null,
-              scoreStandard: "ยิ่งมากยิ่งดี",
-            },
-          ],
-        },
-      ],
+              scoreStandard: "ยิ่งมากยิ่งดี"
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {
@@ -689,7 +724,7 @@ export default {
     },
 
     async finishGAP7Final() {
-      let checkAssessment = this.data.filter((x) => x.a_avgScore != -1).length;
+      let checkAssessment = this.data.filter(x => x.a_avgScore != -1).length;
 
       if (checkAssessment == 6) {
         this.cat7finalstatus = !this.cat7finalstatus;
@@ -700,7 +735,7 @@ export default {
           uid: this.$route.params.userId,
           step: "cat7",
           year: this.$q.sessionStorage.getItem("y"),
-          stepValue: this.cat7finalstatus ? 2 : 1,
+          stepValue: this.cat7finalstatus ? 2 : 1
         };
 
         let response = await Axios.post(urlUpdateStepper, stepperData);
@@ -708,17 +743,16 @@ export default {
         this.cat7finalstatus = false;
         this.$q.notify({
           message: "กรุณาประเมินให้ครบทุกหัวข้อ",
-          color: "red",
+          color: "red"
         });
       }
-
     },
 
     async getAssessmentStepperLog() {
       const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
       let postCheckStatusData = {
         user_id: this.$route.params.userId,
-        year: this.$q.sessionStorage.getItem("y"),
+        year: this.$q.sessionStorage.getItem("y")
       };
 
       let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
@@ -732,44 +766,59 @@ export default {
     },
 
     assesment(no, subNo) {
-      if (this.data[no].question[subNo].score != -1) {
-        let current = this.data[no].question[subNo].a_assesment;
-        if (current == -1) {
-          // เหมาะสม
-          this.data[no].question[subNo].a_assesment = 1;
-        } else if (current == 1) {
-          //  0=ไม่เหมาะสม
-          this.data[no].question[subNo].a_assesment = 0;
-        } else {
-          // ยังไม่ประเมิน
-          this.data[no].question[subNo].a_assesment = -1;
-        }
-
-        let newCurrent = this.data[no].question[subNo].a_assesment;
-
-        if (newCurrent == 0) {
-          // ถ้าไม่เหมาะสมให้คะแนนเป็น 0
-          this.data[no].question[subNo].a_score = 0;
-          this.data[no].question[subNo].a_successpercent = 0;
-        } else if (newCurrent == 1) {
-          // เหมาะสม ให้ค่า %ความสำเร็จที่ประเมินเท่ากับค่าที่ยูเซอร์ประเมินมา
-
-          let newScore = this.data[no].question[subNo].score;
-          this.data[no].question[subNo].a_score = this.data[no].question[
-            subNo
-          ].score;
-        } else {
-          this.data[no].question[subNo].a_successpercent = null;
-          this.data[no].question[subNo].a_score = -1;
-        }
-        this.data[no].question.push("");
-        this.data[no].question.pop();
+      // if (this.data[no].question[subNo].score != -1) {
+      let current = this.data[no].question[subNo].a_assesment;
+      if (current == -1) {
+        // เหมาะสม
+        this.data[no].question[subNo].a_assesment = 1;
+      } else if (current == 1) {
+        //  0=ไม่เหมาะสม
+        this.data[no].question[subNo].a_assesment = 0;
       } else {
-        this.$q.notify({
-          message: "ไม่สามารถประเมินได้เนื่องจากไม่มีข้อมูลตัวชี้วัด",
-          color: "red",
-        });
+        // ยังไม่ประเมิน
+        this.data[no].question[subNo].a_assesment = -1;
       }
+
+      let newCurrent = this.data[no].question[subNo].a_assesment;
+
+      if (newCurrent == 0) {
+        // ถ้าไม่เหมาะสมให้คะแนนเป็น 0
+
+        this.data[no].question[subNo].a_score = 0;
+        this.data[no].question[subNo].a_successpercent = 0;
+      } else if (newCurrent == 1) {
+        // เหมาะสม ให้ค่า %ความสำเร็จที่ประเมินเท่ากับค่าที่ยูเซอร์ประเมินมา
+
+        let newScore = this.data[no].question[subNo].score;
+        this.data[no].question[subNo].a_score = this.data[no].question[
+          subNo
+        ].score;
+        this.data[no].question[subNo].score == -1
+          ? 0
+          : this.data[no].question[subNo].score;
+        this.data[no].question[subNo].a_score == -1
+          ? 0
+          : this.data[no].question[subNo].a_score;
+      } else {
+        this.data[no].question[subNo].a_successpercent = null;
+        this.data[no].question[subNo].a_score = -1;
+      }
+      this.data[no].question[subNo].a_score == -1
+        ? (this.data[no].question[subNo].a_score = 0)
+        : this.data[no].question[subNo].a_score;
+
+      this.data[no].question.push("");
+      this.data[no].question.pop();
+      // } else {
+      //   // this.$q.notify({
+      //   //   message: "ไม่สามารถประเมินได้เนื่องจากไม่มีข้อมูลตัวชี้วัด",
+      //   //   color: "red"
+      //   // });
+      //   if (this.data[no].question[subNo].score == -1) {
+      //     this.data[no].question[subNo].a_score = 0;
+      //     this.data[no].question[subNo].a_successpercent = 0;
+      //   }
+      // }
     },
     showDialog(index) {
       this.dialogMessage = this.dialogList[index];
@@ -795,29 +844,26 @@ export default {
     calAvgScore(q_number) {
       let index = q_number - 1;
 
-      let mapScore = this.data[index].question.map((x) => x.a_score);
+      let mapScore = this.data[index].question.map(x => x.a_score);
 
-      mapScore = mapScore.filter((x) => x > -1);
+      mapScore = mapScore.filter(x => x > -1);
 
       let avgScore =
         mapScore.reduce((a, b) => a + b, 0) / this.data[index].question.length;
       avgScore = parseInt(avgScore);
 
-      console.log("a_score", avgScore);
-
-      let score = this.data[index].question.map((x) => x.score);
-      score = score.filter((x) => x > -1);
+      let score = this.data[index].question.map(x => x.score);
+      score = score.filter(x => x > -1);
       let scoreAvg =
         score.reduce((a, b) => a + b, 0) / this.data[index].question.length;
       scoreAvg = parseInt(scoreAvg);
-
-      console.log("score", scoreAvg);
 
       this.data[index].avgScore = scoreAvg;
 
       // เช็คข้อที่จำเป็น
       if (q_number == 1 || q_number == 3 || q_number == 4 || q_number == 6) {
         // ข้อ 1 && 2 จำเป็น
+
         if (
           this.data[index].question[0].a_score != -1 &&
           this.data[index].question[1].a_score != -1
@@ -833,6 +879,7 @@ export default {
           this.data[index].a_avgScore = -1;
         }
       }
+      console.log(this.data[index].a_avgScore);
     },
 
     calculateScore(score, index, indexSub) {
@@ -867,8 +914,8 @@ export default {
       const url = this.apiPath + "user/addUpdateCategory7.php";
 
       let totala_avg_score = this.data
-        .filter((x) => x.a_avgScore != "-1")
-        .map((x) => Number(x.a_avgScore))
+        .filter(x => x.a_avgScore != "-1")
+        .map(x => Number(x.a_avgScore))
         .reduce((a, b) => Number(a) + Number(b), 0);
 
       totala_avg_score = parseInt(totala_avg_score / 6);
@@ -882,8 +929,9 @@ export default {
         avg_score: Number(this.data[index].avgScore),
         a_avg_score: Number(this.data[index].a_avgScore),
         category: "a_category7_score",
-        totala_avg_score: totala_avg_score,
+        totala_avg_score: totala_avg_score
       };
+      console.log(postData);
 
       let data = await Axios.post(url, postData);
       this.checkStatus();
@@ -895,7 +943,7 @@ export default {
       const url = this.apiPath + "user/getCategory7.php";
       let postData = {
         user_id: this.$route.params.userId,
-        year: this.$q.sessionStorage.getItem("y") + 543,
+        year: this.$q.sessionStorage.getItem("y") + 543
       };
 
       let data = await Axios.post(url, postData);
@@ -927,7 +975,7 @@ export default {
       let getYear = [
         this.$q.sessionStorage.getItem("y") + 541,
         this.$q.sessionStorage.getItem("y") + 542,
-        this.$q.sessionStorage.getItem("y") + 543,
+        this.$q.sessionStorage.getItem("y") + 543
       ];
 
       for (let i = 0; i < this.data.length; i++) {
@@ -941,33 +989,33 @@ export default {
             chart: {
               // height: (3 / 4 * 100) + '%',
               height: 350,
-              renderTo: "container" + this.data[i].no + ii,
+              renderTo: "container" + this.data[i].no + ii
             },
             title: {
-              text: "",
+              text: ""
             },
 
             yAxis: {
               title: {
-                text: "",
-              },
+                text: ""
+              }
             },
 
             xAxis: {
-              categories: getYear,
+              categories: getYear
             },
 
             legend: {
               layout: "horizontal",
               align: "center",
-              verticalAlign: "bottom",
+              verticalAlign: "bottom"
             },
 
             plotOptions: {
               line: {
                 dataLabels: {
                   enabled: true,
-                  formatter: function () {
+                  formatter: function() {
                     if (this.series.name == "เป้าหมาย") {
                       if (
                         this.x ==
@@ -978,17 +1026,17 @@ export default {
                     } else {
                       return this.y;
                     }
-                  },
+                  }
                 },
-                enableMouseTracking: false,
+                enableMouseTracking: false
               },
               series: {
-                label: {},
-              },
+                label: {}
+              }
             },
 
             credits: {
-              enabled: false,
+              enabled: false
             },
 
             series: [
@@ -997,9 +1045,9 @@ export default {
                 data: [
                   this.data[i].question[ii].goalCurrentYear,
                   this.data[i].question[ii].goalCurrentYear,
-                  this.data[i].question[ii].goalCurrentYear,
+                  this.data[i].question[ii].goalCurrentYear
                 ],
-                color: "#E84C93",
+                color: "#E84C93"
               },
               {
                 name: "ค่าที่ทำได้",
@@ -1012,33 +1060,33 @@ export default {
                   ],
                   this.data[i].question[ii].result[
                     this_.$q.sessionStorage.getItem("y") + 543
-                  ],
+                  ]
                 ],
-                color: "#13579A",
-              },
-            ],
+                color: "#13579A"
+              }
+            ]
           });
         }
         // }
       }
     },
     checkStatus() {
-      let mapData = this.data.map((x) => x.a_avgScore);
-      if (mapData.every((x) => x == "-1")) {
+      let mapData = this.data.map(x => x.a_avgScore);
+      if (mapData.every(x => x == "-1")) {
         // ยังไม่เคยประเมินสักข้อ
         this.$emit("statusForm", 0);
-      } else if (mapData.every((x) => x != "-1")) {
+      } else if (mapData.every(x => x != "-1")) {
         // ประเมินครบทุกข้อ
         this.$emit("statusForm", 1);
       } else {
         // ประเมินไปบางข้อ
         this.$emit("statusForm", 2);
       }
-    },
+    }
   },
   created() {
     this.getCategory7();
-  },
+  }
 };
 </script>
 

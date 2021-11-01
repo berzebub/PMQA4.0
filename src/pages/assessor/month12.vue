@@ -7,9 +7,9 @@
           <q-btn
             @click="changeStatus()"
             :color="!status ? null : 'secondary'"
-            :label="!status ?'ยังไม่ประเมิน' :'เสร็จสิ้น'"
+            :label="!status ? 'ยังไม่ประเมิน' : 'เสร็จสิ้น'"
             style="font-size:23px;width:155px"
-            :outline="!status ?true : false"
+            :outline="!status ? true : false"
           ></q-btn>
         </div>
       </div>
@@ -19,7 +19,9 @@
       <div class="col-3" align="center">
         <div style="width:200px;border:3px solid #e84c93;border-radius:5px;">
           <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">
+              word / pdf
+            </div>
             <div
               class="bg-white q-pa-xs text-black cursor-pointer row items-center justify-center"
               style="width:100%;text-decoration:underline;height:70px"
@@ -40,17 +42,23 @@
           class="q-mt-lg"
         >
           <div style="width:100%">
-            <div class="bg-grey-5 q-pa-xs text-black" align="center">word / pdf</div>
+            <div class="bg-grey-5 q-pa-xs text-black" align="center">
+              word / pdf
+            </div>
             <div
               class="bg-white q-pa-xs text-black cursor-pointer"
               style="width:100%;text-decoration:underline"
               align="center"
               @click="openFile(2)"
-            >pdf เอกสารเพิ่มเติม</div>
+            >
+              pdf เอกสารเพิ่มเติม
+            </div>
             <div
               class="bg1 text-white font-12 q-py-sm cursor-pointer"
               @click="isShowConfirmDeleteFileDialog = true"
-            >ลบไฟล์</div>
+            >
+              ลบไฟล์
+            </div>
           </div>
         </div>
 
@@ -76,7 +84,7 @@
       </div>
       <div class="col-9">
         <textarea
-        @focus="isErrorTextarea = false"
+          @focus="isErrorTextarea = false"
           v-model="suggestion"
           placeholder="ข้อเสนอแนะ"
           class="q-pa-md"
@@ -101,10 +109,19 @@
         <q-card-section>
           <div style="font-size:30px" align="center">ลบไฟล์</div>
 
-          <div class="font-18 q-py-md" align="center">คุณต้องการลบไฟล์ใช่หรือไม่?</div>
+          <div class="font-18 q-py-md" align="center">
+            คุณต้องการลบไฟล์ใช่หรือไม่?
+          </div>
         </q-card-section>
         <q-card-actions align="center" class="q-pb-md">
-          <q-btn style="width:180px" class="font-18" label="ยกเลิก" v-close-popup outline dense></q-btn>
+          <q-btn
+            style="width:180px"
+            class="font-18"
+            label="ยกเลิก"
+            v-close-popup
+            outline
+            dense
+          ></q-btn>
           <q-btn
             color="teal"
             style="width:180px"
@@ -131,7 +148,7 @@ export default {
       status: false,
       isErrorTextarea: false,
       path1: "",
-      path2 : ""
+      path2: ""
     };
   },
   methods: {
@@ -141,48 +158,47 @@ export default {
       let postData = {
         user_id: uid,
         year: year,
-        plan: 1,
+        plan: 1
       };
       const url = this.apiPath + "getFile12A.php";
       let response = await Axios.post(url, postData);
 
       if (response.data.length) {
-        this.filePdf = []
-        this.path2 = response.data[0].path
+        this.filePdf = [];
+        this.path2 = response.data[0].path;
       }
     },
-    async getMonth12(){
+    async getMonth12() {
       let url = this.apiPath + "getMonth12.php";
       let postData = {
-        user_id : this.$route.params.userId,
-        year : this.$q.sessionStorage.getItem("y")
+        user_id: this.$route.params.userId,
+        year: this.$q.sessionStorage.getItem("y")
+      };
+
+      let response = await Axios.post(url, postData);
+
+      if (response.data.length) {
+        this.suggestion = response.data[0].suggestion;
       }
-
-      let response = await Axios.post(url,postData)
-
-      if(response.data.length){
-        this.suggestion = response.data[0].suggestion
-      }
-
     },
     async saveData() {
       if (this.suggestion) {
-        this.loadingShow()
+        this.loadingShow();
         this.isErrorTextarea = false;
         let url = this.apiPath + "updateMonth12_a.php";
         let postData = {
-          user_id : this.$route.params.userId,
-          year : this.$q.sessionStorage.getItem("y"),
-          text : this.suggestion,
-          assessor_id : this.$q.sessionStorage.getItem("uid")
-        }
-        let response = await Axios.post(url,postData)
+          user_id: this.$route.params.userId,
+          year: this.$q.sessionStorage.getItem("y"),
+          text: this.suggestion,
+          assessor_id: this.$q.sessionStorage.getItem("uid")
+        };
+        let response = await Axios.post(url, postData);
 
-        this.notify("บันทึกข้อมูลสำเร็จ","secondary")
+        this.notify("บันทึกข้อมูลสำเร็จ", "secondary");
       } else {
         this.isErrorTextarea = true;
       }
-      this.loadingHide()
+      this.loadingHide();
     },
 
     async deleteFilePlan() {
@@ -192,7 +208,7 @@ export default {
       let postData = {
         user_id: uid,
         year: year,
-        plan: 1,
+        plan: 1
       };
       let data = await Axios.post(url, postData);
       this.filePdf = null;
@@ -202,7 +218,7 @@ export default {
 
     async uploadFile() {
       // Upload pan1y / plan3y
-      this.loadingShow()
+      this.loadingShow();
       let uid = this.$route.params.userId;
       let year = this.$q.sessionStorage.getItem("y");
       let formData = new FormData();
@@ -213,7 +229,7 @@ export default {
       const url = this.apiPath + "uploadFile12a.php";
       let data = await Axios.post(url, formData);
 
-      this.loadingHide()
+      this.loadingHide();
     },
 
     async changeStatus() {
@@ -222,15 +238,15 @@ export default {
         this.status = !this.status;
         this.isErrorTextarea = false;
 
-        let url = this.apiPath + "user/update_assessment_stepper_log.php"
+        let url = this.apiPath + "user/update_assessment_stepper_log.php";
 
         let postData = {
-          uid : this.$route.params.userId,
-          step : "month_12",
-          year : this.$q.sessionStorage.getItem("y"),
-          stepValue :  this.status ? 2 : 1
-        }
-        let response = await Axios.post(url,postData)
+          uid: this.$route.params.userId,
+          step: "month_12",
+          year: this.$q.sessionStorage.getItem("y"),
+          stepValue: this.status ? 2 : 1
+        };
+        let response = await Axios.post(url, postData);
       } else {
         this.isErrorTextarea = true;
       }
@@ -258,37 +274,31 @@ export default {
       } else {
         let filePath = this.apiPath + this.path2;
         window.open(filePath);
-
       }
     },
-    async getAssessmentStepperLog(){
-      const apiCheckStatus =
-          this.apiPath + "user/getAssessmentStepperLog.php";
-        let postCheckStatusData = {
-          user_id: this.$route.params.userId,
-          year: this.$q.sessionStorage.getItem("y"),
-        };
+    async getAssessmentStepperLog() {
+      const apiCheckStatus = this.apiPath + "user/getAssessmentStepperLog.php";
+      let postCheckStatusData = {
+        user_id: this.$route.params.userId,
+        year: this.$q.sessionStorage.getItem("y")
+      };
 
-        let responseCheck = await Axios.post(
-          apiCheckStatus,
-          postCheckStatusData
-        );
-        let responseData = responseCheck.data[0];
+      let responseCheck = await Axios.post(apiCheckStatus, postCheckStatusData);
+      let responseData = responseCheck.data[0];
 
-        if(responseCheck.data.length){
-          if(responseData.month_12 == '2'){
-            this.status = true
-          }
+      if (responseCheck.data.length) {
+        if (responseData.month_12 == "2") {
+          this.status = true;
         }
-
-    },
+      }
+    }
   },
   created() {
     this.getFile();
     this.getFilePlan();
-    this.getMonth12()
-    this.getAssessmentStepperLog()
-  },
+    this.getMonth12();
+    this.getAssessmentStepperLog();
+  }
 };
 </script>
 

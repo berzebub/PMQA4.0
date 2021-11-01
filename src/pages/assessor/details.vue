@@ -148,14 +148,27 @@
             </td>
             <td align="center" class="q-pa-sm">
               <span v-if="scoreTypeSelected == 'หน่วยงานประเมิน'">{{
-                item.cat7
+                item.cat7A
               }}</span>
               <span v-else>{{ item.cat7A }}</span>
             </td>
             <td align="center" class="q-pa-sm">
-              <span v-if="scoreTypeSelected == 'หน่วยงานประเมิน'">{{
-                item.officeScore
-              }}</span>
+              <span v-if="scoreTypeSelected == 'หน่วยงานประเมิน'">
+                {{
+                  Math.round(
+                    (Number(item.cat1) +
+                      Number(item.cat2) +
+                      Number(item.cat3) +
+                      Number(item.cat4) +
+                      Number(item.cat5) +
+                      Number(item.cat6) +
+                      Number(item.cat7)) /
+                      7,
+                    0
+                  )
+                }}
+                <!-- {{ item.officeScore }} -->
+              </span>
               <span v-else>{{ item.assessorScore }}</span>
             </td>
           </tr>
@@ -236,7 +249,6 @@ export default {
         getAssessmentAPI,
         postAssessmentData
       );
-
       assessmentLog = assessmentLog.data;
 
       let temp = [];
@@ -286,7 +298,7 @@ export default {
           cat4: cat4 == "-1" ? "-" : cat4,
           cat5: cat5 == "-1" ? "-" : cat5,
           cat6: cat6 == "-1" ? "-" : cat6,
-          cat7: cat7 == "-1" ? "-" : cat7,
+          cat7: cat7 == "-1" ? "-" : cat7A,
           cat1A: cat1A == "-1" ? "-" : cat1A,
           cat2A: cat2A == "-1" ? "-" : cat2A,
           cat3A: cat3A == "-1" ? "-" : cat3A,

@@ -211,8 +211,8 @@
                     style="width: 150px"
                     align="center"
                   >
-                    <span v-if="!item.question[indexSub].editable"></span>
-                    <span v-else>
+                    <!-- <span v-if="!item.question[indexSub].editable"></span> -->
+                    <span>
                       {{
                         calculateSuccessRate(
                           item.question[indexSub].result[currentYear],
